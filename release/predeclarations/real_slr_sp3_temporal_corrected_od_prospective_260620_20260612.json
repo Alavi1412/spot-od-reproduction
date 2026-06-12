@@ -1,0 +1,963 @@
+{
+  "artifact_role": "predeclared_rule_schedule_before_scoring",
+  "candidate_set": {
+    "classical": [
+      "EKF (full correction)",
+      "UKF (full correction)",
+      "AUKF (full correction)",
+      "SP3-IC propagation (full correction)"
+    ],
+    "classical_skill_reference": [
+      "EKF (full correction)",
+      "UKF (full correction)",
+      "AUKF (full correction)"
+    ],
+    "learned": "Learned residual UKF (full correction)"
+  },
+  "claim_boundary": {
+    "appropriate_use": "A predeclared prospective public-week temporal holdout under LAGEOS CRD/SP3 data (test week 260620). It can reduce measurement-pipeline risk and test public-week transfer, but it is not operational POD validation or simulator-result validation.",
+    "can_be_used_as_central_external_validation": false,
+    "can_be_used_as_learned_estimator_skill_validation": false,
+    "can_be_used_as_operational_pod_validation": false,
+    "post_hoc_robustness_not_confirmatory": false,
+    "prospective_public_temporal_holdout": true,
+    "rule_fixed_before_scoring_new_public_week": true
+  },
+  "correction_stack": {
+    "earth_orientation": "IERS finals2000A polar motion and UT1-UTC",
+    "frame": "IAU-76/80 ITRF-to-GCRS reduction",
+    "range_reductions": [
+      "Marini-Murray troposphere from CRD meteorology",
+      "LAGEOS centre-of-mass offset",
+      "relativistic Shapiro delay"
+    ]
+  },
+  "created_utc": "2026-06-12T12:20:48Z",
+  "fixed_filter_settings": {
+    "accel_psd": 1e-12,
+    "bootstrap_resamples": 5000,
+    "bootstrap_seed": 20260526,
+    "max_step_s": 30.0,
+    "range_std_m": 20.0,
+    "train_frac": 0.6
+  },
+  "learned_ridge_grid": [
+    "1e-06",
+    "1e-03",
+    "1e+00",
+    "1e+03",
+    "1e+06"
+  ],
+  "schedule": {
+    "confirmatory_status": "predeclared_prospective_public_temporal_holdout",
+    "reason_for_boundary": "Rule fixed before scoring newly available public EDC week 260620. Training uses historical formal210-style weeks through 260502, validation uses 260613 only, and the frozen selected rule is scored once on 260620. This is a prospective public temporal holdout, not operational POD.",
+    "schedule_name": "prospective_260620",
+    "targets": [
+      "LAGEOS-1",
+      "LAGEOS-2"
+    ],
+    "test_arcs": [
+      {
+        "date": "20260615",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260616",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260617",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260618",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260619",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260615",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260616",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260617",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260618",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260619",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260620",
+        "split": "test",
+        "target": "LAGEOS-2"
+      }
+    ],
+    "test_weeks": [
+      "260620"
+    ],
+    "train_week_objects": [
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "251220",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "251220",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "251227",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "251227",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260103",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260103",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260110",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260110",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260117",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260117",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260124",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260124",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260131",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260131",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260207",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260207",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260214",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260214",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260221",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260221",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260228",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260228",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260307",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260307",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260314",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260314",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260321",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260321",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260328",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260328",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260404",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260404",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260411",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260411",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260418",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260418",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260425",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260425",
+        "split": "train",
+        "target": "LAGEOS-2"
+      },
+      {
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260502",
+        "split": "train",
+        "target": "LAGEOS-1"
+      },
+      {
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260502",
+        "split": "train",
+        "target": "LAGEOS-2"
+      }
+    ],
+    "train_weeks": [
+      "251220",
+      "251227",
+      "260103",
+      "260110",
+      "260117",
+      "260124",
+      "260131",
+      "260207",
+      "260214",
+      "260221",
+      "260228",
+      "260307",
+      "260314",
+      "260321",
+      "260328",
+      "260404",
+      "260411",
+      "260418",
+      "260425",
+      "260502"
+    ],
+    "unused_weeks": [],
+    "validation_arcs": [
+      {
+        "date": "20260608",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260609",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260610",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260611",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260612",
+        "sat_key": "lageos1",
+        "sp3_sat_id": "L51",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-1"
+      },
+      {
+        "date": "20260608",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260609",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260610",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260611",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-2"
+      },
+      {
+        "date": "20260612",
+        "sat_key": "lageos2",
+        "sp3_sat_id": "L52",
+        "sp3_week": "260613",
+        "split": "validation",
+        "target": "LAGEOS-2"
+      }
+    ],
+    "validation_weeks": [
+      "260613"
+    ],
+    "weeks": {
+      "251220": {
+        "dates": [
+          "20251215",
+          "20251216",
+          "20251217",
+          "20251218",
+          "20251219"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20251215",
+          "20251216",
+          "20251217",
+          "20251218",
+          "20251219"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "251227": {
+        "dates": [
+          "20251222",
+          "20251223",
+          "20251224",
+          "20251225",
+          "20251226"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20251222",
+          "20251223",
+          "20251224",
+          "20251225",
+          "20251226"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260103": {
+        "dates": [
+          "20251229",
+          "20251230",
+          "20251231",
+          "20260101",
+          "20260102"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20251229",
+          "20251230",
+          "20251231",
+          "20260101",
+          "20260102"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260110": {
+        "dates": [
+          "20260105",
+          "20260106",
+          "20260107",
+          "20260108",
+          "20260109"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260105",
+          "20260106",
+          "20260107",
+          "20260108",
+          "20260109"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260117": {
+        "dates": [
+          "20260112",
+          "20260113",
+          "20260114",
+          "20260115",
+          "20260116"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260112",
+          "20260113",
+          "20260114",
+          "20260115",
+          "20260116"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260124": {
+        "dates": [
+          "20260119",
+          "20260120",
+          "20260121",
+          "20260122",
+          "20260123"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260119",
+          "20260120",
+          "20260121",
+          "20260122",
+          "20260123"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260131": {
+        "dates": [
+          "20260126",
+          "20260127",
+          "20260128",
+          "20260129",
+          "20260130"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260126",
+          "20260127",
+          "20260128",
+          "20260129",
+          "20260130"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260207": {
+        "dates": [
+          "20260202",
+          "20260203",
+          "20260204",
+          "20260205",
+          "20260206"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260202",
+          "20260203",
+          "20260204",
+          "20260205",
+          "20260206"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260214": {
+        "dates": [
+          "20260209",
+          "20260210",
+          "20260211",
+          "20260212",
+          "20260213"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260209",
+          "20260210",
+          "20260211",
+          "20260212",
+          "20260213"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260221": {
+        "dates": [
+          "20260216",
+          "20260217",
+          "20260218",
+          "20260219",
+          "20260220"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260216",
+          "20260217",
+          "20260218",
+          "20260219",
+          "20260220"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260228": {
+        "dates": [
+          "20260223",
+          "20260224",
+          "20260225",
+          "20260226",
+          "20260227"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260223",
+          "20260224",
+          "20260225",
+          "20260226",
+          "20260227"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260307": {
+        "dates": [
+          "20260302",
+          "20260303",
+          "20260304",
+          "20260305",
+          "20260306"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260302",
+          "20260303",
+          "20260304",
+          "20260305",
+          "20260306"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260314": {
+        "dates": [
+          "20260309",
+          "20260310",
+          "20260311",
+          "20260312",
+          "20260313"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260309",
+          "20260310",
+          "20260311",
+          "20260312",
+          "20260313"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260321": {
+        "dates": [
+          "20260316",
+          "20260317",
+          "20260318",
+          "20260319",
+          "20260320"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260316",
+          "20260317",
+          "20260318",
+          "20260319",
+          "20260320"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260328": {
+        "dates": [
+          "20260323",
+          "20260324",
+          "20260325",
+          "20260326",
+          "20260327"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260323",
+          "20260324",
+          "20260325",
+          "20260326",
+          "20260327"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260404": {
+        "dates": [
+          "20260330",
+          "20260331",
+          "20260401",
+          "20260402",
+          "20260403"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260330",
+          "20260331",
+          "20260401",
+          "20260402",
+          "20260403"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260411": {
+        "dates": [
+          "20260406",
+          "20260407",
+          "20260408",
+          "20260409",
+          "20260410"
+        ],
+        "original_formal210_split": "preceding",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260406",
+          "20260407",
+          "20260408",
+          "20260409",
+          "20260410"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260418": {
+        "dates": [
+          "20260413",
+          "20260414",
+          "20260415",
+          "20260416",
+          "20260417"
+        ],
+        "original_formal210_split": "train",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260413",
+          "20260414",
+          "20260415",
+          "20260416",
+          "20260417"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260425": {
+        "dates": [
+          "20260420",
+          "20260421",
+          "20260422",
+          "20260423",
+          "20260424"
+        ],
+        "original_formal210_split": "train",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260420",
+          "20260421",
+          "20260422",
+          "20260423",
+          "20260424"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260502": {
+        "dates": [
+          "20260427",
+          "20260428",
+          "20260429",
+          "20260430",
+          "20260501"
+        ],
+        "original_formal210_split": "val",
+        "source_schedule_role": "formal210_archived_public_week",
+        "source_week_dates": [
+          "20260427",
+          "20260428",
+          "20260429",
+          "20260430",
+          "20260501"
+        ],
+        "temporal_corrected_split": "train"
+      },
+      "260613": {
+        "dates": [
+          "20260608",
+          "20260609",
+          "20260610",
+          "20260611",
+          "20260612"
+        ],
+        "original_formal210_split": null,
+        "source_schedule_role": "prospective_added_public_week",
+        "source_week_dates": [
+          "20260608",
+          "20260609",
+          "20260610",
+          "20260611",
+          "20260612"
+        ],
+        "temporal_corrected_split": "validation"
+      },
+      "260620": {
+        "dates": [
+          "20260615",
+          "20260616",
+          "20260617",
+          "20260618",
+          "20260619"
+        ],
+        "original_formal210_split": null,
+        "source_schedule_role": "prospective_added_public_week",
+        "source_week_dates": [
+          "20260615",
+          "20260616",
+          "20260617",
+          "20260618",
+          "20260619"
+        ],
+        "temporal_corrected_split": "test"
+      }
+    }
+  },
+  "schema_version": "real_slr_sp3_temporal_corrected_od_predeclaration_v1",
+  "selection_rule": {
+    "candidate_selection": "choose the candidate with lowest validation mean arc RMSE, then score that frozen choice once on the test split",
+    "learned_hyperparameter_selection": "select ridge lambda by lowest validation mean arc RMSE",
+    "learned_model_training": "fit ridge residual-acceleration calibrators only on training-week SP3 states",
+    "primary_metric": "mean arc-level held-out SP3 position RMSE in metres on the frozen test split",
+    "test_set_information_used_for_selection": false
+  }
+}
