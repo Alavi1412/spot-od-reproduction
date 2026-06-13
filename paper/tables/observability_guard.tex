@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Guarded observability selector outcomes on the synthetic nominal and stress splits. The selector predicts trajectory-level method cost from visibility, innovation, prior-disagreement, and measurement-geometry features, then routes each trajectory to one estimator. Public-observation-window-replay selector outcomes are not reported in this manuscript.}
+  \label{tab:observability_guard}
+  \scriptsize
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{p{2.8cm}rrrp{9.2cm}}
+    \toprule
+    Scenario & Aggregate RMSE [m] & Mean trajectory RMSE [m] & Divergence rate & Selected methods \\
+    \midrule
+    Nominal test & 6169.59 & 3934.70 & 0.000 & AUKF: 1, EKF: 34, RGR-GF: 8, Learned Noise Adaptive: 5, No-Graph Residual: 3, UKF: 13 \\
+    Stress test & 6787.05 & 4887.54 & 0.000 & AUKF: 23, EKF: 13, RGR-GF: 9, Learned Noise Adaptive: 14, No-Graph Residual: 1, OI-RGR-GF: 4 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

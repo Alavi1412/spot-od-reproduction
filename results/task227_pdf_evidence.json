@@ -1,0 +1,11 @@
+{
+  "path": "paper\\main.pdf",
+  "pages": 33,
+  "bytes_on_disk": 719991,
+  "bytes_from_main_log": 719991,
+  "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745",
+  "pdf_header": "%PDF-1.5",
+  "main_log": "paper\\main.log",
+  "latexmk_log": "results\\latexmk.log",
+  "readback_method": "paper/main.log Output written line plus file stat/hash readback"
+}

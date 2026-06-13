@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \centering
+  \caption{Method-activity diagnostics relative to EKF on the stress benchmark.}
+  \label{tab:method_activity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Method & Mean $\Delta$ vs EKF [m] & Median $\Delta$ vs EKF [m] & Frac. $>1$ m & Frac. $>10$ m \\
+    \midrule
+    Pure GNN & 5280584.16 & 6723244.09 & 1.000 & 1.000 \\
+    EKF-residual learner & 9057.45 & 8875.47 & 1.000 & 1.000 \\
+    No-Graph Residual & 0.38 & 0.25 & 0.048 & 0.000 \\
+    Learned Noise Adaptive & 211.56 & 32.98 & 0.798 & 0.615 \\
+    RGR-GF & 137.01 & 25.05 & 0.754 & 0.592 \\
+    IDP-RGR-GF & 150.68 & 9.48 & 0.721 & 0.495 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

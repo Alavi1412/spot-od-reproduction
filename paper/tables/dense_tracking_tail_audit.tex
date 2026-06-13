@@ -1,0 +1,29 @@
+\begin{table}[t]
+  \centering
+  \caption{Tail-conditioned audit of the network-consistent dense-tracking probe. The paired RGR-GF-minus-best-classical comparison on the predeclared all-step metric is reported (i) unconditionally and (ii) restricted to the jointly engineering-adequate subset (every estimator below the 100~km physical-adequacy threshold), so the comparison cannot be dominated by a small number of megametre-scale tails. Per-method gross-failure counts (trajectories above the 100~km threshold) are reported so the per-realization tail structure is auditable. On the tail-conditioned subset the learned-vs-classical negative is preserved.}
+  \label{tab:dense_tracking_tail_audit}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Quantity & EKF & UKF & AUKF & RGR-GF \\
+    \midrule
+    Gross-failure count (>100~km) of 120 trajectories & 0 & 8 & 4 & 6 \\
+    \bottomrule
+  \end{tabular}
+  }
+
+  \vspace{4pt}
+  \begin{tabular}{lcc}
+    \toprule
+    Quantity & All-step & Observed-step \\
+    \midrule
+    Joint engineering-adequate subset size & 111/120 & 111/120 \\
+    Pooled RGR-GF RMSE on subset [m] & 7592.85 & 2147.14 \\
+    Pooled best-classical (EKF) RMSE on subset [m] & 6762.45 & 405.59 \\
+    Paired mean RGR-GF$-$EKF [m] (95\% CI) & 685.99 $[186.42, 1320.73]$ & 416.05 $[70.74, 855.14]$ \\
+    Paired median RGR-GF$-$EKF [m] (95\% CI) & -1.55 $[-6.04, -0.15]$ & -4.84 $[-6.98, -1.42]$ \\
+    Trajectories with RGR-GF better than EKF & 67/111 & 68/105 \\
+    \bottomrule
+  \end{tabular}
+  \\[2pt] {\footnotesize Engineering-adequacy threshold = 100~km position RMSE; divergence guard = $10^{8}$~m. Joint non-divergent count 119/120. The pooled unconditional classical RMSE references are EKF: 6507.44~m, UKF: 7137699.56~m, AUKF: 85819.69~m; the best classical reference used for the paired comparison is EKF. Bootstrap resamples: 3000.}
+\end{table}

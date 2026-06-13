@@ -1,0 +1,25 @@
+\begin{table}[t]
+  \centering
+  \caption{Seed-suite and follow-up position-RMSE summaries for learned comparators on the primary nominal and stress splits. OI-RGR-GF is a one-seed observability-conditioned follow-up; repeated-seed claims are based on the RGR-GF seed suite. Time-aligned SatNOGS observation-window replay is reported separately in Table~\ref{tab:satnogs_timefix_validation} and is not re-scored for learned comparators in the reported evidence.}
+  \label{tab:seed_suite_public}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Method & Scenario & Seeds & Mean RMSE [m] & 95\% CI low [m] & 95\% CI high [m] \\
+    \midrule
+    OI-RGR-GF & Stress & 1 & 6797.28 & 6797.28 & 6797.28 \\
+    OI-RGR-GF & Test & 1 & 6262.12 & 6262.12 & 6262.12 \\
+    RGR-GF & Stress & 15 & 6817.44 & 6810.06 & 6825.54 \\
+    RGR-GF & Test & 15 & 6184.77 & 6176.30 & 6195.68 \\
+    RGR-noMP & Stress & 3 & 6843.39 & 6814.96 & 6887.83 \\
+    RGR-noMP & Test & 3 & 6177.64 & 6171.37 & 6188.73 \\
+    RGR-local & Stress & 3 & 6879.75 & 6821.99 & 6982.84 \\
+    RGR-local & Test & 3 & 6185.53 & 6170.70 & 6200.84 \\
+    No-Graph Residual & Stress & 3 & 6810.28 & 6809.79 & 6811.26 \\
+    No-Graph Residual & Test & 3 & 6169.41 & 6169.01 & 6170.19 \\
+    EKF-residual learner & Stress & 3 & 9783.40 & 7808.54 & 10784.98 \\
+    EKF-residual learner & Test & 3 & 9087.03 & 7651.52 & 10143.47 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

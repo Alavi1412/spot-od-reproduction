@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "title": "SPOT-OD: supplementary evidence package for a simulator-bound orbit-determination self-audit record",
+    "upload_type": "dataset",
+    "description": "Version-pinned supplementary evidence package for SPOT-OD, a simulator-bound sparse-visibility orbit-determination self-audit record. The package contains manuscript sources, generated tables, fixed data-generation settings, timestamped internal rule records, trained-model and evaluation records, archived public-input provenance, validation reports, and SHA-256 checksums. It is prepared as a Zenodo metadata template, but no DOI or public archive URL is asserted at initial submission.",
+    "creators": [
+      {
+        "name": "Authors omitted for review"
+      }
+    ],
+    "keywords": [
+      "orbit determination",
+      "satellite state estimation",
+      "sparse visibility",
+      "adaptive filtering",
+      "negative results",
+      "reproducibility",
+      "self-audit"
+    ],
+    "version": "1.1.0-supplement",
+    "language": "eng",
+    "access_right": "open",
+    "license": "cc-by-4.0",
+    "notes": "Zenodo metadata template only. The review-stage package is currently supplied through the confidential journal-review route and has not been assigned a DOI. Public archival deposition is deferred until explicit author approval or a venue-required release point."
+  }
+}

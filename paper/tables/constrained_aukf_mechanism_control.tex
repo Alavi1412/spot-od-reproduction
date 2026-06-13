@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Additional targeted mechanism-control: constrained AUKF on the controlled force-model-mismatch split. All 48 trajectories are processed; 10 have zero visible scored steps after the evaluation window starts at step~11, making observed-step trajectory RMSE undefined for all comparators under the shared visibility/scoring mask (not a method-specific nonfinite failure); paired CIs and win rates use the 38 shared finite observed-step trajectories. \emph{AUKF-Rcap} inherits all standard AUKF parameters and caps the effective measurement-noise scale at 2$\times$ nominal (versus the standard 30$\times$ ceiling). Capping \(R\)-inflation reduces the mean effective \(R\) scale from 3.32 to 1.092 and partially restores performance (AUKF-Rcap $-$ AUKF: paired gap strictly negative). AUKF-Rcap remains strictly worse than EKF (CI entirely above zero), so the \(R\)-cap alone does not rescue the adaptive filter to EKF level under compact-model dynamics-bias conditions. Paired differences are AUKF-Rcap minus comparator (negative $=$ AUKF-Rcap better). Additional targeted mechanism-control outside the original frozen learned-estimator claim audit; not a predeclared positive criterion.}
+  \label{tab:constrained_aukf_mechanism_control}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcc}
+    \toprule
+    Quantity & Standard AUKF & AUKF-Rcap \\
+    \midrule
+    Max effective \(R\) scale (config ceiling) & 30$\times$ & 2$\times$ \\
+    Mean effective \(R\) scale (actual) & 3.315 & 1.092 \\
+    Mean state-update norm [m] & 466.3 & 481.6 \\
+    \midrule
+    \multicolumn{3}{l}{Observed-step RMSE [m]} \\
+    EKF & \multicolumn{2}{c}{448.79} \\
+    UKF & \multicolumn{2}{c}{469.41} \\
+    AUKF (standard) & 526.39 & --- \\
+    AUKF-Rcap & --- & 484.73 \\
+    \midrule
+    \multicolumn{3}{l}{Paired gap, AUKF-Rcap $-$ comparator [m], mean (95\% CI) ($n=38$ paired finite trajectories)} \\
+    vs EKF & \multicolumn{2}{c}{+34.5 (+9.8, +63.9)} \\
+    vs UKF & \multicolumn{2}{c}{+8.4 (-9.7, +25.6)} \\
+    vs AUKF & \multicolumn{2}{c}{-23.6 (-42.3, -6.2)} \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "observed_step_prospective_replication_rule_v1",
+  "fixed_at": "2026-05-21T19:26:19.5401506+02:00",
+  "rule_type": "larger independent endpoint replication under a frozen observed-step rule",
+  "not_external_preregistration": true,
+  "frozen_before_evaluation": true,
+  "base_seed": 880000,
+  "num_realizations_per_scenario": 32,
+  "trajectories_per_realization": 24,
+  "bootstrap_samples": 5000,
+  "scenarios": [
+    {
+      "name": "test",
+      "label": "Nominal",
+      "regime": "nominal sparse-visibility synthetic split"
+    },
+    {
+      "name": "stress_test",
+      "label": "Measurement-noise stress",
+      "regime": "inflated measurement noise/outliers"
+    },
+    {
+      "name": "force_model_mismatch_test",
+      "label": "Controlled force-model mismatch",
+      "regime": "truth inflates drag/SRP/process noise; estimators keep the compact model"
+    }
+  ],
+  "primary_metric": "observed_step_position_rmse_m",
+  "reference_metric": "all_step_position_rmse_m",
+  "statistical_unit": "independent realization with an independently seeded trajectory population and measurement-noise draw",
+  "decision_predicate": {
+    "per_scenario_estimate": "mean observed-step position RMSE over independent realizations",
+    "paired_gap": "RGR-GF observed-step position RMSE minus the best classical observed-step position RMSE in the same realization",
+    "confidence_interval": "95% percentile bootstrap CI over independent realizations",
+    "learned_positive": "RGR-GF must be the lowest-mean method for the scenario and the upper endpoint of the paired-gap CI must be strictly below zero",
+    "reference_metric_use": "all-step position RMSE is reported only as a propagation-dominated reference and is not part of the decision predicate"
+  },
+  "fixed_released_checkpoint_inference_only": true,
+  "no_model_selection": true,
+  "no_tuning": true,
+  "no_retraining": true,
+  "seed_disjointness": "base seed 880000 is disjoint from the 41-55 training/validation cohort, model-selection validation splits, the earlier observed-step endpoint-fixation base seed 770000, and the scenario-resampling base seed 90000",
+  "interpretation_boundary": "This rule defines a larger independent endpoint replication fixed before the new draw was evaluated. It is not an external preregistration, does not permit selection, tuning, or retraining, and supports only the observed-step endpoint ordering for the named simulator scenarios."
+}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Selection-stability audit for the temporal public real-measurement orbit-determination probe. Ridge and candidate choices are repeated only on validation-week arcs; the later test week remains a frozen readout. The audit is a bounded LAGEOS public-data stress test, not operational SLR POD.}
+  \label{tab:real_slr_sp3_temporal_selection_stability}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccc}
+    \toprule
+    Audit & Validation-only readout & Frozen test readout & Boundary \\
+    \midrule
+    Nominal selector & Learned calibrated higher-fidelity UKF; margin 0.43 m & 411.51 m learned vs 368.64 m best classical & small validation margin \\
+    Validation bootstrap & learned selected 62.4\% of resamples & test gap 42.87 [23.69, 63.38] m & resamples validation arcs only \\
+    Leave-one-arc-out & learned selected 6/10 folds & UKF (compact) is the test-best candidate & selector is fragile \\
+    Test-oracle sentinel & validation selects Learned calibrated higher-fidelity UKF & test-only oracle would select UKF (compact) & oracle not used for selection \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

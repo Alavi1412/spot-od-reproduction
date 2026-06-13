@@ -1,0 +1,55 @@
+{
+  "schema_version": "external_comparator_sensitivity_v1",
+  "audit_on_utc": "2026-05-20",
+  "category": "post_review_pre_run_external_comparator_sensitivity",
+  "predeclared_audit_member": false,
+  "new_confirmatory_evidence": false,
+  "primary_predeclared_audit_altered": false,
+  "scope": "Post-review, pre-run external-comparator sensitivity for the seven-ingredient claim-audit harness. The faithful KalmanNet SPOT-OD re-instantiation (Section app:kalmannet-spot-od-feasibility) is run again with the four design choices the upstream paper-facing diagnostic explicitly did not apply now addressed simultaneously, so that the re-instantiation gap is no longer ascribable to those four scoped-out design choices. The result is reported as a single sensitivity comparator outside the primary predeclared audit; it does not alter, replace, or supersede any earlier predeclared rule and is not promoted to confirmatory evidence regardless of outcome.",
+  "rationale": "The Acta-style reviewer of the prior loop noted that the audit harness was not applied end-to-end to any external published learned-OD construction because the SPOT-OD re-instantiation of the official KalmanNet release was reported only with the four design choices explicitly not applied. To close that gap on the manuscript's own evidence boundary, this sensitivity adopts a single, externally inspectable comparator with all four design choices addressed at once. The comparator is intentionally a single sensitivity at one budget and seed split rather than a new primary endpoint, so it cannot be used to manufacture a confirmatory positive after the fact.",
+  "design_gaps_addressed": [
+    {
+      "gap": "Orbital-scale state and observation normalization",
+      "implementation": "Per-channel noise-equivalent observation normalization layered on top of the existing scaled-state/scaled-observation convention (positions divided by 1e7 m, velocities by 1e4 m/s, range by 1e7 m, angles by pi or pi/2, range-rate by 1e4 m/s). Each line-of-sight channel is additionally divided by its documented measurement-noise standard deviation so that the standardized innovation has unit scale, matching the upstream KalmanNet linear-canonical benchmark's unit-noise assumption. The divisors are deterministic given the configured measurement-noise standard deviations and do not use any train-set sample statistics. The invisible-channel zero-pad convention is preserved so the innovation on invisible blocks remains zero by construction. A scaled-state clamping band [-2.0, +2.0] is applied to the propagator input to prevent transient gain-RNN outputs from driving the orbital propagator through overflow during early training; the band is wider than any plausible LEO state in scaled coordinates and is reported as a numerical safeguard, not a learned-OD design choice.",
+      "predeclared": true
+    },
+    {
+      "gap": "Sequence-length and curriculum rematching",
+      "implementation": "Two-stage visibility-stratified training curriculum, declared before the run: (a) a warm-up stage trains on a higher-density subsample of trajectories whose pre-computed visibility fraction over the 120-step window lies in the top tercile; (b) the main stage trains on the full disjoint-seed training population. Each stage uses the full 120-step sequence length; the curriculum varies only in the trajectory population, not in the sequence window.",
+      "predeclared": true
+    },
+    {
+      "gap": "Sparse-observation architectural adaptation",
+      "implementation": "Two adaptations applied simultaneously: (a) observation vector is augmented with the per-station visibility flags (n = 32 -> n = 40), with h(x) reproducing the flag exactly so the innovation on the eight visibility channels is identically zero by construction; (b) the learned correction is force-gated by the step-level visibility flag (when no station is visible at step t, the model output equals the prior prediction without any learned correction). The combination supplies the gain RNN with explicit visibility context and prevents the learned correction from acting on open-loop propagation steps.",
+      "predeclared": true
+    },
+    {
+      "gap": "Learning-rate and budget recalibration to sparse observation",
+      "implementation": "Cosine learning-rate schedule with linear warm-up (warm-up fraction 0.10) over a documented compute budget of 1000 optimizer steps. Base learning rate 2.0e-4 with weight decay 1.0e-4; effective batch size 24. The full schedule, warm-up fraction, total budget, and base learning rate are recorded in this artefact prior to the held-out run; no post-hoc grid search is performed and no schedule retuning is allowed.",
+      "predeclared": true
+    }
+  ],
+  "evaluation": {
+    "primary_metric": "Mean held-out test observed-step position RMSE on the disjoint-seed test draw (n_test = 32). Same test seed (20260701) as the existing faithful transposition (Table tab:kalmannet_spot_od_transposition); same train seed (20260601) for data generation; same model-selection convention (held-out validation-set best model over the full schedule).",
+    "guardrails": "EKF, UKF, AUKF, and PUKF evaluated on the identical test population using the manuscript-tuned hyperparameters; the AUKF is the per-scenario best classical reference for this slice.",
+    "uncertainty": "Paired bootstrap CI on the learned-minus-best-classical mean (3000 resamples; shared trajectory indices).",
+    "outcome_classes": [
+      "Bounded negative (paired CI versus best classical strictly positive): residual gap persists; reported as an honest external-comparator-sensitivity outcome under the four design-choice addressals.",
+      "Inconclusive (paired CI versus best classical contains zero): comparator approaches the classical reference without strictly beating it; reported as inconclusive sensitivity at the documented budget.",
+      "Bounded positive (paired CI versus best classical strictly negative, gap above the 3% practical-significance floor): comparator strictly beats the per-scenario best classical reference. Even in this case the result is reported as a single post-review external-comparator sensitivity, NOT as a new predeclared primary endpoint or as confirmatory evidence; the headline negative on the authors' learned constructions and the original predeclared structural-channel decisions are unchanged."
+    ]
+  },
+  "interpretation_rules": [
+    "The result is a single external-comparator sensitivity, not a new primary endpoint and not a re-opening of the primary predeclared audit.",
+    "The result does not alter any predeclared decision on RGR-GF, RGR-U, the residual-scale sweep, the in-house KalmanNet-style learned-gain comparator, PUKF, DMC-EKF, DSA-EKF, or DBAR.",
+    "A positive sensitivity result is reported strictly as a bounded sensitivity at the documented budget and seed split; it does not constitute a refutation of any prior bounded negative on a different estimator family.",
+    "A negative sensitivity result strengthens the harness application by demonstrating that addressing all four design choices simultaneously does not yield a transferable learned-OD positive on this measurement setting at the documented budget."
+  ],
+  "no_dataset_reuse": "The training, validation, and test trajectories are drawn from the same disjoint-seed offsets used by the faithful transposition (train seed 20260601, test seed 20260701) so that this sensitivity is a direct head-to-head with the existing faithful transposition. The test seed is independent of every other manuscript-side disjoint-seed draw (15-seed cohort 41-55; fresh-pre-registration base seed 770000).",
+  "audit_trail": {
+    "predeclared_in_artefact": "release/predeclarations/kalmannet_design_gap_sensitivity_loop52.json",
+    "results_artefact": "results/kalmannet_spot_od/design_gap_sensitivity.json",
+    "paper_facing_table_label": "tab:kalmannet_design_gap_sensitivity",
+    "paper_facing_location": "supplement, Section app:kalmannet-spot-od-feasibility"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "schema_version": "drag_scale_constructive_positive_control_v1",
+  "scope": "Post-review constructive positive control on the Drag-Scale Adaptive EKF (DSA-EKF). The slice fixes the unmodelled physics to be a pure multiplicative drag-scale mismatch (no additional zonal geopotential, no luni-solar third body, no time-varying density modulation), so the textbook drag-scale structural channel has a plausible reason to absorb the bias and the harness has a structurally correct candidate. The slice is reported as a constructive positive control to address the no-positive-contribution and harness-preordained-to-negative concerns, not as a new primary claim. The predeclared positive criterion is identical in form to the loop 45 / loop 47 DSA-EKF positive criterion.",
+  "predeclared_audit_member": true,
+  "new_confirmatory_evidence": true,
+  "category": "constructive_positive_control",
+  "rationale": "Loop 45 / 47 reported the DSA-EKF on higher-fidelity force-mismatch slices that combined J3..J6 zonal geopotential, luni-solar third-body acceleration, and a longitudinal/diurnal time-varying density modulation on top of the multiplicative drag-scale truth-side bias. The DSA-EKF returned a bounded negative on those slices because no single multiplicative drag-scale parameter can absorb the richer mismatch. A constructive control that fixes the unmodelled physics to be a pure multiplicative drag-scale mismatch is the canonical regime in which the textbook drag-scale structural channel is the right answer (Tapley, Schutz, Born 2004, Section 10.5; Vallado 2013, Section 9.6.1), and is the cleanest test of whether the harness returns a positive when the structural channel matches the misspecification.",
+  "constructive_control_design": {
+    "truth_side_dynamics": "Compact two-body + J2 + exponential-atmosphere drag (the same compact dynamics every classical baseline in this study uses), with the truth-side ballistic coefficient multiplied by a fixed truth_beta_value > 1 to inject a multiplicative drag-scale mismatch. No zonal geopotential terms above J2; no luni-solar third body; no SRP; no time-varying density modulation.",
+    "estimator_side_dynamics": "Compact two-body + J2 + exponential-atmosphere drag at the nominal (unscaled) ballistic coefficient. The DSA-EKF estimates the multiplicative scaling factor beta online; every other estimator (EKF, UKF, AUKF, PUKF, DMC-EKF) keeps the unscaled compact dynamics.",
+    "truth_beta_value": 2.5,
+    "arc_length_steps": 540,
+    "arc_length_hours_approximate": 3.0,
+    "propagator_step_s": 20.0,
+    "orbit_altitude_min_km": 250.0,
+    "orbit_altitude_max_km": 450.0,
+    "orbit_altitude_band_rationale": "A low-altitude band where the drag acceleration is large enough that the cumulative orbit decay over 3 hours is sensitive to the multiplicative drag-scale bias. The reference density rho_ref = 4.0e-11 kg/m^3 at h_ref = 400 km and a 60 km scale height are the same as the rest of the manuscript; the 250-450 km altitude band keeps the drag coefficient/density product well above the LEO drag-noise floor.",
+    "stations_inherit_from": "configs/experiment.yaml (eight-station network, same as the rest of the manuscript)",
+    "measurement_noise_inherit_from": "configs/experiment.yaml nominal split (no measurement stress override)",
+    "n_trajectories_planned": 64,
+    "test_seed": 770540,
+    "validation_seed": 770539,
+    "validation_n_trajectories": 24,
+    "epoch_unix": 1736640000.0,
+    "selection_rule": "Hyperparameter selection reuses the loop 47 long-arc DSA-EKF validation selection artefact at results/drag_scale_aekf_validation_long_arc/drag_scale_aekf_validation_long_arc.json when available, otherwise reuses the loop 45 short-arc DSA-EKF validation selection. No hyperparameter retuning on the constructive control population is allowed.",
+    "selection_rule_falls_back_to_defaults": true
+  },
+  "decision_predicate": {
+    "primary_endpoint": "Observed-step position RMSE on the held-out test seed disjoint from the validation seed and from every other test seed used in the manuscript.",
+    "candidate": "DSA-EKF",
+    "comparator_set": ["EKF", "UKF", "AUKF", "PUKF", "DMC-EKF"],
+    "rule": "DSA-EKF passes the constructive positive control if and only if (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, PUKF, DMC-EKF, DSA-EKF}, AND (ii) the paired-bootstrap 95% CI for the DSA-EKF-minus-best-non-DSA gap is strictly negative (DSA-EKF strictly better), AND (iii) the absolute gap exceeds the predeclared 3% practical-significance floor of the best-non-DSA mean.",
+    "honest_negative_interpretation": "If the predeclared rule does not yield a positive, the slice is reported as a bounded structural-channel negative even under the structurally correct candidate; no rule retuning is allowed after the held-out test evaluation.",
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95,
+    "practical_significance_floor_fraction": 0.03
+  },
+  "interpretation": "If DSA-EKF passes the predeclared positive criterion, the constructive control demonstrates that the harness returns a positive when the structural channel matches the misspecification and the underlying physics is observable from the measurement geometry over the predeclared arc length. This is the post-review constructive control answering the no-positive-contribution and harness-preordained-to-negative concerns and is NOT a new primary claim about operational POD. If DSA-EKF does not pass, the result is reported as an additional bounded structural-channel negative, consistent with the loop 45 / loop 47 outcomes but on a slice where the structural correctness of the candidate is uncontroversial.",
+  "non_paper_artifacts": {
+    "implementation": "src/gnn_state_estimation/filters/drag_scale.py::run_drag_scale_aekf",
+    "test_harness": "scripts/run_drag_scale_constructive_positive_control.py",
+    "result_json": "results/drag_scale_constructive_positive_control/drag_scale_constructive_positive_control.json",
+    "result_csv": "results/drag_scale_constructive_positive_control/drag_scale_constructive_positive_control.csv"
+  }
+}

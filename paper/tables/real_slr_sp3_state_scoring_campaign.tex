@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{Bounded public precise-reference state-scoring campaign. Selection uses only validation information where a temporal selector is available, and the held-out week is scored against the independent SP3 precise-orbit product. The sparse-SLR temporal selector uses real CRD normal points but has only classical candidates; the learned real-measurement check is no-leakage but not a temporal validation selector; the controlled learned arm is state propagation from SP3 states rather than real-measurement OD. The result is therefore a bounded public probe, not operational validation.}
+  \label{tab:real_slr_sp3_state_scoring_campaign}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccc}
+    \toprule
+    Arm & Validation-selected candidate & Test mean [m] & Test best [m] & Paired gap [m] \\
+    \midrule
+    Sparse-SLR temporal selector & UKF (higher-fidelity) & 395.77 & UKF (compact): 368.64 & 27.13 [-2.26, 62.10] \\
+    Controlled SP3-state selector & compact classical & 261.59 & higher fidelity classical: 250.02 & 11.57 [-4.51, 29.79] \\
+    Learned sparse-SLR LOAO check & Calibrated UKF & 697.44 & UKF: 334.72 & 362.73 [231.09, 503.73] \\
+    Learned sparse-SLR LOOO check & Calibrated UKF & 680.99 & UKF: 334.72 & 346.28 [206.75, 493.05] \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Gap is selected or learned candidate minus the listed classical/test-best reference; positive values mean larger held-out RMSE. LOAO = leave one arc out; LOOO = leave one object out.}
+\end{table}

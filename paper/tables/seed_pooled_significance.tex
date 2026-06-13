@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Seed-pooled trajectory-paired stress diagnostic for the independently retained RGR-GF seed-suite runs. The pair unit is a seed--trajectory row; the confidence interval resamples seeds and then trajectories, while the pooled Wilcoxon $p$ is diagnostic because the same trajectory identities recur across seeds.}
+  \label{tab:seed_pooled_significance}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllcccccc}
+    \toprule
+    Method & Comparison & Seeds & Pairs & Mean gain [m] & 95\% two-level CI low [m] & 95\% two-level CI high [m] & Pooled win rate [\%] & Wilcoxon $p$ \\
+    \midrule
+    RGR-GF & vs UKF & 15 & 960 & 771.94 & 598.32 & 968.90 & 68.12 & 2.21e-48 \\
+    RGR-GF & vs AUKF & 15 & 960 & -100.09 & -148.99 & -53.56 & 42.81 & 1 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

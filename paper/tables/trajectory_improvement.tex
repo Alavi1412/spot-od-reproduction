@@ -1,0 +1,33 @@
+\begin{table}[t]
+  \centering
+  \caption{Trajectory-level improvement analytics against UKF baseline.}
+  \label{tab:trajectory_improvement}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccc}
+    \toprule
+    Scenario & Comparison & Mean gain [m] & Win rate [\%] & Cohen's $d_z$ & Wilcoxon $p$ \\
+    \midrule
+    Test & RGR-GF vs UKF & 53.76 & 43.75 & 0.155 & 0.8185 \\
+    Test & RGR-GF vs AUKF & -7.59 & 50.00 & -0.088 & 0.6944 \\
+    Test & IDP-RGR-GF vs UKF & 46.48 & 42.19 & 0.157 & 0.8095 \\
+    Test & IDP-RGR-GF vs AUKF & -14.87 & 48.44 & -0.104 & 0.636 \\
+    Test & EKF-residual learner vs UKF & -3404.01 & 6.25 & -1.847 & 1 \\
+    Test & No-Graph Residual vs UKF & 51.65 & 40.62 & 0.152 & 0.9661 \\
+    Test & Learned Noise Adaptive vs UKF & 52.36 & 48.44 & 0.152 & 0.3033 \\
+    Test & AUKF vs UKF & 61.35 & 43.75 & 0.144 & 0.3435 \\
+    Test & EKF vs UKF & 51.65 & 40.62 & 0.152 & 0.9661 \\
+    Test & Pure GNN vs UKF & -3424280.27 & 0.00 & -7.910 & 1 \\
+    Stress & RGR-GF vs UKF & 487.19 & 67.19 & 0.261 & 0.0001823 \\
+    Stress & RGR-GF vs AUKF & -16.28 & 48.44 & -0.065 & 0.9095 \\
+    Stress & IDP-RGR-GF vs UKF & 454.87 & 59.38 & 0.270 & 0.001593 \\
+    Stress & IDP-RGR-GF vs AUKF & -48.60 & 39.06 & -0.225 & 0.9248 \\
+    Stress & EKF-residual learner vs UKF & -2420.00 & 10.94 & -0.924 & 1 \\
+    Stress & No-Graph Residual vs UKF & 483.94 & 59.38 & 0.257 & 0.002701 \\
+    Stress & Learned Noise Adaptive vs UKF & 491.25 & 60.94 & 0.272 & 0.0001689 \\
+    Stress & AUKF vs UKF & 503.47 & 54.69 & 0.291 & 9.472e-06 \\
+    Stress & EKF vs UKF & 483.94 & 59.38 & 0.257 & 0.002701 \\
+    Stress & Pure GNN vs UKF & -3419739.22 & 0.00 & -6.194 & 1 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

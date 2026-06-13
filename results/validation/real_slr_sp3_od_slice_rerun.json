@@ -1,0 +1,285 @@
+{
+  "canonical_artifacts": {
+    "result_json": {
+      "bytes": 30577,
+      "exists": true,
+      "path": "results/real_slr_sp3_od/real_slr_sp3_od_validation.json",
+      "sha256": "8bc41092db2f140452585c6933b30d92ea474fad56e0f56356ca40c93c37af70"
+    },
+    "source_input_dir": "results/real_slr_sp3_od",
+    "table_tex": {
+      "bytes": 3152,
+      "exists": true,
+      "path": "paper/tables/real_slr_sp3_od.tex",
+      "sha256": "be8a5113f1f2ea48453f4eba0c4593ae583957fde3b4e5d0b9551afc39733e35"
+    }
+  },
+  "comparisons": {
+    "public_claim_summary": {
+      "actual": {
+        "dbar_external_validation": {
+          "classification_accuracy": 0.6,
+          "confusion": {
+            "false_fire": 2,
+            "false_no_fire": 2,
+            "true_fire": 0,
+            "true_no_fire": 6
+          },
+          "n_arcs_scored": 10,
+          "n_correct": 6,
+          "n_counterproductive_arcs": 2,
+          "n_non_counterproductive_arcs": 8,
+          "no_information_baseline": {
+            "accuracy_minus_majority": -0.2,
+            "beats_majority": false,
+            "majority_class": "no_fire (negative)",
+            "majority_class_accuracy": 0.8
+          },
+          "sensitivity": 0.0,
+          "specificity": 0.75
+        },
+        "fixed_station_subset": [
+          "HERL",
+          "MATM",
+          "WETL",
+          "YARL"
+        ],
+        "num_arcs": 10,
+        "num_arcs_completed": 10,
+        "pooled_held_out_position_rmse_m": {
+          "AUKF (adaptive)": {
+            "arcs_best_of": 3,
+            "mean_arc_rms_m": 341.33,
+            "median_arc_rms_m": 296.13,
+            "n_arcs": 10
+          },
+          "EKF": {
+            "arcs_best_of": 1,
+            "mean_arc_rms_m": 367.98,
+            "median_arc_rms_m": 248.67,
+            "n_arcs": 10
+          },
+          "SP3-IC propagation": {
+            "arcs_best_of": 5,
+            "mean_arc_rms_m": 402.92,
+            "median_arc_rms_m": 260.68,
+            "n_arcs": 10
+          },
+          "UKF (fixed-noise)": {
+            "arcs_best_of": 1,
+            "mean_arc_rms_m": 334.72,
+            "median_arc_rms_m": 234.04,
+            "n_arcs": 10
+          }
+        },
+        "schema_version": "real_slr_sp3_od_v1",
+        "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+        "sp3_week_product": "260509",
+        "status": "completed",
+        "targets": [
+          "LAGEOS-1",
+          "LAGEOS-2"
+        ]
+      },
+      "expected": {
+        "dbar_external_validation": {
+          "classification_accuracy": 0.6,
+          "confusion": {
+            "false_fire": 2,
+            "false_no_fire": 2,
+            "true_fire": 0,
+            "true_no_fire": 6
+          },
+          "n_arcs_scored": 10,
+          "n_correct": 6,
+          "n_counterproductive_arcs": 2,
+          "n_non_counterproductive_arcs": 8,
+          "no_information_baseline": {
+            "accuracy_minus_majority": -0.2,
+            "beats_majority": false,
+            "majority_class": "no_fire (negative)",
+            "majority_class_accuracy": 0.8
+          },
+          "sensitivity": 0.0,
+          "specificity": 0.75
+        },
+        "fixed_station_subset": [
+          "HERL",
+          "MATM",
+          "WETL",
+          "YARL"
+        ],
+        "num_arcs": 10,
+        "num_arcs_completed": 10,
+        "pooled_held_out_position_rmse_m": {
+          "AUKF (adaptive)": {
+            "arcs_best_of": 3,
+            "mean_arc_rms_m": 341.33,
+            "median_arc_rms_m": 296.13,
+            "n_arcs": 10
+          },
+          "EKF": {
+            "arcs_best_of": 1,
+            "mean_arc_rms_m": 367.98,
+            "median_arc_rms_m": 248.67,
+            "n_arcs": 10
+          },
+          "SP3-IC propagation": {
+            "arcs_best_of": 5,
+            "mean_arc_rms_m": 402.92,
+            "median_arc_rms_m": 260.68,
+            "n_arcs": 10
+          },
+          "UKF (fixed-noise)": {
+            "arcs_best_of": 1,
+            "mean_arc_rms_m": 334.72,
+            "median_arc_rms_m": 234.04,
+            "n_arcs": 10
+          }
+        },
+        "schema_version": "real_slr_sp3_od_v1",
+        "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+        "sp3_week_product": "260509",
+        "status": "completed",
+        "targets": [
+          "LAGEOS-1",
+          "LAGEOS-2"
+        ]
+      },
+      "mismatch_count": 0,
+      "mismatches": [],
+      "status": "pass"
+    },
+    "table_text": {
+      "generated_sha256": "0c043924a11fa07d8e4d351ee8e4a2c9f4a46e9209c746564617effd1188f53f",
+      "matches_submitted_table": true,
+      "normalization": "line endings and final newline ignored",
+      "status": "pass",
+      "submitted_sha256": "0c043924a11fa07d8e4d351ee8e4a2c9f4a46e9209c746564617effd1188f53f"
+    }
+  },
+  "generated_utc": "2026-05-25T10:26:37+00:00",
+  "rerun_artifacts": {
+    "rerun_dir": "results/validation/real_slr_sp3_od_slice_rerun",
+    "result_json": {
+      "bytes": 30487,
+      "exists": true,
+      "path": "results/validation/real_slr_sp3_od_slice_rerun/real_slr_sp3_od_validation.json",
+      "sha256": "acf23fe158e9a8e21332699e0480131f251bfdf888b0adf4ce43bf90abda6ab5"
+    },
+    "table_tex": {
+      "bytes": 3152,
+      "exists": true,
+      "path": "results/validation/real_slr_sp3_od_slice_rerun/real_slr_sp3_od.tex",
+      "sha256": "be8a5113f1f2ea48453f4eba0c4593ae583957fde3b4e5d0b9551afc39733e35"
+    }
+  },
+  "rerun_execution": {
+    "execution_details_redacted": true,
+    "exit_code": 0,
+    "stderr_line_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_line_count": 89,
+    "stdout_sha256": "5916588a79d6bd17ee1dc4a0e6540d8605a844fc4c24aa9a6a1fe3057b046955",
+    "step": "real_slr_sp3_od_slice_rerun"
+  },
+  "schema_version": "real_slr_sp3_od_slice_rerun_validation_v1",
+  "scope_boundary": "One public LAGEOS CRD/SP3 precise-reference OD slice rerun from archived public inputs through range-only EKF/UKF/AUKF/SP3-IC recomputation and table reconstruction. This is not full scientific reproduction, not full estimator training, not all filters/tables, not live public-data retrieval, and not operational POD validation.",
+  "staged_archived_public_inputs": [
+    {
+      "bytes": 63465,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos1_20260505.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "1c10297d95d31922c2bcdb2946da0e43015264d33dcae268f96501abab136779",
+      "source": "results/real_slr_sp3_od/lageos1_20260505.np2"
+    },
+    {
+      "bytes": 67694,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos1_20260506.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "efad86119dc466074ca9856162528d5fff17ac6acf2ddf4cb887f03945960971",
+      "source": "results/real_slr_sp3_od/lageos1_20260506.np2"
+    },
+    {
+      "bytes": 35483,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos1_20260507.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "b2cd99838e78394c595a366cb815c712f14203b0a45566637114aeb84cca5362",
+      "source": "results/real_slr_sp3_od/lageos1_20260507.np2"
+    },
+    {
+      "bytes": 51171,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos1_20260508.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "a7612b9ac41b955290a34fe47fe2a2ac921490ffde0aaff222f4b1cbee7c6efb",
+      "source": "results/real_slr_sp3_od/lageos1_20260508.np2"
+    },
+    {
+      "bytes": 22425,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos1_20260509.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "9d3856e0fb9c23bf7c73204c175e0f5bf66801b30134df7a68220ccfea295e88",
+      "source": "results/real_slr_sp3_od/lageos1_20260509.np2"
+    },
+    {
+      "bytes": 38639,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos2_20260505.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "1a253c94565dff5cf057e6681e4b158c44637f249a14ab2d5bdc65323b314c32",
+      "source": "results/real_slr_sp3_od/lageos2_20260505.np2"
+    },
+    {
+      "bytes": 47864,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos2_20260506.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "9da911a7cff6bae43938b34651833a1ad181f74a2c01df83a540cefdd986ecd1",
+      "source": "results/real_slr_sp3_od/lageos2_20260506.np2"
+    },
+    {
+      "bytes": 25182,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos2_20260507.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "4a08297d891480e0cb5001513c854f1ae2ab49eeb1aa1ee6b986a5744f80cc9b",
+      "source": "results/real_slr_sp3_od/lageos2_20260507.np2"
+    },
+    {
+      "bytes": 56509,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos2_20260508.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "cb99de9674b94f4d6950619a920d8a77990846f57183452a774fb89c2c5b7786",
+      "source": "results/real_slr_sp3_od/lageos2_20260508.np2"
+    },
+    {
+      "bytes": 34801,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/lageos2_20260509.np2",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "a56b56041eb824d1e3c1599c387f32592377849ed7477367cde6560c002d1806",
+      "source": "results/real_slr_sp3_od/lageos2_20260509.np2"
+    },
+    {
+      "bytes": 219293,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "source": "results/real_slr_sp3_od/nsgf.orb.lageos1.260509.v80.sp3.gz"
+    },
+    {
+      "bytes": 219040,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "kind": "public_crd_or_sp3_input",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "source": "results/real_slr_sp3_od/nsgf.orb.lageos2.260509.v80.sp3.gz"
+    }
+  ],
+  "staged_table_support_records": [
+    {
+      "bytes": 11319,
+      "destination": "results/validation/real_slr_sp3_od_slice_rerun/sp3_residual_calibrator.json",
+      "kind": "submitted_table_support_record",
+      "role": "Copied so build_real_slr_sp3_od_table(result_path=rerun_json) reconstructs the full submitted table text; this support record is not rerun by the OD slice wrapper.",
+      "sha256": "c9178a4f86800dfa5bdea2ce2fe0a0283b4be8b093b34827cbde8e1a46070fba",
+      "source": "results/real_slr_sp3_od/sp3_residual_calibrator.json"
+    }
+  ],
+  "status": "pass"
+}

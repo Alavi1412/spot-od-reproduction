@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Temporal public real-measurement orbit-determination probe on LAGEOS CRD normal points. The learned residual correction is fitted only on training weeks, all ridge and candidate choices use only the validation week, and the frozen choice is scored on the later test week against the independent SP3 precise-orbit product. The probe is bounded by the small LAGEOS-only corpus and the non-operational reduction model.}
+  \label{tab:real_slr_sp3_temporal_od_campaign}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccc}
+    \toprule
+    Comparison & Validation-selected candidate & Validation mean [m] & Test mean [m] & Paired test gap [m] \\
+    \midrule
+    Frozen temporal selector & Learned calibrated higher-fidelity UKF & 525.44 & 411.51 & 42.87 [23.69, 63.38] \\
+    Learned correction vs best classical & Learned calibrated higher-fidelity UKF & 525.44 & 411.51 & 42.87 [23.69, 63.38] \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Gaps are candidate minus reference; positive values mean larger held-out position RMSE. The reference for the first row is the best test candidate in the validation-defined pool; the reference for the second row is the best classical test candidate.}
+\end{table}

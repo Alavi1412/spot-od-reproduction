@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \centering
+  \caption{Visibility-conditioned position RMSE for the hybrid methods. Bucket counts and confidence intervals are timestep-level diagnostics; the 95\% intervals are step-bootstrap intervals for the candidate method RMSE, not trajectory-block inferential intervals.}
+  \label{tab:visibility_buckets}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllcccccc}
+    \toprule
+    Scenario & Visibility bucket & Method & Count & UKF RMSE [m] & AUKF RMSE [m] & Method RMSE [m] & Method 95\% CI [m] & Method $\Delta$ vs UKF / AUKF [\%] \\
+    \midrule
+    Test & 0 visible & RGR-GF & 5522 & 12051.57 & 12004.93 & 12008.25 & [11538.88, 12495.38] & 0.36 / -0.03 \\
+    Test & 1 visible & RGR-GF & 1421 & 391.63 & 396.87 & 387.22 & [365.21, 409.58] & 1.13 / 2.43 \\
+    Test & $\geq 2$ visible & RGR-GF & 33 & 97.66 & 110.65 & 117.30 & [89.54, 144.62] & -20.11 / -6.01 \\
+    Stress & 0 visible & RGR-GF & 5544 & 13904.04 & 13204.63 & 13219.23 & [12771.30, 13627.76] & 4.93 / -0.11 \\
+    Stress & 1 visible & RGR-GF & 1416 & 1892.90 & 920.16 & 1016.95 & [891.46, 1144.24] & 46.28 / -10.52 \\
+    Stress & $\geq 2$ visible & RGR-GF & 16 & 380.23 & 182.71 & 197.64 & [170.27, 223.77] & 48.02 / -8.17 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

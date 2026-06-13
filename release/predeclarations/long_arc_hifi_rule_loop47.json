@@ -1,0 +1,65 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "scope": "Long-arc higher-fidelity force-and-density mismatch slice (Loop 47). Truth-side dynamics extend the existing higher-fidelity propagator with the dominant non-zonal sectoral spherical-harmonic terms (C22, S22) and a longitudinal/diurnal time-varying density modulation; the arc length is extended from the prior 40-minute window to a 3-hour (10800 s) window so the drag/density mismatch can accumulate observably under sparse line-of-sight visibility. The estimator side keeps the compact two-body + J2 + time-invariant exponential drag deterministic flow used by every classical baseline in the manuscript. The slice is constructed BEFORE the held-out test population is evaluated; the held-out test seed is disjoint from the validation tuning seed and from every training, model-selection, and prior test seed used in the manuscript.",
+  "truth_dynamics": "Two-body + J2..J6 zonal geopotential + dominant non-zonal sectoral spherical-harmonic terms C(2,2) and S(2,2) (EGM-class normalized nominal values, rotated from Earth-fixed to the pseudo-inertial frame by the same GMST transform used throughout the manuscript) + luni-solar third-body acceleration + exponential drag with a one-sided diurnal-bulge density modulation (alpha_diurnal=0.30) and a longitudinal semidiurnal density modulation (alpha_long=0.10). The C22/S22 tesseral terms are independently checked against a finite-difference of the corresponding spherical-harmonic potential in the test suite.",
+  "estimator_dynamics": "Compact two-body + J2 + time-invariant exponential-density drag (the same deterministic flow used by every classical baseline in this manuscript). The mismatch channels are therefore (i) zonal geopotential J3..J6, (ii) sectoral geopotential C22/S22 (longitudinal Earth-rotation-tracked), (iii) luni-solar third-body, (iv) time-varying drag density (diurnal + longitudinal).",
+  "rationale": "Reviewer concern on Loop 46 was that the higher-fidelity force-mismatch slice at the 40-minute arc length was too short for the drag-scale structural channel to become observable. The longer 3-hour arc gives the multiplicative drag-scale parameter beta a fair window in which to be informed by sparse line-of-sight observations; the additional tesseral and longitudinal density terms guarantee the missing physics is genuinely longitudinally time-varying so the residual cannot be absorbed by a single time-invariant exponential-density shift. The same predeclared structural channels (DSA-EKF, DMC-EKF) are tested on this richer slice using the SAME augmented-state structure used in Loop 45, so the comparison to the prior 40-minute result is direct.",
+  "rule": {
+    "primary_endpoint": "Mean observed-step position RMSE on the held-out test population.",
+    "comparators": ["EKF", "UKF", "AUKF", "PUKF", "DMC_EKF", "DSA_EKF"],
+    "decision_predicate": "The DSA-EKF (drag-scale adaptive EKF) is a positive contribution if and only if (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, PUKF, DMC-EKF, DSA-EKF} on the held-out test population, AND (ii) the paired-bootstrap 95% CI for the DSA-EKF-minus-best-non-DSA gap is strictly negative, AND (iii) the absolute gap exceeds the astrodynamics-grounded practical-significance floor (an absolute metres floor predeclared in release/predeclarations/astrodynamics_floor_loop47.json, derived only from pinned configuration quantities and the predeclared arc length).",
+    "honest_negative": "If the predeclared rule does not yield a positive in the sense above, it is reported as a bounded structural-channel negative on the long-arc higher-fidelity slice (no rule retuning is allowed after the held-out test evaluation)."
+  },
+  "arc": {
+    "steps": 540,
+    "dt_s": 20.0,
+    "arc_length_s": 10800.0,
+    "arc_length_minutes": 180.0,
+    "eval_start_step": 11,
+    "rationale_for_arc_length": "Two orbital periods at a representative LEO altitude. A 3-hour arc allows the drag-induced position perturbation, which scales roughly as 0.5 * delta_a_drag * t^2, to accumulate by approximately one order of magnitude beyond the 40-minute arc used in Loop 45, giving the DSA-EKF structural channel a fair chance of becoming observable through sparse line-of-sight measurements."
+  },
+  "validation_tuning": {
+    "purpose": "Select the DSA-EKF Gauss-Markov hyperparameters on a long-arc validation population BEFORE the held-out test. The validation seed is disjoint from every test, training, and model-selection split.",
+    "validation_seed": 20260747,
+    "validation_n_trajectories": 16,
+    "tuning_grid": [
+      {"label": "L1", "init_drag_scale_std": 0.5, "drag_scale_sigma_ss": 0.5, "drag_scale_tau_s": 1200.0},
+      {"label": "L2", "init_drag_scale_std": 0.5, "drag_scale_sigma_ss": 0.5, "drag_scale_tau_s": 2400.0},
+      {"label": "L3", "init_drag_scale_std": 0.7, "drag_scale_sigma_ss": 0.7, "drag_scale_tau_s": 1800.0},
+      {"label": "L4", "init_drag_scale_std": 1.0, "drag_scale_sigma_ss": 1.0, "drag_scale_tau_s": 3600.0}
+    ],
+    "selection_rule": "Choose the grid point with the lowest mean observed-step position RMSE on the validation population; the selected hyperparameters are frozen before the held-out test."
+  },
+  "thresholds": {
+    "default_init_drag_scale_std": 0.5,
+    "default_drag_scale_sigma_ss": 0.5,
+    "default_drag_scale_tau_s": 1800.0,
+    "gating_threshold": 18.47,
+    "q_pos_m": 5.0,
+    "q_vel_mps": 0.05,
+    "tesseral_C22_normalized": 2.4393836e-6,
+    "tesseral_S22_normalized": -1.4002737e-6,
+    "alpha_diurnal": 0.30,
+    "alpha_longitudinal": 0.10,
+    "longitudinal_wavenumber": 2.0
+  },
+  "thresholds_justification": "C22/S22 EGM-class normalized nominal values are the dominant non-zonal terms of the geopotential and quantify the Earth's equatorial ellipticity. The diurnal-bulge alpha=0.30 matches the prior higher-fidelity slice so the change introduced by Loop 47 is the longer arc and the longitudinal/tesseral channel rather than a different diurnal amplitude. The longitudinal density wavenumber 2 (i.e., a semidiurnal modulation in the Earth-fixed longitude direction) is a structurally simpler placeholder for the leading semidiurnal thermospheric tide that an empirical density model would resolve; the amplitude alpha_long=0.10 keeps the perturbation small enough that the time-invariant exponential model is not catastrophically off but large enough that it cannot be absorbed by a constant rescaling. The drag-scale Gauss-Markov tau=1800 s (~one-third of an orbital period) is the standard operational LEO ballistic-coefficient estimation default extended to the longer arc; the steady-state sigma=0.5 covers approximately a 50% standard deviation around the nominal ballistic-coefficient/density product.",
+  "evaluation_protocol": {
+    "data": "Long-arc higher-fidelity force-and-density-mismatch slice: see scope and truth_dynamics.",
+    "primary_endpoint": "Observed-step position RMSE on a held-out test seed disjoint from the validation tuning seed.",
+    "test_seed": 20260847,
+    "n_trajectories_planned": 36,
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95,
+    "astrodynamics_floor_artifact": "release/predeclarations/astrodynamics_floor_loop47.json",
+    "astrodynamics_floor_basis": "Cramer-Rao lower bound on the arc-accumulated 3D position-RMSE from the configured measurement-noise standard deviations, station network geometry, and the predeclared 3-hour arc length. Derived only from pinned configuration quantities; no held-out test outcome enters the derivation."
+  },
+  "non_paper_artifacts": {
+    "tesseral_acceleration_implementation": "src/gnn_state_estimation/sp3.py::accel_hifi_long_arc",
+    "longitudinal_density_implementation": "scripts/run_long_arc_hifi_force_mismatch.py::_drag_long_arc_acceleration",
+    "floor_derivation_harness": "scripts/derive_astrodynamics_floor.py",
+    "validation_harness": "scripts/run_long_arc_hifi_validation.py",
+    "test_harness": "scripts/run_long_arc_hifi_force_mismatch.py",
+    "result_json": "results/long_arc_hifi_force_mismatch/long_arc_hifi_force_mismatch.json"
+  }
+}

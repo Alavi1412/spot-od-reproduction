@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Stress-only powered internal observed-step replication under a frozen rule fixed before the K=96 draw. The design exceeds the $K\approx94$ requirement for approximately 0.80 power at the 27.5~m stress-floor effect. Observed-step position RMSE is the endpoint metric; all-step RMSE is a propagation-dominated reference. This simulator-bound replication is not external preregistration, public-reference validation, or operational validation.}
+  \label{tab:observed_step_powered_stress_replication}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccl}
+    \toprule
+    Scenario & EKF / UKF / AUKF obs.\ [m] & RGR-GF obs.\ [m] & Best classical & RGR-GF$-$best cl.\ [m] (95\% CI) & All-step ref.\ [m] \\
+    \midrule
+    Measurement-noise stress & 959.0 / 1637.6 / 923.5 & 955.5 & AUKF & 31.9 [12.4, 52.4] & 11812 / 12469 / 11813 / 11829 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize $K=96$ independent stress realizations, 24 trajectories per realization. No learned positive; RGR-GF worse than the best classical reference. The result is an internal frozen-rule replication under an already selected endpoint, not an external preregistration. The rule timestamp (2026-05-25T13:06:32Z) predates the archived K=96 evaluation-start timestamp (2026-05-25T13:12:43.6581323Z) by about six minutes.}
+\end{table}

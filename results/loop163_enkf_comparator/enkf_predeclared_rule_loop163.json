@@ -1,0 +1,43 @@
+{
+  "predeclared_on_utc": "2026-05-31",
+  "task_id": "EVID-ENKF",
+  "scope": "Stochastic (perturbed-observation) Ensemble Kalman Filter (EnKF): rule, structural representation, and decision criterion predeclared BEFORE evaluation, to close the Ensemble-Kalman-family exclusion risk in the claim audit. The manuscript compares EKF/UKF/AUKF/PUKF and structural-channel augmentations (DMC-EKF, DSA-EKF/UKF); the ensemble Gaussian filter is a major nonlinear-filtering family that was not represented. This is a bounded feasibility comparator, not a paper-headline result.",
+  "estimator": "EnKF -- a finite ensemble of state realizations propagated through the SAME compact two-body + J2 + exponential-drag deterministic flow as every classical baseline, with the discrete-time process noise sampled into the ensemble at each predict step and the measurement update performed by the stochastic perturbed-observation analysis of Evensen (1994, 2003) and Burgers, van Leeuwen, and Evensen (1998). The reported per-step state and covariance are the ensemble sample mean and sample covariance. The measurement model, process-noise model, nominal measurement-noise covariance, and topocentric-azimuth de-weighting are identical to the EKF/UKF baselines; the only structural difference is the Monte-Carlo ensemble representation of the forecast/analysis distribution.",
+  "rationale": "An adversarial reviewer can object that excluding the Ensemble Kalman Filter leaves the nonlinear-filtering comparison incomplete. Implementing and evaluating a bounded, untuned, canonical stochastic EnKF under a frozen rule closes that exclusion risk regardless of whether the EnKF wins: a positive would add a comparator, a bounded negative documents that the ensemble representation does not displace the existing analytic/sigma-point filters on these populations. The decision rule below is fixed before any result is inspected and no part of the EnKF recursion is tuned against a held-out metric.",
+  "rule": {
+    "ensemble_representation": "N members x^(i), i=1..N; initial draw x^(i) ~ N(x0_est, P0).",
+    "forecast": "x^(i) <- f_compact(x^(i)) + w^(i), w^(i) ~ N(0, Q(dt)); optional multiplicative inflation of forecast anomalies (predeclared off, inflation = 1.0).",
+    "analysis": "sequential per-visible-station perturbed-observation update: K = P_xy (P_yy + R)^-1, x^(i) <- x^(i) + K (z + v^(i) - h(x^(i))), v^(i) ~ N(0, R); P_xy, P_yy are ensemble sample cross/innovation covariances; azimuth residuals wrapped to (-pi, pi].",
+    "decision_predicate": "The EnKF is a positive contribution if and only if, on the force-model-mismatch slice, (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, EnKF}, AND (ii) the paired-bootstrap 95% CI for the EnKF-minus-best-non-EnKF gap is strictly negative (EnKF strictly better), AND (iii) the gap exceeds the predeclared 3% practical-significance floor of the best-non-EnKF mean.",
+    "honest_negative": "If the predeclared rule does not yield a positive in the sense above, the outcome is reported as a bounded Ensemble-Kalman-family negative (no rule retuning, no ensemble-size or inflation search against the result). The exclusion risk is closed either way."
+  },
+  "thresholds": {
+    "ensemble_size": 64,
+    "inflation": 1.0,
+    "seed": 20260163,
+    "q_pos_m": 5.0,
+    "q_vel_mps": 0.05,
+    "init_pos_std_m": 2500.0,
+    "init_vel_std_mps": 6.0,
+    "practical_significance_floor": 0.03
+  },
+  "thresholds_justification": "The ensemble size (64) is a standard small-to-moderate EnKF ensemble for a 6-dimensional state, well above the state dimension so the sample covariance is full rank, and is fixed before evaluation rather than searched. Inflation is predeclared OFF (1.0) so the comparator is the pure canonical stochastic EnKF with no anti-collapse tuning. The continuous-time position/velocity process-noise standard deviations and the initial-state standard deviations match the UKF baseline exactly so the only structural change is the ensemble representation. The 3% practical-significance floor matches the floor used by the DMC-EKF (loop 44) and DSA-EKF (loop 45) predeclared comparators.",
+  "evaluation_protocol": {
+    "scenarios": {
+      "primary": "force_model_mismatch_test",
+      "context": ["test", "stress_test"]
+    },
+    "comparators": ["EKF", "UKF", "AUKF"],
+    "comparator_source": "Cached EKF/UKF/AUKF priors stored in the canonical scenario .npz datasets (the exact estimator paths the manuscript reports), so the EnKF is scored against the manuscript's own classical baselines on the manuscript's own trajectory populations.",
+    "primary_endpoint": "Observed-step position RMSE (steps with at least one visible station, evaluated from window_size-1 = 11), per-trajectory, pooled by trajectory bootstrap.",
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95
+  },
+  "non_paper_artifacts": {
+    "implementation": "src/gnn_state_estimation/filters/enkf.py::run_enkf",
+    "tests": "tests/test_enkf_filter.py",
+    "evaluation_harness": "scripts/run_enkf_comparator.py",
+    "result_json": "results/loop163_enkf_comparator/enkf_comparator.json",
+    "result_csv": "results/loop163_enkf_comparator/enkf_comparator.csv"
+  }
+}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Submitted observed-step endpoint-fixation support record on a fresh independent realization set (independently seeded realizations per scenario; base seed disjoint from the training/validation cohort, every model-selection validation split including the SatNOGS replay split, and the scenario-resampling base seed; the fixed, previously trained compact RGR-GF estimator is evaluated in inference only, no model is selected on these realizations). Observed-step position RMSE first surfaced in a training-cohort post-hoc recomputation; this support record adopts/checks \emph{observed-step position RMSE as the study's primary endpoint} on a seed-disjoint draw; all-step RMSE is the propagation-dominated reference. The record predates the $K{=}32$ replication but lacks a created/finalized timestamp field, which is an evidentiary limitation of this support record. The paired column is the RGR-GF-minus-best-classical primary-metric gap with a 95\% percentile bootstrap CI over realizations (negative favours RGR-GF). The rows report only the \emph{$K{=}8$ endpoint-fixation support} result. The disclosed $K{=}16$ strict-prefix extension is retained only in the evidence records as a post-hoc audit trail and is not tabled here because it has no confirmatory status.}
+  \label{tab:observed_step_preregistration}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccl}
+    \toprule
+    Scenario & EKF / UKF / AUKF obs.\ [m] & RGR-GF obs.\ [m] & Best (primary) & RGR-GF$-$best-cl.\ [m] (95\% CI) & All-step ref.\ [m] \\
+    \midrule
+    \multicolumn{6}{l}{\emph{Endpoint-fixation support result ($K{=}8$).}} \\
+    Nominal & 403.6 / 414.2 / 382.6 & 392.0 & AUKF & 9.4 [1.1, 21.7] & 10365 / 10444 / 10324 / 10359 \\
+    Measurement-noise stress & 986.7 / 1735.4 / 950.1 & 994.9 & AUKF & 44.8 [-0.2, 87.1] & 9627 / 9863 / 9629 / 9628 \\
+    Controlled force-model mismatch & 450.6 / 481.9 / 574.5 & 499.3 & EKF & 48.7 [19.1, 97.1] & 12840 / 12604 / 12917 / 12847 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

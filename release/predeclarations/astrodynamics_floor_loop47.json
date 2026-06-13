@@ -1,0 +1,34 @@
+{
+  "schema_version": "astrodynamics_floor_v2",
+  "predeclared_on_utc": "2026-05-20",
+  "scope": "Astrodynamics-grounded absolute practical-significance floor in metres for the long-arc higher-fidelity force-mismatch slice (Loop 47). Derived solely from quantities pinned in the configuration file: measurement-noise standard deviations, orbit-altitude band, station minimum-elevation cap, station count, and the predeclared arc length. No held-out test outcome enters the derivation.",
+  "config_path": "configs\\experiment.yaml",
+  "config_sha256": "e772a670d03bfb83ce9f6f37dd5b397096210f98f895d328099f962c4700f8d5",
+  "inputs": {
+    "range_std_m": 30.0,
+    "az_std_deg": 0.02,
+    "el_std_deg": 0.02,
+    "altitude_min_km": 450.0,
+    "altitude_max_km": 950.0,
+    "median_min_elevation_deg": 8.0,
+    "n_stations": 8,
+    "arc_steps": 540,
+    "arc_dt_s": 20.0,
+    "arc_length_s": 10800.0,
+    "representative_slant_range_m": 2307227.789894939
+  },
+  "derivation": {
+    "step_1_per_update_position_sigma_m": 1139.3664672732687,
+    "step_2_single_station_visibility_fraction": 0.02676523436395839,
+    "step_3_network_visibility_fraction_upper_bound": 0.21412187491166712,
+    "step_4_expected_independent_observations_per_arc": 115.62581245230024,
+    "step_5_per_arc_position_sigma_m": 105.95855692321193,
+    "formula_step_1": "sigma_pos = sqrt(sigma_r^2 + (R*sigma_az)^2 + (R*sigma_el)^2)",
+    "formula_step_2": "f_single = (1 - cos(arccos(R_e*cos(el)/(R_e+h)) - el)) / 2",
+    "formula_step_3": "f_network = min(1, N_stations * f_single)",
+    "formula_step_4": "N_obs_per_arc = arc_steps * f_network",
+    "formula_step_5": "sigma_pos_per_arc = sigma_pos_per_update / sqrt(N_obs_per_arc)"
+  },
+  "practical_significance_floor_m_absolute": 105.95855692321193,
+  "interpretation": "The floor is the measurement-noise-limited Cramer-Rao lower bound on the arc-accumulated 3D position-RMSE achievable by any linearised estimator under the configured station geometry and the predeclared arc length. A position-RMSE improvement smaller than this absolute floor is below the arc-accumulated CRLB and cannot be distinguished from a measurement-noise fluctuation of the same arc. The floor depends only on pinned configuration quantities and the predeclared arc length, so it is auditable independently of any held-out test outcome."
+}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Sensitivity of the headline negative to the SatNOGS-influenced validation/model-selection pathway. Model selection retains the trained-seed model minimising an item-weighted validation loss pooled across splits that include a SatNOGS observation-replay split (validation item share by curriculum stage: nominal\_pretrain 0\%, mixed\_train 22\%, stress\_focus 40\%). For each discriminative protocol endpoint the table reports, across the 15 SatNOGS-pooled-selected seed models, the cohort-mean RGR-GF observed-step RMSE, the strongest classical reference, and the single most favourable selectable seed (a worst-case bound on any alternative selection rule, including a SatNOGS-excluded one). On both discriminative headline endpoints (measurement-noise stress, controlled force-model mismatch) no selectable seed model beats the reference, so the headline negative is invariant to the SatNOGS selection pathway; on the weakly-discriminative nominal split a favourable sub-majority subset exists, which is itself why that split is already demoted and not headline-bearing.}
+  \label{tab:satnogs_selection_sensitivity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccc}
+    \toprule
+    Endpoint & Strongest ref. & Ref.\ obs.\ [m] & Cohort-mean RGR-GF [m] & Best selectable RGR-GF [m] & Best-case beats ref.? \\
+    \midrule
+    Nominal (test) & AUKF (tuned adaptive) & 392.69 & 465.77 & 379.21 & yes \\
+    Measurement-noise stress & AUKF (tuned adaptive) & 915.21 & 1114.40 & 948.95 & no \\
+    Controlled force-model mismatch & EKF (causal) & 448.79 & 548.68 & 456.86 & no \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

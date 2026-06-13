@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Seed-level aggregate significance diagnostic for learned hybrids. Gains are baseline aggregate position RMSE minus candidate aggregate position RMSE across the canonical seed cohort used by the seed-pooled diagnostic; this is not the trajectory-paired test used in Table~\ref{tab:significance}.}
+  \label{tab:seed_aware_significance}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllcccccc}
+    \toprule
+    Method & Scenario & Comparison & Seeds & Mean gain [m] & 95\% seed CI low [m] & 95\% seed CI high [m] & Seed win rate [\%] & Wilcoxon $p$ \\
+    \midrule
+    RGR-GF & Test & vs UKF & 15 & 6.60 & -4.79 & 15.23 & 86.67 & 0.0416 \\
+    RGR-GF & Test & vs AUKF & 15 & -17.33 & -28.63 & -8.70 & 0.00 & 1 \\
+    RGR-GF & Stress & vs UKF & 15 & 355.78 & 347.62 & 363.53 & 100.00 & 3.05e-05 \\
+    RGR-GF & Stress & vs AUKF & 15 & -16.90 & -25.65 & -9.48 & 13.33 & 0.9997 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

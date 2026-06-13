@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Predeclared structural channel response on higher fidelity force mismatch. The dynamic model compensation EKF (DMC-EKF) extends the compact 6-state recursion to nine states by augmenting per-axis first-order Gauss--Markov empirical accelerations (steady-state standard deviation $\sigma_w=1.0\times10^{-6}~\text{m/s}^2$, decorrelation time $\tau=300$~s), the standard structural response prescribed when the dominant residual is a dynamics/force model bias~\cite{tapley2004statistical,wright1981drag,stacey2021adaptive}. The truth side dynamics are identical to the extended higher fidelity slice (J2..J6 zonal geopotential plus luni-solar third-body plus diurnal-bulge atmospheric-density modulation, $\alpha=0.30$); EKF, UKF, AUKF, PUKF, and DMC-EKF share the compact two-body+$J_2$+drag deterministic flow so the only structural difference is the empirical acceleration channel. The predeclared decision predicate requires DMC-EKF to (i) be strictly lowest in mean observed step position RMSE, (ii) have a strictly negative 95\% paired bootstrap CI versus the best non-DMC comparator, and (iii) exceed the 3\% practical significance floor. The predeclared criterion is \emph{not} satisfied: UKF gives the best mean ($276.13$~m), DMC-EKF is statistically indistinguishable from EKF (paired mean difference $7.8\times10^{-6}$~m), and the DMC-EKF$-$UKF paired bootstrap CI spans zero ($+2.9$~m, $[-3.8, +8.1]$~m). Under sparse visibility geometry the empirical acceleration channel remains structurally inert (median maximum estimated $|w|$ near $1\times10^{-10}~\text{m/s}^2$, well below the unmodeled physics magnitude). The result is reported as a \emph{predeclared structural channel bounded negative}: even the canonical structural response to dynamics bias does not transfer to this regime.}
+  \label{tab:dmc_ekf_force_mismatch}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Quantity & EKF & UKF & AUKF & PUKF & DMC-EKF \\
+    \midrule
+    Mean observed-step position RMSE [m] & $279.04$ & $\mathbf{276.13}$ & $283.14$ & $313.39$ & $279.04$ \\
+    Cross-filter $R$-only NIS (median) & $1.36$ & $1.48$ & $1.54$ & $1.05$ & $1.36$ \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize $n=48$ trajectories. Paired bootstrap (5000 resamples, 95\% CIs) versus the best non-DMC reference UKF: DMC-EKF$-$UKF mean $+2.9$~m, CI $[-3.8, +8.1]$~m (\emph{spans zero, predeclared criterion failed}). Auxiliary pairs: DMC-EKF$-$EKF mean $+7.8\times10^{-6}$~m (empirical channel inert under sparse visibility); DMC-EKF$-$AUKF mean $-4.1$~m, CI $[-18.1, +8.1]$~m; DMC-EKF$-$PUKF mean $-34.3$~m, CI $[-44.1, -24.8]$~m (DMC-EKF strictly beats PUKF). The predeclared rule, sigma/tau thresholds, and decision predicate are in the timestamped rule artifact bundled with the submission; no rule retuning is allowed under the predeclared protocol.}
+\end{table}

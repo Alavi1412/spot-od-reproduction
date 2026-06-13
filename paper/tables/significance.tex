@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Paired statistical comparison for hybrid estimators on trajectory-wise position RMSE (one-sided Wilcoxon, alternative: candidate better).}
+  \label{tab:significance}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllccccc}
+    \toprule
+    Scenario & Method & Comparison & Mean gain [m] & 95\% CI low [m] & 95\% CI high [m] & Win rate [\%] & Wilcoxon $p$ \\
+    \midrule
+    Test & RGR-GF & vs UKF & 53.76 & -9.21 & 151.81 & 43.75 & 0.8185 \\
+    Test & RGR-GF & vs AUKF & -7.59 & -29.58 & 11.04 & 50.00 & 0.6944 \\
+    Stress & RGR-GF & vs UKF & 487.19 & 145.50 & 997.24 & 67.19 & 0.0001823 \\
+    Stress & RGR-GF & vs AUKF & -16.28 & -72.77 & 55.10 & 48.44 & 0.9095 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

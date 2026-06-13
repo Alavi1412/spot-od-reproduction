@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Powered DBAR characterization and withdrawal. DBAR does not beat the no-information majority classifier after 450 independently seeded realizations, so the heuristic is withdrawn as a claimed positive and retained only as a characterized negative.}
+  \label{tab:main_dbar_withdrawal}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Regime family & \(N\) & DBAR fires & \(R\)-adaptation bad & Accuracy \\
+    \midrule
+    Nominal control & 150 & 0 & 14 & 90.7\% \\
+    Measurement-noise stress & 150 & 10 & 6 & 89.3\% \\
+    Dynamics/force-model bias & 150 & 104 & 64 & 65.3\% \\
+    \midrule
+    \textbf{All} & 450 & 114 & 84 & \textbf{81.8\%} \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize The always-no-fire majority baseline is 81.3\%; DBAR's \(+0.4\)-point increment has Wilson 95\% interval \([78.0,85.1]\%\) containing the baseline. The predeclared rule is therefore not a validated classifier.}
+\end{table}

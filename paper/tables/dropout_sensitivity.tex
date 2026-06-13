@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Random-dropout sensitivity with full retraining per level.}
+  \label{tab:dropout_sensitivity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{ccccccc}
+    \toprule
+    Dropout prob. & Test Hybrid RMSE [m] & Test UKF RMSE [m] & Test $\Delta$ vs UKF [\%] & Stress Hybrid RMSE [m] & Stress UKF RMSE [m] & Stress $\Delta$ vs UKF [\%] \\
+    \midrule
+    0.000 & 5420.57 & 5546.29 & 2.267 & 5757.59 & 5996.46 & 3.983 \\
+    0.020 & 6388.37 & 6401.06 & 0.198 & 8608.53 & 8947.04 & 3.783 \\
+    0.050 & 6964.71 & 6963.15 & -0.022 & 7022.26 & 7170.19 & 2.063 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

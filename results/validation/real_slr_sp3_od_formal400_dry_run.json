@@ -1,0 +1,4181 @@
+﻿{
+  "status": "dry_run",
+  "output_json": "results\\real_slr_sp3_od_formal400_inputs\\real_slr_sp3_od_formal400_validation.json",
+  "num_arcs": 400,
+  "schedule": {
+    "schedule_name": "formal400",
+    "description": "formal-power-scale 400-arc extension adding 32 earlier weeks before the extended80 schedule",
+    "source": "scripts/run_real_slr_sp3_hifi_validation.py:SPLIT_WEEKS plus PRECEDING_WEEKS, FORMAL_POWER_ADDED_WEEKS, FORMAL210_EXTRA_WEEKS, and FORMAL400_EXTRA_WEEKS in this runner",
+    "base_schedule_name": "extended80",
+    "added_weeks": [
+      "250809",
+      "250816",
+      "250823",
+      "250830",
+      "250906",
+      "250913",
+      "250920",
+      "250927",
+      "251004",
+      "251011",
+      "251018",
+      "251025",
+      "251101",
+      "251108",
+      "251115",
+      "251122",
+      "251129",
+      "251206",
+      "251213",
+      "251220",
+      "251227",
+      "260103",
+      "260110",
+      "260117",
+      "260124",
+      "260131",
+      "260207",
+      "260214",
+      "260221",
+      "260228",
+      "260307",
+      "260314"
+    ],
+    "num_added_weeks": 32,
+    "num_weeks": 40,
+    "dates_per_week": {
+      "250809": 5,
+      "250816": 5,
+      "250823": 5,
+      "250830": 5,
+      "250906": 5,
+      "250913": 5,
+      "250920": 5,
+      "250927": 5,
+      "251004": 5,
+      "251011": 5,
+      "251018": 5,
+      "251025": 5,
+      "251101": 5,
+      "251108": 5,
+      "251115": 5,
+      "251122": 5,
+      "251129": 5,
+      "251206": 5,
+      "251213": 5,
+      "251220": 5,
+      "251227": 5,
+      "260103": 5,
+      "260110": 5,
+      "260117": 5,
+      "260124": 5,
+      "260131": 5,
+      "260207": 5,
+      "260214": 5,
+      "260221": 5,
+      "260228": 5,
+      "260307": 5,
+      "260314": 5,
+      "260321": 5,
+      "260328": 5,
+      "260404": 5,
+      "260411": 5,
+      "260418": 5,
+      "260425": 5,
+      "260502": 5,
+      "260509": 5
+    },
+    "targets_per_date": 2,
+    "weeks": {
+      "250809": {
+        "split": "preceding",
+        "dates": [
+          "20250804",
+          "20250805",
+          "20250806",
+          "20250807",
+          "20250808"
+        ]
+      },
+      "250816": {
+        "split": "preceding",
+        "dates": [
+          "20250811",
+          "20250812",
+          "20250813",
+          "20250814",
+          "20250815"
+        ]
+      },
+      "250823": {
+        "split": "preceding",
+        "dates": [
+          "20250818",
+          "20250819",
+          "20250820",
+          "20250821",
+          "20250822"
+        ]
+      },
+      "250830": {
+        "split": "preceding",
+        "dates": [
+          "20250825",
+          "20250826",
+          "20250827",
+          "20250828",
+          "20250829"
+        ]
+      },
+      "250906": {
+        "split": "preceding",
+        "dates": [
+          "20250901",
+          "20250902",
+          "20250903",
+          "20250904",
+          "20250905"
+        ]
+      },
+      "250913": {
+        "split": "preceding",
+        "dates": [
+          "20250908",
+          "20250909",
+          "20250910",
+          "20250911",
+          "20250912"
+        ]
+      },
+      "250920": {
+        "split": "preceding",
+        "dates": [
+          "20250915",
+          "20250916",
+          "20250917",
+          "20250918",
+          "20250919"
+        ]
+      },
+      "250927": {
+        "split": "preceding",
+        "dates": [
+          "20250922",
+          "20250923",
+          "20250924",
+          "20250925",
+          "20250926"
+        ]
+      },
+      "251004": {
+        "split": "preceding",
+        "dates": [
+          "20250929",
+          "20250930",
+          "20251001",
+          "20251002",
+          "20251003"
+        ]
+      },
+      "251011": {
+        "split": "preceding",
+        "dates": [
+          "20251006",
+          "20251007",
+          "20251008",
+          "20251009",
+          "20251010"
+        ]
+      },
+      "251018": {
+        "split": "preceding",
+        "dates": [
+          "20251013",
+          "20251014",
+          "20251015",
+          "20251016",
+          "20251017"
+        ]
+      },
+      "251025": {
+        "split": "preceding",
+        "dates": [
+          "20251020",
+          "20251021",
+          "20251022",
+          "20251023",
+          "20251024"
+        ]
+      },
+      "251101": {
+        "split": "preceding",
+        "dates": [
+          "20251027",
+          "20251028",
+          "20251029",
+          "20251030",
+          "20251031"
+        ]
+      },
+      "251108": {
+        "split": "preceding",
+        "dates": [
+          "20251103",
+          "20251104",
+          "20251105",
+          "20251106",
+          "20251107"
+        ]
+      },
+      "251115": {
+        "split": "preceding",
+        "dates": [
+          "20251110",
+          "20251111",
+          "20251112",
+          "20251113",
+          "20251114"
+        ]
+      },
+      "251122": {
+        "split": "preceding",
+        "dates": [
+          "20251117",
+          "20251118",
+          "20251119",
+          "20251120",
+          "20251121"
+        ]
+      },
+      "251129": {
+        "split": "preceding",
+        "dates": [
+          "20251124",
+          "20251125",
+          "20251126",
+          "20251127",
+          "20251128"
+        ]
+      },
+      "251206": {
+        "split": "preceding",
+        "dates": [
+          "20251201",
+          "20251202",
+          "20251203",
+          "20251204",
+          "20251205"
+        ]
+      },
+      "251213": {
+        "split": "preceding",
+        "dates": [
+          "20251208",
+          "20251209",
+          "20251210",
+          "20251211",
+          "20251212"
+        ]
+      },
+      "251220": {
+        "split": "preceding",
+        "dates": [
+          "20251215",
+          "20251216",
+          "20251217",
+          "20251218",
+          "20251219"
+        ]
+      },
+      "251227": {
+        "split": "preceding",
+        "dates": [
+          "20251222",
+          "20251223",
+          "20251224",
+          "20251225",
+          "20251226"
+        ]
+      },
+      "260103": {
+        "split": "preceding",
+        "dates": [
+          "20251229",
+          "20251230",
+          "20251231",
+          "20260101",
+          "20260102"
+        ]
+      },
+      "260110": {
+        "split": "preceding",
+        "dates": [
+          "20260105",
+          "20260106",
+          "20260107",
+          "20260108",
+          "20260109"
+        ]
+      },
+      "260117": {
+        "split": "preceding",
+        "dates": [
+          "20260112",
+          "20260113",
+          "20260114",
+          "20260115",
+          "20260116"
+        ]
+      },
+      "260124": {
+        "split": "preceding",
+        "dates": [
+          "20260119",
+          "20260120",
+          "20260121",
+          "20260122",
+          "20260123"
+        ]
+      },
+      "260131": {
+        "split": "preceding",
+        "dates": [
+          "20260126",
+          "20260127",
+          "20260128",
+          "20260129",
+          "20260130"
+        ]
+      },
+      "260207": {
+        "split": "preceding",
+        "dates": [
+          "20260202",
+          "20260203",
+          "20260204",
+          "20260205",
+          "20260206"
+        ]
+      },
+      "260214": {
+        "split": "preceding",
+        "dates": [
+          "20260209",
+          "20260210",
+          "20260211",
+          "20260212",
+          "20260213"
+        ]
+      },
+      "260221": {
+        "split": "preceding",
+        "dates": [
+          "20260216",
+          "20260217",
+          "20260218",
+          "20260219",
+          "20260220"
+        ]
+      },
+      "260228": {
+        "split": "preceding",
+        "dates": [
+          "20260223",
+          "20260224",
+          "20260225",
+          "20260226",
+          "20260227"
+        ]
+      },
+      "260307": {
+        "split": "preceding",
+        "dates": [
+          "20260302",
+          "20260303",
+          "20260304",
+          "20260305",
+          "20260306"
+        ]
+      },
+      "260314": {
+        "split": "preceding",
+        "dates": [
+          "20260309",
+          "20260310",
+          "20260311",
+          "20260312",
+          "20260313"
+        ]
+      },
+      "260321": {
+        "split": "preceding",
+        "dates": [
+          "20260316",
+          "20260317",
+          "20260318",
+          "20260319",
+          "20260320"
+        ]
+      },
+      "260328": {
+        "split": "preceding",
+        "dates": [
+          "20260323",
+          "20260324",
+          "20260325",
+          "20260326",
+          "20260327"
+        ]
+      },
+      "260404": {
+        "split": "preceding",
+        "dates": [
+          "20260330",
+          "20260331",
+          "20260401",
+          "20260402",
+          "20260403"
+        ]
+      },
+      "260411": {
+        "split": "preceding",
+        "dates": [
+          "20260406",
+          "20260407",
+          "20260408",
+          "20260409",
+          "20260410"
+        ]
+      },
+      "260418": {
+        "split": "train",
+        "dates": [
+          "20260413",
+          "20260414",
+          "20260415",
+          "20260416",
+          "20260417"
+        ]
+      },
+      "260425": {
+        "split": "train",
+        "dates": [
+          "20260420",
+          "20260421",
+          "20260422",
+          "20260423",
+          "20260424"
+        ]
+      },
+      "260502": {
+        "split": "val",
+        "dates": [
+          "20260427",
+          "20260428",
+          "20260429",
+          "20260430",
+          "20260501"
+        ]
+      },
+      "260509": {
+        "split": "test",
+        "dates": [
+          "20260504",
+          "20260505",
+          "20260506",
+          "20260507",
+          "20260508"
+        ]
+      }
+    },
+    "formal400_extra_weeks": [
+      "250809",
+      "250816",
+      "250823",
+      "250830",
+      "250906",
+      "250913",
+      "250920",
+      "250927",
+      "251004",
+      "251011",
+      "251018",
+      "251025",
+      "251101",
+      "251108",
+      "251115",
+      "251122",
+      "251129",
+      "251206",
+      "251213"
+    ],
+    "num_formal400_extra_weeks": 19,
+    "formal400_added_weeks": [
+      "250809",
+      "250816",
+      "250823",
+      "250830",
+      "250906",
+      "250913",
+      "250920",
+      "250927",
+      "251004",
+      "251011",
+      "251018",
+      "251025",
+      "251101",
+      "251108",
+      "251115",
+      "251122",
+      "251129",
+      "251206",
+      "251213",
+      "251220",
+      "251227",
+      "260103",
+      "260110",
+      "260117",
+      "260124",
+      "260131",
+      "260207",
+      "260214",
+      "260221",
+      "260228",
+      "260307",
+      "260314"
+    ],
+    "num_formal400_added_weeks": 32,
+    "formal210_extra_weeks": [
+      "251220",
+      "251227"
+    ],
+    "num_formal210_extra_weeks": 2,
+    "formal_power_added_weeks": [
+      "260103",
+      "260110",
+      "260117",
+      "260124",
+      "260131",
+      "260207",
+      "260214",
+      "260221",
+      "260228",
+      "260307",
+      "260314"
+    ],
+    "num_formal_power_added_weeks": 11,
+    "extended80_weeks": [
+      "260321",
+      "260328",
+      "260404",
+      "260411",
+      "260418",
+      "260425",
+      "260502",
+      "260509"
+    ],
+    "num_extended80_weeks": 8
+  },
+  "arcs": [
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250804",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-1 20250804",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250805",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-1 20250805",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250806",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-1 20250806",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250807",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-1 20250807",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250808",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-1 20250808",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250804",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-2 20250804",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250805",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-2 20250805",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250806",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-2 20250806",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250807",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-2 20250807",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250808",
+      "sp3_week": "250809",
+      "arc_id": "LAGEOS-2 20250808",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250811",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-1 20250811",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250812",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-1 20250812",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250813",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-1 20250813",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250814",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-1 20250814",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250815",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-1 20250815",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250811",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-2 20250811",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250812",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-2 20250812",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250813",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-2 20250813",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250814",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-2 20250814",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250815",
+      "sp3_week": "250816",
+      "arc_id": "LAGEOS-2 20250815",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250818",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-1 20250818",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250819",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-1 20250819",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250820",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-1 20250820",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250821",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-1 20250821",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250822",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-1 20250822",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250818",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-2 20250818",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250819",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-2 20250819",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250820",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-2 20250820",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250821",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-2 20250821",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250822",
+      "sp3_week": "250823",
+      "arc_id": "LAGEOS-2 20250822",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250825",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-1 20250825",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250826",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-1 20250826",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250827",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-1 20250827",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250828",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-1 20250828",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250829",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-1 20250829",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250825",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-2 20250825",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250826",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-2 20250826",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250827",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-2 20250827",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250828",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-2 20250828",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250829",
+      "sp3_week": "250830",
+      "arc_id": "LAGEOS-2 20250829",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250901",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-1 20250901",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250902",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-1 20250902",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250903",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-1 20250903",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250904",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-1 20250904",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250905",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-1 20250905",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250901",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-2 20250901",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250902",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-2 20250902",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250903",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-2 20250903",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250904",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-2 20250904",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250905",
+      "sp3_week": "250906",
+      "arc_id": "LAGEOS-2 20250905",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250908",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-1 20250908",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250909",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-1 20250909",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250910",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-1 20250910",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250911",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-1 20250911",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250912",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-1 20250912",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250908",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-2 20250908",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250909",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-2 20250909",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250910",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-2 20250910",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250911",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-2 20250911",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250912",
+      "sp3_week": "250913",
+      "arc_id": "LAGEOS-2 20250912",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250915",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-1 20250915",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250916",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-1 20250916",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250917",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-1 20250917",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250918",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-1 20250918",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250919",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-1 20250919",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250915",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-2 20250915",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250916",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-2 20250916",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250917",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-2 20250917",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250918",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-2 20250918",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250919",
+      "sp3_week": "250920",
+      "arc_id": "LAGEOS-2 20250919",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250922",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-1 20250922",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250923",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-1 20250923",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250924",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-1 20250924",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250925",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-1 20250925",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250926",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-1 20250926",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250922",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-2 20250922",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250923",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-2 20250923",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250924",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-2 20250924",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250925",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-2 20250925",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250926",
+      "sp3_week": "250927",
+      "arc_id": "LAGEOS-2 20250926",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250929",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-1 20250929",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20250930",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-1 20250930",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251001",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-1 20251001",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251002",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-1 20251002",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251003",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-1 20251003",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250929",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-2 20250929",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20250930",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-2 20250930",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251001",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-2 20251001",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251002",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-2 20251002",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251003",
+      "sp3_week": "251004",
+      "arc_id": "LAGEOS-2 20251003",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251006",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-1 20251006",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251007",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-1 20251007",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251008",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-1 20251008",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251009",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-1 20251009",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251010",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-1 20251010",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251006",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-2 20251006",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251007",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-2 20251007",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251008",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-2 20251008",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251009",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-2 20251009",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251010",
+      "sp3_week": "251011",
+      "arc_id": "LAGEOS-2 20251010",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251013",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-1 20251013",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251014",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-1 20251014",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251015",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-1 20251015",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251016",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-1 20251016",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251017",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-1 20251017",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251013",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-2 20251013",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251014",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-2 20251014",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251015",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-2 20251015",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251016",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-2 20251016",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251017",
+      "sp3_week": "251018",
+      "arc_id": "LAGEOS-2 20251017",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251020",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-1 20251020",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251021",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-1 20251021",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251022",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-1 20251022",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251023",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-1 20251023",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251024",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-1 20251024",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251020",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-2 20251020",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251021",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-2 20251021",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251022",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-2 20251022",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251023",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-2 20251023",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251024",
+      "sp3_week": "251025",
+      "arc_id": "LAGEOS-2 20251024",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251027",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-1 20251027",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251028",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-1 20251028",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251029",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-1 20251029",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251030",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-1 20251030",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251031",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-1 20251031",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251027",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-2 20251027",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251028",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-2 20251028",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251029",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-2 20251029",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251030",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-2 20251030",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251031",
+      "sp3_week": "251101",
+      "arc_id": "LAGEOS-2 20251031",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251103",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-1 20251103",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251104",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-1 20251104",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251105",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-1 20251105",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251106",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-1 20251106",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251107",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-1 20251107",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251103",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-2 20251103",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251104",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-2 20251104",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251105",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-2 20251105",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251106",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-2 20251106",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251107",
+      "sp3_week": "251108",
+      "arc_id": "LAGEOS-2 20251107",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251110",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-1 20251110",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251111",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-1 20251111",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251112",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-1 20251112",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251113",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-1 20251113",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251114",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-1 20251114",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251110",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-2 20251110",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251111",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-2 20251111",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251112",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-2 20251112",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251113",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-2 20251113",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251114",
+      "sp3_week": "251115",
+      "arc_id": "LAGEOS-2 20251114",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251117",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-1 20251117",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251118",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-1 20251118",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251119",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-1 20251119",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251120",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-1 20251120",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251121",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-1 20251121",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251117",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-2 20251117",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251118",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-2 20251118",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251119",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-2 20251119",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251120",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-2 20251120",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251121",
+      "sp3_week": "251122",
+      "arc_id": "LAGEOS-2 20251121",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251124",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-1 20251124",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251125",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-1 20251125",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251126",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-1 20251126",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251127",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-1 20251127",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251128",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-1 20251128",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251124",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-2 20251124",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251125",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-2 20251125",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251126",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-2 20251126",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251127",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-2 20251127",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251128",
+      "sp3_week": "251129",
+      "arc_id": "LAGEOS-2 20251128",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251201",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-1 20251201",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251202",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-1 20251202",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251203",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-1 20251203",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251204",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-1 20251204",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251205",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-1 20251205",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251201",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-2 20251201",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251202",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-2 20251202",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251203",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-2 20251203",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251204",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-2 20251204",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251205",
+      "sp3_week": "251206",
+      "arc_id": "LAGEOS-2 20251205",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251208",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-1 20251208",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251209",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-1 20251209",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251210",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-1 20251210",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251211",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-1 20251211",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251212",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-1 20251212",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251208",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-2 20251208",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251209",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-2 20251209",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251210",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-2 20251210",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251211",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-2 20251211",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251212",
+      "sp3_week": "251213",
+      "arc_id": "LAGEOS-2 20251212",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251215",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-1 20251215",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251216",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-1 20251216",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251217",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-1 20251217",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251218",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-1 20251218",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251219",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-1 20251219",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251215",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-2 20251215",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251216",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-2 20251216",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251217",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-2 20251217",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251218",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-2 20251218",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251219",
+      "sp3_week": "251220",
+      "arc_id": "LAGEOS-2 20251219",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251222",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-1 20251222",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251223",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-1 20251223",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251224",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-1 20251224",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251225",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-1 20251225",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251226",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-1 20251226",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251222",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-2 20251222",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251223",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-2 20251223",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251224",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-2 20251224",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251225",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-2 20251225",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251226",
+      "sp3_week": "251227",
+      "arc_id": "LAGEOS-2 20251226",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251229",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-1 20251229",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251230",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-1 20251230",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20251231",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-1 20251231",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260101",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-1 20260101",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260102",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-1 20260102",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251229",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-2 20251229",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251230",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-2 20251230",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20251231",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-2 20251231",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260101",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-2 20260101",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260102",
+      "sp3_week": "260103",
+      "arc_id": "LAGEOS-2 20260102",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260105",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-1 20260105",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260106",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-1 20260106",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260107",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-1 20260107",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260108",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-1 20260108",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260109",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-1 20260109",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260105",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-2 20260105",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260106",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-2 20260106",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260107",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-2 20260107",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260108",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-2 20260108",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260109",
+      "sp3_week": "260110",
+      "arc_id": "LAGEOS-2 20260109",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260112",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-1 20260112",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260113",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-1 20260113",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260114",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-1 20260114",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260115",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-1 20260115",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260116",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-1 20260116",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260112",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-2 20260112",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260113",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-2 20260113",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260114",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-2 20260114",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260115",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-2 20260115",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260116",
+      "sp3_week": "260117",
+      "arc_id": "LAGEOS-2 20260116",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260119",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-1 20260119",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260120",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-1 20260120",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260121",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-1 20260121",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260122",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-1 20260122",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260123",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-1 20260123",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260119",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-2 20260119",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260120",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-2 20260120",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260121",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-2 20260121",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260122",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-2 20260122",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260123",
+      "sp3_week": "260124",
+      "arc_id": "LAGEOS-2 20260123",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260126",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-1 20260126",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260127",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-1 20260127",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260128",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-1 20260128",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260129",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-1 20260129",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260130",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-1 20260130",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260126",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-2 20260126",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260127",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-2 20260127",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260128",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-2 20260128",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260129",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-2 20260129",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260130",
+      "sp3_week": "260131",
+      "arc_id": "LAGEOS-2 20260130",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260202",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-1 20260202",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260203",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-1 20260203",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260204",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-1 20260204",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260205",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-1 20260205",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260206",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-1 20260206",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260202",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-2 20260202",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260203",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-2 20260203",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260204",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-2 20260204",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260205",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-2 20260205",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260206",
+      "sp3_week": "260207",
+      "arc_id": "LAGEOS-2 20260206",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260209",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-1 20260209",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260210",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-1 20260210",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260211",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-1 20260211",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260212",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-1 20260212",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260213",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-1 20260213",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260209",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-2 20260209",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260210",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-2 20260210",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260211",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-2 20260211",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260212",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-2 20260212",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260213",
+      "sp3_week": "260214",
+      "arc_id": "LAGEOS-2 20260213",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260216",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-1 20260216",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260217",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-1 20260217",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260218",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-1 20260218",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260219",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-1 20260219",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260220",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-1 20260220",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260216",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-2 20260216",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260217",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-2 20260217",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260218",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-2 20260218",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260219",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-2 20260219",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260220",
+      "sp3_week": "260221",
+      "arc_id": "LAGEOS-2 20260220",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260223",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-1 20260223",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260224",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-1 20260224",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260225",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-1 20260225",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260226",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-1 20260226",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260227",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-1 20260227",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260223",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-2 20260223",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260224",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-2 20260224",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260225",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-2 20260225",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260226",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-2 20260226",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260227",
+      "sp3_week": "260228",
+      "arc_id": "LAGEOS-2 20260227",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260302",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-1 20260302",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260303",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-1 20260303",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260304",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-1 20260304",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260305",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-1 20260305",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260306",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-1 20260306",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260302",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-2 20260302",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260303",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-2 20260303",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260304",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-2 20260304",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260305",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-2 20260305",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260306",
+      "sp3_week": "260307",
+      "arc_id": "LAGEOS-2 20260306",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260309",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-1 20260309",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260310",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-1 20260310",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260311",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-1 20260311",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260312",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-1 20260312",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260313",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-1 20260313",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260309",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-2 20260309",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260310",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-2 20260310",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260311",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-2 20260311",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260312",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-2 20260312",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260313",
+      "sp3_week": "260314",
+      "arc_id": "LAGEOS-2 20260313",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260316",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-1 20260316",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260317",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-1 20260317",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260318",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-1 20260318",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260319",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-1 20260319",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260320",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-1 20260320",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260316",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-2 20260316",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260317",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-2 20260317",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260318",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-2 20260318",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260319",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-2 20260319",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260320",
+      "sp3_week": "260321",
+      "arc_id": "LAGEOS-2 20260320",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260323",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-1 20260323",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260324",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-1 20260324",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260325",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-1 20260325",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260326",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-1 20260326",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260327",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-1 20260327",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260323",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-2 20260323",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260324",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-2 20260324",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260325",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-2 20260325",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260326",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-2 20260326",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260327",
+      "sp3_week": "260328",
+      "arc_id": "LAGEOS-2 20260327",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260330",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-1 20260330",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260331",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-1 20260331",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260401",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-1 20260401",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260402",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-1 20260402",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260403",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-1 20260403",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260330",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-2 20260330",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260331",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-2 20260331",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260401",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-2 20260401",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260402",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-2 20260402",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260403",
+      "sp3_week": "260404",
+      "arc_id": "LAGEOS-2 20260403",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260406",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-1 20260406",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260407",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-1 20260407",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260408",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-1 20260408",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260409",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-1 20260409",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260410",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-1 20260410",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260406",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-2 20260406",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260407",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-2 20260407",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260408",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-2 20260408",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260409",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-2 20260409",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260410",
+      "sp3_week": "260411",
+      "arc_id": "LAGEOS-2 20260410",
+      "split": "preceding"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260413",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-1 20260413",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260414",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-1 20260414",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260415",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-1 20260415",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260416",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-1 20260416",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260417",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-1 20260417",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260413",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-2 20260413",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260414",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-2 20260414",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260415",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-2 20260415",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260416",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-2 20260416",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260417",
+      "sp3_week": "260418",
+      "arc_id": "LAGEOS-2 20260417",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260420",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-1 20260420",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260421",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-1 20260421",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260422",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-1 20260422",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260423",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-1 20260423",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260424",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-1 20260424",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260420",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-2 20260420",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260421",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-2 20260421",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260422",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-2 20260422",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260423",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-2 20260423",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260424",
+      "sp3_week": "260425",
+      "arc_id": "LAGEOS-2 20260424",
+      "split": "train"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260427",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-1 20260427",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260428",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-1 20260428",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260429",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-1 20260429",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260430",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-1 20260430",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260501",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-1 20260501",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260427",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-2 20260427",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260428",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-2 20260428",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260429",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-2 20260429",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260430",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-2 20260430",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260501",
+      "sp3_week": "260502",
+      "arc_id": "LAGEOS-2 20260501",
+      "split": "val"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260504",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-1 20260504",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260505",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-1 20260505",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260506",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-1 20260506",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260507",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-1 20260507",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-1",
+      "sat_key": "lageos1",
+      "sp3_sat_id": "L51",
+      "date": "20260508",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-1 20260508",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260504",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-2 20260504",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260505",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-2 20260505",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260506",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-2 20260506",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260507",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-2 20260507",
+      "split": "test"
+    },
+    {
+      "target": "LAGEOS-2",
+      "sat_key": "lageos2",
+      "sp3_sat_id": "L52",
+      "date": "20260508",
+      "sp3_week": "260509",
+      "arc_id": "LAGEOS-2 20260508",
+      "split": "test"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Less-constrained learned residual comparator (RGR-U) on a fresh independent realization set (8 independently seeded realizations per scenario, base seed disjoint from training/validation, every model-selection split, the observed-step endpoint-fixation support seed, and the scenario-resampling seed; RGR-U is run in inference only). RGR-U is the canonical residual architecture with the hard 0.03 tanh residual budget, the learned gate, the context budget, and the prior-anchoring/activity/entropy/visibility training penalties \emph{all removed} (full-scale unbounded residual, no prior anchoring), so the learned head can wholly override its classical prior. Observed-step position RMSE is the primary endpoint; all-step RMSE is the propagation-dominated reference; the paired column is the RGR-U-minus-best-classical primary-metric gap with a 95\% percentile bootstrap CI over realizations (negative favours RGR-U). The classical references include the offline robust batch weighted-least-squares OD reference (WLS). Even unbounded and unanchored, the learned residual does not beat the tuned classical references on any scenario. Within this fixed architecture and budget, this limits but does not eliminate the concern that the bound contributes to the learned-versus-classical negative.}
+  \label{tab:unconstrained_residual_comparator}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccclc}
+    \toprule
+    Scenario & EKF / UKF / AUKF / WLS obs.\ [m] & RGR-U obs.\ [m] & Best (primary) & RGR-U$-$best-cl.\ [m] (95\% CI) & RGR-U gross-fail.\ \\
+    \midrule
+    Nominal & 357.1 / 375.3 / 348.5 / 165.0 & 7244.4 & WLS & 7079.4 [6967.1, 7206.9] & 0\% \\
+    Measurement-noise stress & 906.8 / 1468.4 / 929.4 / 320.1 & 7602.7 & WLS & 7282.6 [7092.0, 7447.6] & 0\% \\
+    Controlled force-model mismatch & 447.1 / 468.3 / 507.6 / 1272.3 & 7493.2 & EKF & 7046.1 [6910.6, 7204.6] & 0\% \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

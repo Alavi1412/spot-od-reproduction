@@ -1,0 +1,32 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "scope": "Power upgrade of the predeclared long-arc higher-fidelity force-and-density mismatch held-out test from n=36 to n=64 trajectories. The truth-side dynamics, estimator-side compact model, validation tuning, selection rule, decision predicate, and astrodynamics-grounded practical-significance floor are inherited unchanged from release/predeclarations/long_arc_hifi_rule_loop47.json; the only quantity revised is the held-out test population size. The held-out test seed and the per-trajectory orbit-sampling sequence are inherited from loop47 so the first 36 trajectories are byte-identical to the loop47 result and the additional 28 trajectories extend the test population to n=64.",
+  "inherits_from": "release/predeclarations/long_arc_hifi_rule_loop47.json",
+  "inherited_rule_digest_sha256_reference": "1bab353a79122cec1bc531d66c9dd9c89357fffc13c71136c4ee284b073a9652",
+  "rationale": "The peer reviewer recorded in the loop56 paper review identified the long-arc EKF/AUKF reversal CI of [+11, +727] m on n=36 as too wide to load-bear a directional reframing of the compact-model EKF-over-AUKF observation. This artefact predeclares the extension of the same held-out test to n=64 (matching the compact-J2 controlled-mismatch population size of n=38 in the same order of magnitude) so that the EKF-AUKF CI is reported on a larger and more powerful population. The decision predicate is inherited unchanged from the loop47 rule, no rule retuning is permitted, and the outcome is reported whether or not the CI tightens.",
+  "evaluation_protocol": {
+    "data": "Long-arc higher-fidelity force-and-density-mismatch slice (loop47 scope and truth dynamics).",
+    "primary_endpoint": "Mean observed-step position RMSE on the held-out test population (loop47 inherited).",
+    "test_seed_inherited_from_loop47": 20260847,
+    "n_trajectories_planned": 64,
+    "n_trajectories_loop47_prefix": 36,
+    "n_trajectories_loop57_extension": 28,
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95,
+    "candidate_hyperparameters_inherited_from_loop47_validation_selection": {
+      "selected_grid_point_label": "L4",
+      "init_drag_scale_std": 1.0,
+      "drag_scale_sigma_ss": 1.0,
+      "drag_scale_tau_s": 3600.0
+    },
+    "selection_artifact_inherited": "results/long_arc_hifi_validation/long_arc_hifi_validation.json"
+  },
+  "decision_predicate_inherited_from_loop47": "The DSA-EKF (drag-scale adaptive EKF) is a positive contribution if and only if (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, PUKF, DMC-EKF, DSA-EKF} on the held-out test population, AND (ii) the paired-bootstrap 95% CI for the DSA-EKF-minus-best-non-DSA gap is strictly negative, AND (iii) the absolute gap exceeds the astrodynamics-grounded practical-significance floor.",
+  "secondary_observation_powered_in_this_extension": "The compact-model EKF/AUKF ordering reversal observed under loop47 on n=36 is reported on the larger n=64 population so the EKF-AUKF paired-bootstrap CI is powered to the same n as the headline structural-channel comparison on this slice. The reversal direction at n=36 was EKF-AUKF +254 m, CI [+11, +727] m; the n=64 outcome is reported as the audit returns it.",
+  "honest_negative_inherited": "If the inherited rule does not yield a positive in the sense above, the result is reported as a bounded structural-channel negative on the long-arc higher-fidelity slice extended to n=64 (no rule retuning is allowed after the held-out test evaluation).",
+  "non_paper_artifacts": {
+    "test_harness_inherited_unchanged": "scripts/run_long_arc_hifi_force_mismatch.py",
+    "result_json_loop57": "results/long_arc_hifi_force_mismatch/long_arc_hifi_force_mismatch_n64_loop57.json",
+    "result_csv_loop57": "results/long_arc_hifi_force_mismatch/long_arc_hifi_force_mismatch_n64_loop57.csv"
+  }
+}

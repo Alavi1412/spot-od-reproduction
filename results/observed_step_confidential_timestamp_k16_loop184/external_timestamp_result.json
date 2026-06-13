@@ -1,0 +1,28 @@
+{
+  "created_at_utc": "2026-05-31T23:59:16Z",
+  "rule_path": "results/observed_step_confidential_timestamp_k16_loop184/frozen_rule.json",
+  "canonical_rule_sha256": "14d4e67f6675a1507a3253eeabc8ab762bc86df2dcff6b4d0d76d10de453c833",
+  "timestamp_scope": "RFC3161 request contains SHA-256 message imprint only; no manuscript or rule content is disclosed to the TSA",
+  "request_path": "results/observed_step_confidential_timestamp_k16_loop184/frozen_rule_timestamp_request.tsq",
+  "request_sha256": "641f6a9569d90b1b8bf79ed02995cb82d036104ccdd5ceed8543b1749839f8b2",
+  "nonce": 4053864848437696065,
+  "attempts": [
+    {
+      "url": "https://freetsa.org/tsr",
+      "status": 200,
+      "reason": "OK",
+      "content_type": "application/timestamp-reply",
+      "date_header": "Sun, 31 May 2026 23:59:17 GMT",
+      "response_bytes": 4644,
+      "response_sha256": "fe9a69e0ee366726caa4db4957618c75f5b9eb9c308565032b701e4fab8d0f92",
+      "looks_der_sequence": true
+    }
+  ],
+  "success": true,
+  "selected_service": "https://freetsa.org/tsr",
+  "response_path": "results/observed_step_confidential_timestamp_k16_loop184/frozen_rule_timestamp_response.tsr",
+  "response_sha256": "fe9a69e0ee366726caa4db4957618c75f5b9eb9c308565032b701e4fab8d0f92",
+  "response_bytes": 4644,
+  "response_content_type": "application/timestamp-reply",
+  "response_date_header": "Sun, 31 May 2026 23:59:17 GMT"
+}

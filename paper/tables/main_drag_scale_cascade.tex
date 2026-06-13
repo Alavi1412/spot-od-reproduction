@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering\scriptsize
+  \caption{Main mechanism cascade for the drag-scale structural channel. Positive candidate-minus-reference gaps mean the candidate is worse than the best eligible reference. All three rows use held-out test populations after the relevant selection rule is frozen; none satisfies its predeclared positive criterion.}
+  \label{tab:main_drag_scale_cascade}
+  \begingroup\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}p{0.15\linewidth}p{0.18\linewidth}p{0.18\linewidth}p{0.19\linewidth}p{0.20\linewidth}@{}}
+    \toprule
+    Slice & Observed-step RMSE comparison [m] & Candidate$-$reference [m] (95\% CI) & Drag-scale response & Mechanism readout \\
+    \midrule
+    Matched channel, EKF predict & DSA-EKF 1648.5 vs UKF 359.7 & $+1288.9$ [$+378.1$, $+2561.4$] & max $|\hat{\beta}-1|=0.0012$; final $\hat{\beta}=1.0000$ & Structural form is matched, but the EKF predict step is the binding failure mode. \\
+    Sigma-point substitution & DSA-UKF 316.4 vs AUKF 313.1 & $+3.3$ [$-7.5$, $+16.2$] & max $|\hat{\beta}-1|=0.0009$; final $\hat{\beta}=1.0000$ & Sigma-point propagation removes the EKF divergence but not the AUKF guardrail. \\
+    Geometry-enriched DSA-UKF & DSA-UKF 4879.9 vs EKF 742.7 & $+4137.2$ [$-827.0$, $+11235.7$] & max $|\hat{\beta}-1|=0.0010$; final $\hat{\beta}=1.0000$ & Drag signal is visible (9595.9 m mean, 29294.1 m final), but estimated $\hat{\beta}$ remains inert; UKF-family baselines are long-arc stressed, so this row is not a stable UKF ranking. \\
+    \bottomrule
+  \end{tabular}
+  \endgroup
+\end{table}

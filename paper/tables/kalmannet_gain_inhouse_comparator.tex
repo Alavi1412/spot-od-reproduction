@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{In-house KalmanNet-style learned-gain comparator \cite{revach2022kalmannet}: the EKF prior is retained and the analytic Kalman gain is replaced by a learned gain driven by normalized innovations, adapted to this sparse-visibility OD measurement stack. The comparator is validation-tuned over a small predeclared grid of its learned-gain scale and bounded-correction clip and selected by held-out validation loss (no test-set information used in selection); it is reported as a negative in-house comparator, not as an official KalmanNet reproduction of the published architecture. Observed-step RMSE (steps with $\geq$1 visible station) is the primary endpoint; all-step RMSE is the propagation-dominated reference. The final column reports the trajectory-paired comparison against the tuned AUKF (win rate over paired trajectories and mean signed gap; positive favours the learned comparator). Across the nominal, stress, and controlled force-model mismatch splits the validation-tuned learned-gain comparator is well behind every tuned classical filter on the protocol-fixed metric and never beats the tuned AUKF: on every split the tuned AUKF wins the majority of paired trajectories, and the single positive mean signed gap is an outlier-sensitive mean against that sub-majority win rate. The learned-versus-classical comparison stays negative once the validation-tuned in-house KalmanNet-style comparator is included.}
+  \label{tab:kalmannet_gain_inhouse_comparator}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Scenario & EKF obs.\ [m] & UKF obs.\ [m] & AUKF obs.\ [m] & Learned-gain obs.\ / all-step [m] & Learned-gain vs AUKF (win\,\% / mean $\Delta$ [m]) \\
+    \midrule
+    Nominal test & 382.76 & 387.44 & 392.69 & 645.53 / 6171.71 & 28.1 / -18.59 \\
+    Stress test & 1006.32 & 1882.72 & 915.21 & 1357.38 / 6815.42 & 23.4 / -37.07 \\
+    Force-model mismatch & 448.79 & 469.41 & 526.39 & 716.25 / 8287.52 & 43.8 / 14.22 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

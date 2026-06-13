@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Additional internal prospective independently seeded observed-step replication (base seed 1160000, $K{=}32$ independent realizations per scenario, 24 trajectories per realization). Observed-step position RMSE is the primary endpoint; the paired column reports the mean RGR-GF-minus-best-classical observed-step gap with a 95\% percentile bootstrap CI over independent realizations; negative values favour RGR-GF. The rule was written to a local freeze record before any additional replication realization was generated or evaluated, under the same frozen decision predicate as the central $K{=}32$ anchor. This is an additional independently seeded internal replication reported as supplementary evidence under the established endpoint hierarchy; it is not external preregistration, public-reference validation, or operational validation.}
+  \label{tab:observed_step_internal_prospective_replication}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccll}
+    \toprule
+    Scenario & EKF / UKF / AUKF obs.\ [m] & RGR-GF obs.\ [m] & Best classical & RGR-GF$-$best cl.\ [m] (95\% CI) & Interpretation \\
+    \midrule
+    Nominal & 388.5 / 454.9 / 391.2 & 391.7 & EKF & 3.25 [-7.64, 18.24] & No learned positive \\
+    Measurement-noise stress & 1015.4 / 1671.7 / 958.4 & 999.6 & AUKF & 41.21 [10.04, 74.97] & No learned positive \\
+    Controlled force-model mismatch & 465.1 / 480.0 / 529.9 & 487.6 & EKF & 22.45 [14.91, 29.51] & No learned positive \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize $K=32$ independent realizations per scenario, 24 trajectories per realization. The rule was fixed in a local freeze record before any additional replication realization was generated or evaluated. This is an additional independently seeded internal replication under the no-learned-positive predicate; it is not external preregistration.}
+\end{table}

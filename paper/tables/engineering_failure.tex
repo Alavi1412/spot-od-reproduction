@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \caption{Engineering-failure audit using trajectory-level thresholds of 100 km position RMSE or 100 m/s velocity RMSE. This table augments the numerical-divergence accounting and should be read as a physical-adequacy diagnostic, not as a new estimator score.}
+  \label{tab:engineering_failure}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccc}
+    \toprule
+    Scenario & Method & Traj. & Mean traj. RMSE [m] & Median traj. RMSE [m] & Failure rate [\%] \\
+    \midrule
+    Nominal test & EKF & 64 & 3937.93 & 1821.67 & 0.0 \\
+    Nominal test & UKF & 64 & 3989.59 & 1957.36 & 0.0 \\
+    Nominal test & AUKF & 64 & 3928.23 & 1795.62 & 0.0 \\
+    Nominal test & EKF-residual learner & 64 & 7393.60 & 5854.75 & 0.0 \\
+    Nominal test & No-Graph Residual & 64 & 3937.93 & 1821.67 & 0.0 \\
+    Nominal test & Learned Noise Adaptive & 64 & 3937.22 & 1800.19 & 0.0 \\
+    Nominal test & RGR-GF & 64 & 3935.82 & 1790.12 & 0.0 \\
+    Stress test & EKF & 64 & 4891.23 & 2626.77 & 0.0 \\
+    Stress test & UKF & 64 & 5375.17 & 3739.87 & 0.0 \\
+    Stress test & AUKF & 64 & 4871.70 & 2505.82 & 0.0 \\
+    Stress test & EKF-residual learner & 64 & 7795.17 & 6334.85 & 0.0 \\
+    Stress test & No-Graph Residual & 64 & 4891.23 & 2626.77 & 0.0 \\
+    Stress test & Learned Noise Adaptive & 64 & 4883.92 & 2472.35 & 0.0 \\
+    Stress test & RGR-GF & 64 & 4887.98 & 2468.86 & 0.0 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

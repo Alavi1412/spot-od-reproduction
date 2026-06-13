@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Higher-fidelity precise-reference sanity probe (LAGEOS-1 and LAGEOS-2, 40 arcs over four weekly windows, strict temporal and held-out-object split, held-out state error against an independent ILRS analysis-centre SP3-c precise orbit). Earth orientation uses an analytic IAU-76/80 precession, IAU-1980 nutation, and apparent-sidereal-time reduction; polar motion and sub-second UT1-UTC are not applied, so magnitudes remain at the bounded tens to hundreds of metres scale rather than centimetre SLR. On the strictly future held-out test week the higher-fidelity mean is lower than compact two-body+J2 (261.59~m to 250.02~m; mean change 11.57~m, paired bootstrap 95\% CI $[-4.51,29.79]$~m, lower on 7/12 evaluation epochs); corpus-pooled this is directionally consistent but \emph{not} a statistically significant fidelity gain (the paired-bootstrap interval includes zero).  A strictly held-out learned residual calibrator (fitted only on training weeks, ridge strength selected only on a disjoint validation week, then frozen and evaluated on the strictly later test week and the held-out object) is an bounded negative (256.48~m versus 250.02~m): it does not beat the higher-fidelity classical reference with a confidence interval excluding zero and is reported transparently as a bounded negative, not a positive learned result.}
+  \label{tab:real_slr_sp3_hifi}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcc}
+    \toprule
+    Setting & All-corpus mean [m] & Test-week mean [m] \\
+    \midrule
+    Controlled pure-dynamics, compact two-body+J2 & 253.60 & 261.59 \\
+    Controlled pure-dynamics, higher fidelity & 249.34 & 250.02 \\
+    Sparse-SLR UKF, compact two-body+J2 & 689.36 & 368.64 \\
+    Sparse-SLR UKF, higher fidelity & 639.77 & 395.77 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

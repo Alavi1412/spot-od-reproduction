@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \centering
+  \caption{Independent-realization characterization of the predeclared DBAR rule. 450 independently seeded realizations (14 trajectories each) span three families (nominal control, measurement-noise stress, and dynamics/force-model-bias drawn from a severity continuum). Ground truth per realization: adaptation is counterproductive iff the adaptive UKF exceeds its fixed-noise twin by more than the predeclared 5\% materiality margin. The rule and its round thresholds ($R_{\mathrm{eff}}>1.5$, $\rho_{\mathrm{NIS}}\geq1.5$) are fixed a priori.}
+  \label{tab:dbar_independent_sweep}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Regime family & $N$ & DBAR fires & $R$-adapt.\ bad & Accuracy \\
+    \midrule
+    Nominal (no injected bias) & 150 & 0 & 14 & 90.7\% \\
+    Measurement-noise stress & 150 & 10 & 6 & 89.3\% \\
+    Dynamics/force-model bias & 150 & 104 & 64 & 65.3\% \\
+    \midrule
+    \textbf{All} & 450 & 114 & 84 & \textbf{81.8\%} \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Ground-truth label per realization: adaptation counterproductive iff the adaptive UKF exceeds its fixed-noise twin by $>5\%$. Confusion: 58 true-fire, 310 true-no-fire, 56 false-fire, 26 false-no-fire. \textbf{Read against the no-information baseline:} the trivial always-``no-fire'' majority classifier attains 81.3\%, so DBAR's incremental value is only $+0.4$ points (Wilson 95\% interval $[78.0,85.1]\%$ contains the baseline; separating 81.8\% from 81.3\% at 80\% power would need of order 98872 realizations). On the positive class ($n=84$): sensitivity $0.69$ (95\% CI $[0.59,0.78]$), specificity $0.85$ (95\% CI $[0.81,0.88]$). The specificity control still holds at scale (10 false-fires across 300 no-bias controls); the predeclared $\rho_{\mathrm{NIS}}$ boundary is essentially non-separating; the predeclared point sits below its in-sample $7\times7$ grid maximum (81.8\% vs 86.2\%) and reproduces 81.8\%/81.8\% on two seed-parity halves. Even at this powered scale ($450$ realizations, exceeding the paper's own $\sim$400-realization power estimate) the predeclared rule is \emph{not} statistically distinguishable from the trivial no-information baseline ($+0.4$ points, 95\% CI containing 81.3\%, of order 98872 realizations needed for power), and its $\rho_{\mathrm{NIS}}$ boundary is essentially non-separating. We therefore \emph{withdraw} DBAR as a claimed positive contribution and report it as a 450-realization \emph{negative} characterization: a predeclared characterized heuristic that, adequately powered, does not beat a no-information classifier, stated plainly. Its only durable property is the specificity control (it stays silent under measurement-noise stress, where adaptation is correct); the underlying covariance-matching limitation is known prior art.}
+\end{table}

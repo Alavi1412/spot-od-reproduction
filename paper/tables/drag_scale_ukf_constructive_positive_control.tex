@@ -1,0 +1,39 @@
+\begin{table}[!htbp]
+  \centering\small
+  \caption{UKF-based diagnostic control for the drag-scale adaptive channel. The slice is identical in geometry to the EKF-based diagnostic control (Table~\ref{tab:drag_scale_constructive_positive_control}): the unmodelled physics is a pure multiplicative drag-scale mismatch (truth-side ballistic coefficient scaled by $2.50\times$); no zonal geopotential above $J_2$, no luni-solar third body, no SRP, no time-varying density modulation; arc length 540 steps at $\Delta t=20$~s (approximately 3.0 hours); orbit-sampling band 250--450~km. The candidate replaces the EKF-based DSA-EKF predict step with deterministic sigma-point propagation of the augmented seven-dimensional flow ($\mathbf{r}$, $\mathbf{v}$, $\beta$). Hyperparameters are selected on a disjoint validation seed over a small predeclared grid; the test seed is disjoint from the validation seed and from every other test seed used in the manuscript. The predeclared positive criterion (DSA-UKF strictly lowest mean, paired-bootstrap CI versus the best non-DSA-UKF reference strictly below zero, gap above the predeclared 3\% \mbox{practical-significance} floor) is reported as a strict pass/fail.}
+  \label{tab:drag_scale_ukf_constructive_positive_control}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lc}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    Trajectories $n$ (test / validation) & 64 / 16 \\
+    Arc length (steps / hours) & 540 / 3.00 \\
+    Truth-side $\beta$ multiplier & $2.50$ \\
+    Orbit altitude band [km] & 250--450 \\
+    Selected hyperparameter point & G01 ($\sigma_{\beta,0}=0.30$, $\sigma_{\beta,\mathrm{ss}}=0.30$, $\tau_{\beta}=600$~s) \\
+    \midrule
+    EKF mean observed-step RMSE [m] & 4003.91 \\
+    UKF mean observed-step RMSE [m] & 316.48 \\
+    AUKF mean observed-step RMSE [m] & 313.08 \\
+    PUKF mean observed-step RMSE [m] & 373.77 \\
+    DMC-EKF mean observed-step RMSE [m] & 4003.91 \\
+    DSA-EKF mean observed-step RMSE [m] & 4676.50 \\
+    DSA-UKF mean observed-step RMSE [m] & $\mathbf{316.40}$ \\
+    \midrule
+    Best non-DSA-UKF reference & AUKF \\
+    DSA-UKF$-$best-non-DSA-UKF paired mean [m] & 3.31 \\
+    DSA-UKF$-$best-non-DSA-UKF paired 95\% CI [m] & $[-7.45, 16.21]$ \\
+    DSA-UKF$-$DSA-EKF paired mean [m] & -4360.11 \\
+    DSA-UKF$-$DSA-EKF paired 95\% CI [m] & $[-10818.24, -250.77]$ \\
+    Practical-significance floor (3\%) [m] & 9.39 \\
+    Median max $|\hat{\beta}-1|$ across the arc & 0.0009 \\
+    Median trajectory-mean $\hat{\beta}$ & 1.0000 \\
+    Median final-step $\hat{\beta}$ & 1.0000 \\
+    Predeclared positive criterion met & False \\
+    Outcome class & predeclared positive criterion not met (bounded structural-channel negative) \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Diagnostic control reported under the same predeclared positive criterion as the prior DSA-EKF rule on the higher-fidelity force-mismatch slice and the long-arc replication; validation tuning is performed on a disjoint validation seed and the selected grid point is fixed before the held-out test population is generated. The truth-side drag-scale multiplier is the only unmodelled physics, so the drag-scale structural channel is the structural form matched to the synthetic bias here; the slice isolates the bounded structural-channel response when the structural channel matches the misspecification, and additionally whether the deterministic sigma-point recursion removes the linearisation-driven divergence diagnosed in the EKF-based diagnostic control.}
+\end{table}

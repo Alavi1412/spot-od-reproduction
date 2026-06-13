@@ -1,0 +1,21 @@
+{
+  "overall_status": "PASSED",
+  "pdf_pages": 33,
+  "pdf_bytes": 815925,
+  "pdf_sha256": "a4fa1e0836f10afef7e6e36e8775a299e87ccea94e67263f4a5e7cdcf6f60812",
+  "overfull_hboxes": 6,
+  "underfull_hboxes": 14,
+  "cited_key_count": 35,
+  "missing_bib_entries": [],
+  "release_packet_sync_passed": true,
+  "artifacts": {
+    "machine_payload": "results/task227_final_submission_validation_result_payload.json",
+    "stakeholder_markdown": "results/task227_final_submission_validation_stakeholder_artifact.md",
+    "release_evidence_index": "results/task227_final_release_evidence_index.json",
+    "release_packet": "results\\release_packet.json",
+    "citation_validation": "results/task227_citation_validation.json",
+    "pdf_evidence": "results/task227_pdf_evidence.json",
+    "line_evidence_sync_report_json": "results/release_packet_line_evidence_sync_report.json",
+    "line_evidence_sync_report_markdown": "results/release_packet_line_evidence_sync_report.md"
+  }
+}

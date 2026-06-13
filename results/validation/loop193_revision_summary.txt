@@ -1,0 +1,105 @@
+Loop 193 Reviewer Mandatory Text-Only Revisions - Implementation Summary
+===========================================================================
+
+All 7 reviewer mandatory revisions successfully implemented and validated.
+
+FILES CHANGED:
+--------------
+1. paper/main.tex (4 edits)
+2. scripts/build_paper_assets.py (3 edits to table generators)
+
+REVISIONS IMPLEMENTED:
+---------------------
+
+1. Abstract - Exploratory Endpoint Disclosure ✓
+   - Changed: "The learned-estimator bounded negative is secondary."
+   - To: "The learned-estimator bounded negative is secondary and exploratory (endpoint selected post hoc)."
+   - Location: paper/main.tex line 32 (abstract)
+   - PDF verified: main_pdf_text_loop193.txt line 14-15
+
+2. Abstract - Self-Audit Scope Boundary ✓
+   - Changed: "A self-audit record under self-authored definitions"
+   - To: "A worked self-audit example under self-authored definitions"
+   - Location: paper/main.tex line 34 (abstract)
+   - PDF verified: main_pdf_text_loop193.txt line 18
+
+3. Conclusion - External Validation Requirement ✓
+   - Added after "Future OD studies would need to instantiate...":
+     "Independent external application by a separate research group is required before this template can be claimed as a validated reusable framework."
+   - Location: paper/main.tex line 318 (conclusion)
+   - PDF verified: main_pdf_text_loop193.txt lines 1678-1680
+
+4. Long-Arc Interval Clarity ✓
+   - Added exact interval to supplementary EKF/AUKF stress observation:
+     "EKF-minus-AUKF paired interval [+17.5,+637.7] m, auxiliary direction-only stress observation, not a transfer rule or estimator positive"
+   - Location: paper/main.tex line 185 (Results section 5.3)
+   - PDF verified: main_pdf_text_loop193.txt lines 805-806
+
+5. Comparable Arc Definition ✓
+   - Added definition at both "185 comparable-arc formal power target" mentions:
+     "(comparable arc: completed arc with at least 10 CRD normal points and SP3 state coverage)"
+   - Locations:
+     a) paper/main.tex line 293 (Limitations section)
+     b) scripts/build_paper_assets.py line 1393 (table generator)
+   - PDF verified:
+     - main_pdf_text_loop193.txt line 1572-1573 (main text)
+     - Table 18 caption includes definition
+
+6. Scope-Only Constructions Enumeration ✓
+   - Added to Public measurement-pipeline probes row in Table 2:
+     "Scope-only/support-only constructions include SGP4 multi-revolution benchmark, SatNOGS time-aligned replay, public SP3/ILRS breadth/provenance probes, and KalmanNet transposition feasibility diagnostics."
+   - Location: scripts/build_paper_assets.py line 7476 (main_framework_portability table generator)
+   - Generated: paper/tables/main_framework_portability.tex line 13
+   - PDF verified: Table 2 row 4
+
+7. Belyakov Complementary Evidence (Strongly Recommended) ✓
+   - Changed: "the two are not in tension and this study does not claim ML cannot help on real SLR"
+   - To: "that regime is complementary learned-SLR evidence in a different operational-reference state-vector-refinement regime than the bounded compact-dynamics recursive filters under sparse visibility used here for pipeline and provenance risk reduction, and this study does not claim ML cannot help on real SLR"
+   - Location: paper/main.tex line 256
+   - PDF verified: main_pdf_text_loop193.txt lines 1369-1371
+
+BONUS: DBAR Terminology Normalization ✓
+   - Updated table generator to use "withdrawn as a claimed positive and retained/reported as a characterized bounded negative"
+   - Location: scripts/build_paper_assets.py line 7471
+   - Generated: paper/tables/main_framework_portability.tex line 12
+
+VALIDATION RESULTS:
+-------------------
+✓ scripts/build_paper_assets.py - executed successfully, tables regenerated
+✓ scripts/compile_paper.py --with-supplement - compiled without errors (34 pages main, 0 LaTeX warnings)
+✓ pytest tests/test_real_slr_sp3_od_expanded.py tests/test_paper_asset_caption_disclosures.py - 24 passed
+✓ scripts/validate_submission.py - status: "pass", all checks passed
+✓ scripts/verify_manuscript_revision.py - all_static_checks_passed: true
+✓ pdftotext extraction - main_pdf_text_loop193.txt and supplement_pdf_text_loop193.txt created
+✓ Forbidden word check - no hits for virtualenv|venv|claude|codex|subagent|gpu|cpu|code structure|local environment|computational-environment|evaluation-script|toolchain|hardware|version-pinned computational|public DOI|Zenodo
+
+PDF VERIFICATION:
+-----------------
+All 7 changes verified present in extracted PDF text (main_pdf_text_loop193.txt):
+- Line 14-15: "exploratory (endpoint selected post hoc)"
+- Line 18: "worked self-audit example"
+- Lines 1678-1680: "Independent external application by a separate research group is required before this template can be claimed as a validated reusable framework."
+- Lines 805-806: "EKF-minus-AUKF paired interval [+17.5, +637.7] m"
+- Lines 1572-1573: "185 comparable-arc formal power target (comparable arc: completed arc with at least 10 CRD normal points and SP3 state coverage)"
+- Table 2 (main_framework_portability): scope-only constructions enumerated
+- Lines 1369-1371: Belyakov "complementary learned-SLR evidence in a different operational-reference state-vector-refinement regime"
+
+RESIDUAL RISKS:
+---------------
+None identified. All mandatory revisions implemented correctly with:
+- Scope preserved (bounded compact simulator / compact real SLR-SP3 diagnostic)
+- No new empirical claims added
+- No forbidden language introduced
+- All verifiers passing (green gate)
+- Generated tables updated via generators (not manual .tex edits)
+- PDF output matches .tex source
+
+HARD CONSTRAINTS SATISFIED:
+---------------------------
+✓ No public DOI, Zenodo, public posting, hardware, CPU/GPU, local env, virtualenv, code structure, Claude/Codex/subagent, or toolchain language in paper-facing text
+✓ Scope preserved: bounded compact simulator / compact real SLR-SP3 diagnostic; not operational POD, not external simulator validation, not broad learned-OD refutation, not real-data learned-estimator skill evidence
+✓ No new empirical claims introduced beyond what is already in files
+
+SUMMARY:
+--------
+All 7 reviewer mandatory text-only revisions successfully applied to loop 193 manuscript. Changes are minimal, targeted, and preserve all existing scope boundaries. All validation gates pass. Ready for review.

@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Main load-bearing endpoint result: larger seed-disjoint frozen-rule observed-step replication under the $K=8$-established endpoint hierarchy. Positive RGR-GF-minus-best-classical gaps mean the learned estimator is worse than the best tuned classical reference. Nominal is retained for traceability only and is not a discriminative endpoint under the predeclared floor and power audit; its CI direction should not be interpreted.}
+  \label{tab:main_k32_replication}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccl}
+    \toprule
+    Scenario & Best classical obs. RMSE [m] & RGR-GF obs. RMSE [m] & RGR-GF$-$best classical [m] (95\% CI) & Interpretation \\
+    \midrule
+    \emph{Nominal (traceability only)}\textsuperscript{\dag} & EKF 402.0 & 407.4 & $+5.4$ [$-15.7$, $+31.3$] & Traceability only; non-discriminative; do not interpret CI direction \\
+    Measurement-noise stress & AUKF 915.8 & 964.6 & $+48.8$ [$+17.7$, $+88.8$] & No learned positive \\
+    Controlled force-model mismatch & EKF 474.3 & 491.1 & $+16.8$ [$+6.1$, $+27.8$] & No learned positive \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize $K=32$ independent realizations per scenario, 24 trajectories per realization. The daggered nominal row is traceability-only; its CI direction must not be interpreted. The rule was frozen after the $K=8$ endpoint-fixation results and the non-evidentiary $K=16$ strict-prefix extension were available, but before any $K=32$ realization was generated or evaluated; all-step RMSE is propagation-dominated and retained in the supplement. Best classical is formalized per scenario as the lowest held-out mean observed-step RMSE among tuned EKF, fixed-noise UKF, and AUKF under the frozen endpoint hierarchy; realized labels are Nominal=EKF, Stress=AUKF, Mismatch=EKF. The stress row is discriminative for the observed degradation, but this table alone is not powered to exclude every just-at-floor stress effect: using the realized stress-row paired-gap SD, the 27.5~m floor would require approximately $K=94$ for 0.80 one-sided $\alpha=0.05$ power. A separate stress-only $K=96$ internal replication in S-Table~\ref{tab:observed_step_powered_stress_replication} exceeds that design check and preserves the negative.}
+\end{table}

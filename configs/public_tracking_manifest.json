@@ -1,0 +1,30 @@
+{
+  "fetched_at_utc": "2026-04-16T13:52:43Z",
+  "catalog": {
+    "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=JSON",
+    "path": "configs\\public_celestrak_active_snapshot.json",
+    "sha256": "7adf52f68a19593fcd47b94084781fdf0bd84ed3d76e1c23972d3f1da6543137",
+    "count": 15110
+  },
+  "stations": {
+    "url": "https://network.satnogs.org/api/stations/?format=json",
+    "path": "configs\\public_satnogs_stations_snapshot.json",
+    "sha256": "53f5dfb50b72d310d44047a81d07503509b8d0f80a3c93e9f4e3fee271ed8640",
+    "count": 4177
+  },
+  "observations": {
+    "url": "https://network.satnogs.org/api/observations/?format=json&status=good",
+    "path": "configs\\public_satnogs_recent_good_observations.json",
+    "sha256": "66051e2fe9268fcbe599a411621392fb0d9ace5a81655841165894aaf5e18541",
+    "count": 149,
+    "collection_method": "html_listing_detail_scrape",
+    "pages_scanned": 60,
+    "listing_row_count": 1200,
+    "good_candidate_count": 178,
+    "detail_record_count": 178,
+    "selected_count": 149,
+    "selected_unique_satellites": 88,
+    "selected_unique_stations": 65,
+    "max_per_satellite": 4
+  }
+}

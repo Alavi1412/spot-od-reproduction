@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Public multi-target SP3/CRD breadth probe over the predeclared April--May 2026 temporal windows. SP3 products are used for deterministic precise-reference state-propagation scoring from fixed interior epochs, and CRD normal-point files are used only to summarize public measurement coverage. This extends target and provenance breadth where public products are available, but it is not operational POD or centimetre SLR validation. The readout is state-scoring and coverage breadth only, not multi-target OD validation.}
+  \label{tab:public_sp3_multi_target_breadth_probe}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccccccc}
+    \toprule
+    Stratum & SP3 targets & Target-weeks & Starts & Compact mean [m] & Higher-fidelity mean [m] & HF improvement [m] & Start-epoch 95\% [m] & Target-week cluster 95\% [m] & Target cluster 95\% [m] & CRD normal points \\
+    \midrule
+    All scored targets & 10 & 40 & 240 & 618.77 & 594.52 & 24.25 & [5.29, 44.40] & [-0.99, 51.81] & [-2.94, 57.66] & 25449 \\
+    Non-LAGEOS targets & 8 & 32 & 192 & 710.06 & 680.82 & 29.24 & [4.73, 53.20] & [-2.65, 63.04] & [-3.95, 65.82] & 19772 \\
+    Held-out test stratum & 10 & 10 & 60 & 672.46 & 617.05 & 55.42 & [18.11, 94.89] & [9.42, 108.90] & [9.63, 109.74] & 5152 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize HF improvement is compact minus higher-fidelity RMSE, so positive values favour the higher-fidelity propagation. Start-epoch intervals preserve the original finite fixed-start readout; target-week and target-cluster intervals resample scored target-week or target clusters. The all-target and non-LAGEOS target-cluster intervals include zero, while the held-out test stratum remains positive under target-cluster sensitivity. All intervals are finite-probe sensitivity summaries, not target-population or operational uncertainty; CRD coverage is not used to claim orbit determination.}
+\end{table}

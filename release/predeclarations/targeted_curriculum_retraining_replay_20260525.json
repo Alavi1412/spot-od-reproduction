@@ -1,0 +1,108 @@
+{
+  "schema_version": "targeted-curriculum-retraining-replay-rule-v1",
+  "artifact_type": "predeclared_targeted_curriculum_retraining_replay",
+  "created_at_utc": "2026-05-25T17:10:19Z",
+  "finalized_at_utc": "2026-05-25T17:10:19Z",
+  "evaluation_may_start_after_utc": "2026-05-25T17:10:19Z",
+  "objective": "Bounded from-scratch learned-estimator curriculum replay on already materialized data splits.",
+  "entrypoint": "scripts/run_targeted_retraining_replay.py",
+  "entrypoint_sha256": "1c9616f11aa62797fea23b070325e37f882df0bb6bd0119646d64ad2221430b6",
+  "model": "ObservabilityContextHybridGNN",
+  "seed": 118103,
+  "accelerated_compute_required": true,
+  "non_accelerated_execution_allowed": false,
+  "runtime_and_hardware_details_redacted": true,
+  "training": {
+    "batch_size": 256,
+    "hidden_dim": 128,
+    "gnn_layers": 2,
+    "gru_layers": 1,
+    "amp_enabled_in_raw_runtime_config": true
+  },
+  "curriculum_stages": [
+    {
+      "name": "nominal_pretrain_replay",
+      "train_splits": [
+        "train"
+      ],
+      "val_splits": [
+        "val"
+      ],
+      "epochs": 3
+    },
+    {
+      "name": "mixed_train_replay",
+      "train_splits": [
+        "train",
+        "stress_train"
+      ],
+      "val_splits": [
+        "val",
+        "stress_val",
+        "satnogs_observation_replay_val"
+      ],
+      "epochs": 3
+    },
+    {
+      "name": "stress_focus_replay",
+      "train_splits": [
+        "stress_train"
+      ],
+      "val_splits": [
+        "stress_val",
+        "satnogs_observation_replay_val"
+      ],
+      "epochs": 2
+    }
+  ],
+  "data_boundary": {
+    "source_root": "results/data",
+    "selection_rule": "Use every trajectory from each named materialized source split in stored source order; no held-out test, table, or main-result data are used for selection."
+  },
+  "data_splits": {
+    "train": {
+      "source_path": "results/data/train.npz",
+      "source_sha256": "915432d5774a46790a7583cc7b39d16f773571fefda6022058273bfb2032b3eb",
+      "source_trajectories": 160,
+      "slice_trajectories": 160,
+      "slice_boundary": "first 160 trajectories in source order"
+    },
+    "val": {
+      "source_path": "results/data/val.npz",
+      "source_sha256": "f031a105caf1cb8c83c3cc015679a510ac9fa10b50a47e0e6215ce3a85034f41",
+      "source_trajectories": 32,
+      "slice_trajectories": 32,
+      "slice_boundary": "first 32 trajectories in source order"
+    },
+    "stress_train": {
+      "source_path": "results/data/stress_train.npz",
+      "source_sha256": "18ab41b8e7ea9217b617e2c67c11afd1fad9f8c1e809c99e1c3f376d6a2e78ef",
+      "source_trajectories": 96,
+      "slice_trajectories": 96,
+      "slice_boundary": "first 96 trajectories in source order"
+    },
+    "stress_val": {
+      "source_path": "results/data/stress_val.npz",
+      "source_sha256": "f67be0317d6d3be41ab2cfe1db15170fff760f6768c026dad402983124ca542b",
+      "source_trajectories": 24,
+      "slice_trajectories": 24,
+      "slice_boundary": "first 24 trajectories in source order"
+    },
+    "satnogs_observation_replay_val": {
+      "source_path": "results/data/satnogs_observation_replay_val.npz",
+      "source_sha256": "2654a344748036649196a4e4a350efee6e8f17c0d24bbce599166c0964227efb",
+      "source_trajectories": 16,
+      "slice_trajectories": 16,
+      "slice_boundary": "first 16 trajectories in source order"
+    }
+  },
+  "decision_criteria": {
+    "training_process_returns_zero": true,
+    "all_stage_train_and_validation_losses_are_finite": true,
+    "checkpoint_digest_is_recorded": true,
+    "canonical_submitted_checkpoint_digest_is_unchanged": true,
+    "report_sanitizes_local_runtime_and_hardware_details": true
+  },
+  "claim_boundary": "This replay demonstrates a bounded curriculum-shaped learned-estimator training pass on already materialized data. It is not a full scientific rerun, not full paper-table reproduction, not a seed-suite rerun, not public-real-data validation, and not a replacement for the submitted trained-estimator records.",
+  "integration_rule": "If the replay passes, update only the release/reproducibility evidence description unless the result adds estimator-skill evidence; if it fails, report the bounded failure without using it to strengthen manuscript claims."
+}

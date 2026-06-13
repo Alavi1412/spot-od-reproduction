@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use the SPOT-OD benchmark or its supplementary evidence package, please cite the accompanying submission."
+title: "SPOT-OD: Adaptive-Filter and Observability Mechanism Findings from a Simulator-Bound Orbit-Determination Audit"
+abstract: >-
+  Version-pinned, anonymized supplementary evidence package for the SPOT-OD
+  sparse-visibility orbit-determination self-audit study: fixed data-generation
+  settings, the canonical 15-seed cohort (seeds 41-55), trained-model records,
+  evaluation outputs, classical and offline OD reference results, pinned
+  dependency provenance, and artifact checksums. The central endpoint evidence
+  is observed-step position RMSE in a K=32 frozen-rule replication under the
+  K=8-established endpoint hierarchy. No external public repository or DOI is
+  asserted at initial submission; the package is included with the submission
+  for reviewer-accessible independent inspection. Public archival deposition is
+  deferred until explicit author approval or a venue-required release point; if
+  a DOI or other public identifier is assigned later, it will be recorded before
+  any public citation of the archive.
+type: dataset
+authors:
+  - name: "Authors omitted for review"
+version: "1.1.0-supplement"
+date-released: "2026-05-19"
+license-url: "included-with-submission"
+keywords:
+  - orbit determination
+  - satellite state estimation
+  - sparse visibility
+  - claim-audited evaluation
+  - adaptive filtering
+  - negative results
+  - reproducibility

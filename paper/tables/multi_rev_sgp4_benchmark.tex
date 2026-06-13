@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \centering
+  \caption{Multi-revolution SGP4-reference state-error benchmark with real ground-station geometry. Reference states are SGP4-propagated from archived public CelesTrak TLEs for 5 distinct real LEO objects (ISS (ZARYA), CSS (TIANHE), DMSP 5D-3 F16 (USA 172), SCD 1, TECHSAT 1B (GO-32)) over a 12-hour arc spanning 7.1--7.8 orbital revolutions per target; sparse line-of-sight measurements (1440 total) are generated from those reference states using the real 8-station ground geometry of the main study. Every estimator uses the compact two-body+J2+drag OD model, so the SGP4 reference is a genuine multi-revolution dynamics-model mismatch rather than the perfect-shared-model 40-minute synthetic split. Position RMSE is scored against the SGP4 reference state on a deterministic earlier-fit (first 60\%) / later-held-out time split, pooled across targets (2880 held-out steps total). SGP4 is an analytic mean-element propagation, not a precise numerically integrated OD reference, so absolute magnitudes are a bounded multi-revolution model-mismatch stress, not operational OD accuracy; this is not a flight-readiness validation.}
+  \label{tab:multi_rev_sgp4_benchmark}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccccc}
+    \toprule
+    Estimator & Kind & Pooled fit RMSE [m] & Pooled held-out RMSE [m] & Held-out observed RMSE [m] & Held-out p95 $|e|$ [m] & Best of \\
+    \midrule
+    EKF (compact) & classical recursive & 6393.14 & 2052.35 & 341.31 & 4787.18 & 0/5 \\
+    UKF (compact) & classical recursive & 6244.93 & 1809.54 & 324.53 & 4278.56 & 3/5 \\
+    AUKF (compact, tuned) & classical recursive & 6093.34 & 1968.29 & 321.39 & 4508.17 & 2/5 \\
+    Batch WLS (compact) & classical offline & 13669.60 & 26256.53 & 17578.12 & 62801.80 & 0/5 \\
+    Learned residual (UKF prior) & learned & 3891.00 & 2755.43 & 2295.53 & 6567.55 & 0/5 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Per-target deterministic earlier-fit (first 60\%) / later-held-out time split; reference-state position RMSE pooled over the 2880 held-out steps across 5 distinct real targets. ``Held-out observed'' restricts to held-out steps with at least one visible station. ``Best of'' counts targets where the estimator gives the lowest held-out RMSE. Best pooled held-out estimator: UKF (compact).}
+\end{table}

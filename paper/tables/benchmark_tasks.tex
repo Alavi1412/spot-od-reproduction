@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{SPOT-OD benchmark tasks reported in this manuscript and their train/evaluation splits. Method selection is carried only as an in-benchmark synthetic routing diagnostic on the nominal/stress splits; its public-observation selector outcomes are not reported here.}
+  \label{tab:benchmark_tasks}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{p{2.8cm}p{5.0cm}p{5.0cm}p{3.8cm}}
+    \toprule
+    Task & Train slices & Evaluation slices & Primary metrics \\
+    \midrule
+    State estimation & train, stress\_train & Nominal test, Stress test, Archived-catalog replay, Public-catalog replay, SatNOGS observation replay, SatNOGS observation replay stress & position RMSE, velocity RMSE, divergence rate \\
+    Method selection & Nominal test, Stress test & Nominal test, Stress test (in-benchmark routing diagnostic) & mean regret, divergence avoidance, oracle match \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

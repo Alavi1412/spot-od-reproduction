@@ -1,0 +1,11 @@
+{
+  "top_tag_hex": "0x30",
+  "top_end_matches": true,
+  "status_info_tag_hex": "0x30",
+  "status_integer_tag_hex": "0x2",
+  "pki_status_integer": 0,
+  "pki_status_label": "granted",
+  "has_time_stamp_token": true,
+  "token_tag_hex": "0x30",
+  "token_bytes": 4631
+}

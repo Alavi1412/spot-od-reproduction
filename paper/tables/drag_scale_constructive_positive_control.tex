@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Diagnostic control for the Drag-Scale Adaptive EKF (DSA-EKF). The unmodelled physics is fixed to be a pure multiplicative drag-scale mismatch (truth-side ballistic coefficient scaled by $2.50\times$ the nominal value used by every estimator); no zonal geopotential above $J_2$, no luni-solar third body, no SRP, no time-varying density modulation. The arc length is 540 steps at $\Delta t=20$~s (approximately 3.0 hours), and the orbit-sampling altitude band is 250--450~km so the drag acceleration is well above the LEO drag-noise floor. The hyperparameters of the DSA-EKF are frozen from the prior validation selection artefact; no retuning on the diagnostic population is allowed. The predeclared positive criterion (DSA-EKF strictly lowest mean, paired-bootstrap CI versus the best non-DSA reference strictly below zero, gap above the predeclared 3\% \mbox{practical-significance} floor) is reported as a strict pass/fail. The slice is a bounded structural-channel diagnostic, not a calibration positive or a new primary claim about operational POD.}
+  \label{tab:drag_scale_constructive_positive_control}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lc}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    Trajectories $n$ & 64 \\
+    Arc length (steps / hours) & 540 / 3.00 \\
+    Truth-side $\beta$ multiplier & $2.50$ \\
+    Orbit altitude band [km] & 250--450 \\
+    \midrule
+    EKF mean observed-step RMSE [m] & 1598.94 \\
+    UKF mean observed-step RMSE [m] & 359.66 \\
+    AUKF mean observed-step RMSE [m] & 374.73 \\
+    PUKF mean observed-step RMSE [m] & 426.62 \\
+    DMC-EKF mean observed-step RMSE [m] & 1598.95 \\
+    DSA-EKF mean observed-step RMSE [m] & $\mathbf{1648.53}$ \\
+    \midrule
+    Best non-DSA reference & UKF \\
+    DSA-EKF$-$best-non-DSA paired mean [m] & 1288.87 \\
+    DSA-EKF$-$best-non-DSA paired 95\% CI [m] & $[378.14, 2561.43]$ \\
+    DSA-EKF$-$AUKF paired mean [m] & 1273.79 \\
+    DSA-EKF$-$AUKF paired 95\% CI [m] & $[366.80, 2462.90]$ \\
+    Practical-significance floor (3\%) [m] & 10.79 \\
+    Median max $|\hat{\beta}-1|$ across the arc & 0.0012 \\
+    Median trajectory-mean $\hat{\beta}$ & 1.0000 \\
+    Median final-step $\hat{\beta}$ & 1.0000 \\
+    Predeclared positive criterion met & False \\
+    Outcome class & predeclared positive criterion not met (bounded structural-channel negative) \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Diagnostic control reported under the same predeclared positive criterion as the prior DSA-EKF rule on the higher-fidelity force-mismatch slice and the long-arc replication; no hyperparameter retuning is allowed on the diagnostic population. The truth-side drag-scale multiplier is the only unmodelled physics, so the drag-scale structural channel is the structural form matched to the synthetic bias here; the slice isolates the EKF-based candidate's bounded structural-channel response when the structural channel matches the misspecification and the underlying physics is observable over the predeclared arc length.}
+\end{table}

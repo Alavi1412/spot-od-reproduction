@@ -1,0 +1,24 @@
+\begin{table}[t]
+  \centering
+  \caption{Measurement-geometry and adaptation-mechanism heterogeneity diagnostic for the 373-completed-arc formal compact real SLR/SP3 replay. Rows stratify completed arcs by best-held-out estimator, distinct station count, and observation-count quartiles (Q1=37, median=57, Q3=84). Columns report stratum size; median observation, held-out, and distinct-station counts; median DBAR effective-$R$ scale factor; DBAR fire rate; median AUKF-vs-fixed-UKF percentage change; and DBAR external correctness rate. These are diagnostic strata only: they quantify measurement-geometry and adaptation-mechanism heterogeneity but do not establish causal drivers, stable filter superiority, operational POD, or real-data estimator-skill validation.}
+  \label{tab:real_slr_sp3_od_expanded_mechanism_heterogeneity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccccc}
+    \toprule
+    Stratum & $n$ & Med.~obs & Med.~held-out & Med.~stn & Med.~$R_{\mathrm{eff}}$ & DBAR fire (\%) & Med.~AUKF--UKF (\%) & DBAR ext.~correct (\%) \\
+    \midrule
+    Best: EKF & 93 & 56 & 23 & 2 & 3.01 & 34.4 & 3.9 & 67.7 \\
+    Best: fixed-noise UKF & 57 & 62 & 25 & 3 & 2.54 & 19.3 & 3.5 & 66.7 \\
+    Best: AUKF & 78 & 70 & 28 & 3 & 2.50 & 33.3 & -5.3 & 66.7 \\
+    Best: SP3-IC propagation & 145 & 51 & 21 & 2 & 2.10 & 30.3 & 0.2 & 71.0 \\
+    1 station & 58 & 29 & 12 & 1 & 1.26 & 24.1 & 0.0 & 72.4 \\
+    2--3 stations & 259 & 58 & 24 & 3 & 2.77 & 33.2 & 0.7 & 66.4 \\
+    4+ stations & 56 & 92 & 38 & 4 & 2.40 & 23.2 & 0.2 & 75.0 \\
+    Obs $\leq$ 37 & 97 & 28 & 12 & 2 & 1.83 & 33.0 & 0.0 & 74.2 \\
+    Obs 37--57 & 90 & 50 & 20 & 2 & 2.59 & 34.4 & 0.3 & 61.1 \\
+    Obs 57--84 & 93 & 68 & 28 & 3 & 2.68 & 26.9 & 0.6 & 67.7 \\
+    Obs $>$ 84 & 93 & 103 & 42 & 3 & 2.36 & 26.9 & 0.6 & 71.0 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

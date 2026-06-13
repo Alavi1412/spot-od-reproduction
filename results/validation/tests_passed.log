@@ -1,0 +1,23 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\GNN State Estimation
+configfile: pyproject.toml
+collected 86 items
+
+tests\test_aukf_adaptation_diagnostic.py ......                          [  6%]
+tests\test_benchmark_tasks.py ....                                       [ 11%]
+tests\test_guarded_selection.py .                                        [ 12%]
+tests\test_innovation_conditioning.py ..                                 [ 15%]
+tests\test_kalmannet_gain.py ...........                                 [ 27%]
+tests\test_measurement_model.py .                                        [ 29%]
+tests\test_multi_rev_sgp4_benchmark.py ....                              [ 33%]
+tests\test_no_warmup_leakage.py .                                        [ 34%]
+tests\test_observation_replay.py .......                                 [ 43%]
+tests\test_prior_bank_and_runtime.py ..........                          [ 54%]
+tests\test_public_data.py ....                                           [ 59%]
+tests\test_public_tracking_fetch.py ...                                  [ 62%]
+tests\test_real_slr.py ..........                                        [ 74%]
+tests\test_reporting_and_sampling.py ..............                      [ 90%]
+tests\test_scenario_config.py ........                                   [100%]
+
+============================= 86 passed in 15.05s =============================

@@ -1,0 +1,36 @@
+{
+  "active_tex_comment_hits": {
+    "paper/main.tex": [],
+    "paper/supplement.tex": []
+  },
+  "rendered_text_hits": {
+    "results/validation/paper_main_current_leakscan.txt": [],
+    "results/validation/paper_supplement_current_leakscan.txt": []
+  },
+  "scope": {
+    "active_tex_comments": [
+      "paper/main.tex",
+      "paper/supplement.tex"
+    ],
+    "notes": [
+      "Rendered manuscript text is scanned for local paths, implementation artifacts, AI/tool names, and revision-process wording.",
+      "Active TeX comments are scanned separately from visible manuscript text.",
+      "Changed validation tooling is scanned for prohibited local-model mentions only."
+    ],
+    "rendered_text": [
+      "results/validation/paper_main_current_leakscan.txt",
+      "results/validation/paper_supplement_current_leakscan.txt"
+    ],
+    "tooling_files_checked_for_local_model_mentions": [
+      "scripts/verify_archive_extracted_reproduction.py",
+      "scripts/build_supplementary_manifest.py",
+      "tests/test_archive_extracted_reproduction.py"
+    ]
+  },
+  "status": "pass",
+  "tooling_local_model_hits": {
+    "scripts/build_supplementary_manifest.py": [],
+    "scripts/verify_archive_extracted_reproduction.py": [],
+    "tests/test_archive_extracted_reproduction.py": []
+  }
+}

@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{Real ILRS satellite-laser-ranging (SLR) normal-point range-residual audit across two geodetic satellites and four arcs, including learned estimators. Real two-way laser-range normal points are parsed from public daily Consolidated Laser Ranging Data (CRD) version-2 files for LAGEOS-1 and LAGEOS-2 on UTC days 20260517, 20260518 (4 arcs, 384 normal points total, 117 held out), scored on one fixed 4-station ILRS subset (HERL, MATM, WETL, YARL). Each arc is split deterministically in time into an earlier fit set and a later held-out set; held-out range residuals are pooled across all arcs per estimator. Four estimators are scored: the SGP4 prior (CelesTrak TLE propagated directly), a classical range-only robust least-squares fit of the prior Cartesian state, a learned bounded residual correction of the SGP4 prior, and a hybrid that adds a learned bounded residual calibration to the WLS fit. The learned models train only on each arc's earlier fit set, so the held-out columns are a genuine temporal-extrapolation test on real measurements. Station coordinates use an approximate GMST-only Earth-rotation transform and no precise SLR corrections (relativistic, tropospheric, centre-of-mass, polar motion) are applied, so absolute residual magnitudes are at the tens to hundreds of metres scale of this deliberately approximate construction rather than the centimetre scale of operational SLR reduction. The held-out score is a range residual because no independent truth state is available. The classical range-only WLS fit gives the best pooled held-out residual; both learned estimators are worse on the pooled held-out set and best on none of the arcs, so across two real geodetic satellites and four arcs the learned estimators do not beat the strong classical reference. The TLE is used only as a prior; this is not an operational orbit-determination or flight-readiness validation.}
+  \label{tab:real_slr_lageos_validation}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccccc}
+    \toprule
+    Estimator & Kind & Pooled fit RMS [m] & Pooled held-out RMS [m] & Held-out MAE [m] & Held-out p95 $|r|$ [m] & Best of \\
+    \midrule
+    SGP4 prior & classical & 109.20 & 103.32 & 73.25 & 245.18 & 2/4 \\
+    Range-only WLS fit & classical & 17.01 & 93.09 & 65.26 & 205.29 & 2/4 \\
+    Learned residual (SGP4 prior) & learned & 6.08 & 207.49 & 167.58 & 355.96 & 0/4 \\
+    WLS + learned residual calibration & hybrid & 1.94 & 96.08 & 66.86 & 179.05 & 0/4 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Per-arc deterministic earlier-fit (first 70\%) / later-held-out time split; metrics pooled over the 117 held-out normal points across 4 arcs and two geodetic satellites. ``Best of'' counts arcs where the estimator gives the lowest held-out RMS. Held-out range residual only (no truth state); learned correction hard-bounded and deterministic. Best pooled held-out estimator: Range-only WLS fit (classical).}
+\end{table}

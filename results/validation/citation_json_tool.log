@@ -1,0 +1,48 @@
+[started_at] 2026-05-14T01:27:14.480789+00:00
+[command] C:\Users\alavi\AppData\Local\Python\pythoncore-3.14-64\python.exe -m json.tool results\validation\citation_validation.json
+[cwd] D:\GNN State Estimation
+[stdout]
+{
+    "main_tex": "paper\\main.tex",
+    "bib_file": "paper\\references.bib",
+    "cited_key_count": 23,
+    "bib_entry_count": 27,
+    "cited_keys": [
+        "battaglia2018relational",
+        "celestrak_gp",
+        "efron1994",
+        "gilmer2017neural",
+        "guo2017calibration",
+        "haarnoja2016",
+        "hamilton2017",
+        "hoots1980spacetrack",
+        "julier1997unscented",
+        "kalman1960",
+        "kipf2017",
+        "montenbruck2000",
+        "revach2022kalmannet",
+        "satnogs_api",
+        "satnogs_network",
+        "satnogs_observations",
+        "scarselli2009graph",
+        "tapley2004statistical",
+        "vallado2006sgp4",
+        "vallado2013",
+        "velickovic2018",
+        "wan2000unscented",
+        "wilcoxon1945"
+    ],
+    "missing_bib_entries": [],
+    "unused_bib_entries": [
+        "battaglia2016interaction",
+        "chen2018neural",
+        "kipf2018neural",
+        "sanchezgonzalez2020learning"
+    ],
+    "passed": true
+}
+
+[stderr]
+
+[ended_at] 2026-05-14T01:27:14.567342+00:00
+[exit_code] 0

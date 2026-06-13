@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Process noise adaptive UKF (PUKF) on the controlled force model mismatch slice (predeclared rule). PUKF is the \emph{symmetric counterpart} of the AUKF: measurement noise $R$ is held at nominal, and the process noise $Q$ is multiplicatively inflated when a sliding-window R-only NIS estimate exceeds the chi-square-with-4-channels expectation, on the classical statistical OD intuition that under a dynamics/force model bias the prior model, not the measurement channel, carries the misspecified component \cite{mehra1970adaptive,jazwinski1970stochastic,stacey2021adaptive}. The decision rule, thresholds, and decision predicate (PUKF is a positive contribution iff its mean observed-step RMSE is strictly lowest and the paired bootstrap CI versus every comparator is strictly negative) were predeclared in a timestamped rule record before this evaluation. Outcome on the controlled force mismatch slice ($n=38$ trajectories, identical population to Tables~\ref{tab:force_mismatch_significance} and~\ref{tab:force_mismatch_mechanism}): PUKF inflates the predicted process covariance heavily (mean $\bar Q$-scale $5.9$, median $9.9$) but does \emph{not} satisfy the predeclared positive criterion --- its mean observed-step RMSE is worse than the causal EKF by $+42.6$~m (95\% paired bootstrap CI $[+15.4,+74.0]$~m, $14/38$ trajectories favouring PUKF), and the CI versus tuned fixed noise UKF spans zero ($+16.5$~m, CI $[-7.0,+38.8]$~m). PUKF beats the tuned AUKF on the mean ($-15.5$~m), consistent with the AUKF mechanism diagnostic, but the paired CI spans zero ($[-68.7,+33.1]$~m). We therefore report PUKF as a \emph{predeclared bounded negative}: the symmetric Q adaptive response to dynamics bias innovations also fails to track the bias here, so the operative prescription is structural (e.g., dynamic model compensation / empirical acceleration adaptation) rather than statistical noise only adaptation on either side. No rule retuning is applied.}
+  \label{tab:pukf_force_mismatch}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Method & Observed-step RMSE [m] & Mean PUKF$-$other [m] & 95\% paired CI [m] & PUKF-better count \\
+    \midrule
+    PUKF (predeclared) & 473.80 & --- & --- & --- \\
+    EKF & 431.18 & $+42.6$ & $[+15.4,+74.0]$ & 14/38 \\
+    UKF (fixed noise) & 457.29 & $+16.5$ & $[-7.0,+38.8]$ & 17/38 \\
+    AUKF & 489.33 & $-15.5$ & $[-68.7,+33.1]$ & 18/38 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,35 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "scope": "Dynamic Model Compensation (DMC) EKF: rule, structural process model, and decision criterion predeclared before evaluation on the higher-fidelity force-model-mismatch slice (truth-side high-order geopotential, luni-solar third body, solar radiation pressure, diurnal-bulge atmospheric-density modulation; estimator keeps the compact two-body+J2+exponential-drag model).",
+  "estimator": "DMC-EKF -- nine-state Extended Kalman Filter on the augmented state [r, v, w], where w is a first-order Gauss-Markov empirical-acceleration channel (one component per axis) with steady-state standard deviation emp_accel_sigma_mps2 and decorrelation time emp_accel_tau_s. The deterministic flow uses the same compact two-body+J2+drag acceleration as every classical baseline in this study, with w added as an extra acceleration; the estimator absorbs unmodelled accelerations through this structural channel rather than through innovation-driven measurement-noise reweighting.",
+  "rationale": "Classical statistical OD (Tapley, Schutz, and Born 2004, Section 10; Wright 1981) prescribes a structural dynamic-model-compensation channel as the operational response to dynamics/force-model bias. The compact-model AUKF mechanism diagnostic on Loop 41 motivated this loop's structural counterpart; the predeclared rule below decides positivity at the higher-fidelity force-mismatch slice before any post-hoc inspection.",
+  "rule": {
+    "augmented_state": "[r_x, r_y, r_z, v_x, v_y, v_z, w_x, w_y, w_z]",
+    "process_model": "dr/dt = v, dv/dt = a_compact(r, v) + w, dw/dt = -w / emp_accel_tau_s",
+    "decision_predicate": "DMC-EKF is a positive contribution if and only if (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, PUKF, DMC-EKF} on the higher-fidelity force-mismatch slice, AND (ii) the paired-bootstrap 95% CI for the DMC-EKF-minus-best-non-DMC gap is strictly negative (DMC-EKF strictly better), AND (iii) the gap exceeds the predeclared 3% practical-significance floor of the best-non-DMC mean.",
+    "honest_negative": "If the predeclared rule does not yield a positive in the sense above, it is reported as a bounded structural-channel negative (no rule retuning is allowed)."
+  },
+  "thresholds": {
+    "emp_accel_sigma_mps2": 1.0e-6,
+    "emp_accel_tau_s": 300.0,
+    "init_emp_accel_std_mps2": 1.0e-6,
+    "gating_threshold": 18.47,
+    "q_pos_m": 5.0,
+    "q_vel_mps": 0.05,
+    "practical_significance_floor": 0.03
+  },
+  "thresholds_justification": "Empirical-acceleration standard deviation (1e-6 m/s^2) is of the order of drag-class residual accelerations for the LEO regime used here (drag at the canonical altitude band is ~1e-7 to 1e-6 m/s^2). The Gauss-Markov decorrelation time 300 s is a small fraction of the orbital period and matches the operational LEO empirical-acceleration default. The Kalman gating threshold and position/velocity continuous-time process-noise standard deviations match the EKF baseline exactly so the only structural change is the empirical-acceleration channel.",
+  "evaluation_protocol": {
+    "data": "Higher-fidelity force-model mismatch slice: truth uses two-body + J2..J6 zonal geopotential + luni-solar third-body acceleration + solar-radiation pressure with cylindrical eclipse + a one-sided diurnal-bulge atmospheric-density modulation; estimators keep the compact two-body+J2+exponential-drag model.",
+    "comparators": ["EKF", "UKF", "AUKF", "PUKF"],
+    "primary_endpoint": "Observed-step position RMSE on the same trajectory population as the AUKF mechanism diagnostic.",
+    "n_trajectories_planned": 48,
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95
+  },
+  "non_paper_artifacts": {
+    "implementation": "src/gnn_state_estimation/filters/dmc.py::run_dmc_ekf",
+    "evaluation_harness": "scripts/run_dmc_ekf_force_mismatch.py",
+    "result_json": "results/dmc_ekf_force_mismatch/dmc_ekf_force_mismatch.json"
+  }
+}

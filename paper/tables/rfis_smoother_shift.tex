@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Visibility-gated robust fixed-interval variational smoother (RFIS) composite on the regime-shift scenarios. RFIS is an offline smoother (future measurements are available to every state in the arc), multistart warm-started from classical AUKF and batch-WLS solutions with the arc selected by an intrinsic objective that never uses ground truth. RFIS alone improves all-step position RMSE over the best classical method but is far worse than the causal EKF on measurement-informed observed steps. The visibility-gated composite (VG-RFIS) addresses that degradation with a predeclared, ground-truth-free rule: use the EKF prior at evaluated times with at least one visible station and the RFIS estimate only in zero-visible gaps. VG-RFIS ties EKF exactly on observed steps while still improving all-step RMSE over the best classical method (robust batch WLS) on both shift scenarios. This is an offline visibility-gated smoothing construction, not a causal filter, a learned or graph-based improvement, or a general classical-OD result. Best cls.\ all-step is robust batch WLS; best cls.\ obs.-step is EKF. $\Delta$ columns are VG-RFIS minus the best classical method for that metric in percent; positive favors VG-RFIS.}
+  \label{tab:rfis_smoother_shift}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccccccc}
+    \toprule
+    Scenario & Traj. & RFIS all-step [m] & RFIS obs.-step [m] & VG-RFIS all-step [m] & VG-RFIS obs.-step [m] & Best cls.\ all-step [m] & Best cls.\ obs.-step [m] & VG-RFIS $\Delta$ all-step [\%] & VG-RFIS $\Delta$ obs.-step [\%] \\
+    \midrule
+    Process-noise shift & 48 & 5404.79 & 1062.48 & 5396.93 & 398.58 & 5510.70 (BatchWLS) & 398.58 (EKF) & +2.06 & +0.00 \\
+    Maneuver shift & 48 & 7560.91 & 1467.25 & 7552.66 & 553.91 & 7612.42 (BatchWLS) & 553.91 (EKF) & +0.79 & +0.00 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

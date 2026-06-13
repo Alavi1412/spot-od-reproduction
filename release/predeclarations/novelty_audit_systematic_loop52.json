@@ -1,0 +1,320 @@
+{
+  "schema_version": "novelty_audit_systematic_v3_supersedes_loop52",
+  "audit_on_utc": "2026-05-20",
+  "category": "systematic_scored_novelty_audit",
+  "predeclared_audit_member": false,
+  "new_confirmatory_evidence": false,
+  "scope": "Current systematic visible-record audit aligned to the protocol table schema exactly. Each cited primary learned/adaptive OD, optical tracklet-correlation, or learned initial-OD evaluation is scored against I1--I7 as defined in paper/supplement.tex: I1 fixed falsification gates; I2 paired trajectory-unit resampling plus Holm/BH multiplicity; I3 capacity/input-matched controls; I4 separate noise-side and force-side structural-channel withdrawal rules; I5 upstream architecture sanity reproduction plus scoped transposition diagnostic; I6 approximate astrodynamics-grounded CRLB floor and sensitivity audit; I7 evidence-record traceability. The audit boundary remains a visible-record scoping audit, not a confirmatory test or universal literature absence proof.",
+  "selection_rule": "Every cited learned or adaptive orbit-determination evaluation, optical tracklet-correlation evaluation, or learned/adaptive initial-orbit-determination evaluation in the manuscript bibliography that reports an empirical satellite state-estimation or initial-OD comparison against at least one classical baseline. Surveys, domain-adjacent spacecraft-GNN telemetry papers, pure orbit-prediction papers without an estimator/IOD comparison, and TLE-only prediction papers are excluded. The pure TLE orbit-prediction paper previously keyed liu2023satellite is excluded under this rule; the learned short-arc neural-IOD study zhu2026multiscale is included.",
+  "ingredient_definitions": {
+    "I1_fixed_falsification_gates": "Fixed falsification gates with timestamped rule records where available: endpoint hierarchy, practical floor, and pass/fail predicates fixed before held-out evaluation with no rule retuning.",
+    "I2_paired_trajectory_resampling_plus_holm_bh": "Paired trajectory-unit resampling using shared resample indices across estimators plus Holm familywise and Benjamini-Hochberg false-discovery-rate adjustment over the displayed pairwise family.",
+    "I3_capacity_input_matched_controls": "Capacity- and input-matched learned controls evaluated on the same data/curriculum, with strong classical OD guardrails on the same population.",
+    "I4_noise_force_structural_channel_withdrawal_rules": "Separate predeclared positive criteria and withdrawal/failure decisions for noise-side adaptation and force-side structural responses.",
+    "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "A published learned architecture sanity-reproduced on its native benchmark plus a separately scoped design-gap/adapted-transposition diagnostic when moved to SPOT-OD-like measurements.",
+    "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "Approximate astrodynamics-grounded Cramer-Rao lower-bound floor in metres for long-arc decisions, with sensitivity variants and decision-stability audit.",
+    "I7_evidence_record_traceability": "Evidence-record traceability tying every headline to input-data digests, timestamped rule records, fixed seed/split/selection records, trained-model records, and evaluation records."
+  },
+  "score_codes": {
+    "Y": "Verifiable as present from the bibliographic record, the published abstract or paper-side scope summary, or the manuscript related-work summary.",
+    "N": "Not visible under the ingredient definition above, or the evaluation class does not adopt that SPOT-OD claim form. A reviewer can falsify an N cell by exhibiting the named ingredient in the cited paper.",
+    "NA": "Not assessable from accessible material without deeper full-text inspection. This code is reserved for future rescoring and is not used in the current table."
+  },
+  "n_papers": 19,
+  "rows": [
+    {
+      "citation_key": "revach2022kalmannet",
+      "venue_year": "IEEE Trans. Signal Process., 2022",
+      "scenario_class": "Linear-canonical and Lorenz-attractor synthetic benchmarks; partially-known dynamics; learned gain RNN paired with model-based prior/measurement maps. Native benchmark is the paper's own design problem.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published evaluation reports KalmanNet on synthetic linear-canonical/Lorenz-style state-space benchmarks and the Michigan NCLT navigation data, with MSE curves and ablations against Kalman-family references. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "stacey2021adaptive",
+      "venue_year": "IEEE Trans. Aerosp. Electron. Syst., 2021",
+      "scenario_class": "Adaptive and dynamically constrained process-noise estimation for orbit determination; classical statistical-OD evaluation with covariance consistency reporting.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published evaluation reports adaptive and dynamically constrained process-noise estimation for operational orbit-determination cases under classical statistical-OD reporting. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "scorsoglio2023pinn",
+      "venue_year": "J. Astronaut. Sci., 2023",
+      "scenario_class": "Physics-informed neural network approach to orbit determination; ground-based scenario.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record frames a physics-informed neural-network orbit-determination construction evaluated against classical filters on a bounded scenario class. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "scorsoglio2026xgeo",
+      "venue_year": "Acta Astronautica, 2026",
+      "scenario_class": "Physics-informed OD for X-GEO space situational awareness.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The Acta Astronautica record frames physics-informed X-GEO orbit determination with real angle-only observations, high-fidelity dynamics, PINN/ELM regression, and batch least-squares comparison. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "ramponi2026pontryagin",
+      "venue_year": "Acta Astronautica, 2026",
+      "scenario_class": "Pontryagin Neural Network / PINN-style optical tracklet correlation and initial orbit determination with simulated and real angles-only observations.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published article frames a Pontryagin Neural Network method for optical tracklet correlation and secondary initial orbit determination, validated on simulated and real angles-only observations. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "zhou2023lstm",
+      "venue_year": "Acta Astronautica, 2023",
+      "scenario_class": "LSTM-assisted OD algorithm for spacecraft executing continuous maneuvers.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record frames an LSTM-assisted orbit-determination algorithm for spacecraft executing continuous maneuvers against classical baselines. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "zhang2024libration",
+      "venue_year": "Remote Sensing, 2024",
+      "scenario_class": "Neural-network-based angle-only OD for Earth-Moon libration orbits.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record frames a neural-network-aided angle-only orbit-determination construction for Earth-Moon libration orbits against classical baselines. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "chen2024robust",
+      "venue_year": "Sensors, 2024",
+      "scenario_class": "Real-time OD of micro- and nano-satellites using robust adaptive filtering.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record frames a robust adaptive filter for real-time micro/nano-satellite orbit determination. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "zhu2025bayesian",
+      "venue_year": "Sensors, 2025",
+      "scenario_class": "Bayesian adaptive extended-Kalman-based OD for optical-observation satellites.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record frames a Bayesian adaptive EKF for optical-observation satellite orbit determination against EKF-family and learned regressors. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "gao2025heavytailed",
+      "venue_year": "Advances in Space Research, 2025",
+      "scenario_class": "Heavy-tailed adaptive quadrature Kalman filtering for autonomous cislunar special long-period-orbit OD under non-Gaussian noise.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record frames HAQKF as an adaptive heavy-tailed Kalman-family orbit-determination algorithm compared with Robust EKF, EKF, UKF, and AKF in simulated cislunar conditions. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "sztamfater2026sequential",
+      "venue_year": "Aerospace Science and Technology, 2026",
+      "scenario_class": "Sequential Monte Carlo filtering for simultaneous spacecraft tracking and online process-noise parameter estimation.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published record introduces stochastic orbital dynamics and hybrid sequential Monte Carlo filters for jointly tracking spacecraft state and estimating process-noise diffusion parameters. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "xu2026arckf",
+      "venue_year": "Aerospace, 2026",
+      "scenario_class": "Adaptive robust cubature filtering for autonomous cislunar spacecraft navigation using inter-satellite ranging and angle data.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published article frames AFF-ARCKF as an adaptive robust cubature Kalman-family algorithm for cislunar autonomous navigation under inter-satellite range and angle measurements. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "li2026delay",
+      "venue_year": "Aerospace, 2026",
+      "scenario_class": "Delay-adaptive federated Kalman filtering with online model calibration for deep-space multi-spacecraft orbit determination.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published article frames TDA-FKF as a delay-aware federated Kalman-filter architecture with online calibration for multi-spacecraft deep-space orbit determination. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "zhang2026hnn",
+      "venue_year": "Acta Astronautica, 2026",
+      "scenario_class": "Hybrid neural-network adaptive relative navigation for non-cooperative spacecraft in orbital games.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The current publisher record frames HNNA-IMM as a hybrid neural-network adaptive relative-navigation algorithm that maps interacting-multiple-model transition probabilities for non-cooperative spacecraft tracking. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "chen2026orbitrecovery",
+      "venue_year": "GPS Solutions, 2026",
+      "scenario_class": "Adaptive orbit recovery without navigation-message or external-clock support under challenging satellite-mission conditions.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published article frames an adaptive orbit-recovery framework driven by quality indicators and residual patterns for degraded initial orbit and clock-support conditions. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "lowe2026drag",
+      "venue_year": "Acta Astronautica, 2026",
+      "scenario_class": "Real-time orbit and atmospheric drag estimation for spacecraft swarms using an augmented UKF formulation.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The published article frames a UKF-based approach for simultaneous orbit-state and atmospheric-drag estimation for spacecraft swarms. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "pinheiro2024flexkalmannet",
+      "venue_year": "arXiv preprint, 2024",
+      "scenario_class": "Modular AI-enhanced Kalman filter framework applied to spacecraft motion estimation; a modular re-instantiation framework around the KalmanNet architecture.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The accessible record frames FlexKalmanNet as a modular AI-enhanced Kalman-filter framework building on the KalmanNet architecture for spacecraft motion estimation. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "varey2024physics",
+      "venue_year": "arXiv preprint, 2024",
+      "scenario_class": "Physics-informed neural networks for satellite state estimation.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The accessible record frames a physics-informed neural-network construction for satellite state estimation against classical baselines on a bounded scenario class. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    },
+    {
+      "citation_key": "zhu2026multiscale",
+      "venue_year": "Aerospace, 2026",
+      "scenario_class": "Multi-scale Informer short-arc initial orbit determination for LEO satellites, with DNN and Gibbs OD comparisons on radar very-short-arc observations.",
+      "scores": {
+        "I1_fixed_falsification_gates": "N",
+        "I2_paired_trajectory_resampling_plus_holm_bh": "N",
+        "I3_capacity_input_matched_controls": "N",
+        "I4_noise_force_structural_channel_withdrawal_rules": "N",
+        "I5_upstream_architecture_sanity_reproduction_scoped_transposition": "N",
+        "I6_astrodynamics_grounded_crlb_floor_sensitivity_audit": "N",
+        "I7_evidence_record_traceability": "N"
+      },
+      "evidence_phrase": "The MDPI article frames a multi-scale Informer short-arc initial-orbit-determination method for LEO satellites from radar very-short-arc observations; it compares with DNN and Gibbs OD and reports RMSE improvements for the velocity components versus Gibbs at L=40. The accessible record does not show the full SPOT-OD protocol schema: fixed falsification gates with timestamped rule records (I1), paired trajectory-unit resampling plus Holm/BH multiplicity adjustment (I2), capacity/input-matched controls with strong classical guardrails (I3), separately predeclared noise-side and force-side structural-channel withdrawal rules (I4), upstream architecture sanity reproduction plus scoped transposition diagnostic where a learned transposition is claimed (I5), an approximate astrodynamics-grounded CRLB floor with sensitivity audit for long-arc decisions (I6), or digest-linked evidence-record traceability for the reported headlines (I7)."
+    }
+  ],
+  "summary": {
+    "n_scored": 19,
+    "max_ingredients_visible_any_paper": 0,
+    "max_ingredients_visible_paper_citation_key": null,
+    "all_seven_count": 0,
+    "absence_explanation": "Across the 19 audited evaluations, the accessible record does not show the full I1--I7 conjunction. The current schema combines trajectory-unit pairing and Holm/BH multiplicity in I2, moves capacity/input controls to I3, moves separate noise-side and force-side structural-channel withdrawal rules to I4, moves upstream sanity reproduction/scoped transposition to I5, adds the astrodynamics-grounded CRLB floor and sensitivity audit as I6, and keeps evidence-record traceability as I7.",
+    "interpretation": "No cited learned/adaptive OD, optical tracklet-correlation, or learned initial-OD evaluation in the scoped visible-record audit exhibits all seven discipline ingredients under the current protocol definitions. Any single N cell remains falsifiable by exhibiting the named ingredient in the cited record; the table is a scoped composition audit rather than a universal absence proof."
+  },
+  "supersedes_local_record": "The earlier loop52 audit used the shifted I1-I7 legend and included liu2023satellite. This replacement keeps the reviewer-facing archive aligned to the current protocol schema and systematic-audit selection rule."
+}

@@ -1,0 +1,32 @@
+\begin{table}[t]
+  \centering
+  \caption{Familywise (Holm) and false-discovery-rate (Benjamini--Hochberg) adjusted values for the full family of pairwise Wilcoxon $p$-values displayed in the significance tables ($m=19$). Adjustment is over the entire displayed family. Consistent with the protocol, every pairwise $p$-value is reported as a descriptive diagnostic, not a confirmatory test: the conclusions are led by direction and effect size, the qualitative ordering is unchanged under both adjustments, and no pairwise test is read as establishing a positive result.}
+  \label{tab:multiplicity_adjusted}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccc}
+    \toprule
+    Source table & Comparison & Raw $p$ & Holm $p$ & BH $p$ \\
+    \midrule
+    Force-mismatch classical & EKF vs AUKF & 0.0148 & 0.2217 & 0.0562 \\
+    Force-mismatch classical & EKF vs UKF & 0.0409 & 0.5316 & 0.0989 \\
+    Force-mismatch classical & UKF vs AUKF & 0.0265 & 0.3713 & 0.084 \\
+    Force-mismatch cohort & RGR-GF vs EKF & 1 & 1 & 1 \\
+    Force-mismatch cohort & RGR-GF vs AUKF & 1 & 1 & 1 \\
+    Significance (Test) & RGR-GF vs UKF & 0.8185 & 1 & 1 \\
+    Significance (Test) & RGR-GF vs AUKF & 0.6944 & 1 & 1 \\
+    Significance (Stress) & RGR-GF vs UKF & 0.0002 & 0.0029 & 0.0009 \\
+    Significance (Stress) & RGR-GF vs AUKF & 0.9095 & 1 & 1 \\
+    Seed pooled & RGR-GF vs UKF & 2.21e-48 & 4.19e-47 & 4.19e-47 \\
+    Seed pooled & RGR-GF vs AUKF & 1 & 1 & 1 \\
+    Seed observed & Test vs UKF & 0.9465 & 1 & 1 \\
+    Seed observed & Test vs AUKF & 0.9243 & 1 & 1 \\
+    Seed observed & Stress vs UKF & 3.05e-05 & 0.0005 & 0.0002 \\
+    Seed observed & Stress vs AUKF & 1 & 1 & 1 \\
+    Seed-aware & RGR-GF Test vs UKF & 0.0416 & 0.5316 & 0.0989 \\
+    Seed-aware & RGR-GF Test vs AUKF & 1 & 1 & 1 \\
+    Seed-aware & RGR-GF Stress vs UKF & 3.05e-05 & 0.0005 & 0.0002 \\
+    Seed-aware & RGR-GF Stress vs AUKF & 0.9997 & 1 & 1 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

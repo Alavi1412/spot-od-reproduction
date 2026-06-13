@@ -1,0 +1,21 @@
+\begin{table}[t]
+  \centering
+  \caption{Paired-uncertainty hardening of the controlled force-model-mismatch slice (observed-step position RMSE, \texttt{force\_model\_mismatch\_test}). Top: the deterministic classical filters paired over the 38-trajectory population (mean paired gain, 95\% percentile paired bootstrap CI, one-sided paired Wilcoxon; a positive gain favours the first-named filter). Bottom: the canonical 15-seed RGR-GF cohort paired against the deterministic EKF and AUKF baselines (seed-level mean gain with a 95\% seed bootstrap CI and a two-level seeds-then-trajectories CI; a positive gain favours RGR-GF). All $p$-values are descriptive diagnostics, not confirmatory tests.}
+  \label{tab:force_mismatch_significance}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccccc}
+    \toprule
+    Comparison & Unit & $n$ & Mean gain [m] & 95\% CI [m] & Win rate [\%] & Wilcoxon $p$ \\
+    \midrule
+    \multicolumn{7}{l}{\emph{Deterministic classical pairs (trajectory population)}} \\
+    EKF vs AUKF & trajectory & 38 & 58.15 & [22.19, 99.97] & 65.8 & 0.0148 \\
+    EKF vs UKF & trajectory & 38 & 26.11 & [3.36, 54.52] & 57.9 & 0.0409 \\
+    UKF vs AUKF & trajectory & 38 & 32.04 & [0.92, 67.35] & 63.2 & 0.0265 \\
+    \midrule
+    \multicolumn{7}{l}{\emph{15-seed RGR-GF cohort vs deterministic baseline}} \\
+    RGR-GF vs EKF & seed & 15 & -99.90 & [-157.37, -51.83] & 0/15 seeds & 1 \\
+    RGR-GF vs AUKF & seed & 15 & -22.29 & [-82.47, 25.63] & 9/15 seeds & 1 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

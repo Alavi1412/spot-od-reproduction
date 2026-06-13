@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{Full-correction precise-reference sanity probe and correction-sensitivity audit. The ten-arc real-LAGEOS precise-reference probe is re-run with a full IAU-76/80 Earth-orientation reduction that ingests the real public IERS Earth-orientation series (polar motion and UT1--UTC) and the standard SLR corrections (Marini--Murray troposphere, satellite centre-of-mass, relativistic Shapiro delay), scored against the same independent SP3 product (LAGEOS-1 and LAGEOS-2, 10 arcs). Dynamics remain compact two-body+J2, so the table isolates Earth-orientation/SLR-reduction effects. The full correction stack does not reduce the bounded error (334.72~$\rightarrow$~355.72); the residual is dominated by effects outside this correction set (compact two-body+J2 dynamics and the precise SP3 initial condition), and a frame/reduction upgrade alone does not make this an validated precise-OD result.}
+  \label{tab:real_slr_sp3_corrected}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcc}
+    \toprule
+    Estimator & GMST-only prior [m] & Full correction [m] \\
+    \midrule
+    EKF & 367.98 & 382.45 \\
+    UKF (fixed-noise) & 334.72 & 355.72 \\
+    AUKF (adaptive) & 341.33 & 359.68 \\
+    SP3-IC propagation & 402.92 & 430.76 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize \textbf{Correction-sensitivity audit.} Change in the fixed-noise-UKF pooled held-out RMSE when one correction is removed: IERS Earth-orientation (polar motion, UT1--UTC) -4.7~m; Marini--Murray troposphere 29.2~m; satellite centre-of-mass 1.2~m; relativistic Shapiro delay 0.0~m; reverting fully to the committed GMST-only/no-reduction construction -21.0~m. Each term is thus quantified individually rather than hidden; the residual gap is dominated by the compact two-body+J2 dynamics scored against a precise SP3 reference, which no Earth-orientation or SLR-reduction term in this audit removes.}
+\end{table}

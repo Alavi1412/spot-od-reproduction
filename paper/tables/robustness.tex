@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Robustness sweep summary across 16 corruption settings on 64 test trajectories (setting means over 3 repeats).}
+  \label{tab:robustness}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccc}
+    \toprule
+    Method & Mean $\Delta$ vs UKF [\%] & Std over settings [\%] & Fraction settings better than UKF \\
+    \midrule
+    EKF & 0.31 & 0.40 & 0.750 \\
+    AUKF & 0.34 & 0.39 & 0.938 \\
+    RGR-GF & 0.31 & 0.40 & 0.750 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

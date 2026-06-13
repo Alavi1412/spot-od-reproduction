@@ -1,0 +1,14 @@
+{
+  "validation_step": "validate_submission",
+  "execution_details_redacted": true,
+  "status": "pass",
+  "exit_code": 0,
+  "pdf_sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745",
+  "page_count": 33,
+  "citation_status": "pass",
+  "release_packet_status": "pass",
+  "latex_warning_count": 0,
+  "supplement_latex_warning_count": 0,
+  "json_report": "results\\validation\\submission_validation.json",
+  "markdown_report": "results\\validation\\submission_validation.md"
+}

@@ -1,0 +1,31 @@
+\begin{table}[t]
+  \centering
+  \caption{Seed-suite distinctness audit for repeated-seed evaluation families and graph/no-message-passing controls. Identical learned state and trajectory-RMSE arrays mean the corresponding seed cannot be used as independent repeated-seed corroboration; numerical distinctness alone does not establish a separate method family when the configuration is equivalent.}
+  \label{tab:seed_suite_distinctness}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Comparison & Scenario & Seed & State dict identical & Trajectory RMSE identical & Max trajectory diff [m] & Numerically distinct \\
+    \midrule
+    RGR-GF vs RGR-local & Stress test & 41 & no & no & 2372.20 & yes \\
+    RGR-GF vs RGR-local & Stress test & 42 & no & no & 13344.27 & yes \\
+    RGR-GF vs RGR-local & Stress test & 43 & no & no & 2119.98 & yes \\
+    RGR-GF vs RGR-local & Nominal test & 41 & no & no & 1142.58 & yes \\
+    RGR-GF vs RGR-local & Nominal test & 42 & no & no & 2544.76 & yes \\
+    RGR-GF vs RGR-local & Nominal test & 43 & no & no & 408.92 & yes \\
+    RGR-GF vs RGR-noMP & Stress test & 41 & no & no & 3154.72 & yes \\
+    RGR-GF vs RGR-noMP & Stress test & 42 & no & no & 1965.78 & yes \\
+    RGR-GF vs RGR-noMP & Stress test & 43 & no & no & 5397.21 & yes \\
+    RGR-GF vs RGR-noMP & Nominal test & 41 & no & no & 438.62 & yes \\
+    RGR-GF vs RGR-noMP & Nominal test & 42 & no & no & 1471.99 & yes \\
+    RGR-GF vs RGR-noMP & Nominal test & 43 & no & no & 1239.46 & yes \\
+    RGR-noMP vs RGR-local & Stress test & 41 & no & no & 1771.81 & yes \\
+    RGR-noMP vs RGR-local & Stress test & 42 & no & no & 14444.56 & yes \\
+    RGR-noMP vs RGR-local & Stress test & 43 & no & no & 3277.22 & yes \\
+    RGR-noMP vs RGR-local & Nominal test & 41 & no & no & 703.96 & yes \\
+    RGR-noMP vs RGR-local & Nominal test & 42 & no & no & 4016.75 & yes \\
+    RGR-noMP vs RGR-local & Nominal test & 43 & no & no & 830.54 & yes \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

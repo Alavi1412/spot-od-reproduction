@@ -1,0 +1,44 @@
+\begin{table}[!htbp]
+  \centering\small
+  \caption{Observability-supporting diagnostic control for the drag-scale adaptive channel. The candidate is the prior DSA-UKF construction (Table~\ref{tab:drag_scale_ukf_constructive_positive_control}) with filter-side hyperparameters pinned at the prior validation-selected operating point; the slice geometry is chosen from a small predeclared validation grid of 3 observability-supporting configurations (denser station network, longer arc length, and an extended-arc variant with a larger truth-side drag-scale bias and a lower measurement-noise floor). The grid is iterated in the predeclared most-parsimonious-first order; the selected grid point is the first grid point at which the validation-side decision predicate is satisfied, or (if no grid point satisfies the validation predicate) the grid point with the most-favourable validation margin. The held-out test seed is disjoint from the validation seed and from every other test seed used in this manuscript. The predeclared positive criterion (DSA-UKF strictly lowest mean, paired-bootstrap CI versus the best non-DSA-UKF reference strictly below zero, gap above the predeclared 3\% \mbox{practical-significance} floor) is reported as a strict pass/fail. The prior EKF-based and UKF-based diagnostic controls (Tables~\ref{tab:drag_scale_constructive_positive_control} and \ref{tab:drag_scale_ukf_constructive_positive_control}) are preserved unchanged.}
+  \label{tab:drag_scale_ukf_observability_positive_control}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lc}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    Trajectories $n$ (test / validation per point) & 32 / 8 \\
+    Grid points evaluated on validation seed & 3 \\
+    Selected grid point & G2 \\
+    Arc length (steps / hours) & 2160 / 12.00 \\
+    Truth-side $\beta$ multiplier & $2.50$ \\
+    Station network size & 20 \\
+    Measurement-noise profile & nominal \\
+    Orbit altitude band [km] & 350--550 \\
+    Visible-step fraction (evaluation window) & 0.289 \\
+    \midrule
+    Median drag-induced separation (arc-mean) [m] & 9595.87 \\
+    Median drag-induced separation (final step) [m] & 29294.14 \\
+    \midrule
+    EKF mean observed-step RMSE [m] & 742.69 \\
+    UKF mean observed-step RMSE [m] & 13847.66 \\
+    AUKF mean observed-step RMSE [m] & 16460.26 \\
+    PUKF mean observed-step RMSE [m] & $3.76\times10^{17}$ (overflow) \\
+    DMC-EKF mean observed-step RMSE [m] & 742.69 \\
+    DSA-EKF mean observed-step RMSE [m] & 768.96 \\
+    DSA-UKF mean observed-step RMSE [m] & $\mathbf{4879.86}$ \\
+    \midrule
+    Best non-DSA-UKF reference & EKF \\
+    DSA-UKF$-$best-non-DSA-UKF paired mean [m] & 4137.18 \\
+    DSA-UKF$-$best-non-DSA-UKF paired 95\% CI [m] & $[-827.05, 11235.69]$ \\
+    Practical-significance floor (3\%) [m] & 22.28 \\
+    Median max $|\hat{\beta}-1|$ across the arc & 0.0010 \\
+    Median trajectory-mean $\hat{\beta}$ & 1.0000 \\
+    Median final-step $\hat{\beta}$ & 1.0000 \\
+    Predeclared positive criterion met & False \\
+    Outcome class & predeclared positive criterion not met (bounded structural-channel negative) \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Observability-supporting diagnostic control reported under the same predeclared positive criterion as the prior DSA-UKF rule. The slice geometry is selected from a predeclared grid by the validation-side selection rule on a disjoint validation seed; the drag-induced separation between the truth-side beta-scaled flow and the estimator-side nominal flow is reported as an upfront observability diagnostic that does not depend on any estimator. The slice isolates the bounded structural-channel response when the structural channel is correct and the geometry is enriched to support observability of the channel.}
+\end{table}

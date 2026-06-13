@@ -1,0 +1,38 @@
+FORMAL400 SCHEDULE IMPLEMENTATION SUMMARY
+==========================================
+
+Changed Files:
+1. scripts/run_real_slr_sp3_od_expanded_validation.py
+   - Added FORMAL400_SCHEDULE = "formal400"
+   - Added FORMAL400_OUTPUT_FILENAME = "real_slr_sp3_od_formal400_validation.json"
+   - Added FORMAL400_EXTRA_WEEKS with 19 earlier consecutive weekly products (250809-251213)
+   - Updated SCHEDULE_OUTPUT_FILENAMES and SCHEDULE_DESCRIPTIONS dictionaries
+   - Updated schedule_weeks() function to handle formal400 schedule
+   - Updated schedule_metadata() function with formal400 metadata logic
+   - Updated argparse choices and help text to include formal400
+
+2. scripts/build_paper_assets.py
+   - Updated _expanded_real_slr_sp3_candidate_paths() to prefer formal400 artifact first
+   - Updated _expanded_campaign_name() to recognize n_attempted >= 400 as formal400
+
+3. tests/test_real_slr_sp3_od_expanded.py
+   - Added FORMAL400_SCHEDULE, FORMAL400_EXTRA_WEEKS, FORMAL400_OUTPUT_FILENAME imports
+   - Added test_formal400_schedule_extends_formal210_with_19_earlier_weeks()
+   - Updated test_dry_run_schedule_arc_counts() to include formal400
+   - Updated test_schedule_default_outputs_do_not_overwrite_each_other() for formal400
+   - Updated test_schedule_parser_choices_include_all_campaigns() for formal400
+
+Validation Results:
+- All 18 pytest tests pass
+- Dry-run confirms 400 total arcs (200 per target)
+- Week ordering correct: 250809 (earliest) → 260509 (latest)
+- Metadata structure correct:
+  * num_weeks: 40
+  * num_added_weeks: 32 (19 formal400 + 2 formal210 + 11 formal190)
+  * First week dates: 20250804-20250808 (Mon-Fri preceding Sat 250809)
+  * Last week dates: 20260504-20260508 (Mon-Fri preceding Sat 260509)
+- Output path: results/real_slr_sp3_od_formal400_inputs/real_slr_sp3_od_formal400_validation.json
+- build_paper_assets.py correctly prioritizes formal400 artifact when present
+- campaign_name logic correctly identifies n >= 400 as "formal400"
+
+Ready for orchestrator to run full 400-attempt compact real-data replay.

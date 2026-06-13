@@ -1,0 +1,98 @@
+{
+  "schema_version": "structural_channel_recoverability_v1",
+  "scope": "Cheap favorable-geometry implementation sanity diagnostic for the DMC-EKF empirical-acceleration channel and DSA-EKF drag-scale channel. The diagnostic is deliberately constructed so each channel sees a matched synthetic structural signal under all-visible low-noise geometry. It is not an operational orbit-determination setting, not a new primary endpoint, and not a claim about learned-estimator performance.",
+  "rationale": "The reviewer requested auditable evidence that the implemented structural channels can recover known signals when the geometry is deliberately favorable. This diagnostic isolates implementation recoverability from the harder manuscript slices where the structural channel may be weakly observable or mismatched to the truth-side force error.",
+  "diagnostic_cases": {
+    "drag_scale": {
+      "candidate": "DSA-EKF",
+      "reference": "EKF",
+      "seed": 770701,
+      "steps": 180,
+      "dt_s": 20.0,
+      "eval_start_step": 20,
+      "truth_beta": 4.0,
+      "orbit": {
+        "altitude_km": 300.0,
+        "eccentricity": 0.001,
+        "inclination_deg": 53.0,
+        "raan_deg": 20.0,
+        "arg_perigee_deg": 35.0,
+        "true_anomaly_deg": 5.0
+      },
+      "measurement_noise": {
+        "range_std_m": 1.0,
+        "az_std_deg": 0.0002,
+        "el_std_deg": 0.0002,
+        "range_rate_std_mps": 0.001
+      },
+      "ekf": {
+        "q_pos_m": 0.1,
+        "q_vel_mps": 0.001,
+        "init_pos_std_m": 50.0,
+        "init_vel_std_mps": 0.1,
+        "gating_threshold": 1000000000.0
+      },
+      "dsa_ekf": {
+        "init_drag_scale_std": 2.0,
+        "drag_scale_sigma_ss": 2.0,
+        "drag_scale_tau_s": 1000000000.0,
+        "beta_soft_bound": [0.05, 8.0]
+      }
+    },
+    "empirical_acceleration": {
+      "candidate": "DMC-EKF",
+      "reference": "EKF",
+      "seed": 456,
+      "steps": 180,
+      "dt_s": 40.0,
+      "eval_start_step": 20,
+      "truth_empirical_acceleration_mps2": [2.0e-5, -1.0e-5, 1.5e-5],
+      "orbit": {
+        "altitude_km": 500.0,
+        "eccentricity": 0.001,
+        "inclination_deg": 53.0,
+        "raan_deg": 20.0,
+        "arg_perigee_deg": 35.0,
+        "true_anomaly_deg": 5.0
+      },
+      "measurement_noise": {
+        "range_std_m": 10.0,
+        "az_std_deg": 0.002,
+        "el_std_deg": 0.002,
+        "range_rate_std_mps": 0.01
+      },
+      "ekf": {
+        "q_pos_m": 0.02,
+        "q_vel_mps": 0.0002,
+        "init_pos_std_m": 50.0,
+        "init_vel_std_mps": 0.1,
+        "gating_threshold": 1000000000.0
+      },
+      "dmc_ekf": {
+        "init_emp_accel_std_mps2": 1.0e-4,
+        "emp_accel_sigma_mps2": 1.0e-4,
+        "emp_accel_tau_s": 1000000000.0
+      }
+    }
+  },
+  "station_geometry": {
+    "description": "Four globally separated stations, each with minimum elevation -90 degrees so every station is visible at every step.",
+    "min_elevation_deg": -90.0,
+    "n_stations": 4,
+    "dropout_prob": 0.0,
+    "outlier_prob": 0.0
+  },
+  "acceptance": {
+    "dsa_beta_relative_tolerance": 0.05,
+    "dmc_acceleration_relative_l2_tolerance": 0.05,
+    "required_rmse_ordering": [
+      "DSA-EKF lower than EKF on the drag-scale case",
+      "DMC-EKF lower than EKF on the empirical-acceleration case"
+    ]
+  },
+  "outputs": {
+    "result_json": "results/structural_channel_recoverability/structural_channel_recoverability.json",
+    "result_csv": "results/structural_channel_recoverability/structural_channel_recoverability.csv",
+    "paper_table": "paper/tables/structural_channel_recoverability.tex"
+  }
+}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Public-data and replay-slice summary. Source-pool size is scenario-specific when station-bank filtering is applied.}
+  \label{tab:public_data_summary}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccccccc}
+    \toprule
+    Scenario & Source family & Replay source & Pool size & Samples & Distinct sats. & Distinct stations & Zero-vis frac. & One-vis frac. & $\geq2$ vis frac. \\
+    \midrule
+    Archived-catalog replay & Archived catalog & Archived TLE replay & 48 & 48 & 5 & 8 & 0.7809 & 0.2191 & 0.0000 \\
+    Public-catalog replay & Public catalog & CelesTrak + SatNOGS stations & 15110 & 48 & 48 & 8 & 0.7599 & 0.1745 & 0.0656 \\
+    SatNOGS observation replay & Public observations & SatNOGS completed passes & 80 & 48 & 37 & 15 & 0.8281 & 0.1222 & 0.0497 \\
+    SatNOGS observation replay stress & Public observations & SatNOGS pass timing + stress corruption & 80 & 16 & 13 & 9 & 0.8328 & 0.1240 & 0.0432 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

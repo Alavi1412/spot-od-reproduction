@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Window-length sensitivity under matched training budgets and evaluation protocol.}
+  \label{tab:window_sensitivity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{ccccccc}
+    \toprule
+    Window $W$ & Test Hybrid RMSE [m] & Test UKF RMSE [m] & Test $\Delta$ vs UKF [\%] & Stress Hybrid RMSE [m] & Stress UKF RMSE [m] & Stress $\Delta$ vs UKF [\%] \\
+    \midrule
+    8 & 6287.60 & 6300.06 & 0.198 & 8469.82 & 8802.15 & 3.776 \\
+    12 & 6388.37 & 6401.06 & 0.198 & 8608.53 & 8947.04 & 3.783 \\
+    16 & 6492.35 & 6505.31 & 0.199 & 8753.88 & 9099.10 & 3.794 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

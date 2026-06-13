@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{\emph{Uncorrected} densified-visibility control (6 independently seeded realizations, 120 trajectories). Its interpretation is superseded by the corrected credible probe (Table~\ref{tab:credible_dense_od_probe}); see the main text for the measurement-conditioning artifact and network inconsistency that drive the near-identical catastrophic medians and 57.5\% gross-failure rate across every estimator. The fixed, previously trained RGR-GF estimator is evaluated without any per-realization refitting.}
+  \label{tab:dense_visibility_probe}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Estimator & Div.\ avoid.\ & Gross-fail & Median all-step [m] & Median obs.\ [m] & Adeq.\ all-step [m] & Adeq.\ obs.\ [m] \\
+    \midrule
+    EKF & 100.0\% & 57.5\% & 2984789.83 & 3793278.34 & 23728.42 & 24155.76 \\
+    UKF & 80.0\% & 57.5\% & 3112905.41 & 5618948.99 & 23730.29 & 24160.28 \\
+    AUKF & 92.5\% & 57.5\% & 3043252.57 & 3700194.19 & 23730.29 & 24160.28 \\
+    RGR-GF & 81.7\% & 57.5\% & 3196562.96 & 4403726.93 & 23727.46 & 24157.99 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Median is over all 120 trajectories (heavy-tail-robust); ``Adeq.'' columns pool the 51 trajectories within the 100 km physical-adequacy bound for every estimator (a fair paired comparison). Divergence-avoidance and gross-failure rates use the manuscript's own 1e8 m and 100 km thresholds. All-step and observed-step are reported symmetrically; the regime is a bounded, perfect-shared-model estimator-skill probe, not a protocol endpoint and not operational OD.}
+\end{table}

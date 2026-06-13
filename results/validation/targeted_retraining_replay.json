@@ -1,0 +1,347 @@
+{
+  "schema_version": "targeted-retraining-replay-v2",
+  "artifact_type": "targeted_learned_estimator_retraining_replay",
+  "created_at_utc": "2026-05-25T17:19:26Z",
+  "status": {
+    "pass": true,
+    "failed_criteria": []
+  },
+  "claim_boundary": "This artifact demonstrates one bounded from-scratch learned-estimator training replay on deterministic materialized splits under the predeclared replay rule. It does not reproduce the full paper tables, seed suites, or main-result claims.",
+  "predeclaration": {
+    "path": "release/predeclarations/targeted_curriculum_retraining_replay_20260525.json",
+    "sha256": "d6c919ea2d711b0150cb5a2129609d7d9b4a50113b34e92457467d016b7dbd02"
+  },
+  "model": "ObservabilityContextHybridGNN",
+  "seed": 118103,
+  "device": {
+    "accelerated_compute_required": true,
+    "accelerated_compute_used": true,
+    "non_accelerated_execution_allowed": false,
+    "runtime_details_redacted": true,
+    "hardware_details_redacted": true,
+    "software_acceleration_version_redacted": true
+  },
+  "data": {
+    "source_data_dir": "results/data",
+    "slices": {
+      "train": {
+        "source_path": "results/data/train.npz",
+        "source_sha256": "915432d5774a46790a7583cc7b39d16f773571fefda6022058273bfb2032b3eb",
+        "slice_path": "results/retraining_replay/targeted_retraining_replay/data_slices/train.npz",
+        "slice_sha256": "915432d5774a46790a7583cc7b39d16f773571fefda6022058273bfb2032b3eb",
+        "source_trajectories": 160,
+        "slice_trajectories": 160,
+        "array_keys": [
+          "states",
+          "measurements",
+          "measurements_true",
+          "visibility",
+          "times",
+          "station_ecef",
+          "station_llh",
+          "ekf_prior",
+          "ukf_prior",
+          "aukf_prior",
+          "secondary_prior",
+          "x0_estimates",
+          "innovation_features",
+          "prior_bank_stats",
+          "sample_weight",
+          "regime_name"
+        ],
+        "state_shape": [
+          160,
+          120,
+          6
+        ]
+      },
+      "val": {
+        "source_path": "results/data/val.npz",
+        "source_sha256": "f031a105caf1cb8c83c3cc015679a510ac9fa10b50a47e0e6215ce3a85034f41",
+        "slice_path": "results/retraining_replay/targeted_retraining_replay/data_slices/val.npz",
+        "slice_sha256": "f031a105caf1cb8c83c3cc015679a510ac9fa10b50a47e0e6215ce3a85034f41",
+        "source_trajectories": 32,
+        "slice_trajectories": 32,
+        "array_keys": [
+          "states",
+          "measurements",
+          "measurements_true",
+          "visibility",
+          "times",
+          "station_ecef",
+          "station_llh",
+          "ekf_prior",
+          "ukf_prior",
+          "aukf_prior",
+          "secondary_prior",
+          "x0_estimates",
+          "innovation_features",
+          "prior_bank_stats",
+          "sample_weight",
+          "regime_name"
+        ],
+        "state_shape": [
+          32,
+          120,
+          6
+        ]
+      },
+      "stress_train": {
+        "source_path": "results/data/stress_train.npz",
+        "source_sha256": "18ab41b8e7ea9217b617e2c67c11afd1fad9f8c1e809c99e1c3f376d6a2e78ef",
+        "slice_path": "results/retraining_replay/targeted_retraining_replay/data_slices/stress_train.npz",
+        "slice_sha256": "18ab41b8e7ea9217b617e2c67c11afd1fad9f8c1e809c99e1c3f376d6a2e78ef",
+        "source_trajectories": 96,
+        "slice_trajectories": 96,
+        "array_keys": [
+          "states",
+          "measurements",
+          "measurements_true",
+          "visibility",
+          "times",
+          "station_ecef",
+          "station_llh",
+          "ekf_prior",
+          "ukf_prior",
+          "aukf_prior",
+          "secondary_prior",
+          "x0_estimates",
+          "innovation_features",
+          "prior_bank_stats",
+          "sample_weight",
+          "regime_name"
+        ],
+        "state_shape": [
+          96,
+          120,
+          6
+        ]
+      },
+      "stress_val": {
+        "source_path": "results/data/stress_val.npz",
+        "source_sha256": "f67be0317d6d3be41ab2cfe1db15170fff760f6768c026dad402983124ca542b",
+        "slice_path": "results/retraining_replay/targeted_retraining_replay/data_slices/stress_val.npz",
+        "slice_sha256": "f67be0317d6d3be41ab2cfe1db15170fff760f6768c026dad402983124ca542b",
+        "source_trajectories": 24,
+        "slice_trajectories": 24,
+        "array_keys": [
+          "states",
+          "measurements",
+          "measurements_true",
+          "visibility",
+          "times",
+          "station_ecef",
+          "station_llh",
+          "ekf_prior",
+          "ukf_prior",
+          "aukf_prior",
+          "secondary_prior",
+          "x0_estimates",
+          "innovation_features",
+          "prior_bank_stats",
+          "sample_weight",
+          "regime_name"
+        ],
+        "state_shape": [
+          24,
+          120,
+          6
+        ]
+      },
+      "satnogs_observation_replay_val": {
+        "source_path": "results/data/satnogs_observation_replay_val.npz",
+        "source_sha256": "2654a344748036649196a4e4a350efee6e8f17c0d24bbce599166c0964227efb",
+        "slice_path": "results/retraining_replay/targeted_retraining_replay/data_slices/satnogs_observation_replay_val.npz",
+        "slice_sha256": "2654a344748036649196a4e4a350efee6e8f17c0d24bbce599166c0964227efb",
+        "source_trajectories": 16,
+        "slice_trajectories": 16,
+        "array_keys": [
+          "states",
+          "measurements",
+          "measurements_true",
+          "visibility",
+          "times",
+          "station_ecef",
+          "station_llh",
+          "station_name",
+          "source_observation_id",
+          "source_norad_cat_id",
+          "source_bucket",
+          "source_start",
+          "source_end",
+          "anchor_station_name",
+          "anchor_alignment_offset_s",
+          "source_slice_offset",
+          "source_slice_pool_count",
+          "source_type",
+          "ekf_prior",
+          "ukf_prior",
+          "aukf_prior",
+          "secondary_prior",
+          "x0_estimates",
+          "innovation_features",
+          "prior_bank_stats",
+          "sample_weight",
+          "regime_name"
+        ],
+        "state_shape": [
+          16,
+          120,
+          6
+        ]
+      }
+    },
+    "full_materialized_curriculum": true,
+    "full_split_counts": true
+  },
+  "training": {
+    "source_script": "scripts/train_models.py",
+    "execution": {
+      "step": "targeted_training_replay",
+      "entrypoint": "scripts/train_models.py",
+      "config_redacted": true,
+      "model": "ObservabilityContextHybridGNN",
+      "accelerated_compute_required": true,
+      "execution_details_redacted": true
+    },
+    "evaluation_started_at_utc": "2026-05-25T17:17:08Z",
+    "evaluation_completed_at_utc": "2026-05-25T17:19:26Z",
+    "duration_redacted": true,
+    "returncode": 0,
+    "log_sha256": "36d286f8351533ae2da165c310a212c68fafca20c33f91a8f9aa3f85a6cce5a9",
+    "stages": [
+      {
+        "stage": "nominal_pretrain_replay",
+        "checkpoint": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/replay_observabilitycontexthybridgnn_nominal_pretrain_replay.pt",
+        "epochs_completed": 3,
+        "train_loss": [
+          -1.1341346057310728,
+          -1.5996679136718528,
+          -1.5996568997701008
+        ],
+        "val_loss": [
+          -1.5990827083587646,
+          -1.5985509327479772,
+          -1.5986842683383398
+        ],
+        "final_train_loss": -1.5996568997701008,
+        "final_val_loss": -1.5986842683383398,
+        "best_val_loss": -1.5990827083587646
+      },
+      {
+        "stage": "mixed_train_replay",
+        "checkpoint": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/replay_observabilitycontexthybridgnn_mixed_train_replay.pt",
+        "epochs_completed": 3,
+        "train_loss": [
+          -1.599701450505388,
+          -1.5997252486167697,
+          -1.599725450944463
+        ],
+        "val_loss": [
+          -1.3296755519608225,
+          -1.5567349570052105,
+          -1.523287608165934
+        ],
+        "final_train_loss": -1.599725450944463,
+        "final_val_loss": -1.523287608165934,
+        "best_val_loss": -1.5567349570052105
+      },
+      {
+        "stage": "stress_focus_replay",
+        "checkpoint": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/replay_observabilitycontexthybridgnn.pt",
+        "epochs_completed": 2,
+        "train_loss": [
+          -1.5997534263424757,
+          -1.5997755789175265
+        ],
+        "val_loss": [
+          1.4636917848091622,
+          -1.1646566140187251
+        ],
+        "final_train_loss": -1.5997755789175265,
+        "final_val_loss": -1.1646566140187251,
+        "best_val_loss": -1.1646566140187251
+      }
+    ]
+  },
+  "outputs": {
+    "output_root": "results/retraining_replay/targeted_retraining_replay",
+    "config": {
+      "path_redacted": true,
+      "redaction_reason": "Raw executable replay config records acceleration and local runtime details; retained by digest only.",
+      "sha256": "df1e6c40db9cdcbb2a91a5f7fc19664c1e46f2e8d0529b93ba817552d036bad4"
+    },
+    "history": {
+      "path": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/train_history.json",
+      "sha256": "9f9ae462555fd6734178d11248ed6a080c7259372ea41f7c983b1a0d57dafbd0"
+    },
+    "env_report": {
+      "sha256": "178c11ae2a0f6c3f156cf89abce3a9ad40a21ddf000710aed6cd9eefcf8e361b",
+      "path_redacted": true,
+      "runtime_details_redacted": true
+    },
+    "manifests": [
+      {
+        "artifact": "ObservabilityContextHybridGNN_mixed_train_replay.json",
+        "sha256": "1ccb9c626ce4092218955f4ac58621fa357c9a2f675ea0ed88cbf875d7b14231"
+      },
+      {
+        "artifact": "ObservabilityContextHybridGNN_nominal_pretrain_replay.json",
+        "sha256": "d664aef08947dd23693bb83564abae12d24f4ba7bd23686ccb844cb9fad03204"
+      },
+      {
+        "artifact": "ObservabilityContextHybridGNN_stress_focus_replay.json",
+        "sha256": "578cbf37cd247fab74c2fb9ec29591ab1221a6f7cf0461fc35624a5c37727426"
+      }
+    ],
+    "checkpoints": [
+      {
+        "path": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/replay_observabilitycontexthybridgnn_nominal_pretrain_replay.pt",
+        "sha256": "83c0065b85ac6e534b2b4ad0a994ff4e18a8349656de93c751232686efd0e69e",
+        "bytes": 1760391
+      },
+      {
+        "path": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/replay_observabilitycontexthybridgnn_mixed_train_replay.pt",
+        "sha256": "00988ac6b3913809ffc84a866b43246e0e2e1799da66a77580d15a5c8685dc41",
+        "bytes": 1760082
+      },
+      {
+        "path": "results/retraining_replay/targeted_retraining_replay/artifacts/checkpoints/replay_observabilitycontexthybridgnn.pt",
+        "sha256": "25fe697961503fbadfc0750b42551868dc48d644f5cc24b86defaff31e3e5c53",
+        "bytes": 1758831
+      }
+    ],
+    "train_log": {
+      "sha256": "36d286f8351533ae2da165c310a212c68fafca20c33f91a8f9aa3f85a6cce5a9",
+      "path_redacted": true,
+      "redaction_reason": "Raw training log includes local runtime details; retained by digest only."
+    },
+    "canonical_checkpoint_digest_before": {
+      "path": "results\\checkpoints",
+      "exists": true,
+      "file_count": 32,
+      "sha256": "5cf6fa3d91e7e9cfe6b55b80ca75774aab4a7bbb319e623d7975985587e5429c"
+    },
+    "canonical_checkpoint_digest_after": {
+      "path": "results\\checkpoints",
+      "exists": true,
+      "file_count": 32,
+      "sha256": "5cf6fa3d91e7e9cfe6b55b80ca75774aab4a7bbb319e623d7975985587e5429c"
+    }
+  },
+  "criteria": {
+    "training_step_returned_zero": true,
+    "model_history_present": true,
+    "train_loss_finite": true,
+    "validation_loss_finite": true,
+    "checkpoint_produced": true,
+    "checkpoint_sha256_recorded": true,
+    "deterministic_config_captured": true,
+    "isolated_output_dir_under_results_retraining_replay": true,
+    "canonical_checkpoint_digest_unchanged": true,
+    "accelerated_compute_required_and_used": true,
+    "predeclaration_digest_recorded": true
+  },
+  "total_driver_duration_redacted": true,
+  "driver_started_at_utc": "2026-05-25T17:17:01Z"
+}

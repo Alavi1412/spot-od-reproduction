@@ -1,0 +1,113 @@
+{
+  "archive": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
+  "archive_allowed_notes": {
+    "release/predeclarations/observed_step_powered_stress_replication.json": [
+      {
+        "allow_reason": "preserved fixed pre-run rule wording; not edited after evaluation",
+        "line": 10,
+        "pattern": "k96_stale_label",
+        "text": "\"stress_negative_floor_power_readout\": \"If RGR-GF does not satisfy the learned-positive predicate at K=96, the stress-row negative has been checked at a realization count exceeding the K about 94 floor-power requirement; this does not conve"
+      }
+    ]
+  },
+  "archive_exists": true,
+  "archive_hits": {},
+  "archive_sha256": "697d64b434c906ebf3138345b9c80cc20b1e73a9c7b1b0ba03c4019f8135f08d",
+  "archive_text_members_scanned": 131,
+  "current_text_artifacts": {
+    "paper\\main.pdf": {
+      "bytes": 663283,
+      "exists": true,
+      "sha256": "7d0861215286305a805f23cf14c6adcd2cd7655389041680af665c9c4429956d"
+    },
+    "paper\\main_text.txt": {
+      "bytes": 130815,
+      "exists": true,
+      "sha256": "edd20f66ffee7e1f9c9e71038d9ab42486461b29e07f2c809c8a768dc69cbff4"
+    },
+    "paper\\supplement.pdf": {
+      "bytes": 1100037,
+      "exists": true,
+      "sha256": "e73546f8e6509f20b68654d2e5105d2bea9306bb424061400092006cf9572978"
+    },
+    "paper\\supplement_text.txt": {
+      "bytes": 250265,
+      "exists": true,
+      "sha256": "08e5570c70ce8e43b2cc2db8d4b1b857d1108518d6cee3db3baf9fdb2243545b"
+    },
+    "results\\validation\\paper_main_current_leakscan.txt": {
+      "bytes": 130815,
+      "exists": true,
+      "sha256": "edd20f66ffee7e1f9c9e71038d9ab42486461b29e07f2c809c8a768dc69cbff4"
+    },
+    "results\\validation\\paper_supplement_current_leakscan.txt": {
+      "bytes": 250265,
+      "exists": true,
+      "sha256": "08e5570c70ce8e43b2cc2db8d4b1b857d1108518d6cee3db3baf9fdb2243545b"
+    }
+  },
+  "expected_current_s_table42_stratification": {
+    "paper\\supplement_text.txt": {
+      "hifi_now_s_table43": true,
+      "lageos1_row": true,
+      "lageos2_row": true,
+      "multitarget_now_s_table45": true,
+      "original_hifi40_half_row": true,
+      "preceding_half_row": true,
+      "s_table42_stratification_caption": true
+    },
+    "results\\validation\\paper_supplement_current_leakscan.txt": {
+      "hifi_now_s_table43": true,
+      "lageos1_row": true,
+      "lageos2_row": true,
+      "multitarget_now_s_table45": true,
+      "original_hifi40_half_row": true,
+      "preceding_half_row": true,
+      "s_table42_stratification_caption": true
+    }
+  },
+  "generated_utc": "2026-05-26T01:55:23.825846+00:00",
+  "live_allowed_notes": {},
+  "live_files_scanned": 42,
+  "live_hits": {},
+  "patterns": [
+    "venv",
+    "accelerator_token",
+    "accelerator_brand_token",
+    "absolute_local_path",
+    "model_provider_name",
+    "k96_stale_label",
+    "stale_s_table42_hifi",
+    "stale_s_table42_public_multi",
+    "stale_multitarget_ref_s_table42",
+    "stale_s_table40_hifi"
+  ],
+  "scope_note": "Scans current PDF text extracts, paper/release summaries, validation json/md/txt summaries, manifest, and non-source/non-log text-like review archive members. Source code and raw logs are excluded from leak judgement because they may legitimately contain command/device tokens.",
+  "stale_table_numbering_signature_absence": {
+    "paper\\main_text.txt": {
+      "stale_multitarget_ref_s_table42": true,
+      "stale_s_table40_hifi": true,
+      "stale_s_table42_hifi": true,
+      "stale_s_table42_public_multi": true
+    },
+    "paper\\supplement_text.txt": {
+      "stale_multitarget_ref_s_table42": true,
+      "stale_s_table40_hifi": true,
+      "stale_s_table42_hifi": true,
+      "stale_s_table42_public_multi": true
+    },
+    "results\\validation\\paper_main_current_leakscan.txt": {
+      "stale_multitarget_ref_s_table42": true,
+      "stale_s_table40_hifi": true,
+      "stale_s_table42_hifi": true,
+      "stale_s_table42_public_multi": true
+    },
+    "results\\validation\\paper_supplement_current_leakscan.txt": {
+      "stale_multitarget_ref_s_table42": true,
+      "stale_s_table40_hifi": true,
+      "stale_s_table42_hifi": true,
+      "stale_s_table42_public_multi": true
+    }
+  },
+  "status": "pass_with_allowed_notes"
+}

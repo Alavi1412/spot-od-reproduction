@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Offline robust batch weighted least-squares OD reference for the primary synthetic splits and the public-catalog replay slice. Batch WLS estimates one initial Cartesian state per trajectory from the full visible measurement arc, then propagates the fitted state across the horizon using the scenario's deterministic force model. It is a postfit classical OD reference rather than a causal filter.}
+  \label{tab:batch_wls_baseline}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccccc}
+    \toprule
+    Scenario & Traj. & Meas./traj. & Fit success [\%] & WLS obs. RMSE [m] & Best rec. obs. RMSE [m] & Best rec. & WLS all-step RMSE [m] & WLS $\Delta$ obs./all [\%] \\
+    \midrule
+    Nominal test & 64 & 25.7 & 81.2 & 152.61 & 382.76 & EKF & 4880.31 & 60.13 / 20.91 \\
+    Stress test & 64 & 24.4 & 75.0 & 372.59 & 915.21 & AUKF & 5596.58 & 59.29 / 17.70 \\
+    Public-catalog replay & 48 & 36.7 & 87.5 & 354.72 & 411.80 & EKF & 3383.13 & 13.86 / 41.38 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,57 @@
+{
+  "artifact": "task227_final_release_evidence_index",
+  "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+  "overall_status": "PASSED",
+  "entries": [
+    {
+      "kind": "tests_passed",
+      "path": "tool:.venv\\Scripts\\python.exe -m pytest",
+      "summary": "43 passed in 6.27s"
+    },
+    {
+      "kind": "build_log",
+      "path": "tool:latexmk -pdf -interaction=nonstopmode -halt-on-error -cd paper/main.tex",
+      "summary": "exit_code 0; all targets up-to-date"
+    },
+    {
+      "kind": "pdf_evidence",
+      "path": "results/task227_pdf_evidence.json",
+      "summary": "33 pages, 719991 bytes, sha256 cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745"
+    },
+    {
+      "kind": "citation_validation",
+      "path": "results/task227_citation_validation.json",
+      "summary": "95 cited keys; missing entries 0"
+    },
+    {
+      "kind": "release_packet_sync",
+      "path": "results/release_packet.json",
+      "summary": "sync passed=True; tables=9 figures=1"
+    },
+    {
+      "kind": "line_evidence_sync_report",
+      "path": "results/release_packet_line_evidence_sync_report.json",
+      "summary": "duplicate line evidence passed=True; fields=7"
+    },
+    {
+      "kind": "changed_files",
+      "path": "results/task227_final_submission_validation_result_payload.json#changed_files",
+      "summary": "8 changed/source evidence paths listed"
+    },
+    {
+      "kind": "provider_fallback_ledger",
+      "path": "results/manager_provider_fallback_ledger.json",
+      "summary": "provider summary parsed"
+    },
+    {
+      "kind": "stakeholder_artifact",
+      "path": "results/task227_final_submission_validation_stakeholder_artifact.md",
+      "summary": "Notion-ready readback artifact"
+    },
+    {
+      "kind": "machine_payload",
+      "path": "results/task227_final_submission_validation_result_payload.json",
+      "summary": "canonical Task 227 result payload"
+    }
+  ]
+}

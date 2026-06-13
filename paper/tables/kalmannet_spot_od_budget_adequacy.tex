@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Training-budget adequacy diagnostic for the documented adapted KalmanNet SPOT-OD transposition (Table~\ref{tab:kalmannet_spot_od_transposition}). The same disjoint-seed train/validation/test split and the identical upstream KalmanNet gain network are used; the optimizer budget is extended to 1800 steps and the held-out test observed-step position RMSE is evaluated at predeclared snapshot milestones (300, 600, 1200, 1800; listed in the predeclared rule before the diagnostic was run). The 300-step row reproduces the prior single-budget transposition outcome; the larger-budget rows are the predeclared budget extensions. The diagnostic addresses the concern that the prior single-budget outcome could be limited by the documented schedule rather than by the transposition design alone; the extended budget still leaves the transposition far from the classical references, but continued descent means budget sensitivity cannot be excluded.}
+  \label{tab:kalmannet_spot_od_budget_adequacy}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{cccccc}
+    \toprule
+    Optimizer step & Validation MSE & Test mean RMSE [m] & KalmanNet$-$AUKF mean [m] & 95\% CI [m] & Predeclared positive criterion met \\
+    \midrule
+    300 & 8.473e-05 & 152683.74 & 152342.85 & $[138389.91, 167014.47]$ & No \\
+    600 & 7.834e-05 & 148547.95 & 148207.06 & $[133550.89, 164104.21]$ & No \\
+    1200 & 7.248e-05 & 139060.33 & 138719.44 & $[127605.20, 150628.97]$ & No \\
+    1800 & 7.278e-05 & 136004.77 & 135663.88 & $[125457.20, 146733.46]$ & No \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Same disjoint-seed split as the prior transposition: 160 training / 24 validation / 64 held-out test trajectories. Classical references on the same test population: EKF: 346.39~m, UKF: 385.53~m, AUKF: 340.89~m, PUKF: 430.08~m. Observed-step paired comparisons use the same finite denominator as Table~\ref{tab:kalmannet_spot_od_transposition}: 53 of the 64 held-out trajectories have a scored observed update after the predeclared evaluation-window start, while 11 do not and therefore do not enter observed-step paired comparisons. The validation-best snapshot is snapshot at step 1200 (held-out test mean RMSE 139060.33~m). The held-out test position-RMSE descent from the first to the last predeclared snapshot is 10.9\%; the informational interpretation under the predeclared rule is \emph{modestly descending; budget sensitivity not excluded}. Architecture/adaptation mismatch is the most parsimonious interpretation of the remaining gap, but the continued descent means budget sensitivity cannot be excluded; the table is a feasibility/design-gap diagnostic rather than evidence of KalmanNet failure. The predeclared decision predicate (KalmanNet strictly lowest mean, paired CI strictly below zero, absolute gap above the 3\% \mbox{practical-significance} floor of the best non-candidate mean) is reported row-by-row at each snapshot; no retuning of the rule, the data layout, or the architecture is allowed.}
+\end{table}

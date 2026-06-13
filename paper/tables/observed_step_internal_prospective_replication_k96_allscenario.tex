@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Larger-$K$ ($K{=}96$) all-scenario internal prospective independently seeded observed-step replication (base seed 1630000, $K{=}96$ independent realizations per scenario, 24 trajectories per realization). Unlike the earlier stress-only $K{=}96$ floor-power check, this seed-disjoint draw carries all three scenarios to the powered $K{=}96$ sample size. Observed-step position RMSE is the primary endpoint; the paired column reports the mean RGR-GF-minus-best-classical observed-step gap with a 95\% percentile bootstrap CI over independent realizations; negative values favour RGR-GF. The rule was written to a local freeze record before any additional replication realization was generated or evaluated, under the same frozen decision predicate as the central $K{=}32$ anchor. This is an additional independently seeded internal replication reported as supplementary evidence under the established endpoint hierarchy; it is not external preregistration, public-reference validation, or operational validation.}
+  \label{tab:observed_step_internal_prospective_replication_k96_allscenario}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccll}
+    \toprule
+    Scenario & EKF / UKF / AUKF obs.\ [m] & RGR-GF obs.\ [m] & Best classical & RGR-GF$-$best cl.\ [m] (95\% CI) & Interpretation \\
+    \midrule
+    Nominal & 402.2 / 493.5 / 407.3 & 406.0 & EKF & 3.77 [-9.63, 20.14] & No learned positive \\
+    Measurement-noise stress & 971.8 / 1710.2 / 948.5 & 981.3 & AUKF & 32.83 [8.50, 61.52] & No learned positive \\
+    Controlled force-model mismatch & 449.4 / 472.8 / 526.1 & 470.5 & EKF & 21.12 [16.44, 25.51] & No learned positive \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize $K=96$ independent realizations per scenario, 24 trajectories per realization, all three scenarios. The rule was fixed in a local freeze record before any additional replication realization was generated or evaluated. This larger-$K$ all-scenario draw is an additional independently seeded internal replication under the no-learned-positive predicate; it is not external preregistration.}
+\end{table}

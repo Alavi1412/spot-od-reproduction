@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Consolidated RGR-GF-vs-fixed-noise-UKF stress-gain estimands. All entries share the same direction (RGR-GF better than fixed-noise UKF on the stress split) but differ in pairing unit and scoring horizon, which is why their magnitudes differ; they are \emph{not} interchangeable. The abstract and headline lead with the observed-step primary-metric quantity (last row); the others are retained as cross-checks and propagation-gap references. Each value is traced to its own result artifact and source table.}
+  \label{tab:ukf_gain_estimands}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllll}
+    \toprule
+    Estimand & Pairing unit & Stress gain vs UKF [m] & Seed/pair basis & Source \\
+    \midrule
+    Primary-seed paired trajectory (all-step) & Paired trajectory, 1 seed & 487.19 & 64 trajectories & Table~\ref{tab:significance} \\
+    Seed-level aggregate (all-step) & Seed aggregate RMSE & 355.78 & 15 seeds, 15/15 & Table~\ref{tab:seed_aware_significance} \\
+    Seed-pooled trajectory (all-step) & Seed--trajectory pair & 771.94 & 960 pairs, 15 seeds & Table~\ref{tab:seed_pooled_significance} \\
+    Seed-level observed-step (\textbf{primary metric}) & Seed observed-step RMSE & 768.32 & 15/15 seeds & Table~\ref{tab:seed_observed_significance} \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

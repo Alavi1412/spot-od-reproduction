@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering\small
+  \caption{CRLB-floor sensitivity audit for the long-arc held-out test. Rows B, D, and E report tighter floors from relaxing the conservative slant-range and multi-visibility assumptions; row C adds the range-rate noise in quadrature (a marginal perturbation that returns the same floor at worst-case slant range); row F reports a looser pass-correlated effective-count bound for within-pass temporal correlation. Across all six variants the predeclared positive criterion remains unsatisfied because the structural-channel mean is not strictly lowest, so the predeclared decision is floor-robust; the audit is informational and does not load-bear the predeclared rule.}
+  \label{tab:crlb_floor_sensitivity}
+  \begin{tabular}{p{0.30\linewidth}cccc}
+    \toprule
+    Variant & Floor [m] & Slant range [km] & Independent obs. & Decision flips? \\
+    \midrule
+    A. Predeclared baseline (worst-case slant range, no range-rate term, no-overlap union bound) & 106.0 & 2,307 & 116 & No \\
+    B. Tighter slant range at mean visible elevation & 41.2 & 895 & 116 & No \\
+    C. Range-rate noise term in quadrature & 106.0 & 2,307 & 116 & No \\
+    D. Multi-visibility credit factor 1.25 & 94.8 & 2,307 & 145 & No \\
+    E. All three relaxations combined & 36.8 & 895 & 145 & No \\
+    F. Pass-correlated effective count (10-step block) & 335.1 & 2,307 & 12 & No \\
+    \bottomrule
+  \end{tabular}
+  \\[2pt] {\footnotesize Six variants of the closed-form Cramer-Rao floor on the arc-accumulated 3D position-RMSE under the configured eight-station network on a 3-hour arc at the configured altitude band and minimum-elevation cap. Variant A is the predeclared baseline matching the floor used as the long-arc positive-criterion threshold; variants B, D, and E relax one or more of the conservative slant-range and multi-visibility simplifications; variant C adds the range-rate noise in quadrature (a marginal perturbation that returns the same floor at worst-case slant range); variant F divides the baseline visible-step count by a 10-step (200 s) within-pass correlation block. Under every variant the structural-channel positive criterion remains unsatisfied because DSA-EKF is not strictly lowest in mean on the long-arc held-out test.}
+\end{table}

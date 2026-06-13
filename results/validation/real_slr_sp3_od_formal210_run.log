@@ -1,0 +1,149 @@
+{
+  "status": "partial_completed",
+  "output_json": "results\\real_slr_sp3_od_formal210_inputs\\real_slr_sp3_od_formal210_validation.json",
+  "num_arcs": 210,
+  "num_arcs_completed": 200,
+  "pooled_held_out_position_rmse_m": {
+    "EKF": {
+      "completed_arc_count": 200,
+      "n_arcs": 200,
+      "mean_arc_rms_m": 605.68,
+      "std_arc_rms_m": 688.17,
+      "median_arc_rms_m": 374.97,
+      "arc_best_count": 49
+    },
+    "UKF (fixed-noise)": {
+      "completed_arc_count": 200,
+      "n_arcs": 200,
+      "mean_arc_rms_m": 597.68,
+      "std_arc_rms_m": 663.1,
+      "median_arc_rms_m": 366.33,
+      "arc_best_count": 25
+    },
+    "AUKF (adaptive)": {
+      "completed_arc_count": 200,
+      "n_arcs": 200,
+      "mean_arc_rms_m": 630.65,
+      "std_arc_rms_m": 770.58,
+      "median_arc_rms_m": 376.81,
+      "arc_best_count": 48
+    },
+    "SP3-IC propagation": {
+      "completed_arc_count": 200,
+      "n_arcs": 200,
+      "mean_arc_rms_m": 866.86,
+      "std_arc_rms_m": 737.88,
+      "median_arc_rms_m": 638.15,
+      "arc_best_count": 78
+    }
+  },
+  "paired_differences": {
+    "EKF minus AUKF (adaptive)": {
+      "first_method": "EKF",
+      "second_method": "AUKF (adaptive)",
+      "n": 200,
+      "mean_difference_m": -24.97,
+      "median_difference_m": 0.3,
+      "bootstrap95_mean_difference_m": [
+        -89.22,
+        26.34
+      ],
+      "seed": 20260526,
+      "resamples": 5000,
+      "n_first_larger_rmse": 103,
+      "fraction_first_larger_rmse": 0.515,
+      "sign_convention": "first_minus_second; positive means the first method has larger held-out RMSE than the second method"
+    },
+    "UKF (fixed-noise) minus AUKF (adaptive)": {
+      "first_method": "UKF (fixed-noise)",
+      "second_method": "AUKF (adaptive)",
+      "n": 200,
+      "mean_difference_m": -32.97,
+      "median_difference_m": 0.0,
+      "bootstrap95_mean_difference_m": [
+        -93.41,
+        13.05
+      ],
+      "seed": 20260526,
+      "resamples": 5000,
+      "n_first_larger_rmse": 91,
+      "fraction_first_larger_rmse": 0.455,
+      "sign_convention": "first_minus_second; positive means the first method has larger held-out RMSE than the second method"
+    },
+    "EKF minus UKF (fixed-noise)": {
+      "first_method": "EKF",
+      "second_method": "UKF (fixed-noise)",
+      "n": 200,
+      "mean_difference_m": 8.01,
+      "median_difference_m": -0.44,
+      "bootstrap95_mean_difference_m": [
+        -6.92,
+        25.26
+      ],
+      "seed": 20260526,
+      "resamples": 5000,
+      "n_first_larger_rmse": 97,
+      "fraction_first_larger_rmse": 0.485,
+      "sign_convention": "first_minus_second; positive means the first method has larger held-out RMSE than the second method"
+    }
+  },
+  "dbar_external_validation": {
+    "n_arcs_scored": 200,
+    "n_correct": 137,
+    "external_label_definition": "adaptation counterproductive iff the adaptive UKF held-out SP3 position RMSE exceeds the fixed-noise UKF held-out SP3 position RMSE by more than the predeclared 5% margin (external precise reference; not the DBAR statistic, not a simulator label)",
+    "classification_accuracy": 0.685,
+    "confusion": {
+      "true_fire": 21,
+      "true_no_fire": 116,
+      "false_fire": 36,
+      "false_no_fire": 27
+    },
+    "sensitivity": 0.4375,
+    "specificity": 0.7632,
+    "n_counterproductive_arcs": 48,
+    "n_non_counterproductive_arcs": 152,
+    "classification_report": {
+      "n": 200,
+      "n_positive": 48,
+      "n_negative": 152,
+      "confidence": 0.95,
+      "accuracy": 0.685,
+      "accuracy_ci": [
+        0.6177,
+        0.7454
+      ],
+      "sensitivity": 0.4375,
+      "sensitivity_ci": [
+        0.307,
+        0.5772
+      ],
+      "specificity": 0.7632,
+      "specificity_ci": [
+        0.6896,
+        0.8237
+      ],
+      "precision": 0.3684,
+      "no_information": {
+        "majority_class": "no_fire (negative)",
+        "majority_class_accuracy": 0.76,
+        "accuracy_minus_majority": -0.075,
+        "n_correct_above_majority": -15,
+        "beats_majority": false
+      },
+      "power": {
+        "n_for_80pct_power_vs_majority_alpha05": 1000000000,
+        "positive_class_underpowered": false,
+        "note": "Sensitivity rests on the positive class only; with a small positive class its Wilson interval is wide and no inferential claim is made."
+      }
+    },
+    "no_information_baseline": {
+      "majority_class": "no_fire (negative)",
+      "majority_class_accuracy": 0.76,
+      "accuracy_minus_majority": -0.075,
+      "n_correct_above_majority": -15,
+      "beats_majority": false
+    },
+    "incremental_accuracy_over_majority_class": -0.075,
+    "beats_trivial_majority_classifier": false
+  }
+}

@@ -1,0 +1,28 @@
+\begin{table}[t]
+  \centering
+  \caption{Practical-significance-floor sensitivity sweep on the fresh independent observed-step endpoint-fixation support draw. For each floor (1, 2, 3, 5\%) the table reports the per-scenario floor absolute equivalent, the paired RGR-GF-minus-best-classical observed-step gap (mean and 95\% percentile-bootstrap CI), and two orthogonal classifications: \emph{statistically discriminative} (CI excludes zero on the positive side; RGR-GF is strictly worse) and \emph{practically significant} (point gap magnitude $|\Delta|>$ floor). At all 4/4 swept floors the headline finding is preserved (no learned positive on any independent endpoint-fixation scenario, nominal CI spans zero on every floor, stress and controlled-mismatch CIs exclude zero on every floor), so the predeclared 3\% choice is not load-bearing for the negative. The 3\% value is a mission-agnostic compact-simulator audit threshold, not a universal OD mission requirement. Source: same independent endpoint-fixation realizations underlying the primary endpoint; no re-evaluation.}
+  \label{tab:floor_sensitivity_sweep}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Floor (\%) & Scenario & Best classical & Floor [m] & Gap (95\% CI) [m] & Stat.\ disc.\ vs 0? & $|\Delta|>$ floor? \\
+    \midrule
+    1\% & Nominal & EKF & 4.1 & +26.5 [-13.8, +98.1] & no & yes \\
+    1\% & Measurement-noise stress & AUKF & 8.8 & +40.4 [+16.3, +63.8] & yes & yes \\
+    1\% & Controlled force-model mismatch & EKF & 4.5 & +37.6 [+21.5, +62.8] & yes & yes \\
+    \midrule
+    2\% & Nominal & EKF & 8.2 & +26.5 [-13.8, +98.1] & no & yes \\
+    2\% & Measurement-noise stress & AUKF & 17.5 & +40.4 [+16.3, +63.8] & yes & yes \\
+    2\% & Controlled force-model mismatch & EKF & 9.0 & +37.6 [+21.5, +62.8] & yes & yes \\
+    \midrule
+    3\% & Nominal & EKF & 12.4 & +26.5 [-13.8, +98.1] & no & yes \\
+    3\% & Measurement-noise stress & AUKF & 26.2 & +40.4 [+16.3, +63.8] & yes & yes \\
+    3\% & Controlled force-model mismatch & EKF & 13.5 & +37.6 [+21.5, +62.8] & yes & yes \\
+    \midrule
+    5\% & Nominal & EKF & 20.6 & +26.5 [-13.8, +98.1] & no & yes \\
+    5\% & Measurement-noise stress & AUKF & 43.7 & +40.4 [+16.3, +63.8] & yes & no \\
+    5\% & Controlled force-model mismatch & EKF & 22.4 & +37.6 [+21.5, +62.8] & yes & yes \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}

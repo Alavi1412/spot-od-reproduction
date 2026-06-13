@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering\scriptsize
+  \caption{Main structural-channel implementation sanity check. The favorable-geometry diagnostic is not a primary endpoint and not an operational OD case; it brackets the sparse-visibility negatives by showing that the implemented structural channels can recover matched known signals when the measurement geometry is intentionally easy.}
+  \label{tab:main_structural_recoverability}
+  \begingroup\setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}p{0.17\linewidth}p{0.19\linewidth}p{0.23\linewidth}p{0.13\linewidth}p{0.20\linewidth}@{}}
+    \toprule
+    Channel & Known signal & Last-window estimate & EKF$\to$channel RMSE [m] & Readout \\
+    \midrule
+    DSA-EKF drag scale & $\beta=4.00$ & $\hat\beta=3.981$; 0.46\% error & 0.72$\to$0.71 & Matched beta channel recovers under all-visible, low-noise geometry. \\
+    DMC-EKF empirical acceleration & $[2.00, -1.00, 1.50]\times10^{-5}$ & $[2.02, -1.05, 1.50]\times10^{-5}$; 2.15\% error & 4.20$\to$3.45 & Matched acceleration channel recovers under the same sanity regime. \\
+    \bottomrule
+  \end{tabular}
+  \endgroup
+\end{table}

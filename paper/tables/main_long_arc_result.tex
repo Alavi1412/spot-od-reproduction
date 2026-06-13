@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Long-arc higher-fidelity force-and-density-mismatch result. DSA-EKF fails its predeclared positive criterion because AUKF is the best non-DSA estimator and the DSA-EKF$-$AUKF interval is positive. The auxiliary EKF/AUKF stress observation is retained only as supplementary stress context.}
+  \label{tab:main_long_arc_result}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Quantity & EKF & UKF & AUKF & PUKF & DMC-EKF & DSA-EKF \\
+    \midrule
+    Mean observed-step RMSE [m] & 577.05 & 345.05 & \textbf{312.66} & 405.98 & 577.05 & 597.09 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize Held-out \(n=64\). DSA-EKF$-$AUKF mean \(+284.4\) m, CI \([+8.7,+697.9]\) m. The predeclared CRLB floor is 106.0 m and treats visible steps as independent; this can tighten the floor under within-pass correlation. The supplement reports a 36.8--335.1 m sensitivity range; pass-correlated S-Table row F is the opposite-direction bound at 335.1 m. Decision unchanged because DSA-EKF fails direction before floor magnitude under every variant.}
+\end{table}

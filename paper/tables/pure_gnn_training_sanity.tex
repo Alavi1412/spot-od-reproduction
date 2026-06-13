@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Pure GNN sanity-check summary. The unconstrained Pure GNN baseline is reported only to document that the row came from an attempted training run; its aggregate position and velocity RMSE are orders of magnitude worse than the filter-based methods, confirming the sanity-check failure. This is a bounding diagnostic, not a convergence or estimator-validity claim.}
+  \label{tab:pure_gnn_training_sanity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Split & Pos.\ RMSE [m] & Vel.\ RMSE [m/s] & Median traj.\ pos.\ RMSE [m] & Max traj.\ pos.\ RMSE [m] & Diverged traj. \\
+    \midrule
+    Nominal test & 3455373.14 & 3750.39 & 3429989.75 & 4314933.16 & 0 \\
+    Stress test & 3469053.76 & 3749.97 & 3440374.39 & 4524284.20 & 0 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

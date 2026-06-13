@@ -1,0 +1,24 @@
+\begin{table}[t]
+  \centering\tiny
+  \caption{Targeted closest-accessible full text/depth check for learned/adaptive OD and learned initial-OD competitors. I1--I7 follow Table~\ref{tab:protocol_prescription} exactly: I1 fixed falsification gates; I2 paired trajectory-unit resampling plus Holm/BH multiplicity adjustment; I3 capacity/input-matched controls; I4 separately predeclared noise-side and force-side structural-channel withdrawal rules; I5 upstream architecture sanity reproduction plus scoped transposition diagnostic; I6 approximate astrodynamics-grounded CRLB floor and sensitivity audit; I7 evidence-record traceability. N means the ingredient is not visible in the cited accessible record under that definition, or that the evaluation class does not adopt that SPOT-OD claim form. NA is reserved for genuinely not-assessable cells and is not used here. This table is a depth-check companion to the 19-row systematic visible-record audit; it asks whether the seven ingredients appear jointly in selected accessible records and does not assert an exhaustive review of all OD literature.}
+  \label{tab:closest_full_text_audit}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{p{0.24\linewidth}cccccccp{0.34\linewidth}}
+    \toprule
+    Primary full text or publisher record & I1 & I2 & I3 & I4 & I5 & I6 & I7 & Basis for joint score \\
+    \midrule
+    \cite{revach2022kalmannet} KalmanNet & N & N & N & N & N & N & N & Section IV reports learned Kalman filtering on synthetic and NCLT benchmarks with MSE curves and ablations. The record does not jointly show fixed pass/fail gates, trajectory-unit paired resampling with Holm/BH adjustment, SPOT-OD-style matched controls, separate noise/force withdrawal rules, scoped downstream transposition diagnostics, an astrodynamics CRLB floor, or digest-linked evidence records. \\
+    \cite{pinheiro2024flexkalmannet} FlexKalmanNet & N & N & N & N & N & N & N & Sections IV--V report Astrobee relative-motion estimation with learned EKF parameters and manual EKF baselines. The record does not jointly show I1--I7, including native-benchmark sanity reproduction plus scoped transposition diagnostics and a CRLB-floor sensitivity audit. \\
+    \cite{varey2024physics} physics-informed satellite state estimation & N & N & N & N & N & N & N & Sections 2--4 report a PINN fit for satellite state and anomalous acceleration from simulated angles-only GEO observations. The record does not jointly show I1--I7 for a learned-versus-classical OD claim audit. \\
+    \cite{scorsoglio2026xgeo} X-GEO physics-informed OD & N & N & N & N & N & N & N & The Acta primary record reports real X-GEO angle-only observations, high-fidelity dynamics, PINN/ELM regression, and batch least-squares comparison. The record does not jointly show I1--I7 under this audit. \\
+    \cite{zhu2026multiscale} multi-scale Informer short-arc IOD & N & N & N & N & N & N & N & The MDPI full text reports a multi-scale Informer short-arc LEO initial-OD method from radar very-short-arc observations, with DNN and Gibbs OD comparisons and velocity-component RMSE improvements versus Gibbs at $L=40$. The record does not jointly show I1--I7 under this audit. \\
+    \cite{stacey2021adaptive} adaptive/dynamically constrained process-noise OD & N & N & N & N & N & N & N & Sections IV--V report adaptive SNC/ADMC process-noise covariance estimation on linear and asteroid formation-flying case studies. The record does not jointly show I1--I7, including separate noise/force withdrawal rules and a CRLB-floor sensitivity audit. \\
+    \cite{chen2024robust} robust adaptive filtering OD & N & N & N & N & N & N & N & Sections 2--4 report robust adaptive hierarchical filtering for micro/nano-satellite OD with EKF/improved-filter baselines. The record does not jointly show I1--I7. \\
+    \cite{zhu2025bayesian} Bayesian adaptive EKF OD & N & N & N & N & N & N & N & Sections 2--6 report Bayesian adaptive EKF optical OD with EKF, UKF, RBFNN, and GPR comparators. The record does not jointly show I1--I7. \\
+    \cite{xu2026arckf} adaptive robust cislunar CKF & N & N & N & N & N & N & N & MDPI Sections 2--5 report AFF-ARCKF for cislunar autonomous navigation under range/angle measurements and disturbances. The record does not jointly show I1--I7. \\
+    \cite{li2026delay} delay-adaptive federated filtering & N & N & N & N & N & N & N & MDPI Sections 2--5 report delay-adaptive federated Kalman filtering with online calibration, simulation, and Tianwen-1 replay. The record does not jointly show I1--I7. \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Across this targeted depth-check set, zero sources exhibit I1--I7 jointly. This supports only the scoped closest-accessible competitor audit stated in the main text; the broader visible-record breadth claim is the 19-row systematic audit, and neither table is a universal absence claim over all published OD evaluations.}
+\end{table}

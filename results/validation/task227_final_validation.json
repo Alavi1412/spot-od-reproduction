@@ -1,0 +1,19 @@
+{
+  "current_submission_validation": {
+    "page_count": 33,
+    "path": "results\\validation\\submission_validation.json",
+    "pdf_sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745",
+    "status": "pass"
+  },
+  "generated_utc": "2026-06-13T02:53:18.810669+00:00",
+  "source_path": "results\\task227_final_submission_validation_result_payload.json",
+  "source_sha256": "69d6e3fc0352074f919bcebafdceacb95b542b2611e9fab7097b3001639cb913",
+  "source_summary": {
+    "citation_status": null,
+    "overall_status": "PASSED",
+    "pdf_status": null,
+    "release_evidence_status": null,
+    "status": null
+  },
+  "status": "pass"
+}

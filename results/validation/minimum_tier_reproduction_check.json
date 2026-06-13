@@ -1,0 +1,33 @@
+{
+  "checks": {
+    "artifacts": {
+      "duplicate_path_count": 0,
+      "duplicate_paths": [],
+      "failure_count": 0,
+      "failures": [],
+      "status": "pass"
+    },
+    "claim_map": {
+      "claim_count": 20,
+      "failure_count": 0,
+      "failures": [],
+      "status": "pass"
+    },
+    "manifest_summary": {
+      "failures": [],
+      "status": "pass"
+    },
+    "review_archive": {
+      "failures": [],
+      "member_sha256_failure_count": 0,
+      "member_sha256_failures": [],
+      "status": "pass"
+    }
+  },
+  "manifest": "release/SUPPLEMENTARY_MANIFEST.json",
+  "package": "SPOT-OD supplementary evidence package",
+  "requires_retraining": false,
+  "scope": "minimum_integrity_check",
+  "status": "pass",
+  "version": "1.1.0-supplement"
+}

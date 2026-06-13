@@ -1,0 +1,36 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "scope": "Process-noise-adaptive UKF (PUKF): rule and thresholds predeclared before evaluation on the controlled force-model-mismatch slice.",
+  "estimator": "PUKF -- holds measurement noise R fixed at the nominal vector and inflates the process noise Q multiplicatively when a sliding-window estimate of the R-only normalized innovation squared (NIS) suggests innovations are dominated by a dynamics/force-model bias rather than measurement noise.",
+  "rationale": "Classical statistical-OD intuition (Mehra 1970; Jazwinski 1970; Stacey & D'Amico 2021): when the prior is wrong (force-model bias), Q should grow; when the measurement is wrong (noise inflation), R should grow. The AUKF in this manuscript adapts R only; the PUKF is its symmetric counterpart.",
+  "rule": {
+    "windowed_statistic": "R-only NIS averaged over the last window_size visible updates",
+    "decision": "if windowed_mean_NIS / expected_NIS >= nis_alarm_ratio then q_scale_target = q_scale_alarm; elif windowed_mean_NIS / expected_NIS >= nis_warn_ratio then q_scale_target = q_scale_warn; else q_scale_target = 1.0",
+    "smoothing": "smoothed_q_scale_{k+1} = (1-smoothing)*smoothed_q_scale_k + smoothing*q_scale_target",
+    "applied_to": "next-step process covariance Q",
+    "step_independence": "The Q-scale at step k uses only the windowed NIS computed from updates strictly before step k, so the predict step does not see step-k innovations."
+  },
+  "thresholds": {
+    "window_size": 10,
+    "nis_per_update_expected": 4.0,
+    "nis_warn_ratio": 1.5,
+    "nis_alarm_ratio": 2.0,
+    "q_scale_warn": 3.0,
+    "q_scale_alarm": 10.0,
+    "q_scale_max": 25.0,
+    "smoothing": 0.4
+  },
+  "thresholds_justification": "Expected R-only NIS per visible update is the chi-square mean for the 4-channel measurement model (E[chi2(4)] = 4). Round half-integer ratios (1.5, 2.0) and round multiplicative inflation factors (3, 10) are chosen a priori; smoothing 0.4 is a standard innovation-adaptive-filter forgetting factor.",
+  "evaluation_protocol": {
+    "data": "Controlled force-model mismatch slice (truth inflates ballistic coefficient, drag density, SRP, process-noise std, C_R; estimator keeps nominal compact model).",
+    "comparators": ["EKF", "UKF", "AUKF"],
+    "primary_endpoint": "Observed-step position RMSE on the same trajectory population as the AUKF mechanism diagnostic.",
+    "decision_rule": "PUKF is a positive contribution if and only if its mean observed-step RMSE beats every fixed-noise/AUKF comparator and the paired-bootstrap 95% CI for the PUKF-minus-best-comparator gap is strictly negative (PUKF strictly better).",
+    "honest_negative": "If the predeclared rule does not yield a positive in the sense above, it is reported as a bounded negative (no rule retuning is allowed)."
+  },
+  "non_paper_artifacts": {
+    "implementation": "src/gnn_state_estimation/filters/ukf.py::run_process_noise_adaptive_ukf",
+    "evaluation_harness": "scripts/run_pukf_force_mismatch.py",
+    "result_json": "results/pukf_force_mismatch_loop41.json"
+  }
+}

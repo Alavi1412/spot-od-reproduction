@@ -1,0 +1,38 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "scope": "Training-budget adequacy diagnostic for the faithful KalmanNet SPOT-OD transposition committed under the loop57 rule. The loop57 rule (release/predeclarations/kalmannet_spot_od_faithful_transposition_loop57.json) committed a single optimizer-step budget of 300 steps at batch 16 for the upstream KalmanNet gain network (~12.7M trainable parameters) and recorded a bounded learned-OD negative on the disjoint-seed test split. The post-loop57 review identified the predeclared 300-step budget as the single largest open credibility question for the transposition outcome: at 300 steps the network has received roughly 4,800 training samples through a ~12.7M-parameter recurrent gain network, and a reviewer could reasonably ask whether the held-out gap is budget-limited rather than architecture-limited. This rule predeclares a budget-adequacy diagnostic that re-runs the same faithful transposition under a materially larger optimizer-step budget with snapshots committed in advance and a single held-out test evaluation per snapshot, so the budget question is answered with an evidential learning curve rather than a single-budget point estimate.",
+  "rationale": "The diagnostic addresses the reviewer-named single-budget credibility question by exhibiting the held-out test position-RMSE as a function of optimizer-step budget under exactly the loop57 train/validation/test data layout. If the learning curve plateaus at or above the loop57 reported magnitude, the loop57 outcome is reported as architecture- and adaptation-limited rather than budget-limited under the loop57 design changes. If the curve descends materially at the largest budget evaluated here while remaining far from the classical references, the loop57 outcome is reframed honestly as a budget-constrained feasibility probe whose gap is not practically closeable under the evaluated schedule rather than as an architecture-level negative. No retuning of the loop57 design changes, the optimiser hyperparameters, the data layout, or the predeclared decision predicate is allowed; only the optimizer-step budget is varied and only along the predeclared snapshot schedule below.",
+  "vendor": {
+    "upstream_repository_relative_path": "external/third_party/KalmanNet_TSP",
+    "upstream_commit_recorded_in": "external/third_party/KalmanNet_TSP_COMMIT",
+    "architecture_module": "KNet.KalmanNet_nn.KalmanNetNN",
+    "trainer_module_reference": "KNet.Pipeline_EKF",
+    "modifications_to_upstream": "None to the gain network. Same SPOT-OD-side glue code as the loop57 transposition; the only change relative to loop57 is the extended optimizer-step budget and the predeclared snapshot schedule."
+  },
+  "data": {
+    "scenario": "SPOT-OD compact two-body+J2+exponential-density-drag dynamics, eight-station ground network, range/azimuth/elevation/range-rate per visible station, identical to the loop57 transposition rule.",
+    "train_split": {"n_trajectories": 160, "rng_seed": 20265701, "purpose": "End-to-end training of the gain RNN, byte-identical to the loop57 transposition train draw."},
+    "validation_split": {"n_trajectories": 24, "rng_seed": 20265702, "purpose": "Held-out validation MSE for the budget-adequacy snapshot diagnostic, byte-identical to the loop57 transposition validation draw."},
+    "test_split": {"n_trajectories": 64, "rng_seed": 20265703, "purpose": "Held-out test for the budget-adequacy snapshot diagnostic, byte-identical to the loop57 transposition test draw. The same disjoint-seed test split is evaluated at each predeclared snapshot; this is reported as a learning curve, not as multiple independent confirmatory tests."}
+  },
+  "predeclared_optimisation_budget": {
+    "n_steps_total": 1800,
+    "n_batch": 16,
+    "lr": 1.0e-4,
+    "wd": 1.0e-4,
+    "in_mult_KNet": 5,
+    "out_mult_KNet": 4,
+    "predeclared_snapshot_schedule": [300, 600, 1200, 1800],
+    "snapshot_schedule_rationale": "The snapshot at 300 steps is byte-identical to the loop57 reported optimizer-step budget so the diagnostic reproduces the loop57 result. The snapshots at 600, 1200, and 1800 are factor-of-two extensions that probe whether the learning curve continues to descend under additional budget. Snapshots are predeclared in this artefact before the budget-adequacy run is launched; no cherry-picking of an intermediate snapshot is allowed.",
+    "model_selection_rule": "For the validation-best-snapshot report (informational), the snapshot with the lowest held-out validation MSE on the loop57 validation split is selected. The reported test learning curve evaluates every snapshot deterministically; no test-set information enters the validation-best selection."
+  },
+  "primary_endpoint": "Mean observed-step position RMSE on the loop57 held-out test split (n=64), reported at each predeclared snapshot in the optimizer-step schedule above.",
+  "comparators": ["KalmanNet-SPOT-OD", "EKF", "UKF", "AUKF", "PUKF"],
+  "decision_predicate": "The loop57 transposition rule's decision predicate (KalmanNet strictly lowest mean, paired-bootstrap CI strictly below zero, absolute gap exceeding the 3% practical-significance floor of the best non-candidate mean) is re-evaluated at the validation-best snapshot. If the predicate is satisfied at any predeclared snapshot, the loop57 outcome is reported as superseded by the budget-adequacy result. If the predicate is not satisfied at any predeclared snapshot but the held-out test position-RMSE descends materially across the snapshot schedule, the loop57 outcome is reframed as a budget-constrained feasibility probe. If the held-out test position-RMSE plateaus across the snapshot schedule, the loop57 outcome is reported as architecture- and adaptation-limited under the loop57 design changes.",
+  "honest_negative": "If the predeclared decision predicate is not met at any predeclared snapshot, the budget-adequacy diagnostic is reported honestly as a bounded budget-extension result alongside the loop57 transposition. The diagnostic is not a separately confirmatory test of the upstream architecture; it is a budget-adequacy sensitivity probe of the loop57 rule. The loop57 transposition rule and outcome remain unchanged in scope and decision predicate. No rule retuning of the loop57 transposition is allowed.",
+  "non_paper_artifacts": {
+    "test_harness": "scripts/run_kalmannet_spot_od_budget_adequacy.py",
+    "result_directory": "results/kalmannet_spot_od_budget_adequacy_loop58",
+    "result_json": "results/kalmannet_spot_od_budget_adequacy_loop58/kalmannet_spot_od_budget_adequacy.json"
+  }
+}

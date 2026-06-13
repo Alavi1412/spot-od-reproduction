@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Time-aligned SatNOGS observation-window replay: classical filter and offline robust batch weighted least-squares (WLS) validation. Each trajectory is replayed against its own time-aligned public SatNOGS observation windows, stations, and archived TLEs; measurements are generated and scored inside the replay framework. EKF/UKF/AUKF columns are all-step position RMSE over the scored horizon (``Diverged'' marks numerically divergent trajectories). Robust batch WLS fits one initial Cartesian state per trajectory from the full visible arc and is reported as an offline postfit OD reference (all-step and measurement-informed observed-step position RMSE). The best recursive observed-step column displays the smallest finite EKF/UKF/AUKF observed-step position RMSE and its method, so the observed-step reduction is traceable: the $\Delta$ obs.\ entry equals (best rec.\ obs.\ $-$ WLS obs.)\,/\,best rec.\ obs., and $\Delta$ all-step is computed analogously from the displayed all-step columns. This is an archived public-observation-window replay with controlled, generated-and-scored measurements: it is not decoded real RF-measurement orbit determination and not a flight validation. Learned estimators are not scored on this slice in the reported evidence.}
+  \label{tab:satnogs_timefix_validation}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccccc}
+    \toprule
+    Scenario & Traj. & EKF all-step [m] & UKF all-step [m] & AUKF all-step [m] & WLS all-step [m] & WLS obs.-step [m] & Best rec.\ obs.-step [m] (method) & WLS $\Delta$ all/obs.\ vs best rec.\ [\%] / Fit succ.\ [\%] \\
+    \midrule
+    SatNOGS observation replay & 48 & 4485.78 & Diverged (1 traj.) & 129964.73 & 308.80 & 127.09 & 9455.38 (EKF) & 93.1 / 98.7 (100) \\
+    SatNOGS observation replay stress & 16 & 3460.63 & 3790.67 & 3439.72 & 567.49 & 142.42 & 797.51 (AUKF) & 83.5 / 82.1 (100) \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

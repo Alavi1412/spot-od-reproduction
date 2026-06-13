@@ -1,0 +1,73 @@
+{
+  "tables": [
+    {
+      "manuscript_line": 103,
+      "table_file": "paper\\tables\\main_results.tex",
+      "exists": true,
+      "caption": "State-estimation accuracy on nominal and stress-test scenarios (common evaluation window: steps 11--119, 109 evaluated steps).",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    },
+    {
+      "manuscript_line": 146,
+      "table_file": "paper\\tables\\significance.tex",
+      "exists": true,
+      "caption": "Paired statistical comparison for hybrid estimators on trajectory-wise position RMSE (one-sided Wilcoxon, alternative: candidate better).",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    },
+    {
+      "manuscript_line": 153,
+      "table_file": "paper\\tables\\ablation.tex",
+      "exists": true,
+      "caption": "Matched-budget comparison across prior-guided learned variants in the main benchmark.",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    }
+  ],
+  "figures": [
+    {
+      "manuscript_line": 114,
+      "figure_file": "paper\\figures\\per_step_rmse.png",
+      "exists": true,
+      "bytes": 125486,
+      "caption": "Per-step position RMSE over the nominal and stress-test evaluation windows. The x-axis corresponds to the evaluated steps after the 12-step model window is available. The figure is used as a temporal diagnostic; it does not override the aggregate and statistical conclusions in Tables~\\ref{tab:main_results",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    },
+    {
+      "manuscript_line": 121,
+      "figure_file": "paper\\figures\\position_error_ecdf.png",
+      "exists": true,
+      "bytes": 62236,
+      "caption": "Per-step position RMSE over the nominal and stress-test evaluation windows. The x-axis corresponds to the evaluated steps after the 12-step model window is available. The figure is used as a temporal diagnostic; it does not override the aggregate and statistical conclusions in Tables~\\ref{tab:main_results",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    },
+    {
+      "manuscript_line": 131,
+      "figure_file": "paper\\figures\\visibility_bucket_rmse.png",
+      "exists": true,
+      "bytes": 48606,
+      "caption": "Position RMSE stratified by visibility bucket for the nominal and stress-test settings. Buckets are evaluated trajectory-steps with 0, 1, or $\\geq2$ visible stations. The plot is main-manuscript evidence for visibility-bucket diagnostics in the evaluated runs only.",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    },
+    {
+      "manuscript_line": 140,
+      "figure_file": "paper\\figures\\uncertainty_calibration.png",
+      "exists": true,
+      "bytes": 210019,
+      "caption": "Uncertainty calibration diagnostic for the evaluated runs. The plot compares nominal and empirical central coverage for learned position uncertainty and is interpreted as diagnostic evidence rather than a deployment guarantee.",
+      "release_artifact_link": "results\\release_packet.json",
+      "evidence_status": "present"
+    }
+  ],
+  "missing_experiments": [
+    {
+      "source": "deterministic_validator",
+      "field": "not_detected",
+      "value": "No explicit missing_experiments/follow_up_experiments/known_gaps field was found in results\\release_packet.json; validator therefore flags no additional experiment as required by file presence checks."
+    }
+  ]
+}

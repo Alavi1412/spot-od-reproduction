@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Dynamics-bias adaptation-risk (DBAR) diagnostic: illustrative three-regime mechanism exhibition (operating characteristics over a severity continuum are in Table~\ref{tab:dbar_independent_sweep}). DBAR is a single predeclared online statistic for any adaptive-versus-fixed-noise filter pair: $\rho_{\mathrm{NIS}}$ is the ratio of the adaptive filter's median $R$-only normalized innovation to the fixed-noise UKF's. The rule, fixed a priori with round thresholds and not tuned to outcomes, fires iff the adaptive filter materially inflates $R$ ($R_{\mathrm{eff}}>1.5$) \emph{and} adaptation fails to whiten the residual relative to the fixed-noise filter ($\rho_{\mathrm{NIS}}\geq1.5$). It is exhibited here on three independently generated regimes; correctness requires the fire decision to match the dynamics-bias ground truth and the realised AUKF observed-step outcome (materially worst when fired; competitive or best when not). The decisive control is measurement-noise stress: $R$-adaptation is the correct move there and the AUKF is the best filter, so a useful diagnostic must \emph{not} fire on it.}
+  \label{tab:adaptation_risk_diagnostic}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccccc}
+    \toprule
+    Regime & Dyn.\ bias & $R_{\mathrm{eff}}$ & $\rho_{\mathrm{NIS}}$ & DBAR & AUKF obs.\ RMSE [m] & Best & OK \\
+    \midrule
+    Nominal (shared model) & no & 1.48 & 1.06 & no fire & 392.69 ($+$2.59\%) & EKF & pass \\
+    Measurement-noise stress & no & 2.81 & 0.96 & no fire & 915.21 ($+$0.00\%) & AUKF & pass \\
+    Force-model mismatch & yes & 3.31 & 2.59 & \textbf{fires} & 526.39 ($+$17.29\%) & EKF & pass \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Illustrative mechanism exhibition on 3 hand-constructed regimes, classified correctly: DBAR fires only under the true dynamics bias and not under nominal or severe measurement-noise stress, with a wide $\rho_{\mathrm{NIS}}$ gap ($1.06$ vs $2.59$) \emph{between these three extreme points}. This three-point separation is not a robustness result; the rule's operating characteristics over a severity continuum --- classification accuracy, specificity on no-bias controls, and genuine threshold sensitivity --- are characterized on many independent random realizations in Table~\ref{tab:dbar_independent_sweep}, where in the 450-realization characterization the predeclared rule is \emph{not} statistically distinguishable from a trivial no-information baseline and is reported as a characterized negative rather than a positive validation test; the underlying covariance-matching limitation is in any case known prior art.}
+\end{table}

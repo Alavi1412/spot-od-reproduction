@@ -1,0 +1,21 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Compact-model AUKF mechanism diagnostic on the controlled force-model mismatch. The deterministic decomposition reproduces the reference AUKF estimate to 0.00 m and shows the known covariance-matching failure mode in OD form: dynamics-bias innovations are treated as measurement-noise evidence, inflating effective \(R\) and damping the updates needed to track the biased truth. Values are aggregated over the full controlled force-mismatch mechanism population (48 processed trajectories); visible-update counts and update-norm statistics are computed over the visible AUKF update records in that population.}
+  \label{tab:main_aukf_mechanism}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lc}
+    \toprule
+    Diagnostic quantity & Value \\
+    \midrule
+    Visible measurement updates & 1238 \\
+    Pre-adaptation NIS (mean / median / p90) & 4.90 / 3.49 / 9.16 \\
+    Effective \(R\) scale (pre / proposal / post / effective) & 2.891 / 4.513 / 3.021 / 3.315 \\
+    Mean state-update norm [m] & 466.31 \\
+    \(R\)-only median NIS (EKF / UKF / AUKF) & 1.60 / 1.83 / 4.73 \\
+    AUKF \(R\)-only p90 NIS & 20.38 \\
+    Observed-step RMSE (EKF / UKF / AUKF) [m] & 448.79 / 469.41 / 526.39 \\
+    AUKF estimate max position difference vs reference [m] & 0.00 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

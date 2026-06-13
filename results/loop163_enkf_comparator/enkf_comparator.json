@@ -1,0 +1,207 @@
+{
+  "task_id": "EVID-ENKF",
+  "scenario": "enkf_comparator_loop163",
+  "schema_version": "enkf_comparator_v1",
+  "scope": "Stochastic (perturbed-observation) Ensemble Kalman Filter (EnKF): rule, structural representation, and decision criterion predeclared BEFORE evaluation, to close the Ensemble-Kalman-family exclusion risk in the claim audit. The manuscript compares EKF/UKF/AUKF/PUKF and structural-channel augmentations (DMC-EKF, DSA-EKF/UKF); the ensemble Gaussian filter is a major nonlinear-filtering family that was not represented. This is a bounded feasibility comparator, not a paper-headline result.",
+  "primary_scenario": "force_model_mismatch_test",
+  "context_scenarios": [
+    "test",
+    "stress_test"
+  ],
+  "comparator_source": "Cached EKF/UKF/AUKF priors stored in the canonical scenario .npz datasets (the exact estimator paths the manuscript reports), so the EnKF is scored against the manuscript's own classical baselines on the manuscript's own trajectory populations.",
+  "eval_start_step": 11,
+  "bootstrap_samples": 5000,
+  "predeclared_rule_path": "results/loop163_enkf_comparator/enkf_predeclared_rule_loop163.json",
+  "predeclared_rule_digest_sha256": "98b61044bd5b56e5921e8afa2d147351cc991a5bf7beb55cef3850f4b8da2ff9",
+  "estimator_acceleration": "compact two-body + J2 + exponential-atmosphere drag (estimator-side resolution; identical to the cached EKF/UKF/AUKF priors)",
+  "enkf_representation": "stochastic perturbed-observation ensemble (Evensen 1994/2003; Burgers et al. 1998)",
+  "scenarios": {
+    "force_model_mismatch_test": {
+      "scenario": "force_model_mismatch_test",
+      "n_trajectories": 48,
+      "eval_start_step": 11,
+      "stations": 8,
+      "observed_step_rmse_mean_m": {
+        "EnKF": 501.54117753535667,
+        "EKF": 431.1794770888716,
+        "UKF": 457.2871580825116,
+        "AUKF": 489.3261991461621
+      },
+      "paired_enkf_vs_other": {
+        "EKF": {
+          "mean_enkf_minus_other_m": 70.36170044648493,
+          "ci_lo_m": 41.19493504177789,
+          "ci_hi_m": 100.42560973478096,
+          "wilcoxon_p_one_sided_enkf_better": 0.999978633455612,
+          "n_paired": 38,
+          "enkf_better_count": 9
+        },
+        "UKF": {
+          "mean_enkf_minus_other_m": 44.25401945284488,
+          "ci_lo_m": 15.260009666048035,
+          "ci_hi_m": 72.52439260231901,
+          "wilcoxon_p_one_sided_enkf_better": 0.9970019440443139,
+          "n_paired": 38,
+          "enkf_better_count": 13
+        },
+        "AUKF": {
+          "mean_enkf_minus_other_m": 12.214978389194561,
+          "ci_lo_m": -36.75812053674695,
+          "ci_hi_m": 57.49133881353094,
+          "wilcoxon_p_one_sided_enkf_better": 0.8662552607311227,
+          "n_paired": 38,
+          "enkf_better_count": 17
+        }
+      },
+      "decision": {
+        "best_non_enkf_estimator": "EKF",
+        "best_non_enkf_mean_m": 431.1794770888716,
+        "practical_significance_floor_fraction": 0.03,
+        "practical_significance_floor_abs_m": 12.935384312666146,
+        "enkf_minus_best_non_enkf_mean_m": 70.36170044648493,
+        "enkf_minus_best_non_enkf_ci_lo_m": 40.25296765629748,
+        "enkf_minus_best_non_enkf_ci_hi_m": 100.42843847169763,
+        "enkf_is_strictly_lowest_mean": false,
+        "ci_strictly_negative_for_enkf": false,
+        "floor_exceeded": false,
+        "predeclared_positive_criterion_met": false
+      },
+      "enkf_diagnostics": {
+        "ensemble_size": 64,
+        "inflation": 1.0,
+        "mean_pos_spread_m": 7374.166237203112
+      },
+      "elapsed_seconds": 133.23931040000753
+    },
+    "test": {
+      "scenario": "test",
+      "n_trajectories": 64,
+      "eval_start_step": 11,
+      "stations": 8,
+      "observed_step_rmse_mean_m": {
+        "EnKF": 390.0449539844701,
+        "EKF": 376.3525018362827,
+        "UKF": 377.0605868566696,
+        "AUKF": 379.8364218257378
+      },
+      "paired_enkf_vs_other": {
+        "EKF": {
+          "mean_enkf_minus_other_m": 13.692452148187355,
+          "ci_lo_m": -3.0223170920324773,
+          "ci_hi_m": 31.753953353233083,
+          "wilcoxon_p_one_sided_enkf_better": 0.8972186500855994,
+          "n_paired": 52,
+          "enkf_better_count": 21
+        },
+        "UKF": {
+          "mean_enkf_minus_other_m": 12.984367127800548,
+          "ci_lo_m": 1.9207414428996699,
+          "ci_hi_m": 23.788334694586485,
+          "wilcoxon_p_one_sided_enkf_better": 0.9874643223887309,
+          "n_paired": 52,
+          "enkf_better_count": 20
+        },
+        "AUKF": {
+          "mean_enkf_minus_other_m": 10.208532158732343,
+          "ci_lo_m": -12.023480962267593,
+          "ci_hi_m": 37.069657790852055,
+          "wilcoxon_p_one_sided_enkf_better": 0.7013201410361536,
+          "n_paired": 52,
+          "enkf_better_count": 24
+        }
+      },
+      "decision": {
+        "best_non_enkf_estimator": "EKF",
+        "best_non_enkf_mean_m": 376.3525018362827,
+        "practical_significance_floor_fraction": 0.03,
+        "practical_significance_floor_abs_m": 11.290575055088482,
+        "enkf_minus_best_non_enkf_mean_m": 13.692452148187355,
+        "enkf_minus_best_non_enkf_ci_lo_m": -3.3503353067457926,
+        "enkf_minus_best_non_enkf_ci_hi_m": 32.237658790357216,
+        "enkf_is_strictly_lowest_mean": false,
+        "ci_strictly_negative_for_enkf": false,
+        "floor_exceeded": false,
+        "predeclared_positive_criterion_met": false
+      },
+      "enkf_diagnostics": {
+        "ensemble_size": 64,
+        "inflation": 1.0,
+        "mean_pos_spread_m": 6177.852818758149
+      },
+      "elapsed_seconds": 169.33752669999376
+    },
+    "stress_test": {
+      "scenario": "stress_test",
+      "n_trajectories": 64,
+      "eval_start_step": 11,
+      "stations": 8,
+      "observed_step_rmse_mean_m": {
+        "EnKF": 1391.022585256708,
+        "EKF": 863.7424554328699,
+        "UKF": 1401.4390358401376,
+        "AUKF": 837.2841393397226
+      },
+      "paired_enkf_vs_other": {
+        "EKF": {
+          "mean_enkf_minus_other_m": 527.2801298238381,
+          "ci_lo_m": 304.87046293571956,
+          "ci_hi_m": 787.2741611822554,
+          "wilcoxon_p_one_sided_enkf_better": 0.9999880957583329,
+          "n_paired": 47,
+          "enkf_better_count": 13
+        },
+        "UKF": {
+          "mean_enkf_minus_other_m": -10.416450583429787,
+          "ci_lo_m": -83.56818329425347,
+          "ci_hi_m": 59.585129002696085,
+          "wilcoxon_p_one_sided_enkf_better": 0.46034004162283537,
+          "n_paired": 47,
+          "enkf_better_count": 25
+        },
+        "AUKF": {
+          "mean_enkf_minus_other_m": 553.7384459169851,
+          "ci_lo_m": 293.2984662812227,
+          "ci_hi_m": 847.9102943078339,
+          "wilcoxon_p_one_sided_enkf_better": 0.9999803238371356,
+          "n_paired": 47,
+          "enkf_better_count": 13
+        }
+      },
+      "decision": {
+        "best_non_enkf_estimator": "AUKF",
+        "best_non_enkf_mean_m": 837.2841393397226,
+        "practical_significance_floor_fraction": 0.03,
+        "practical_significance_floor_abs_m": 25.118524180191677,
+        "enkf_minus_best_non_enkf_mean_m": 553.7384459169851,
+        "enkf_minus_best_non_enkf_ci_lo_m": 292.78228814994173,
+        "enkf_minus_best_non_enkf_ci_hi_m": 853.7311960870151,
+        "enkf_is_strictly_lowest_mean": false,
+        "ci_strictly_negative_for_enkf": false,
+        "floor_exceeded": false,
+        "predeclared_positive_criterion_met": false
+      },
+      "enkf_diagnostics": {
+        "ensemble_size": 64,
+        "inflation": 1.0,
+        "mean_pos_spread_m": 8269.740519140554
+      },
+      "elapsed_seconds": 168.5129120999918
+    }
+  },
+  "primary_decision": {
+    "best_non_enkf_estimator": "EKF",
+    "best_non_enkf_mean_m": 431.1794770888716,
+    "practical_significance_floor_fraction": 0.03,
+    "practical_significance_floor_abs_m": 12.935384312666146,
+    "enkf_minus_best_non_enkf_mean_m": 70.36170044648493,
+    "enkf_minus_best_non_enkf_ci_lo_m": 40.25296765629748,
+    "enkf_minus_best_non_enkf_ci_hi_m": 100.42843847169763,
+    "enkf_is_strictly_lowest_mean": false,
+    "ci_strictly_negative_for_enkf": false,
+    "floor_exceeded": false,
+    "predeclared_positive_criterion_met": false
+  },
+  "overall_predeclared_positive": false,
+  "outcome": "bounded_enkf_family_negative",
+  "exclusion_risk_closed": true
+}

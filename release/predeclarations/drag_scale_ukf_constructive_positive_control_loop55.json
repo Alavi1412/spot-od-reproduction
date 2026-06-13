@@ -1,0 +1,59 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "schema_version": "drag_scale_ukf_constructive_positive_control_v1",
+  "scope": "Post-review constructive positive control on a UKF-based Drag-Scale Adaptive filter (DSA-UKF). The slice reuses the loop 54 constructive-control geometry: pure multiplicative drag-scale truth-side mismatch on compact two-body + J2 + exponential-atmosphere drag, no additional zonal geopotential, no luni-solar third body, no SRP, no time-varying density modulation; 250-450 km altitude band; arc length 540 propagator steps at 20 s, approximately 3 hours. The candidate is the UKF-based DSA filter, motivated by the loop 54 diagnosis that the EKF infrastructure carrying the augmented seven-dimensional flow diverged at very low altitude, while the UKF-family classical baselines on the same slice remained well-conditioned. The slice is reported as a post-review constructive positive control to address the no-positive-contribution and harness-preordained-to-negative concerns, not as a new primary claim. Predeclared before any test-seed evaluation of DSA-UKF.",
+  "predeclared_audit_member": true,
+  "new_confirmatory_evidence": true,
+  "category": "constructive_positive_control",
+  "construction_relative_to_loop54": "The loop 54 constructive control (release/predeclarations/drag_scale_constructive_positive_control_loop54.json) reported DSA-EKF (the textbook EKF-based drag-scale adaptive channel) as candidate on the same slice; the predeclared positive criterion was not met because the EKF-family linearisation broke at the 250-450 km / 3-hour / truth_beta=2.5 regime (cross-filter R-only NIS for DSA-EKF an order of magnitude above the UKF-family baselines). The loop 54 result and its honest-negative interpretation are preserved unchanged. The loop 55 candidate replaces the EKF predict step with deterministic sigma-point propagation of the same augmented seven-dimensional flow [r, v, beta]; every other element of the slice geometry, the comparator set, and the decision predicate are identical in form to loop 54.",
+  "rationale": "On a pure multiplicative drag-scale truth-side mismatch the textbook drag-scale structural channel is the right answer (Tapley, Schutz, Born 2004 Section 10.5; Vallado 2013 Section 9.6.1). The DSA-EKF infrastructure carries the same right structural channel but couples it through an analytic Jacobian whose validity is local to the current state. At the loop 54 regime (truth_beta=2.5, 250-450 km altitude, 3-hour arc) the EKF-family filters were observed to diverge while the UKF, AUKF, and PUKF retained mean observed-step RMSE on the order of 360-430 m. Substituting deterministic sigma-point propagation for the EKF Jacobian linearisation is the canonical sigma-point remedy for this failure mode (Julier and Uhlmann 2004; Wan and van der Merwe 2000). The DSA-UKF is therefore the next-most-conservative constructive candidate: it preserves the textbook drag-scale structural channel while substituting the EKF linearisation for the deterministic sigma-point recursion that the UKF family uses on the same slice without divergence.",
+  "constructive_control_design": {
+    "truth_side_dynamics": "Compact two-body + J2 + exponential-atmosphere drag with the truth-side ballistic coefficient multiplied by truth_beta_value (>1). No zonal geopotential terms above J2; no luni-solar third body; no SRP; no time-varying density modulation. Identical to the loop 54 constructive-control truth-side dynamics.",
+    "estimator_side_dynamics": "Compact two-body + J2 + exponential-atmosphere drag at the nominal (unscaled) ballistic coefficient. The DSA-UKF estimates the multiplicative scaling factor beta online via deterministic sigma-point propagation of the augmented seven-dimensional flow [r, v, beta]. Every other estimator (EKF, UKF, AUKF, PUKF, DMC-EKF, DSA-EKF) keeps the corresponding loop 54 configuration unchanged.",
+    "truth_beta_value": 2.5,
+    "arc_length_steps": 540,
+    "arc_length_hours_approximate": 3.0,
+    "propagator_step_s": 20.0,
+    "orbit_altitude_min_km": 250.0,
+    "orbit_altitude_max_km": 450.0,
+    "orbit_altitude_band_rationale": "The same low-altitude band used in the loop 54 constructive control: drag acceleration is large enough that cumulative orbit decay over 3 hours is sensitive to the multiplicative drag-scale bias, and the band kept the drag coefficient/density product well above the LEO drag-noise floor.",
+    "stations_inherit_from": "configs/experiment.yaml (eight-station network)",
+    "measurement_noise_inherit_from": "configs/experiment.yaml nominal split (no measurement stress override)",
+    "n_trajectories_planned": 64,
+    "test_seed": 770555,
+    "validation_seed": 770554,
+    "validation_n_trajectories": 16,
+    "epoch_unix": 1736640000.0
+  },
+  "candidate": {
+    "name": "DSA-UKF",
+    "implementation_reference": "Drag-Scale Adaptive UKF (DSA-UKF): seven-state augmented filter [r(3), v(3), beta]; predict via 2n+1 sigma-point RK4 propagation of the augmented flow; measurement update via the same line-of-sight measurement model the other estimators use, applied to the position-velocity subvector. The drag-scale state is modelled as a first-order Gauss-Markov process about its nominal value of one with steady-state standard deviation drag_scale_sigma_ss and decorrelation time drag_scale_tau_s; the discrete-time process variance for the drag-scale block is sigma_ss^2 * (1 - exp(-2 dt / tau)). beta is hard-bounded to [0.05, 5.0] after every step (every sigma point and the posterior mean) for numerical safety; the bound is never reached on any reported run."
+  },
+  "decision_predicate": {
+    "primary_endpoint": "Observed-step position RMSE on the held-out test seed disjoint from the validation seed and from every other test seed used in the manuscript.",
+    "candidate": "DSA-UKF",
+    "comparator_set": ["EKF", "UKF", "AUKF", "PUKF", "DMC-EKF", "DSA-EKF"],
+    "rule": "DSA-UKF passes the constructive positive control if and only if (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, PUKF, DMC-EKF, DSA-EKF, DSA-UKF}, AND (ii) the paired-bootstrap 95% CI for the DSA-UKF-minus-best-non-DSA-UKF gap is strictly negative (DSA-UKF strictly better), AND (iii) the absolute gap exceeds the predeclared 3% practical-significance floor of the best-non-DSA-UKF mean.",
+    "honest_negative_interpretation": "If the predeclared rule does not yield a positive on the held-out test seed, the slice is reported as an additional bounded structural-channel constructive-control negative. No rule retuning is allowed after the held-out test evaluation. The loop 54 EKF-based constructive-control outcome is preserved unchanged in this case.",
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95,
+    "practical_significance_floor_fraction": 0.03
+  },
+  "hyperparameter_selection": {
+    "process_summary": "DSA-UKF hyperparameter selection is conducted on the predeclared validation seed (770554), which is disjoint from the test seed (770555) and from every other test seed used in the manuscript. The validation population is 16 trajectories sampled from the same 250-450 km altitude band as the test population, with the same arc length and propagator step. The validation objective is mean observed-step position RMSE of the DSA-UKF on the validation population only; no test-population data informs the selected hyperparameters.",
+    "grid_predeclared": {
+      "init_drag_scale_std": [0.3, 0.5, 0.8],
+      "drag_scale_sigma_ss": [0.3, 0.5, 0.8],
+      "drag_scale_tau_s": [600.0, 1200.0]
+    },
+    "grid_cardinality": 18,
+    "rationale_for_small_grid": "Three grid points each over the two structurally most important hyperparameters (initial drag-scale standard deviation and steady-state Gauss-Markov standard deviation) plus two grid points over the decorrelation time. The grid centre (init_drag_scale_std=0.5, drag_scale_sigma_ss=0.5, drag_scale_tau_s=600.0) sits at the same operating point used by the DSA-EKF in the loop 47 long-arc validation; the off-centre points span one factor of 1.6 in either direction so the selection is not bound to the loop-47 grid centre.",
+    "tie_breaking": "If two grid points share the validation mean to within 1 m, the grid point with the smaller init_drag_scale_std is selected (more conservative initial covariance); if those are also tied, the smaller drag_scale_sigma_ss is selected; if those are also tied, the smaller drag_scale_tau_s is selected.",
+    "no_test_population_tuning": "No DSA-UKF hyperparameter is tuned on the held-out test seed. The selected grid point is fixed before the test population is generated."
+  },
+  "interpretation": "If DSA-UKF passes the predeclared positive criterion on the held-out test seed, the constructive control demonstrates that the harness returns a positive when the structural channel matches the misspecification and the underlying estimator infrastructure does not break in the regime where the test physics is observable. This addresses the no-positive-contribution and harness-preordained-to-negative concerns at the level of a constructive control and is explicitly NOT a new primary claim about operational POD. If DSA-UKF does not pass, the result is reported honestly as an additional bounded structural-channel negative, the loop 54 EKF-family constructive control's outcome is preserved unchanged, and no rule retuning is performed.",
+  "preserved_historical_outcomes": {
+    "loop54_constructive_positive_control": "release/predeclarations/drag_scale_constructive_positive_control_loop54.json; supplement Table 3; predeclared positive criterion was not met (DSA-EKF strictly worse than UKF, bounded structural-channel negative).",
+    "preservation_requirement": "The loop 54 constructive-control rule, result, and honest-negative interpretation are unchanged by the loop 55 work; the loop 55 candidate is reported alongside the loop 54 candidate, never in place of it."
+  }
+}

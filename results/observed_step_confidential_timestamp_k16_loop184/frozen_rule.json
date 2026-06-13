@@ -1,0 +1,43 @@
+{
+  "schema_version": "observed_step_confidential_timestamp_k16_loop184_rule_v1",
+  "artifact_role": "confidential_externally_timestamped_before_evaluation_rule",
+  "created_at_utc": "2026-05-31T23:58:27.087931Z",
+  "public_disclosure": false,
+  "external_timestamp_scope": "hash_only_no_manuscript_content_disclosed",
+  "evidence_boundary": "Confidential external timestamp of rule hash before evaluation; not a public preregistration or public archive",
+  "base_seed": 1840000,
+  "num_realizations_per_scenario": 16,
+  "trajectories_per_realization": 24,
+  "bootstrap_samples": 5000,
+  "scenarios": [
+    {
+      "id": "test",
+      "label": "nominal"
+    },
+    {
+      "id": "stress_test",
+      "label": "measurement-noise stress"
+    },
+    {
+      "id": "force_model_mismatch_test",
+      "label": "controlled force-model mismatch"
+    }
+  ],
+  "primary_metric": "observed_step_position_rmse_m",
+  "reference_metric": "all_step_position_rmse_m",
+  "methods": [
+    "EKF",
+    "UKF",
+    "AUKF",
+    "RGR-GF"
+  ],
+  "decision_rule": "RGR-GF is a learned positive in a scenario only if it has the lowest mean observed-step RMSE and the paired bootstrap CI upper bound for RGR-GF minus best classical is < 0. Otherwise the scenario is negative/indeterminate for learned superiority.",
+  "selection_or_tuning_after_rule": false,
+  "inference_only": true,
+  "trained_model_policy": "Fixed previously trained RGR-GF checkpoint from existing experiment config; no new model training or tuning for this replication",
+  "disjointness_note": "Base seed 1840000 is disjoint from prior seed bases 41-55, 770000, 880000, 991117, 90000, 1160000, 1630000",
+  "planned_builder": "scripts/build_observed_step_prospective_replication.py",
+  "planned_outputs": "One shard per scenario in results/observed_step_confidential_timestamp_k16_loop184/",
+  "caveats": "Confidential timestamp is stronger than internal timestamp but not equivalent to a public preregistration registry; report honestly.",
+  "canonical_rule_sha256": "14d4e67f6675a1507a3253eeabc8ab762bc86df2dcff6b4d0d76d10de453c833"
+}

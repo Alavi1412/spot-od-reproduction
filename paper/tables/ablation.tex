@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Matched-budget comparison across prior-guided learned variants in the main benchmark.}
+  \label{tab:ablation}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Variant & Test Pos. RMSE [m] & Stress Pos. RMSE [m] & Test $\Delta$ vs UKF [\%] & Stress $\Delta$ vs UKF [\%] \\
+    \midrule
+    Learned Noise Adaptive & 6170.04 & 6808.39 & 0.34 & 5.09 \\
+    RGR-GF (base) & 6169.11 & 6808.98 & 0.36 & 5.08 \\
+    No-Graph Residual & 6170.19 & 6811.26 & 0.34 & 5.05 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

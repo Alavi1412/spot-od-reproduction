@@ -1,0 +1,65 @@
+{
+  "dbar_external_validation": {
+    "classification_accuracy": 0.6,
+    "confusion": {
+      "false_fire": 2,
+      "false_no_fire": 2,
+      "true_fire": 0,
+      "true_no_fire": 6
+    },
+    "n_arcs_scored": 10,
+    "n_correct": 6,
+    "n_counterproductive_arcs": 2,
+    "n_non_counterproductive_arcs": 8,
+    "no_information_baseline": {
+      "accuracy_minus_majority": -0.2,
+      "beats_majority": false,
+      "majority_class": "no_fire (negative)",
+      "majority_class_accuracy": 0.8
+    },
+    "sensitivity": 0.0,
+    "specificity": 0.75
+  },
+  "fixed_station_subset": [
+    "HERL",
+    "MATM",
+    "WETL",
+    "YARL"
+  ],
+  "num_arcs": 10,
+  "num_arcs_completed": 10,
+  "pooled_held_out_position_rmse_m": {
+    "AUKF (adaptive)": {
+      "arcs_best_of": 3,
+      "mean_arc_rms_m": 341.33,
+      "median_arc_rms_m": 296.13,
+      "n_arcs": 10
+    },
+    "EKF": {
+      "arcs_best_of": 1,
+      "mean_arc_rms_m": 367.98,
+      "median_arc_rms_m": 248.67,
+      "n_arcs": 10
+    },
+    "SP3-IC propagation": {
+      "arcs_best_of": 5,
+      "mean_arc_rms_m": 402.92,
+      "median_arc_rms_m": 260.68,
+      "n_arcs": 10
+    },
+    "UKF (fixed-noise)": {
+      "arcs_best_of": 1,
+      "mean_arc_rms_m": 334.72,
+      "median_arc_rms_m": 234.04,
+      "n_arcs": 10
+    }
+  },
+  "schema_version": "real_slr_sp3_od_v1",
+  "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+  "sp3_week_product": "260509",
+  "status": "completed",
+  "targets": [
+    "LAGEOS-1",
+    "LAGEOS-2"
+  ]
+}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Extended higher-fidelity force-model mismatch (additional scoping of the compact-model AUKF mechanism diagnostic). The truth-side dynamics extend the J3$+$J4$+$luni-solar slice (Table~\ref{tab:hifi_force_mismatch}) by adding the J5 and J6 zonal geopotential terms (standard EGM-class nominal coefficients; analytic gradient independently validated against finite difference) plus a one-sided diurnal-bulge atmospheric-density modulation (amplitude $\alpha=0.30$). The estimators continue to use the nominal compact two-body+$J_2$+drag model. On this richer fidelity the cross-filter $R$-only NIS diagnostic again flags the AUKF as the most stressed filter (median $1.67$ vs.\ EKF $1.42$ and UKF $1.60$), so the compact-model mechanism continues to fire qualitatively at this fidelity; the EKF$/$AUKF ordering, however, is again not flipped (the EKF$-$AUKF paired-bootstrap CI spans zero, $-21.3$~m, CI $[-160.4, 87.1]$~m). The compact-model AUKF diagnostic is therefore scoped down across both higher-fidelity slices: above the compact-$J_2$ ceiling the mechanism continues to fire but the compact-slice ordering does not transfer.}
+  \label{tab:hifi_force_mismatch_extended}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Quantity & EKF & UKF & AUKF & PUKF \\
+    \midrule
+    Mean observed-step position RMSE [m] & $368.02$ & $\mathbf{357.93}$ & $389.36$ & $383.70$ \\
+    Cross-filter $R$-only NIS (median) & $1.42$ & $1.60$ & $\mathbf{1.67}$ & $1.16$ \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize $n=48$ trajectories. Paired bootstrap (5000 resamples, 95\% CIs): EKF$-$AUKF mean $-21.3$~m, CI $[-160.4, 87.1]$~m (spans zero); UKF$-$AUKF mean $-31.4$~m, CI $[-118.8, 20.8]$~m; PUKF$-$AUKF mean $-5.7$~m, CI $[-121.0, 66.2]$~m. The extended truth dynamics use the analytic J2..J6 zonal acceleration (\texttt{zonal\_acceleration\_extended}) plus luni-solar third body; the truth drag uses the same exponential atmosphere plus a one-sided diurnal-bulge density modulation that the estimator's time-invariant density cannot match.}
+\end{table}

@@ -1,0 +1,107 @@
+{
+  "predeclared_on_utc": "2026-05-20",
+  "schema_version": "drag_scale_ukf_observability_positive_control_v1",
+  "scope": "Post-review observability-supporting constructive positive control on the UKF-based Drag-Scale Adaptive filter (DSA-UKF). The candidate is the same DSA-UKF construction introduced in the loop 55 constructive control (sigma-point augmented seven-dimensional flow [r, v, beta], Gauss-Markov drag-scale process, hard saturation [0.05, 5.0]). The slice geometry is selected from a small predeclared validation grid of observability-supporting configurations (denser station network, longer arc, and an extended-arc variant with a larger truth-side drag-scale bias and a lower measurement-noise floor) so that the multiplicative drag-scale channel is observable from the line-of-sight measurements. The misspecification remains a pure multiplicative drag-scale truth-side mismatch with no unrelated unmodelled physics, exactly as in loop 55. The candidate's filter-side hyperparameters are pinned at the loop 55 selected operating point so the geometry is the only variable. Predeclared before any test-seed evaluation of any grid point in this rule.",
+  "predeclared_audit_member": true,
+  "new_confirmatory_evidence": true,
+  "category": "observability_positive_control",
+  "construction_relative_to_loop55": "The loop 55 constructive control (release/predeclarations/drag_scale_ukf_constructive_positive_control_loop55.json) reported that the DSA-UKF removes the loop 54 EKF-linearisation breakdown but the multiplicative drag-scale parameter remained observationally inert on the eight-station three-hour slice. The loop 55 result and its honest-negative interpretation are preserved unchanged. The loop 56 candidate is the same DSA-UKF; what changes is the geometry of the slice on which it is evaluated. The loop 56 rule predeclares three geometry options, ordered from the most-parsimonious to the most-aggressive change relative to loop 55, and chooses the first that satisfies the predeclared positive criterion on a disjoint validation seed.",
+  "rationale": "Loop 55 isolated two failure modes that were entangled in loop 54: EKF-linearisation breakdown (removed by sigma-point substitution) and an observability-side bound on the multiplicative drag-scale channel under sparse line-of-sight visibility over a three-hour arc. The remaining bound is geometry-side, not estimator-side: with eight stations and a three-hour arc, the cumulative drag-induced position separation between the truth-side beta-scaled flow and the estimator-side nominal flow is small relative to the line-of-sight measurement noise, so the observation set does not constrain beta. Three astrodynamically grounded levers are predeclared for relieving this bound without retuning the candidate or relaxing the rule: (a) denser station coverage (a globally distributed twenty-station ground network used elsewhere in this manuscript as the credible dense-tracking probe), which materially increases the number and angular diversity of measurement updates per orbit; (b) longer arc length, which lets the drag-induced position separation accumulate over more revolutions before adjudication; (c) a larger truth-side beta combined with a lower line-of-sight measurement-noise floor, which raises the signal-to-noise ratio of the drag channel against the observation residual. The grid is small (three points), predeclared, and ordered most-parsimonious-first so that the predeclared selection picks the smallest geometry change that admits a positive.",
+  "candidate": {
+    "name": "DSA-UKF",
+    "implementation_reference": "Drag-Scale Adaptive UKF, identical to the loop 55 implementation: seven-state augmented filter [r(3), v(3), beta]; predict via deterministic 2n+1 sigma-point RK4 propagation of the augmented flow; measurement update via the same line-of-sight measurement model the other estimators use, applied to the position-velocity subvector; drag-scale state modelled as a first-order Gauss-Markov process about its nominal value of one; per-sigma-point and posterior hard saturation of beta to [0.05, 5.0]; numerical-robustness guards on every sigma-point step. No re-implementation in loop 56.",
+    "hyperparameters_pinned_from_loop55": {
+      "init_drag_scale_std": 0.3,
+      "drag_scale_sigma_ss": 0.3,
+      "drag_scale_tau_s": 600.0,
+      "rationale": "These are the validation-selected loop 55 hyperparameters at grid label G01, fixed before any evaluation in this rule. Pinning the candidate hyperparameters isolates the geometry change as the only variable between loop 55 and loop 56 and prevents the candidate from being retuned on the new geometry."
+    }
+  },
+  "comparator_set": ["EKF", "UKF", "AUKF", "PUKF", "DMC-EKF", "DSA-EKF"],
+  "decision_predicate": {
+    "primary_endpoint": "Observed-step position RMSE on the held-out test seed disjoint from the validation seed and from every other test seed used in this manuscript.",
+    "candidate": "DSA-UKF",
+    "rule": "DSA-UKF passes the observability-positive constructive control on the held-out test seed if and only if (i) its mean observed-step position RMSE is strictly the lowest among {EKF, UKF, AUKF, PUKF, DMC-EKF, DSA-EKF, DSA-UKF}, AND (ii) the paired-bootstrap 95% CI for the DSA-UKF-minus-best-non-DSA-UKF gap is strictly negative (DSA-UKF strictly better), AND (iii) the absolute gap exceeds the predeclared 3% practical-significance floor of the best-non-DSA-UKF mean.",
+    "honest_negative_interpretation": "If the predeclared rule does not yield a positive on the held-out test seed of the selected grid point, the slice is reported as an additional bounded structural-channel constructive-control negative. No rule retuning is allowed after the held-out test evaluation. The loop 54 and loop 55 constructive-control outcomes are preserved unchanged in this case.",
+    "bootstrap_samples": 5000,
+    "ci_level": 0.95,
+    "practical_significance_floor_fraction": 0.03
+  },
+  "validation_grid": {
+    "process_summary": "The grid is evaluated on the disjoint validation seed only. All seven estimators (the six comparators and the DSA-UKF candidate) are run on the validation population at each grid point. The selection rule is applied to the validation population only. The held-out test seed evaluates the single selected grid point and reports the predeclared decision.",
+    "validation_seed": 770564,
+    "test_seed": 770566,
+    "validation_n_trajectories": 8,
+    "test_n_trajectories": 32,
+    "eval_start_step": 11,
+    "bootstrap_samples_validation": 2000,
+    "epoch_unix": 1736640000.0,
+    "grid_points_ordered": [
+      {
+        "label": "G1",
+        "description": "Most-parsimonious observability-supporting change from loop 55: replace the eight-station network with a globally distributed twenty-station ground network and double the arc length to six hours. Truth-side beta is held at the loop 55 value 2.5; the orbit altitude band is slightly raised to 350-550 km to ensure orbital lifetime exceeds the longer arc; measurement noise is held at the nominal split values.",
+        "arc_length_steps": 1080,
+        "arc_length_hours_approximate": 6.0,
+        "propagator_step_s": 20.0,
+        "orbit_altitude_min_km": 350.0,
+        "orbit_altitude_max_km": 550.0,
+        "truth_beta_value": 2.5,
+        "station_network_label": "dense_twenty_global",
+        "measurement_noise_profile": "nominal",
+        "geometry_changes_relative_to_loop55": ["station_count: 8 -> 20", "arc_length: 540 -> 1080 steps (3h -> 6h)", "orbit_altitude_band: 250-450 km -> 350-550 km"]
+      },
+      {
+        "label": "G2",
+        "description": "Extended-arc observability-supporting change: same twenty-station network and altitude band as G1, but the arc length is further extended to twelve hours so the drag-induced separation between the truth-side beta-scaled flow and the estimator-side nominal flow accumulates over more revolutions.",
+        "arc_length_steps": 2160,
+        "arc_length_hours_approximate": 12.0,
+        "propagator_step_s": 20.0,
+        "orbit_altitude_min_km": 350.0,
+        "orbit_altitude_max_km": 550.0,
+        "truth_beta_value": 2.5,
+        "station_network_label": "dense_twenty_global",
+        "measurement_noise_profile": "nominal",
+        "geometry_changes_relative_to_loop55": ["station_count: 8 -> 20", "arc_length: 540 -> 2160 steps (3h -> 12h)", "orbit_altitude_band: 250-450 km -> 350-550 km"]
+      },
+      {
+        "label": "G3",
+        "description": "Most-aggressive observability-supporting change: same twenty-station network, twelve-hour arc, and altitude band as G2; truth-side beta raised to 3.0 to enlarge the drag-induced acceleration bias; line-of-sight range and angular measurement-noise standard deviations halved (range standard deviation reduced from 30 m to 15 m, azimuth and elevation standard deviations reduced from 0.02 deg to 0.010 deg) so the drag channel is more strongly weighted against the observation residual.",
+        "arc_length_steps": 2160,
+        "arc_length_hours_approximate": 12.0,
+        "propagator_step_s": 20.0,
+        "orbit_altitude_min_km": 350.0,
+        "orbit_altitude_max_km": 550.0,
+        "truth_beta_value": 3.0,
+        "station_network_label": "dense_twenty_global",
+        "measurement_noise_profile": "lower_noise",
+        "geometry_changes_relative_to_loop55": ["station_count: 8 -> 20", "arc_length: 540 -> 2160 steps (3h -> 12h)", "orbit_altitude_band: 250-450 km -> 350-550 km", "truth_beta: 2.5 -> 3.0", "range_std_m: 30 -> 15", "az_std_deg: 0.02 -> 0.010", "el_std_deg: 0.02 -> 0.010"]
+      }
+    ],
+    "dense_twenty_global_station_definition_reference": "configs/experiment.yaml splits.credible_dense_od_test.overrides.stations (twenty-station globally distributed ground network at an eight-degree elevation mask). The station roster is reproduced inline in the loop 56 driver so the slice is fully self-contained.",
+    "lower_noise_profile_definition": {
+      "range_std_m": 15.0,
+      "az_std_deg": 0.010,
+      "el_std_deg": 0.010,
+      "range_rate_std_mps": 0.04,
+      "outlier_prob": 0.01,
+      "outlier_scale": 6.0,
+      "random_dropout_prob": 0.02
+    }
+  },
+  "selection_rule": {
+    "process_summary": "The grid is iterated in the predeclared order G1, G2, G3 (most-parsimonious first). For each grid point, all seven estimators are run on the validation population and the validation-side decision predicate is evaluated using a paired bootstrap with the validation bootstrap sample count above. The selected grid point is the first grid point at which the validation-side predicate is satisfied; if no grid point satisfies the validation-side predicate, the selected grid point is the grid point with the smallest mean validation gap DSA-UKF minus best non-candidate (most-favourable validation margin) so that the held-out test still reports the most-informative grid point under the predeclared rule.",
+    "validation_side_predicate_components": [
+      "DSA-UKF mean observed-step position RMSE strictly lowest on validation",
+      "Paired-bootstrap 95% CI of DSA-UKF minus best-non-candidate strictly negative on validation",
+      "Absolute validation gap exceeds the predeclared 3% practical-significance floor"
+    ],
+    "no_grid_inspection_after_selection": "Once the selected grid point is fixed by the validation-side selection rule, the held-out test seed is generated and evaluated for that grid point only. No other grid point is reported on the test seed.",
+    "no_test_seed_use_for_selection": "Neither the test seed nor any test-population data is used for grid-point selection."
+  },
+  "interpretation": "If the DSA-UKF clears the predeclared positive criterion on the held-out test seed of the selected grid point, the slice is reported as an observability-supporting constructive positive control demonstrating that the harness admits a positive when the structural channel is correct and the geometry permits observability of the channel. The reported claim is scoped explicitly to the constructive-control regime: it is not a claim about operational orbit determination at flight-relevant fidelity, it is not a claim that learned estimators improve over classical filters, and it does not displace the loop 41/44/45 bounded structural-channel negatives or the loop 47 long-arc reversal. If the DSA-UKF does not pass on the selected grid point's held-out test, the result is reported honestly as an additional bounded structural-channel negative and the loop 54/55 constructive-control outcomes are preserved unchanged.",
+  "preserved_historical_outcomes": {
+    "loop54_constructive_positive_control": "release/predeclarations/drag_scale_constructive_positive_control_loop54.json; supplement Table 3; predeclared positive criterion was not met (DSA-EKF strictly worse than UKF, bounded structural-channel negative).",
+    "loop55_constructive_positive_control": "release/predeclarations/drag_scale_ukf_constructive_positive_control_loop55.json; supplement Table 4; predeclared positive criterion was not met (DSA-UKF operationally equivalent to AUKF, bounded structural-channel negative, observability-side mechanism).",
+    "preservation_requirement": "The loop 54 and loop 55 constructive-control rules, results, and honest-negative interpretations are unchanged by the loop 56 work. The loop 56 outcome is reported as a separate post-review observability-supporting constructive control alongside loop 54 and loop 55, never in place of either."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "observed_step_powered_stress_replication_rule_v1",
+  "fixed_at_utc": "2026-05-25T13:06:32Z",
+  "temporal_ordering_evidence": {
+    "rule_fixed_at_utc": "2026-05-25T13:06:32Z",
+    "evaluation_started_at_utc": "2026-05-25T13:12:43.6581323Z",
+    "ordering": "rule_fixed_at_utc predates evaluation_started_at_utc",
+    "elapsed_seconds_between_rule_fix_and_evaluation_start": 371.6581323,
+    "evidence_boundary": "Sanitized timestamp-only internal record evidence; this is not external preregistration."
+  },
+  "rule_type": "stress-focused powered internal replication under a frozen observed-step rule",
+  "not_external_preregistration": true,
+  "frozen_before_evaluation": true,
+  "base_seed": 991117,
+  "num_realizations_per_scenario": 96,
+  "trajectories_per_realization": 24,
+  "bootstrap_samples": 5000,
+  "scenario": {
+    "name": "stress_test",
+    "label": "Measurement-noise stress",
+    "regime": "inflated measurement noise/outliers"
+  },
+  "primary_metric": "observed_step_position_rmse_m",
+  "reference_metric": "all_step_position_rmse_m",
+  "statistical_unit": "independent realization with an independently seeded trajectory population and measurement-noise draw",
+  "power_design": {
+    "stress_floor_effect_reference_m": 27.5,
+    "prior_realized_stress_gap_sd_m": 106.2,
+    "one_sided_alpha": 0.05,
+    "target_power": 0.8,
+    "required_realizations_for_floor_power": 94,
+    "planned_realizations": 96,
+    "planned_realizations_exceed_requirement": true,
+    "purpose": "Test the measurement-noise stress row at a realization count exceeding the prior floor-power design check."
+  },
+  "decision_predicate": {
+    "per_scenario_estimate": "mean observed-step position RMSE over independent realizations",
+    "paired_gap": "RGR-GF observed-step position RMSE minus the best classical observed-step position RMSE in the same realization",
+    "confidence_interval": "95% percentile bootstrap CI over independent realizations",
+    "learned_positive": "RGR-GF must be the lowest-mean method for the stress scenario and the upper endpoint of the paired-gap CI must be strictly below zero",
+    "stress_negative_floor_power_readout": "If RGR-GF does not satisfy the learned-positive predicate at K=96, the stress-row negative has been checked at a realization count exceeding the K about 94 floor-power requirement; this does not convert the record into external preregistration or public-reference validation.",
+    "reference_metric_use": "all-step position RMSE is reported only as a propagation-dominated reference and is not part of the decision predicate"
+  },
+  "fixed_previously_trained_learned_estimator_inference_only": true,
+  "no_model_selection": true,
+  "no_tuning": true,
+  "no_retraining": true,
+  "seed_disjointness": "base seed 991117 is disjoint from the 41-55 training/validation cohort, model-selection validation splits, the observed-step endpoint-fixation base seed 770000, the K=32 replication base seed 880000, the scenario-resampling base seed 90000, and prior endpoint-extension shard seeds 770539-770566",
+  "interpretation_boundary": "This rule defines an internal stress-focused powered replication fixed before the K=96 draw was evaluated. It is not an external preregistration, does not permit selection, tuning, or retraining, and supports only the observed-step stress-row ordering inside the compact simulator."
+}

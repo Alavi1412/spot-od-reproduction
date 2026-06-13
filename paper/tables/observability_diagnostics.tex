@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{State-scaled measurement-geometry diagnostics computed from finite-difference range/angle/range-rate Jacobians over the scored horizon. The relative finite-difference step is $10^{-6}$ of the state scale; log-trace, log pseudo-determinant, log-condition, and minimum-eigenvalue channels are clipped before normalization. Higher log pseudo-determinant indicates more informative geometry; lower log condition is better conditioned.}
+  \label{tab:observability_diagnostics}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Scenario & Median meas. rows & Full-rank frac. & Median $\log_{10}\det^+$ & Median $\log_{10}\kappa$ & Spearman vs EKF RMSE \\
+    \midrule
+    Nominal test & 94 & 0.812 & 65.99 & 4.18 & -0.450 \\
+    Stress test & 82 & 0.734 & 60.94 & 3.96 & -0.671 \\
+    Public-catalog replay & 122 & 0.917 & 66.86 & 3.73 & 0.090 \\
+    SatNOGS observation replay & 94 & 1.000 & 64.93 & 4.69 & -0.324 \\
+    SatNOGS observation replay stress & 82 & 1.000 & 63.00 & 4.64 & 0.215 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

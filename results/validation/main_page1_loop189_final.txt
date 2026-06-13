@@ -1,0 +1,49 @@
+SPOT-OD: A Simulator-Bound Orbit-Determination Self-Audit
+Record with Adaptive-Filter and Observability Mechanism Findings
+Authors omitted for review
+May 2026
+Abstract
+The primary contribution is a compact-simulator AUKF R-inflation diagnostic under force-model mismatch,
+not independently validated for operational transfer. In a compact two-body+J2 +drag OD simulator,
+the adaptive unscented Kalman filter (AUKF) inflates its measurement-noise scale (mean 3.32); median
+R-only normalised-innovation-squared grows from 1.60 (extended Kalman filter, EKF) and 1.83 (unscented
+Kalman filter, UKF) to 4.73 (AUKF). A drag-scale cascade separates EKF linearisation, sparse-geometry
+observability, and β prior inertia: median β̂ = 1.0000 despite 9.6 km drag separation. A Dynamics-Bias
+Adaptation-Risk heuristic is withdrawn after 450 realizations proved indistinguishable from its 81.3%
+no-information baseline.
+The learned-estimator bounded negative is secondary. Applied to the authors’ RGR-GF family and a
+KalmanNet-style comparator, no evaluated construction beats the per-scenario best classical reference
+on observed-step position-RMSE (selected post hoc; K = 32 and K = 96 draws are internal checks, not
+external preregistration).
+A self-audit record under self-authored definitions (not independently validated) makes findings
+inspectable. Compact-model errors range 350–925 m while operational ILRS/SP3 analyses reach
+centimetre/sub-metre accuracy—a distinct operational gap. For small-satellite teams, the AUKF diagnostic and drag-scale cascade inform compact-simulator screening gates before precise-reference validation
+campaigns.
+
+Keywords: orbit determination; satellite state estimation; sparse visibility; claim-audited evaluation;
+adaptive filtering; negative results; reproducibility
+
+1
+
+Introduction
+
+Contribution in one sentence. The primary mechanism contribution quantifies an OD instance of known
+covariance-matching/adaptive-filter failure: under force-model mismatch AUKF inflates effective R and damps
+needed corrections, while the drag-scale cascade isolates EKF linearisation, sparse-geometry observability, and
+candidate-inertia failure modes. The bounded learned-estimator negative is secondary: no evaluated learned
+construction beats the per-scenario best tuned classical reference on the central observed-step anchor. SPOTOD is the OD-specific audit discipline that makes these findings inspectable; in this compact sparse-visibility
+setting, apparent learned gains against fixed-noise UKF remain pre-campaign hypotheses until they have
+been checked against tuned AUKF and batch-OD guardrails, frozen decision rules under the observed-step
+hierarchy, capacity-matched controls, practical floors, structural-channel rules, and provenance checks.
+Satellite OD is grounded in orbital dynamics, measurement modelling, and recursive statistical estimation
+[24, 74, 73, 47, 72], with Kalman-filter families and their nonlinear extensions central because they encode
+physical priors, uncertainty propagation, and measurement-update structure [29, 27, 28, 77]. Sparse visibility
+— intermittent contact, unfavourable geometry, and shifting noise statistics — motivates learned residual or
+adaptive components, but it also raises the evidentiary bar for any claim that a neural estimator improves on
+a strong dynamics-aware baseline, which is the claim audit this study enforces.
+Scope and claim boundary. Conclusions are drawn strictly from the reported tables and figures. For
+navigation, Table 2 is the primary claim–evidence–limit hierarchy. Observed-step position RMSE is the
+
+1
+
+

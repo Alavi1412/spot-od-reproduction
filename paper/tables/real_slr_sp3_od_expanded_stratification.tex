@@ -1,0 +1,20 @@
+\begin{table}[t]
+  \centering
+  \caption{Descriptive completed-arc temporal and target strata for the 400-attempt/373-completed formal compact real SLR/SP3 replay. Each entry is mean/median arc-level held-out position RMSE in metres, computed from the same validation record as S-Table~\ref{tab:real_slr_sp3_od_expanded}. Best counts are ordered EKF/fixed-noise UKF/AUKF/SP3-IC propagation. The rows are diagnostic strata only: temporal epoch, target, arc geometry, and unmodelled perturbation or frame-reduction heterogeneity are plausible contributors to the wider pooled intervals, but this table does not identify a causal driver or establish stable filter superiority.}
+  \label{tab:real_slr_sp3_od_expanded_stratification}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Stratum & $n$ & EKF & Fixed-noise UKF & AUKF & SP3-IC & Best counts \\
+    \midrule
+    Preceding split & 333 & 562.32 / 352.08 & 570.85 / 360.66 & 603.62 / 362.78 & 804.95 / 611.60 & 86/53/69/125 \\
+    Training split & 20 & 731.66 / 406.48 & 742.84 / 372.21 & 706.63 / 417.67 & 583.39 / 362.89 & 2/2/4/12 \\
+    Validation split & 10 & 586.33 / 372.16 & 558.72 / 362.82 & 575.26 / 367.71 & 625.77 / 446.62 & 2/1/2/5 \\
+    Test split & 10 & 359.12 / 248.67 & 328.38 / 234.04 & 342.39 / 297.27 & 476.07 / 470.83 & 3/1/3/3 \\
+    LAGEOS-1 & 188 & 664.73 / 436.05 & 669.24 / 436.12 & 706.24 / 458.88 & 676.29 / 516.28 & 39/26/34/89 \\
+    LAGEOS-2 & 185 & 466.87 / 295.60 & 475.69 / 305.26 & 494.82 / 295.64 & 884.29 / 632.52 & 54/31/44/56 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Rows are computed from completed arcs only. Non-completed arcs (17 insufficient observations; 10 public product unavailable or non-parseable) remain explicit status records in the validation JSON and are not hidden, imputed, or pooled. Excluded count: 27/400 attempted arcs.}
+\end{table}

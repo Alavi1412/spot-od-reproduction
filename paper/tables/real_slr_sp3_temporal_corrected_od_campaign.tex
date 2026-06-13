@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Full-correction temporal public real-measurement orbit-determination pass on LAGEOS CRD normal points. The schedule was fixed before scoring; because no later public week was reachable in this run and the materialized weeks had already been inspected, the result is labelled post-hoc-robustness rather than confirmatory. The pass applies the IERS Earth-orientation series, Marini--Murray troposphere, LAGEOS centre-of-mass, and Shapiro corrections; the learned residual is trained only on the train weeks, then ridge and candidate choices use validation week(s) 260425 and the frozen choice is scored on test week(s) 260502. Residuals remain at the hundreds-of-metres scale, so this is not operational POD.}
+  \label{tab:real_slr_sp3_temporal_corrected_od_campaign}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llccc}
+    \toprule
+    Comparison & Candidate/readout & Validation mean [m] & Test mean [m] & Paired test gap [m] \\
+    \midrule
+    Frozen temporal selector & AUKF (full correction) & 523.21 & 1008.72 & 697.41 [460.10, 934.72] \\
+    Learned residual vs best classical & Learned residual UKF (not validation-selected) & 731.38 & 885.75 & -41.37 [-64.50, -18.24] \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Gaps are candidate minus reference; positive values mean larger held-out position RMSE. The first row references the test-best candidate in the validation-defined pool; the second references the best non-SP3-IC classical recursive-filter candidate.}
+\end{table}

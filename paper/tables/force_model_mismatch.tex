@@ -1,0 +1,20 @@
+\begin{table}[t]
+  \centering
+  \caption{Controlled force-model / process-noise mismatch validation (\texttt{force\_model\_mismatch\_test}). The truth propagation uses an inflated drag, solar-radiation-pressure, and process-noise force model (ballistic coefficient $0.045$~m$^2$/kg, process-noise std $0.45$, $\rho_0=7.0\times10^{-11}$, SRP area-to-mass $0.06$, $C_R=1.60$) while every estimator and the offline WLS reference keep the nominal compact model (ballistic coefficient $0.018$, process-noise std $0.0$, $\rho_0=4.0\times10^{-11}$, SRP area-to-mass $0.02$, $C_R=1.35$); this is a controlled force-model mismatch split, not real data. The controlled force-model-mismatch split is a protocol-fixed endpoint evaluated on the primary observed-step metric (steps with $\geq$1 visible station); all-step and zero-visible RMSE are the propagation-dominated reference. Rows are ordered by observed-step RMSE. The unconstrained Pure GNN diverges by orders of magnitude on this slice and is not ranked. Visibility coverage on this slice is 0.7852 zero-visible, 0.2125 one-visible, and 0.00226 $\geq$2-visible steps.}
+  \label{tab:force_model_mismatch}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccl}
+    \toprule
+    Method & Observed-step RMSE [m] & All-step RMSE [m] & Zero-visible RMSE [m] & Note \\
+    \midrule
+    EKF & 448.79 & 8286.23 & 16107.44 & Causal; best observed-step \\
+    IDP-RGR-GF & 450.63 & 8286.90 & 16108.74 & Learned residual; $\approx$EKF, no gain \\
+    UKF & 469.41 & 8287.24 & 16109.27 & Fixed-noise filter \\
+    RGR-GF & 472.33 & 8286.64 & 16108.07 & Learned residual; no gain vs EKF \\
+    Learned Noise Adaptive & 490.13 & 8287.42 & 16109.44 & Learned noise; no gain \\
+    AUKF & 526.39 & 8291.90 & 16117.87 & Adaptive; worst observed under true mismatch \\
+    Batch WLS & 1903.06 & 8107.80 & 15732.32 & Offline full-arc; best all-step, worst observed \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,15 @@
+\begin{table}[t]
+  \centering
+  \caption{Propagation-only reference condition for the primary synthetic splits. Open-loop propagation starts from the same noisy initial state estimates as the filters and applies the deterministic force model without measurement updates. Gain is the best EKF/UKF/AUKF aggregate position-RMSE reduction relative to open-loop propagation over the common evaluation window.}
+  \label{tab:propagation_baseline}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Scenario & Traj. & Initial pos. RMSE [m] & Open-loop RMSE [m] & Best filter RMSE [m] & Best filter & Gain vs open-loop [\%] \\
+    \midrule
+    Nominal test & 64 & 4121.30 & 14266.41 & 6167.44 & AUKF & 56.77 \\
+    Stress test & 64 & 4522.39 & 12986.28 & 6800.54 & AUKF & 47.63 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

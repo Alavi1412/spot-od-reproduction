@@ -1,0 +1,853 @@
+{
+  "artifact": "task227_final_submission_validation",
+  "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+  "workspace": "D:\\GNN State Estimation",
+  "overall_status": "PASSED",
+  "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -cd paper/main.tex",
+  "build_command_result": "exit_code_0 from fresh run; latexmk reported all targets up-to-date",
+  "pdf_evidence": {
+    "path": "paper\\main.pdf",
+    "pages": 33,
+    "bytes_on_disk": 719991,
+    "bytes_from_main_log": 719991,
+    "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745",
+    "pdf_header": "%PDF-1.5",
+    "main_log": "paper\\main.log",
+    "latexmk_log": "results\\latexmk.log",
+    "readback_method": "paper/main.log Output written line plus file stat/hash readback"
+  },
+  "latex_log_quality": {
+    "undefined_citations": 0,
+    "undefined_references": 0,
+    "latex_undefined_reference_warnings": 0,
+    "rerun_cross_reference_warnings": 0,
+    "overfull_hboxes": 0,
+    "underfull_hboxes": 0,
+    "residual_explanation": "Final log has 0 undefined citations/references and 0 rerun warnings. Residual overfull/underfull boxes are formatting diagnostics in prose/code-path/evidence-plan/bibliography text; no evidence of unresolved citation or cross-reference state."
+  },
+  "citation_validation": {
+    "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+    "main_tex": "paper\\main.tex",
+    "citation_source_files": [
+      "paper\\main.tex",
+      "paper\\tables\\main_abbreviation_glossary.tex",
+      "paper\\tables\\main_aukf_mechanism.tex",
+      "paper\\tables\\main_dbar_withdrawal.tex",
+      "paper\\tables\\main_drag_scale_cascade.tex",
+      "paper\\tables\\main_findings_summary.tex",
+      "paper\\tables\\main_framework_portability.tex",
+      "paper\\tables\\main_k32_replication.tex",
+      "paper\\tables\\main_long_arc_result.tex",
+      "paper\\tables\\main_structural_recoverability.tex"
+    ],
+    "bib_file": "paper\\references.bib",
+    "cited_key_count": 95,
+    "bib_entry_count": 103,
+    "cited_keys": [
+      "hoots1980spacetrack",
+      "vallado2006sgp4",
+      "vallado2013",
+      "montenbruck2000",
+      "tapley2004statistical",
+      "kalman1960",
+      "jazwinski1970stochastic",
+      "julier1997unscented",
+      "wan2000unscented",
+      "ceresoli2025robust",
+      "oliveira2026opticalflow",
+      "liu2026epsa",
+      "lowe2026drag",
+      "lim2026publicorbitmaneuver",
+      "zhang2026hnn",
+      "mehra1970adaptive",
+      "kruse2025adaptive",
+      "haarnoja2016",
+      "revach2022kalmannet",
+      "mortada2025recursivekalmannet",
+      "badura2025piml",
+      "zhou2023orderswitching",
+      "sage1969adaptive",
+      "wang2026heavytailedkf",
+      "chihabi2025adaptive",
+      "wright1981drag",
+      "stacey2021adaptive",
+      "wang2026empiricalacceleration",
+      "selvan2023precise",
+      "scorsoglio2023pinn",
+      "scorsoglio2026xgeo",
+      "ramponi2026pontryagin",
+      "zhou2023lstm",
+      "zhang2024libration",
+      "pinheiro2024flexkalmannet",
+      "gao2025heavytailed",
+      "sztamfater2026sequential",
+      "xu2026arckf",
+      "li2026delay",
+      "chen2024robust",
+      "zhu2025bayesian",
+      "chen2026orbitrecovery",
+      "belyakov2025satellites",
+      "segura2026hybridsgp4",
+      "liu2026lowthrustpiecewise",
+      "smego2026dynamic",
+      "heidrich2025collocation",
+      "ojedaromero2025adaptivecislunariod",
+      "song2026multiconstrainediod",
+      "li2026islheterogeneous",
+      "zhu2026multiscale",
+      "paranjape2026probabilistic",
+      "paranjape2026hybridpgm",
+      "paul2026mukf_tasking",
+      "cossu2026lugre",
+      "lang2025starlinkunscented",
+      "liao2026patchtransformer",
+      "yang2026lstmtransformerorbit",
+      "mahmud2026pinnleo",
+      "varey2024physics",
+      "kiprit2026temporalgrid",
+      "morris2019simulation",
+      "bouthillier2021accounting",
+      "dehghani2021benchmark",
+      "pineau2021reproducibility",
+      "semmelrock2025reproducibility",
+      "min2026transparency",
+      "ode2026protocol",
+      "yeo2020nistir",
+      "pearlman2002ilrs",
+      "ilrs_npt_data",
+      "cddis_slr_npt",
+      "ilrs_crd_format",
+      "ren2026slrbds3",
+      "lemoine2026std2400",
+      "kipf2017",
+      "hamilton2017",
+      "velickovic2018",
+      "battaglia2018relational",
+      "gilmer2017neural",
+      "scarselli2009graph",
+      "chu2026conjunctiongnn",
+      "guo2017calibration",
+      "friedman2018space",
+      "celestrak_gp",
+      "satnogs_network",
+      "satnogs_observations",
+      "satnogs_api",
+      "evensen1994sequential",
+      "burgers1998analysis",
+      "wilcoxon1945",
+      "efron1994",
+      "holm1979",
+      "benjamini1995",
+      "chen2025bilstmdrag"
+    ],
+    "missing_bib_entries": [],
+    "unused_bib_entries": [
+      "mehrfard2026adaptivekalmannet",
+      "battaglia2016interaction",
+      "sanchezgonzalez2020learning",
+      "chen2018neural",
+      "kipf2018neural",
+      "peng2011reproducible",
+      "sandve2013ten",
+      "ovadia2019can"
+    ],
+    "passed": true
+  },
+  "provider_fallback_ledger": {
+    "json": "results\\manager_provider_fallback_ledger.json",
+    "markdown": "results\\manager_provider_fallback_ledger.md",
+    "present": true,
+    "provider_summary": {
+      "anthropic": {
+        "attempts_observed": 96,
+        "failure_categories": {
+          "api_error": 6,
+          "other": 1,
+          "quorum_skipped": 34,
+          "rate_limit": 54
+        },
+        "failures_observed": 95,
+        "running_observed": 0,
+        "successes_observed": 1,
+        "unknown_status_observed": 0
+      },
+      "gemini": {
+        "attempts_observed": 102,
+        "failure_categories": {
+          "api_error": 65,
+          "quorum_skipped": 23
+        },
+        "failures_observed": 88,
+        "running_observed": 0,
+        "successes_observed": 14,
+        "unknown_status_observed": 0
+      },
+      "openai": {
+        "attempts_observed": 102,
+        "failure_categories": {
+          "api_error": 6,
+          "quorum_skipped": 4
+        },
+        "failures_observed": 10,
+        "running_observed": 0,
+        "successes_observed": 92,
+        "unknown_status_observed": 0
+      }
+    }
+  },
+  "release_packet_sync": {
+    "passed": true,
+    "release_packet": "results\\release_packet.json",
+    "generated_table_count": 9,
+    "inline_table_count": 0,
+    "figure_count": 1,
+    "active_table_input_lines": [
+      {
+        "line": 47,
+        "content": "\\input{tables/main_abbreviation_glossary.tex}",
+        "path": "paper\\tables\\main_abbreviation_glossary.tex"
+      },
+      {
+        "line": 93,
+        "content": "\\input{tables/main_framework_portability.tex}",
+        "path": "paper\\tables\\main_framework_portability.tex"
+      },
+      {
+        "line": 162,
+        "content": "\\input{tables/main_findings_summary.tex}",
+        "path": "paper\\tables\\main_findings_summary.tex"
+      },
+      {
+        "line": 168,
+        "content": "\\input{tables/main_k32_replication.tex}",
+        "path": "paper\\tables\\main_k32_replication.tex"
+      },
+      {
+        "line": 206,
+        "content": "\\input{tables/main_aukf_mechanism.tex}",
+        "path": "paper\\tables\\main_aukf_mechanism.tex"
+      },
+      {
+        "line": 233,
+        "content": "\\input{tables/main_structural_recoverability.tex}",
+        "path": "paper\\tables\\main_structural_recoverability.tex"
+      },
+      {
+        "line": 237,
+        "content": "\\input{tables/main_drag_scale_cascade.tex}",
+        "path": "paper\\tables\\main_drag_scale_cascade.tex"
+      },
+      {
+        "line": 248,
+        "content": "\\input{tables/main_long_arc_result.tex}",
+        "path": "paper\\tables\\main_long_arc_result.tex"
+      },
+      {
+        "line": 265,
+        "content": "\\input{tables/main_dbar_withdrawal.tex}",
+        "path": "paper\\tables\\main_dbar_withdrawal.tex"
+      }
+    ],
+    "active_figure_include_lines": [
+      {
+        "line": 201,
+        "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+        "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+      }
+    ],
+    "active_figure_environment_lines": [
+      {
+        "line": 199,
+        "content": "\\begin{figure}[t]",
+        "path": "paper\\main.tex"
+      }
+    ],
+    "duplicate_line_evidence_passed": true
+  },
+  "line_evidence_sync_report": {
+    "artifact": "release_packet_line_evidence_sync_report",
+    "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+    "source_of_truth": "paper/main.tex",
+    "changed_fields": [
+      "active_table_line_evidence",
+      "active_figure_line_evidence",
+      "manuscript_inclusion_status.active_table_line_evidence",
+      "manuscript_inclusion_status.active_figure_line_evidence",
+      "release_metadata.active_table_line_evidence",
+      "release_metadata.active_figure_line_evidence",
+      "release_packet_truth_sync.main_tex_line_evidence"
+    ],
+    "before": {
+      "top_level": {
+        "active_table_line_evidence": [
+          {
+            "content": "\\input{tables/main_abbreviation_glossary.tex}",
+            "line": 47,
+            "path": "paper\\tables\\main_abbreviation_glossary.tex"
+          },
+          {
+            "content": "\\input{tables/main_framework_portability.tex}",
+            "line": 93,
+            "path": "paper\\tables\\main_framework_portability.tex"
+          },
+          {
+            "content": "\\input{tables/main_findings_summary.tex}",
+            "line": 162,
+            "path": "paper\\tables\\main_findings_summary.tex"
+          },
+          {
+            "content": "\\input{tables/main_k32_replication.tex}",
+            "line": 168,
+            "path": "paper\\tables\\main_k32_replication.tex"
+          },
+          {
+            "content": "\\input{tables/main_aukf_mechanism.tex}",
+            "line": 206,
+            "path": "paper\\tables\\main_aukf_mechanism.tex"
+          },
+          {
+            "content": "\\input{tables/main_structural_recoverability.tex}",
+            "line": 233,
+            "path": "paper\\tables\\main_structural_recoverability.tex"
+          },
+          {
+            "content": "\\input{tables/main_drag_scale_cascade.tex}",
+            "line": 237,
+            "path": "paper\\tables\\main_drag_scale_cascade.tex"
+          },
+          {
+            "content": "\\input{tables/main_long_arc_result.tex}",
+            "line": 248,
+            "path": "paper\\tables\\main_long_arc_result.tex"
+          },
+          {
+            "content": "\\input{tables/main_dbar_withdrawal.tex}",
+            "line": 265,
+            "path": "paper\\tables\\main_dbar_withdrawal.tex"
+          }
+        ],
+        "active_figure_line_evidence": [
+          {
+            "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+            "line": 201,
+            "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+          }
+        ]
+      },
+      "manuscript_inclusion_status": {
+        "active_table_line_evidence": [
+          {
+            "content": "\\input{tables/main_abbreviation_glossary.tex}",
+            "line": 47,
+            "path": "paper\\tables\\main_abbreviation_glossary.tex"
+          },
+          {
+            "content": "\\input{tables/main_framework_portability.tex}",
+            "line": 93,
+            "path": "paper\\tables\\main_framework_portability.tex"
+          },
+          {
+            "content": "\\input{tables/main_findings_summary.tex}",
+            "line": 162,
+            "path": "paper\\tables\\main_findings_summary.tex"
+          },
+          {
+            "content": "\\input{tables/main_k32_replication.tex}",
+            "line": 168,
+            "path": "paper\\tables\\main_k32_replication.tex"
+          },
+          {
+            "content": "\\input{tables/main_aukf_mechanism.tex}",
+            "line": 206,
+            "path": "paper\\tables\\main_aukf_mechanism.tex"
+          },
+          {
+            "content": "\\input{tables/main_structural_recoverability.tex}",
+            "line": 233,
+            "path": "paper\\tables\\main_structural_recoverability.tex"
+          },
+          {
+            "content": "\\input{tables/main_drag_scale_cascade.tex}",
+            "line": 237,
+            "path": "paper\\tables\\main_drag_scale_cascade.tex"
+          },
+          {
+            "content": "\\input{tables/main_long_arc_result.tex}",
+            "line": 248,
+            "path": "paper\\tables\\main_long_arc_result.tex"
+          },
+          {
+            "content": "\\input{tables/main_dbar_withdrawal.tex}",
+            "line": 265,
+            "path": "paper\\tables\\main_dbar_withdrawal.tex"
+          }
+        ],
+        "active_figure_line_evidence": [
+          {
+            "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+            "line": 201,
+            "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+          }
+        ]
+      },
+      "release_metadata": {
+        "active_table_line_evidence": [
+          {
+            "content": "\\input{tables/main_abbreviation_glossary.tex}",
+            "line": 47,
+            "path": "paper\\tables\\main_abbreviation_glossary.tex"
+          },
+          {
+            "content": "\\input{tables/main_framework_portability.tex}",
+            "line": 93,
+            "path": "paper\\tables\\main_framework_portability.tex"
+          },
+          {
+            "content": "\\input{tables/main_findings_summary.tex}",
+            "line": 162,
+            "path": "paper\\tables\\main_findings_summary.tex"
+          },
+          {
+            "content": "\\input{tables/main_k32_replication.tex}",
+            "line": 168,
+            "path": "paper\\tables\\main_k32_replication.tex"
+          },
+          {
+            "content": "\\input{tables/main_aukf_mechanism.tex}",
+            "line": 206,
+            "path": "paper\\tables\\main_aukf_mechanism.tex"
+          },
+          {
+            "content": "\\input{tables/main_structural_recoverability.tex}",
+            "line": 233,
+            "path": "paper\\tables\\main_structural_recoverability.tex"
+          },
+          {
+            "content": "\\input{tables/main_drag_scale_cascade.tex}",
+            "line": 237,
+            "path": "paper\\tables\\main_drag_scale_cascade.tex"
+          },
+          {
+            "content": "\\input{tables/main_long_arc_result.tex}",
+            "line": 248,
+            "path": "paper\\tables\\main_long_arc_result.tex"
+          },
+          {
+            "content": "\\input{tables/main_dbar_withdrawal.tex}",
+            "line": 265,
+            "path": "paper\\tables\\main_dbar_withdrawal.tex"
+          }
+        ],
+        "active_figure_line_evidence": [
+          {
+            "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+            "line": 201,
+            "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+          }
+        ]
+      },
+      "release_packet_truth_sync": {
+        "main_tex_line_evidence": {
+          "active_figure_environment_lines": [
+            {
+              "content": "\\begin{figure}[t]",
+              "line": 199,
+              "path": "paper\\main.tex"
+            }
+          ],
+          "active_includegraphics_lines": [
+            {
+              "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+              "line": 201,
+              "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+            }
+          ],
+          "active_input_lines": [
+            {
+              "content": "\\input{tables/main_abbreviation_glossary.tex}",
+              "line": 47,
+              "path": "paper\\tables\\main_abbreviation_glossary.tex"
+            },
+            {
+              "content": "\\input{tables/main_framework_portability.tex}",
+              "line": 93,
+              "path": "paper\\tables\\main_framework_portability.tex"
+            },
+            {
+              "content": "\\input{tables/main_findings_summary.tex}",
+              "line": 162,
+              "path": "paper\\tables\\main_findings_summary.tex"
+            },
+            {
+              "content": "\\input{tables/main_k32_replication.tex}",
+              "line": 168,
+              "path": "paper\\tables\\main_k32_replication.tex"
+            },
+            {
+              "content": "\\input{tables/main_aukf_mechanism.tex}",
+              "line": 206,
+              "path": "paper\\tables\\main_aukf_mechanism.tex"
+            },
+            {
+              "content": "\\input{tables/main_structural_recoverability.tex}",
+              "line": 233,
+              "path": "paper\\tables\\main_structural_recoverability.tex"
+            },
+            {
+              "content": "\\input{tables/main_drag_scale_cascade.tex}",
+              "line": 237,
+              "path": "paper\\tables\\main_drag_scale_cascade.tex"
+            },
+            {
+              "content": "\\input{tables/main_long_arc_result.tex}",
+              "line": 248,
+              "path": "paper\\tables\\main_long_arc_result.tex"
+            },
+            {
+              "content": "\\input{tables/main_dbar_withdrawal.tex}",
+              "line": 265,
+              "path": "paper\\tables\\main_dbar_withdrawal.tex"
+            }
+          ],
+          "active_table_environment_lines": []
+        }
+      }
+    },
+    "after": {
+      "top_level": {
+        "active_table_line_evidence": [
+          {
+            "line": 47,
+            "content": "\\input{tables/main_abbreviation_glossary.tex}",
+            "path": "paper\\tables\\main_abbreviation_glossary.tex"
+          },
+          {
+            "line": 93,
+            "content": "\\input{tables/main_framework_portability.tex}",
+            "path": "paper\\tables\\main_framework_portability.tex"
+          },
+          {
+            "line": 162,
+            "content": "\\input{tables/main_findings_summary.tex}",
+            "path": "paper\\tables\\main_findings_summary.tex"
+          },
+          {
+            "line": 168,
+            "content": "\\input{tables/main_k32_replication.tex}",
+            "path": "paper\\tables\\main_k32_replication.tex"
+          },
+          {
+            "line": 206,
+            "content": "\\input{tables/main_aukf_mechanism.tex}",
+            "path": "paper\\tables\\main_aukf_mechanism.tex"
+          },
+          {
+            "line": 233,
+            "content": "\\input{tables/main_structural_recoverability.tex}",
+            "path": "paper\\tables\\main_structural_recoverability.tex"
+          },
+          {
+            "line": 237,
+            "content": "\\input{tables/main_drag_scale_cascade.tex}",
+            "path": "paper\\tables\\main_drag_scale_cascade.tex"
+          },
+          {
+            "line": 248,
+            "content": "\\input{tables/main_long_arc_result.tex}",
+            "path": "paper\\tables\\main_long_arc_result.tex"
+          },
+          {
+            "line": 265,
+            "content": "\\input{tables/main_dbar_withdrawal.tex}",
+            "path": "paper\\tables\\main_dbar_withdrawal.tex"
+          }
+        ],
+        "active_figure_line_evidence": [
+          {
+            "line": 201,
+            "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+            "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+          }
+        ]
+      },
+      "manuscript_inclusion_status": {
+        "active_table_line_evidence": [
+          {
+            "line": 47,
+            "content": "\\input{tables/main_abbreviation_glossary.tex}",
+            "path": "paper\\tables\\main_abbreviation_glossary.tex"
+          },
+          {
+            "line": 93,
+            "content": "\\input{tables/main_framework_portability.tex}",
+            "path": "paper\\tables\\main_framework_portability.tex"
+          },
+          {
+            "line": 162,
+            "content": "\\input{tables/main_findings_summary.tex}",
+            "path": "paper\\tables\\main_findings_summary.tex"
+          },
+          {
+            "line": 168,
+            "content": "\\input{tables/main_k32_replication.tex}",
+            "path": "paper\\tables\\main_k32_replication.tex"
+          },
+          {
+            "line": 206,
+            "content": "\\input{tables/main_aukf_mechanism.tex}",
+            "path": "paper\\tables\\main_aukf_mechanism.tex"
+          },
+          {
+            "line": 233,
+            "content": "\\input{tables/main_structural_recoverability.tex}",
+            "path": "paper\\tables\\main_structural_recoverability.tex"
+          },
+          {
+            "line": 237,
+            "content": "\\input{tables/main_drag_scale_cascade.tex}",
+            "path": "paper\\tables\\main_drag_scale_cascade.tex"
+          },
+          {
+            "line": 248,
+            "content": "\\input{tables/main_long_arc_result.tex}",
+            "path": "paper\\tables\\main_long_arc_result.tex"
+          },
+          {
+            "line": 265,
+            "content": "\\input{tables/main_dbar_withdrawal.tex}",
+            "path": "paper\\tables\\main_dbar_withdrawal.tex"
+          }
+        ],
+        "active_figure_line_evidence": [
+          {
+            "line": 201,
+            "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+            "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+          }
+        ]
+      },
+      "release_metadata": {
+        "active_table_line_evidence": [
+          {
+            "line": 47,
+            "content": "\\input{tables/main_abbreviation_glossary.tex}",
+            "path": "paper\\tables\\main_abbreviation_glossary.tex"
+          },
+          {
+            "line": 93,
+            "content": "\\input{tables/main_framework_portability.tex}",
+            "path": "paper\\tables\\main_framework_portability.tex"
+          },
+          {
+            "line": 162,
+            "content": "\\input{tables/main_findings_summary.tex}",
+            "path": "paper\\tables\\main_findings_summary.tex"
+          },
+          {
+            "line": 168,
+            "content": "\\input{tables/main_k32_replication.tex}",
+            "path": "paper\\tables\\main_k32_replication.tex"
+          },
+          {
+            "line": 206,
+            "content": "\\input{tables/main_aukf_mechanism.tex}",
+            "path": "paper\\tables\\main_aukf_mechanism.tex"
+          },
+          {
+            "line": 233,
+            "content": "\\input{tables/main_structural_recoverability.tex}",
+            "path": "paper\\tables\\main_structural_recoverability.tex"
+          },
+          {
+            "line": 237,
+            "content": "\\input{tables/main_drag_scale_cascade.tex}",
+            "path": "paper\\tables\\main_drag_scale_cascade.tex"
+          },
+          {
+            "line": 248,
+            "content": "\\input{tables/main_long_arc_result.tex}",
+            "path": "paper\\tables\\main_long_arc_result.tex"
+          },
+          {
+            "line": 265,
+            "content": "\\input{tables/main_dbar_withdrawal.tex}",
+            "path": "paper\\tables\\main_dbar_withdrawal.tex"
+          }
+        ],
+        "active_figure_line_evidence": [
+          {
+            "line": 201,
+            "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+            "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+          }
+        ]
+      },
+      "release_packet_truth_sync": {
+        "main_tex_line_evidence": {
+          "active_input_lines": [
+            {
+              "line": 47,
+              "content": "\\input{tables/main_abbreviation_glossary.tex}",
+              "path": "paper\\tables\\main_abbreviation_glossary.tex"
+            },
+            {
+              "line": 93,
+              "content": "\\input{tables/main_framework_portability.tex}",
+              "path": "paper\\tables\\main_framework_portability.tex"
+            },
+            {
+              "line": 162,
+              "content": "\\input{tables/main_findings_summary.tex}",
+              "path": "paper\\tables\\main_findings_summary.tex"
+            },
+            {
+              "line": 168,
+              "content": "\\input{tables/main_k32_replication.tex}",
+              "path": "paper\\tables\\main_k32_replication.tex"
+            },
+            {
+              "line": 206,
+              "content": "\\input{tables/main_aukf_mechanism.tex}",
+              "path": "paper\\tables\\main_aukf_mechanism.tex"
+            },
+            {
+              "line": 233,
+              "content": "\\input{tables/main_structural_recoverability.tex}",
+              "path": "paper\\tables\\main_structural_recoverability.tex"
+            },
+            {
+              "line": 237,
+              "content": "\\input{tables/main_drag_scale_cascade.tex}",
+              "path": "paper\\tables\\main_drag_scale_cascade.tex"
+            },
+            {
+              "line": 248,
+              "content": "\\input{tables/main_long_arc_result.tex}",
+              "path": "paper\\tables\\main_long_arc_result.tex"
+            },
+            {
+              "line": 265,
+              "content": "\\input{tables/main_dbar_withdrawal.tex}",
+              "path": "paper\\tables\\main_dbar_withdrawal.tex"
+            }
+          ],
+          "active_includegraphics_lines": [
+            {
+              "line": 201,
+              "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+              "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+            }
+          ],
+          "active_table_environment_lines": [],
+          "active_figure_environment_lines": [
+            {
+              "line": 199,
+              "content": "\\begin{figure}[t]",
+              "path": "paper\\main.tex"
+            }
+          ]
+        }
+      }
+    },
+    "current_table_line_evidence": [
+      {
+        "line": 47,
+        "content": "\\input{tables/main_abbreviation_glossary.tex}",
+        "path": "paper\\tables\\main_abbreviation_glossary.tex"
+      },
+      {
+        "line": 93,
+        "content": "\\input{tables/main_framework_portability.tex}",
+        "path": "paper\\tables\\main_framework_portability.tex"
+      },
+      {
+        "line": 162,
+        "content": "\\input{tables/main_findings_summary.tex}",
+        "path": "paper\\tables\\main_findings_summary.tex"
+      },
+      {
+        "line": 168,
+        "content": "\\input{tables/main_k32_replication.tex}",
+        "path": "paper\\tables\\main_k32_replication.tex"
+      },
+      {
+        "line": 206,
+        "content": "\\input{tables/main_aukf_mechanism.tex}",
+        "path": "paper\\tables\\main_aukf_mechanism.tex"
+      },
+      {
+        "line": 233,
+        "content": "\\input{tables/main_structural_recoverability.tex}",
+        "path": "paper\\tables\\main_structural_recoverability.tex"
+      },
+      {
+        "line": 237,
+        "content": "\\input{tables/main_drag_scale_cascade.tex}",
+        "path": "paper\\tables\\main_drag_scale_cascade.tex"
+      },
+      {
+        "line": 248,
+        "content": "\\input{tables/main_long_arc_result.tex}",
+        "path": "paper\\tables\\main_long_arc_result.tex"
+      },
+      {
+        "line": 265,
+        "content": "\\input{tables/main_dbar_withdrawal.tex}",
+        "path": "paper\\tables\\main_dbar_withdrawal.tex"
+      }
+    ],
+    "current_figure_line_evidence": [
+      {
+        "line": 201,
+        "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+        "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+      }
+    ],
+    "current_figure_environment_lines": [
+      {
+        "line": 199,
+        "content": "\\begin{figure}[t]",
+        "path": "paper\\main.tex"
+      }
+    ]
+  },
+  "changed_files": [
+    "tools_task227_final_submission_validation.py",
+    "docs\\verify_release_packet_sync.py",
+    "scripts\\validate_submission.py",
+    "results\\release_packet.json",
+    "results\\release_packet_line_evidence_sync_report.json",
+    "results\\release_packet_line_evidence_sync_report.md",
+    "results\\task227_final_submission_validation_result_payload.json",
+    "results\\task227_final_release_evidence_index.json"
+  ],
+  "tests": {
+    "command": ".venv\\Scripts\\python.exe -m pytest",
+    "status": "PASSED",
+    "collected": 43,
+    "passed": 43,
+    "fresh_stdout_evidence": "Tool run returned exit_code 0 and \"43 passed in 6.27s\".",
+    "note": "A non-venv pytest run failed because that interpreter lacked numpy; the corrected project venv command passed and is the relevant validation command."
+  },
+  "academic_qa_review": {
+    "status": "PASSED_WITH_FORMATTING_RESIDUALS",
+    "claim_quality": "Claims are benchmark/method-selection framed and tied to current manuscript artifacts; no submission-blocking unsupported publication claim was identified in this deterministic QA pass.",
+    "method_clarity": "Manuscript includes classical filters, learned residual baselines, public replay, stability/method-selection framing, and an evidence plan; release packet distinguishes active main-manuscript artifacts from supplement/diagnostic artifacts.",
+    "citation_quality": "95 cited keys, 103 bibliography entries, no missing cited bibliography entries. Unused entries are retained bibliography surplus, not citation failures.",
+    "reproducibility": "Relevant test suite passed in project virtual environment; release packet and provider ledger paths are synchronized.",
+    "limitations": [
+      "Residual hbox diagnostics should be considered typesetting polish, not scientific validation failures.",
+      "Provider/fallback ledger records observed manager attempts only; it does not prove external provider account health beyond those rows."
+    ]
+  },
+  "evidence_paths": {
+    "machine_payload": "results/task227_final_submission_validation_result_payload.json",
+    "stakeholder_markdown": "results/task227_final_submission_validation_stakeholder_artifact.md",
+    "release_evidence_index": "results/task227_final_release_evidence_index.json",
+    "release_packet": "results\\release_packet.json",
+    "citation_validation": "results/task227_citation_validation.json",
+    "pdf_evidence": "results/task227_pdf_evidence.json",
+    "line_evidence_sync_report_json": "results/release_packet_line_evidence_sync_report.json",
+    "line_evidence_sync_report_markdown": "results/release_packet_line_evidence_sync_report.md"
+  }
+}

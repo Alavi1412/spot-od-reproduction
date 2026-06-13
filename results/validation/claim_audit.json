@@ -1,0 +1,70 @@
+[
+  {
+    "claim_area": "main comparative performance claim",
+    "detected_in_manuscript": true,
+    "example_text": "\\begin{abstract} Sparse optical and radio visibility makes satellite state estimation difficult for both model-based filters and learned estimators. This manuscript reports the current SPOT-OD evidence package with an explicit claim boundary: quantitative conclusions are drawn only from the active generated tables and figures included by this source file. The benchmark compares classical filters, a pure graph neural network (GNN), a KalmanNet-like learned estimator, and prior-guided residual or ",
+    "mapped_evidence": [
+      {
+        "path": "paper\\tables\\main_results.tex",
+        "exists": true
+      },
+      {
+        "path": "paper\\figures\\per_step_rmse.png",
+        "exists": true
+      },
+      {
+        "path": "paper\\figures\\position_error_ecdf.png",
+        "exists": true
+      }
+    ],
+    "interpretation_boundary": "Validation confirms artifact presence and citation coverage, not scientific correctness beyond recorded experiment outputs."
+  },
+  {
+    "claim_area": "statistical significance claim",
+    "detected_in_manuscript": true,
+    "example_text": "\\paragraph{Uncertainty and calibration.} State estimates are more useful when uncertainty is reliable. Calibration analysis checks whether confidence or covariance summaries align with empirical error behavior \\cite{guo2017calibration}. The calibration figure in this manuscript is interpreted as a diagnostic for the evaluated runs, not as a deployment guarantee or a full posterior validation.",
+    "mapped_evidence": [
+      {
+        "path": "paper\\tables\\significance.tex",
+        "exists": true
+      }
+    ],
+    "interpretation_boundary": "Validation confirms artifact presence and citation coverage, not scientific correctness beyond recorded experiment outputs."
+  },
+  {
+    "claim_area": "ablation/component contribution claim",
+    "detected_in_manuscript": true,
+    "example_text": "\\begin{abstract} Sparse optical and radio visibility makes satellite state estimation difficult for both model-based filters and learned estimators. This manuscript reports the current SPOT-OD evidence package with an explicit claim boundary: quantitative conclusions are drawn only from the active generated tables and figures included by this source file. The benchmark compares classical filters, a pure graph neural network (GNN), a KalmanNet-like learned estimator, and prior-guided residual or ",
+    "mapped_evidence": [
+      {
+        "path": "paper\\tables\\ablation.tex",
+        "exists": true
+      }
+    ],
+    "interpretation_boundary": "Validation confirms artifact presence and citation coverage, not scientific correctness beyond recorded experiment outputs."
+  },
+  {
+    "claim_area": "uncertainty/calibration claim",
+    "detected_in_manuscript": true,
+    "example_text": "This revision is evidence locked. The only direct main-manuscript result artifacts are Table~\\ref{tab:main_results}, Table~\\ref{tab:significance}, Table~\\ref{tab:ablation}, and Figures~\\ref{fig:per_step_rmse}--\\ref{fig:uncertainty_calibration}. Release, diagnostic, historical, and supplement-planned files remain useful provenance records, but they are not treated as main-paper evidence unless they are actively included here.",
+    "mapped_evidence": [
+      {
+        "path": "paper\\figures\\uncertainty_calibration.png",
+        "exists": true
+      }
+    ],
+    "interpretation_boundary": "Validation confirms artifact presence and citation coverage, not scientific correctness beyond recorded experiment outputs."
+  },
+  {
+    "claim_area": "visibility/occlusion robustness claim",
+    "detected_in_manuscript": true,
+    "example_text": "\\title{SPOT-OD: Evidence-Locked Benchmarking for Sparse-Visibility Satellite State Estimation} \\author{GNN State Estimation Project} \\date{Evidence-locked methodology revision, 2026-05-13}",
+    "mapped_evidence": [
+      {
+        "path": "paper\\figures\\visibility_bucket_rmse.png",
+        "exists": true
+      }
+    ],
+    "interpretation_boundary": "Validation confirms artifact presence and citation coverage, not scientific correctness beyond recorded experiment outputs."
+  }
+]

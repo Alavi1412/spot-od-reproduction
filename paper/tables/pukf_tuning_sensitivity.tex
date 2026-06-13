@@ -1,0 +1,22 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Tuning-sensitivity audit on the higher-fidelity force-mismatch slice. A bounded 16-point validation grid is selected on a disjoint validation population and the selected PUKF is then evaluated on the retained held-out higher-fidelity population. The selected-PUKF-minus-AUKF CI spans zero (reported over the finite paired denominator), so this post-hoc validation-grid stress supports only the qualitative conclusion that this bounded grid does not rescue PUKF. It is reported for comparator fairness only and does not replace the predeclared PUKF rule or decision evidence.}
+  \label{tab:pukf_tuning_sensitivity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcc}
+    \toprule
+    Quantity & Value & Interpretation \\
+    \midrule
+    Validation grid size & 16 & Bounded comparability stress \\
+    Selected grid point & W5\_S0p4\_A3 (W=5, smoothing=0.4, $q_{warn}=2.0$, $q_{alarm}=3.0$) & Lowest validation PUKF RMSE \\
+    Validation selected PUKF RMSE [m] & 339.0 & Best validation classical mean 306.2 m \\
+    Held-out predeclared PUKF RMSE [m] & 519.6 & Frozen-rule comparator from the original record \\
+    Held-out validation-selected PUKF RMSE [m] & 527.5 & Post-hoc sensitivity comparator \\
+    Held-out best classical RMSE [m] & AUKF 393.3 & Endpoint-specific best tuned classical \\
+    Selected PUKF$-$best classical [m] & $+134.2$ [$-9.5$, $+382.2$] & CI spans zero; qualitative tuning-comparability only \\
+    Held-out pairing audit & population n=48; finite paired n=38; CSV SHA-256 efe4eb5a540f... & Deterministic row order, finite paired denominators asserted \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize The held-out comparator CSV stores deterministic \texttt{trajectory\_index} rows rather than external trajectory identifiers. The generator asserts row count, index order $0..n-1$, reference-population seed/protocol metadata, and a nonzero finite paired denominator before bootstrapping; only finite paired trajectories enter the displayed CI.}
+\end{table}

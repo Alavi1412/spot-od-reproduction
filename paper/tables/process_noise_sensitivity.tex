@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \centering
+  \caption{Process-noise sensitivity with full retraining per level.}
+  \label{tab:process_noise_sensitivity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{ccccccc}
+    \toprule
+    Process noise $\sigma$ & Test Hybrid RMSE [m] & Test UKF RMSE [m] & Test $\Delta$ vs UKF [\%] & Stress Hybrid RMSE [m] & Stress UKF RMSE [m] & Stress $\Delta$ vs UKF [\%] \\
+    \midrule
+    0.000 & 6388.37 & 6401.06 & 0.198 & 8608.53 & 8947.04 & 3.783 \\
+    0.200 & 9019.60 & 9024.23 & 0.051 & 8521.94 & 8617.69 & 1.111 \\
+    0.400 & 9380.53 & 9398.63 & 0.193 & 8359.89 & 8589.17 & 2.669 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

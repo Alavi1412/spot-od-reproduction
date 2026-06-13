@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \caption{Targeted station-outage sensitivity. Positive improvements indicate lower RMSE than UKF.}
+  \label{tab:station_outage}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llclcccc}
+    \toprule
+    Scenario & Pattern & Dropped stations & Count & Hybrid RMSE [m] & UKF RMSE [m] & Hybrid $\Delta$ vs UKF [\%] & AUKF $\Delta$ vs UKF [\%] \\
+    \midrule
+    Test & No outage & None & 0 & 6387.66 & 6390.79 & 0.05 & -0.04 \\
+    Test & Drop Alaska & Alaska & 1 & 8052.00 & 8055.03 & 0.04 & -0.03 \\
+    Test & Drop California & California & 1 & 6387.66 & 6390.81 & 0.05 & -0.04 \\
+    Test & Drop Hawaii & Hawaii & 1 & 6661.37 & 6664.43 & 0.05 & -0.04 \\
+    Test & Drop SouthAfrica & SouthAfrica & 1 & 8527.61 & 8532.53 & 0.06 & 0.04 \\
+    Test & Drop top-2 visible & California,Alaska & 2 & 8115.84 & 8118.88 & 0.04 & -0.03 \\
+    Test & Drop top-3 visible & California,Alaska,Hawaii & 3 & 9976.50 & 9979.95 & 0.03 & -0.02 \\
+    Stress & No outage & None & 0 & 7148.65 & 8035.21 & 11.03 & 11.76 \\
+    Stress & Drop Alaska & Alaska & 1 & 7603.10 & 7639.87 & 0.48 & 0.45 \\
+    Stress & Drop California & California & 1 & 7746.96 & 8563.52 & 9.54 & 10.16 \\
+    Stress & Drop Hawaii & Hawaii & 1 & 7274.76 & 8152.74 & 10.77 & 11.21 \\
+    Stress & Drop SouthAfrica & SouthAfrica & 1 & 9024.21 & 9734.08 & 7.29 & 7.76 \\
+    Stress & Drop top-2 visible & California,Alaska & 2 & 8168.18 & 8193.72 & 0.31 & 0.28 \\
+    Stress & Drop top-3 visible & California,Alaska,Hawaii & 3 & 8794.90 & 8820.98 & 0.30 & 0.26 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

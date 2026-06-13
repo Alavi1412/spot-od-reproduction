@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Full-correction public LAGEOS CRD/SP3 temporal campaign summary. The recent $n=10$ row is exploratory post-hoc only; the 260516 and 260523 rows are predeclared prospective public-week readouts.}
+  \label{tab:real_slr_sp3_temporal_corrected_od_campaign_summary}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{p{0.17\linewidth}p{0.20\linewidth}p{0.22\linewidth}p{0.18\linewidth}p{0.31\linewidth}}
+    \toprule
+    Role & Completed/planned & Validation selector & Test best & Learned vs best recursive classical \\
+    \midrule
+    Exploratory recent post-hoc & 10/10 & AUKF (full correction); validation 464.39 m; test 566.20 m & SP3-IC propagation (full correction) 349.29 m & Learned 490.72 m vs UKF (full correction) 549.33 m; gap -58.61 m, CI [-83.47, -30.50], lower on 9/10 arcs \\
+    Controlling prospective public week & 8/10; excluded LAGEOS-1 2026-05-13: 0 obs; LAGEOS-2 2026-05-13: 7 obs & UKF (full correction); validation 363.49 m; test 426.53 m & UKF (full correction) 426.53 m & Learned 458.01 m vs UKF (full correction) 426.53 m; gap +31.48 m, CI [-50.28, 132.35], lower on 5/8 arcs \\
+    Controlling prospective public week & 10/10 & UKF (full correction); validation 426.53 m; test 385.29 m & Learned residual UKF (full correction) 365.45 m & Learned 365.45 m vs UKF (full correction) 385.29 m; gap -19.84 m, CI [-145.49, 87.75], lower on 4/10 arcs \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Positive learned-minus-best-recursive-classical gaps mean the learned residual has larger held-out SP3 state RMSE; negative gaps favour the learned residual. For the prospective rows, arcs with fewer than 10 SP3-covered CRD normal points were excluded by the fixed arc-construction eligibility rule before scoring. SP3-IC propagation remains part of the readout pool, and these bounded public-week rows are not operational POD or simulator-result validation.}
+\end{table}

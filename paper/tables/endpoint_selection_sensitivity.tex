@@ -1,0 +1,26 @@
+\begin{table}[t]
+  \centering\scriptsize
+  \caption{Endpoint-choice sensitivity audit. The retained endpoint records are re-read under the two natural endpoint choices already materialized in those records: observed-step position RMSE and all-step position RMSE. The separate CI-source column visually distinguishes stored original observed-step intervals from recomputed all-step sensitivity intervals. Positive RGR-GF-minus-best-classical gaps mean the learned estimator is worse than the endpoint-specific best tuned classical reference. This is a retrospective sensitivity analysis of existing records, not retroactive preregistration of the all-step endpoint.}
+  \label{tab:endpoint_selection_sensitivity}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llllcccl}
+    \toprule
+    Record & Scenario & Endpoint & CI source & Best classical [m] & RGR-GF [m] & RGR-GF$-$best [m] (95\% CI) & Readout \\
+    \midrule
+    K=8 support & Nominal & Observed-step & \textbf{Stored original} & AUKF 382.6 & 392.0 & $+9.4$ [$+1.1$, $+21.7$] & No learned positive \\
+    K=8 support & Nominal & All-step & \emph{Recomputed sensitivity} & AUKF 10323.6 & 10359.3 & $+35.7$ [$-0.5$, $+89.7$] & No learned positive \\
+    K=8 support & Measurement-noise stress & Observed-step & \textbf{Stored original} & AUKF 950.1 & 994.9 & $+44.8$ [$-0.2$, $+87.1$] & No learned positive \\
+    K=8 support & Measurement-noise stress & All-step & \emph{Recomputed sensitivity} & EKF 9627.0 & 9627.6 & $+0.6$ [$-13.4$, $+11.6$] & No learned positive \\
+    K=8 support & Controlled force-model mismatch & Observed-step & \textbf{Stored original} & EKF 450.6 & 499.3 & $+48.7$ [$+19.1$, $+97.1$] & No learned positive \\
+    K=8 support & Controlled force-model mismatch & All-step & \emph{Recomputed sensitivity} & UKF 12603.8 & 12847.4 & $+243.6$ [$+3.9$, $+703.3$] & No learned positive \\
+    K=32 anchor & Nominal & Observed-step & \textbf{Stored original} & EKF 402.0 & 407.4 & $+5.4$ [$-15.7$, $+31.3$] & No learned positive \\
+    K=32 anchor & Nominal & All-step & \emph{Recomputed sensitivity} & EKF 11593.6 & 11616.8 & $+23.2$ [$-1.5$, $+60.6$] & No learned positive; propagation reference \\
+    K=32 anchor & Measurement-noise stress & Observed-step & \textbf{Stored original} & AUKF 915.8 & 964.6 & $+48.8$ [$+17.7$, $+88.8$] & No learned positive \\
+    K=32 anchor & Measurement-noise stress & All-step & \emph{Recomputed sensitivity} & EKF 11589.1 & 11593.1 & $+4.1$ [$-14.9$, $+23.3$] & No learned positive; propagation reference \\
+    K=32 anchor & Controlled force-model mismatch & Observed-step & \textbf{Stored original} & EKF 474.3 & 491.1 & $+16.8$ [$+6.1$, $+27.8$] & No learned positive \\
+    K=32 anchor & Controlled force-model mismatch & All-step & \emph{Recomputed sensitivity} & EKF 13698.2 & 13700.7 & $+2.6$ [$-5.1$, $+8.9$] & No learned positive; propagation reference \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize Across the retained K=8 support record and K=32 frozen-rule anchor, switching between observed-step and all-step position RMSE changes some endpoint-specific best-classical labels but does not create a learned positive. The strict-extension audit trail is intentionally excluded. All-step remains a propagation-dominated reference in the claim hierarchy.}
+\end{table}

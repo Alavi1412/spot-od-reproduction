@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering\small
+  \caption{Decision-stability analysis. For each paired outcome we report the leave-one-out jackknife, half-sample subsample (1000 paired draws), and doubled-$n$ paired-bootstrap surrogate stability of the sample-direction outcome. A fraction near $100\%$ means the decision is robust to subsampling. The doubled-$n$ column resamples $2n$ trajectories with replacement so that the surrogate's standard error matches that of a true $K{=}2n$ draw under an i.i.d.\ trajectory population; it is a stability analysis, not new confirmatory evidence. The predeclared positive criteria for PUKF and DSA-EKF failed at the committed $n$ (sample paired mean strictly positive), and the auxiliary EKF/AUKF long-arc pilot observation (CI strictly above zero) is preserved as a direction-only stress finding.}
+  \label{tab:decision_stability}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{p{0.30\linewidth}cccccc}
+    \toprule
+    Decision & $n$ & Sample mean [m] & LOO & Half-sample & Doubled-$n$ surrogate & At-$n$ paired BS \\
+    \midrule
+    PUKF predeclared positive criterion vs AUKF & 38 & $126.4$ & 100.0\% & 99.4\% & 100.0\% & 99.7\% \\
+    DSA-EKF predeclared positive criterion vs AUKF (best non-DSA) & 64 & $284.4$ & 100.0\% & 99.3\% & 100.0\% & 99.8\% \\
+    EKF/AUKF pilot reversal (AUKF lower on long-arc) & 64 & $264.4$ & 100.0\% & 100.0\% & 100.0\% & 100.0\% \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Predeclared positive criteria for PUKF and DSA-EKF failed at the committed $n$ because the candidate-minus-baseline paired mean is strictly positive (candidate worse). The auxiliary EKF/AUKF long-arc row is reported only as a pilot stress observation: AUKF is lower than EKF on the 3-hour higher-fidelity slice (CI strictly above zero), but no transfer rule or operational ordering magnitude is claimed. Half-sample column reports 1000 paired draws of $\lfloor n/2\rfloor$ trajectories; doubled-$n$ surrogate column reports 5000 paired-bootstrap resamples of $2n$ trajectories with replacement.}
+\end{table}

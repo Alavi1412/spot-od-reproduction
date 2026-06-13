@@ -1,0 +1,118 @@
+{
+  "changed_files": [
+    "results\\validation\\release_packet_sync_report.json",
+    "results\\validation\\release_packet_sync_report.md",
+    "results\\release_packet.json",
+    "tools\\sync_release_packet.py"
+  ],
+  "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+  "generated_at_utc": "2026-06-01T06:48:54.450129Z",
+  "manuscript_inclusion_status": {
+    "active_figure_environment_lines": [
+      {
+        "content": "\\begin{figure}[t]",
+        "line": 191,
+        "path": "paper\\main.tex"
+      }
+    ],
+    "active_figure_line_evidence": [
+      {
+        "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+        "line": 193,
+        "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+      }
+    ],
+    "active_table_line_evidence": [
+      {
+        "content": "\\input{tables/main_abbreviation_glossary.tex}",
+        "line": 41,
+        "path": "paper\\tables\\main_abbreviation_glossary.tex"
+      },
+      {
+        "content": "\\input{tables/main_framework_portability.tex}",
+        "line": 87,
+        "path": "paper\\tables\\main_framework_portability.tex"
+      },
+      {
+        "content": "\\input{tables/main_k32_replication.tex}",
+        "line": 160,
+        "path": "paper\\tables\\main_k32_replication.tex"
+      },
+      {
+        "content": "\\input{tables/main_aukf_mechanism.tex}",
+        "line": 198,
+        "path": "paper\\tables\\main_aukf_mechanism.tex"
+      },
+      {
+        "content": "\\input{tables/main_structural_recoverability.tex}",
+        "line": 225,
+        "path": "paper\\tables\\main_structural_recoverability.tex"
+      },
+      {
+        "content": "\\input{tables/main_drag_scale_cascade.tex}",
+        "line": 229,
+        "path": "paper\\tables\\main_drag_scale_cascade.tex"
+      },
+      {
+        "content": "\\input{tables/main_long_arc_result.tex}",
+        "line": 235,
+        "path": "paper\\tables\\main_long_arc_result.tex"
+      },
+      {
+        "content": "\\input{tables/main_dbar_withdrawal.tex}",
+        "line": 247,
+        "path": "paper\\tables\\main_dbar_withdrawal.tex"
+      }
+    ],
+    "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+    "counts": {
+      "main_figure_count": 1,
+      "main_figure_environment_count": 1,
+      "main_figure_include_count": 1,
+      "main_generated_table_count": 8,
+      "main_inline_table_count": 0
+    }
+  },
+  "pdf_evidence": {
+    "bytes": 720790,
+    "exists": true,
+    "page_count": 33,
+    "page_source": "pdfinfo",
+    "pages": 33,
+    "passed": true,
+    "path": "paper\\main.pdf",
+    "sha256": "dfad35dddae7ed181072c75bb3c2c07158549980866e4149f71e9c94b567ff8e"
+  },
+  "readme_evidence": {
+    "bytes": 8062,
+    "characters_read": 8062,
+    "path": "README.md",
+    "sha256": "4c005641474f113a625ea9414136f3300fa1205a0e92bf71da49eb80c6aac65e"
+  },
+  "release_evidence_index": {
+    "overall_passed": true,
+    "path": "results\\validation\\release_evidence_index.json",
+    "status": "pass"
+  },
+  "reviewer_facing_exclusions": {
+    "note": "Historical review notes are excluded from this reviewer-facing packet because they are not canonical evidence and may contain local/runtime/process metadata.",
+    "removed_noncanonical_review_note_routes": {}
+  },
+  "source_files_read": [
+    "README.md",
+    "paper\\main.tex",
+    "results\\release_packet.json",
+    "results\\validation\\submission_validation.json",
+    "results\\validation\\release_evidence_index.json"
+  ],
+  "source_read_policy": "source_files_read contains only files successfully read by this run; README.md is read before it is cited as source evidence.",
+  "status": "pass",
+  "validation_results": {
+    "release_evidence_index_overall_passed": true,
+    "release_evidence_index_path": "results\\validation\\release_evidence_index.json",
+    "release_evidence_index_status": "pass",
+    "submission_validation_overall_passed": true,
+    "submission_validation_path": "results\\validation\\submission_validation.json",
+    "submission_validation_status": "pass"
+  }
+}

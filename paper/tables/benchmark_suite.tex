@@ -1,0 +1,21 @@
+\begin{table}[t]
+  \centering
+  \caption{Benchmark-suite generalization across regime-shift and public-catalog replay scenarios. Time-aligned SatNOGS observation-window replay is reported separately in Table~\ref{tab:satnogs_timefix_validation}.}
+  \label{tab:benchmark_suite}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccccc}
+    \toprule
+    Scenario & EKF RMSE [m] & UKF RMSE [m] & AUKF RMSE [m] & EKF-residual learner RMSE [m] & No-Graph Residual RMSE [m] & Learned Noise Adaptive RMSE [m] & RGR-GF RMSE [m] \\
+    \midrule
+    High-drag shift & 5860.35 & 5922.39 & 5860.33 & 8265.77 & 5860.35 & 5866.25 & 5863.23 \\
+    Process-noise shift & 6117.51 & 6131.82 & 6119.85 & 7996.95 & 6117.51 & 6122.25 & 6119.87 \\
+    Maneuver shift & 7734.06 & 7728.97 & 7727.36 & 8694.28 & 7734.06 & 7728.38 & 7725.07 \\
+    Low inclination & 6415.19 & 6414.99 & 6414.83 & 8548.32 & 6415.19 & 6414.09 & 6415.00 \\
+    Sun-synchronous-like & 5291.62 & 5291.70 & 5274.92 & 6844.50 & 5291.62 & 5280.65 & 5279.29 \\
+    High inclination & 9256.70 & 9258.75 & 9273.93 & 10939.98 & 9256.70 & 9254.70 & 9260.36 \\
+    Archived-catalog replay & 7617.68 & 7626.46 & 7617.01 & 9739.79 & 7617.68 & 7617.26 & 7617.09 \\
+    Public-catalog replay & 5771.53 & 5772.30 & 5771.76 & 8222.35 & 5771.54 & 5771.99 & 5771.14 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \centering
+  \caption{Scenario observability and evaluation-window coverage diagnostics across the evaluated splits.}
+  \label{tab:coverage_runtime}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Metric & Test & Stress test & Public replay & Obs. replay & Obs. replay stress \\
+    \midrule
+    Fraction steps with zero visibility & 0.7900 & 0.7993 & 0.7599 & 0.8281 & 0.8328 \\
+    Fraction steps with one station visible & 0.2057 & 0.1980 & 0.1745 & 0.1222 & 0.1240 \\
+    Fraction steps with $\geq 2$ stations visible & 0.0043 & 0.0026 & 0.0656 & 0.0497 & 0.0432 \\
+    Mean visible stations per step & 0.2143 & 0.2033 & 0.3057 & 0.2319 & 0.2104 \\
+    Evaluation start step (inclusive) & 11 & 11 & 11 & 11 & 11 \\
+    Evaluated horizon length [steps] & 109 & 109 & 109 & 109 & 109 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Confidential hash-timestamped $K{=}16$ observed-step replication (base seed 1840000, $K{=}16$ independent realizations per scenario, 24 trajectories per realization). The frozen rule hash was timestamped via RFC3161 before evaluation; the request disclosed only the SHA-256 hash, not the rule or manuscript content. Observed-step position RMSE is the primary endpoint; the paired column reports the mean RGR-GF-minus-best-classical observed-step gap with a 95\% percentile bootstrap CI over independent realizations; negative values favour RGR-GF. This confidential timestamp is stronger than an internal timestamp for this draw but is not public preregistration, not external endpoint-family validation, and not operational validation. The frozen rule predates evaluation under the same decision predicate as the central $K{=}32$ anchor.}
+  \label{tab:observed_step_confidential_timestamp_k16}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccll}
+    \toprule
+    Scenario & EKF / UKF / AUKF obs.\ [m] & RGR-GF obs.\ [m] & Best classical & RGR-GF$-$best cl.\ [m] (95\% CI) & Interpretation \\
+    \midrule
+    Nominal & 413.7 / 423.4 / 414.1 & 408.4 & EKF & -5.29 [-13.33, 1.37] & No learned positive \\
+    Measurement-noise stress & 969.3 / 1762.6 / 913.1 & 956.3 & AUKF & 43.19 [11.31, 87.25] & No learned positive \\
+    Controlled force-model mismatch & 489.8 / 1197.9 / 558.1 & 527.7 & EKF & 37.86 [18.48, 67.60] & No learned positive \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt]{\footnotesize $K=16$ independent realizations per scenario, 24 trajectories per realization, all three scenarios. Frozen rule SHA-256: 14d4e67f6675a1507a3253eeabc8ab762bc86df2dcff6b4d0d76d10de453c833. RFC3161 timestamp response Date: Sun, 31 May 2026 23:59:17 GMT. The request disclosed only the rule hash. 0/3 scenarios learned-positive under the frozen decision predicate.}
+\end{table}

@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-06-13T02:53:18.810669+00:00",
+  "review_report": {
+    "excerpt_redacted": true,
+    "present": true,
+    "source_path": "results\\adversarial_submission_peer_review_current_2026-05-14.md"
+  },
+  "risk_assessment": {
+    "present": true,
+    "source_path": "results\\adversarial_submission_peer_review_current_2026-05-14.md"
+  },
+  "source_path": "results\\adversarial_submission_peer_review_current_2026-05-14.md",
+  "source_sha256": "c30e09e8cc6272e48d161dcdcf5407707c510e82e0272213f32f18cbcbebf878",
+  "status": "pass"
+}

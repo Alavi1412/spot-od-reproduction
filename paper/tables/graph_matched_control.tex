@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Input-matched graph/no-message-passing controls for the three-seed RGR-GF suite mean, not the primary single-seed RGR-GF row. RGR-noMP bypasses cross-station message aggregation; RGR-local replaces cross-station aggregation with equal-depth per-station local layers. All three reported configurations instantiate 2,181,161 trainable parameters; the graph/local stack accounts for 927,360 parameters and the shared non-stack components account for 1,253,801. Positive effect means lower RMSE for graph-enabled RGR-GF. With three seeds, the seed-bootstrap display behaves as a diagnostic min/max seed envelope rather than population-level inference; the minimum exact one-sided Wilcoxon $p$-value is 0.125.}
+  \label{tab:graph_matched_control}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccccccc}
+    \toprule
+    Scenario & Control & Seeds & RGR-GF RMSE [m] & Control RMSE [m] & MP effect [m] & Seed envelope low [m] & Seed envelope high [m] & MP seed win [\%] & Wilcoxon $p$ \\
+    \midrule
+    Test & RGR-noMP & 3 & 6192.44 & 6177.64 & -14.81 & -41.91 & 1.31 & 33.33 & 0.875 \\
+    Stress & RGR-noMP & 3 & 6824.31 & 6843.39 & 19.08 & -3.72 & 53.97 & 66.67 & 0.25 \\
+    Test & RGR-local & 3 & 6192.44 & 6185.53 & -6.91 & -29.67 & 13.42 & 33.33 & 0.75 \\
+    Stress & RGR-local & 3 & 6824.31 & 6879.75 & 55.44 & -9.13 & 174.88 & 66.67 & 0.375 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

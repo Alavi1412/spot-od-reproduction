@@ -1,0 +1,25 @@
+\begin{table}[t]
+  \centering
+  \caption{Measurement-informed seed-42 state-estimation scoring on the \emph{primary observed-step endpoint} (observed-step position RMSE, adopted after the training-cohort post-hoc recomputation and checked in the $K{=}8$ endpoint-fixation support record, Table~\ref{tab:observed_step_preregistration}). Observed-step RMSE excludes zero-visible trajectory steps and combines one-visible-station and two-or-more-visible-station buckets; all-step and zero-visible RMSE are shown only as the propagation-dominated reference, exposing the compression of the aggregate metric.}
+  \label{tab:measurement_informed_results}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllcccc}
+    \toprule
+    Scenario & Method & Observed steps & Observed-step RMSE [m] & All-step RMSE [m] & Zero-visible RMSE [m] & Observed-step $\Delta$ vs UKF / AUKF [\%] \\
+    \midrule
+    Nominal test & EKF & 1454 & 382.76 & 6170.19 & 12010.37 & 1.21 / 2.53 \\
+    Nominal test & UKF & 1454 & 387.44 & 6191.37 & 12051.57 & 0.00 / 1.34 \\
+    Nominal test & AUKF & 1454 & 392.69 & 6167.44 & 12004.93 & -1.36 / 0.00 \\
+    Nominal test & No-Graph Residual & 1454 & 382.76 & 6170.19 & 12010.37 & 1.21 / 2.53 \\
+    Nominal test & Learned Noise Adaptive & 1454 & 383.26 & 6170.04 & 12010.06 & 1.08 / 2.40 \\
+    Nominal test & RGR-GF & 1454 & 383.21 & 6169.11 & 12008.25 & 1.09 / 2.42 \\
+    Stress test & EKF & 1432 & 1006.32 & 6811.25 & 13223.76 & 46.55 / -9.95 \\
+    Stress test & UKF & 1432 & 1882.72 & 7173.23 & 13904.04 & 0.00 / -105.71 \\
+    Stress test & AUKF & 1432 & 915.21 & 6800.54 & 13204.63 & 51.39 / 0.00 \\
+    Stress test & No-Graph Residual & 1432 & 1006.31 & 6811.26 & 13223.76 & 46.55 / -9.95 \\
+    Stress test & Learned Noise Adaptive & 1432 & 1016.29 & 6808.39 & 13217.98 & 46.02 / -11.04 \\
+    Stress test & RGR-GF & 1432 & 1011.47 & 6808.98 & 13219.23 & 46.28 / -10.52 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

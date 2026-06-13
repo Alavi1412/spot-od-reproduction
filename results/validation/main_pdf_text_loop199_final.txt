@@ -1,0 +1,1966 @@
+SPOT-OD: A Simulator-Bound Orbit-Determination Self-Audit
+Record with Adaptive-Filter and Observability Mechanism Findings
+Authors omitted for review
+May 2026
+Abstract
+The primary contribution is a compact-simulator AUKF (adaptive unscented Kalman filter) R-inflation
+mechanism under force-model mismatch. In a compact two-body+J2 +drag OD simulator, AUKF inflates
+its measurement-noise scale (mean 3.32); median R-only normalised-innovation-squared grows from 1.60
+(EKF) and 1.83 (UKF) to 4.73 (AUKF), damping needed corrections. A drag-scale cascade separates
+EKF linearisation, sparse-geometry observability, and β prior inertia: median β̂ = 1.0000 despite 9.6 km
+drag separation. A 3-hour long-arc reversal shows compact-model AUKF prescription is regime-bound:
+AUKF is strictly better under higher-fidelity dynamics (EKF−AUKF mean +264.4 m).
+Secondary exploratory findings require prospective external confirmation. The learned-estimator
+bounded negative (endpoint selected post hoc): applied to the authors’ RGR-GF family and a KalmanNetstyle comparator, no evaluated construction beats the per-scenario best classical reference on observed-step
+position-RMSE (K = 32 and K = 96 draws are internal checks, not external preregistration). A DynamicsBias Adaptation-Risk heuristic is withdrawn after 450 realizations proved indistinguishable from its 81.3%
+no-information baseline.
+The supporting inspection discipline under self-authored definitions (not a validated framework
+beyond this worked example) makes findings inspectable. Compact-model errors range 350–925 m while
+operational ILRS/SP3 analyses reach centimetre/sub-metre accuracy—a distinct operational gap. These
+compact-simulator findings require precise-reference validation before operational transfer. For smallsatellite teams, the AUKF diagnostic and drag-scale cascade inform compact-simulator screening gates
+before precise-reference validation campaigns.
+
+Keywords: orbit determination; satellite state estimation; sparse visibility; claim-audited evaluation;
+adaptive filtering; negative results; reproducibility
+
+1
+
+Introduction
+
+Contribution in one sentence. The primary mechanism contribution quantifies an OD instance of known
+covariance-matching/adaptive-filter failure: under force-model mismatch AUKF inflates effective R and damps
+needed corrections, while the drag-scale cascade isolates EKF linearisation, sparse-geometry observability, and
+candidate-inertia failure modes. The bounded learned-estimator negative is secondary: no evaluated learned
+construction beats the per-scenario best tuned classical reference on the central observed-step anchor. SPOTOD is the OD-specific audit discipline that makes these findings inspectable; in this compact sparse-visibility
+setting, apparent learned gains against fixed-noise UKF remain pre-campaign hypotheses until they have
+been checked against tuned AUKF and batch-OD guardrails, frozen decision rules under the observed-step
+hierarchy, capacity-matched controls, practical floors, structural-channel rules, and provenance checks.
+Satellite OD is grounded in orbital dynamics, measurement modelling, and recursive statistical estimation
+[24, 74, 73, 47, 72], with Kalman-filter families and their nonlinear extensions central because they encode
+physical priors, uncertainty propagation, and measurement-update structure [29, 27, 28, 77]. Sparse visibility
+— intermittent contact, unfavourable geometry, and shifting noise statistics — motivates learned residual or
+adaptive components, but it also raises the evidentiary bar for any claim that a neural estimator improves on
+a strong dynamics-aware baseline, which is the claim audit this study enforces.
+
+1
+
+Table 1: Main-text abbreviation guide for the estimator and audit terms used in the Results.
+Term
+
+Meaning
+
+OD/POD
+PUKF
+
+orbit determination / precise orbit determina- EKF/UKF/AUKF
+tion
+predeclared process-noise adaptive UKF
+DMC-EKF
+
+DSA-EKF/UKF
+
+drag-scale adaptive EKF/UKF
+
+RGR-GF
+
+DBAR
+
+dynamics-bias adaptation-risk heuristic
+
+NIS/CRLB
+
+SGP4/TLE
+
+public-catalog propagator / two-line element
+set
+Consolidated Laser Ranging Data / International Laser Ranging Service
+weighted least-squares offline batch OD reference
+identity-prior residual variant; see supplement
+glossary
+
+SLR/SP3
+
+CRD/ILRS
+WLS
+IDP-RGR-GF
+
+V&V
+
+Term
+
+CDDIS
+RFIS/VG-RFIS
+Scope-only
+
+Meaning
+extended, unscented, and adaptive UKF filters
+dynamic-model compensation EKF with empirical acceleration
+residual graph recurrent estimator with graph
+filtering priors
+normalized innovation squared / Cramer-Rao
+lower bound
+satellite laser ranging / precise-orbit state product
+NASA/CDDIS SLR data archive
+offline smoother and visibility-gated composite;
+see supplement glossary
+retained for scope, stress, or provenance interpretation; not used for pass/fail conclusions or
+headline claims
+
+verification and validation; used here as adjacent credibility lineage
+
+Scope and claim boundary. Conclusions are drawn strictly from the reported tables and figures. Table 2
+is the governing claim–evidence–limit hierarchy; all support-only and scope-only results must be interpreted
+through it. Observed-step position RMSE is the primary endpoint, while all-step trajectory RMSE is retained
+only as a propagation-dominated reference because roughly four-fifths of evaluated steps have zero visible
+stations. The claim hierarchy in Table 2 applies throughout and establishes the following scope boundaries:
+the evidence is simulator-bound, internally fixed before the run being claimed rather than externally registered,
+not operational POD, not centimetre SLR validation, not a broad learned-OD refutation, and bounded to the
+authors’ constructions and tested regimes (the learned estimators evaluated are the authors’ bounded residual
+constructions plus one validation-tuned KalmanNet-style learned-gain comparator). The compact-physics
+ceiling is part of the claim boundary: a negative weighs against advancing the tested claim beyond this
+compact prior, sparse geometry, and candidate set, but it is not a claim that learned OD corrections cannot
+help under a different force model, sensor suite, or public-reference regime. For all scope boundaries, exclusions,
+and limitations, see Table 2 and Section 7.
+Contributions. (C1) Adaptive-filter mechanism findings (primary contribution): under force-model mismatch in a compact two-body+J2 +drag OD simulator, AUKF inflates effective R (mean 3.32; median R-only
+NIS 4.73 versus 1.60/1.83 for EKF/UKF) and damps state corrections, quantifying an OD instance of the
+known covariance-matching failure mode; the drag-scale cascade separates EKF linearisation failure, sparsegeometry observability limits, and candidate-side β-prior inertia as distinct binding constraints, showing
+median trajectory-mean β̂ = 1.0000 despite 9.6 km median arc-mean drag separation at enriched geometry.
+A secondary mechanism finding is the long-arc EKF/AUKF ordering reversal: on 3-hour higher-fidelity
+arcs, AUKF becomes strictly better (EKF−AUKF mean +264.4 m, CI strictly above zero), showing that
+compact-model AUKF prescription is regime-bound. These mechanism decompositions inform estimator
+screening for OD campaigns: before committing to precise-reference validation, learned candidates should
+survive compact-simulator gates testing tuned adaptive guardrails (AUKF), offline batch-OD references, frozen
+endpoints under the observed-step hierarchy, practical-significance floors, and structural-channel alternatives
+(DMC-EKF, DSA-EKF).
+Supporting methodology: the evaluation discipline (trajectory-unit paired resampling within declared OD
+slices, separate noise-side and force-side structural-channel withdrawal rules, and a shared observed-step
+visibility mask across comparators) is demonstrated only on self-authored definitions in this worked example,
+not as a validated framework transferable beyond this study.
+(C3) Exploratory bounded learned-negative (secondary and illustrative, requires prospective external confirmation): as an illustrative application of the evaluation discipline to the authors’ own learned constructions,
+the record returns a bounded learned-negative: no evaluated learned construction beats the per-scenario best
+tuned classical reference on the primary observed-step endpoint under the K = 32 frozen-rule replication, and
+the PUKF/DMC-EKF/DSA-EKF variants and the DBAR heuristic likewise fail their predeclared criteria.
+
+2
+
+This exploratory bounded negative (endpoint selected post hoc after observing training-cohort data; an RGRfamily self-audit with bounded external-family checks including KalmanNet-lineage feasibility/design-gap
+diagnostic and one untuned EnKF; K = 32 and K = 96 draws are internal frozen-rule consistency checks,
+not external preregistration) requires prospective external confirmation before it can inform operational
+deployment decisions.
+Aerospace relevance. Sparse OD evidence is a campaign-design problem as much as an estimator-ranking
+problem. Acta-style OD claims depend on geometry, dynamics fidelity, and operational context. Recent
+studies span operational and public-data OD contexts [7, 50, 42, 43, 41], alongside learned and adaptive
+filter applications [86]; SPOT-OD addresses learned-estimator evaluation rather than operational public-orbit
+maneuver reconstruction. A practitioner takeaway: before committing to a precise-reference reduction or
+operations-facing validation campaign, an estimator-selection gate can require learned candidates to survive
+tuned adaptive guardrails, frozen endpoints, practical-significance floors, and provenance checks on a compact
+simulator. Learned estimators that fail these checks under compact dynamics remain pre-campaign hypotheses
+rather than validated upgrades; those that pass earn escalation to higher-fidelity or operational testing.
+SPOT-OD provides the compact-simulator gate mechanics: apparent positives are supported, bounded,
+demoted, or withdrawn by predeclared rules rather than post-hoc narrative.
+Estimator family evaluated under the self-audit record. The record covers tuned EKF/UKF/AUKF
+baselines, an offline robust batch WLS OD reference, the authors’ bounded residual learners, a validationtuned in-house KalmanNet-style learned-gain comparator (S-Table 78), and three predeclared dynamics-bias
+responses: PUKF, DMC-EKF, and DSA-EKF. The in-house learned-gain comparator anchors the learnednegative alongside the RGR-family constructions. The bounded learned-negative is not solely based on
+author-defined RGR residual variants: it is accompanied by external-family boundary checks including a
+canonical untuned Ensemble Kalman Filter (EnKF) comparator. The main text retains only summary
+learned-negative evidence and the headline K = 32 replication; detailed learned-comparator diagnostics
+(including the K = 96 stress replication, EnKF comparator, and structural-channel checks) are housed in the
+supplement to preserve the primary C1 mechanism contribution’s visibility.
+What survives scrutiny. Reviewers can verify four bounded claims: (1) AUKF R-inflation mechanism
+under compact force-model mismatch (Table 4, Figure 1). (2) Learned-negative across K = 32/K = 96
+frozen-rule replications (Table 3, S-Tables 17, 19). (3) DBAR withdrawn. (4) Inspectable evidence record
+tying seeds, rules, and evaluations to claims (see Table 2 for scope boundaries). Confidential package: fixed
+settings, rule/estimator/evaluation records, digests. Deeper reruns (documented, not completed): full training,
+filter recomputation, live data retrieval.
+Audit outputs (bounded negatives). Every output is bounded to the authors’ constructions (Table 2).
+No learned construction beats classical on K = 32 observed-step; K = 96 stress preserves the negative at
+floor-power scale. DMC-EKF is not better than UKF (CI [−3.8, +8.1] m); DSA-EKF is below its practical
+floor. The 3-hour long-arc replication confirms the DSA-EKF negative: DSA-EKF is worse than AUKF
+(DSA-EKF−AUKF CI [+8.7, +697.9] m). DBAR is withdrawn after its 450-realization characterization is
+statistically indistinguishable from an 81.3% no-information baseline. See supplement S-tables for full details.
+Measurement-geometry observability diagnostic cascade on the drag-scale structural channel. A
+three-slice measurement-geometry observability diagnostic cascade on the augmented multiplicative drag-scale
+parameter β is reported in the Results after the structural-channel estimators and decision predicate have been
+introduced, with full details in the supplement (supplementary Sections 6–8). Each slice fixes the drag-scale
+channel as the structural form matched to the synthetic bias, freezes the candidate hyperparameters from the
+prior validation selection, and applies the predeclared structural-channel decision predicate unchanged; all
+three slices return predeclared bounded structural-channel negatives. The cascade is reported as a mechanism
+diagnosis, not as a calibration positive for the self-audit record.
+
+3
+
+2
+
+Related Work and Positioning
+
+Orbit propagation and statistical estimation. The study is grounded in the SGP4/NORAD lineage
+and standard astrodynamics references [24, 74, 73, 47], with statistical OD providing the framework for
+combining dynamics, measurements, and uncertainty [72]. This motivates a baseline-first stance: learned
+methods must be evaluated against strong physical filters, not weak comparators.
+Recursive filters and learned filtering. The Kalman filter [29], EKF [27] and the unscented transform
+[28, 77] are standard recursive estimators. Adaptive Kalman methods motivate innovation/smoother-based
+noise adjustment; learned filtering, including KalmanNet, motivates hybrid designs [45, 33, 20, 59]. An
+independent physics-informed ML cislunar OD study reinforces that learned-OD evaluation must weigh
+calibration and uncertainty rather than point accuracy alone [1]; deep-neural nonlinearity detectors driving
+order-switching filters are complementary neural-aided designs [87]. Improvements over fixed-noise UKF can
+reflect noise-adaptation already represented by AUKF. Classical adaptive filtering recovers noise statistics only
+when the model structure is correct [45, 60, 27]; robust Kalman work on heavy-tailed noise is adjacent context,
+not a direct OD baseline [79]. When the dominant residual is dynamics/force-model error, statistical OD
+prescribes dynamic model compensation (DMC): state augmentation with low-frequency empirical-acceleration
+estimates to absorb unmodelled accelerations through process-model channels rather than noise reweighting
+[72, 81, 70, 78]. The force-mismatch and structural-channel results reported below are controlled diagnostics
+consistent with this lineage.
+Recent learned and adaptive OD studies (2023–2026) cover: systematic LEO precise-OD reviews [65];
+physics-informed neural OD, optical IOD/tracklet-correlation, and learned/adaptive filters across groundbased, SSA, cislunar, deep-space, relative-navigation, and continuous-maneuver regimes [63, 62, 57, 88, 85,
+56, 17, 71, 82, 35, 86, 9, 89]; operational orbit-recovery, drag-estimation, TLE refinement, and hybrid SGP4
+error-learning [10, 43, 3, 64]; cislunar IOD, optical-flow IOD, ISL observability, multi-scale initializers, and
+TLE global-optimization [68, 22, 69, 50, 36, 90, 42]; and cislunar PGM/hybrid filtering, orbit-attitude/sensortasking coupling, and real-spaceborne GNSS adaptive EKF [51, 52, 53, 12, 34]. Recent 2026 learned-orbit
+predictors [37, 83, 44] address propagation/orbital-parameter forecasting rather than recursive state-estimation
+self-audits under fixed force models and sparse visibility. These complementary studies report estimator
+performance in their own regimes; SPOT-OD asks what evidence composition screens learned or adaptive
+improvement claims. SPOT-OD does not propose a new estimator; it places learned residual methods,
+noise-adaptive AUKF/PUKF, structural DMC-EKF, public replay, and selector tasks under one auditable
+evidence boundary. Domain-adjacent neural orbit/state-estimation and spacecraft-GNN work [75, 32] shows
+learned satellite inference is not new, without making those papers direct baselines here.
+Worked multi-ingredient self-audit record. The seven ingredients (predeclaration, paired bootstrap, Holm/BH multiplicity control, capacity-matched controls, upstream architecture sanity reproduction,
+astrodynamics-grounded floors, evidence-record traceability) are individually standard practice in adjacent
+literatures [48, 5, 13, 55, 66, 46, 67, 84]. This study instantiates them jointly as one worked OD-specific
+claim-audit evidence package under self-authored definitions. The supplement provides a scoped visible-record
+scoring audit under self-authored definitions (S-Table 10, supplementary Section 11), not an absence proof
+and not independent validation. S-Table 15 is a subset-sufficiency audit showing, ingredient by ingredient,
+that omitting a named ingredient would have admitted a misleading positive or unsupported upgrade in this
+evidence set. This is a worked auditable record bounded to this sparse-visibility compact-simulator study,
+not a new estimator, not an independently validated protocol, and not demonstrated cross-domain transfer.
+Reuse in GNSS-LEO, optical, SLR, or operations-facing OD would require rebuilding all seven components
+around that domain’s measurements, force model, reference products, baselines, and predeclared gates and
+would still need independent application by a party other than the record designer before it could be claimed
+as an independently validated protocol.
+Positioning vs operational POD/SLR practice and recent learned satellite estimators. Operational precise OD on satellite-laser-ranging targets routinely reaches few-centimetre orbit accuracy at
+international analysis centres, with a full force model, a strict ITRF↔GCRF reduction ingesting the IERS
+Earth-orientation series, precise tropospheric and centre-of-mass corrections, and dedicated ranging campaigns
+4
+
+Table 2: Condensed claim–evidence–limit hierarchy for SPOT-OD. The rows separate supported claims,
+decision effects, diagnostic evidence, public measurement-pipeline probes, exclusions, and reproducibility
+support so that support material is not mistaken for operational validation.
+Evidence role
+
+Paper-facing status
+
+Boundary
+
+Supported primary claim
+
+The larger frozen-rule observed-step replication is the central Compact simulator conclusion only;
+simulator anchor; endpoint-support and repeated-seed records not external preregistration, pubsupport the same ordering, and the stress-only K=96 repli- lic precise-reference evidence, opercation exceeds the floor-power design check. No evaluated ational validation, or broad learnedlearned construction beats the per-scenario best classical ref- OD refutation.
+erence.
+Self-audit decision effect
+The protocol-subset sufficiency audit records one misleading Retrospective sufficiency evidence for
+positive or unsupported upgrade blocked by each ingredient this worked OD self-audit record, not
+in this evidence set.
+mathematical necessity, third-party
+validation, or universal optimality.
+Bounded
+nega- PUKF, DMC-EKF, and DSA-EKF fail their predeclared Bounded to these tested constructive/diagnostic evidence
+sparse-visibility positive criteria; a canonical untuned en- tions and slices; not a general impossisemble Kalman filter does not displace the classical base- bility result for structural estimation
+lines on any slice; DBAR is withdrawn as a claimed positive or learned OD.
+and retained/reported as a characterized bounded negative;
+KalmanNet-related material is retained as bounded feasibility
+and sanity evidence.
+Public
+measurement- Public ILRS SLR measurements and independent SP3-c Measurement-pipeline and provepipeline probes
+products exercise parsing, reduction, state scoring, trace- nance evidence only; reduces dataability, breadth, and held-out DBAR/calibrator negatives. handling risk for future validation
+Scope-only/support-only constructions include SGP4 multi- but does not validate the simulator
+revolution benchmark, SatNOGS time-aligned replay, public conclusion, centimetre SLR, or operSP3/ILRS breadth/provenance probes, and KalmanNet trans- ational POD.
+position feasibility diagnostics.
+Not claimed
+The manuscript does not claim a new estimator, operational These are exclusions that bound the
+POD or flight readiness, precise centimetre-level SLR vali- claim hierarchy, not deferred posidation, broad learned-OD refutation, empirical transfer to tives.
+future OD pipelines, or coverage of tuned, inflated, or localized EnKF or particle/Gaussian-mixture OD methods beyond
+the single canonical untuned-EnKF boundary check.
+Reproducibility support
+Inspection materials separate digest and record consistency Supports
+confidential
+journalchecks, generated-table checks from materialized records, one submission inspection; no DOI
+bounded learned-estimator training replay, and a full-rerun or public identifier is claimed at
+route.
+initial submission, and full rawdata/training/filter/live-data rerun
+is not claimed.
+
+coordinated through the ILRS [54, 26, 49, 25]. Recent operational SLR/POD studies further demonstrate
+that precision depends on fusion strategy, range-bias handling, and prior constraints [58]. The public precisereference probes here share inputs and reference products with that practice but evaluate compact-dynamics
+estimators (two-body+J2 , optional drag/third-body/SRP) under sparse-visibility recursive filtering; the
+resulting tens to hundreds of metres magnitudes are not an operational precise-OD result and are not
+comparable to centimetre-class ILRS analyses. Their constructive role is narrower: they reduce measurement
+parsing, frame-reduction, state-scoring, and provenance risk before any later public-reference validation study.
+SPOT-OD does not propose a new estimator but reports a disciplined, predeclared negative on the authors’
+own residual constructions, leaving the comparison against any faithfully reproduced published learned-OD
+system explicitly open.
+Graph neural networks, calibration, and observability. GNNs encode relational inductive biases
+through message passing [31, 21, 76, 2, 18, 61]; the SPOT-OD ablation evaluates message passing variants
+under capacity and input matched controls but does not isolate them as the unique source of improvement
+(Section 6; graph message passing is not a claimed contribution canonically there). Adjacent SSA work
+has also framed large-scale resident-space-object conjunction screening as a GNN link-prediction/screening
+problem, which is useful context but not a direct OD estimator baseline here [11]. Calibration analysis
+[19] is used only as a diagnostic for the evaluated runs, not a deployment guarantee. Sparse OD is also an
+information problem; classical OD treats geometry and conditioning as central [72], and prior space object
+observability work motivates explicit geometry analysis [16]. The finite difference geometry summaries are
+not a formal observability proof.
+
+5
+
+3
+
+Data Sources, Evaluation Scope, and Protocol
+
+3.1
+
+Archived data sources and scenario scope
+
+The public-data layer uses archived CelesTrak and SatNOGS snapshots rather than live API state. CelesTrak
+general-perturbation/TLE data provide public orbital element evidence [30]; SatNOGS network, observation,
+and API metadata provide public ground-station and observation context [39, 40, 38]. The retained records
+identify source URLs, fetch timing, record counts, and digests so replay scenarios remain fixed. Primary
+accuracy tables use the nominal and stress synthetic splits. Public-catalog SGP4 replay is a bounded publiccatalog replay/reference slice rather than a discriminative leaderboard: only the offline robust batch WLS
+reference produces a meaningful postfit solution. A controlled force-model/process-noise mismatch split
+inflates the truth drag/SRP/process-noise force model while estimators keep the nominal compact model.
+Bounded public precise-reference probes score real ILRS satellite-laser-ranging normal points for LAGEOS-1
+and LAGEOS-2 [54, 26], parsed from public daily CRD version-2 files [25] archived by the ILRS/NASA
+CDDIS data centers [49]. None of these slices is operational flight validation.
+The public-data inventory and the per-scenario provenance digests are recorded in S-Table 37.
+
+3.2
+
+Evaluation tasks
+
+SPOT-OD is an evaluation suite. The evaluated tasks are state estimation (acceptance-critical) and method
+selection (an internal synthetic routing diagnostic; see S-Table 38). Stability labels serve exclusively as
+computational guardrails for the engineering-failure audit defined below.
+A trajectory is numerically divergent when its trajectory-level position RMSE is non-finite or exceeds
+108 m, or its velocity RMSE exceeds 105 m/s; method-selection costs assign a 108 m penalty to divergent
+candidates. These are computational guardrails, not physical stability certificates, so the results add a
+separate engineering-failure audit at 100 km position RMSE or 100 m/s velocity RMSE.
+
+3.3
+
+State, dynamics, and observations
+
+Each trajectory has a six-dimensional Earth-centered inertial state
+xt = [rx , ry , rz , vx , vy , vz ]t ,
+
+(1)
+
+with position in meters and velocity in meters per second. The generator uses a fourth-order Runge–Kutta
+Cartesian ECI propagator with 20 s steps for 120 steps. Nominal sampling uses altitude 450–950 km,
+eccentricity 0–0.02, inclination 20–98 degrees. The acceleration model includes two-body gravity, J2 , drag
+against a co-rotating exponential atmosphere, optional point-mass Sun/Moon third-body terms, and optional
+solar-radiation pressure with a cylindrical Earth-shadow test. The reported nominal/stress splits use ballistic
+coefficient 0.018 m2 /kg, ρ0 = 4.0 × 10−11 kg/m3 , h0 = 400 km, H = 60 km, third-body and SRP enabled, areato-mass 0.02 m2 /kg, CR = 1.35, and zero truth process noise. The force model is intentionally compact rather
+than flight-dynamics complete: it omits high-order geopotential, precession/nutation, empirical atmosphere,
+maneuvers, and sensor-scheduling uncertainty beyond the specified perturbations.
+The measurement model is a station–satellite line-of-sight observation zt,s = [ρ, α, ϵ, ρ̇]t,s (range, azimuth,
+elevation, range-rate); a station is visible at elevation ≥ 8 degrees. The nominal configuration uses eight
+ground stations. Nominal measurement noise is range 30 m, azimuth/elevation 0.02 degrees, range-rate
+0.08 m/s, outlier probability 0.01, outlier scale 6, dropout 0.02, with small station/clock bias. The reported
+stress-test override increases range noise to 70 m, azimuth/elevation noise to 0.06 degrees, range-rate noise
+to 0.22 m/s, outlier probability to 0.04, and outlier scale to 10. These are protocol facts, not inferred from
+result tables.
+
+3.4
+
+Splits, seeds, and evaluation units
+
+The main experiment uses seed 42. The dataset contains 160 nominal training, 32 nominal validation,
+64 nominal test trajectories, 96 stress-training, 24 stress-validation, and 64 stress-test trajectories. The
+curriculum uses nominal pretraining, mixed training, and stress fine-tuning; later validation includes a
+
+6
+
+SatNOGS replay split. All methods are scored on steps 11–119 (109 evaluated steps); nominal and stress
+aggregates summarise 64 × 109 = 6976 evaluated trajectory-steps each. The paired statistical unit is the
+trajectory-wise position RMSE over the same 109-step window, so Wilcoxon comparisons use n = 64 paired
+trajectory values per comparison. All filters and learned models receive the same simulated measurements,
+visibility masks, station geometry, and noisy initial state estimates (2500 m position, 6 m/s velocity standard
+deviation); learned residual methods additionally receive the relevant filter priors.
+
+4
+
+Methods Compared
+
+Estimator abbreviations are defined at first use, with a compact main-text guide in Table 1 and a longer glossary
+at the start of the supplement. The compared families are classical recursive filters (EKF, UKF, AUKF),
+predeclared adaptive or structural variants (PUKF, DMC-EKF, DSA-EKF), an offline robust batch WLS
+OD reference, the bounded RGR residual learners and controls, and KalmanNet-related sanity/transposition
+diagnostics.
+
+4.1
+
+Classical filtering baselines
+
+The EKF [27], UKF, and AUKF estimate the same six-dimensional state from common
+range/azimuth/elevation/range-rate observations (UKF unscented-transform parameters αUT =
+0.2, βUT = 2, κUT = 0; AUKF adds innovation consistency R adaptation: rate 0.08, measurement scale
+bounds 0.4–30, Huber 2.8, NIS soft gate 16). The unscented-transform beta parameter is denoted beta UT in
+prose and βUT in equations; it is distinct from the drag-scale beta. Classical hyperparameters were selected
+through a 48-trial tuning budget. We also include an offline robust batch weighted least squares OD reference:
+per trajectory it fits one initial Cartesian state to the full visible arc using the same force/measurement
+model and a Huber robust objective. This is intentionally non causal and postfit — a classical OD reference
+that can use future measurements, not a deployment equivalent comparator. We additionally include a
+process noise adaptive UKF (PUKF) as the symmetric counterpart of the AUKF: it holds R fixed at the
+nominal vector and inflates the predicted process noise Q multiplicatively when a sliding window estimate of
+the R only normalized innovation squared exceeds the chi-square-with-4-channels expectation, on the classical
+statistical OD intuition that under a dynamics/force model bias the prior model, not the measurement
+channel, carries the misspecified component [45, 27, 70]. The PUKF rule, thresholds, and decision predicate
+are fixed in a timestamped rule record.
+Ensemble Kalman and sequential Monte Carlo OD/data-assimilation methods are a distinct comparator
+family rather than a small variant of the tuned EKF/UKF/AUKF guardrail used here; they introduce
+ensemble-size, stochastic process-parameter, resampling, and sampling-noise design choices, and recent OD
+work explicitly evaluates EnKF and particle-filter tracking/parameter-estimation variants in that family
+[71]. To close the ensemble-Gaussian-filter exclusion rather than only cite it, we add one canonical untuned
+stochastic perturbed-observation Ensemble Kalman Filter (EnKF) [15, 6] as a bounded auxiliary comparator:
+a 64-member ensemble propagated through the same compact two-body, J2 , and exponential-drag dynamics
+and updated with the same range/azimuth/elevation/range-rate measurement, process-noise, and azimuth
+de-weighting model as the EKF/UKF/AUKF baselines, with inflation and localization deliberately left off
+and a per-trajectory seed fixed in an internally frozen, hash-recorded rule that is an internal pre-evaluation
+record, not an externally timestamped pre-registration. Because the EnKF shares its process-noise and
+initial-covariance settings with the UKF and AUKF, the controlled comparison is EnKF versus UKF/AUKF,
+while the EnKF-versus-EKF gap additionally reflects the EKF’s slightly larger tuned process noise. On the
+force-mismatch, nominal, and stress slices the untuned EnKF does not displace the classical filters (S-Table 4),
+so it is reported as a bounded result for this single untuned EnKF configuration; tuned, inflated, or localized
+EnKF variants and particle/Gaussian-mixture filters remain outside this comparator set.
+
+4.2
+
+Learned estimator architecture and inputs
+
+Station nodes contain the scaled four-channel measurement, a visibility indicator, Earth-radius-scaled station
+coordinates, and optional innovation features. Graph-enabled models apply message-passing layers over an
+implicit fully connected station graph; graph-disabled variants either skip those layers or replace them with
+7
+
+equal-depth local per-station layers. Visible embeddings are pooled and passed through a bidirectional GRU
+over a 12-step window. The training uses hidden dim 192, five graph layers (when enabled), two GRU layers,
+dropout 0.10, batch 128, lr 10−3 , weight decay 10−4 , grad-clip 1.0, mixed precision, early-stop patience 10,
+and a 24/18/12-epoch nominal/mixed/stress curriculum. The full architecture and regularizer weights are in
+Appendix 14; the supplementary evidence materials supplied for independent inspection provide the complete
+reproduction records.
+Hyperparameter and selection transparency. All compared families expose their fixed settings either
+in this Methods section, the reproduction checklist, or the supplement: EKF/UKF/AUKF use the common
+state, dynamics, observation, and noise settings stated above with the UKF and AUKF parameters stated
+here; PUKF, DMC-EKF, and DSA-EKF use predeclared rule records and the Gauss–Markov hyperparameters
+listed in the reproduction checklist; prior-guided learned variants share the same inputs, backbone dimensions,
+curriculum, optimizer settings, bounded-residual scale, gate, context budget, and prior-anchoring penalty
+stated here and in Section 4.3; and KalmanNet-related checks use their separately scoped native-benchmark,
+transposition, and validation-grid records. Selection fairness is enforced before held-out scoring: for each
+held-out slice the candidate family, validation grid, selected setting, primary metric, comparator set, practical
+floor, seed/split identifiers, and pass/fail rule are fixed before the test population is evaluated, and no method
+is retuned after seeing held-out outcomes. Validation-tuned choices are linked to validation records rather
+than test outcomes, and trained-model/evaluation records are included so that every displayed row can be
+inspected without inferring hidden hyperparameters from the result tables.
+
+4.3
+
+Method families
+
+Classical filters are EKF, UKF, AUKF, and the predeclared process noise adaptive UKF (PUKF). The
+classical postfit OD reference is robust batch WLS, reported separately because this postfit classical OD
+reference is offline rather than causal. The published learned OD baseline is the KalmanNet release [59],
+exercised on its own linear canonical benchmark as the upstream architecture sanity reproduction (S-Table 36);
+the design gap note then enumerates the four adaptations required for a well posed SPOT-OD transposition,
+and the documented KalmanNet transposition is retained separately as a feasibility/design-gap diagnostic in
+S-Tables 8 and 9. This upstream transposition feasibility probe and the native benchmark sanity reproduction
+are separate from the main text learned family pairwise comparisons. Prior guided learned variants
+(flagship RGR-GF plus No-Graph Residual, Learned Noise Adaptive, IDP-RGR-GF, OI-RGR-GF) share a
+common backbone: a bounded residual x̂ = x̂prior + g ⊙ (b s tanh(rθ )) with s = 0.03, g ∈ (0, 1)6 , b ∈ (0, 1),
+plus a 0.05 ∥x̂ − x̂prior ∥2 prior anchoring penalty; the gate g and budget b form a per-component learned trust
+region around the fused prior, whose variance-minimising operating point collapses toward the prior on the
+majority of steps where the visible measurements expose little prior-unexplained residual, so any “competitive
+with classical” behaviour is in substantial part inherited from the classical prior bank by construction; the
+EKF residual learner is a learned residual control (not a KalmanNet reproduction), retained only as an
+ablation row to bound the EKF only residual variant; it diverges substantially from EKF on the all step
+propagation reference (S-Table 40) and is excluded from the claim audit’s pairwise comparisons because it
+does not share the bounded residual contract of the RGR-GF family. Input matched message passing
+controls are RGR-noMP (skip control bypassing cross station aggregation) and RGR-local (stricter capacity
+matched control replacing the graph stack with equal depth, equal width local per-station layers). The
+matched budget ablations share splits, training stages, hyperparameter budget, and evaluation window, not
+exactly equal parameter counts or inputs. An unconstrained Pure GNN state predictor (no filter prior) is
+retained only as a supplementary sanity-check row (S-Table 69); it diverges by orders of magnitude on every
+slice and is not used in any audit comparison.
+
+4.4
+
+Observability-geometry features and guarded selection
+
+Per step, SPOT-OD computes a local unweighted measurement-geometry Gramian from
+P finite-difference
+⊤
+Jacobians of the normalized measurement model with respect to scaled state, It = s∈Vt Ht,s
+Ht,s . The
+summary uses clipped log trace, log pseudo-determinant, log condition number, rank fraction, visible-station
+fraction, and minimum-eigenvalue features (causal: computed from the filter prior, not truth). The guarded
+
+8
+
+selector is a separate trajectory-level cost predictor over visibility, public/stress flags, innovation energy,
+prior disagreement, and these summaries; it is an internal evaluation safeguard, not a proof of operational
+autonomy.
+
+4.5
+
+Statistical protocol
+
+Endpoint terminology (defined once, used throughout). This study is exploratory 1 : the commitments
+are internal predeclarations supplied with the submission, with timestamped records where the record format
+supports them, not external trial-registry preregistration or confirmatory validation. Predeclared means
+a metric, threshold, or decision rule written down before the run that produced its result. The K = 16
+frozen-rule extension has a confidential RFC3161 timestamp of its rule hash (hash disclosed, not content); the
+timestamp confirms rule-before-evaluation ordering for that draw but is not public preregistration and does
+not upgrade the observed-step endpoint itself from post-hoc to externally predeclared. Evidentiary control
+comes from retained internal rule records, fixed seeds/splits, and digest-linked evaluation records, which make
+post-hoc rule substitution inspectable under internal frozen-rule consistency but do not provide confirmatory
+external validation.
+Endpoint timeline (summarized; full details in supplement): Observed-step RMSE was selected post hoc
+on the training cohort before K = 32 generation. K = 8 internal record froze the selected endpoint on a
+seed-disjoint draw (no external timestamp). K = 16 was dependent, informed K = 32 rule handling, and is
+non-evidentiary. K = 32 decision rule was fixed after those records but before K = 32 generation (internal
+record, not external preregistration). K = 96 stress-only rule predates its evaluation by internal timestamp
+evidence (gap 2026-05-25T13:06:32Z to 13:12:43Z confirms temporal ordering; not external preregistration).
+K = 8/K = 32/K = 96 are internal consistency/replication checks under the selected endpoint, not external
+confirmatory evidence or endpoint-family validation. K = 16 (seed 1840000) has confidential RFC3161 hash
+timestamp, stronger than internal timestamp for that draw but not public preregistration. Protocol-subset
+sufficiency audit (S-Table 15) shows omitting any ingredient would have admitted misleading positives.
+Other internal commitments include the larger independent K = 32 endpoint replication under its
+frozen decision rule, the stress-only K = 96 floor-power-scale replication, the DBAR decision rule, and the
+network-consistent dense-tracking probe’s primary metric. Protocol-fixed endpoints (definitions fixed by
+the evaluation protocol, not chosen after inspecting results) are the controlled force-model-mismatch split
+and the multi-revolution SGP4-reference benchmark. All-step trajectory position RMSE is retained only as
+a propagation-dominated reference (roughly four-fifths of evaluated steps have zero visible stations); it is
+reported symmetrically as a divergence/failure check, never as a headline endpoint. For the compact simulator
+audit, we fix before interpreting any ordering a practical significance floor of 3% of the observed-step position
+RMSE: a learned versus classical difference smaller than this floor is treated as below-floor regardless of
+statistical detectability. This is a mission-agnostic audit threshold for this compact simulator, not a universal
+OD mission requirement; a mission-specific OD campaign would replace it with its own acceptance threshold.
+By this floor the nominal synthetic split is non-discriminative (full learned versus classical spread ≈ 1–3% on
+∼ 385 m), so its single-seed tables are illustrative only and the discriminative conclusions rest on splits where
+the observed effect exceeds the floor (measurement-noise stress, controlled force-model mismatch, the K = 8
+endpoint-fixation support draw, the larger simulator-bound K = 32 endpoint replication, and the stress-only
+K = 96 replication).
+Significance uses paired trajectory-wise position RMSE; the difference is baseline minus candidate (positive
+favours the candidate). The one-sided Wilcoxon signed-rank alternative is “candidate better” [80]. Mean-gain
+intervals are percentile paired-bootstrap intervals with shared trajectory indices, at least 3000 bootstrap
+resamples, and 95% confidence [14]; endpoint-specific tables state the exact count, with structural-channel
+tables using 5000 paired resamples. These intervals treat the trajectory as the exchangeable resampling
+unit within a declared slice; they preserve within-trajectory temporal dependence, including within-pass
+residual correlation, but do not turn consecutive visible updates into independent units. The limitation is
+that trajectory-pair resampling does not cover dependence from repeated trajectory identities across trained
+seeds, simulator-design uncertainty, selection uncertainty, possible correlation among similarly generated
+1 In statistical methodology, exploratory analysis selects endpoints or hypotheses after inspecting data patterns, while
+confirmatory analysis tests pre-registered hypotheses on held-out data. This study’s endpoint timeline is exploratory with
+internal frozen-rule replications (K = 32 and K = 96 draws), not externally pre-registered confirmatory validation.
+
+9
+
+passes, or transfer beyond the finite simulator and public-probe populations. The low visible-step fraction
+(roughly 20%) limits but does not eliminate within-pass correlation as an uncertainty concern. Seed-bootstrap
+intervals are likewise descriptive variability summaries over the retained seed ensemble, not independent
+scenario-population confidence intervals. Inference is CI-based at the predeclared 95% level (the two-sided
+upper-bound rule, stricter than a one-sided α = 0.05 Wilcoxon); p-values are shown only for comparability,
+and the CI-based decisions carry the same familywise-multiplicity caveat as the p-values. Every p-value is
+a descriptive diagnostic, not a confirmatory test. No familywise multiple-comparison correction is claimed
+for any individual table; for completeness S-Table 39 reports Holm familywise- and Benjamini–Hochberg
+false-discovery-rate–adjusted values over the entire family of displayed pairwise Wilcoxon p-values [23, 4],
+and the qualitative ordering and the disciplined negative are unchanged under both adjustments.
+
+5
+
+Results
+
+Load-bearing evidence roadmap. The primary mechanism contribution is grounded in Table 4, Figure 1,
+and Table 6: AUKF inflates effective R under compact force-model mismatch (mean 3.32), the drag-scale
+cascade isolates EKF linearisation, sparse-geometry observability, and candidate-inertia failure modes, with
+median trajectory-mean β̂ = 1.0000 despite 9.6 km arc-mean drag separation at enriched geometry. The
+secondary learned-estimator bounded negative is evidenced by Table 3, S-Table 17, and S-Table 19: no
+evaluated learned construction beats the per-scenario best tuned classical reference on the primary observedstep endpoint under the K = 32 frozen-rule replication, with the stress-only K = 96 floor-power check
+and the all-scenario K = 96 seed-disjoint additional internal replication preserving the bounded negative;
+neither is a stronger preregistration tier but both are internal consistency checks. The DBAR withdrawal
+is reported in Table 8: 450-realization characterization is statistically indistinguishable from the 81.3%
+no-information baseline. Structural/adaptive channels are judged only by predeclared pass/fail rules; public
+catalog/SP3/ILRS slices are provenance, measurement-pipeline, or mechanism-transfer diagnostics—not
+operational POD or real-data learned-skill claims. Primary learned-versus-classical ranking evidence is
+simulator-bound, exploratory, and internally frozen under the observed-step endpoint hierarchy (Table 2).
+
+5.1
+
+Primary observed-step view and propagation reference
+
+The central K = 32 observed-step anchor and the observed-step/all-step endpoint-choice sensitivity audit
+both return no learned positive. The primary observed-step state-estimation view uses the larger seed-disjoint
+frozen-rule endpoint replication under the selected observed-step endpoint hierarchy as its central evidence
+anchor (Table 3); the full post-hoc endpoint timeline is defined in Section 4.5. The replication evaluates 24
+trajectories per realization and reports no learned positives: nominal is best with EKF and an RGR-GFminus-best-classical gap of +5.4 m (CI [−15.7, 31.3] m), stress is best with AUKF and a gap of +48.81 m (CI
+[17.71, 88.8] m), and controlled force mismatch is best with EKF and a gap of +16.83 m (CI [6.07, 27.77] m).
+This larger replication is simulator-bound per the Results-scope convention and Table 2 above.
+The nominal split is reported for traceability and architecture-selection debugging only, not for pass/fail
+conclusions: by the predeclared 3% floor and the later power audit, its learned-versus-classical spread is
+at or below practical significance and underpowered for decision use. Retaining underpowered nominal
+rows avoids suppressing full-scenario evidence that supports architecture-selection debugging and future
+meta-analysis, but nominal rows must not be used to draw discriminative learned-superiority conclusions. The
+stress and controlled-mismatch rows carry discriminative interpretations for their observed degradations, and
+the predeclared structural/noise-adaptive channels and public-provenance probes carry their own bounded
+decision interpretations.
+Here “independent” means an independently seeded trajectory population and measurement-noise draw
+per realization, not independent time steps within one trajectory. A post-hoc analytical power check using
+the realization-level paired-gap standard deviations is reported only at the predeclared 3% floor effect, not at
+the realized gap, because power computed at an observed effect is a deterministic function of the realized
+p-value and adds nothing beyond the interval already shown: it gives limited sensitivity to an exactly
+floor-sized stress effect (3% of the AUKF mean, 27.5 m; approximate one-sided α = 0.05 power ≈ 0.42), and
+the realized stress gap of 48.8 m exceeds that floor. These power figures use a one-sided t-approximation
+at α = 0.05, whereas the decision predicate is the stricter two-sided 95% CI upper-bound rule (effective
+10
+
+Table 3: Main load-bearing endpoint result: larger seed-disjoint frozen-rule observed-step replication under
+the K = 8-established endpoint hierarchy. Positive RGR-GF-minus-best-classical gaps mean the learned
+estimator is worse than the best tuned classical reference. Nominal is retained for traceability only and is
+not a discriminative endpoint under the predeclared floor and power audit; its CI direction should not be
+interpreted.
+Scenario
+Nominal (traceability only) †
+Measurement-noise stress
+Controlled force-model mismatch
+
+Best classical obs. RMSE [m]
+
+RGR-GF obs. RMSE [m]
+
+RGR-GF−best classical [m] (95% CI)
+
+EKF 402.0
+AUKF 915.8
+EKF 474.3
+
+407.4
+964.6
+491.1
+
++5.4 [−15.7, +31.3]
++48.8 [+17.7, +88.8]
++16.8 [+6.1, +27.8]
+
+Interpretation
+Traceability only; non-discriminative; do not interpret CI direction
+No learned positive
+No learned positive
+
+K = 32 independent realizations per scenario, 24 trajectories per realization. The daggered nominal row is traceability-only; its
+CI direction must not be interpreted. The rule was frozen after the K = 8 endpoint-fixation results and the non-evidentiary
+K = 16 strict-prefix extension were available, but before any K = 32 realization was generated or evaluated; all-step RMSE is
+propagation-dominated and retained in the supplement. Best classical is formalized per scenario as the lowest held-out mean
+observed-step RMSE among tuned EKF, fixed-noise UKF, and AUKF under the frozen endpoint hierarchy; realized labels are
+Nominal=EKF, Stress=AUKF, Mismatch=EKF. The stress row is discriminative for the observed degradation, but this table
+alone is not powered to exclude every just-at-floor stress effect: using the realized stress-row paired-gap SD, the 27.5 m floor
+would require approximately K = 94 for 0.80 one-sided α = 0.05 power. A separate stress-only K = 96 internal replication in
+S-Table 17 exceeds that design check and preserves the negative.
+
+one-sided α = 0.025), so the realized floor power is somewhat below 0.42 and the K required for about 0.80
+power somewhat above the figure below. With the realized stress-row paired-gap SD of 106.2 m, the same
+one-sided t approximation would require K ≈ 94 independent realizations for about 0.80 power at the 27.5 m
+floor. The completed stress-only K = 96 internal replication (S-Table 17) exceeds that design check for
+approximately 0.80 power at the 27.5 m floor and again finds AUKF best on observed-step RMSE: AUKF
+923.5 m versus RGR-GF 955.5 m, with RGR-GF-minus-AUKF +31.9 m (CI [+12.4, +52.4] m). The mean
+gap exceeds the 27.5 m floor while the CI lower bound of +12.4 m lies below that floor, so the floor-clearing
+criterion is not met; this does not alter the predeclared predicate because RGR-GF is not best and the paired
+interval is not strictly negative. It is a K=96 internal replication under an already selected endpoint, not
+external preregistration or public-reference validation. The controlled-mismatch row is stronger for the floor
+itself (3% of the EKF mean, 14.2 m; power ≈ 0.79), and its realized gap of 16.8 m also exceeds that floor.
+Thus the endpoint anchor plus the powered stress-only check support the discriminative negatives, while
+the nominal row remains underpowered for positive claims. An additional independently seeded internal
+prospective replication (base seed 1160000, K = 32 realizations per scenario, 24 trajectories per realization,
+freeze record written before any evaluation) is reported in S-Table 18. The replication preserves the bounded
+negative and no-learned-positive outcome across all three scenarios: nominal is best with EKF (388.46 m),
+RGR-GF 391.71 m, gap +3.25 m (CI [−7.64, +18.24] m; nominal remains non-discriminative and is retained
+for traceability only); measurement-noise stress is best with AUKF (958.41 m), RGR-GF 999.61 m, gap
++41.21 m (CI [+10.04, +74.97] m); controlled force-model mismatch is best with EKF (465.12 m), RGR-GF
+487.57 m, gap +22.45 m (CI [+14.91, +29.51] m). No scenario returns a learned positive under the frozen
+predicate. This record is an additional internal evidence check, not external preregistration or operational
+validation. A further seed-disjoint internal replication (base seed 1630000, 24 trajectories per realization,
+freeze record written before any evaluation; S-Table 19) carries all three scenarios to the powered K = 96
+sample size, whereas the earlier K = 96 check covered only the stress split: nominal is again best with
+EKF (402.20 m), RGR-GF gap +3.77 m (CI [−9.63, +20.14] m; non-discriminative, retained for traceability
+only), measurement-noise stress is best with AUKF (948.49 m), RGR-GF 981.31 m, gap +32.83 m (CI
+[+8.50, +61.52] m), and controlled force-model mismatch is best with EKF (449.35 m), RGR-GF 470.47 m,
+gap +21.12 m (CI [+16.44, +25.51] m). No scenario returns a learned positive at the powered all-scenario
+sample size, so the bounded no-learned-positive outcome holds at K = 96 across every scenario and a fresh
+seed; this too is an internal evidence check, not external preregistration or operational validation.
+The 15-seed cohort and the endpoint-fixation records are supporting evidence, not the central anchor.
+The 15-seed observed-step stress gain of RGR-GF over fixed-noise UKF is 768.32 m (95% seed bootstrap CI
+[714.85, 821.04] m, all 15 seeds favouring RGR-GF), but versus the tuned AUKF the same stress comparison is
+−199.18 m (no seed favouring RGR-GF), the nominal-split RGR-GF−AUKF gain is −73.07 m, and the small
+all-step nominal-split UKF margin does not survive on the primary metric (−78.33 m). The 15-seed record
+therefore supports only a ukf-specific stress-gain claim bounded to fixed-noise UKF under the documented
+11
+
+stress split, with no upgrade against adaptive filtering. Observed-step RMSE is the physically motivated
+estimator-skill metric (zero-visible steps are open-loop propagation), and all-step aggregates (S-Table 40)
+are retained only as a propagation-dominated reference. These outcomes separate along the axis of the
+scenario shift: a measurement-noise shift calls for the gain re-weighting an innovation-adaptive AUKF already
+supplies, so the learned margin over the fixed-noise UKF is chiefly recovered noise-adaptation the AUKF
+represents, whereas a force-model-mismatch shift calls for a structural dynamics correction whose signal is
+neither observable from sparse line-of-sight updates nor representable by a residual anchored to the compact
+prior, so the learned residual never beats the causal EKF.
+Endpoint-fixation and propagation context. The disjoint endpoint-fixation draw (S-Table 22) records
+the transition from the earlier all-step metric to the observed-step endpoint and supports the same no-learnedpositive ordering as the larger frozen-rule replication. An endpoint-choice sensitivity audit (S-Table 23)
+re-reads the retained endpoint-support and larger-replication records under both observed-step and allstep position RMSE and finds no learned positive under either natural endpoint choice. The single-seed
+measurement-informed scoring table (S-Table 30) is illustrative only, and the all-step propagation reference
+(S-Table 40) shows AUKF is the strongest displayed aggregate position-RMSE method (6167.44 m nominal
+/ 6800.54 m stress; EKF 6170.19 / 6811.25, UKF 6191.37 / 7173.23, RGR-GF 6169.11 / 6808.98). About
+four-fifths of evaluated steps have zero visible stations, so the all-step view is a propagation snapshot rather
+than a learned versus classical comparison.
+The offline robust batch WLS reference is deliberately separated from causal recursive filtering because it
+uses the full visible arc to refit the initial state. Its nominal observed-step RMSE (152.61 m in the supplement)
+is far below the recursive filters, showing that the strongest architecture for this slice is an offline OD fit when
+latency and future measurements are allowed. This explains why batch/offline guardrails are required before
+any causal learned estimator is treated as a candidate for operations-facing validation.
+
+5.2
+
+Densified-visibility control and network-consistent dense-tracking probe
+
+After correcting the observation-network inconsistency, the dense-tracking probe still finds no learned
+estimator beating the best classical filter on its predeclared metric. The dense-tracking probe is a bounded
+measurement-geometry/observability diagnostic that isolates whether the sparse-geometry learned-negative
+behavior persists under measurement-update-dominant conditions; it is not a primary discriminative endpoint
+or headline learned-negative claim. An earlier uncorrected densified-visibility control (S-Table 62) exposes a
+measurement-conditioning artifact: every estimator exhibited multi-thousand-kilometre median errors and a
+near-identical gross-failure rate, the signature of an estimator/truth observation-network inconsistency (filters
+resolved the nominal eight-station network while truth was synthesised against the twenty-station densified
+network). We therefore explicitly withdraw the earlier reading and draw the dense-tracking conclusion only
+from the corrected, network-consistent probe.
+The corrected network-consistent dense-tracking probe (S-Table 31) enforces a perfect shared model
+(identical dynamics with third-body and SRP enabled, identical measurement model, identical dense twentystation network on both sides), removing the observation-network inconsistency that drove the uncorrected
+control; every estimator additionally applies the standard capped 1/ cos2 (elevation) topocentric-azimuth
+de-weighting, applied identically and inherited by the learned residual through its classical priors so it cannot
+manufacture a learned advantage. The primary metric is predeclared (fixed before running): unlike the
+sparse synthetic primary endpoint, this dense, high-visibility, network-consistent setting uses pooled all-step
+trajectory position RMSE over non-divergent trajectories as a stress test for propagation/control over the full
+dense arc, with observed-step pooled RMSE reported symmetrically as the secondary, plus heavy-tail-robust
+medians and a 100 km gross-failure rate. The catastrophic divergence collapses to a small minority and
+classical filters reach sub-kilometre-to-kilometre state error; the bounded result persists on the predeclared
+metric, the secondary, and the heavy-tail-robust median (the best classical filter is best on all three; no learned
+estimator beats it). A fixed, previously trained learned estimator is evaluated without any per-realization
+refitting.
+Tail-conditioned audit. The predeclared paired learned-minus-best-classical comparison on S-Table 31 is
+dominated by a small number of megametre-scale tails. S-Table 32 restricts the paired comparison to the jointly
+12
+
+engineering-adequate subset of 111/120 trajectories (every estimator below the 100 km physical-adequacy
+threshold on a given trajectory) so the mean cannot be dominated by such tails, and reports per-method
+gross-failure counts (EKF 0, UKF 8, AUKF 4, RGR-GF 6 of 120) so the per-realization tail structure is
+auditable. On the tail-conditioned engineering-adequate subset the learned versus classical bounded result is
+preserved on the predeclared pooled and paired-mean views in both the all-step and observed-step metrics;
+the paired median difference is slightly negative (RGR-GF lower median error) on the same subset, so the
+bounded result on the predeclared mean is consistent with RGR-GF having a typical-case advantage offset by
+a heavier mid-tail than the best classical reference.
+
+5.3
+
+Controlled force-model mismatch and mechanism
+
+The controlled compact mismatch quantifies an OD instance of AUKF R-inflation damping, with EKF
+best among the recursive filters and no learned residual beating EKF or AUKF on this slice. The longarc higher-fidelity slice (Section 5.9, S-Table 29) is a model-scope warning rather than a transfer rule: it
+contains a supplementary EKF/AUKF direction-only stress observation (EKF-minus-AUKF paired interval
+[+17.5, +637.7] m, auxiliary direction-only stress observation, not a transfer rule or estimator positive),
+with details retained in the supplement. The compact-J2 finding reported in this subsection is a bounded
+counterexample to that warning, presented as a mechanism observation about the covariance-matching family
+on a deliberately compact dynamics model and not as an operational EKF-over-AUKF prescription; reading
+both findings together, the long-arc stress observation motivates confirmation before any compact-model
+classical-filter prescription is transferred.
+The controlled force-model/process-noise mismatch inflates ballistic coefficient (0.045 vs 0.018 m2 /kg),
+process-noise std (0.45 vs 0.0), drag density (7.0 × 10−11 vs 4.0 × 10−11 ), SRP area-to-mass (0.06 vs 0.02), and
+CR (1.60 vs 1.35) on the truth side, while every estimator and the WLS reference keep the nominal compact
+model. The full per-method observed/all-step table is in Appendix 15 (S-Table 41); the discriminative paired
+evidence is the mechanism diagnostic below. Over the 38-trajectory population the deterministic classical
+filters pair (S-Table 42) as: causal EKF beats tuned AUKF by 58.1 m mean observed-step (95% paired
+bootstrap CI [22.2, 100.0] m, p = 0.015 descriptive, 65.8% of trajectories) and beats fixed-noise UKF by
+26.1 m (CI [3.4, 54.5] m, p = 0.041); fixed-noise UKF in turn beats AUKF (32.0 m, CI [0.9, 67.4] m). These
+nominal-level paired intervals exclude zero, but the corresponding familywise-adjusted p-values (Holm/BH;
+S-Table 39) do not reach significance, so the compact-J2 ordering is reported as a predeclared CI/direction
+reading bounded to this slice—consistent with the higher-fidelity zero-crossing and the long-arc EKF/AUKF
+reversal disclosed below—rather than a confirmatory test. Comparing each learned construction against the
+per-scenario minimum-of-three classical filter is a deliberately stringent bar that, if anything, inflates the
+classical-side gap magnitudes, so the learned negatives are conservative. The pooled per-method observedstep means in S-Table 41 are computed over the 48 processed trajectories, whereas these paired gains use
+per-trajectory RMSE over the 38 trajectories with a finite shared-mask observed-step RMSE; a paired mean
+of differences is therefore not the difference of pooled means, and the two are not expected to coincide. Across
+all 15 trained seeds the learned residual never beats EKF on this slice (0/15 seeds; seed-mean gap −99.9 m,
+CI [−157.4, −51.8] m) and does not beat AUKF either (CI [−82.5, 25.6] m, 9/15 seeds favouring RGR-GF
+with the interval crossing zero and the mean against).
+Figure 1, Table 4, and S-Table 24 give the paper’s compact-model mechanism diagnostic: a deterministic,
+exactly reproducible decomposition (it reproduces the reference AUKF estimate to 0.00 m). The visible-update
+innovations are dominated by an unmodelled dynamics bias, yet the AUKF inflates its effective R scale
+(mean 3.32, from 2.89) and damps corrections, so its mean state-update norm collapses to about 466 m; the
+cross-filter R-only median NIS grows from 1.60 (EKF) and 1.83 (UKF) to 4.73 (AUKF). The damping is the
+direct gain consequence of the inflation: the Kalman gain scales as K ∝ P − H ⊤ (HP − H ⊤ + sR)−1 , so scaling
+the effective measurement noise by s (here mean 3.32) monotonically shrinks the gain and the correction
+norm. Under white measurement noise this attenuation is appropriate; under a persistent, serially correlated
+dynamics bias it attenuates precisely the updates that would track the bias. This is the force-model mismatch
+mechanism diagnostic: the adaptive filter misreads dynamics-bias innovations as measurement-noise evidence
+and damps the updates that would track the bias, a known covariance-matching/adaptive-filtering failure
+mode [45, 60, 27, 70]. The NIS and effective-R-scale values are single-population deterministic descriptors of
+the controlled-mismatch population; the cross-seed robustness of their direction, not these point magnitudes,
+
+13
+
+Figure 1: Main-text mechanism view of the controlled force-model-mismatch AUKF diagnostic. Dynamics-bias
+innovations raise the adaptation signal, and the AUKF inflates effective R (mean scale 3.32, from 2.89) while
+EKF and UKF remain near nominal scale (mean 1.00, 0.99 respectively). Median R-only NIS grows from
+1.60 (EKF) and 1.83 (UKF) to 4.73 (AUKF), and AUKF shows worse observed-step position RMSE than
+the fixed-noise references on this force-mismatch slice. The figure is derived from the same deterministic
+compact-model force-mismatch diagnostic summarized in Table 4 and S-Table 24, not from a new run.
+is what the R-inflation cap control (S-Table 28) and the 38-trajectory paired CIs evidence.
+As an additional targeted mechanism-control, S-Table 28 runs AUKF with effective R scale capped
+at 2× nominal (AUKF-Rcap) across all 48 force-mismatch trajectories. AUKF-Rcap inherits all standard
+AUKF parameters unchanged and differs only in the maximum effective R-scale ceiling, which is reduced
+from 30× to 2×. All 48 trajectories are processed; the paired denominator is 38 because 10 trajectories
+have zero visible measurements after the scoring window starts at step 11, making observed-step trajectory
+RMSE undefined for all comparators under the shared visibility/scoring mask—these are not AUKF-Rcap- or
+standard-AUKF-specific nonfinite failures. All paired CIs and win rates are computed over the 38 shared
+finite observed-step trajectories. Capping the inflation reduces the mean effective R scale from 3.32 to 1.09
+and improves the pooled observed-step RMSE by 41.7 m relative to standard AUKF (paired gap −23.6 m,
+95% CI [−42.3, −6.2] m; 63.2% win rate over 38 paired finite trajectories, above the 50% equal-direction
+reference; this is an additional targeted mechanism-control outside the original frozen learned-estimator claim
+audit and not a predeclared positive criterion). AUKF-Rcap remains strictly worse than EKF (+34.5 m, CI
+[+9.8, +63.9] m), supporting the interpretation that R-inflation damping is a key but not sole driver of the
+AUKF degradation under compact-model dynamics bias.
+
+5.4
+
+Higher-fidelity force-mismatch (second-fidelity scoping)
+
+Higher-fidelity force-mismatch slices preserve the R-only NIS stress signature but do not support transferring
+the compact EKF-over-AUKF ordering. S-Table 25 repeats the controlled force-mismatch protocol with the
+truth-side dynamics extended above the compact-J2 ceiling: the truth propagator adds the J3 and J4 zonal
+
+14
+
+Table 4: Compact-model AUKF mechanism diagnostic on the controlled force-model mismatch. The
+deterministic decomposition reproduces the reference AUKF estimate to 0.00 m and shows the known
+covariance-matching failure mode in OD form: dynamics-bias innovations are treated as measurement-noise
+evidence, inflating effective R and damping the updates needed to track the biased truth. Values are aggregated
+over the full controlled force-mismatch mechanism population (48 processed trajectories); visible-update
+counts and update-norm statistics are computed over the visible AUKF update records in that population.
+
+Diagnostic quantity
+
+Value
+
+Visible measurement updates
+Pre-adaptation NIS (mean / median / p90)
+Effective R scale (pre / proposal / post / effective)
+Mean state-update norm [m]
+R-only median NIS (EKF / UKF / AUKF)
+AUKF R-only p90 NIS
+Observed-step RMSE (EKF / UKF / AUKF) [m]
+AUKF estimate max position difference vs reference [m]
+
+1238
+4.90 / 3.49 / 9.16
+2.891 / 4.513 / 3.021 / 3.315
+466.31
+1.60 / 1.83 / 4.73
+20.38
+448.79 / 469.41 / 526.39
+0.00
+
+geopotential terms (analytic gradient of the standard zonal expansion) and luni-solar third-body acceleration
+(analytic low-precision ephemerides at absolute UTC epoch), while every estimator still keeps the nominal
+compact two-body+J2 +drag model. On this richer dynamics mismatch the cross-filter R-only NIS diagnostic
+of S-Table 24 continues to fire (AUKF median R-only NIS 1.53 vs. EKF 1.37 and UKF 1.47, AUKF p90 5.70),
+so the compact-model mechanism reproduces qualitatively. The magnitude of the AUKF damping is, however,
+no longer load-bearing in the EKF/AUKF comparison: the tuned AUKF is the best classical filter (393.3 m
+mean observed-step RMSE), the causal EKF is second (420.9 m), and the EKF−AUKF paired-bootstrap CI
+spans zero ([−152.5, +243.8] m). The predeclared PUKF again fails its positive criterion (significantly worse
+than AUKF by +126.4 m, CI [+14.9, +296.3] m; Section 5.5, S-Table 33). The AUKF caveat from S-Table 24
+is therefore a compact-model observation: above the compact-J2 ceiling the mechanism continues to fire
+but the EKF/AUKF ordering is not flipped, so we downscope the compact-model diagnostic. A yet richer
+fidelity slice (S-Table 35, J5+J6 zonal terms plus a one-sided diurnal-bulge density modulation, α = 0.30)
+confirms the same downscoping: the cross-filter R-only NIS again flags AUKF as the most stressed (median
+1.67 vs. EKF 1.42, UKF 1.60) but the EKF/AUKF ordering does not flip (EKF−AUKF mean −21.3 m, CI
+[−160.4, +87.1] m spans zero), and the best classical filter is the fixed-noise UKF rather than EKF.
+
+5.5
+
+Process Noise Adaptive UKF (predeclared)
+
+PUKF fails its predeclared positive criterion on both the controlled compact and higher-fidelity force-mismatch
+slices. S-Table 33 reports the predeclared symmetric Q-adaptive UKF (PUKF) on the same 38-trajectory
+controlled force-mismatch population. The rule, thresholds, and decision predicate (PUKF is a positive
+contribution iff its mean observed-step RMSE is strictly lowest and the paired-bootstrap CI versus every
+comparator is strictly below zero) were predeclared in a timestamped rule record before the evaluation; no
+rule retuning is allowed. Outcome: PUKF inflates the predicted process covariance heavily (mean Q̄-scale
+5.9) but does not satisfy the predeclared positive criterion — its mean observed-step RMSE is worse than
+the causal EKF (+42.6 m, CI [+15.4, +74.0] m), and the CI versus tuned UKF spans zero (+16.5 m, CI
+[−7.0, +38.8] m). On the higher-fidelity slice (S-Table 25) the predeclared positive criterion likewise fails
+(PUKF significantly worse than AUKF, CI [+14.9, +296.3] m). A post-hoc 16-point validation-grid stress for
+PUKF on that higher-fidelity slice (S-Table 34) also does not rescue the comparator: the validation-selected
+PUKF remains worse than AUKF on the retained held-out population (selected PUKF 527.5 m vs. AUKF
+393.3 m; paired gap +134.2 m, CI [−9.5, +382.2] m over n = 38 finite paired trajectories). The drag-scale
+cascade supplement also records a separate 12-hour observability-grid case in which PUKF overflows on the
+unaugmented UKF-family stress slice; that is a scope warning for long-arc sigma-point conditioning, not part
+of the predeclared 40-minute PUKF decision. Because this CI spans zero and is wide, the sensitivity supports
+
+15
+
+only the qualitative conclusion that this bounded validation grid does not rescue PUKF; it does not establish
+a tuning-sensitive ordering. This sensitivity is reported for tuning comparability only and does not replace
+the predeclared PUKF evidence. PUKF is therefore a predeclared bounded negative at both fidelities, with
+an added post-hoc comparability stress, and the remaining diagnostic focus is structural (Sections 5.6, 5.7)
+rather than statistical noise adaptation alone.
+
+5.6
+
+Predeclared Cartesian structural-channel response (DMC-EKF)
+
+The compact DMC-EKF structural-channel check does not beat UKF on the higher-fidelity force-mismatch
+slice. Stacey and D’Amico’s 2021 adaptive, dynamically constrained process-noise OD work motivates
+structural process-noise responses to dynamics/force-model bias; the DMC/DSA implementations here are
+compact, simplified structural-channel checks motivated by that lineage, not faithful reproductions of the full
+adaptive dynamically constrained formulation and not a rejection of that broader prescription [70].
+Section 5.5 reports a predeclared symmetric Q-adaptive UKF (PUKF) as the statistical counterpart of the
+innovation-adaptive AUKF; both PUKF and AUKF adapt the noise distribution on the R or Q side without
+changing the deterministic flow. Classical statistical OD prescribes a complementary structural response when
+the dominant residual is a dynamics/force-model bias: augment the state with a low-frequency empiricalacceleration channel and estimate it jointly with position and velocity, the dynamic model compensation
+(DMC) recipe [72, 81, 70]. S-Table 26 reports the predeclared DMC-EKF on the higher-fidelity force-mismatch
+slice (truth-side J2..J6 zonal geopotential plus luni-solar third-body plus one-sided diurnal-bulge atmosphericdensity modulation; estimators on the compact two-body+J2 +drag deterministic flow). The augmented state
+appends a per-axis first-order Gauss–Markov empirical-acceleration channel w with predeclared steady-state
+2
+standard deviation σw = 1.0 × 10−6 m/s and decorrelation time τ = 300 s; the deterministic flow is shared
+with the EKF baseline. The predeclared positive criterion (DMC-EKF strictly lowest in mean observed-step
+RMSE, strictly negative paired-bootstrap CI versus the best non-DMC comparator, and the 3% practical
+significance floor exceeded) was committed in a timestamped rule record, and no rule retuning is allowed.
+Outcome: the predeclared criterion is not satisfied — UKF gives the lowest mean (276.13 m), DMC-EKF
+tracks EKF to numerical precision (paired mean difference 7.8 × 10−6 m), and the DMC-EKF−UKF pairedbootstrap CI spans zero (+2.9 m vs. UKF, [−3.8, +8.1] m). The cause is structural: under sparse-visibility
+geometry the empirical-acceleration channel is essentially observable only through position/velocity crosscovariance accumulated between visible updates, and the median maximum estimated |w| remains near
+2
+1 × 10−10 m/s , far below the unmodeled-physics magnitude. The near-zero DMC-EKF–EKF deviation is
+consistent with the sparse-visibility observability bound rather than with a process-covariance-augmentation
+implementation defect: a separate favorable-geometry sanity diagnostic in S-Table 3 shows that the same
+DMC-EKF empirical-acceleration channel recovers a known matched acceleration vector to 2.15% relative
+error and lowers RMSE relative to EKF when all stations are visible and measurement noise is intentionally
+low. We report this as a predeclared Cartesian-structural-channel bounded negative: the standard structural
+response to dynamics bias does not transfer to this sparse-visibility regime under the predeclared rule, so
+the audit returns a bounded negative on both the noise-adaptive family (AUKF, PUKF) and the Cartesian
+structural-channel family (DMC-EKF) on the higher-fidelity slice. This strengthens the audit’s scope: the
+compact-model AUKF mechanism diagnostic is not rescued by the canonical Cartesian structural channel
+above the compact-J2 ceiling under sparse visibility.
+
+5.7
+
+Predeclared parametric structural-channel response (DSA-EKF)
+
+DSA-EKF gives a statistically detectable but below-floor improvement on the 40-minute higher-fidelity slice,
+so it remains a predeclared negative. One diagnostic concern for the Cartesian channel of Section 5.6 is that
+a generic per-axis empirical acceleration may be the less specific structural channel for the actual mismatch
+(drag/density/ballistic-coefficient bias); the standard LEO structural recipe estimates the multiplicative
+drag-scale parameter directly [72, 81, 43]; learned per-satellite drag-coefficient estimation has also been
+pursued for OD and prediction [8], whereas the diagnostic here shows a parametric drag-scale channel is inert
+under sparse visibility. S-Table 27 reports the predeclared seven-state DSA-EKF on the same higher-fidelity
+slice as DMC-EKF: the augmented state is [r, v, β] with β a first-order Gauss–Markov drag-scale parameter
+about its nominal value of one, and the deterministic flow scales the drag acceleration by β(t) on top of
+
+16
+
+Table 5: Main structural-channel implementation sanity check. The favorable-geometry diagnostic is not a
+primary endpoint and not an operational OD case; it brackets the sparse-visibility negatives by showing that
+the implemented structural channels can recover matched known signals when the measurement geometry is
+intentionally easy.
+Channel
+
+Known signal
+
+Last-window estimate
+
+EKF→channel
+RMSE [m]
+
+Readout
+
+DSA-EKF drag scale
+
+β = 4.00
+
+β̂ = 3.981; 0.46% error
+
+0.72→0.71
+
+Matched beta channel recovers under all-visible, lownoise geometry.
+Matched acceleration channel recovers under the same
+sanity regime.
+
+DMC-EKF empirical [2.00, −1.00, 1.50] × 10−5
+acceleration
+
+[2.02, −1.05, 1.50]
+2.15% error
+
+×
+
+10−5 ; 4.20→3.45
+
+the otherwise compact two-body+J2 +drag model. The Gauss–Markov hyperparameters were selected on a
+disjoint validation seed over a four-point predeclared grid before the held-out test; the selection record and
+timestamped rule are retained for inspection. The predeclared positive criterion (DSA-EKF strictly lowest in
+mean, strictly negative paired CI versus the best non-DSA comparator, gap above the 3% practical significance
+floor defined in the statistical protocol) is not satisfied: DSA-EKF gives the lowest mean (347.67 m versus
+EKF 354.69 m), and the DSA-EKF−EKF paired-bootstrap CI is strictly below zero (−7.0 m, [−9.7, −4.8] m),
+but the absolute gap lies below the predeclared 10.6 m floor. The associated Wilcoxon signed-rank descriptive
+p-value on the same pairing is highly significant (p ≈ 1.8 × 10−9 ); we report this as an explicit illustration of
+the manuscript’s predeclared posture that statistical detectability is not the same as practical significance —
+a strictly negative paired CI versus the EKF coexists here with a reported, statistically robust within-floor
+improvement of about 7 m, and the predeclared rule therefore returns a bounded negative regardless of the
+underlying p-value. A below-floor strictly-negative CI of this kind does not imply that the structural channel
+provides zero benefit; below-floor is not the same as inert, but it is also not a positive contribution under
+the predeclared rule because the measured benefit is smaller than the practical significance threshold. The
+estimated drag-scale parameter moves by only |β̂ − 1| ∼ 10−7 from its prior over the 40-minute filter window,
+confirming that the parametric channel is essentially unobservable from sparse line-of-sight measurements at
+this window length: insufficient drag-induced orbit decay accumulates in 40 min to constrain β. We report
+this as a predeclared parametric-structural-channel bounded negative alongside the Cartesian DMC bounded
+negative, so the audit closes both standard structural responses to dynamics bias under sparse visibility, not
+only one.
+
+5.8
+
+Structural-channel sanity and drag-scale cascade
+
+Favorable-geometry checks show the structural channels can recover matched signals, while the three-slice
+cascade still returns bounded negatives and localizes the drag-scale failure modes. Before interpreting
+the sparse-visibility structural-channel negatives, Table 5 records the favorable-geometry sanity check that
+the implemented DSA-EKF drag-scale channel and DMC-EKF empirical-acceleration channel can recover
+matched known signals under intentionally easy measurements. This is not a primary endpoint and not an
+operational OD result; it is a positive implementation check showing that the later negatives are not caused
+by a structural-channel implementation that cannot move under any geometry.
+Table 6 then gives the three-slice drag-scale mechanism cascade. The first slice fixes the structural form
+to the true multiplicative drag-scale bias and identifies EKF analytic linearisation as the binding failure mode
+for the EKF-based candidate. The second slice substitutes deterministic sigma-point propagation of the
+augmented flow, removes that failure mode, and leaves a separate sparse-visibility observability-side bound:
+DSA-UKF is near UKF/AUKF in RMSE but β̂ remains effectively at one. The third slice enriches the
+geometry and extends the arc; even with 9.6 km median arc-mean drag-induced separation, median trajectorymean β̂ = 1.0000 and median maximum |β̂ − 1| = 0.0010, isolating candidate-side β prior inertia while
+also stressing the unaugmented UKF-family baselines. We therefore read the third row as a candidate-side
+beta-inertia diagnostic plus a long-arc sigma-point-stress record, not as a well-conditioned UKF-family ranking.
+This three-way mechanism separation—linearisation, observability, and candidate-side prior inertia—is the
+paper’s central non-self-referential diagnostic: it localises the structural-channel failure to a specific binding
+
+17
+
+Table 6: Main mechanism cascade for the drag-scale structural channel. Positive candidate-minus-reference
+gaps mean the candidate is worse than the best eligible reference. All three rows use held-out test populations
+after the relevant selection rule is frozen; none satisfies its predeclared positive criterion.
+Slice
+
+Observed-step
+comparison [m]
+
+Matched
+channel, DSA-EKF
+EKF predict
+UKF 359.7
+
+RMSE Candidate−reference [m] Drag-scale response
+(95% CI)
+
+1648.5
+
+Sigma-point substi- DSA-UKF
+316.4
+tution
+AUKF 313.1
+
+Geometry-enriched
+DSA-UKF
+
+DSA-UKF
+EKF 742.7
+
+4879.9
+
+Mechanism readout
+
+[+378.1, max |β̂ −1| = 0.0012; final Structural form is matched,
+but the EKF predict step is
+β̂ = 1.0000
+the binding failure mode.
+vs +3.3 [−7.5, +16.2]
+max |β̂ −1| = 0.0009; final Sigma-point propagation
+removes the EKF diverβ̂ = 1.0000
+gence but not the AUKF
+guardrail.
+vs +4137.2
+[−827.0, max |β̂ −1| = 0.0010; final Drag signal is visible
++11235.7]
+(9595.9 m mean, 29294.1
+β̂ = 1.0000
+m final), but estimated β̂
+remains inert; UKF-family
+baselines
+are
+long-arc
+stressed, so this row is not
+a stable UKF ranking.
+vs +1288.9
++2561.4]
+
+constraint rather than re-measuring a known mode. The inertia is consistent with an identifiability argument:
+the line-of-sight innovation is absorbed by the well-observed position/velocity correction while β enters only
+through twice-integrated drag, so the minimum-variance update attributes a position offset to r, v rather
+than to β, and the favorable-geometry sanity check (Table 5) recovers β precisely because that aliasing is
+suppressed. The full grid and stability caveats are in supplementary Section 8.
+
+5.9
+
+Long-arc higher-fidelity force-and-density-mismatch replication
+
+Extending the arc to three hours does not rescue DSA-EKF; it is worse than AUKF and the drag-scale state
+still moves only marginally. A diagnostic concern on the 40-minute arc length of the higher-fidelity slices is
+that the drag-scale structural channel may not become observable in a window so short that the drag-induced
+orbit decay accumulates only marginally. We test this directly with a long-arc higher-fidelity force-anddensity-mismatch replication (Table 7; S-Table 29): the arc is extended from 40 minutes to 3 hours; truth-side
+dynamics add the dominant non-zonal sectoral spherical-harmonic terms and a longitudinal/semidiurnal
+density modulation; and estimator-side dynamics remain compact two-body+J2 +exponential-density drag.
+The DSA-EKF hyperparameters were selected on a disjoint long-arc validation seed before held-out testing.
+The practical significance threshold is an approximate astrodynamics-grounded Cramér–Rao floor under
+the configured station geometry, arc length, and stated independence assumptions; the supplement gives
+the derivation and sensitivity audit using the same Tapley–Schutz–Born statistical OD source cited here
+as [72]. The derivation evaluates the per-observation Fisher information at the minimum-elevation slant
+range; the dominant per-observation uncertainty is the angular-noise bearing arm R σα that grows with slant
+range, so this maximum-range geometry yields the most conservative single-observation position floor. No
+range-rate information is included in the baseline derivation; the sensitivity audit adds the range-rate noise
+contribution in quadrature as a marginal perturbation check (row C of S-Table 1) and returns the same
+106.0 m floor, confirming the range-rate term is negligible at worst-case slant range. Station visibility windows
+are combined with a no-overlap union bound, treating observations from different stations as independent;
+this is exact when windows do not overlap and overstates the effective count when they do. Step-independence
+and within-pass correlation are the remaining sensitivity axes: the baseline treats each visible step as
+independent, while the pass-correlation variant divides the visible-step count by a 10-step (200 s) within-pass
+correlation block and returns the loosest estimate, bracketing the independence assumption across sensitivity
+variants. Substituting the pinned configuration quantities yields a numerical floor σarc ≈ 106.0 m used as the
+predeclared positive-criterion threshold. The sensitivity audit ranges from 36.8 to 335.1 m across six variants,
+with the pass-correlated effective-count row giving the loosest 335.1 m floor. The visible-step independence
+convention can tighten this floor when within-pass residuals are temporally correlated; additionally, the
+no-overlap station union estimate used in the derivation can be loose when station visibility windows overlap,
+so the floor is an auditable practical threshold rather than a conservative lower bound, and the DSA-EKF
+decision is unchanged across all sensitivity variants. The held-out n = 64 test does not satisfy the DSA-EKF
+18
+
+Table 7: Long-arc higher-fidelity force-and-density-mismatch result. DSA-EKF fails its predeclared positive
+criterion because AUKF is the best non-DSA estimator and the DSA-EKF−AUKF interval is positive. The
+auxiliary EKF/AUKF stress observation is retained only as supplementary stress context.
+
+Quantity
+
+EKF
+
+UKF
+
+AUKF
+
+PUKF
+
+DMC-EKF
+
+DSA-EKF
+
+Mean observed-step RMSE [m]
+
+577.05
+
+345.05
+
+312.66
+
+405.98
+
+577.05
+
+597.09
+
+Held-out n = 64. DSA-EKF−AUKF mean +284.4 m, CI [+8.7, +697.9] m. The predeclared CRLB floor is 106.0 m and treats
+visible steps as independent; this can tighten the floor under within-pass correlation. The supplement reports a 36.8–335.1 m
+sensitivity range; pass-correlated S-Table row F is the opposite-direction bound at 335.1 m. Decision unchanged because
+DSA-EKF fails direction before floor magnitude under every variant.
+
+positive criterion: DSA-EKF is worse than AUKF (mean 597.1 vs. 312.7 m; DSA-EKF−AUKF paired CI
+[+8.7, +697.9] m), so the criterion fails in direction before the floor magnitude is relevant under all variants.
+The estimated drag-scale parameter moves only marginally (median across-arc maximum |β̂ − 1| ∼ 8 × 10−5 ),
+indicating a structural limitation of the single multiplicative drag-scale channel under richer geopotential and
+density mismatch rather than a floor-driven decision.
+A secondary scope observation on the same slice is that the EKF/AUKF ordering changes direction
+under the long-arc richer dynamics (an EKF-versus-AUKF comparison, distinct from the DSA-EKF-versusAUKF criterion above). The detailed interval and stability readout are retained in the supplement as a
+stress observation only. This is not a new estimator positive and not a transfer rule; it limits transfer of
+the compact-J2 EKF-over-AUKF diagnostic and motivates a separately powered confirmation before any
+operational or general classical-filter ordering is claimed.
+
+5.10
+
+KalmanNet linear-canonical sanity reproduction
+
+The official KalmanNet linear-canonical sanity check (S-Table 36) reproduces the published release [59] at
+reduced scale and confirms the trained KalmanNet sits within 0.2 dB of the optimal Kalman filter on its own
+linear canonical benchmark. The load-bearing learned-claim comparator is the in-house KalmanNet-style
+learned-gain comparator (S-Table 78). A separate SPOT-OD transposition (supplementary Section 10,
+S-Tables 8–9) is a feasibility and design-gap diagnostic only, not architecture-level refutations or learned-claim
+evidence.
+
+5.11
+
+DBAR (predeclared heuristic, withdrawn)
+
+DBAR is withdrawn because the powered simulator characterization does not exceed its no-information
+baseline and the compact public SP3 replay does not transfer. The mechanism diagnostic above motivated a
+predeclared decision rule (the predeclared online statistic for the Dynamics-Bias Adaptation-Risk, or DBAR,
+indicator). Under a predeclared 450-realization characterization designed to test improvement over an 81.3%
+no-information majority baseline, DBAR is not statistically distinguishable from that baseline (Wilson 95%
+interval contains it). The original ten-arc public precise-reference probe on real LAGEOS ranges against an
+independent ILRS SP3 product is retained as an archival diagnostic slice (6/10 correct, 0.60 accuracy, below
+the 0.80 always-no-fire majority baseline). The formal 400-arc compact recursive-filter replay supersedes the
+210-arc replay as the strongest compact real-data diagnostic and reinforces the negative transfer readout. The
+400-arc dataset comprises: 333 preceding arcs (used in prior exploratory work), 20 training arcs, 10 validation
+arcs, and 10 test arcs; the replay attempted all 400 and completed 373; the 27 non-completed arcs are explicit
+status records (17 insufficient observations; 10 public product unavailable or non-parseable), not hidden or
+imputed. DBAR is correct on 256/373 arcs (0.686), below the 0.737 no-fire majority baseline, with sensitivity
+0.480 and specificity 0.760; pooled held-out RMSE is EKF 566.60 m, fixed-noise UKF 573.24 m, AUKF
+601.38 m, and SP3-IC propagation 779.45 m. Paired differences use first-minus-second, so negative means
+the second method has larger held-out RMSE; EKF-minus-AUKF has mean −34.78 m, median −0.76 m,
+and 95% CI [−71.84, −2.76] m, while fixed-noise-UKF-minus-AUKF has mean −28.14 m, median −0.77 m,
+and CI [−61.80, −2.75] m. The 373 completed arcs clear the earlier approximate 185 comparable-arc formal
+power target, with both EKF–AUKF and UKF–AUKF CIs strictly below zero (AUKF strictly worse on
+
+19
+
+Table 8: Powered DBAR characterization and withdrawal. DBAR does not beat the no-information majority
+classifier after 450 independently seeded realizations, so the heuristic is withdrawn as a claimed positive and
+retained only as a characterized negative.
+
+Regime family
+
+N
+
+DBAR fires
+
+R-adaptation bad
+
+Accuracy
+
+Nominal control
+Measurement-noise stress
+Dynamics/force-model bias
+
+150
+150
+150
+
+0
+10
+104
+
+14
+6
+64
+
+90.7%
+89.3%
+65.3%
+
+All
+
+450
+
+114
+
+84
+
+81.8%
+
+The always-no-fire majority baseline is 81.3%; DBAR’s +0.4-point increment has Wilson 95% interval [78.0, 85.1]% containing
+the baseline. The predeclared rule is therefore not a validated classifier.
+
+mean paired differences), so this is a stronger negative for AUKF. SP3-IC propagation is best on 145/373
+arcs despite its worse pooled mean, concentrated in low-information arcs; it is treated as a propagation floor
+and stress indicator, not estimator skill (per-stratum detail in the supplement). The powered simulator
+characterization and failed public transfer are therefore the withdrawal evidence. We withdraw DBAR as a
+claimed positive and report it as a bounded negative under the predeclared decision rule. Table 8 gives the
+powered characterization in the main text, while row-level exhibition details remain in the supplement; the
+underlying covariance-matching failure mode is known prior art [45, 60, 27, 70].
+
+5.12
+
+Multi-revolution SGP4-reference benchmark
+
+The public-catalog multi-revolution stress keeps recursive filters at kilometre scale and the learned residual
+worse than the best classical filter. The multi-revolution SGP4-reference state-error benchmark with real
+ground-station geometry (five real public LEO objects, SGP4-propagated reference from archived CelesTrak
+TLEs, 12-hour 7.07–7.81-revolution arcs, sparse line-of-sight measurements from the real eight-station
+geometry, every estimator on the compact two-body+J2 +drag OD model, so the SGP4 reference is a genuine
+multi-revolution dynamics-model mismatch; S-Table 43) shows the recursive classical filters at kilometre scale
+(fixed-noise UKF best at 1809.54 m and best on three of five targets, AUKF 1968.29 m, EKF 2052.35 m), the
+hard-bounded learned residual worse at 2755.43 m and best on none of the five targets, and the offline batch
+fit far worse (26256.53 m). This SGP4 slice is a bounded multi-revolution model-mismatch and public-catalog
+provenance stress only (Results-scope convention).
+
+5.13
+
+Public precise-reference provenance and measurement-pipeline integration
+
+Public SP3/ILRS probes reduce provenance and measurement-pipeline risk but remain negative for learned
+estimator skill and do not validate the simulator result. The public precise-reference layer is a bounded
+provenance and measurement-pipeline stress layer (Results-scope convention); it is not estimator-skill evidence.
+Recent ILRS-supervised TLE/state-vector refinement and hybrid SGP4 error-learning studies reinforce why
+public-reference learned claims need explicit split, baseline, and scope guardrails rather than narrative
+upgrades [3, 64]. Belyakov and Kolpinskiy report complementary learned-SLR evidence in an operationalreference state-vector-refinement setting, while the SPOT-OD formal400 compact recursive-filter transfer
+diagnostic is scoped to compact-dynamics filters under sparse visibility for pipeline and provenance risk
+reduction, and this study does not claim ML cannot help on real SLR [3]. On real LAGEOS-1/-2 ILRS
+normal points against independent ILRS NSGF SP3-c products, the original ten-arc state-error slice places
+recursive compact filters at hundreds of metres (fixed-noise UKF 334.72 m, AUKF 341.33 m, EKF 367.98 m),
+and the DBAR public check reaches only 6/10 correct. The formal 400-arc compact replay is the detailed
+compact recursive-filter transfer diagnostic reported in Section 5.11; it supersedes the 210-arc replay, with 373
+completed arcs clearing SPOT-OD’s internal sizing target for completed arcs (a completed arc has at least 10
+CRD normal points and SP3 state coverage) and AUKF strictly worse than EKF and UKF on mean paired
+differences (CIs strictly below zero), DBAR below its no-information baseline, explicit non-completed status
+
+20
+
+records (17 insufficient observations; 10 public product unavailable or non-parseable), and completed-only
+strata showing heterogeneous ordering rather than stable filter superiority. The mechanism heterogeneity
+diagnostic (S-Table 48) stratifies the 373 completed arcs by best-estimator, station count, and observation
+quartiles, quantifying bounded measurement-geometry and adaptation-mechanism heterogeneity but not
+causal drivers or stable filter superiority. The test split contains only ten completed arcs, so its test-split
+means are descriptive small-sample summaries, not ordering evidence. This GMST-only approximate real-data
+slice and the simulator force-mismatch result are distinct regimes: approximate reduction can raise effective
+measurement/model noise where AUKF adaptation may help, while the compact-model dynamics-bias
+simulator tests R-inflation damping. A forty-arc higher-fidelity probe directionally lowers pure-dynamics
+test mean relative to the compact model (250.02 vs. 261.59 m), but the interval includes zero, and the
+strictly held-out learned calibrator does not beat the higher-fidelity classical reference. The leakage-controlled
+temporal public-measurement OD probe is likewise negative for the learned correction: validation selects a
+learned-calibrated higher-fidelity UKF by only 0.43 m, but the frozen test week favours compact UKF at
+368.64 m while the learned calibrated candidate reaches 411.51 m (gap +42.87 m, CI [23.69, 63.38]; 0/10 arcs
+better for the learned candidate). The full-correction temporal updates retain the mini n = 2 post-hoc pass
+only as a small stress readout (S-Table 55) and summarize the later campaign readouts in S-Table 56. In the
+recent n = 10 post-hoc pass, validation selected AUKF; the selected test AUKF mean was 566.20 m, the
+test-best SP3-IC floor was 349.29 m, the best recursive classical UKF was 549.33 m, and the learned residual
+was 490.72 m (learned-minus-best-recursive-classical gap −58.61 m, CI [−83.47, −30.50], learned lower on
+9/10 arcs). Because that readout is post-hoc, not validation-selected, and still above the SP3-IC floor, it is
+exploratory only. The controlling predeclared prospective public-week 260516 readout planned 10 arcs and
+completed 8 after the fixed arc-construction eligibility rule excluded arcs with fewer than 10 SP3-covered CRD
+normal points before scoring; the two excluded 2026-05-13 arcs had 0 such points for LAGEOS-1 and 7 for
+LAGEOS-2. Validation selected UKF at 363.49 m versus learned 417.80 m; on test the selected and test-best
+UKF was 426.53 m, the learned residual was 458.01 m, and the learned-minus-best-recursive-classical gap was
++31.48 m with CI [−50.28, 132.35], learned lower on 5/8 arcs. A second frozen prospective public-week 260523
+rule was also retained, but its planned test arcs were not scored because the EDC SP3 product materialized
+as a non-SP3/non-gzip page at submission time; the predeclaration and input-unavailable record (verified by
+systematic alternate-source checks through 2026-06-01) are preserved in the confidential evidence package.
+Thus a post-hoc full-correction learned improvement was observed on 9/10 arcs but was not replicated in the
+controlling prospective readout, so the public layer remains negative/indeterminate for learned estimator skill.
+The breadth and correction probes show that the pipeline handles public measurements, references,
+corrections, and provenance at larger scale without upgrading the claim. The SP3/CRD breadth probe covers
+10 targets, 40/40 target-weeks, 240 fixed SP3 start epochs, 25,449 CRD normal points, and 29 stations;
+target-cluster intervals include zero for the all-target and non-LAGEOS summaries, while the held-out test
+stratum remains positive in favour of the higher-fidelity model. The range-residual case study on four
+LAGEOS arcs and 384 normal points gives pooled held-out RMS 93.09 m for classical range-only WLS,
+207.49 m for the learned residual on the SGP4 prior, and 96.08 m for WLS plus learned calibration; learned
+estimators are best on 0/4 arcs. Operational ILRS precise-orbit analyses at international analysis centres reach
+centimetre/sub-metre accuracy with full reductions; the compact-model RMSE range here (roughly 350–925 m,
+depending on slice) reflects the intentional dynamics/frame ceiling rather than estimator skill, leaving about
+a three-order-of-magnitude regime gap. These results reduce data-handling risk for future validation, but
+residuals remain at tens to hundreds of metres and the estimator-side dynamics are deliberately compact, so
+the public layer remains bounded public-provenance/measurement-pipeline evidence (Appendix 15).
+
+5.14
+
+Practical significance floor and slice discrimination
+
+The floor and slice-discrimination audits preserve the learned negative and keep the nominal split out of
+the discriminative claim set. The 15-seed cohort observed-step gain on the all-step propagation-dominated
+reference (S-Table 58) agrees in direction with the primary observed-step endpoint above: the 15-seed
+aggregate stress gain of RGR-GF over UKF is 355.78 m, with all 15 seed aggregates favoring RGR-GF, leading
+with direction (15/15) and magnitude not a p-value, and the same diagnostic is negative versus AUKF (two of
+15 seeds). These magnitudes share direction but not estimand; the reconciliation is consolidated in S-Table 82
+(Appendix 15).
+
+21
+
+Endpoint-support draw. The K = 8 endpoint-support draw is a seed-disjoint check under the selected
+observed-step endpoint, not external or pre-training-cohort preregistration; Section 4.5 gives the timeline and
+evidentiary boundary. On that fixed-n draw the per-scenario best method is the tuned AUKF on the nominal
+and stress splits and the causal EKF on the controlled mismatch; no learned estimator is the per-scenario
+best on any split, so the rule returns no learned positive on any scenario at the primary endpoint. The paired
+RGR-GF-minus-best-classical observed-step gaps at K = 8 are nominal +9.4 m, CI [+1.1, +21.7] m; stress
++44.8 m, CI [−0.2, +87.1] m; controlled mismatch +48.7 m, CI [+19.1, +97.1] m. The central evidence anchor
+is the later frozen-rule replication reported in Table 3.
+Discriminative and non-discriminative slices. The stress and controlled-mismatch outcomes carry
+the discriminative weight because their observed effects are above the practical decision floor and remain
+directionally negative for the learned estimator in the K = 32 frozen-rule replication under the established
+endpoint hierarchy (Table 3). The stress row is additionally checked by the stress-only K = 96 replication,
+which exceeds the K ≈ 94 floor-power design check for approximately 0.80 power at the 27.5 m stress-floor
+effect and still returns no learned positive. The nominal split is retained for traceability but is formally
+de-prioritized from the set of discriminative endpoints: its learned-versus-classical spread is at or below the
+practical floor and is power-unresolved in the endpoint-fixation record, so it is practically non-discriminative
+regardless of the later post-hoc sensitivity. Discriminative conclusions are drawn only from the stress and
+controlled-mismatch slices, the controlled and higher-fidelity force-mismatch slices, the multi-revolution
+SGP4-reference benchmark, the tail-conditioned dense-tracking probe, and the predeclared structural and
+noise-adaptive channels (Sections 5.5, 5.6, 5.7).
+Floor sensitivity. The practical significance floor sensitivity sweep (1, 2, 3, 5%) is in S-Table 59: at every
+swept floor the headline finding is preserved, so the predeclared 3% choice is not load-bearing for the negative.
+The 3% value is a compact-simulator audit threshold, not a universal mission requirement; mission-specific
+OD would set its own acceptance threshold. The value was fixed in the supplementary evidence materials
+before the independent endpoint-fixation draw was run; its timestamped record is included for inspection.
+
+5.15
+
+Less-constrained learned residual and residual-scale sweep
+
+Relaxing the residual bound does not create a learned positive; the less-constrained and larger-scale residual
+checks fail across the tested scenarios. A possible concern is that the central negative could be preordained
+by the bound : the canonical residual is hard-bounded (0.03 scaled-unit tanh) and additionally damped by a
+learned gate, context budget, and prior-anchoring penalty, so any competitiveness with the classical prior
+bank may be inherited “by construction”. We test this with a less-constrained learned residual comparator
+(RGR-U, S-Table 60): identical architecture/capacity/inputs/curriculum, but the residual budget, gate,
+context budget, and prior-anchoring/activity/entropy/visibility training penalties all removed. Removing
+the bound does not produce a learned advantage: the paired RGR-U-minus-best-classical observed-step
+gap exceeds seven kilometres on every scenario. This divergence is consistent with sparse-visibility training
+instability for unbounded residuals and should not be read as a clean single-factor ablation of only the residual
+bound. To address whether the canonical-vs-unconstrained gap is binary or graded, we additionally trained
+two intermediate residual-scale comparators (tethered s = 0.30 and tethered s = 1.00); the residual-scale
+sweep (S-Table 61) still shows graded collapse in this fixed architecture and budget, with the gap growing
+monotonically with the residual scale on the tethered branch and becoming an order of magnitude larger
+on the untethered endpoint. Taken together, RGR-U and the residual-scale sweep establish only a graded,
+construction- and budget-conditioned collapse rather than a purely binary failure; they do not establish a
+clean single-factor bound ablation or architecture-independent monotonicity.
+This compact-simulator negative is informative but not externally decisive. It would be self-fulfilling
+if the audit only tested a tightly bounded residual against its own prior in sparse geometry. Instead, the
+record also shows that roughly four-fifths of evaluated steps are zero-visible, that an offline WLS reference
+can use the visible arc much more effectively, that RGR-U and residual-scale checks fail when residual bounds
+and anchoring are relaxed, and that favorable all-visible structural-channel controls can recover matched
+signals. The drag-scale cascade then adds a separate structural readout: even with a 9.6 km median arc-mean
+drag-induced separation, the geometry-enriched DSA-UKF slice leaves the drag-scale estimate near its prior,
+22
+
+while the DSA-EKF/DSA-UKF cascade separates EKF linearisation, observability, and candidate-inertia
+limits. These findings do not establish that learned OD corrections fail under richer physics or different
+sensors, but they do show that the tested sparse-geometry/prior-inertia construction fails after less-bounded
+residual and structural-channel escape routes were audited.
+
+6
+
+Claim Audit
+
+This section records only the interpretation boundaries, since the numerical results are stated in Section 5
+and the full row-level tables are in the supplement. Table 2 gives the compact claim–evidence–limit hierarchy;
+the full endpoint timeline is defined once in Section 4.5.
+Within that boundary, the claim is narrow: no evaluated learned construction selected without test-set
+information beats the per-scenario best tuned classical reference on the primary observed-step endpoint, and
+the endpoint-choice sensitivity audit does not change that conclusion; PUKF, DMC-EKF, and DSA-EKF fail
+their own predeclared positive criteria; and DBAR is withdrawn because the powered characterization does
+not exceed its no-information baseline or transfer to the public SP3 check. The conclusion would change only
+if a learned construction passed the primary endpoint, capacity/input-matched controls, practical floor, and
+multiplicity audit in the documented setting, or if a structural channel satisfied its predeclared positive rule
+on the higher-fidelity or long-arc population. External validity would require a new measurement setting
+with its own force/noise model, references, baselines, and predeclared gates rather than reinterpretation of
+the current simulator tables.
+The K = 32 frozen-rule replication has limited sensitivity to an exactly floor-sized stress effect (approximate
+power ≈ 0.42 at the 27.5 m floor under a one-sided α = 0.05 t-approximation; under the predicate’s stricter
+two-sided 95% CI rule the realized floor power is somewhat lower), so power is reported at the predeclared
+floor effect rather than at the realized gap; with the realized stress-row paired-gap variance, about K ≈ 94
+independent realizations would be needed for roughly 0.80 power at that floor. The stress-only K = 96
+internal replication exceeds that design check for approximately 0.80 power at the 27.5 m floor and preserves
+the negative, but it remains internal, simulator-bound evidence under the already selected endpoint.
+
+7
+
+Limitations and Missing Experiments
+
+Results are evaluation evidence for the documented simulation protocol, windows, baselines, and reported
+tables. They do not validate the estimator for flight operations, real-time integrated testbed deployment,
+safety-critical autonomy, or all sparse-visibility regimes. Only a single canonical untuned stochastic EnKF
+boundary check is reported (S-Table 4); it does not displace the classical baselines on any slice, but tuned,
+inflated, or localized EnKF variants and sequential Monte Carlo OD methods remain outside this comparator
+set, so the bounded ensemble-Kalman negative should not be read as addressing the broader ensemble-filter
+design space. Likewise, cislunar particle/Gaussian-mixture filters and coupled orbit-attitude/sensor-tasking
+frameworks are cited as adjacent operational/filtering context, not as comparator baselines addressed by
+the tested claims. Graph message passing remains a controlled diagnostic rather than an isolated causal
+contribution—the visible-station mean-deviation aggregator reduces to the identity whenever a single station
+is visible, so cross-station message passing is a structural no-op at exactly the zero- and single-visible-station
+steps that dominate the evaluation window, which is why the capacity-matched controls cross zero rather than
+indicating that relational structure is unhelpful in principle—and the auxiliary replay, controlled-synthetic,
+and bounded public precise-reference slices are stress/provenance probes rather than operational OD.
+The self-audit demonstration is a self-evaluation: the record is designed by the authors and applied
+primarily to the authors’ own residual constructions, plus in-house learned-gain and adapted-transposition
+probes. That structure is useful for falsifying the authors’ own claims before they are carried into stronger
+claims, but it is not independent third-party validation of a reusable framework and it does not establish that
+another group would instantiate the same seven ingredients or reach the same boundaries. The ingredient
+definitions used in the novelty audit are likewise self-authored operational definitions; they make this audit
+inspectable and falsifiable per cell, but they are not an externally ratified evaluation taxonomy. This negative
+is architecture-family specific to the tested constructions and the compact sparse-visibility setting; independent
+application by a separate research group is required before the template structure can be claimed as a validated
+23
+
+reusable framework, and the cited-literature audit is bounded to this self-authored operational record rather
+than an externally ratified taxonomy.
+The post-hoc endpoint-timeline concern qualifies the primary endpoint ranking evidence; it does not
+drive the AUKF R-inflation or drag-scale cascade mechanism findings, and the DBAR withdrawal follows
+its own characterization rather than learned endpoint selection. The designated next step for this specific
+limitation is an externally timestamped digest of a prospective decision rule, committed before and bound
+to an independent public precise-reference replication carried out by a separate party, with no rule content
+disclosed at timestamping; this is future work, neither completed here nor claimed as external trial-registry
+preregistration.
+The public LAGEOS/SP3 compact-filter readout is only a bounded real-measurement adaptive-filter
+transfer diagnostic for the DBAR/AUKF R-inflation warning: the statistic is computed from the real AUKFversus-fixed-UKF innovation and R-adaptation stream, while the outcome label is defined externally from
+held-out SP3 state error, not from the DBAR statistic and not from a simulator label (S-Tables 45 and 46).
+The original ten-arc slice, extended 80-arc replay, and formal 210-arc replay remain archival evidence; the
+formal 400-arc replay supersedes the earlier campaigns as the strongest compact real-data diagnostic. It
+attempted 400 arcs; 373 completed; the 27 non-completed arcs are explicit status records in the validation
+JSON (17 insufficient observations; 10 public product unavailable or non-parseable), not hidden or imputed.
+The completed count clears the earlier approximate 185 comparable-arc formal power target (comparable
+arc: completed arc with at least 10 CRD normal points and SP3 state coverage), but the result remains
+negative. DBAR is correct on 256/373 arcs (0.686), below the 0.737 always-“no-fire” majority baseline,
+with sensitivity 0.480 and specificity 0.760; EKF-minus-AUKF mean −34.78 m has median −0.76 m and
+95% CI [−71.84, −2.76] m, and fixed-noise-UKF-minus-AUKF mean −28.14 m has median −0.77 m and CI
+[−61.80, −2.75] m. Under the first-minus-second convention, those strictly negative intervals mean AUKF
+has larger held-out RMSE on average than EKF and fixed-noise UKF. The supplementary completed-only
+stratification shows non-stable ordering across preceding/train/validation/test splits and across LAGEOS1/LAGEOS-2; the wider formal 400-arc intervals are therefore best treated as epoch, target, arc-geometry, and
+unmodelled perturbation/frame-reduction heterogeneity rather than stable filter superiority, with no causal
+attribution. The larger replay therefore supports withdrawing DBAR and treating the compact-model Rinflation mechanism as a hypothesis for future real-data studies; it does not validate the simulator conclusion,
+establish operational POD, or provide real-data learned estimator-skill evidence.
+The simulator omits several failure modes that bound interpretation of the negative results. It does not
+include maneuvers, thrust events, attitude-coupled force errors, clock-estimation states, sensor timing biases,
+heterogeneous station instrumentation, decoded RF observables, onboard GNSS ambiguity handling, or a
+multi-class operational tracking network. Its estimator-side dynamics deliberately stay below an operational
+force-model ceiling; the long-arc and public probes test selected pressure points, not the full space of highfidelity force, sensor, and reference-model errors. Consequently, a negative in this paper weighs against
+advancing the tested claims within the documented sparse-visibility setting, but it does not transfer as a
+negative about a different sensor geometry, mission class, or operational POD system.
+The compact-physics ceiling is also a mechanism limitation, not only a venue-scope caveat. This is a
+two-gate condition for a learned above-floor positive: a learned correction can only become a meaningful
+above-floor improvement if the residual it sees is jointly observable from the configured visible measurements
+and representable by the candidate relative to the prior/filter bank. Each evaluated negative fails at least one
+gate: on the noise-side stress split the corrective signal is observable but already represented by the adaptive
+AUKF prior, while on the force-side mismatch and the drag-scale cascade it is unobservable from sparse
+line-of-sight geometry and/or unrepresentable by the compact prior. The condition is descriptive of the tested
+constructions, not a general impossibility result. In this study the offline WLS, multi-revolution public-catalog,
+and public precise-reference probes all show that the compact dynamics and sparse geometry dominate
+large parts of the residual budget. The correct interpretation is therefore a pre-campaign evidence-triage
+negative for the tested constructions under this compact prior, not a claim that learned correction could
+never help once a different force model, sensor, or public-reference regime makes the residual observable and
+representable.
+The missing experiments are concrete: centimetre-level precise SLR reduction; real high-fidelity forceerror campaigns; maneuvers; powered, independently sized reference-state scoring of learned estimators on
+real measurements beyond the bounded public probes; decoded RF measurements; independent external
+
+24
+
+confirmation or operational validation of the endpoint result; and faithful reproduction of specific published
+learned-OD systems in their own documented settings. The five highest-priority follow-ups are topology
+generalization to held-out satellites, stations, and geometries; high-fidelity force/sensor mismatch beyond the
+current controlled split; selector generalization on held-out public campaigns; broader non-graph parametermatched ablations with public precise-reference validation; and independent public precise-reference validation
+beyond replay-style evidence.
+Public replay scope and deployment boundary. The robustness claims are limited to the synthetic
+measurement, visibility, and noise regimes summarized in the reported tables and figures. Under the timealigned SatNOGS observation-window replay (Appendix 15) the EKF stays finite at kilometre scale and offline
+robust batch WLS produces an accurate postfit OD solution, so that slice is a bounded classical/offline-OD
+validation, not a universal-failure slice or confirmatory deployment evidence [39].
+
+8
+
+Data and Reproducibility Statement
+
+The evaluation suite is designed to be reproducible from archived inputs, fixed random seeds, documented
+simulator settings, and reported result tables. Archived CelesTrak and SatNOGS snapshots replace live API
+queries, so replay scenarios are not affected by later public-service changes. The public precise-reference
+probes use real ILRS satellite-laser-ranging normal points for LAGEOS-1 and LAGEOS-2 together with
+independent ILRS NSGF SP3-c products; consistent with Section 6, they are provenance and measurementpipeline evidence only, not operational POD, external simulator validation, or real-data learned estimator-skill
+evidence. Synthetic nominal and stress splits use fixed orbit, force-model, visibility, and measurement-noise
+settings, and all methods are evaluated over a common scoring horizon.
+The versioned supplementary evidence package supplied with the submission records the fixed data
+settings, input and output digests, predeclared rules, seeds, splits, selected models, validation criteria, and
+evaluation records used by the reported tables. The package file and manifest are part of the confidential
+inspection materials supplied through the journal submission system, while the supplement quotes the primary
+endpoint, K = 32 frozen-rule, and stress-only K = 96 rule records so that the core predeclaration language is
+visible in the manuscript package rather than only described. Completed inspection checks verify internal
+record consistency and generated-table consistency from materialized results, including after extracting the
+supplied package. The public precise-reference OD slice is also rerun from the extracted submitted package:
+the recorded public CRD/SP3 inputs are used to recompute the range-only filters and rebuild the table,
+matching the submitted summary and table. This slice-level rerun supports evidence-package inspection
+under the established scope hierarchy; it is not full scientific reproduction and does not upgrade the public
+layer beyond measurement-pipeline/provenance evidence. The evidence-package access boundary is stated in
+Data availability.
+One bounded learned-estimator training replay is included on deterministic slices of existing materialized
+data. It records finite objective histories and output digests while leaving the submitted trained-estimator
+records unchanged; it is a bounded replay for inspection, not full paper-table reproduction, a full seed-suite
+rerun, or a main-result reproduction. A full scientific rerun would require regenerating the benchmark data,
+retraining the learned estimators under the stated curriculum and seeds, evaluating all classical and learned
+methods on the nominal, stress, and replay scenarios, and rebuilding the displayed figures and tables.
+
+9
+
+Conclusion
+
+The primary finding is a compact-simulator AUKF R-inflation diagnostic: under force-model mismatch in a
+compact two-body+J2 +drag OD simulator, AUKF inflates effective R (mean 3.32; median R-only NIS 4.73
+versus 1.60/1.83 for EKF/UKF) and damps needed state corrections, quantifying a compact-simulator instance
+of the known covariance-matching failure mode. The drag-scale cascade separates EKF linearisation, sparsegeometry observability, and candidate-inertia limits as distinct binding constraints. The mechanism result is
+deterministic and reproducible within the tested compact-model force-mismatch regime. Compact-model
+covariance matching can damp needed corrections by treating dynamics-bias innovations as measurement-noise
+evidence, a known limitation whose OD-specific form is further supported by the R-inflation cap control
+25
+
+(S-Table 28), while the supplement retains a long-arc EKF/AUKF stress observation that confines the
+compact-J2 prescription to its tested regime and motivates confirmation before compact-model prescriptions
+are transferred. These compact-simulator findings (350–925 m scale) require precise-reference validation
+before operational transfer; operational ILRS/SP3 analyses operate at centimetre/sub-metre accuracy under
+higher-fidelity reductions, a scale not addressed by this compact-model study.
+The bounded negative on learned estimators is explicitly secondary and exploratory: no evaluated learned
+construction beats the per-scenario best tuned classical reference on the primary observed-step endpoint,
+including the stress-only K = 96 floor-power-scale check for approximately 0.80 power at the 27.5 m stressfloor effect. The endpoint-choice sensitivity audit finds no learned positive under either the observed-step
+or all-step endpoint. The structural-channel and DBAR diagnostics likewise fail their predeclared positive
+criteria. The observed-step endpoint was selected post hoc on training data; K = 32 and K = 96 draws are
+internal frozen-rule consistency checks, not external preregistration (Section 4.5). This learned-estimator
+bounded negative is exploratory evidence under post-hoc endpoint selection and would require prospective
+external confirmation for confirmatory status. The learned negative is architecture-family specific to the
+bounded tanh-residual, prior-anchored RGR-GF family and tested comparators, with bounded external-family
+checks (KalmanNet-lineage feasibility/design-gap diagnostic and one untuned EnKF); it is an RGR-family
+self-audit with bounded external-family boundary checks, not a general learned-OD boundary. RGR-U
+and residual-scale checks limit, but do not eliminate, the concern that bound removal or prior anchoring
+contributes to the result.
+The transferable element is the audit discipline, not the empirical result. Future OD studies would
+need to instantiate their own endpoint hierarchy, frozen decision rules, classical and offline guardrails,
+capacity-matched controls, practical floors, and evidence records before claiming transfer. Reuse of the
+inspection and evaluation discipline in other OD regimes (GNSS-LEO, optical, operational POD, or distinct
+visibility/dynamics classes) requires rebuilding the domain-specific datasets, baselines, endpoints, floors,
+and external-reference checks around that regime; it is not a direct transfer of the current worked example.
+Independent external application by a separate research group is required before this template can be claimed
+as a validated reusable framework.
+Campaign-planning workflow. For small-satellite teams screening learned candidates, the evidence record
+supports a compact-simulator gate workflow: (1) candidate must beat the per-scenario best tuned adaptive
+guardrail on observed-step RMSE by at least the practical floor (here 3%); (2) improvement survives pairedbootstrap CIs and frozen decision rules under K=32-scale independent replications; (3) drag-scale structural
+channel moves under sparse visibility (linearisation/observability/prior-inertia audit); (4) provenance checks
+(DBAR false-positive gate, public-catalog replay) do not fire; (5) escalate only after all compact gates pass
+to precise-reference validation. In the current record, RGR-GF and structural channels fail compact gates:
+RGR-GF loses to AUKF on stress (gap +31.9 m after powered K=96) and to EKF on force-mismatch (gap
++16.8 m after K=32), DSA-EKF remains below practical floor, and DBAR withdraws after 450-realization
+characterization. The AUKF mechanism motivates including AUKF as a compact-model adaptive guardrail
+rather than fixed-noise UKF only. This workflow is not operational POD; it is resource-triage to de-prioritize
+candidates likely to fail precise-reference validation, focusing resources on stronger compact-model evidence.
+Future confirmatory use needs prospectively fixed decision rules and independent validation; no such external
+confirmation is completed here. No operational POD, broad learned-OD refutation, or independently validated
+protocol is claimed.
+
+10
+
+Reproduction checklist
+
+Every headline is inspectable from the supplementary evidence materials supplied with the submission. The
+completed checks are deliberately separated: a minimum integrity check verifies submitted records, digests,
+package membership, and claim-record coverage; generated-table checks rebuild the active main-table outputs
+from materialized records, including after package extraction; one public precise-reference OD slice is rerun
+from recorded CRD/SP3 inputs through filter recomputation and table reconstruction; and one bounded
+learned-estimator training replay records finite objective histories without replacing the submitted estimator
+records. These checks support review inspection under the established scope hierarchy. They remain below full
+
+26
+
+scientific reproduction: full learned-estimator training, full seed-suite regeneration, all-filter recomputation,
+and live public-data retrieval are deeper rerun routes that can require hours to days, and the public slice
+remains a measurement-pipeline/provenance check rather than operational POD validation. The supplement
+uses standalone S-table/S-figure labels and an independent reference list for the separately submitted
+supplementary file; if production requests a merged reference list, only citation formatting changes are
+required, not scientific content. Data availability defines the confidential journal-submission evidence-package
+access boundary and states that no public identifier is claimed at initial submission.
+Each headline therefore points to recorded input-data digests, predeclared rule records, and records that
+fix seeds, splits, trained models, and selection rules. The exact confidential access mechanism is stated once
+in Data availability; this checklist maps claims to the records needed for inspection or deeper reruns.
+
+Supplementary material
+The complete learned-estimator architecture and training-objective specification, the bounding and diagnostic
+tables that support but are not central to the claim-audited negative, and the four temporal/calibration
+figures are reported in the separate supplementary document that accompanies this manuscript. The
+supplement provides full printed table bodies for core and boundary material (the multiplicity-adjusted
+family, the DBAR three-regime exhibition and 450-realization characterization, the densified-visibility control,
+and the matched-budget and SatNOGS-selection sensitivity tables); selected lower-priority archival records
+(public precise-reference measurement-pipeline tables plus propagation/offline-OD/public-replay reference
+tables) appear as concise indexed summaries or placeholders in the supplement, with their full numeric
+records supplied in the confidential journal-review evidence package. Cross-references from the main text to
+supplement-housed tables and figures use the S-Table/S-Figure prefix and resolve through the supplement’s
+external label list.
+
+Declaration of competing interest
+The authors declare no known competing financial interests or personal relationships that could have appeared
+to influence the work reported in this paper.
+
+Funding
+This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit
+sectors.
+
+Data availability
+The confidential journal-submission package includes versioned dependency and evaluation records sufficient
+for inspection of the reported materialized results. The confidential inspection materials supplied through the
+journal submission system include the versioned supplementary evidence package and manifest for the current
+submission version. They cover fixed data settings, internally timestamped predeclared rule and seed records,
+trained-estimator records, evaluation records, learned-estimator specification records, recorded public input
+identifiers, and retained digest values used in the study. The main manuscript and supplement expose the
+claim hierarchy, table bodies or indexed summaries, rule excerpts, and key numeric results; the confidential
+package is needed to inspect retained digests, full selected lower-priority numeric records, trained-estimator
+and evaluation records, and package-extraction checks. The submitted evidence demonstrates internal
+record checks, generated-table consistency from materialized records before and after package extraction, one
+package-extracted public precise-reference OD slice-level rerun, and one bounded learned-estimator training
+replay. These completed checks do not constitute full scientific reproduction: full raw-data generation, full
+estimator retraining, all recursive-filter recomputation, and live public-data retrieval are documented only
+as a deeper rerun route, not as completed at submission. No DOI or public identifier is claimed at initial
+submission. The evidence package is supplied through the journal submission and confidential review channel
+27
+
+only; any later access-status change would require separate author approval and a manuscript metadata
+update.
+
+Declaration of Generative AI and AI-assisted technologies in the
+writing process
+During the preparation of this manuscript, the authors used AI-assisted technologies to support prose
+organization, clarity revision, and consistency verification across the manuscript and supplementary materials.
+After using these tools, the authors reviewed and edited all content and take full responsibility for the scientific
+claims, evidence interpretation, and published content.
+
+References
+[1] Gregory P. Badura, Hari Arunkumar, Miguel Velez-Reyes, Brian C. Gunter, and Koki Ho. Convergence
+and uncertainty of physics-informed machine learning for cislunar orbit determination. Journal of
+Spacecraft and Rockets, 62(6):2212–2231, 2025.
+[2] Peter W. Battaglia, Jessica B. Hamrick, Victor Bapst, Alvaro Sanchez-Gonzalez, Vinicius Zambaldi,
+Mateusz Malinowski, Andrea Tacchetti, David Raposo, Adam Santoro, Ryan Faulkner, Caglar Gulcehre,
+Francis Song, Andrew Ballard, Justin Gilmer, George E. Dahl, Ashish Vaswani, Kelsey Allen, Charles
+Nash, Victoria Langston, Chris Dyer, Nicolas Heess, Daan Wierstra, Pushmeet Kohli, Matthew Botvinick,
+Oriol Vinyals, Yujia Li, and Razvan Pascanu. Relational inductive biases, deep learning, and graph
+networks. arXiv preprint arXiv:1806.01261, 2018. https://arxiv.org/abs/1806.01261.
+[3] N. V. Belyakov and S. V. Kolpinskiy. Satellites state vectors refinement based on international laser
+ranging system using machine and deep learning. Acta Astronautica, 226(1):687–693, 2025.
+[4] Yoav Benjamini and Yosef Hochberg. Controlling the false discovery rate: A practical and powerful
+approach to multiple testing. Journal of the Royal Statistical Society: Series B (Methodological),
+57(1):289–300, 1995.
+[5] Xavier Bouthillier, Pierre Delaunay, Mirko Bronzi, Assya Trofimov, Brennan Nichyporuk, Justin Szeto,
+Nazanin Mohammadi Sepahvand, Edward Raff, Kanika Madan, Vikram Voleti, Samira Ebrahimi Kahou,
+Vincent Michalski, Tal Arbel, Chris Pal, Gael Varoquaux, and Pascal Vincent. Accounting for variance
+in machine learning benchmarks. Proceedings of Machine Learning and Systems, 3, 2021.
+[6] Gerrit Burgers, Peter Jan van Leeuwen, and Geir Evensen. Analysis scheme in the ensemble kalman
+filter. Monthly Weather Review, 126(6):1719–1724, 1998.
+[7] Michele Ceresoli, Andrea Colagrossi, Stefano Silvestrini, and Michèle Lavagna. Robust onboard orbit
+determination through error kalman filtering. Aerospace, 12(1):45, 2025.
+[8] Junyu Chen, Chengpan Tang, Xiaolei Dai, Xiaogong Hu, Liucheng Chen, Bin Zhang, Lingfeng Zhu, and
+Xiaojie Li. Modelling and prediction of atmospheric drag coefficients in LEO satellite orbit determination
+and prediction with Bi-LSTM approach. Advances in Space Research, 75(3):2874–2888, 2025.
+[9] Wenkang Chen, Jianjun Liu, Hao Wu, Jinghui Li, and Jian Zhang. Real-time orbit determination of
+micro-nano satellite using robust adaptive filtering. Sensors, 24(24):7988, 2024.
+[10] Xinghan Chen, Zhiguo Deng, Kyoung-Min Roh, Maorong Ge, Harald Schuh, et al. Adaptive orbit
+recovery without navigation message and clock support for challenging satellite missions. GPS Solutions,
+30(104), 2026.
+[11] Qinghao Chu, Zhelong Wang, Yu Jiang, Pengrong Hou, Hongyu Zhao, Mingyang Hua, Pinliang Zhang,
+and Dalei Yao. Conjunction screening for large-scale resident space objects based on graph neural
+network. Aerospace Science and Technology, page 112512, 2026.
+28
+
+[12] Ilaria Cossu, Oliviero Vouch, Alex Minetto, Fabio Dovis, Mario Musmeci, and Claudia Facchinetti.
+Reduced-dynamic filtering for GNSS-only orbit determination in cislunar space: An experimental
+assessment with LuGRE data. In Proceedings of the 2026 International Technical Meeting of the Institute
+of Navigation, pages 628–642, Anaheim, California, 2026.
+[13] Mostafa Dehghani, Yi Tay, Alexey A. Gritsenko, Zhe Zhao, Neil Houlsby, Fernando Diaz, Donald Metzler,
+and Oriol Vinyals. The benchmark lottery. arXiv preprint arXiv:2107.07002, 2021.
+[14] Bradley Efron and Robert J. Tibshirani. An Introduction to the Bootstrap. Chapman and Hall/CRC,
+Boca Raton, Florida, 1994.
+[15] Geir Evensen. Sequential data assimilation with a nonlinear quasi-geostrophic model using monte carlo
+methods to forecast error statistics. Journal of Geophysical Research: Oceans, 99(C5):10143–10162, 1994.
+[16] A. M. Friedman and Carolin Frueh. Space-object detection and tracking with angles-only measurements.
+In Advanced Maui Optical and Space Surveillance Technologies Conference (AMOS), 2018. Conference
+paper.
+[17] Youtao Gao, Kailun Jiang, Zezheng Dong, and Jingxi Liu. High-precision autonomous orbit determination
+for cislunar special long-period orbits based on adaptive heavy-tailed noise processing. Advances in
+Space Research, 76(8):4472–4486, 2025.
+[18] Justin Gilmer, Samuel S. Schoenholz, Patrick F. Riley, Oriol Vinyals, and George E. Dahl. Neural
+message passing for quantum chemistry. In Proceedings of the 34th International Conference on Machine
+Learning, volume 70 of Proceedings of Machine Learning Research, pages 1263–1272, 2017.
+[19] Chuan Guo, Geoff Pleiss, Yu Sun, and Kilian Q. Weinberger. On calibration of modern neural networks.
+In Proceedings of the 34th International Conference on Machine Learning, volume 70 of Proceedings of
+Machine Learning Research, pages 1321–1330. PMLR, 2017. https://proceedings.mlr.press/v70/
+guo17a.html.
+[20] Tuomas Haarnoja, Anurag Ajay, Sergey Levine, and Pieter Abbeel. Backprop KF: Learning discriminative
+deterministic state estimators. In Advances in Neural Information Processing Systems, volume 29, pages
+4372–4380, 2016. https://proceedings.neurips.cc/paper_files/paper/2016/hash/7d6044e95a1
+6761171b130dcb476a43e-Abstract.html.
+[21] William L. Hamilton, Rex Ying, and Jure Leskovec. Inductive representation learning on large graphs.
+In Advances in Neural Information Processing Systems, volume 30, pages 1024–1034, 2017. https:
+//proceedings.neurips.cc/paper_files/paper/2017/hash/5dd9db5e033da9c6fb5ba83c7a7ebea
+9-Abstract.html.
+[22] Cameron Heidrich and Marcus Holzinger. Universal angles-only cislunar initial orbit determination using
+sparse grid collocation. The Journal of the Astronautical Sciences, 72(16), 2025.
+[23] Sture Holm. A simple sequentially rejective multiple test procedure. Scandinavian Journal of Statistics,
+6(2):65–70, 1979.
+[24] Felix R. Hoots and Ronald L. Roehrich. Models for propagation of NORAD element sets. Spacetrack
+Report 3, Aerospace Defense Command, 1980.
+[25] International Laser Ranging Service. Consolidated Laser Ranging Data (CRD) format, version 2.
+https://ilrs.gsfc.nasa.gov/data_and_products/formats/crd.html, 2026. Normal-point and
+full-rate laser-ranging data exchange format specification.
+[26] International Laser Ranging Service. ILRS normal point data products. https://ilrs.gsfc.nasa
+.gov/data_and_products/data/npt/, 2026. Public satellite-laser-ranging normal-point data archive
+(EDC/CDDIS data centers).
+[27] Andrew H. Jazwinski. Stochastic Processes and Filtering Theory. Academic Press, New York, 1970.
+
+29
+
+[28] Simon J. Julier and Jeffrey K. Uhlmann. New extension of the Kalman filter to nonlinear systems. In
+Ivan Kadar, editor, Signal Processing, Sensor Fusion, and Target Recognition VI, volume 3068, pages
+182–193. SPIE, 1997.
+[29] R. E. Kalman. A new approach to linear filtering and prediction problems. Journal of Basic Engineering,
+82(1):35–45, 1960.
+[30] T. S. Kelso. CelesTrak: Current general perturbations element sets. https://celestrak.org/NORAD/
+elements/, 2026. Public GP/TLE element data service.
+[31] Thomas N. Kipf and Max Welling. Semi-supervised classification with graph convolutional networks.
+International Conference on Learning Representations, 2017. https://openreview.net/forum?id=SJ
+U4ayYgl.
+[32] Gamze Naz Kiprit, Andreas Koch, Michael Petry, and Martin Werner. Augmented temporal grid for
+graph neural networks and anomaly detection in spacecraft. Astrodynamics, 2026.
+[33] Theresa Kruse, Thomas Griebel, and Knut Graichen. Adaptive kalman filtering: Measurement and
+process noise covariance estimation using kalman smoothing. IEEE Access, 13:11863–11875, 2025.
+[34] Anqi Lang and Yu Jiang. Orbit determination for continuously maneuvering Starlink satellites based on
+an unscented batch filtering method. Sensors, 25(13):4079, 2025.
+[35] Meng Li, Yuanlin Zhang, Jing Kong, Xiaolan Huang, Kehua Shi, Ge Guo, and Naiyang Xue. Delayadaptive federated filtering with online model calibration for deep space multi-spacecraft orbit determination. Aerospace, 13(2):160, 2026.
+[36] Xiang Li, Ying Xu, Ming Gao, Hong Yuan, Zimin Huo, Jiashuang Yan, Zhihao Yang, and Ye Feng. A
+performance study on orbit determination using inter-satellite links between heterogeneous orbits in
+cislunar space. Aerospace Science and Technology, 177:112270, 2026.
+[37] Jiahao Liao, Hao Xu, Yufei Luo, and Yunhe Meng. A patch-transformer-based method for orbit prediction
+of LEO satellites. Aerospace Science and Technology, page 112652, 2026. Available online 22 May 2026.
+[38] Libre Space Foundation. SatNOGS DB and Network API Documentation. https://db.satnogs.org/a
+pi/, 2026. API endpoint documentation for satellite, transmitter, observation, and station metadata.
+[39] Libre Space Foundation. SatNOGS Network: Public ground station network. https://network.satn
+ogs.org/, 2026. Public station-network metadata source.
+[40] Libre Space Foundation. SatNOGS Network: Public observations. https://network.satnogs.org/ob
+servations/, 2026. Public completed-observation pages and metadata.
+[41] Yeerang Lim and Camilla Colombo. Impulsive manoeuvre reconstruction from public orbit data. Acta
+Astronautica, 245:632–642, 2026.
+[42] Jinghong Liu, Wanting Long, Bo Yuan, Chenyun Wu, and Jizhang Sang. An evolutionary probabilistic
+simplex algorithm for fast global optimization of tle orbit determination. Acta Astronautica, 244:406–426,
+2026.
+[43] Shane Lowe and Simone D’Amico. Real-time orbit and atmospheric drag estimation for spacecraft
+swarms. Acta Astronautica, 245:1012–1034, 2026.
+[44] Md Sahat Mahmud, Yiping Jiang, Ruirui Liu, Zihong Zhou, and Bing Xu. Physics-informed neural
+network for predicting orbital parameters of Low Earth Orbit satellites using two line element dataset.
+Advances in Space Research, 77(11):11110–11128, 2026.
+[45] Raman K. Mehra. On the identification of variances and adaptive Kalman filtering. IEEE Transactions
+on Automatic Control, 15(2):175–184, 1970.
+
+30
+
+[46] Hanyi Min, Feng Guo, Tianjun Sun, Mengqiao Liu, and Frederick L. Oswald. Ensuring transparency
+and trust in supervised-machine-learning studies: A checklist for psychological researchers. Advances in
+Methods and Practices in Psychological Science, 9(1), 2026.
+[47] Oliver Montenbruck and Eberhard Gill. Satellite Orbits: Models, Methods, and Applications. Springer,
+Berlin, Heidelberg, 2000.
+[48] Tim P. Morris, Ian R. White, and Michael J. Crowther. Using simulation studies to evaluate statistical
+methods. Statistics in Medicine, 38(11):2074–2102, 2019.
+[49] NASA Crustal Dynamics Data Information System (CDDIS). Satellite Laser Ranging Normal Point
+Data. NASA CDDIS archived satellite-laser-ranging normal-point product, 2024.
+[50] W. M. Oliveira. Autonomous optical flow-based initial orbit determination. Acta Astronautica, 243:237–
+250, 2026.
+[51] Ishan Paranjape, Tarun Hejmadi, and Suman Chakravorty. Probabilistic methods for initial orbit
+determination and orbit determination in cislunar space. arXiv preprint arXiv:2602.18058, 2026.
+Submitted 20 February 2026.
+[52] Ishan Paranjape, Tarun Hejmadi, Utkarsh Ranjan Mishra, and Suman Chakravorty. A hybrid particle
+gaussian mixture filtering method for cislunar orbit determination under extreme uncertainty. arXiv
+preprint arXiv:2603.01428, 2026. Submitted 2 March 2026.
+[53] Smriti Nandan Paul and Siwei Fan. Unified orbit-attitude estimation and sensor tasking framework
+for autonomous cislunar space domain awareness using multiplicative unscented kalman filter. arXiv
+preprint arXiv:2603.20579, 2026. Submitted 21 March 2026.
+[54] M. R. Pearlman, J. J. Degnan, and J. M. Bosworth. The International Laser Ranging Service. Advances
+in Space Research, 30(2):135–143, 2002.
+[55] Joelle Pineau et al. Improving reproducibility in machine learning research (a report from the neurips
+2019 reproducibility program). Journal of Machine Learning Research, 22(164):1–20, 2021.
+[56] Patrick Pinheiro-Torres Vogt, Travis Crain, et al. Flexkalmannet: A modular ai-enhanced kalman filter
+framework applied to spacecraft motion estimation. arXiv preprint arXiv:2405.03034, 2024.
+[57] Luca Ramponi, Andrea D’Ambrosio, Riccardo Cipollone, Alessia De Riz, Roberto Furfaro, Vishnu
+Reddy, and Pierluigi Di Lizia. A pontryagin neural network application to tracklets correlation of optical
+observations. Acta Astronautica, 238(Part A):580–597, 2026.
+[58] Chen Ren, Chen Wang, Zhenhong Li, Mingrui Yang, and Haoran Gong. The contribution of satellite
+laser ranging to the BDS-3 constellation: precise orbit determination and geodetic parameters estimation.
+Measurement, 268:120645, 2026.
+[59] Guy Revach, Nir Shlezinger, Xiaoyong Ni, Adria Lopez Escoriza, Ruud J. G. van Sloun, and Yonina C.
+Eldar. KalmanNet: Neural network aided kalman filtering for partially known dynamics. IEEE
+Transactions on Signal Processing, 70:1532–1547, 2022.
+[60] Andrew P. Sage and Gerald W. Husa. Adaptive Filtering with Unknown Prior Statistics. Joint Automatic
+Control Conference Preprints, 1969.
+[61] Franco Scarselli, Marco Gori, Ah Chung Tsoi, Markus Hagenbuchner, and Gabriele Monfardini. The
+graph neural network model. IEEE Transactions on Neural Networks, 20(1):61–80, 2009.
+[62] Andrea Scorsoglio, Andrea D’Ambrosio, Lucille Le Corre, Bill Gray, Vishnu Reddy, and Roberto
+Furfaro. Physics-informed orbit determination for x-geo space situational awareness. Acta Astronautica,
+238:271–285, 2026.
+
+31
+
+[63] Andrea Scorsoglio, Luca Ghilardi, and Roberto Furfaro. A physic-informed neural network approach to
+orbit determination. The Journal of the Astronautical Sciences, 70(4):25, 2023.
+[64] Edna Segura, Rosario López, Iván Pérez, Martı́n Lara, and Juan Félix San-Juan. A hybrid approach to
+enhanced sgp4 for galileo constellations. Applied Sciences, 16(5):2214, 2026.
+[65] Krishnan Selvan, Akpojoto Siemuri, Fabricio Schiavon Prol, Petri Welker, M. Zahidul H. Bhuiyan, and
+Heidi Kuusniemi. Precise orbit determination of leo satellites: a systematic review. GPS Solutions,
+27(4):178, 2023.
+[66] Harald Semmelrock, Tony Ross-Hellauer, Simone Kopeinik, Dieter Theiler, Armin Haberl, and Dominik
+Kowald. Reproducibility in machine-learning-based research: Overview, barriers, and drivers. AI
+Magazine, 46(2), 2025.
+[67] S. Seuru, V. Grimm, M. Barton, L. Perez, N. Mahdizadeh Gharakhanlou, and R. R. Sengupta. The ode
+(overview, data, and execution) protocol for a standardized use of machine learning in environmental,
+social and related interdisciplinary sciences. Environmental Modelling & Software, 198:106912, 2026.
+[68] Liam Smego and John Christian. Dynamic triangulation for cislunar initial orbit determination. The
+Journal of the Astronautical Sciences, 73(14), 2026.
+[69] Minzhang Song, Yidi Wang, Wei Zheng, and Yusong Wang. Cislunar initial orbit determination for
+angles-only short arcs based on multi-constrained optimization. Aerospace Science and Technology,
+175:111999, 2026.
+[70] Nathan Stacey and Simone D’Amico. Adaptive and dynamically constrained process noise estimation for
+orbit determination. IEEE Transactions on Aerospace and Electronic Systems, 57(5):2920–2937, 2021.
+[71] Yannick Sztamfater Garcia, Joaquin Miguez, and Manuel Sanjurjo-Rivo. Sequential filtering techniques
+for simultaneous tracking and parameter estimation. Aerospace Science and Technology, page 111951,
+2026.
+[72] Byron D. Tapley, Bob E. Schutz, and George H. Born. Statistical Orbit Determination. Elsevier Academic
+Press, Burlington, Massachusetts, 2004.
+[73] David A. Vallado. Fundamentals of Astrodynamics and Applications. Microcosm Press, Hawthorne,
+California, 4 edition, 2013.
+[74] David A. Vallado, Paul Crawford, Richard Hujsak, and T. S. Kelso. Revisiting spacetrack report #3. In
+AIAA/AAS Astrodynamics Specialist Conference and Exhibit, Keystone, Colorado, 2006.
+[75] Jacob Varey, Jessica D. Ruprecht, Michael Tierney, and Ryan Sullenberger. Physics-informed neural
+networks for satellite state estimation. arXiv preprint arXiv:2403.19736, 2024. Physics-informed satellite
+state-estimation related work.
+[76] Petar Velickovic, Guillem Cucurull, Arantxa Casanova, Adriana Romero, Pietro Lio, and Yoshua
+Bengio. Graph attention networks. International Conference on Learning Representations, 2018.
+https://openreview.net/forum?id=rJXMpikCZ.
+[77] Eric A. Wan and Rudolph van der Merwe. The unscented Kalman filter for nonlinear estimation. In
+Proceedings of the IEEE 2000 Adaptive Systems for Signal Processing, Communications, and Control
+Symposium, pages 153–158. IEEE, 2000.
+[78] Aoming Wang, Defeng Gu, Zhiyong Huang, Houzhe Zhang, and Tao Jiang. Evaluation of real-time orbit
+determination performance for leo satellites using different empirical acceleration models. Aerospace
+Science and Technology, 170:111554, 2026.
+[79] Qianxin Wang, Chenwang Ye, Guobin Chang, Conghao Tang, and Xun Zhang. Robust Kalman filter for
+heavy-tailed process and measurement noises. Scientific Reports, 2026. Article in press, published 7 May
+2026.
+32
+
+[80] Frank Wilcoxon. Individual comparisons by ranking methods. Biometrics Bulletin, 1(6):80–83, 1945.
+[81] James R. Wright. Optimal orbit determination. Advances in the Astronautical Sciences, 46:279–299,
+1981. Process-noise modelling for empirical-acceleration estimation in operational POD.
+[82] Jun Xu, Xin Ma, and Xiao Chen. Adaptive robust cubature filtering-based autonomous navigation for
+cislunar spacecraft using inter-satellite ranging and angle data. Aerospace, 13(1):100, 2026.
+[83] Zhixin Yang, Yousi Zheng, Feifei Tang, Hui Liu, Bin Wang, Nanjie Li, and Yongmao Zhao. Low
+earth orbit satellite short-term orbit prediction using the LSTM-Transformer neural network model.
+Measurement, 272:120973, 2026.
+[84] DongHun Yeo. A summary of industrial verification, validation, and uncertainty quantification procedures
+in computational fluid dynamics. NIST Interagency/Internal Report 8298, National Institute of Standards
+and Technology, 2020.
+[85] Lei Zhang, Heyu Shi, and Wei Zheng. Improving angle-only orbit determination accuracy for earth-moon
+libration orbits using a neural-network-based approach. Remote Sensing, 16(17):3287, 2024.
+[86] Shiyuan Zhang, Shan Lu, and Qing Li. Hybrid neural network adaptive relative navigation for orbital
+games. Acta Astronautica, 2026. Available online 24 April 2026, in press, journal pre-proof.
+[87] Xuefeng Zhou, Dong Qiao, and Xiangyu Li. Adaptive order-switching kalman filter for orbit determination
+using deep-neural-network-based nonlinearity detection. Journal of Spacecraft and Rockets, 60(6):1724–
+1741, 2023.
+[88] Xuefeng Zhou, Tong Qin, and Lingzhi Meng. A lstm assisted orbit determination algorithm for spacecraft
+executing continuous maneuver. Acta Astronautica, 204:568–582, 2023.
+[89] Hai Zhu, Lin Wang, and Tao Ye. Bayesian adaptive extended kalman-based orbit determination for
+optical observation satellites. Sensors, 25(8):2527, 2025.
+[90] Ziwen Zhu, Zhongmin Pei, Hui Chen, Jiameng Wang, and Zengying Yue. Multi-scale informer-based
+short-arc orbit determination for low-earth-orbit satellites. Aerospace, 13(2):201, 2026.
+
+33
+
+

@@ -1,0 +1,21 @@
+{
+  "category_counts": {
+    "latex_warning": 0,
+    "other_warning": 0,
+    "overfull": 0,
+    "package_warning": 0,
+    "underfull": 0
+  },
+  "claim_boundary": "This is a layout-risk disclosure for the supplemental PDF. Warnings are reported rather than treated as zero when the main manuscript log is clean.",
+  "count_basis": "raw warning/overfull/underfull log lines",
+  "deduplicated_line_count": 0,
+  "details_redacted": true,
+  "generated_utc": "2026-06-13T02:53:18.810669+00:00",
+  "items": [],
+  "log_exists": true,
+  "log_path": "paper\\supplement.log",
+  "raw_line_count": 0,
+  "scope": "paper/supplement.log warning, overfull, and underfull checks",
+  "status": "pass",
+  "warning_count": 0
+}

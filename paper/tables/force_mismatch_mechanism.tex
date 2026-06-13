@@ -1,0 +1,31 @@
+\begin{table}[t]
+  \centering
+  \caption{Force-model mismatch mechanism diagnostic on the controlled \texttt{force\_model\_mismatch\_test} split. Top: the inflated truth force/process-noise parameters versus the compact model every estimator keeps. Bottom: the adaptive-filter response. Under this controlled mismatch the visible-update innovations are dominated by an unmodelled dynamics bias rather than measurement noise. The AUKF response is to inflate its effective measurement-noise scale (mean effective $R$ scale above one) and apply robust down-weighting, which shrinks the state corrections needed to track the biased truth, so the causal EKF, which keeps a tighter gain, gives the best observed-step estimate. The diagnostic exactly reproduces the reference AUKF estimate (max position difference $0.00$~m), so the mechanism is a faithful decomposition of the same adaptive-filter behaviour and not a re-tuned filter. The table values are aggregated over the full controlled force-mismatch mechanism population (48 processed trajectories); visible-update counts and update-norm statistics are computed over the visible AUKF update records in that population. The insight is scoped strictly to this controlled-mismatch setting on the compact two-body+$J_2$+drag estimator model; on the higher-fidelity slices (Tables~\ref{tab:hifi_force_mismatch} and~\ref{tab:hifi_force_mismatch_extended}) the cross-filter $R$-only NIS signature continues to fire but the EKF$/$AUKF ordering does not flip, so the diagnostic is reported as a compact-model methodological observation rather than an estimator-ordering rule.}
+  \label{tab:force_mismatch_mechanism}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcc}
+    \toprule
+    Mismatched dynamics parameter & Estimator model & Truth model \\
+    \midrule
+    Ballistic coefficient [m$^2$/kg] & 0.018 & 0.045 \\
+    Process-noise std & 0.00 & 0.45 \\
+    Drag reference density $\rho_0$ & $4.0\times10^{-11}$ & $7.0\times10^{-11}$ \\
+    SRP area-to-mass [m$^2$/kg] & 0.02 & 0.06 \\
+    SRP coefficient $C_R$ & 1.35 & 1.60 \\
+    \midrule
+    \multicolumn{1}{l}{Adaptive-filter response diagnostic} & \multicolumn{2}{c}{Value} \\
+    \midrule
+    Visible measurement updates & \multicolumn{2}{c}{1238} \\
+    Pre-adaptation NIS (mean / median / p90) & \multicolumn{2}{c}{4.90 / 3.49 / 9.16} \\
+    Updates exceeding NIS soft gate (16.0) [\%] & \multicolumn{2}{c}{2.50} \\
+    Mean robust down-weight scale & \multicolumn{2}{c}{1.039} \\
+    Effective $R$ scale (pre / proposal / post / effective) & \multicolumn{2}{c}{2.891 / 4.513 / 3.021 / 3.315} \\
+    Mean state-update norm [m] & \multicolumn{2}{c}{466.31} \\
+    $R$-only median NIS (EKF / UKF / AUKF) & \multicolumn{2}{c}{1.60 / 1.83 / 4.73} \\
+    AUKF $R$-only p90 NIS & \multicolumn{2}{c}{20.38} \\
+    Observed-step RMSE (EKF / UKF / AUKF) [m] & \multicolumn{2}{c}{448.79 / 469.41 / 526.39} \\
+    AUKF estimate max position difference vs reference [m] & \multicolumn{2}{c}{0.00} \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

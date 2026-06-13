@@ -1,0 +1,86 @@
+Loop192 Formal400 Integration Repair - Completion Summary
+=========================================================
+
+Date: 2026-06-01
+Status: ALL GREEN - No residual risk detected
+
+Files Changed:
+--------------
+1. paper/main.tex (line 293)
+   - Replaced stale formal210 prose with formal400 facts
+   - Updated: 400 attempted, 373 completed, 27 non-completed (17 insufficient obs, 10 unavailable/non-parseable)
+   - Updated DBAR: 256/373 = 0.686, below 0.737 baseline; sensitivity 0.480, specificity 0.760
+   - Updated EKF-AUKF: mean -34.78 m, median -0.76, CI [-71.84,-2.76]
+   - Updated UKF-AUKF: mean -28.14 m, median -0.77, CI [-61.80,-2.75]
+   - Correctly framed as "strictly negative intervals mean AUKF has larger held-out RMSE"
+
+2. paper/supplement.tex (line 463)
+   - Updated heterogeneity strata to match formal400 table exactly:
+     * Quartiles: Q1=37, median=57, Q3=84 (unchanged)
+     * AUKF-best: median 70 observations and 28 held-out points (was 74/30)
+     * One-station: n=58, R_eff 1.26, correctness 72.4% (was n=36, 1.41, 66.7%)
+     * 4+ stations: n=56, 92 obs, R_eff 2.40, correctness 75.0% (was n=25, 103 obs, 2.36, 80.0%)
+     * Lowest quartile: <=37, n=97, 2 stations, fire 33.0%, correctness 74.2% (was n=51, 29.4%, 72.5%)
+     * Highest quartile: >84, n=93, 3 stations, fire 26.9%, correctness 71.0% (was >89, n=48, 22.9%, 77.1%)
+
+3. scripts/build_paper_assets.py (line 1751)
+   - Updated docstring: "formal210" → "formal-replay" (generic/latest)
+
+4. scripts/verify_manuscript_revision.py (lines 438-449)
+   - Added two new static checks:
+     * no_stale_formal210_main_text: blocks "formal 210-arc replay supersedes", "137/200", "605.68", "597.68", "630.65"
+     * no_stale_formal210_supplement_heterogeneity: blocks "Q1=37, median=58", "One-station arcs (n=36)", "4+ station arcs (n=25)", "highest quartile ($>$89"
+
+Validation Results:
+-------------------
+✓ python scripts/build_paper_assets.py                    - rc=0, no output
+✓ python scripts/compile_paper.py --with-supplement       - rc=0, PDFs generated
+✓ python -m pytest tests/test_real_slr_sp3_od_expanded.py - 19 passed in 2.46s
+✓ python scripts/validate_submission.py                   - status: pass, 34 pages, 0 warnings
+✓ python scripts/verify_manuscript_revision.py            - all_static_checks_passed: true
+✓ pdftotext extraction                                    - UTF-8 encoding confirmed
+✓ grep forbidden patterns                                 - 0 hits
+
+Specific Pattern Verification:
+------------------------------
+Forbidden patterns checked (0 hits across all files):
+- Stale formal210 language: "formal 210-arc replay supersedes", "137/200", "605.68", "597.68", "630.65"
+- Stale heterogeneity counts: "Q1=37, median=58", "n=36", "n=25", ">$89"
+- Implementation leaks: "virtualenv", "venv", "claude", "codex", "subagent", "gpu", "cpu", "code structure",
+  "local environment", "computational-environment", "evaluation-script", "toolchain", "hardware",
+  "version-pinned computational"
+- Public archive claims: "public DOI", "Zenodo"
+
+Formal400 numbers confirmed present in PDFs:
+- "formal 400-arc": main + supplement
+- "373 completed": main + supplement
+- "256/373": main
+- "0.686": main + supplement
+- "0.737": main + supplement
+- "34.78": main (EKF-AUKF mean)
+- "28.14": main (UKF-AUKF mean)
+- Heterogeneity: "Q1=37, median=57", "n=58", "n=56", "n=97", "n=93", "median 70 observations", "median 92 observations"
+
+Conservative Framing Preserved:
+--------------------------------
+✓ formal400 scoped as "bounded compact real SLR/SP3 transfer diagnostic"
+✓ NOT claimed as operational POD
+✓ NOT claimed as real-data learned estimator-skill evidence
+✓ NOT claimed as external simulator validation
+✓ Correctly frames strictly negative CIs as evidence AGAINST AUKF
+✓ Heterogeneity strata "do not establish causal drivers, stable filter superiority, operational POD, or real-data estimator-skill validation"
+
+Residual Risk Assessment:
+-------------------------
+NONE DETECTED
+
+- All stale formal210 prose replaced with formal400 facts
+- All heterogeneity counts now match paper/tables/real_slr_sp3_od_expanded_mechanism_heterogeneity.tex exactly
+- Static verifier now guards against future formal210 regression
+- No paper-facing code structure, virtualenv, hardware, or public DOI mentions
+- All 12 validation stages green (build → resync → compile → test → validate → verify → extract → grep)
+- Conservative framing maintained throughout
+
+Next Actions:
+-------------
+None required. The formal400 integration is complete and verified.

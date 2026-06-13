@@ -1,0 +1,1103 @@
+[started_at] 2026-05-14T01:27:14.255798+00:00
+[command] C:\Users\alavi\AppData\Local\Python\pythoncore-3.14-64\python.exe -m json.tool results\release_packet.json
+[cwd] D:\GNN State Estimation
+[stdout]
+{
+    "paper_title": "SPOT-OD: Evidence-Locked Benchmarking for Sparse-Visibility Satellite State Estimation",
+    "canonical_artifacts": {
+        "manuscript": "paper\\main.tex",
+        "bibliography": "paper/references.bib",
+        "tables": [
+            "paper\\tables\\public_data_summary.tex",
+            "paper\\tables\\benchmark_tasks.tex",
+            "paper\\tables\\main_results.tex",
+            "paper\\tables\\ablation.tex",
+            "paper\\tables\\benchmark_suite.tex",
+            "paper\\tables\\method_activity.tex",
+            "paper\\tables\\visibility_buckets.tex",
+            "paper\\tables\\significance.tex",
+            "paper\\tables\\trajectory_improvement.tex",
+            "paper\\tables\\seed_sweep.tex",
+            "paper\\tables\\seed_suite_public.tex",
+            "paper\\tables\\observability_guard.tex",
+            "paper\\tables\\stability_prediction.tex",
+            "paper\\tables\\method_selection.tex",
+            "paper\\tables\\coverage_runtime.tex",
+            "paper\\tables\\observability_diagnostics.tex",
+            "paper\\tables\\calibration.tex"
+        ],
+        "figures": [
+            "paper\\figures\\visibility_bucket_relative_gain.png",
+            "paper\\figures\\observability_vs_ekf_error.png",
+            "paper\\figures\\per_step_rmse.png",
+            "paper\\figures\\position_error_ecdf.png",
+            "paper\\figures\\visibility_bucket_rmse.png",
+            "paper\\figures\\uncertainty_calibration.png"
+        ]
+    },
+    "manuscript_inclusion_status": {
+        "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+        "counts": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_include_count": 4,
+            "main_figure_environment_count": 4,
+            "main_figure_count": 4
+        },
+        "active_table_line_evidence": [
+            {
+                "line": 103,
+                "content": "\\input{tables/main_results.tex}",
+                "path": "paper\\tables\\main_results.tex"
+            },
+            {
+                "line": 146,
+                "content": "\\input{tables/significance.tex}",
+                "path": "paper\\tables\\significance.tex"
+            },
+            {
+                "line": 153,
+                "content": "\\input{tables/ablation.tex}",
+                "path": "paper\\tables\\ablation.tex"
+            }
+        ],
+        "active_figure_line_evidence": [
+            {
+                "line": 114,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                "path": "paper\\figures\\per_step_rmse.png"
+            },
+            {
+                "line": 121,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                "path": "paper\\figures\\position_error_ecdf.png"
+            },
+            {
+                "line": 131,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                "path": "paper\\figures\\visibility_bucket_rmse.png"
+            },
+            {
+                "line": 140,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                "path": "paper\\figures\\uncertainty_calibration.png"
+            }
+        ],
+        "active_table_environment_lines": [],
+        "active_figure_environment_lines": [
+            {
+                "line": 112,
+                "content": "\\begin{figure}[htbp]",
+                "path": "paper\\main.tex"
+            },
+            {
+                "line": 119,
+                "content": "\\begin{figure}[htbp]",
+                "path": "paper\\main.tex"
+            },
+            {
+                "line": 129,
+                "content": "\\begin{figure}[htbp]",
+                "path": "paper\\main.tex"
+            },
+            {
+                "line": 138,
+                "content": "\\begin{figure}[htbp]",
+                "path": "paper\\main.tex"
+            }
+        ],
+        "source_of_truth": "paper/main.tex",
+        "last_synced_utc": "2026-05-14T01:18:34Z",
+        "tables": {
+            "paper\\tables\\main_results.tex": "main_included",
+            "paper\\tables\\significance.tex": "main_included",
+            "paper\\tables\\ablation.tex": "main_included"
+        }
+    },
+    "status_evidence": {
+        "source_documents": [
+            "paper/main.tex",
+            "results/release_packet.json",
+            "paper/RELEASE_PACKET.md"
+        ],
+        "paper_main_tex": {
+            "generated_table_inputs": [
+                "paper\\tables\\main_results.tex",
+                "paper\\tables\\significance.tex",
+                "paper\\tables\\ablation.tex"
+            ],
+            "generated_table_count": 3,
+            "inline_table_count": 0,
+            "figure_includes": [
+                "paper\\figures\\per_step_rmse.png",
+                "paper\\figures\\position_error_ecdf.png",
+                "paper\\figures\\visibility_bucket_rmse.png",
+                "paper\\figures\\uncertainty_calibration.png"
+            ],
+            "figure_count": 4
+        },
+        "canonical_artifacts_snapshot": {
+            "table_count": 17,
+            "figure_count": 6
+        },
+        "manuscript_inclusion_counts": {
+            "tables": {
+                "main_included": 3
+            },
+            "figures": {
+                "historical_auxiliary": 8,
+                "release_only_diagnostic": 3,
+                "supplement_planned": 2,
+                "main_included": 4
+            }
+        },
+        "sync_notes": [
+            "Counts are derived from a fresh active-line parse of paper/main.tex in the current D:\\GNN State Estimation workspace.",
+            "This patch updates release-packet inclusion metadata only; it does not regenerate experiments, tables, or figures.",
+            "Canonical current-main status label is main_included; stale validator wording main_input/main_includegraphics is retired.",
+            "canonical_artifacts tables/figures remain release inventories, not current main-manuscript inclusion claims."
+        ],
+        "patched_date": "2026-05-08",
+        "source_of_truth": "paper/main.tex",
+        "main_generated_table_inputs": [
+            "paper\\tables\\main_results.tex",
+            "paper\\tables\\significance.tex",
+            "paper\\tables\\ablation.tex"
+        ],
+        "main_inline_tables": [],
+        "main_figure_includes": [
+            "paper\\figures\\per_step_rmse.png",
+            "paper\\figures\\position_error_ecdf.png",
+            "paper\\figures\\visibility_bucket_rmse.png",
+            "paper\\figures\\uncertainty_calibration.png"
+        ],
+        "main_generated_table_count": 3,
+        "main_inline_table_count": 0,
+        "main_figure_count": 4,
+        "canonical_artifact_array_counts": {
+            "tables": 17,
+            "figures": 6
+        },
+        "notes": "canonical_artifacts arrays are release inventories. Current main-manuscript inclusion is determined only from active, uncommented paper/main.tex inputs/includes.",
+        "main_figure_include_count": 4,
+        "main_figure_environment_count": 4,
+        "active_table_input_lines": [
+            {
+                "line": 103,
+                "content": "\\input{tables/main_results.tex}",
+                "path": "paper\\tables\\main_results.tex"
+            },
+            {
+                "line": 146,
+                "content": "\\input{tables/significance.tex}",
+                "path": "paper\\tables\\significance.tex"
+            },
+            {
+                "line": 153,
+                "content": "\\input{tables/ablation.tex}",
+                "path": "paper\\tables\\ablation.tex"
+            }
+        ],
+        "active_figure_include_lines": [
+            {
+                "line": 114,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                "path": "paper\\figures\\per_step_rmse.png"
+            },
+            {
+                "line": 121,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                "path": "paper\\figures\\position_error_ecdf.png"
+            },
+            {
+                "line": 131,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                "path": "paper\\figures\\visibility_bucket_rmse.png"
+            },
+            {
+                "line": 140,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                "path": "paper\\figures\\uncertainty_calibration.png"
+            }
+        ],
+        "paper_title": "SPOT-OD: Evidence-Locked Benchmarking for Sparse-Visibility Satellite State Estimation",
+        "last_sync_timestamp": "2026-05-14T01:18:34Z",
+        "active_table_environment_lines": [],
+        "active_figure_environment_lines": [
+            {
+                "line": 112,
+                "content": "\\begin{figure}"
+            },
+            {
+                "line": 119,
+                "content": "\\begin{figure}"
+            },
+            {
+                "line": 129,
+                "content": "\\begin{figure}"
+            },
+            {
+                "line": 138,
+                "content": "\\begin{figure}"
+            }
+        ],
+        "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+        "publication_figure_render_report": "results/publication_figure_render_report.json"
+    },
+    "current_main_manuscript_artifacts": {
+        "generated_tables": [
+            "paper\\tables\\main_results.tex",
+            "paper\\tables\\significance.tex",
+            "paper\\tables\\ablation.tex"
+        ],
+        "inline_tables": [],
+        "figures": [
+            "paper\\figures\\per_step_rmse.png",
+            "paper\\figures\\position_error_ecdf.png",
+            "paper\\figures\\visibility_bucket_rmse.png",
+            "paper\\figures\\uncertainty_calibration.png"
+        ],
+        "publication_figure_render_report": "results/publication_figure_render_report.json"
+    },
+    "release_rules": {
+        "canonical_artifact_arrays_are_release_evidence_not_manuscript_inclusion_labels": true,
+        "current_main_manuscript_status_requires_main_tex_evidence": true
+    },
+    "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+    "release_packet_truth_sync": {
+        "synced_utc": "2026-05-14T01:18:34Z",
+        "source_of_truth": "paper/main.tex",
+        "before_counts": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_include_count": 4,
+            "main_figure_environment_count": 4,
+            "main_figure_count": 4
+        },
+        "after_counts": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_include_count": 4,
+            "main_figure_environment_count": 4,
+            "main_figure_count": 4
+        },
+        "delta_counts": {
+            "main_generated_table_count": 0,
+            "main_inline_table_count": 0,
+            "main_figure_environment_count": 0,
+            "main_figure_include_count": 0,
+            "main_figure_count": 0
+        },
+        "active_generated_table_inputs": [
+            "paper\\tables\\main_results.tex",
+            "paper\\tables\\significance.tex",
+            "paper\\tables\\ablation.tex"
+        ],
+        "active_figure_includes": [
+            "paper\\figures\\per_step_rmse.png",
+            "paper\\figures\\position_error_ecdf.png",
+            "paper\\figures\\visibility_bucket_rmse.png",
+            "paper\\figures\\uncertainty_calibration.png"
+        ],
+        "main_tex_line_evidence": {
+            "active_input_lines": [
+                {
+                    "line": 103,
+                    "content": "\\input{tables/main_results.tex}",
+                    "path": "paper\\tables\\main_results.tex"
+                },
+                {
+                    "line": 146,
+                    "content": "\\input{tables/significance.tex}",
+                    "path": "paper\\tables\\significance.tex"
+                },
+                {
+                    "line": 153,
+                    "content": "\\input{tables/ablation.tex}",
+                    "path": "paper\\tables\\ablation.tex"
+                }
+            ],
+            "active_includegraphics_lines": [
+                {
+                    "line": 114,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                    "path": "paper\\figures\\per_step_rmse.png"
+                },
+                {
+                    "line": 121,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                    "path": "paper\\figures\\position_error_ecdf.png"
+                },
+                {
+                    "line": 131,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                    "path": "paper\\figures\\visibility_bucket_rmse.png"
+                },
+                {
+                    "line": 140,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                    "path": "paper\\figures\\uncertainty_calibration.png"
+                }
+            ],
+            "active_table_environment_lines": [],
+            "active_figure_environment_lines": [
+                {
+                    "line": 112,
+                    "content": "\\begin{figure}"
+                },
+                {
+                    "line": 119,
+                    "content": "\\begin{figure}"
+                },
+                {
+                    "line": 129,
+                    "content": "\\begin{figure}"
+                },
+                {
+                    "line": 138,
+                    "content": "\\begin{figure}"
+                }
+            ]
+        },
+        "changed_files": [
+            "paper/RELEASE_PACKET.md",
+            "results/release_packet.json",
+            "results/release_packet_sync_report.md",
+            "results/release_packet_sync_report.json",
+            "results/sync_release_packet_truth.py"
+        ],
+        "validation_policy": [
+            "JSON after_counts must match a fresh active-line parse of paper/main.tex.",
+            "No figure may be labelled main_included unless its normalized path is in active_figure_includes.",
+            "All active generated table inputs must be labelled main_included."
+        ],
+        "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them."
+    },
+    "status_label_convention": {
+        "canonical_main_manuscript_status": "main_included",
+        "deprecated_status_labels": {
+            "main_input": "stale validator/report wording replaced by main_included",
+            "main_includegraphics": "stale validator/report wording replaced by main_included"
+        },
+        "rule": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them."
+    },
+    "title": "SPOT-OD: Evidence-Locked Benchmarking for Sparse-Visibility Satellite State Estimation",
+    "last_sync_timestamp": "2026-05-14T01:18:34Z",
+    "last_synced_utc": "2026-05-14T01:18:34Z",
+    "sync_source": "paper/main.tex",
+    "active_table_line_evidence": [
+        {
+            "line": 103,
+            "content": "\\input{tables/main_results.tex}",
+            "path": "paper\\tables\\main_results.tex"
+        },
+        {
+            "line": 146,
+            "content": "\\input{tables/significance.tex}",
+            "path": "paper\\tables\\significance.tex"
+        },
+        {
+            "line": 153,
+            "content": "\\input{tables/ablation.tex}",
+            "path": "paper\\tables\\ablation.tex"
+        }
+    ],
+    "active_figure_line_evidence": [
+        {
+            "line": 114,
+            "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+            "path": "paper\\figures\\per_step_rmse.png"
+        },
+        {
+            "line": 121,
+            "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+            "path": "paper\\figures\\position_error_ecdf.png"
+        },
+        {
+            "line": 131,
+            "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+            "path": "paper\\figures\\visibility_bucket_rmse.png"
+        },
+        {
+            "line": 140,
+            "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+            "path": "paper\\figures\\uncertainty_calibration.png"
+        }
+    ],
+    "main_generated_table_count": 3,
+    "main_inline_table_count": 0,
+    "main_figure_count": 4,
+    "main_figure_include_count": 4,
+    "main_figure_environment_count": 4,
+    "main_generated_table_inputs": [
+        "paper\\tables\\main_results.tex",
+        "paper\\tables\\significance.tex",
+        "paper\\tables\\ablation.tex"
+    ],
+    "main_figure_includes": [
+        "paper\\figures\\per_step_rmse.png",
+        "paper\\figures\\position_error_ecdf.png",
+        "paper\\figures\\visibility_bucket_rmse.png",
+        "paper\\figures\\uncertainty_calibration.png"
+    ],
+    "release_metadata": {
+        "paper_title": "SPOT-OD: Evidence-Locked Benchmarking for Sparse-Visibility Satellite State Estimation",
+        "last_sync_timestamp": "2026-05-14T01:18:34Z",
+        "sync_source": "paper/main.tex",
+        "main_generated_table_count": 3,
+        "main_inline_table_count": 0,
+        "main_figure_count": 4,
+        "active_table_line_evidence": [
+            {
+                "line": 103,
+                "content": "\\input{tables/main_results.tex}",
+                "path": "paper\\tables\\main_results.tex"
+            },
+            {
+                "line": 146,
+                "content": "\\input{tables/significance.tex}",
+                "path": "paper\\tables\\significance.tex"
+            },
+            {
+                "line": 153,
+                "content": "\\input{tables/ablation.tex}",
+                "path": "paper\\tables\\ablation.tex"
+            }
+        ],
+        "last_synced_utc": "2026-05-14T01:18:34Z",
+        "main_figure_include_count": 4,
+        "main_figure_environment_count": 4,
+        "active_figure_line_evidence": [
+            {
+                "line": 114,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                "path": "paper\\figures\\per_step_rmse.png"
+            },
+            {
+                "line": 121,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                "path": "paper\\figures\\position_error_ecdf.png"
+            },
+            {
+                "line": 131,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                "path": "paper\\figures\\visibility_bucket_rmse.png"
+            },
+            {
+                "line": 140,
+                "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                "path": "paper\\figures\\uncertainty_calibration.png"
+            }
+        ]
+    },
+    "public_data_provenance_update": {
+        "updated_at_utc": "2026-05-13T13:15:00.000000+00:00",
+        "claim_boundary": "Archived repository snapshots/manifests are evidence for public data and stored results; all 43 tests passed in the canonical project environment.",
+        "snapshot_paths": [
+            "configs/public_celestrak_active_snapshot.json",
+            "configs/public_satnogs_stations_snapshot.json",
+            "configs/public_satnogs_recent_good_observations.json",
+            "configs/public_tracking_manifest.json"
+        ],
+        "result_manifests_referenced": [
+            "results/release_packet.json",
+            "results/manifests/evaluation.json"
+        ],
+        "evidence_record": "results/provenance_update_evidence.json",
+        "fresh_live_api_rerun_claimed": false,
+        "fresh_end_to_end_experiment_rerun_claimed": false,
+        "fresh_full_pytest_pass_claimed": true,
+        "pytest_attempt_log": "results/pytest_full_attempt.txt",
+        "pytest_blockers": [],
+        "reproducibility_todo": "None. Project dependencies and tests are verified in the current environment.",
+        "import_path_repair": {
+            "scripts_package_present": true,
+            "scripts_fetch_public_tracking_snapshots_exists": true,
+            "runtime_torch_import_is_lazy": true,
+            "targeted_test": "python -m pytest tests/test_public_tracking_fetch.py -q",
+            "notes": [
+                "scripts.fetch_public_tracking_snapshots is a present repository module, not a live missing-module blocker.",
+                "Public tracking parsing imports lightweight timestamp helpers without importing torch at module import time.",
+                "Full model/test execution is verified in the current environment."
+            ]
+        }
+    },
+    "claim_audit": {
+        "main_results": {
+            "path": "paper\\tables\\main_results.tex",
+            "claim": "AUKF is the strongest displayed aggregate method (6167.44 m position RMSE nominal).",
+            "evidence": "Table 1"
+        },
+        "significance": {
+            "path": "paper\\tables\\significance.tex",
+            "claim": "Hybrids (RGR-GF, IDP-RGR-GF) show stress-regime gains against UKF, but not AUKF.",
+            "evidence": "Table 2"
+        },
+        "ablation": {
+            "path": "paper\\tables\\ablation.tex",
+            "claim": "Graph-specific superiority is not isolated in the current matched-budget ablation.",
+            "evidence": "Table 3"
+        },
+        "figures": {
+            "trajectories": "paper\\figures\\per_step_rmse.png",
+            "distributions": "paper\\figures\\position_error_ecdf.png",
+            "visibility": "paper\\figures\\visibility_bucket_rmse.png",
+            "calibration": "paper\\figures\\uncertainty_calibration.png"
+        }
+    },
+    "current_state_patch_audit": {
+        "generated_at_utc": "2026-05-14T00:29:00Z",
+        "task": "Patch manuscript and release ledger inconsistencies",
+        "changed_files": [
+            "results\\release_packet.json",
+            "paper\\evidence_plan.tex",
+            "results\\manuscript_release_consistency_audit.json",
+            "results\\manuscript_release_consistency_audit.md"
+        ],
+        "unchanged_reference_files": [
+            "paper\\main.tex"
+        ],
+        "before_counts_from_release_packet": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_include_count": 4,
+            "main_figure_environment_count": 4,
+            "main_figure_count": 4
+        },
+        "after_counts_from_static_include_audit": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_environment_count": 4,
+            "main_figure_include_count": 4,
+            "main_figure_count": 4
+        },
+        "static_include_audit": {
+            "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+            "counts": {
+                "main_generated_table_count": 3,
+                "main_inline_table_count": 0,
+                "main_figure_environment_count": 4,
+                "main_figure_include_count": 4,
+                "main_figure_count": 4
+            },
+            "active_table_line_evidence": [
+                {
+                    "line": 103,
+                    "content": "\\input{tables/main_results.tex}",
+                    "path": "paper\\tables\\main_results.tex"
+                },
+                {
+                    "line": 146,
+                    "content": "\\input{tables/significance.tex}",
+                    "path": "paper\\tables\\significance.tex"
+                },
+                {
+                    "line": 153,
+                    "content": "\\input{tables/ablation.tex}",
+                    "path": "paper\\tables\\ablation.tex"
+                }
+            ],
+            "active_figure_line_evidence": [
+                {
+                    "line": 114,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                    "path": "paper\\figures\\per_step_rmse.png"
+                },
+                {
+                    "line": 121,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                    "path": "paper\\figures\\position_error_ecdf.png"
+                },
+                {
+                    "line": 131,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                    "path": "paper\\figures\\visibility_bucket_rmse.png"
+                },
+                {
+                    "line": 140,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                    "path": "paper\\figures\\uncertainty_calibration.png"
+                }
+            ]
+        },
+        "claim_support_audit": {
+            "finding": "The ledger and evidence-plan note now use active, uncommented paper/main.tex inputs/includes as the boundary for main-manuscript evidence.",
+            "release_only_artifact_rule": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+            "main_tex_modified": false
+        },
+        "hashes_before": {
+            "paper\\main.tex": "c13ad43820157c1776f7c3640738c8770385a7affacfa0804658abfa93be7eac",
+            "paper\\evidence_plan.tex": "4767736f64bf3acefa4174150d9f32bb48c682904a2f14337964f9d066bba2c9",
+            "results\\release_packet.json": "c054edc9d45bc44a882f6fe0c44b37f16ed7f65ba602adc00c1c42032baa8b60"
+        },
+        "hashes_after_partial": {
+            "paper\\main.tex": "c13ad43820157c1776f7c3640738c8770385a7affacfa0804658abfa93be7eac",
+            "paper\\evidence_plan.tex": "0ab250242584be16dbea34c7e621595824290c2edc5cedf3faa5e38a7abfb0dd"
+        }
+    },
+    "provider_fallback_accounting_audit": {
+        "observed_provider_or_fallback_key_paths": [
+            "consistency_patch_latest.provider_fallback_accounting_audit",
+            "consistency_patch_latest.provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+            "consistency_patch_latest.provider_fallback_accounting_audit.quantitative_provider_distribution_available",
+            "consistency_patches[0].provider_fallback_accounting_audit",
+            "consistency_patches[0].provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+            "consistency_patches[0].provider_fallback_accounting_audit.quantitative_provider_distribution_available",
+            "provider_fallback_accounting_audit",
+            "provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+            "provider_fallback_accounting_audit.quantitative_provider_distribution_available"
+        ],
+        "quantitative_provider_distribution_available": false,
+        "note": "No exact quantitative provider distribution/fallback-count table was found in results/release_packet.json. This patch records the gap rather than inventing counts."
+    },
+    "paper_pdf_metadata_current": {
+        "path": "paper\\main.pdf",
+        "exists": true,
+        "size_bytes": 660908,
+        "sha256": "12c5b5d1be5ef339d872bf543f1300e2e823a579efa6cfdf3b58b317094809d1",
+        "pages": 0,
+        "updated_at_utc": "2026-05-14T01:26:21.830849+00:00"
+    },
+    "consistency_patch_latest": {
+        "patched_at_utc": "2026-05-14T00:33:39Z",
+        "changed_files": [
+            "results/release_packet.json",
+            "results/manuscript_release_consistency_patch.md",
+            "results/manuscript_release_consistency_patch.json",
+            "results/patch_manuscript_release_consistency_current.py"
+        ],
+        "before_counts": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_include_count": 4,
+            "main_figure_environment_count": 4,
+            "main_figure_count": 4
+        },
+        "after_counts": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_environment_count": 4,
+            "main_figure_include_count": 4,
+            "main_figure_count": 4
+        },
+        "static_include_audit": {
+            "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+            "counts": {
+                "main_generated_table_count": 3,
+                "main_inline_table_count": 0,
+                "main_figure_environment_count": 4,
+                "main_figure_include_count": 4,
+                "main_figure_count": 4
+            },
+            "active_table_line_evidence": [
+                {
+                    "line": 103,
+                    "content": "\\input{tables/main_results.tex}",
+                    "path": "paper\\tables\\main_results.tex",
+                    "exists": true
+                },
+                {
+                    "line": 146,
+                    "content": "\\input{tables/significance.tex}",
+                    "path": "paper\\tables\\significance.tex",
+                    "exists": true
+                },
+                {
+                    "line": 153,
+                    "content": "\\input{tables/ablation.tex}",
+                    "path": "paper\\tables\\ablation.tex",
+                    "exists": true
+                }
+            ],
+            "active_figure_line_evidence": [
+                {
+                    "line": 114,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                    "path": "paper\\figures\\per_step_rmse.png",
+                    "exists": true
+                },
+                {
+                    "line": 121,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                    "path": "paper\\figures\\position_error_ecdf.png",
+                    "exists": true
+                },
+                {
+                    "line": 131,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                    "path": "paper\\figures\\visibility_bucket_rmse.png",
+                    "exists": true
+                },
+                {
+                    "line": 140,
+                    "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                    "path": "paper\\figures\\uncertainty_calibration.png",
+                    "exists": true
+                }
+            ],
+            "active_table_environment_lines": [],
+            "active_figure_environment_lines": [
+                {
+                    "line": 112,
+                    "content": "\\begin{figure}[htbp]",
+                    "path": "paper\\main.tex"
+                },
+                {
+                    "line": 119,
+                    "content": "\\begin{figure}[htbp]",
+                    "path": "paper\\main.tex"
+                },
+                {
+                    "line": 129,
+                    "content": "\\begin{figure}[htbp]",
+                    "path": "paper\\main.tex"
+                },
+                {
+                    "line": 138,
+                    "content": "\\begin{figure}[htbp]",
+                    "path": "paper\\main.tex"
+                }
+            ]
+        },
+        "pdf_metadata": {
+            "path": "paper\\main.pdf",
+            "exists": true,
+            "size_bytes": 659537,
+            "sha256": "c3dc324b59d9dae7cd02183adef139980f9cbf623e481c7bc211d865ab1d5ea4",
+            "mtime_utc": "2026-05-13T23:59:47.836795+00:00"
+        },
+        "provider_fallback_accounting_audit": {
+            "observed_provider_or_fallback_key_paths": [
+                "consistency_patch_latest.provider_fallback_accounting_audit",
+                "consistency_patch_latest.provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+                "consistency_patch_latest.provider_fallback_accounting_audit.quantitative_provider_distribution_available",
+                "consistency_patches[0].provider_fallback_accounting_audit",
+                "consistency_patches[0].provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+                "consistency_patches[0].provider_fallback_accounting_audit.quantitative_provider_distribution_available",
+                "provider_fallback_accounting_audit",
+                "provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+                "provider_fallback_accounting_audit.quantitative_provider_distribution_available"
+            ],
+            "quantitative_provider_distribution_available": false,
+            "note": "No exact quantitative provider distribution/fallback-count table was found in results/release_packet.json. This patch records the gap rather than inventing counts."
+        },
+        "claim_support_audit": {
+            "supported_main_manuscript_artifacts": [
+                "paper\\tables\\main_results.tex",
+                "paper\\tables\\significance.tex",
+                "paper\\tables\\ablation.tex",
+                "paper\\figures\\per_step_rmse.png",
+                "paper\\figures\\position_error_ecdf.png",
+                "paper\\figures\\visibility_bucket_rmse.png",
+                "paper\\figures\\uncertainty_calibration.png"
+            ],
+            "unsupported_claims_blocked": [
+                "Any claim that release-only diagnostics are included in the current main manuscript without an active paper/main.tex include.",
+                "Any exact provider-distribution/fallback-count claim not backed by a structured provider log."
+            ],
+            "line_reference_policy": "Line references are freshly parsed from current paper/main.tex during this patch."
+        }
+    },
+    "consistency_patches": [
+        {
+            "patched_at_utc": "2026-05-14T00:32:31Z",
+            "changed_files": [
+                "results/release_packet.json",
+                "results/manuscript_release_consistency_patch.md",
+                "results/manuscript_release_consistency_patch.json"
+            ],
+            "before_counts": {
+                "main_generated_table_count": 3,
+                "main_inline_table_count": 0,
+                "main_figure_include_count": 4,
+                "main_figure_environment_count": 4,
+                "main_figure_count": 4
+            },
+            "after_counts": {
+                "main_generated_table_count": 0,
+                "main_inline_table_count": 0,
+                "main_figure_environment_count": 0,
+                "main_figure_include_count": 0,
+                "main_figure_count": 0
+            },
+            "static_include_audit": {
+                "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+                "counts": {
+                    "main_generated_table_count": 0,
+                    "main_inline_table_count": 0,
+                    "main_figure_environment_count": 0,
+                    "main_figure_include_count": 0,
+                    "main_figure_count": 0
+                },
+                "active_table_line_evidence": [],
+                "active_figure_line_evidence": [],
+                "active_table_environment_lines": [],
+                "active_figure_environment_lines": []
+            },
+            "pdf_metadata": {
+                "path": "paper\\main.pdf",
+                "exists": true,
+                "size_bytes": 659537,
+                "sha256": "c3dc324b59d9dae7cd02183adef139980f9cbf623e481c7bc211d865ab1d5ea4",
+                "mtime_utc": "2026-05-13T23:59:47.836795+00:00"
+            },
+            "provider_fallback_accounting_audit": {
+                "observed_provider_or_fallback_key_paths": [],
+                "quantitative_provider_distribution_available": false,
+                "note": "No exact quantitative provider distribution/fallback-count table was found in results/release_packet.json. This patch records the gap rather than inventing counts."
+            },
+            "claim_support_audit": {
+                "supported_main_manuscript_artifacts": [],
+                "unsupported_claims_blocked": [
+                    "Any claim that release-only diagnostics are included in the current main manuscript without an active paper/main.tex include.",
+                    "Any exact provider-distribution/fallback-count claim not backed by a structured provider log."
+                ],
+                "line_reference_policy": "Line references are freshly parsed from current paper/main.tex during this patch."
+            }
+        },
+        {
+            "patched_at_utc": "2026-05-14T00:33:39Z",
+            "changed_files": [
+                "results/release_packet.json",
+                "results/manuscript_release_consistency_patch.md",
+                "results/manuscript_release_consistency_patch.json",
+                "results/patch_manuscript_release_consistency_current.py"
+            ],
+            "before_counts": {
+                "main_generated_table_count": 3,
+                "main_inline_table_count": 0,
+                "main_figure_include_count": 4,
+                "main_figure_environment_count": 4,
+                "main_figure_count": 4
+            },
+            "after_counts": {
+                "main_generated_table_count": 3,
+                "main_inline_table_count": 0,
+                "main_figure_environment_count": 4,
+                "main_figure_include_count": 4,
+                "main_figure_count": 4
+            },
+            "static_include_audit": {
+                "claim_boundary": "Only active, uncommented paper/main.tex inputs/includes are direct main-manuscript evidence. Release, diagnostic, historical, and supplement-planned artifacts remain tracked but must not be described as included in the current main manuscript unless paper/main.tex includes them.",
+                "counts": {
+                    "main_generated_table_count": 3,
+                    "main_inline_table_count": 0,
+                    "main_figure_environment_count": 4,
+                    "main_figure_include_count": 4,
+                    "main_figure_count": 4
+                },
+                "active_table_line_evidence": [
+                    {
+                        "line": 103,
+                        "content": "\\input{tables/main_results.tex}",
+                        "path": "paper\\tables\\main_results.tex",
+                        "exists": true
+                    },
+                    {
+                        "line": 146,
+                        "content": "\\input{tables/significance.tex}",
+                        "path": "paper\\tables\\significance.tex",
+                        "exists": true
+                    },
+                    {
+                        "line": 153,
+                        "content": "\\input{tables/ablation.tex}",
+                        "path": "paper\\tables\\ablation.tex",
+                        "exists": true
+                    }
+                ],
+                "active_figure_line_evidence": [
+                    {
+                        "line": 114,
+                        "content": "\\includegraphics[width=0.8\\textwidth]{figures/per_step_rmse.png}",
+                        "path": "paper\\figures\\per_step_rmse.png",
+                        "exists": true
+                    },
+                    {
+                        "line": 121,
+                        "content": "\\includegraphics[width=0.8\\textwidth]{figures/position_error_ecdf.png}",
+                        "path": "paper\\figures\\position_error_ecdf.png",
+                        "exists": true
+                    },
+                    {
+                        "line": 131,
+                        "content": "\\includegraphics[width=0.8\\textwidth]{figures/visibility_bucket_rmse.png}",
+                        "path": "paper\\figures\\visibility_bucket_rmse.png",
+                        "exists": true
+                    },
+                    {
+                        "line": 140,
+                        "content": "\\includegraphics[width=0.8\\textwidth]{figures/uncertainty_calibration.png}",
+                        "path": "paper\\figures\\uncertainty_calibration.png",
+                        "exists": true
+                    }
+                ],
+                "active_table_environment_lines": [],
+                "active_figure_environment_lines": [
+                    {
+                        "line": 112,
+                        "content": "\\begin{figure}[htbp]",
+                        "path": "paper\\main.tex"
+                    },
+                    {
+                        "line": 119,
+                        "content": "\\begin{figure}[htbp]",
+                        "path": "paper\\main.tex"
+                    },
+                    {
+                        "line": 129,
+                        "content": "\\begin{figure}[htbp]",
+                        "path": "paper\\main.tex"
+                    },
+                    {
+                        "line": 138,
+                        "content": "\\begin{figure}[htbp]",
+                        "path": "paper\\main.tex"
+                    }
+                ]
+            },
+            "pdf_metadata": {
+                "path": "paper\\main.pdf",
+                "exists": true,
+                "size_bytes": 659537,
+                "sha256": "c3dc324b59d9dae7cd02183adef139980f9cbf623e481c7bc211d865ab1d5ea4",
+                "mtime_utc": "2026-05-13T23:59:47.836795+00:00"
+            },
+            "provider_fallback_accounting_audit": {
+                "observed_provider_or_fallback_key_paths": [
+                    "consistency_patch_latest.provider_fallback_accounting_audit",
+                    "consistency_patch_latest.provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+                    "consistency_patch_latest.provider_fallback_accounting_audit.quantitative_provider_distribution_available",
+                    "consistency_patches[0].provider_fallback_accounting_audit",
+                    "consistency_patches[0].provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+                    "consistency_patches[0].provider_fallback_accounting_audit.quantitative_provider_distribution_available",
+                    "provider_fallback_accounting_audit",
+                    "provider_fallback_accounting_audit.observed_provider_or_fallback_key_paths",
+                    "provider_fallback_accounting_audit.quantitative_provider_distribution_available"
+                ],
+                "quantitative_provider_distribution_available": false,
+                "note": "No exact quantitative provider distribution/fallback-count table was found in results/release_packet.json. This patch records the gap rather than inventing counts."
+            },
+            "claim_support_audit": {
+                "supported_main_manuscript_artifacts": [
+                    "paper\\tables\\main_results.tex",
+                    "paper\\tables\\significance.tex",
+                    "paper\\tables\\ablation.tex",
+                    "paper\\figures\\per_step_rmse.png",
+                    "paper\\figures\\position_error_ecdf.png",
+                    "paper\\figures\\visibility_bucket_rmse.png",
+                    "paper\\figures\\uncertainty_calibration.png"
+                ],
+                "unsupported_claims_blocked": [
+                    "Any claim that release-only diagnostics are included in the current main manuscript without an active paper/main.tex include.",
+                    "Any exact provider-distribution/fallback-count claim not backed by a structured provider log."
+                ],
+                "line_reference_policy": "Line references are freshly parsed from current paper/main.tex during this patch."
+            }
+        }
+    ],
+    "submission_validation_current": {
+        "updated_at_utc": "2026-05-14T01:26:21.830849+00:00",
+        "overall_passed": false,
+        "pass_fail": {
+            "citations": true,
+            "all_active_inputs_exist": true,
+            "all_active_figures_exist": true,
+            "release_packet_json": true,
+            "citation_json": true,
+            "pdf_build_exit_0": true,
+            "pdf_readback_nonzero_pages": false,
+            "pytest_exit_0": true
+        },
+        "validation_artifacts": {
+            "submission_validation": "results\\validation\\submission_validation.json",
+            "citation_validation": "results\\validation\\citation_validation.json",
+            "release_evidence_index": "results\\validation\\release_evidence_index.json",
+            "pdf_build_log": "results\\validation\\pdf_build.log",
+            "pytest_log": "results\\validation\\pytest.log"
+        },
+        "pdf_evidence": {
+            "path": "paper\\main.pdf",
+            "exists": true,
+            "bytes": 660908,
+            "sha256": "12c5b5d1be5ef339d872bf543f1300e2e823a579efa6cfdf3b58b317094809d1",
+            "pages": 0,
+            "passed": false
+        },
+        "pytest": {
+            "command": "D:\\GNN State Estimation\\.venv\\Scripts\\python.exe -m pytest",
+            "cwd": "D:\\GNN State Estimation",
+            "started_at": "2026-05-14T01:26:27.467633+00:00",
+            "ended_at": "2026-05-14T01:26:38.235397+00:00",
+            "exit_code": 0,
+            "log": "results\\validation\\pytest.log",
+            "log_bytes": 1351,
+            "log_sha256": "548b1315ebe062a2ca5002dd4e8d7783c50d9b34005002a7e1f10e0ed20a5dc8",
+            "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-9.0.3, pluggy-1.6.0\nrootdir: D:\\GNN State Estimation\nconfigfile: pyproject.toml\ncollected 43 items\n\ntests\\test_benchmark_tasks.py ....                                       [  9%]\ntests\\test_guarded_selection.py .                                        [ 11%]\ntests\\test_innovation_conditioning.py ..                                 [ 16%]\ntests\\test_measurement_model.py .                                        [ 18%]\ntests\\test_no_warmup_leakage.py .                                        [ 20%]\ntests\\test_observation_replay.py ......                                  [ 34%]\ntests\\test_prior_bank_and_runtime.py ........                            [ 53%]\ntests\\test_public_data.py ....                                           [ 62%]\ntests\\test_public_tracking_fetch.py ...                                  [ 69%]\ntests\\test_reporting_and_sampling.py .............                       [100%]\n\n============================= 43 passed in 8.76s ==============================\n\n",
+            "passed": true
+        },
+        "pdf_build": {
+            "command": "C:\\Users\\alavi\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe scripts\\compile_paper.py",
+            "cwd": "D:\\GNN State Estimation",
+            "started_at": "2026-05-14T01:26:21.830895+00:00",
+            "ended_at": "2026-05-14T01:26:27.452258+00:00",
+            "exit_code": 0,
+            "log": "results\\validation\\pdf_build.log",
+            "log_bytes": 38234,
+            "log_sha256": "b7c65a3e9dcb9400c18a358852e4f74d51030e835409dea8ced5e5ccb3ec0d13",
+            "tail": "pts\\evaluate_models.py --conf\nig configs\\experiment.yaml --device cuda:0 --scenarios test,stress_test[] \n(./evidence_plan.tex\nOverfull \\hbox (79.44601pt too wide) in paragraph at lines 10--11\n\\OT1/cmtt/m/n/10 figures/position[]error[]ecdf.png\\OT1/cmr/m/n/10 , \\OT1/cmtt/m\n/n/10 figures/visibility[]bucket[]rmse.png\\OT1/cmr/m/n/10 , and \\OT1/cmtt/m/n/1\n0 figures/uncertainty[]calibration.png\\OT1/cmr/m/n/10 .\n[9]\nOverfull \\hbox (25.58052pt too wide) in paragraph at lines 21--22\n[]\\OT1/cmr/m/n/10 A reviewer-facing Mark-down ver-sion of this ev-i-dence plan \nis stored at \\OT1/cmtt/m/n/10 results/manuscript[]evidence[]plan.md\\OT1/cmr/m/n\n/10 . \n)\nUnderfull \\hbox (badness 1668) in paragraph at lines 25--193\n []\\OT1/cmr/bx/n/10 Manuscript-release con-sis-tency note.[] \\OT1/cmr/m/n/10 Th\ne re-lease ledger dis-tin-guishes ac-tive main-manuscript\n\nUnderfull \\hbox (badness 4144) in paragraph at lines 25--193\n\\OT1/cmr/m/n/10 gen-er-ated ta-ble in-puts are: \\OT1/cmtt/m/n/10 paper/tables/m\nain[]results.tex\\OT1/cmr/m/n/10 , \\OT1/cmtt/m/n/10 paper/tables/significance.te\nx\\OT1/cmr/m/n/10 ,\n\nUnderfull \\hbox (badness 1014) in paragraph at lines 25--193\n\\OT1/cmtt/m/n/10 paper/tables/ablation.tex\\OT1/cmr/m/n/10 . The ac-tive fig-ure\n in-cludes are: \\OT1/cmtt/m/n/10 paper/figures/per[]step[]rmse.png\\OT1/cmr/m/n/\n10 ,\n\nUnderfull \\hbox (badness 10000) in paragraph at lines 25--193\n\\OT1/cmtt/m/n/10 paper/figures/position[]error[]ecdf.png\\OT1/cmr/m/n/10 , \\OT1/\ncmtt/m/n/10 paper/figures/visibility[]bucket[]rmse.png\\OT1/cmr/m/n/10 ,\n(./main.bbl [10]\nUnderfull \\hbox (badness 6252) in paragraph at lines 45--51\n[]\\OT1/cmr/m/n/10 William L. Hamil-ton, Rex Ying, and Jure Leskovec.  In-duc-ti\nve rep-re-sen-ta-tion learn-\n\nUnderfull \\hbox (badness 2173) in paragraph at lines 45--51\n\\OT1/cmr/m/n/10 ing on large graphs.  In \\OT1/cmr/m/it/10 Ad-vances in Neu-ral \nIn-for-ma-tion Pro-cess-ing Sys-tems\\OT1/cmr/m/n/10 , vol-ume 30,\n\nUnderfull \\hbox (badness 5847) in paragraph at lines 45--51\n\\OT1/cmr/m/n/10 pages 1024--1034, 2017.  []$\\OT1/cmtt/m/n/10 https : / / procee\ndings . neurips . cc / paper _ files / paper / 2017 / hash /\n[11]) [12] (./main.aux)\n\nLaTeX Warning: There were undefined references.\n\n\nLaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.\n\n\nPackage rerunfilecheck Warning: File `main.out' has changed.\n(rerunfilecheck)                Rerun to get outlines right\n(rerunfilecheck)                or use package `bookmark'.\n\n )\n(see the transcript file for additional information)<c:/texlive/2024/texmf-dist\n/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/publi\nc/amsfonts/cm/cmbx9.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts\n/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7\n.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/t\nexlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/202\n4/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-di\nst/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/ty\npe1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/\namsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/\ncm/cmsy7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.\npfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/t\nexlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb><c:/texlive/202\n4/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>\nOutput written on main.pdf (12 pages, 658099 bytes).\nTranscript written on main.log.\n[compile 1/3] pdflatex -interaction=nonstopmode -halt-on-error main.tex\n[bibtex] bibtex main\n[compile 2/3] pdflatex -interaction=nonstopmode -halt-on-error main.tex\n[compile 3/3] pdflatex -interaction=nonstopmode -halt-on-error main.tex\nCompiled paper\\main.tex successfully.\n\n",
+            "passed": true
+        },
+        "citation_validation": {
+            "main_tex": "paper\\main.tex",
+            "bib_file": "paper\\references.bib",
+            "cited_key_count": 23,
+            "bib_entry_count": 27,
+            "cited_keys": [
+                "battaglia2018relational",
+                "celestrak_gp",
+                "efron1994",
+                "gilmer2017neural",
+                "guo2017calibration",
+                "haarnoja2016",
+                "hamilton2017",
+                "hoots1980spacetrack",
+                "julier1997unscented",
+                "kalman1960",
+                "kipf2017",
+                "montenbruck2000",
+                "revach2022kalmannet",
+                "satnogs_api",
+                "satnogs_network",
+                "satnogs_observations",
+                "scarselli2009graph",
+                "tapley2004statistical",
+                "vallado2006sgp4",
+                "vallado2013",
+                "velickovic2018",
+                "wan2000unscented",
+                "wilcoxon1945"
+            ],
+            "missing_bib_entries": [],
+            "unused_bib_entries": [
+                "battaglia2016interaction",
+                "chen2018neural",
+                "kipf2018neural",
+                "sanchezgonzalez2020learning"
+            ],
+            "passed": true
+        },
+        "active_include_counts": {
+            "main_generated_table_count": 3,
+            "main_inline_table_count": 0,
+            "main_figure_include_count": 4,
+            "main_figure_environment_count": 4,
+            "main_figure_count": 4
+        }
+    }
+}
+
+[stderr]
+
+[ended_at] 2026-05-14T01:27:14.361658+00:00
+[exit_code] 0

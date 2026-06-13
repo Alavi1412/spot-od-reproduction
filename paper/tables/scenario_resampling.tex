@@ -1,0 +1,22 @@
+\begin{table}[t]
+  \centering
+  \caption{Deterministic scenario-pooled re-derivation on the primary observed-step metric, with the scenario as the statistical unit rather than the training seed. Observed-step ($\geq$1 visible station) position RMSE for EKF, UKF, tuned AUKF, and the learned RGR-GF residual across 8 deterministic scenarios spanning drag, process-noise, maneuver-like, and three orbital-inclination/geometry regimes plus the nominal and measurement-noise-stress anchors. Values are derived offline from the released primary-seed metrics by pooling the visibility buckets, so the table regenerates deterministically without recompute. This is a deterministic re-derivation, not an independent random draw; the independent-realization design is instead exercised by the characterized DBAR heuristic and its independent-realization sweep (Table~\ref{tab:dbar_independent_sweep}), and genuinely independent scenario realizations remain identified future work. This complements the 15-seed training-population cohort: it measures whether the learned residual generalises across orbital/geometry/noise regimes, and it does not.}
+  \label{tab:scenario_resampling}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccccc}
+    \toprule
+    Scenario & EKF [m] & UKF [m] & AUKF [m] & RGR-GF [m] & Best \\
+    \midrule
+    Nominal & 382.76 & 387.44 & 392.69 & 383.21 & EKF \\
+    Measurement-noise stress & 1006.32 & 1882.72 & 915.21 & 1011.47 & AUKF \\
+    High drag & 394.78 & 449.55 & 390.48 & 392.07 & AUKF \\
+    Process-noise shift & 398.58 & 402.57 & 430.37 & 407.99 & EKF \\
+    Maneuver-like shift & 553.91 & 666.06 & 671.56 & 588.59 & EKF \\
+    Low inclination & 345.01 & 361.82 & 325.32 & 336.20 & AUKF \\
+    Sun-synchronous-like & 391.53 & 412.36 & 400.20 & 389.84 & RGR-GF \\
+    High inclination & 441.90 & 474.61 & 607.11 & 513.33 & EKF \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Statistical unit: deterministic scenario ($n=8$), single primary seed per scenario. Across the scenario population a classical filter (EKF or AUKF) gives the best observed-step estimate in 7 of 8 scenarios and RGR-GF in 1 of 8. RGR-GF beats the fixed-noise UKF in 6/8 scenarios, the tuned AUKF in 5/8 (scenario-mean $-$13.78~m), and the causal EKF in 3/8 (scenario-mean $+$13.49~m). No learned advantage generalises across regimes.}
+\end{table}

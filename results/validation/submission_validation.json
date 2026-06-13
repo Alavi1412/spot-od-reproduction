@@ -1,0 +1,529 @@
+{
+  "active_figure_environment_lines": [
+    {
+      "content": "\\begin{figure}[t]",
+      "line": 199,
+      "path": "paper\\main.tex"
+    }
+  ],
+  "active_figures": [
+    {
+      "bytes": 195179,
+      "directive": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+      "exists": true,
+      "line": 201,
+      "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
+      "target": "figures/aukf_r_inflation_mechanism.png"
+    }
+  ],
+  "active_generated_table_inputs": [
+    {
+      "bytes": 1627,
+      "directive": "\\input{tables/main_abbreviation_glossary.tex}",
+      "exists": true,
+      "line": 47,
+      "path": "paper\\tables\\main_abbreviation_glossary.tex",
+      "target": "tables/main_abbreviation_glossary.tex"
+    },
+    {
+      "bytes": 3463,
+      "directive": "\\input{tables/main_framework_portability.tex}",
+      "exists": true,
+      "line": 93,
+      "path": "paper\\tables\\main_framework_portability.tex",
+      "target": "tables/main_framework_portability.tex"
+    },
+    {
+      "bytes": 2499,
+      "directive": "\\input{tables/main_findings_summary.tex}",
+      "exists": true,
+      "line": 162,
+      "path": "paper\\tables\\main_findings_summary.tex",
+      "target": "tables/main_findings_summary.tex"
+    },
+    {
+      "bytes": 2316,
+      "directive": "\\input{tables/main_k32_replication.tex}",
+      "exists": true,
+      "line": 168,
+      "path": "paper\\tables\\main_k32_replication.tex",
+      "target": "tables/main_k32_replication.tex"
+    },
+    {
+      "bytes": 1376,
+      "directive": "\\input{tables/main_aukf_mechanism.tex}",
+      "exists": true,
+      "line": 206,
+      "path": "paper\\tables\\main_aukf_mechanism.tex",
+      "target": "tables/main_aukf_mechanism.tex"
+    },
+    {
+      "bytes": 1137,
+      "directive": "\\input{tables/main_structural_recoverability.tex}",
+      "exists": true,
+      "line": 233,
+      "path": "paper\\tables\\main_structural_recoverability.tex",
+      "target": "tables/main_structural_recoverability.tex"
+    },
+    {
+      "bytes": 1589,
+      "directive": "\\input{tables/main_drag_scale_cascade.tex}",
+      "exists": true,
+      "line": 237,
+      "path": "paper\\tables\\main_drag_scale_cascade.tex",
+      "target": "tables/main_drag_scale_cascade.tex"
+    },
+    {
+      "bytes": 1142,
+      "directive": "\\input{tables/main_long_arc_result.tex}",
+      "exists": true,
+      "line": 248,
+      "path": "paper\\tables\\main_long_arc_result.tex",
+      "target": "tables/main_long_arc_result.tex"
+    },
+    {
+      "bytes": 1018,
+      "directive": "\\input{tables/main_dbar_withdrawal.tex}",
+      "exists": true,
+      "line": 265,
+      "path": "paper\\tables\\main_dbar_withdrawal.tex",
+      "target": "tables/main_dbar_withdrawal.tex"
+    }
+  ],
+  "active_inline_table_environment_lines": [],
+  "active_inputs": [
+    {
+      "bytes": 1627,
+      "directive": "\\input{tables/main_abbreviation_glossary.tex}",
+      "exists": true,
+      "line": 47,
+      "path": "paper\\tables\\main_abbreviation_glossary.tex",
+      "target": "tables/main_abbreviation_glossary.tex"
+    },
+    {
+      "bytes": 3463,
+      "directive": "\\input{tables/main_framework_portability.tex}",
+      "exists": true,
+      "line": 93,
+      "path": "paper\\tables\\main_framework_portability.tex",
+      "target": "tables/main_framework_portability.tex"
+    },
+    {
+      "bytes": 2499,
+      "directive": "\\input{tables/main_findings_summary.tex}",
+      "exists": true,
+      "line": 162,
+      "path": "paper\\tables\\main_findings_summary.tex",
+      "target": "tables/main_findings_summary.tex"
+    },
+    {
+      "bytes": 2316,
+      "directive": "\\input{tables/main_k32_replication.tex}",
+      "exists": true,
+      "line": 168,
+      "path": "paper\\tables\\main_k32_replication.tex",
+      "target": "tables/main_k32_replication.tex"
+    },
+    {
+      "bytes": 1376,
+      "directive": "\\input{tables/main_aukf_mechanism.tex}",
+      "exists": true,
+      "line": 206,
+      "path": "paper\\tables\\main_aukf_mechanism.tex",
+      "target": "tables/main_aukf_mechanism.tex"
+    },
+    {
+      "bytes": 1137,
+      "directive": "\\input{tables/main_structural_recoverability.tex}",
+      "exists": true,
+      "line": 233,
+      "path": "paper\\tables\\main_structural_recoverability.tex",
+      "target": "tables/main_structural_recoverability.tex"
+    },
+    {
+      "bytes": 1589,
+      "directive": "\\input{tables/main_drag_scale_cascade.tex}",
+      "exists": true,
+      "line": 237,
+      "path": "paper\\tables\\main_drag_scale_cascade.tex",
+      "target": "tables/main_drag_scale_cascade.tex"
+    },
+    {
+      "bytes": 1142,
+      "directive": "\\input{tables/main_long_arc_result.tex}",
+      "exists": true,
+      "line": 248,
+      "path": "paper\\tables\\main_long_arc_result.tex",
+      "target": "tables/main_long_arc_result.tex"
+    },
+    {
+      "bytes": 1018,
+      "directive": "\\input{tables/main_dbar_withdrawal.tex}",
+      "exists": true,
+      "line": 265,
+      "path": "paper\\tables\\main_dbar_withdrawal.tex",
+      "target": "tables/main_dbar_withdrawal.tex"
+    }
+  ],
+  "citation_validation": {
+    "aux_citation_key_count": 95,
+    "bbl_bibitem_count": 95,
+    "bbl_bytes": 24160,
+    "bbl_path": "paper\\main.bbl",
+    "bib_entry_count": 103,
+    "bib_file": "paper\\references.bib",
+    "citation_source_files": [
+      "paper\\main.tex",
+      "paper\\tables\\main_abbreviation_glossary.tex",
+      "paper\\tables\\main_aukf_mechanism.tex",
+      "paper\\tables\\main_dbar_withdrawal.tex",
+      "paper\\tables\\main_drag_scale_cascade.tex",
+      "paper\\tables\\main_findings_summary.tex",
+      "paper\\tables\\main_framework_portability.tex",
+      "paper\\tables\\main_k32_replication.tex",
+      "paper\\tables\\main_long_arc_result.tex",
+      "paper\\tables\\main_structural_recoverability.tex"
+    ],
+    "cited_key_count": 95,
+    "cited_keys": [
+      "badura2025piml",
+      "battaglia2018relational",
+      "belyakov2025satellites",
+      "benjamini1995",
+      "bouthillier2021accounting",
+      "burgers1998analysis",
+      "cddis_slr_npt",
+      "celestrak_gp",
+      "ceresoli2025robust",
+      "chen2024robust",
+      "chen2025bilstmdrag",
+      "chen2026orbitrecovery",
+      "chihabi2025adaptive",
+      "chu2026conjunctiongnn",
+      "cossu2026lugre",
+      "dehghani2021benchmark",
+      "efron1994",
+      "evensen1994sequential",
+      "friedman2018space",
+      "gao2025heavytailed",
+      "gilmer2017neural",
+      "guo2017calibration",
+      "haarnoja2016",
+      "hamilton2017",
+      "heidrich2025collocation",
+      "holm1979",
+      "hoots1980spacetrack",
+      "ilrs_crd_format",
+      "ilrs_npt_data",
+      "jazwinski1970stochastic",
+      "julier1997unscented",
+      "kalman1960",
+      "kipf2017",
+      "kiprit2026temporalgrid",
+      "kruse2025adaptive",
+      "lang2025starlinkunscented",
+      "lemoine2026std2400",
+      "li2026delay",
+      "li2026islheterogeneous",
+      "liao2026patchtransformer",
+      "lim2026publicorbitmaneuver",
+      "liu2026epsa",
+      "liu2026lowthrustpiecewise",
+      "lowe2026drag",
+      "mahmud2026pinnleo",
+      "mehra1970adaptive",
+      "min2026transparency",
+      "montenbruck2000",
+      "morris2019simulation",
+      "mortada2025recursivekalmannet",
+      "ode2026protocol",
+      "ojedaromero2025adaptivecislunariod",
+      "oliveira2026opticalflow",
+      "paranjape2026hybridpgm",
+      "paranjape2026probabilistic",
+      "paul2026mukf_tasking",
+      "pearlman2002ilrs",
+      "pineau2021reproducibility",
+      "pinheiro2024flexkalmannet",
+      "ramponi2026pontryagin",
+      "ren2026slrbds3",
+      "revach2022kalmannet",
+      "sage1969adaptive",
+      "satnogs_api",
+      "satnogs_network",
+      "satnogs_observations",
+      "scarselli2009graph",
+      "scorsoglio2023pinn",
+      "scorsoglio2026xgeo",
+      "segura2026hybridsgp4",
+      "selvan2023precise",
+      "semmelrock2025reproducibility",
+      "smego2026dynamic",
+      "song2026multiconstrainediod",
+      "stacey2021adaptive",
+      "sztamfater2026sequential",
+      "tapley2004statistical",
+      "vallado2006sgp4",
+      "vallado2013",
+      "varey2024physics",
+      "velickovic2018",
+      "wan2000unscented",
+      "wang2026empiricalacceleration",
+      "wang2026heavytailedkf",
+      "wilcoxon1945",
+      "wright1981drag",
+      "xu2026arckf",
+      "yang2026lstmtransformerorbit",
+      "yeo2020nistir",
+      "zhang2024libration",
+      "zhang2026hnn",
+      "zhou2023lstm",
+      "zhou2023orderswitching",
+      "zhu2025bayesian",
+      "zhu2026multiscale"
+    ],
+    "findings": {
+      "missing_bib_entries_from_tex": [],
+      "missing_bibitems_for_aux_citations": [],
+      "undefined_citations_or_refs_in_logs": []
+    },
+    "main_tex": "paper\\main.tex",
+    "passed": true,
+    "status": "pass",
+    "unused_bib_entries": [
+      "battaglia2016interaction",
+      "chen2018neural",
+      "kipf2018neural",
+      "mehrfard2026adaptivekalmannet",
+      "ovadia2019can",
+      "peng2011reproducible",
+      "sanchezgonzalez2020learning",
+      "sandve2013ten"
+    ]
+  },
+  "counts": {
+    "main_figure_count": 1,
+    "main_figure_environment_count": 1,
+    "main_generated_table_count": 9,
+    "main_inline_table_count": 0
+  },
+  "generated_utc": "2026-06-13T02:53:18.810669+00:00",
+  "latex_warnings": {
+    "category_counts": {
+      "latex_warning": 0,
+      "other_warning": 0,
+      "overfull": 0,
+      "package_warning": 0,
+      "underfull": 0
+    },
+    "count": 0,
+    "count_basis": "raw warning/overfull/underfull log lines",
+    "deduplicated_line_count": 0,
+    "details_redacted": true,
+    "documents": {
+      "main": {
+        "category_counts": {
+          "latex_warning": 0,
+          "other_warning": 0,
+          "overfull": 0,
+          "package_warning": 0,
+          "underfull": 0
+        },
+        "count": 0,
+        "count_basis": "raw warning/overfull/underfull log lines",
+        "deduplicated_line_count": 0,
+        "details_redacted": true,
+        "document": "main",
+        "items": [],
+        "log_exists": true,
+        "log_path": "paper\\main.log",
+        "raw_line_count": 0,
+        "truncated": false
+      },
+      "supplement": {
+        "category_counts": {
+          "latex_warning": 0,
+          "other_warning": 0,
+          "overfull": 0,
+          "package_warning": 0,
+          "underfull": 0
+        },
+        "count": 0,
+        "count_basis": "raw warning/overfull/underfull log lines",
+        "deduplicated_line_count": 0,
+        "details_redacted": true,
+        "document": "supplement",
+        "items": [],
+        "log_exists": true,
+        "log_path": "paper\\supplement.log",
+        "raw_line_count": 0,
+        "truncated": false
+      }
+    },
+    "items": [],
+    "log_path": "paper\\main.log",
+    "package_warning_scope": "main plus supplement when paper/supplement.log exists",
+    "raw_line_count": 0,
+    "supplement_warning_count": 0,
+    "truncated": false
+  },
+  "overall_passed": true,
+  "pass_fail": {
+    "all_active_figures_exist": true,
+    "all_active_inputs_exist": true,
+    "citations": true,
+    "pdf_readback_nonzero_pages": true,
+    "release_packet_json_and_active_artifacts": true
+  },
+  "pdf": {
+    "bytes": 719991,
+    "exists": true,
+    "page_count": 33,
+    "page_readback_errors": [
+      "pypdf: No module named 'pypdf'",
+      "PyPDF2: No module named 'PyPDF2'"
+    ],
+    "page_source": "pdfinfo",
+    "pages": 33,
+    "passed": true,
+    "path": "paper\\main.pdf",
+    "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745"
+  },
+  "pdf_evidence": {
+    "bytes": 719991,
+    "exists": true,
+    "page_count": 33,
+    "page_readback_errors": [
+      "pypdf: No module named 'pypdf'",
+      "PyPDF2: No module named 'PyPDF2'"
+    ],
+    "page_source": "pdfinfo",
+    "pages": 33,
+    "passed": true,
+    "path": "paper\\main.pdf",
+    "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745"
+  },
+  "release_evidence_index": {
+    "active_include_counts": {
+      "main_figure_count": 1,
+      "main_figure_environment_count": 1,
+      "main_generated_table_count": 9,
+      "main_inline_table_count": 0
+    },
+    "checked_artifact_count": 10,
+    "duplicate_line_evidence_checks": {
+      "manuscript_inclusion_status.active_figure_line_evidence": true,
+      "manuscript_inclusion_status.active_table_line_evidence": true,
+      "release_metadata.active_figure_line_evidence": true,
+      "release_metadata.active_table_line_evidence": true,
+      "release_packet_truth_sync.main_tex_line_evidence.active_figure_environment_lines": true,
+      "release_packet_truth_sync.main_tex_line_evidence.active_includegraphics_lines": true,
+      "release_packet_truth_sync.main_tex_line_evidence.active_input_lines": true,
+      "status_evidence.active_figure_environment_lines": true,
+      "status_evidence.active_figure_include_lines": true,
+      "status_evidence.active_table_input_lines": true,
+      "top_level.active_figure_line_evidence": true,
+      "top_level.active_table_line_evidence": true
+    },
+    "duplicate_line_evidence_passed": true,
+    "exists": true,
+    "expected_active_figure_environment_lines": [
+      {
+        "content": "\\begin{figure}[t]",
+        "line": 199,
+        "path": "paper\\main.tex"
+      }
+    ],
+    "expected_active_figure_line_evidence": [
+      {
+        "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
+        "line": 201,
+        "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
+      }
+    ],
+    "expected_active_table_line_evidence": [
+      {
+        "content": "\\input{tables/main_abbreviation_glossary.tex}",
+        "line": 47,
+        "path": "paper\\tables\\main_abbreviation_glossary.tex"
+      },
+      {
+        "content": "\\input{tables/main_framework_portability.tex}",
+        "line": 93,
+        "path": "paper\\tables\\main_framework_portability.tex"
+      },
+      {
+        "content": "\\input{tables/main_findings_summary.tex}",
+        "line": 162,
+        "path": "paper\\tables\\main_findings_summary.tex"
+      },
+      {
+        "content": "\\input{tables/main_k32_replication.tex}",
+        "line": 168,
+        "path": "paper\\tables\\main_k32_replication.tex"
+      },
+      {
+        "content": "\\input{tables/main_aukf_mechanism.tex}",
+        "line": 206,
+        "path": "paper\\tables\\main_aukf_mechanism.tex"
+      },
+      {
+        "content": "\\input{tables/main_structural_recoverability.tex}",
+        "line": 233,
+        "path": "paper\\tables\\main_structural_recoverability.tex"
+      },
+      {
+        "content": "\\input{tables/main_drag_scale_cascade.tex}",
+        "line": 237,
+        "path": "paper\\tables\\main_drag_scale_cascade.tex"
+      },
+      {
+        "content": "\\input{tables/main_long_arc_result.tex}",
+        "line": 248,
+        "path": "paper\\tables\\main_long_arc_result.tex"
+      },
+      {
+        "content": "\\input{tables/main_dbar_withdrawal.tex}",
+        "line": 265,
+        "path": "paper\\tables\\main_dbar_withdrawal.tex"
+      }
+    ],
+    "json_valid": true,
+    "missing_artifacts": [],
+    "passed": true,
+    "path": "results\\release_packet.json",
+    "sha256": "ff3214bfc1758e06919cedcb5bedb3c74e0173e2448976c7fcd6b9fc2a3e5ed8",
+    "status": "pass"
+  },
+  "root_label": "submission_root",
+  "status": "pass",
+  "supplement_layout_warnings": {
+    "json": "results\\validation\\supplement_layout_warnings.json",
+    "markdown": "results\\validation\\supplement_layout_warnings.md",
+    "status": "pass",
+    "warning_count": 0
+  },
+  "supporting_artifacts": {
+    "adversarial_review_status": "pass",
+    "artifact_paths": [
+      "results\\validation\\owner_demo.md",
+      "results\\validation\\command_manifest.json",
+      "results\\validation\\adversarial_review.json",
+      "results\\validation\\task227_final_validation.json"
+    ],
+    "command_manifest_status": "pass",
+    "paths": {
+      "adversarial_review": "results\\validation\\adversarial_review.json",
+      "command_manifest": "results\\validation\\command_manifest.json",
+      "owner_demo": "results\\validation\\owner_demo.md",
+      "task227_final_validation": "results\\validation\\task227_final_validation.json"
+    },
+    "status": "pass",
+    "task227_final_validation_status": "pass"
+  },
+  "tests_passed": true,
+  "validation_run": {
+    "execution_details_redacted": true,
+    "step": "validate_submission"
+  }
+}

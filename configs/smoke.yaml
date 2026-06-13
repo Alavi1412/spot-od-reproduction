@@ -1,0 +1,91 @@
+﻿seed: 7
+data:
+  train_size: 8
+  val_size: 4
+  test_size: 4
+  stress_test_size: 4
+  output_dir: results/smoke_data
+simulation:
+  orbit_sampling:
+    altitude_min_km: 500.0
+    altitude_max_km: 600.0
+    eccentricity_min: 0.0
+    eccentricity_max: 0.01
+    inclination_min_deg: 30.0
+    inclination_max_deg: 80.0
+  dynamics:
+    dt_s: 20.0
+    steps: 40
+    ballistic_coeff_m2_per_kg: 0.018
+    process_noise_std: 0.0
+    drag_rho_ref: 4.0e-11
+    drag_h_ref_m: 400000.0
+    drag_scale_height_m: 60000.0
+  measurement_noise:
+    range_std_m: 30.0
+    az_std_deg: 0.02
+    el_std_deg: 0.02
+    range_rate_std_mps: 0.08
+    outlier_prob: 0.01
+    outlier_scale: 6.0
+  stations:
+    - {name: Alaska, lat_deg: 64.84, lon_deg: -147.72, alt_m: 140.0, min_elevation_deg: 8.0}
+    - {name: California, lat_deg: 34.74, lon_deg: -120.57, alt_m: 120.0, min_elevation_deg: 8.0}
+    - {name: Spain, lat_deg: 40.43, lon_deg: -4.25, alt_m: 700.0, min_elevation_deg: 8.0}
+    - {name: Australia, lat_deg: -31.80, lon_deg: 115.89, alt_m: 40.0, min_elevation_deg: 8.0}
+stress_simulation_overrides:
+  measurement_noise:
+    range_std_m: 70.0
+    az_std_deg: 0.06
+    el_std_deg: 0.06
+    range_rate_std_mps: 0.22
+    outlier_prob: 0.04
+    outlier_scale: 10.0
+baselines:
+  init_pos_std_m: 2500.0
+  init_vel_std_mps: 6.0
+  ekf:
+    q_pos_m: 5.5
+    q_vel_mps: 0.06
+    init_pos_std_m: 2500.0
+    init_vel_std_mps: 6.0
+    gating_threshold: 18.47
+  ukf:
+    q_pos_m: 5.0
+    q_vel_mps: 0.05
+    init_pos_std_m: 2500.0
+    init_vel_std_mps: 6.0
+    alpha: 0.2
+    beta: 2.0
+    kappa: 0.0
+  aukf:
+    q_pos_m: 5.0
+    q_vel_mps: 0.05
+    init_pos_std_m: 2500.0
+    init_vel_std_mps: 6.0
+    alpha: 0.2
+    beta: 2.0
+    kappa: 0.0
+    adapt_rate: 0.08
+    min_r_scale: 0.4
+    max_r_scale: 30.0
+    huber_kappa: 2.8
+    nis_soft_gate: 16.0
+training:
+  window_size: 8
+  batch_size: 8
+  num_epochs: 2
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  hidden_dim: 64
+  gnn_layers: 2
+  gru_layers: 1
+  dropout: 0.1
+  gradient_clip_norm: 1.0
+  early_stopping_patience: 3
+  num_workers: 0
+output:
+  checkpoint_dir: results/smoke_ckpt
+  metrics_path: results/smoke_metrics.json
+  per_step_path: results/smoke_per_step.csv
+  figure_dir: results/smoke_figures

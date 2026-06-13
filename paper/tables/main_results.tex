@@ -1,0 +1,20 @@
+\begin{table}[t]
+  \centering
+  \caption{All-step seed-42 aggregate accuracy on nominal and stress-test scenarios (common evaluation window: steps 11--119, 109 evaluated steps). Because most scored steps have zero visible stations, this all-step table is the propagation-dominated reference and gross-failure check, not a discriminative endpoint; the primary observed-step state-estimation endpoint is Table~\ref{tab:measurement_informed_results}. The unconstrained Pure GNN sanity-check row is excluded here and reported only in Table~\ref{tab:pure_gnn_training_sanity}.}
+  \label{tab:main_results}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Method & Test Pos. RMSE [m] & Test Vel. RMSE [m/s] & Stress Pos. RMSE [m] & Stress Vel. RMSE [m/s] & Test $\Delta$ vs UKF [\%] & Test $\Delta$ vs best classical [\%] \\
+    \midrule
+    EKF & 6170.19 & 7.091 & 6811.25 & 8.112 & 0.34 & -0.04 \\
+    UKF & 6191.37 & 7.113 & 7173.23 & 8.580 & 0.00 & -0.39 \\
+    AUKF & 6167.44 & 7.084 & 6800.54 & 8.100 & 0.39 & 0.00 \\
+    EKF-residual learner & 8375.28 & 7.646 & 8621.75 & 8.347 & -35.27 & -35.80 \\
+    No-Graph Residual & 6170.19 & 7.089 & 6811.26 & 8.106 & 0.34 & -0.04 \\
+    Learned Noise Adaptive & 6170.04 & 7.113 & 6808.39 & 8.085 & 0.34 & -0.04 \\
+    RGR-GF & 6169.11 & 7.088 & 6808.98 & 8.104 & 0.36 & -0.03 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

@@ -1,0 +1,690 @@
+seed: 42
+
+device:
+  train: cuda
+  eval: cuda
+  require_cuda: true
+
+data:
+  train_size: 160
+  val_size: 32
+  test_size: 64
+  stress_test_size: 64
+  output_dir: results/data
+
+simulation:
+  orbit_sampling:
+    altitude_min_km: 450.0
+    altitude_max_km: 950.0
+    eccentricity_min: 0.0
+    eccentricity_max: 0.02
+    inclination_min_deg: 20.0
+    inclination_max_deg: 98.0
+  dynamics:
+    dt_s: 20.0
+    steps: 120
+    ballistic_coeff_m2_per_kg: 0.018
+    process_noise_std: 0.0
+    drag_rho_ref: 4.0e-11
+    drag_h_ref_m: 400000.0
+    drag_scale_height_m: 60000.0
+    enable_third_body: true
+    enable_srp: true
+    srp_area_to_mass_m2_per_kg: 0.02
+    srp_cr: 1.35
+    sun_initial_phase_rad: 0.3
+    moon_initial_phase_rad: 1.1
+  measurement_noise:
+    range_std_m: 30.0
+    az_std_deg: 0.02
+    el_std_deg: 0.02
+    range_rate_std_mps: 0.08
+    outlier_prob: 0.01
+    outlier_scale: 6.0
+    range_bias_std_m: 8.0
+    az_bias_std_deg: 0.004
+    el_bias_std_deg: 0.004
+    range_rate_bias_std_mps: 0.02
+    clock_bias_std_s: 0.03
+    clock_jitter_std_s: 0.015
+    random_dropout_prob: 0.02
+  stations:
+    - name: Alaska
+      lat_deg: 64.84
+      lon_deg: -147.72
+      alt_m: 140.0
+      min_elevation_deg: 8.0
+    - name: Hawaii
+      lat_deg: 19.70
+      lon_deg: -155.08
+      alt_m: 10.0
+      min_elevation_deg: 8.0
+    - name: California
+      lat_deg: 34.74
+      lon_deg: -120.57
+      alt_m: 120.0
+      min_elevation_deg: 8.0
+    - name: Spain
+      lat_deg: 40.43
+      lon_deg: -4.25
+      alt_m: 700.0
+      min_elevation_deg: 8.0
+    - name: Australia
+      lat_deg: -31.80
+      lon_deg: 115.89
+      alt_m: 40.0
+      min_elevation_deg: 8.0
+    - name: Chile
+      lat_deg: -33.15
+      lon_deg: -70.67
+      alt_m: 570.0
+      min_elevation_deg: 8.0
+    - name: SouthAfrica
+      lat_deg: -25.89
+      lon_deg: 27.70
+      alt_m: 1500.0
+      min_elevation_deg: 8.0
+    - name: India
+      lat_deg: 13.06
+      lon_deg: 80.27
+      alt_m: 30.0
+      min_elevation_deg: 8.0
+
+stress_simulation_overrides:
+  measurement_noise:
+    range_std_m: 70.0
+    az_std_deg: 0.06
+    el_std_deg: 0.06
+    range_rate_std_mps: 0.22
+    outlier_prob: 0.04
+    outlier_scale: 10.0
+
+benchmark_suite:
+  stress_train_size: 96
+  stress_val_size: 24
+  stress_sample_weight: 1.8
+  scenarios:
+    high_drag_test:
+      size: 48
+      seed_offset: 1400
+      sample_weight: 1.0
+      overrides:
+        dynamics:
+          ballistic_coeff_m2_per_kg: 0.028
+          process_noise_std: 0.10
+    process_noise_shift_test:
+      size: 48
+      seed_offset: 1500
+      sample_weight: 1.0
+      overrides:
+        dynamics:
+          process_noise_std: 0.35
+    maneuver_shift_test:
+      size: 48
+      seed_offset: 1600
+      sample_weight: 1.0
+      overrides:
+        dynamics:
+          process_noise_std: 0.50
+        measurement_noise:
+          random_dropout_prob: 0.05
+          outlier_prob: 0.05
+    low_inclination_test:
+      size: 48
+      seed_offset: 1700
+      sample_weight: 1.0
+      overrides:
+        orbit_sampling:
+          inclination_min_deg: 20.0
+          inclination_max_deg: 35.0
+    sunsync_like_test:
+      size: 48
+      seed_offset: 1800
+      sample_weight: 1.0
+      overrides:
+        orbit_sampling:
+          inclination_min_deg: 95.0
+          inclination_max_deg: 99.0
+          altitude_min_km: 600.0
+          altitude_max_km: 850.0
+    high_inclination_test:
+      size: 48
+      seed_offset: 1900
+      sample_weight: 1.0
+      overrides:
+        orbit_sampling:
+          inclination_min_deg: 70.0
+          inclination_max_deg: 98.0
+    force_model_mismatch_test:
+      # Genuine dynamics/force-model mismatch: truth is propagated with a
+      # heavier drag area-to-mass, a denser reference atmosphere, a larger SRP
+      # area-to-mass/coefficient, and nonzero process noise. The estimators,
+      # batch WLS, and RFIS instead see the nominal compact model (the base
+      # simulation, via the explicit empty estimator_overrides), so this split
+      # is not solved by the same deterministic force model that generated it.
+      size: 48
+      seed_offset: 2000
+      sample_weight: 1.0
+      overrides:
+        dynamics:
+          ballistic_coeff_m2_per_kg: 0.045
+          process_noise_std: 0.45
+          drag_rho_ref: 7.0e-11
+          srp_area_to_mass_m2_per_kg: 0.06
+          srp_cr: 1.60
+      estimator_overrides: {}
+    force_component_omission_test:
+      # Controlled force-component omission (NOT real data). The truth keeps
+      # third-body and SRP perturbations explicitly enabled and applies a
+      # *moderate* drag / SRP / process-noise stress -- milder than
+      # force_model_mismatch_test, so the dominant truth/estimator gap here is
+      # a missing-physics gap, not just an inflated-drag gap. The estimator-side
+      # compact model (recursive filters, batch WLS, RFIS, evaluation) instead
+      # deliberately drops the third-body and SRP terms and falls back to the
+      # nominal compact drag / process-noise values. This makes the split an
+      # OD-relevant force-component-omission probe (estimator propagates a
+      # strictly simpler force model than the one that generated the data)
+      # rather than the synthetic compact-model self-consistency the reviewer
+      # flagged.
+      size: 48
+      seed_offset: 2400
+      sample_weight: 1.0
+      overrides:
+        dynamics:
+          # Keep the perturbing forces present (and slightly strengthened) in
+          # the truth so omitting them on the estimator side is meaningful.
+          enable_third_body: true
+          enable_srp: true
+          srp_area_to_mass_m2_per_kg: 0.045
+          srp_cr: 1.50
+          # Moderate force / process stress (deliberately lighter than the
+          # heavy force_model_mismatch_test 0.045 / 0.45 settings).
+          ballistic_coeff_m2_per_kg: 0.026
+          drag_rho_ref: 5.5e-11
+          process_noise_std: 0.20
+      estimator_overrides:
+        dynamics:
+          # Compact model: third-body and SRP are intentionally omitted ...
+          enable_third_body: false
+          enable_srp: false
+          # ... and drag / process noise are pinned to the nominal compact
+          # values (restated for an auditable, self-documenting estimator
+          # model; these match the base simulation).
+          ballistic_coeff_m2_per_kg: 0.018
+          drag_rho_ref: 4.0e-11
+          process_noise_std: 0.0
+          srp_area_to_mass_m2_per_kg: 0.02
+          srp_cr: 1.35
+    dense_visibility_test:
+      # Loop-30 estimator-skill regime (NOT propagation-dominated, NOT a
+      # pre-registered endpoint). The loop-29 reviewer noted that the main
+      # synthetic nominal/stress splits are ~79% zero-visible, so the all-step
+      # aggregate measures the shared propagator rather than estimator skill.
+      # This split holds the compact force model and orbit sampling fixed
+      # (perfect shared model, no force mismatch) and densifies the observation
+      # geometry into a measurement-update-dominant regime: a 20-station
+      # mid-latitude global ground network at an 8-degree elevation mask. The
+      # measurement model and noise are IDENTICAL to the main study (no
+      # measurement_noise override) and estimators and truth share this config
+      # (empty estimator_overrides), so the regime isolates observation
+      # density alone -- not dynamics or measurement-model mismatch. Reported
+      # with all-step and observed-step symmetrically and with the
+      # manuscript's own divergence/gross-failure guardrails; the zero-visible
+      # fraction is recorded so the "not propagation-dominated" claim is
+      # auditable.
+      size: 48
+      seed_offset: 2600
+      sample_weight: 1.0
+      overrides:
+        stations:
+          - {name: California, lat_deg: 34.74, lon_deg: -120.57, alt_m: 120.0, min_elevation_deg: 8.0}
+          - {name: Florida, lat_deg: 28.52, lon_deg: -80.65, alt_m: 5.0, min_elevation_deg: 8.0}
+          - {name: Texas, lat_deg: 30.60, lon_deg: -97.67, alt_m: 150.0, min_elevation_deg: 8.0}
+          - {name: Hawaii, lat_deg: 19.70, lon_deg: -155.08, alt_m: 10.0, min_elevation_deg: 8.0}
+          - {name: Chile, lat_deg: -33.15, lon_deg: -70.67, alt_m: 570.0, min_elevation_deg: 8.0}
+          - {name: Brasilia, lat_deg: -15.79, lon_deg: -47.88, alt_m: 1170.0, min_elevation_deg: 8.0}
+          - {name: Argentina, lat_deg: -34.60, lon_deg: -58.38, alt_m: 25.0, min_elevation_deg: 8.0}
+          - {name: Peru, lat_deg: -12.04, lon_deg: -77.03, alt_m: 150.0, min_elevation_deg: 8.0}
+          - {name: Spain, lat_deg: 40.43, lon_deg: -4.25, alt_m: 700.0, min_elevation_deg: 8.0}
+          - {name: Germany, lat_deg: 50.00, lon_deg: 8.50, alt_m: 110.0, min_elevation_deg: 8.0}
+          - {name: UK, lat_deg: 51.48, lon_deg: -0.10, alt_m: 25.0, min_elevation_deg: 8.0}
+          - {name: Azores, lat_deg: 37.74, lon_deg: -25.66, alt_m: 100.0, min_elevation_deg: 8.0}
+          - {name: SouthAfrica, lat_deg: -25.89, lon_deg: 27.69, alt_m: 1400.0, min_elevation_deg: 8.0}
+          - {name: Kenya, lat_deg: -1.29, lon_deg: 36.82, alt_m: 1660.0, min_elevation_deg: 8.0}
+          - {name: India, lat_deg: 17.41, lon_deg: 78.55, alt_m: 540.0, min_elevation_deg: 8.0}
+          - {name: Japan, lat_deg: 36.00, lon_deg: 140.00, alt_m: 30.0, min_elevation_deg: 8.0}
+          - {name: Singapore, lat_deg: 1.35, lon_deg: 103.82, alt_m: 15.0, min_elevation_deg: 8.0}
+          - {name: Australia, lat_deg: -31.80, lon_deg: 115.89, alt_m: 40.0, min_elevation_deg: 8.0}
+          - {name: NewZealand, lat_deg: -43.52, lon_deg: 172.62, alt_m: 10.0, min_elevation_deg: 8.0}
+          - {name: Alaska, lat_deg: 64.84, lon_deg: -147.72, alt_m: 140.0, min_elevation_deg: 8.0}
+      estimator_overrides: {}
+    credible_dense_od_test:
+      # Loop-33 astrodynamically-credible dense-tracking probe. This is the
+      # *corrected* twin of dense_visibility_test. It uses the SAME dense
+      # 20-station global network and 8-degree mask, the SAME base dynamics
+      # (two-body + J2 + drag with third-body and SRP perturbations explicitly
+      # enabled, exactly as the base simulation), and the SAME measurement
+      # model and noise (no override). estimator_overrides is an explicit empty
+      # mapping, so the recursive filters and truth share one perfect dynamics
+      # model with NO force-model or measurement mismatch. The only difference
+      # versus dense_visibility_test is that the estimators apply the standard
+      # topocentric-azimuth de-weighting (a capped 1/cos^2(elevation) variance
+      # inflation, configured on the filter side, not here), which removes the
+      # near-zenith azimuth conditioning defect that drove the uncorrected
+      # probe's catastrophic divergence. The predeclared primary metric for
+      # this probe is the pooled all-step trajectory position RMSE; see
+      # scripts/run_credible_dense_od_probe.py.
+      size: 48
+      seed_offset: 3300
+      sample_weight: 1.0
+      overrides:
+        stations:
+          - {name: California, lat_deg: 34.74, lon_deg: -120.57, alt_m: 120.0, min_elevation_deg: 8.0}
+          - {name: Florida, lat_deg: 28.52, lon_deg: -80.65, alt_m: 5.0, min_elevation_deg: 8.0}
+          - {name: Texas, lat_deg: 30.60, lon_deg: -97.67, alt_m: 150.0, min_elevation_deg: 8.0}
+          - {name: Hawaii, lat_deg: 19.70, lon_deg: -155.08, alt_m: 10.0, min_elevation_deg: 8.0}
+          - {name: Chile, lat_deg: -33.15, lon_deg: -70.67, alt_m: 570.0, min_elevation_deg: 8.0}
+          - {name: Brasilia, lat_deg: -15.79, lon_deg: -47.88, alt_m: 1170.0, min_elevation_deg: 8.0}
+          - {name: Argentina, lat_deg: -34.60, lon_deg: -58.38, alt_m: 25.0, min_elevation_deg: 8.0}
+          - {name: Peru, lat_deg: -12.04, lon_deg: -77.03, alt_m: 150.0, min_elevation_deg: 8.0}
+          - {name: Spain, lat_deg: 40.43, lon_deg: -4.25, alt_m: 700.0, min_elevation_deg: 8.0}
+          - {name: Germany, lat_deg: 50.00, lon_deg: 8.50, alt_m: 110.0, min_elevation_deg: 8.0}
+          - {name: UK, lat_deg: 51.48, lon_deg: -0.10, alt_m: 25.0, min_elevation_deg: 8.0}
+          - {name: Azores, lat_deg: 37.74, lon_deg: -25.66, alt_m: 100.0, min_elevation_deg: 8.0}
+          - {name: SouthAfrica, lat_deg: -25.89, lon_deg: 27.69, alt_m: 1400.0, min_elevation_deg: 8.0}
+          - {name: Kenya, lat_deg: -1.29, lon_deg: 36.82, alt_m: 1660.0, min_elevation_deg: 8.0}
+          - {name: India, lat_deg: 17.41, lon_deg: 78.55, alt_m: 540.0, min_elevation_deg: 8.0}
+          - {name: Japan, lat_deg: 36.00, lon_deg: 140.00, alt_m: 30.0, min_elevation_deg: 8.0}
+          - {name: Singapore, lat_deg: 1.35, lon_deg: 103.82, alt_m: 15.0, min_elevation_deg: 8.0}
+          - {name: Australia, lat_deg: -31.80, lon_deg: 115.89, alt_m: 40.0, min_elevation_deg: 8.0}
+          - {name: NewZealand, lat_deg: -43.52, lon_deg: 172.62, alt_m: 10.0, min_elevation_deg: 8.0}
+          - {name: Alaska, lat_deg: 64.84, lon_deg: -147.72, alt_m: 140.0, min_elevation_deg: 8.0}
+      # estimator_overrides is intentionally OMITTED (not an empty mapping):
+      # absent => the estimators use the SAME resolved simulation config as the
+      # truth, i.e. the identical dense 20-station network and base dynamics.
+      # A present-but-empty estimator_overrides would instead fall back to the
+      # base 8-station network and create a truth/estimator station mismatch,
+      # which is exactly the kind of defect this credible probe must avoid.
+    semi_real_replay_test:
+      kind: semi_real_replay
+      size: 48
+      seed_offset: 2100
+      sample_weight: 1.0
+      tle_catalog_path: configs/archived_tles.json
+      tle_filters:
+        min_altitude_km: 300.0
+        max_altitude_km: 2000.0
+        max_eccentricity: 0.05
+        min_mean_motion_rev_per_day: 10.0
+    public_catalog_replay_test:
+      kind: public_catalog_replay
+      size: 48
+      seed_offset: 2200
+      sample_weight: 1.0
+      catalog_snapshot_path: configs/public_celestrak_active_snapshot.json
+      station_snapshot_path: configs/public_satnogs_stations_snapshot.json
+      sampling_strategy: stratified_inclination
+      catalog_filters:
+        min_altitude_km: 350.0
+        max_altitude_km: 1500.0
+        max_eccentricity: 0.05
+        min_mean_motion_rev_per_day: 10.0
+      station_filters:
+        count: 8
+        min_success_rate: 70.0
+        min_observations: 1000
+        require_online: true
+    satnogs_observation_replay_val:
+      kind: public_observation_replay
+      size: 16
+      seed_offset: 2250
+      sample_weight: 2.5
+      observation_snapshot_path: configs/public_satnogs_recent_good_observations.json
+      observation_filters:
+        require_good_status: true
+        min_altitude_km: 350.0
+        max_altitude_km: 1500.0
+        min_mean_motion_rev_per_day: 10.0
+      source_slice:
+        offset: 0
+        count: 16
+      station_filters:
+        count: 16
+      overrides:
+        measurement_noise:
+          random_dropout_prob: 0.0
+    satnogs_observation_replay_test:
+      kind: public_observation_replay
+      size: 48
+      seed_offset: 2300
+      sample_weight: 1.0
+      observation_snapshot_path: configs/public_satnogs_recent_good_observations.json
+      observation_filters:
+        require_good_status: true
+        min_altitude_km: 350.0
+        max_altitude_km: 1500.0
+        min_mean_motion_rev_per_day: 10.0
+      source_slice:
+        offset: 16
+        count: 48
+      station_filters:
+        count: 16
+      overrides:
+        measurement_noise:
+          random_dropout_prob: 0.0
+    satnogs_observation_replay_stress_test:
+      kind: public_observation_replay
+      size: 16
+      seed_offset: 2350
+      sample_weight: 1.0
+      observation_snapshot_path: configs/public_satnogs_recent_good_observations.json
+      observation_filters:
+        require_good_status: true
+        min_altitude_km: 350.0
+        max_altitude_km: 1500.0
+        min_mean_motion_rev_per_day: 10.0
+      source_slice:
+        offset: 64
+        count: 16
+      station_filters:
+        count: 16
+      overrides:
+        measurement_noise:
+          range_std_m: 45.0
+          az_std_deg: 0.04
+          el_std_deg: 0.04
+          range_rate_std_mps: 0.12
+          outlier_prob: 0.03
+          outlier_scale: 8.0
+          random_dropout_prob: 0.02
+
+baselines:
+  init_pos_std_m: 2500.0
+  init_vel_std_mps: 6.0
+  tuning_budget: 48
+  classical_tuning:
+    output_dir: results/classical_tuning
+    search_trajectory_limit_per_split: 16
+    search_space:
+      ekf:
+        q_pos_m: [4.4, 5.5, 6.6, 7.7]
+        q_vel_mps: [0.048, 0.06]
+        gating_threshold: [16.47, 18.47]
+      ukf:
+        q_pos_m: [4.0, 5.0, 6.0, 7.0]
+        q_vel_mps: [0.04, 0.05]
+        alpha: [0.1, 0.2]
+      aukf:
+        q_pos_m: [4.0, 5.0]
+        q_vel_mps: [0.04, 0.05]
+        adapt_rate: [0.05, 0.08]
+        nis_soft_gate: [12.0, 16.0]
+  ekf:
+    q_pos_m: 5.5
+    q_vel_mps: 0.06
+    init_pos_std_m: 2500.0
+    init_vel_std_mps: 6.0
+    gating_threshold: 18.47
+  ukf:
+    q_pos_m: 5.0
+    q_vel_mps: 0.05
+    init_pos_std_m: 2500.0
+    init_vel_std_mps: 6.0
+    alpha: 0.2
+    beta: 2.0
+    kappa: 0.0
+  aukf:
+    q_pos_m: 5.0
+    q_vel_mps: 0.05
+    init_pos_std_m: 2500.0
+    init_vel_std_mps: 6.0
+    alpha: 0.2
+    beta: 2.0
+    kappa: 0.0
+    adapt_rate: 0.08
+    min_r_scale: 0.4
+    max_r_scale: 30.0
+    huber_kappa: 2.8
+    nis_soft_gate: 16.0
+
+training:
+  window_size: 12
+  batch_size: 128
+  num_epochs: 60
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  hidden_dim: 192
+  gnn_layers: 5
+  gru_layers: 2
+  dropout: 0.10
+  gradient_clip_norm: 1.0
+  early_stopping_patience: 10
+  num_workers: 0
+  device: cuda
+  residual_reg_weight: 0.05
+  residual_activity_weight: 0.05
+  residual_activity_floor: 0.002
+  fusion_entropy_weight: 0.02
+  fusion_entropy_floor: 0.40
+  visibility_consistency_weight: 0.02
+  use_amp: true
+  prior_stats_dim: 18
+
+curriculum:
+  stages:
+    - name: nominal_pretrain
+      train_splits: [train]
+      val_splits: [val]
+      epochs: 24
+      checkpoint_suffix: stage1
+    - name: mixed_train
+      train_splits: [train, stress_train]
+      val_splits: [val, stress_val, satnogs_observation_replay_val]
+      epochs: 18
+      checkpoint_suffix: stage2
+    - name: stress_focus
+      train_splits: [stress_train]
+      val_splits: [stress_val, satnogs_observation_replay_val]
+      epochs: 12
+      checkpoint_suffix: stage3
+
+models:
+  GNN:
+    enabled: true
+    use_ekf_prior: false
+    checkpoint_name: best_gnn.pt
+    model_kwargs:
+      use_graph: true
+  KalmanNetLike:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_kalmannet_like.pt
+    model_kwargs:
+      use_graph: false
+      residual_scale: 0.05
+      use_gating: false
+      bounded_residual: false
+  KalmanNetGain:
+    # Literature-derived KalmanNet-style learned Kalman-gain baseline
+    # (Revach et al., IEEE TSP 2022): keeps the EKF state-space flow and learns
+    # the gain mapping the current normalized innovation to a 6D state
+    # correction (posterior = EKF prior + gain @ innovation). Distinct from the
+    # KalmanNetLike EKF-residual learner above, which is not a KalmanNet repro.
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_kalmannet_gain.pt
+    model_kwargs:
+      use_graph: false
+      use_innovation_features: true
+      kalmannet_gain: true
+      kalmannet_innov_dim: 4
+      # State is normalized by STATE_SCALE (position 1.0 == 1e7 m, velocity
+      # 1.0 == 1e4 m/s). The innovation channels are normalized by measurement
+      # sigma and clipped to +/-12, so the previous 0.1 gain scale could imply
+      # ~tens-of-thousands-of-km corrections. Use a small gain scale and a
+      # bounded correction in normalized state units (5e-3 ~= 50 km position /
+      # 50 m/s velocity envelope) so the learned-gain baseline stays a
+      # defensible KalmanNet-style comparator rather than an unstable head.
+      kalmannet_gain_scale: 1.0e-3
+      kalmannet_correction_clip: 1.0e-2
+      bounded_residual: true
+  NoGraphResidual:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_no_graph_residual.pt
+    model_kwargs:
+      use_graph: false
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      use_dual_prior_fusion: true
+  LearnedNoiseAdaptive:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_learned_noise_adaptive.pt
+    model_kwargs:
+      use_graph: false
+      use_innovation_features: true
+      use_context_budget: true
+      use_prior_bank_fusion: true
+      prior_bank_size: 3
+      predict_noise_scale: true
+      residual_scale: 0.015
+  HybridGNN:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_hybrid.pt
+    model_kwargs:
+      use_graph: true
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      use_prior_bank_fusion: true
+      prior_bank_size: 3
+      predict_noise_scale: true
+      fusion_temperature: 1.0
+  EKFOnlyRGRGNN:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_ekf_only_rgr_gnn.pt
+    model_kwargs:
+      use_graph: true
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      predict_noise_scale: true
+  MatchedNoGraphRGR:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_matched_nograph_rgr.pt
+    model_kwargs:
+      use_graph: false
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      use_prior_bank_fusion: true
+      prior_bank_size: 3
+      predict_noise_scale: true
+      fusion_temperature: 1.0
+  CapacityMatchedNoGraphRGR:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_capacity_matched_nograph_rgr.pt
+    model_kwargs:
+      use_graph: false
+      use_local_layers_when_no_graph: true
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      use_prior_bank_fusion: true
+      prior_bank_size: 3
+      predict_noise_scale: true
+      fusion_temperature: 1.0
+  InnovationHybridGNN:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_innovation_hybrid.pt
+    model_kwargs:
+      use_graph: true
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      use_prior_bank_fusion: true
+      prior_bank_size: 3
+      predict_noise_scale: true
+      fusion_temperature: 1.0
+  ObservabilityContextHybridGNN:
+    enabled: true
+    use_ekf_prior: true
+    checkpoint_name: best_observability_context_hybrid.pt
+    model_kwargs:
+      use_graph: true
+      residual_scale: 0.03
+      use_gating: true
+      bounded_residual: true
+      use_innovation_features: true
+      use_context_budget: true
+      use_prior_bank_fusion: true
+      prior_bank_size: 3
+      use_observability_context: true
+      predict_noise_scale: true
+      fusion_temperature: 0.85
+
+tuning:
+  enabled: true
+  study_name: hybrid_search
+  storage: sqlite:///results/tuning/hybrid_search.db
+  target_model: InnovationHybridGNN
+  train_splits: [train, stress_train]
+  val_splits: [val, stress_val, satnogs_observation_replay_val]
+  n_trials: 12
+  timeout_sec: 7200
+  search_space:
+    hidden_dim: [192, 256, 320]
+    dropout: [0.10, 0.15, 0.20]
+    residual_scale: [0.02, 0.03, 0.05]
+    fusion_temperature: [0.70, 0.85, 1.00]
+    residual_activity_weight: [0.02, 0.05, 0.08]
+    fusion_entropy_weight: [0.01, 0.02, 0.04]
+
+benchmark_tasks:
+  name: SPOT-OD
+  subtitle: Sparse public observation and tracking orbit-determination benchmark
+  state_estimation_train_scenarios: [train, stress_train]
+  state_estimation_scenarios:
+    [test, stress_test, semi_real_replay_test, public_catalog_replay_test, satnogs_observation_replay_test, satnogs_observation_replay_stress_test]
+  task_train_scenarios: [test, stress_test, satnogs_observation_replay_val]
+  task_eval_scenarios: [satnogs_observation_replay_test, satnogs_observation_replay_stress_test]
+  selector_methods:
+    [EKF, UKF, AUKF, KalmanNetLike, NoGraphResidual, LearnedNoiseAdaptive, HybridGNN, InnovationHybridGNN]
+  selector_divergence_penalty_m: 1.0e8
+  divergence_thresholds:
+    pos_rmse_m: 1.0e8
+    vel_rmse_mps: 1.0e5
+
+scorecard_thresholds:
+  min_delta_vs_ekf_mean_m: 10.0
+  min_fraction_steps_delta_vs_ekf_gt_10m: 0.10
+  min_stress_improvement_vs_ukf_percent: 2.0
+  max_nominal_degradation_vs_best_classical_percent: 0.5
+
+output:
+  checkpoint_dir: results/checkpoints
+  metrics_path: results/metrics_summary.json
+  per_step_path: results/per_step_errors.csv
+  figure_dir: results/figures
+  env_report_path: results/runtime/env_report.json
+  manifest_dir: results/manifests
+  scorecard_path: results/scorecard_summary.json

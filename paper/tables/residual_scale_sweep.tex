@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Residual-scale sweep on a fresh independent realization set ($K=8$ independently seeded realizations per scenario, base seed disjoint from training/validation, every model-selection split, the observed-step endpoint-fixation support seed, the scenario-resampling seed, and the unconstrained-comparator seed). Four learned points are scored against the tuned classical references and the offline robust batch WLS reference on the primary observed-step endpoint: RGR-GF (s=0.03, tethered) (variant tethered); RGR (s=0.30, tethered) (variant tethered); RGR (s=1.00, tethered) (variant tethered); RGR-U (s=1.00, untethered) (variant untethered). The intermediate tethered points retain the canonical bound, gate, context budget, and prior-anchoring penalty and change only the residual scale, so the sweep isolates the scale effect from the tether effect. No sweep point beats the per-scenario best tuned classical reference under the predeclared rule; the gap is monotone in the residual scale on the tethered branch and is much larger on the untethered endpoint, so the canonical-vs-unconstrained collapse is graded rather than purely binary within this fixed architecture and budget.}
+  \label{tab:residual_scale_sweep}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccc}
+    \toprule
+    Scenario & EKF / UKF / AUKF / WLS obs.\ [m] & Best (primary) & Sweep summary \\
+    \midrule
+    Nominal & 442.31 / 449.47 / 443.95 / 3506.21 & EKF & RGR-GF (s=0.03, tethered): 440.70 (-1.61 [-17.93, 16.15]); RGR (s=0.30, tethered): 455.30 (12.99 [-17.90, 42.48]); RGR (s=1.00, tethered): 555.75 (113.44 [38.88, 189.05]); RGR-U (s=1.00, untethered): 7523.88 (7081.57 [6708.90, 7353.55]) \\
+    Measurement-noise stress & 767.55 / 1126.85 / 844.41 / 3519.56 & EKF & RGR-GF (s=0.03, tethered): 786.02 (18.48 [-16.92, 65.39]); RGR (s=0.30, tethered): 842.29 (74.74 [-5.48, 159.32]); RGR (s=1.00, tethered): 873.44 (105.89 [32.77, 190.84]); RGR-U (s=1.00, untethered): 7391.82 (6624.28 [6304.12, 6916.17]) \\
+    Controlled force-model mismatch & 355.56 / 357.05 / 381.29 / 2012.84 & EKF & RGR-GF (s=0.03, tethered): 359.02 (3.46 [-4.97, 12.98]); RGR (s=0.30, tethered): 405.82 (50.26 [25.49, 78.10]); RGR (s=1.00, tethered): 542.20 (186.63 [144.57, 236.23]); RGR-U (s=1.00, untethered): 7031.70 (6676.14 [6284.69, 7066.04]) \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Each sweep cell reports observed-step RMSE and the paired learned-minus-best-classical CI on the primary endpoint. The tethered branch keeps the bounded $\tanh$, the learned gate, the context budget, and the prior-anchoring penalty; only the residual scale $s$ varies. The untethered endpoint matches the RGR-U construction (no bound/gate/budget, no anchoring/auxiliary penalties). No model is trained on these realizations.}
+\end{table}

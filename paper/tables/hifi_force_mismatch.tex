@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Higher-fidelity force-model mismatch (second-fidelity scoping of the AUKF mechanism diagnostic). The truth-side propagation adds the J3 and J4 zonal geopotential terms and luni-solar third-body acceleration above the compact two-body+$J_2$+drag estimator model on a 48-trajectory population, scored on the same observed-step convention and paired-bootstrap protocol as Table~\ref{tab:force_mismatch_mechanism}. The cross-filter $R$-only normalized-innovation-squared (NIS) diagnostic still flags the AUKF as the most stressed filter (median $R$-only NIS $1.53$ vs.\ EKF $1.37$ and UKF $1.47$); however, at this fidelity the magnitude of the AUKF damping does \emph{not} flip the ordering: the tuned AUKF gives the best mean observed-step position RMSE ($393.26$~m), the causal EKF is second ($420.90$~m), and the EKF$-$AUKF paired-bootstrap CI spans zero ($27.6$~m, CI $[-152.5, 243.8]$~m). The predeclared symmetric $Q$-adaptive PUKF is significantly worse than AUKF on this slice ($126.4$~m, CI $[14.9, 296.3]$~m strictly positive). The AUKF mechanism diagnostic of Table~\ref{tab:force_mismatch_mechanism} is therefore a bounded \emph{compact-model} observation: above the compact-$J_2$ ceiling, the mechanism continues to fire but the EKF$/$AUKF ordering is not flipped, so it is reported as a methodological observation rather than an estimator-ordering rule.}
+  \label{tab:hifi_force_mismatch}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccc}
+    \toprule
+    Quantity & EKF & UKF & AUKF & PUKF \\
+    \midrule
+    Mean observed-step position RMSE [m] & $420.90$ & $639.15$ & $\mathbf{393.26}$ & $519.64$ \\
+    Cross-filter $R$-only NIS (median) & $1.37$ & $1.47$ & $\mathbf{1.53}$ & $1.08$ \\
+    Cross-filter $R$-only NIS (p90) & $4.39$ & $5.10$ & $5.70$ & $3.90$ \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Paired bootstrap (3000 resamples, 95\% CIs): EKF$-$AUKF mean $27.6$~m, CI $[-152.5, 243.8]$~m (spans zero); UKF$-$AUKF mean $245.9$~m, CI $[-21.7, 745.9]$~m; PUKF$-$AUKF mean $126.4$~m, CI $[14.9, 296.3]$~m (PUKF significantly worse than AUKF). Truth acceleration adds the analytic J3/J4 zonal gradient and luni-solar third-body terms; drag is identical to the estimator side so the truth/estimator gap is exclusively in the conservative force field.}
+\end{table}

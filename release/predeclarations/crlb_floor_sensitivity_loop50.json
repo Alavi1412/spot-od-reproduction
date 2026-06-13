@@ -1,0 +1,148 @@
+{
+  "schema_version": "crlb_floor_sensitivity_v1",
+  "audit_on_utc": "2026-05-20",
+  "scope": "Sensitivity of the predeclared 106.0 m astrodynamics-grounded Cramer-Rao floor (release/predeclarations/astrodynamics_floor_loop47.json) to its documented approximations, including tighter floors from relaxed conservative simplifications and a looser pass-correlated effective-count floor, evaluated against the long-arc higher-fidelity force-and-density-mismatch held-out test (preferring the n=64 replication artifact results/long_arc_hifi_force_mismatch/long_arc_hifi_force_mismatch_n64_loop57.json). Each variant changes one or more documented assumptions; the predeclared pass/fail decision is re-evaluated under the variant floor without retuning the rule.",
+  "config_path": "configs\\experiment.yaml",
+  "config_sha256": "e772a670d03bfb83ce9f6f37dd5b397096210f98f895d328099f962c4700f8d5",
+  "predeclared_floor_artifact": "release/predeclarations/astrodynamics_floor_loop47.json",
+  "inputs": {
+    "range_std_m": 30.0,
+    "az_std_deg": 0.02,
+    "el_std_deg": 0.02,
+    "range_rate_std_mps": 0.08,
+    "altitude_band_km": [
+      450.0,
+      950.0
+    ],
+    "representative_altitude_m": 700000.0,
+    "median_min_elevation_deg": 8.0,
+    "n_stations": 8,
+    "f_single_no_overlap_bound": 0.02676523436395839,
+    "f_network_no_overlap_bound": 0.21412187491166712,
+    "arc_steps": 540
+  },
+  "variants": {
+    "A_predeclared_baseline": {
+      "description": "Predeclared baseline (matches astrodynamics_floor_loop47.json): worst-case slant range at the minimum-elevation cap; no range-rate credit; no-overlap union bound.",
+      "representative_slant_range_m": 2307227.789894939,
+      "representative_elevation_deg": 8.0,
+      "per_update_sigma_pos_m": 1139.3664672732687,
+      "expected_independent_observations": 115.62581245230024,
+      "floor_m": 105.95855692321193
+    },
+    "B_mean_visible_elevation": {
+      "description": "Replace the worst-case (minimum-elevation) slant range with the slant range at the mean visible elevation; otherwise identical to the predeclared baseline.",
+      "representative_slant_range_m": 895170.7211452862,
+      "representative_elevation_deg": 49.0,
+      "per_update_sigma_pos_m": 442.9214520514404,
+      "expected_independent_observations": 115.62581245230024,
+      "floor_m": 41.19071364459254
+    },
+    "C_range_rate_credit": {
+      "description": "Credit the range-rate channel toward the per-update position CRLB via an along-track position-equivalent sigma equal to the range-rate noise integrated over one propagator step (0.08 m/s x 20 s = 1.60 m); otherwise identical to the predeclared baseline.",
+      "representative_slant_range_m": 2307227.789894939,
+      "representative_elevation_deg": 8.0,
+      "range_rate_credit_m": 1.6,
+      "per_update_sigma_pos_m": 1139.3675907040572,
+      "expected_independent_observations": 115.62581245230024,
+      "floor_m": 105.95866139978604
+    },
+    "D_multi_visibility_credit": {
+      "description": "Replace the no-overlap union bound on the network visibility fraction by a conservative multi-visibility credit factor of 1.25; otherwise identical to the predeclared baseline.",
+      "representative_slant_range_m": 2307227.789894939,
+      "representative_elevation_deg": 8.0,
+      "multi_visibility_factor": 1.25,
+      "per_update_sigma_pos_m": 1139.3664672732687,
+      "expected_independent_observations": 144.5322655653753,
+      "floor_m": 94.77221443123312
+    },
+    "E_all_three_combined": {
+      "description": "Apply all three relaxations simultaneously: mean visible elevation slant range, range-rate credit, and multi-visibility credit factor 1.25. This is the simultaneously-tightest floor any single referee would reach by relaxing only the disclosed assumptions.",
+      "representative_slant_range_m": 895170.7211452862,
+      "representative_elevation_deg": 49.0,
+      "range_rate_credit_m": 1.6,
+      "multi_visibility_factor": 1.25,
+      "per_update_sigma_pos_m": 442.924341944938,
+      "expected_independent_observations": 144.5322655653753,
+      "floor_m": 36.84233468102466
+    },
+    "F_pass_correlated_effective_count": {
+      "description": "Pass-correlated effective-count bound: keep the predeclared slant range, no range-rate credit, and no-overlap union visibility count, but divide the visible-step count by a 10-step within-pass correlation block (200 s at the 20 s integration step). This is a conservative rough bound for temporally correlated line-of-sight residuals within a pass.",
+      "representative_slant_range_m": 2307227.789894939,
+      "representative_elevation_deg": 8.0,
+      "pass_correlation_block_steps": 10.0,
+      "pass_correlation_block_seconds": 200.0,
+      "per_update_sigma_pos_m": 1139.3664672732687,
+      "expected_independent_observations": 11.562581245230025,
+      "floor_m": 335.07037746195266
+    }
+  },
+  "long_arc_pass_fail_audit": [
+    {
+      "variant": "A_predeclared_baseline",
+      "floor_m": 105.95855692321193,
+      "predeclared_decision_under_variant_meets_positive_criterion": false,
+      "absolute_gap_magnitude_m": 284.42933285802565,
+      "absolute_gap_clears_variant_floor": true,
+      "dsa_is_strictly_lowest_mean": false,
+      "ci_strictly_negative_for_dsa": false,
+      "comment": "Under this variant the DSA-EKF still does not satisfy the predeclared positive criterion because DSA-EKF is not strictly lowest in mean (AUKF mean is lowest at 312.7 m). The variant therefore does not flip the predeclared pass/fail decision."
+    },
+    {
+      "variant": "B_mean_visible_elevation",
+      "floor_m": 41.19071364459254,
+      "predeclared_decision_under_variant_meets_positive_criterion": false,
+      "absolute_gap_magnitude_m": 284.42933285802565,
+      "absolute_gap_clears_variant_floor": true,
+      "dsa_is_strictly_lowest_mean": false,
+      "ci_strictly_negative_for_dsa": false,
+      "comment": "Under this variant the DSA-EKF still does not satisfy the predeclared positive criterion because DSA-EKF is not strictly lowest in mean (AUKF mean is lowest at 312.7 m). The variant therefore does not flip the predeclared pass/fail decision."
+    },
+    {
+      "variant": "C_range_rate_credit",
+      "floor_m": 105.95866139978604,
+      "predeclared_decision_under_variant_meets_positive_criterion": false,
+      "absolute_gap_magnitude_m": 284.42933285802565,
+      "absolute_gap_clears_variant_floor": true,
+      "dsa_is_strictly_lowest_mean": false,
+      "ci_strictly_negative_for_dsa": false,
+      "comment": "Under this variant the DSA-EKF still does not satisfy the predeclared positive criterion because DSA-EKF is not strictly lowest in mean (AUKF mean is lowest at 312.7 m). The variant therefore does not flip the predeclared pass/fail decision."
+    },
+    {
+      "variant": "D_multi_visibility_credit",
+      "floor_m": 94.77221443123312,
+      "predeclared_decision_under_variant_meets_positive_criterion": false,
+      "absolute_gap_magnitude_m": 284.42933285802565,
+      "absolute_gap_clears_variant_floor": true,
+      "dsa_is_strictly_lowest_mean": false,
+      "ci_strictly_negative_for_dsa": false,
+      "comment": "Under this variant the DSA-EKF still does not satisfy the predeclared positive criterion because DSA-EKF is not strictly lowest in mean (AUKF mean is lowest at 312.7 m). The variant therefore does not flip the predeclared pass/fail decision."
+    },
+    {
+      "variant": "E_all_three_combined",
+      "floor_m": 36.84233468102466,
+      "predeclared_decision_under_variant_meets_positive_criterion": false,
+      "absolute_gap_magnitude_m": 284.42933285802565,
+      "absolute_gap_clears_variant_floor": true,
+      "dsa_is_strictly_lowest_mean": false,
+      "ci_strictly_negative_for_dsa": false,
+      "comment": "Under this variant the DSA-EKF still does not satisfy the predeclared positive criterion because DSA-EKF is not strictly lowest in mean (AUKF mean is lowest at 312.7 m). The variant therefore does not flip the predeclared pass/fail decision."
+    },
+    {
+      "variant": "F_pass_correlated_effective_count",
+      "floor_m": 335.07037746195266,
+      "predeclared_decision_under_variant_meets_positive_criterion": false,
+      "absolute_gap_magnitude_m": 284.42933285802565,
+      "absolute_gap_clears_variant_floor": false,
+      "dsa_is_strictly_lowest_mean": false,
+      "ci_strictly_negative_for_dsa": false,
+      "comment": "Under this variant the DSA-EKF still does not satisfy the predeclared positive criterion because DSA-EKF is not strictly lowest in mean (AUKF mean is lowest at 312.7 m). The variant therefore does not flip the predeclared pass/fail decision."
+    }
+  ],
+  "summary": {
+    "tightest_floor_m": 36.84233468102466,
+    "loosest_floor_m": 335.07037746195266,
+    "any_variant_flips_predeclared_positive_decision": false,
+    "note": "Across all six variants the predeclared positive criterion on the long-arc held-out test remains unsatisfied because DSA-EKF is not strictly lowest in mean. The floor sensitivity is informational and does not load-bear the predeclared decision."
+  }
+}

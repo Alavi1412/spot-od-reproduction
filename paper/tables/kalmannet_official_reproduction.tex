@@ -1,0 +1,23 @@
+\begin{table}[t]
+  \centering
+  \caption{KalmanNet reproduction sanity check on the official linear canonical benchmark from the published KalmanNet release \cite{revach2022kalmannet}. The estimator architecture, training procedure, data generator, and benchmark configuration are exercised from that release; only the dataset size, sequence length, and training step budget are reduced to a sanity check scale (state dimension $m=2$, $T=30$, $N_E/N_{CV}/N_T = 200/50/50$, $1/q^2 = 20$~dB above $1/r^2$, $300$ training steps, official two multiplier defaults). Reported mean squared error (MSE) is in dB. The trained KalmanNet matches the qualitative ordering expected from the official paper: it sits an order of magnitude below the observation noise floor and within $0.2$~dB of the optimal Kalman filter that has full access to the true noise statistics, with the architecture's $5{,}208$ trainable parameters reproduced from the official defaults. This is a reproduction of the official linear canonical configuration at a reduced sanity check scale; it is \emph{not} a transposition of KalmanNet to the SPOT-OD measurement setting (state dimension six, range/azimuth/elevation/range-rate observations, sparse station visibility), so the central learned versus classical negative on SPOT-OD scenarios remains bounded to the authors' own learned constructions and to the in-house learned gain comparator of Table~\ref{tab:kalmannet_gain_inhouse_comparator}.}
+  \label{tab:kalmannet_official_reproduction}
+  \begin{tabular}{lc}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    State dimension $m$ & 2 \\
+    Sequence length $T$ & 30 \\
+    Train / CV / Test sequences & 200 / 50 / 50 \\
+    SNR ($1/q^{2}$ above $1/r^{2}$) & $20$~dB \\
+    Training-step budget & 300 \\
+    Trainable parameters (KalmanNet) & $5{,}208$ \\
+    Observation noise floor MSE [dB] & $-0.04$ \\
+    Optimal Kalman filter test MSE [dB] & $-8.09$ \\
+    KalmanNet test MSE [dB] & $-7.91$ \\
+    KalmanNet vs.\ optimal Kalman gap [dB] & $0.18$ \\
+    KalmanNet vs.\ observation floor [dB] & $-7.87$ \\
+    Qualitative-ordering sanity check & pass \\
+    \bottomrule
+  \end{tabular}
+\end{table}

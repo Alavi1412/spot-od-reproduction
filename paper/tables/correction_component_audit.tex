@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \caption{Component-by-component sanity check of the precise-SLR-reduction corrections used by the full-correction real-data sanity probe. Each row is a deterministic check whose expected sign and magnitude band is derived from the primary source (Marini--Murray 1973 NASA X-591-73-351; ILRS LAGEOS centre-of-mass constant; closed-form Shapiro delay; IERS Conventions 2010 / Vallado eq.~3-47; IAU-76/80 series; the IERS final-data Earth-orientation series). All 14/14 component checks fall inside the expected band, so the correction stack behaves as intended in isolation and the bounded hundreds-of-metres residual reported by the full-correction probe is not consistent with a missing or sign-flipped correction term; it is consistent with the compact two-body+$J_2$ dynamics dominating the residual budget against a precise reference.}
+  \label{tab:correction_component_audit}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{p{0.34\linewidth}lll c}
+    \toprule
+    Component & Expected sign & Expected band & Computed value & Pass \\
+    \midrule
+    Marini-Murray zenith delay (standard atmosphere) & $+$ & $[2.200, 2.400]$ m & 2.388 m & pass \\
+    Marini-Murray mapping factor at 30$^{\circ}$ elevation & $+$ & $[1.950, 2.100]$ m & 1.993 m & pass \\
+    Marini-Murray pressure-dependence sign & $-$ & $[0.100, 0.350]$ m & -0.267 m & pass \\
+    Satellite centre-of-mass offset (LAGEOS) & $+$ & $[0.249, 0.253]$ m & 0.251 m & pass \\
+    Shapiro one-way range delay (LAGEOS zenith) & $+$ & $[5.0, 30.0]$ mm & 5.80 mm & pass \\
+    GMST at J2000.0 noon UT1 & $+$ & $[0.0000, 0.0100]^{\circ}$ & 0.000000$^{\circ}$ & pass \\
+    IAU-76 precession orthogonality (one century) & $+$ & $<1e-12$ & 2.221e-16 & pass \\
+    IAU-76 precession angle theta\_A (one century) & $+$ & $[1995.00, 2015.00]""$ & 2003.842"" & pass \\
+    IAU-80 nutation in longitude near J2000 (sign and magnitude) & $-$ & $[10.00, 20.00]""$ & -13.919"" & pass \\
+    Analytic ITRF $\rightarrow$ GCRS rotation length preservation & $+$ & $[0.0, 0.0]$ mm & 0.00 mm & pass \\
+    IERS polar-motion magnitude (LAGEOS window epoch) & $+$ & $[0.05, 0.60]""$ & 0.440"" & pass \\
+    Polar-motion implied station-coordinate displacement (Earth radius) & $+$ & $[1.000, 20.000]$ m & 13.593 m & pass \\
+    UT1 - UTC offset bound (LAGEOS window epoch) & $+/-$ & $<0.90$ s & 0.044 s & pass \\
+    ITRF $\rightarrow$ GCRS with zero EOP reduces to the analytic transform & $+$ & $[0.0, 0.0]$ mm & 0.00 mm & pass \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}

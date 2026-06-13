@@ -1,0 +1,19 @@
+\begin{table}[!htbp]
+  \centering\small
+  \caption{Favorable-geometry implementation sanity diagnostic for structural channels. In deliberately all-visible, low-noise geometry, the drag-scale adaptive channel and empirical-acceleration channel are each evaluated against a matched synthetic signal. This diagnostic verifies implementation recoverability only; it is not an operational orbit-determination setting and not a primary endpoint result.}
+  \label{tab:structural_channel_recoverability}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lccc}
+    \toprule
+    Case & Known signal & Last-100 mean estimate & EKF$\to$channel RMSE [m] \\
+    \midrule
+    DSA-EKF drag scale $\beta$ & 4.00 & 3.981 & 0.72$\to$0.71 \\
+    DMC-EKF empirical acceleration [m/s$^2$] & $[2.00, -1.00, 1.50]\times10^{-5}$ & $[2.02, -1.05, 1.50]\times10^{-5}$ & 4.20$\to$3.45 \\
+    \midrule
+    Drag-scale relative recovery error & \multicolumn{3}{c}{0.46\%} \\
+    Empirical-acceleration relative recovery error & \multicolumn{3}{c}{2.15\%} \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize The geometry uses four ground stations with minimum elevation $-90^\circ$, no dropout, no outliers, and lower-than-nominal measurement noise. Favorable conditions are intentional and bound the interpretation to recoverability of the implemented structural channels.}
+\end{table}

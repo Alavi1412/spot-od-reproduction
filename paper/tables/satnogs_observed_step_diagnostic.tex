@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{Diagnostic decomposition of the time-aligned SatNOGS observation-window replay position RMSE by visibility bucket. The observed-step RMSE pools the one-visible and two-or-more-visible buckets. On the unstressed slice the one-visible-station bucket is the \emph{worst} bucket -- its post-update error exceeds even the zero-visible propagation bucket -- so the pooled observed-step RMSE exceeds the all-step RMSE (reversal = yes). This is a single-station measurement-geometry conditioning artefact of that specific archived replay: a lone SatNOGS station gives a weakly observable update whose transient injects more error than zero-visible propagation. On the stress slice the milder archived-public replay override restores the expected ordering (two-plus $<$ one-visible $<$ zero-visible) and observed-step $<$ all-step, matching the synthetic framing in Table~\ref{tab:measurement_informed_results}. The reversal therefore qualifies the unstressed SatNOGS slice rather than indicating a general defect: only the offline robust batch WLS postfit solution is reliable on that slice, and learned estimators are not scored there.}
+  \label{tab:satnogs_observed_step_diagnostic}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccccc}
+    \toprule
+    Slice & Method & All-step RMSE [m] & Observed-step RMSE [m] & Zero-vis RMSE [m] (N) & One-vis RMSE [m] (N) & $\geq$2-vis RMSE [m] (N) & Reversal \\
+    \midrule
+    Unstressed & EKF & 4485.78 & 9455.38 & 7320.52 (4242) & 11002.53 (704) & 3390.10 (286) & yes \\
+    Unstressed & AUKF & 129964.73 & 64954.08 & 248019.81 (4242) & 49471.25 (704) & 92628.09 (286) & no \\
+    Stress & EKF & 3460.63 & 1304.67 & 6606.70 (1423) & 1510.85 (238) & 193.72 (83) & no \\
+    Stress & AUKF & 3439.72 & 797.51 & 6584.72 (1423) & 918.24 (238) & 205.07 (83) & no \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Reversal = observed-step RMSE exceeds all-step RMSE. Driven by the one-visible-station bucket on the unstressed slice; the stress slice and the synthetic splits do not reverse.}
+\end{table}

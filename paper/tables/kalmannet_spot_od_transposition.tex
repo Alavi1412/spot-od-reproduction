@@ -1,0 +1,39 @@
+\begin{table}[t]
+  \centering
+  \caption{Documented adapted KalmanNet SPOT-OD transposition under a separately predeclared rule, reported as a bounded \mbox{adapted-transposition} feasibility diagnostic. The upstream KalmanNet gain network and its (Q,Sigma,S)-GRU stack are kept unchanged from the recorded upstream release snapshot; four predeclared design changes are applied jointly so the upstream estimator can address the SPOT-OD measurement setting: orbital-scale state and observation normalisation; sequence length and curriculum rematching to the SPOT-OD 120-step arc and the observed-step evaluation window; sparse-observation architectural adaptation through identical zeroing of invisible station blocks in both the measurement vector and the predicted observation; and learning rate, weight decay, and optimizer budget recalibration appropriate for the larger $m=6$, $n=32$ system. Train, validation, and held-out test splits use disjoint random-number generators (predeclared seeds), and the validation-best step is selected by the lowest held-out validation MSE before the test split is evaluated; the test split is disjoint from every training, validation, and model-selection seed used in the manuscript. The predeclared positive criterion is \emph{not} satisfied on the held-out test population.}
+  \label{tab:kalmannet_spot_od_transposition}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lc}
+    \toprule
+    Quantity & Value \\
+    \midrule
+    Upstream release snapshot & Recorded \\
+    State dim. $m$ & 6 \\
+    Observation dim. $n$ & 32 \\
+    Sequence length $T$ & 120 \\
+    Train / Validation / Test trajectories & 160 / 24 / 64 \\
+    Optimiser steps (predeclared) & 300 \\
+    Batch size (predeclared) & 16 \\
+    Trainable parameters (KalmanNet) & 12,717,676 \\
+    Training wall time [s] & 1402.5 \\
+    \midrule
+    KalmanNet (SPOT-OD transposition) obs.\ RMSE [m] & 167355.91 \\
+    EKF obs.\ RMSE [m] & 346.39 \\
+    UKF obs.\ RMSE [m] & 385.53 \\
+    AUKF obs.\ RMSE [m] & 340.89 \\
+    PUKF obs.\ RMSE [m] & 430.08 \\
+    Best non-candidate reference & AUKF \\
+    Paired mean KalmanNet$-$AUKF [m] & 167015.02 \\
+    Paired 95\% CI [m] & $[148101.52, 187811.59]$ \\
+    Finite observed-step paired trajectories with KalmanNet better than best non-candidate & 0 / 53 (0.0\%) \\
+    \midrule
+    \multicolumn{2}{l}{Predeclared positive criterion decision components:} \\
+    Strictly lowest mean & No \\
+    Paired CI strictly below zero & No \\
+    Absolute gap exceeds 3\% \mbox{practical-significance} floor ($10.23$~m) & No \\
+    Predeclared positive criterion met & No \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize The four design changes are recorded jointly as the predeclared adaptations of the upstream architecture to the SPOT-OD measurement setting; the comparison is between the upstream KalmanNet gain network under those documented adaptations and the manuscript's classical references on the same disjoint-seed held-out test population. The 64 held-out trajectories define the test population. The observed-step mask leaves 53 finite paired trajectories: 11 of the 64 held-out trajectories have no scored observed update after the predeclared evaluation-window start and therefore do not enter observed-step paired comparisons. The result is reported as the audit returns it: under the four predeclared design changes the upstream architecture on this transposition does not satisfy the predeclared positive criterion. The bounded outcome is a feasibility diagnostic under documented adaptations, not a refutation of the upstream architecture on its native benchmark (Table~\ref{tab:kalmannet_official_reproduction}) or of learned OD in general.}
+\end{table}

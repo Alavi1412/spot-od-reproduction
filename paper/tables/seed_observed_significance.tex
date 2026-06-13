@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \caption{Seed-level \emph{observed-step} significance diagnostic for RGR-GF across the canonical 15-seed cohort, on the \emph{primary observed-step endpoint} (position RMSE on evaluated steps with at least one visible station, same window and observed-step convention as the main evaluator). This is the 15-seed cohort estimate of the primary endpoint adopted in the submitted endpoint-fixation support record in Table~\ref{tab:observed_step_preregistration}; that support record lacks a created/finalized timestamp field, as noted in the evidence hierarchy. The unit is a training seed's observed-step aggregate RMSE, recomputed from the retained seed models, with the all-step Table~\ref{tab:seed_aware_significance} retained as the propagation-dominated reference. The signed-rank $p$ is a small-sample diagnostic of direction only.}
+  \label{tab:seed_observed_significance}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{llcccccccc}
+    \toprule
+    Scenario & Comparison & Seeds & RGR-GF obs.\ RMSE [m] & Baseline obs.\ RMSE [m] & Mean obs.\ gain [m] & 95\% seed CI low [m] & 95\% seed CI high [m] & Seed wins & Diagnostic $p$ \\
+    \midrule
+    Test & vs UKF & 15 & 465.77 & 387.44 & -78.33 & -135.90 & -27.02 & 7/15 & 0.9465 \\
+    Test & vs AUKF & 15 & 465.77 & 392.69 & -73.07 & -130.76 & -23.76 & 7/15 & 0.9243 \\
+    Stress & vs UKF & 15 & 1114.40 & 1882.72 & 768.32 & 714.85 & 821.04 & 15/15 & 3.05e-05 \\
+    Stress & vs AUKF & 15 & 1114.40 & 915.21 & -199.18 & -253.01 & -147.60 & 0/15 & 1 \\
+    \bottomrule
+  \end{tabular}
+  }
+\end{table}

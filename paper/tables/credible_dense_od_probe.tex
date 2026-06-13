@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \centering
+  \caption{Network-consistent dense-tracking OD probe with a \emph{predeclared} primary metric (pooled all-step trajectory position RMSE over non-divergent trajectories); the observed-step pooled RMSE is the symmetric secondary metric. 6 independently seeded realizations (120 trajectories) share a perfect dynamics model, an identical measurement model, and the identical dense 20-station network on both sides, with the standard capped $1/\cos^{2}(\mathrm{elevation})$ azimuth de-weighting applied identically to every estimator. The fixed, previously trained RGR-GF estimator is evaluated without per-realization refitting. With the estimator/truth network inconsistency removed, the best classical filter (EKF) reaches 6507.44 m predeclared all-step and 396.48 m observed-step pooled position RMSE at a 0.0\% gross-failure rate, versus the majority-divergence uncorrected control (Table~\ref{tab:dense_visibility_probe}). The bounded negative holds symmetrically: the best classical filter is best on the predeclared metric (EKF) and no learned estimator beats it. The paired learned-minus-best-classical all-step difference (best classical subtracted from the learned estimator) is 762785.71 m with a 95\% paired-bootstrap CI of [14257.82, 1324527.90] m over 119 paired trajectories; the interval lies entirely above zero, so the learned estimator is significantly \emph{worse} than the best classical filter on this metric --- its pooled mean is inflated by a small number of divergent trajectories, and on the heavy-tail-robust median and the observed-step metric the best classical filter likewise remains best and the learned estimator does not beat it. See main text for the network-inconsistency artifact this probe corrects.}
+  \label{tab:credible_dense_od_probe}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lcccccc}
+    \toprule
+    Estimator & Div.\ avoid.\ & Gross-fail & Primary all-step [m] & Secondary obs.\ [m] & Median all-step [m] & Median obs.\ [m] \\
+    \midrule
+    EKF & 100.0\% & 0.0\% & 6507.44 & 396.48 & 1013.55 & 248.01 \\
+    UKF & 99.2\% & 6.7\% & 7137699.56 & 6197320.24 & 1340.54 & 320.49 \\
+    AUKF & 100.0\% & 3.3\% & 85819.69 & 77967.40 & 1474.81 & 302.84 \\
+    RGR-GF & 99.2\% & 5.0\% & 769320.35 & 597804.38 & 1346.25 & 307.61 \\
+    \bottomrule
+  \end{tabular}
+  }
+  \\[2pt] {\footnotesize Primary/secondary columns pool non-divergent trajectories; medians are over all 120 trajectories. Divergence-avoidance and gross-failure use the study's 1e8 m and 100 km thresholds. Azimuth-conditioning check (same trajectories, de-weighting off versus on): worst-estimator gross-failure 8.3\% versus 6.7\% (EKF median all-step 976.54 m versus 1013.55 m), a minor do-no-harm refinement under this elevation mask; the uncorrected control's catastrophe reflects the estimator/truth network inconsistency removed here, not estimator skill. Confidence intervals are paired percentile bootstrap; fixed-model inference on a perfect shared model, not operational OD.}
+\end{table}
