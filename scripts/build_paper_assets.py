@@ -3628,8 +3628,7 @@ def build_observed_step_internal_prospective_replication_k32_table(
 
 def build_observed_step_internal_prospective_replication_k96_allscenario_table(
     path: Path = Path(
-        "results/observed_step_internal_prospective_replication_loop163_k96/"
-        "observed_step_internal_prospective_replication_loop163_k96.json"
+        "results/observed_step_internal_prospective_replication_loop163_k96/observed_step_internal_prospective_replication_loop163_k96.json"
     ),
 ) -> str:
     """Larger-K (K=96) all-scenario internal prospective observed-step replication.
@@ -7467,6 +7466,14 @@ def _archive_public_slice_summary(payload: dict) -> dict:
     return public_slice.get("summary", {})
 
 
+def _load_json_with_fallbacks(path: Path | str, *fallbacks: Path | str) -> dict:
+    candidates = [Path(path), *(Path(fallback) for fallback in fallbacks)]
+    for candidate in candidates:
+        if candidate.exists():
+            return load_json(candidate)
+    return load_json(candidates[0])
+
+
 def build_main_findings_summary_table(
     force_summary_path: Path | str = Path("results/force_model_mismatch_adaptation_summary.json"),
     force_significance_path: Path | str = Path("results/force_mismatch_seed_significance.json"),
@@ -7479,8 +7486,7 @@ def build_main_findings_summary_table(
         "observed_step_powered_stress_replication.json"
     ),
     all_scenario_k96_path: Path | str = Path(
-        "results/observed_step_internal_prospective_replication_loop163_k96/"
-        "observed_step_internal_prospective_replication_loop163_k96.json"
+        "results/observed_step_internal_prospective_replication_loop163_k96/observed_step_internal_prospective_replication_loop163_k96.json"
     ),
     dbar_path: Path | str = Path(
         "results/adaptation_risk_diagnostic/dbar_independent_sweep.json"
@@ -7497,7 +7503,14 @@ def build_main_findings_summary_table(
     force_significance = load_json(Path(force_significance_path))
     observed_k32 = load_json(Path(observed_k32_path))
     stress_k96 = load_json(Path(stress_k96_path))
-    all_scenario_k96 = load_json(Path(all_scenario_k96_path))
+    all_scenario_k96 = _load_json_with_fallbacks(
+        all_scenario_k96_path,
+        Path(
+            "review_artifacts/results/"
+            "observed_step_internal_prospective_replication_k96/"
+            "observed_step_internal_prospective_replication_k96.json"
+        ),
+    )
     dbar = load_json(Path(dbar_path))
     active_regeneration = load_json(Path(active_regeneration_report_path))
     archive_reproduction = load_json(Path(archive_reproduction_report_path))

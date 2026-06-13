@@ -1,6 +1,6 @@
 {
   "artifact": "task227_final_submission_validation",
-  "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+  "generated_utc": "2026-06-13T03:51:06.164294+00:00",
   "workspace": "D:\\GNN State Estimation",
   "overall_status": "PASSED",
   "build_command": "latexmk -pdf -interaction=nonstopmode -halt-on-error -cd paper/main.tex",
@@ -8,9 +8,9 @@
   "pdf_evidence": {
     "path": "paper\\main.pdf",
     "pages": 33,
-    "bytes_on_disk": 719991,
-    "bytes_from_main_log": 719991,
-    "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745",
+    "bytes_on_disk": 720199,
+    "bytes_from_main_log": 720199,
+    "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3",
     "pdf_header": "%PDF-1.5",
     "main_log": "paper\\main.log",
     "latexmk_log": "results\\latexmk.log",
@@ -26,7 +26,7 @@
     "residual_explanation": "Final log has 0 undefined citations/references and 0 rerun warnings. Residual overfull/underfull boxes are formatting diagnostics in prose/code-path/evidence-plan/bibliography text; no evidence of unresolved citation or cross-reference state."
   },
   "citation_validation": {
-    "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+    "generated_utc": "2026-06-13T03:51:06.164294+00:00",
     "main_tex": "paper\\main.tex",
     "citation_source_files": [
       "paper\\main.tex",
@@ -266,7 +266,7 @@
   },
   "line_evidence_sync_report": {
     "artifact": "release_packet_line_evidence_sync_report",
-    "generated_utc": "2026-06-13T02:53:18.450173+00:00",
+    "generated_utc": "2026-06-13T03:51:06.164294+00:00",
     "source_of_truth": "paper/main.tex",
     "changed_fields": [
       "active_table_line_evidence",

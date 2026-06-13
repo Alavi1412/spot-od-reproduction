@@ -1,7 +1,7 @@
 {
   "package": "SPOT-OD supplementary evidence package",
   "version": "1.1.0-supplement",
-  "generated_utc": "2026-06-13T03:08:14.380623+00:00",
+  "generated_utc": "2026-06-13T03:59:33.019165+00:00",
   "manuscript_title": "SPOT-OD: A Simulator-Bound Orbit-Determination Self-Audit Record with Adaptive-Filter and Observability Mechanism Findings",
   "canonical_seed_cohort": [
     41,
@@ -971,9 +971,12 @@
       "results/validation/archive_extracted_reproduction.json",
       "results/validation/archive_extracted_reproduction.md",
       "results/validation/command_manifest.json",
+      "results/force_mismatch_seed_significance.json",
+      "review_artifacts/results/observed_step_internal_prospective_replication_k96/observed_step_internal_prospective_replication_k96.json",
       "scripts/regenerate_active_manuscript.py",
       "paper/tables/main_abbreviation_glossary.tex",
       "paper/tables/main_framework_portability.tex",
+      "paper/tables/main_findings_summary.tex",
       "paper/tables/main_k32_replication.tex",
       "paper/tables/main_aukf_mechanism.tex",
       "paper/tables/main_structural_recoverability.tex",
@@ -1127,8 +1130,8 @@
       {
         "path": "paper\\main.pdf",
         "exists": true,
-        "bytes": 719991,
-        "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745"
+        "bytes": 720199,
+        "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
       },
       {
         "path": "paper\\supplement.pdf",
@@ -1613,12 +1616,12 @@
       {
         "path": "results\\release_packet.json",
         "exists": true,
-        "bytes": 100139,
-        "sha256": "642ccd8d4c245c59ecbe11316317396df9a5a8a01fe568e4b6e6e6f44effc9f0",
+        "bytes": 99523,
+        "sha256": "e5ac90bbe1f824a8473108519ce53556efd5a11019dbb006e9edae3f75217b18",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 102342,
-        "source_sha256": "1f3f56d27a0c0d33ce1296655033b48ac7ad6e34d525e4b4c4803be46587818a"
+        "source_bytes": 101716,
+        "source_sha256": "adf4657f78550e118665b89040feb276714447f407224b93429abae4cc8ea089"
       }
     ],
     "multi_revolution_sgp4_truth_benchmark": [
@@ -1723,6 +1726,16 @@
         "sha256": "4b389c3505ca1fbfcdb83f3b690b5cdb1f22ede670779f3258292075307e7295"
       },
       {
+        "path": "results\\force_mismatch_seed_significance.json",
+        "exists": true,
+        "bytes": 20314,
+        "sha256": "1f6cbde369ee582e10c69e234decef43b27f9f8edf7041ccfd5c1a1aed31ce61",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 20835,
+        "source_sha256": "affda565141c60b14dc1c3bf4f766e4afaa1fa8cf85a002887b07ab3b24e6575"
+      },
+      {
         "path": "results\\graph_control_distinctness.csv",
         "exists": true,
         "bytes": 4445,
@@ -1771,6 +1784,32 @@
         "content_scope": "review_archive_member",
         "source_bytes": 2456,
         "source_sha256": "367639416c148d2ca42018ddee9a4930b7c03470b25dea2368f474e17021dd66"
+      },
+      {
+        "path": "review_artifacts\\results\\observed_step_internal_prospective_replication_k96\\observed_step_internal_prospective_replication_k96.json",
+        "exists": true,
+        "bytes": 52390,
+        "sha256": "72e8241c0c9c221ee352928233195f389daac6744d54cc8e566b7333950f8444",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 54928,
+        "source_sha256": "de3bb2c3d1371f0971f15418e0443ef46775bb9f0e45df5ff4cd3981e7ab7fd7"
+      },
+      {
+        "path": "review_artifacts\\results\\observed_step_internal_prospective_replication_k96\\preregistration.json",
+        "exists": true,
+        "bytes": 6560,
+        "sha256": "25f24928c5c724017d2769c6cd52b19e5e5f04f8201d9ea52b007a865065751f",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 6634,
+        "source_sha256": "f087ae5e3a7d4969a792869ad58a7c95b19711a4e2bd5d75c5130585c26fb18d"
+      },
+      {
+        "path": "paper\\tables\\observed_step_internal_prospective_replication_k96_allscenario.tex",
+        "exists": true,
+        "bytes": 2156,
+        "sha256": "4a8849c4a2692bb54d3b86dba5a2e23d71f8acd69a1cfed73b5b1d346d639285"
       }
     ],
     "powered_stress_observed_step_replication": [
@@ -2504,11 +2543,11 @@
         "path": "results\\validation\\submission_validation.json",
         "exists": true,
         "bytes": 16489,
-        "sha256": "9c197efc4e67420a082ff3ab19db5bc2b9f014aa9801d697907255006bfaf7a8",
+        "sha256": "9b7ad069622600a536e21c61107ee883b66e4fbc833a249f3d0e0b518f6a00eb",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 17016,
-        "source_sha256": "76eb6d0e0233aad8eadb0874c85be8cb3ad6284ae5ac927ee9bec44e67d53578"
+        "source_sha256": "55ba2889e02432fcc51d3fb774444155a8c7830a8b0df05241f240512d43bf4f"
       },
       {
         "path": "results\\validation\\citation_validation.json",
@@ -2524,17 +2563,17 @@
         "path": "results\\validation\\supplement_layout_warnings.json",
         "exists": true,
         "bytes": 706,
-        "sha256": "acab8da0be173a779befd3763d30625cacfe8167d2fe92cc252cedf52ed345ea",
+        "sha256": "84624b3eba721b1c2c431a38a0a478a27722714b3dc4e42ec36e1a2d8bd8c30e",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 727,
-        "source_sha256": "d7b4e06ff4ec766ac6f5f897fe0caadd85458a6cf4c6bbc57d8426f4f6c64d24"
+        "source_sha256": "c2a96f0c967f341b7472b24977deaaf938f35e92df99faf0f3242d67938d105e"
       },
       {
         "path": "results\\validation\\supplement_layout_warnings.md",
         "exists": true,
         "bytes": 462,
-        "sha256": "8178b5315994cba18abf13e52d3f8d3818172ec7843a3af03d265718b2774759"
+        "sha256": "01831966a892bb2a32b81a6a9ecd99a23704269af6fec0ec519a8e6f24dfbd2f"
       },
       {
         "path": "results\\validation\\minimum_tier_reproduction_check.json",
@@ -2555,38 +2594,38 @@
       {
         "path": "results\\validation\\active_manuscript_regeneration.json",
         "exists": true,
-        "bytes": 24442,
-        "sha256": "d44a9af7711040890118082b11ae058c870fc7a35419edd870ea9c4f02bbee2b",
+        "bytes": 24139,
+        "sha256": "fb2d92632c98d5047877251ed3d3d0b0ea94a1f9c0e5d5be58bb66c0e589089c",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 24785,
-        "source_sha256": "b1a5c0b5b038981d924dd104c21cc1764695598935635a40364e8b63c2b35411"
+        "source_bytes": 24477,
+        "source_sha256": "f36f0ada1019f3820bec5e84788de2f0c07d3c331885c3af44eb7ccc780950d4"
       },
       {
         "path": "results\\validation\\active_manuscript_regeneration.md",
         "exists": true,
-        "bytes": 6945,
-        "sha256": "12c64521d1555c8f0ad41584f728471bec3bb8d614dca4869ab39d67aaae12d1",
+        "bytes": 6896,
+        "sha256": "2000ec2b103396762263c58026f8d782c290fff87630fefce84c1f868c632153",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 6755,
-        "source_sha256": "c05b328219af9bb73944511b6477d138b9a71904dc8c2eb129263daccfa54b28"
+        "source_bytes": 6706,
+        "source_sha256": "a96f6d81b7ba894e605bf182138bd97826bdcf2b6182dad6f065910d4347817e"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.json",
         "exists": true,
-        "bytes": 98605,
-        "sha256": "4ce9a2979c403af0e6095458d8247d745c24a99bc75628cbec5e82d97ed1f906",
+        "bytes": 99056,
+        "sha256": "9d87434c31fdb2e745be4c074e0627e0e9bcf416d689fc1c45f1fdf16392e3ca",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 100174,
-        "source_sha256": "805f76646df8e7c01383702b8cd6cd08b8a2fe9685e2b67082d1c586dea4286f"
+        "source_bytes": 100630,
+        "source_sha256": "020843172b2f9cc3a5f9faf71c87bb9febd90c632213537dede5f91ed7f04baf"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.md",
         "exists": true,
-        "bytes": 2256,
-        "sha256": "942cfaf3bc98735bfe1d2b34675dc7fca6060db951367266cfbc51bd65cd2593"
+        "bytes": 2258,
+        "sha256": "6356588272943d29b035687b8036ef1db30c2f7ced01201c82c616babf1d0182"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun.json",
@@ -2617,12 +2656,12 @@
       {
         "path": "results\\validation\\command_manifest.json",
         "exists": true,
-        "bytes": 26482,
-        "sha256": "55b10a02349c6f4ea969efe89d3388cd350df7fa5e2f6898354420c65aea9515",
+        "bytes": 26169,
+        "sha256": "44df827fb79fc62cf2a16dc84759dd86ce5475847ae3ff3836b87e7ab65745bb",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 26876,
-        "source_sha256": "cdad0c3a9975dae75ac5945d622a3a32355ef0a45d73aa92a4fcf92bff24911d"
+        "source_bytes": 26558,
+        "source_sha256": "899ebd58ece2e1275b0f28cc87d5d2ec281f0ce845736b35143f7ecf73205b56"
       },
       {
         "path": "release\\CITATION.cff",
@@ -3005,12 +3044,12 @@
       {
         "path": "scripts\\build_paper_assets.py",
         "exists": true,
-        "bytes": 554150,
-        "sha256": "6039d357b98ecc0e820f21a4bbb01f69d4378cca5cae47d23bebb8cffc5f80c0",
+        "bytes": 554622,
+        "sha256": "dc85454bdcdd717a11787146723d1bdd9d69eefa22928a5e9f45ae53059e8c3e",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 553851,
-        "source_sha256": "38c3fa178599a2681f14824b90fcab89427bc7c4348c1869d466255cdc15374a"
+        "source_bytes": 554347,
+        "source_sha256": "c098a7a93b5f11ef05a789866dcb4f8cd75d262a40c8a8b614261e43177e2b0f"
       },
       {
         "path": "scripts\\build_observed_step_prospective_replication.py",
@@ -7320,19 +7359,19 @@
       }
     ]
   },
-  "artifact_count": 946,
-  "artifacts_present": 946,
+  "artifact_count": 950,
+  "artifacts_present": 950,
   "checksum_algorithm": "sha256",
   "review_archive": {
     "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
     "exists": true,
-    "bytes": 58001824,
-    "sha256": "c45342160f7e8929bee1e448817ed92dd33302e6385b86cc2b23a79db01d92c2",
+    "bytes": 58020755,
+    "sha256": "05ff4b06d388dbe2b08d53e0c52c5a55bc2ebcd28fe6cbc6f5b2a2f2c25d1ef3",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
-    "artifact_digest_coverage_count": 946,
-    "artifacts_included": 946,
+    "artifact_digest_coverage_count": 950,
+    "artifacts_included": 950,
     "member_timestamp_utc": "2026-05-19T00:00:00+00:00",
     "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count."
   }

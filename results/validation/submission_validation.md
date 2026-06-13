@@ -1,12 +1,12 @@
 # Submission Validation Report
 
-Generated UTC: `2026-06-13T02:53:18.810669+00:00`
+Generated UTC: `2026-06-13T03:51:47.500629+00:00`
 Validation execution details: redacted from this reviewer-facing summary.
 Overall status: **PASS**
 
 ## PDF Evidence
 - Path: `paper\main.pdf`
-- SHA-256: `cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745`
+- SHA-256: `3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3`
 - Page count: `33`
 - Page source: `pdfinfo`
 

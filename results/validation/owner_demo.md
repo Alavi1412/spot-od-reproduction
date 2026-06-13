@@ -1,10 +1,10 @@
 # Owner Demo Readback
 
-Generated UTC: `2026-06-13T02:53:18.810669+00:00`
+Generated UTC: `2026-06-13T03:51:47.500629+00:00`
 Overall validation: **PASS**
 Manuscript PDF: `paper\main.pdf`
 PDF pages: `33`
-PDF SHA-256: `cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745`
+PDF SHA-256: `3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3`
 Citation validation: **PASS**
 Release evidence index: **PASS**
 LaTeX warnings reported (main + supplement): `0`; supplement: `0`

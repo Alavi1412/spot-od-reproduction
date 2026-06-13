@@ -34,7 +34,7 @@
       "target": "tables/main_framework_portability.tex"
     },
     {
-      "bytes": 2499,
+      "bytes": 2493,
       "directive": "\\input{tables/main_findings_summary.tex}",
       "exists": true,
       "line": 162,
@@ -109,7 +109,7 @@
       "target": "tables/main_framework_portability.tex"
     },
     {
-      "bytes": 2499,
+      "bytes": 2493,
       "directive": "\\input{tables/main_findings_summary.tex}",
       "exists": true,
       "line": 162,
@@ -307,7 +307,7 @@
     "main_generated_table_count": 9,
     "main_inline_table_count": 0
   },
-  "generated_utc": "2026-06-13T02:53:18.810669+00:00",
+  "generated_utc": "2026-06-13T03:51:47.500629+00:00",
   "latex_warnings": {
     "category_counts": {
       "latex_warning": 0,
@@ -376,7 +376,7 @@
     "release_packet_json_and_active_artifacts": true
   },
   "pdf": {
-    "bytes": 719991,
+    "bytes": 720199,
     "exists": true,
     "page_count": 33,
     "page_readback_errors": [
@@ -387,10 +387,10 @@
     "pages": 33,
     "passed": true,
     "path": "paper\\main.pdf",
-    "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745"
+    "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
   },
   "pdf_evidence": {
-    "bytes": 719991,
+    "bytes": 720199,
     "exists": true,
     "page_count": 33,
     "page_readback_errors": [
@@ -401,7 +401,7 @@
     "pages": 33,
     "passed": true,
     "path": "paper\\main.pdf",
-    "sha256": "cccbd74497d486b10fa2e9ee3fbac51833c6cc3089ab6c3b7b67eb753eb60745"
+    "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
   },
   "release_evidence_index": {
     "active_include_counts": {
@@ -492,7 +492,7 @@
     "missing_artifacts": [],
     "passed": true,
     "path": "results\\release_packet.json",
-    "sha256": "ff3214bfc1758e06919cedcb5bedb3c74e0173e2448976c7fcd6b9fc2a3e5ed8",
+    "sha256": "0d049c69e36fe8a39bd4fce2dc3f9dc730a8bb98f3a5b63d3420040f99d23098",
     "status": "pass"
   },
   "root_label": "submission_root",
