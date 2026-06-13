@@ -1,6 +1,6 @@
 # Active Main-Manuscript Regeneration Harness Report
 
-Generated UTC: `2026-06-13T03:57:47.489407+00:00`
+Generated UTC: `2026-06-13T06:00:02.606141+00:00`
 Step: `regenerate_active_manuscript_check`
 Status: **PASS**
 
@@ -16,7 +16,7 @@ Regenerates active paper/main.tex table/figure artifacts from materialized repos
 | Artifact | Status | Current SHA-256 | Regenerated SHA-256 | Source artifacts | Difference/blocker |
 |---|---:|---|---|---|---|
 | `paper\tables\main_abbreviation_glossary.tex` | `pass` | `2841df27ce12aff41da027f148d7fa1f31041f72f15ef24925fb0dc4583b0743` | `2841df27ce12aff41da027f148d7fa1f31041f72f15ef24925fb0dc4583b0743` | None recorded | None |
-| `paper\tables\main_framework_portability.tex` | `pass` | `26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644` | `26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644` | None recorded | None |
+| `paper\tables\main_framework_portability.tex` | `pass` | `2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06` | `2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06` | None recorded | None |
 | `paper\tables\main_findings_summary.tex` | `pass` | `e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80` | `e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80` | results\force_model_mismatch_adaptation_summary.json; results\force_mismatch_seed_significance.json; results\drag_scale_constructive_positive_control\drag_scale_constructive_positive_control.json; results\drag_scale_ukf_constructive_positive_control\drag_scale_ukf_constructive_positive_control.json; results\drag_scale_ukf_observability_positive_control\drag_scale_ukf_observability_positive_control.json; release\predeclarations\drag_scale_constructive_positive_control_loop54.json; release\predeclarations\drag_scale_ukf_constructive_positive_control_loop55.json; release\predeclarations\drag_scale_ukf_observability_positive_control_loop56.json; results\long_arc_hifi_force_mismatch\long_arc_hifi_force_mismatch_n64_loop57.json; results\long_arc_hifi_force_mismatch\long_arc_hifi_force_mismatch.json; release\predeclarations\long_arc_hifi_rule_loop47.json; release\predeclarations\long_arc_hifi_n64_extension_loop57.json; release\predeclarations\astrodynamics_floor_loop47.json; results\observed_step_prospective_replication\observed_step_prospective_replication.json; release\predeclarations\observed_step_prospective_replication_loop71.json; results\observed_step_powered_stress_replication\observed_step_powered_stress_replication.json; release\predeclarations\observed_step_powered_stress_replication.json; results\observed_step_internal_prospective_replication_loop163_k96\observed_step_internal_prospective_replication_loop163_k96.json; results\observed_step_internal_prospective_replication_loop163_k96\preregistration.json; results\adaptation_risk_diagnostic\dbar_independent_sweep.json; results\structural_channel_recoverability\structural_channel_recoverability.json; release\predeclarations\structural_channel_recoverability_loop70.json; results\validation\archive_extracted_reproduction.json; results\validation\archive_extracted_real_slr_sp3_od_slice_rerun.json | None |
 | `paper\tables\main_k32_replication.tex` | `pass` | `c4c8150850afa76dfe601fe46ee425b356e50ea333dc663ab36581f04ed2b8dc` | `c4c8150850afa76dfe601fe46ee425b356e50ea333dc663ab36581f04ed2b8dc` | results\observed_step_prospective_replication\observed_step_prospective_replication.json; release\predeclarations\observed_step_prospective_replication_loop71.json | None |
 | `paper\tables\main_aukf_mechanism.tex` | `pass` | `6f3054cb459cb416ce47cefc90427ec015760a90cdca730419212ef04df50f38` | `6f3054cb459cb416ce47cefc90427ec015760a90cdca730419212ef04df50f38` | results\force_model_mismatch_adaptation_summary.json | None |
@@ -29,5 +29,5 @@ Regenerates active paper/main.tex table/figure artifacts from materialized repos
 ## Verification notes
 - Active artifacts parsed from `paper/main.tex`: 9 tables and 1 external figure includes.
 - Pass count: `10`; mismatch count: `0`; blocker count: `0`.
-- Release packet update: `{'updated': True, 'path': 'results\\release_packet.json', 'sha256': 'adf4657f78550e118665b89040feb276714447f407224b93429abae4cc8ea089'}`.
+- Release packet update: `{'updated': True, 'path': 'results\\release_packet.json', 'sha256': 'bf542a81f6e494bad633380d2364fdebfd974b17ba0730d62205e94fcd70eaf6'}`.
 - The harness does not rerun raw-data simulation, training, filter estimation, or live public-data fetches.

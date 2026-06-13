@@ -26,7 +26,7 @@
       "target": "tables/main_abbreviation_glossary.tex"
     },
     {
-      "bytes": 3463,
+      "bytes": 3587,
       "directive": "\\input{tables/main_framework_portability.tex}",
       "exists": true,
       "line": 93,
@@ -101,7 +101,7 @@
       "target": "tables/main_abbreviation_glossary.tex"
     },
     {
-      "bytes": 3463,
+      "bytes": 3587,
       "directive": "\\input{tables/main_framework_portability.tex}",
       "exists": true,
       "line": 93,
@@ -307,7 +307,7 @@
     "main_generated_table_count": 9,
     "main_inline_table_count": 0
   },
-  "generated_utc": "2026-06-13T03:51:47.500629+00:00",
+  "generated_utc": "2026-06-13T05:15:05.541116+00:00",
   "latex_warnings": {
     "category_counts": {
       "latex_warning": 0,
@@ -376,32 +376,32 @@
     "release_packet_json_and_active_artifacts": true
   },
   "pdf": {
-    "bytes": 720199,
+    "bytes": 721948,
     "exists": true,
-    "page_count": 33,
+    "page_count": 34,
     "page_readback_errors": [
       "pypdf: No module named 'pypdf'",
       "PyPDF2: No module named 'PyPDF2'"
     ],
     "page_source": "pdfinfo",
-    "pages": 33,
+    "pages": 34,
     "passed": true,
     "path": "paper\\main.pdf",
-    "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
+    "sha256": "33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
   },
   "pdf_evidence": {
-    "bytes": 720199,
+    "bytes": 721948,
     "exists": true,
-    "page_count": 33,
+    "page_count": 34,
     "page_readback_errors": [
       "pypdf: No module named 'pypdf'",
       "PyPDF2: No module named 'PyPDF2'"
     ],
     "page_source": "pdfinfo",
-    "pages": 33,
+    "pages": 34,
     "passed": true,
     "path": "paper\\main.pdf",
-    "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
+    "sha256": "33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
   },
   "release_evidence_index": {
     "active_include_counts": {
@@ -492,7 +492,7 @@
     "missing_artifacts": [],
     "passed": true,
     "path": "results\\release_packet.json",
-    "sha256": "0d049c69e36fe8a39bd4fce2dc3f9dc730a8bb98f3a5b63d3420040f99d23098",
+    "sha256": "4d280586d590c01562938a526ddc2e715432ab87d1c7d5a69172b2d5695d513a",
     "status": "pass"
   },
   "root_label": "submission_root",

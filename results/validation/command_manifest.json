@@ -21,16 +21,16 @@
           "status": "pass"
         },
         {
-          "after_sha256": "26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644",
+          "after_sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06",
           "attempted": true,
-          "before_bytes": 3463,
-          "before_sha256": "26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644",
+          "before_bytes": 3587,
+          "before_sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06",
           "builder": "scripts/build_paper_assets.py::build_main_framework_portability_table",
-          "bytes": 3463,
+          "bytes": 3587,
           "check_only": false,
           "exit_code": 0,
-          "generated_bytes": 3463,
-          "generated_sha256": "26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644",
+          "generated_bytes": 3587,
+          "generated_sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06",
           "generation_step": "regenerate_active_manuscript_check",
           "output_path": "paper\\tables\\main_framework_portability.tex",
           "path": "paper\\tables\\main_framework_portability.tex",
@@ -187,10 +187,10 @@
               "sha256": "d7fc30d8a09c1f96f333e26eacbb98032d716b8d68f37487fbc9d5c56a4d9718"
             },
             {
-              "bytes": 100630,
+              "bytes": 100992,
               "exists": true,
               "path": "results\\validation\\archive_extracted_reproduction.json",
-              "sha256": "020843172b2f9cc3a5f9faf71c87bb9febd90c632213537dede5f91ed7f04baf"
+              "sha256": "56a2f376bc58b80df0c921901200d410534bb72d2567ec3c7c78d14a24e2ec20"
             },
             {
               "bytes": 13172,
@@ -454,19 +454,19 @@
           "bytes": 24477,
           "exists": true,
           "path": "results\\validation\\active_manuscript_regeneration.json",
-          "sha256": "f36f0ada1019f3820bec5e84788de2f0c07d3c331885c3af44eb7ccc780950d4"
+          "sha256": "54febb2faca0b0164c20c6b146787a10263cded8236b97b052354651f7a38810"
         },
         {
           "bytes": 6706,
           "exists": true,
           "path": "results\\validation\\active_manuscript_regeneration.md",
-          "sha256": "a96f6d81b7ba894e605bf182138bd97826bdcf2b6182dad6f065910d4347817e"
+          "sha256": "f0eb949b34f765039bdc111c969785468d476f24dd72a36f72afc61f43e2ded8"
         },
         {
           "bytes": 101716,
           "exists": true,
           "path": "results\\release_packet.json",
-          "sha256": "adf4657f78550e118665b89040feb276714447f407224b93429abae4cc8ea089"
+          "sha256": "bf542a81f6e494bad633380d2364fdebfd974b17ba0730d62205e94fcd70eaf6"
         }
       ],
       "execution_details_redacted": true,
@@ -475,7 +475,7 @@
       "python_isolated_mode": false,
       "release_packet_update": {
         "path": "results\\release_packet.json",
-        "sha256": "adf4657f78550e118665b89040feb276714447f407224b93429abae4cc8ea089",
+        "sha256": "bf542a81f6e494bad633380d2364fdebfd974b17ba0730d62205e94fcd70eaf6",
         "updated": true
       },
       "scope_boundary": "Regenerates active paper/main.tex table/figure artifacts from materialized repository result artifacts only; does not claim full raw-data, model-training, filter-estimation, live-public-data, or independent end-to-end reproduction outside the supplied archive.",
@@ -485,16 +485,16 @@
     {
       "evidence": [
         {
-          "bytes": 720199,
+          "bytes": 721948,
           "exists": true,
           "path": "paper\\main.pdf",
-          "sha256": "3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
+          "sha256": "33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
         },
         {
-          "bytes": 20323,
+          "bytes": 20328,
           "exists": true,
           "path": "paper\\main.log",
-          "sha256": "19774f8768ae344fb48a6ff8882ab3479a0a6d28f442ea60da879df95b25cc43"
+          "sha256": "1e62ac9395fffa8c0cf0560c3943eebf7530549a24554fac44851c43f0f28992"
         },
         {
           "bytes": 427,
@@ -521,7 +521,7 @@
           "bytes": 101716,
           "exists": true,
           "path": "results\\release_packet.json",
-          "sha256": "adf4657f78550e118665b89040feb276714447f407224b93429abae4cc8ea089"
+          "sha256": "bf542a81f6e494bad633380d2364fdebfd974b17ba0730d62205e94fcd70eaf6"
         }
       ],
       "execution_details_redacted": true,
@@ -536,19 +536,19 @@
           "bytes": 508,
           "exists": true,
           "path": "results\\validation\\submission_validation_command.log",
-          "sha256": "aeb1e049a12656669b59723217bdfc42183641fe8573c6d617d8991e99d09233"
+          "sha256": "01c99f9baab0c4afe7085c4de3e2dc1f45a93ad9f3e4fbc2b39c7483dfde533f"
         },
         {
           "bytes": 17016,
           "exists": true,
           "path": "results\\validation\\submission_validation.json",
-          "sha256": "55ba2889e02432fcc51d3fb774444155a8c7830a8b0df05241f240512d43bf4f"
+          "sha256": "ea9c2f1da3ea03dcb659d053c6aa848b308028b821c8c103cc7465a48252e85f"
         },
         {
           "bytes": 1415,
           "exists": true,
           "path": "results\\validation\\submission_validation.md",
-          "sha256": "80b2d6d12a1f1bf15106e11cd3e954598529c6e10781774887452e7e096192ad"
+          "sha256": "939c812490600e426d69359ef84709bdf7fc2a2588e32a369d8c1df93ece324e"
         }
       ],
       "execution_details_redacted": true,
@@ -563,13 +563,13 @@
           "bytes": 31419,
           "exists": true,
           "path": "results\\task227_final_submission_validation_result_payload.json",
-          "sha256": "9fc135415c20e16f275fa158776bef6e78159f25a1a104065caa1a1e3e4a9118"
+          "sha256": "78b7901247201617857091e720f81c733ddac53b68c9866bf7f6adce83459ba2"
         },
         {
           "bytes": 669,
           "exists": true,
           "path": "results\\validation\\task227_final_validation.json",
-          "sha256": "2ae41042cc9d862cb26ad3d8d537bcdb2181fe0e55c5a78b7800efe86f731fb6"
+          "sha256": "7dcacc7f5972c468b133cb2b7a3d3238920f24f2f8bb47763f86683ef97c3667"
         }
       ],
       "execution_details_redacted": true,
@@ -594,6 +594,6 @@
       "step": "pytest"
     }
   ],
-  "generated_utc": "2026-06-13T03:57:47.489407+00:00",
+  "generated_utc": "2026-06-13T06:00:02.606141+00:00",
   "status": "pass"
 }

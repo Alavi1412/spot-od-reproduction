@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \caption{Validation-selected EnKF inflation audit. Multiplicative inflation is selected only on the nominal and stress validation splits from the four-point grid $\{1.00,1.03,1.06,1.10\}$ using finite-trajectory weighted mean observed-step position RMSE, then frozen before one evaluation on the force-mismatch, nominal, and stress test splits. The completed audit selected 1.00, i.e., no added inflation; larger grid values degraded the weighted validation score. Test rows use the all-method paired finite subset; the rightmost gap is EnKF minus the best cached EKF/UKF/AUKF prior with a paired trajectory-bootstrap 95\% confidence interval. This is an internal validation-selected inflation audit, not localization, particle/Gaussian-mixture filtering, external validation, or operational POD.}
+  \label{tab:validation_tuned_enkf_comparator}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{@{}lrrrr@{}}
+    \toprule
+    Inflation & Val EnKF & Stress-val EnKF & Weighted selection score & Decision \\
+    \midrule
+    1.00 & 431.5 & 1125.2 & 722.8 & \textbf{selected} \\
+    1.03 & 1490.8 & 2064.6 & 1731.8 &  \\
+    1.06 & 481503.9 & 330994.2 & 418289.9 &  \\
+    1.10 & 14557767.7 & 14597644.0 & 14574515.7 &  \\
+    \bottomrule
+  \end{tabular}}
+  \vspace{0.5em}
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{@{}lrrrrrrl@{}}
+    \toprule
+    Test slice & $n_{\mathrm{pair}}$ & Inflation & EnKF & EKF & UKF & AUKF & EnKF$-$best classical \\
+    \midrule
+    Force mismatch (primary) & 38 & 1.00 & 500.7 & 431.2 & 457.3 & 489.3 & +69.5 vs EKF, CI [+40,+101] \\
+    Nominal & 52 & 1.00 & 378.9 & 376.4 & 377.1 & 379.8 & +2.6 vs EKF, CI [-12,+18] \\
+    Stress & 47 & 1.00 & 1448.0 & 863.7 & 1401.4 & 837.3 & +610.7 vs AUKF, CI [+334,+947] \\
+    \bottomrule
+  \end{tabular}}
+\end{table}

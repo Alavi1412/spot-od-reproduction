@@ -1,6 +1,6 @@
 {
   "artifact": "task227_final_release_evidence_index",
-  "generated_utc": "2026-06-13T03:51:06.164294+00:00",
+  "generated_utc": "2026-06-13T06:00:03.391206+00:00",
   "overall_status": "PASSED",
   "entries": [
     {
@@ -16,7 +16,7 @@
     {
       "kind": "pdf_evidence",
       "path": "results/task227_pdf_evidence.json",
-      "summary": "33 pages, 720199 bytes, sha256 3fe83b8c94c72819140e99341780f456c146dbf06b907b1aee406672f20db1c3"
+      "summary": "34 pages, 721948 bytes, sha256 33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
     },
     {
       "kind": "citation_validation",

@@ -396,7 +396,7 @@
           "path": "release/spot_od_v1_1_0_supplement_review_archive.zip"
         }
       ],
-      "claim_count": 20,
+      "claim_count": 21,
       "failure_count": 0,
       "failures": [],
       "status": "pass"
@@ -404,20 +404,20 @@
     "extracted_artifacts": {
       "duplicate_path_count": 0,
       "duplicate_paths": [],
-      "expected_present_count": 950,
+      "expected_present_count": 955,
       "extra_member_count": 0,
       "extra_members": [],
-      "extracted_member_count": 950,
+      "extracted_member_count": 955,
       "failure_count": 0,
       "failures": [],
-      "indexed_artifact_count": 950,
+      "indexed_artifact_count": 955,
       "missing_member_count": 0,
       "missing_members": [],
       "status": "pass"
     },
     "extraction": {
       "failures": [],
-      "member_count": 950,
+      "member_count": 955,
       "members": [
         "configs/archived_tles.json",
         "configs/experiment.yaml",
@@ -475,6 +475,7 @@
         "paper/tables/real_slr_sp3_temporal_selection_stability.tex",
         "paper/tables/seed_observed_significance.tex",
         "paper/tables/structural_channel_recoverability.tex",
+        "paper/tables/validation_tuned_enkf_comparator.tex",
         "pyproject.toml",
         "release/CITATION.cff",
         "release/DEPOSIT_CHECKLIST.md",
@@ -1260,6 +1261,8 @@
         "results/validation/supplement_layout_warnings.md",
         "results/validation/targeted_retraining_replay_public.json",
         "results/validation/targeted_retraining_replay_public.md",
+        "results/validation_tuned_enkf_comparator/validation_tuned_enkf_comparator.csv",
+        "results/validation_tuned_enkf_comparator/validation_tuned_enkf_comparator.json",
         "review_artifacts/release/predeclarations/astrodynamics_floor.json",
         "review_artifacts/release/predeclarations/dmc_ekf_rule.json",
         "review_artifacts/release/predeclarations/drag_scale_aekf_rule.json",
@@ -1320,6 +1323,7 @@
         "scripts/run_sp3_residual_calibrator.py",
         "scripts/run_structural_channel_recoverability_diagnostic.py",
         "scripts/run_targeted_retraining_replay.py",
+        "scripts/run_validation_tuned_enkf_comparator.py",
         "scripts/train_models.py",
         "scripts/validate_submission.py",
         "scripts/verify_archive_extracted_reproduction.py",
@@ -1368,12 +1372,13 @@
         "tests/test_real_slr_sp3_temporal_selection_stability.py",
         "tests/test_sp3_residual_calibrator.py",
         "tests/test_structural_channel_recoverability.py",
-        "tests/test_targeted_retraining_replay.py"
+        "tests/test_targeted_retraining_replay.py",
+        "tests/test_validation_tuned_enkf_comparator.py"
       ],
       "status": "pass"
     },
     "regeneration_tiers": {
-      "claim_tier_entry_count": 20,
+      "claim_tier_entry_count": 21,
       "entrypoint_records": [
         {
           "extracted_exists": true,
@@ -1553,9 +1558,9 @@
   },
   "claim_boundary": "Archive-extracted integrity, active main-manuscript table-regeneration, and one public LAGEOS CRD/SP3 precise-reference OD slice recomputation from archived public inputs only; this does not rerun full raw-data generation, model retraining, all recursive filters or tables, live public-data retrieval, operational POD validation, or independent end-to-end reproduction outside the supplied archive.",
   "manifest": {
-    "artifact_count": 950,
-    "artifacts_present": 950,
-    "claim_count": 20,
+    "artifact_count": 955,
+    "artifacts_present": 955,
+    "claim_count": 21,
     "exists": true,
     "package": "SPOT-OD supplementary evidence package",
     "path": "release/SUPPLEMENTARY_MANIFEST.json",

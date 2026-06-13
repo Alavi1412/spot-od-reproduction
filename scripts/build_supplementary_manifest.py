@@ -173,6 +173,16 @@ PATH_WITH_LOOP_LABEL_RE = re.compile(
 # understated this as a 9-seed cohort; corrected here for review-accessible
 # reproducibility consistency.)
 CANONICAL_SEED_COHORT = list(range(41, 56))
+VALIDATION_TUNED_ENKF_INFLATION_AUDIT_CLAIM = (
+    "validation_tuned_enkf_inflation_audit"
+)
+VALIDATION_TUNED_ENKF_INFLATION_AUDIT_PATHS = [
+    "scripts/run_validation_tuned_enkf_comparator.py",
+    "tests/test_validation_tuned_enkf_comparator.py",
+    "results/validation_tuned_enkf_comparator/validation_tuned_enkf_comparator.json",
+    "results/validation_tuned_enkf_comparator/validation_tuned_enkf_comparator.csv",
+    "paper/tables/validation_tuned_enkf_comparator.tex",
+]
 
 # Curated evidence artifacts grouped by role.  Paths are archive-relative.
 ARTIFACT_GROUPS: dict[str, list[str]] = {
@@ -379,6 +389,9 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "results/real_slr_sp3_temporal_corrected_od_campaign/real_slr_sp3_temporal_corrected_od_campaign.json",
         "paper/tables/real_slr_sp3_temporal_corrected_od_campaign.tex",
     ],
+    VALIDATION_TUNED_ENKF_INFLATION_AUDIT_CLAIM: (
+        VALIDATION_TUNED_ENKF_INFLATION_AUDIT_PATHS
+    ),
     "public_multi_target_sp3_crd_breadth_probe": [
         "results/public_sp3_multi_target_breadth_probe/public_sp3_multi_target_breadth_probe.json",
         "paper/tables/public_sp3_multi_target_breadth_probe.tex",
@@ -1191,6 +1204,9 @@ def main() -> int:
                 "tests/test_real_slr_sp3_temporal_od_campaign.py",
                 "tests/test_real_slr_sp3_temporal_corrected_od_campaign.py",
             ],
+            VALIDATION_TUNED_ENKF_INFLATION_AUDIT_CLAIM: (
+                VALIDATION_TUNED_ENKF_INFLATION_AUDIT_PATHS
+            ),
             "public_temporal_od_selection_stability_audit": [
                 "results/real_slr_sp3_temporal_selection_stability/real_slr_sp3_temporal_selection_stability.json",
                 "paper/tables/real_slr_sp3_temporal_selection_stability.tex",
@@ -1323,6 +1339,10 @@ def main() -> int:
                 "full_rerun",
             ],
             "public_real_measurement_temporal_od_probe": [
+                "minimum_integrity_check",
+                "full_rerun",
+            ],
+            VALIDATION_TUNED_ENKF_INFLATION_AUDIT_CLAIM: [
                 "minimum_integrity_check",
                 "full_rerun",
             ],

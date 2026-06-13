@@ -8,10 +8,10 @@
     "results/validation/command_manifest.json"
   ],
   "claim_boundary": "Regenerates active paper/main.tex table/figure artifacts from materialized repository result artifacts only; does not claim full raw-data, model-training, filter-estimation, live-public-data, or independent end-to-end reproduction outside the supplied archive.",
-  "generated_utc": "2026-06-13T03:57:47.489407+00:00",
+  "generated_utc": "2026-06-13T06:00:02.606141+00:00",
   "release_packet_update": {
     "path": "results\\release_packet.json",
-    "sha256": "adf4657f78550e118665b89040feb276714447f407224b93429abae4cc8ea089",
+    "sha256": "bf542a81f6e494bad633380d2364fdebfd974b17ba0730d62205e94fcd70eaf6",
     "updated": true
   },
   "status": "pass",
@@ -37,16 +37,16 @@
         "status": "pass"
       },
       {
-        "after_sha256": "26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644",
+        "after_sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06",
         "attempted": true,
-        "before_bytes": 3463,
-        "before_sha256": "26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644",
+        "before_bytes": 3587,
+        "before_sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06",
         "builder": "scripts/build_paper_assets.py::build_main_framework_portability_table",
-        "bytes": 3463,
+        "bytes": 3587,
         "check_only": false,
         "exit_code": 0,
-        "generated_bytes": 3463,
-        "generated_sha256": "26656ddd2b363992b613b6365c26940e3ae02f6d00ca279974930bb34387b644",
+        "generated_bytes": 3587,
+        "generated_sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06",
         "generation_step": "regenerate_active_manuscript_check",
         "output_path": "paper\\tables\\main_framework_portability.tex",
         "path": "paper\\tables\\main_framework_portability.tex",
@@ -203,10 +203,10 @@
             "sha256": "d7fc30d8a09c1f96f333e26eacbb98032d716b8d68f37487fbc9d5c56a4d9718"
           },
           {
-            "bytes": 100630,
+            "bytes": 100992,
             "exists": true,
             "path": "results\\validation\\archive_extracted_reproduction.json",
-            "sha256": "020843172b2f9cc3a5f9faf71c87bb9febd90c632213537dede5f91ed7f04baf"
+            "sha256": "56a2f376bc58b80df0c921901200d410534bb72d2567ec3c7c78d14a24e2ec20"
           },
           {
             "bytes": 13172,
@@ -528,7 +528,7 @@
       "uses_current_interpreter": true,
       "uses_current_repository_source": true
     },
-    "generated_utc": "2026-06-13T03:57:47.489407+00:00",
+    "generated_utc": "2026-06-13T06:00:02.606141+00:00",
     "mismatch_count": 0,
     "one_step_harness": "regenerate_active_manuscript_check",
     "pass_count": 10,

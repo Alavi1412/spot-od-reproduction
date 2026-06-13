@@ -20,9 +20,9 @@ Archive-extracted integrity, active main-manuscript table-regeneration, and one 
 - Note: The review ZIP is digest-addressed by the paired release manifest; the manifest is therefore treated as an allowed release-level record rather than a self-referential ZIP member.
 
 ## Counts
-- Manifest-indexed artifacts checked after extraction: `950`.
-- Extracted ZIP members: `950`.
-- Claim-map entries: `20`.
+- Manifest-indexed artifacts checked after extraction: `955`.
+- Extracted ZIP members: `955`.
+- Claim-map entries: `21`.
 - Regeneration tiers: `6`.
 
 ## Extracted Active Table Regeneration

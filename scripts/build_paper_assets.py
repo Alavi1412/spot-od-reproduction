@@ -7641,7 +7641,7 @@ def build_main_framework_portability_table() -> str:
         ),
         (
             "Bounded negative/diagnostic evidence",
-            "PUKF, DMC-EKF, and DSA-EKF fail their predeclared sparse-visibility positive criteria; a canonical untuned ensemble Kalman filter does not displace the classical baselines on any slice; DBAR is withdrawn as a claimed positive and retained/reported as a characterized bounded negative; KalmanNet-related material is retained as bounded feasibility and sanity evidence.",
+            "PUKF, DMC-EKF, and DSA-EKF fail their predeclared sparse-visibility positive criteria; EnKF boundary evidence includes a canonical untuned check and a narrow validation-selected inflation audit that selected 1.00 (no added inflation); DBAR is withdrawn as a claimed positive and retained/reported as a characterized bounded negative; KalmanNet-related material is retained as bounded feasibility and sanity evidence.",
             "Bounded to these tested constructions and slices; not a general impossibility result for structural estimation or learned OD.",
         ),
         (
@@ -7651,7 +7651,7 @@ def build_main_framework_portability_table() -> str:
         ),
         (
             "Not claimed",
-            "The manuscript does not claim a new estimator, operational POD or flight readiness, precise centimetre-level SLR validation, broad learned-OD refutation, empirical transfer to future OD pipelines, or coverage of tuned, inflated, or localized EnKF or particle/Gaussian-mixture OD methods beyond the single canonical untuned-EnKF boundary check.",
+            "The manuscript does not claim a new estimator, operational POD or flight readiness, precise centimetre-level SLR validation, broad learned-OD refutation, empirical transfer to future OD pipelines, or coverage of localized EnKF, particle/Gaussian-mixture OD methods, or broader EnKF hyperparameter searches beyond the canonical untuned check and the validation-selected inflation audit that selected no added inflation.",
             "These are exclusions that bound the claim hierarchy, not deferred positives.",
         ),
         (

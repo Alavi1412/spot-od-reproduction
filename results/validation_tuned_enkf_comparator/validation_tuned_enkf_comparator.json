@@ -1,0 +1,601 @@
+{
+  "task_id": "EVID-ENKF-VALIDATION-INFLATION",
+  "schema_version": "validation_tuned_enkf_comparator_v1",
+  "audit_type": "internal_validation_selected_enkf_inflation_audit",
+  "candidate_grid": [
+    1.0,
+    1.03,
+    1.06,
+    1.1
+  ],
+  "selected_inflation": 1.0,
+  "selection_boundary": {
+    "selection_input_splits": [
+      "val",
+      "stress_val"
+    ],
+    "selection_input_files": [
+      "results\\data\\val.npz",
+      "results\\data\\stress_val.npz"
+    ],
+    "excluded_from_selection": [
+      "force_model_mismatch_test",
+      "test",
+      "stress_test",
+      "force_component_omission_test"
+    ],
+    "selection_metric": "finite-trajectory-count-weighted mean observed-step position RMSE over val and stress_val only",
+    "test_or_force_mismatch_data_used_for_selection": false,
+    "baseline_priors_used_for_selection": false,
+    "tie_break_rule": "choose the smaller inflation if weighted validation scores tie"
+  },
+  "claim_boundary": "Internal validation-selected EnKF inflation audit only. The result selected 1.00, meaning no added inflation, and does not claim external validation, operational POD, localized EnKF, particle filtering, Gaussian-mixture filtering, ensemble-size tuning, or process-noise/init-covariance tuning.",
+  "decision_rule": {
+    "selection_rule": "Choose the inflation in [1.00, 1.03, 1.06, 1.10] with the lowest finite-trajectory-count-weighted validation mean over val and stress_val; do not inspect test/force-mismatch splits.",
+    "test_positive_rule": "On a test split, the validation-selected EnKF setting is a positive only if its all-method paired mean observed-step position RMSE is strictly lower than EKF/UKF/AUKF, the paired-bootstrap 95% CI for EnKF-minus-best-classical is strictly negative, and the mean gap exceeds the inherited 3% practical floor.",
+    "primary_split": "force_model_mismatch_test",
+    "context_splits": [
+      "test",
+      "stress_test"
+    ]
+  },
+  "source_untuned_enkf_rule": {
+    "path": "results/loop163_enkf_comparator/enkf_predeclared_rule_loop163.json",
+    "inherited_settings": {
+      "ensemble_size": 64,
+      "q_pos_m": 5.0,
+      "q_vel_mps": 0.05,
+      "init_pos_std_m": 2500.0,
+      "init_vel_std_mps": 6.0,
+      "seed": 20260163,
+      "practical_significance_floor": 0.03
+    }
+  },
+  "eval_start_step": 11,
+  "bootstrap_samples": 5000,
+  "trajectory_limit": 0,
+  "validation_selection": {
+    "candidate_grid": [
+      1.0,
+      1.03,
+      1.06,
+      1.1
+    ],
+    "selection_input_splits": [
+      "val",
+      "stress_val"
+    ],
+    "candidate_scores": [
+      {
+        "inflation": 1.0,
+        "weighted_mean_observed_pos_rmse_m": 722.8335048187747,
+        "weighted_finite_trajectory_count": 50,
+        "split_scores": {
+          "val": {
+            "split": "val",
+            "data_path": "results\\data\\val.npz",
+            "n_trajectories": 32,
+            "n_finite_enkf": 29,
+            "enkf_observed_pos_rmse_mean_m": 431.48366143184796,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.0,
+              "mean_pos_spread_m": 4719.326599978882
+            },
+            "elapsed_seconds": 110.64869659999385,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              346.80198742773257,
+              539.0139943579818
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 431.48366143184796
+          },
+          "stress_val": {
+            "split": "stress_val",
+            "data_path": "results\\data\\stress_val.npz",
+            "n_trajectories": 24,
+            "n_finite_enkf": 21,
+            "enkf_observed_pos_rmse_mean_m": 1125.1737647340542,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.0,
+              "mean_pos_spread_m": 6999.095886023312
+            },
+            "elapsed_seconds": 81.29713110000012,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              886.521647721415,
+              1402.9202995317376
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 1125.1737647340542
+          }
+        }
+      },
+      {
+        "inflation": 1.03,
+        "weighted_mean_observed_pos_rmse_m": 1731.7843944915967,
+        "weighted_finite_trajectory_count": 50,
+        "split_scores": {
+          "val": {
+            "split": "val",
+            "data_path": "results\\data\\val.npz",
+            "n_trajectories": 32,
+            "n_finite_enkf": 29,
+            "enkf_observed_pos_rmse_mean_m": 1490.7691614325618,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.03,
+              "mean_pos_spread_m": 43613.16846770444
+            },
+            "elapsed_seconds": 109.51673149999988,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              482.29422736171716,
+              2955.153199064623
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 1490.7691614325618
+          },
+          "stress_val": {
+            "split": "stress_val",
+            "data_path": "results\\data\\stress_val.npz",
+            "n_trajectories": 24,
+            "n_finite_enkf": 21,
+            "enkf_observed_pos_rmse_mean_m": 2064.6149544302634,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.03,
+              "mean_pos_spread_m": 69455.71220109126
+            },
+            "elapsed_seconds": 72.76202529999136,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              1414.776497236769,
+              2896.1865443902784
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 2064.6149544302634
+          }
+        }
+      },
+      {
+        "inflation": 1.06,
+        "weighted_mean_observed_pos_rmse_m": 418289.86084241467,
+        "weighted_finite_trajectory_count": 50,
+        "split_scores": {
+          "val": {
+            "split": "val",
+            "data_path": "results\\data\\val.npz",
+            "n_trajectories": 32,
+            "n_finite_enkf": 29,
+            "enkf_observed_pos_rmse_mean_m": 481503.931614761,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.06,
+              "mean_pos_spread_m": 687005.2204395025
+            },
+            "elapsed_seconds": 102.22509310000169,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              2779.022785327499,
+              1317469.1188008895
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 481503.931614761
+          },
+          "stress_val": {
+            "split": "stress_val",
+            "data_path": "results\\data\\stress_val.npz",
+            "n_trajectories": 24,
+            "n_finite_enkf": 21,
+            "enkf_observed_pos_rmse_mean_m": 330994.2392996506,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.06,
+              "mean_pos_spread_m": 1035839.6859604185
+            },
+            "elapsed_seconds": 81.48204170000099,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              27816.515880485273,
+              743118.5436890383
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 330994.2392996506
+          }
+        }
+      },
+      {
+        "inflation": 1.1,
+        "weighted_mean_observed_pos_rmse_m": 14574515.72035607,
+        "weighted_finite_trajectory_count": 50,
+        "split_scores": {
+          "val": {
+            "split": "val",
+            "data_path": "results\\data\\val.npz",
+            "n_trajectories": 32,
+            "n_finite_enkf": 29,
+            "enkf_observed_pos_rmse_mean_m": 14557767.671960618,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.1,
+              "mean_pos_spread_m": 7047876.235331665
+            },
+            "elapsed_seconds": 114.99571670001023,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              1692039.3929422505,
+              31373271.600557476
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 14557767.671960618
+          },
+          "stress_val": {
+            "split": "stress_val",
+            "data_path": "results\\data\\stress_val.npz",
+            "n_trajectories": 24,
+            "n_finite_enkf": 21,
+            "enkf_observed_pos_rmse_mean_m": 14597643.977664074,
+            "enkf_diagnostics": {
+              "ensemble_size": 64,
+              "inflation": 1.1,
+              "mean_pos_spread_m": 10780183.468859086
+            },
+            "elapsed_seconds": 85.18333850000636,
+            "eval_start_step": 11,
+            "stations": 8,
+            "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+              2348758.964186575,
+              29710585.22706969
+            ],
+            "enkf_observed_pos_rmse_bootstrap_mean_m": 14597643.977664074
+          }
+        }
+      }
+    ],
+    "selected_candidate": {
+      "inflation": 1.0,
+      "weighted_mean_observed_pos_rmse_m": 722.8335048187747,
+      "weighted_finite_trajectory_count": 50,
+      "split_scores": {
+        "val": {
+          "split": "val",
+          "data_path": "results\\data\\val.npz",
+          "n_trajectories": 32,
+          "n_finite_enkf": 29,
+          "enkf_observed_pos_rmse_mean_m": 431.48366143184796,
+          "enkf_diagnostics": {
+            "ensemble_size": 64,
+            "inflation": 1.0,
+            "mean_pos_spread_m": 4719.326599978882
+          },
+          "elapsed_seconds": 110.64869659999385,
+          "eval_start_step": 11,
+          "stations": 8,
+          "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+            346.80198742773257,
+            539.0139943579818
+          ],
+          "enkf_observed_pos_rmse_bootstrap_mean_m": 431.48366143184796
+        },
+        "stress_val": {
+          "split": "stress_val",
+          "data_path": "results\\data\\stress_val.npz",
+          "n_trajectories": 24,
+          "n_finite_enkf": 21,
+          "enkf_observed_pos_rmse_mean_m": 1125.1737647340542,
+          "enkf_diagnostics": {
+            "ensemble_size": 64,
+            "inflation": 1.0,
+            "mean_pos_spread_m": 6999.095886023312
+          },
+          "elapsed_seconds": 81.29713110000012,
+          "eval_start_step": 11,
+          "stations": 8,
+          "enkf_observed_pos_rmse_bootstrap_ci95_m": [
+            886.521647721415,
+            1402.9202995317376
+          ],
+          "enkf_observed_pos_rmse_bootstrap_mean_m": 1125.1737647340542
+        }
+      }
+    }
+  },
+  "test_split_results": {
+    "force_model_mismatch_test": {
+      "split": "force_model_mismatch_test",
+      "data_path": "results\\data\\force_model_mismatch_test.npz",
+      "n_trajectories": 48,
+      "n_finite_enkf": 38,
+      "enkf_observed_pos_rmse_mean_m": 500.7173137581627,
+      "enkf_diagnostics": {
+        "ensemble_size": 64,
+        "inflation": 1.0,
+        "mean_pos_spread_m": 7172.725635016989
+      },
+      "elapsed_seconds": 162.96804319998773,
+      "eval_start_step": 11,
+      "stations": 8,
+      "inflation": 1.0,
+      "observed_step_rmse_mean_m": {
+        "EnKF": 500.7173137581627,
+        "EKF": 431.1794770888717,
+        "UKF": 457.2871580825116,
+        "AUKF": 489.32619914616185
+      },
+      "observed_step_rmse_finite_count": {
+        "EnKF": 38,
+        "EKF": 38,
+        "UKF": 38,
+        "AUKF": 38
+      },
+      "all_method_paired_n": 38,
+      "all_method_paired_observed_step_rmse_mean_m": {
+        "EnKF": 500.7173137581627,
+        "EKF": 431.1794770888717,
+        "UKF": 457.2871580825116,
+        "AUKF": 489.32619914616185
+      },
+      "paired_enkf_vs_other": {
+        "EKF": {
+          "mean_enkf_minus_other_m": 69.53783666929095,
+          "ci95_m": [
+            39.993835620101876,
+            100.25815898364367
+          ],
+          "ci_lo_m": 39.993835620101876,
+          "ci_hi_m": 100.25815898364367,
+          "wilcoxon_p_one_sided_enkf_better": 0.9999817601492396,
+          "n_paired": 38,
+          "enkf_better_count": 9
+        },
+        "UKF": {
+          "mean_enkf_minus_other_m": 43.43015567565091,
+          "ci95_m": [
+            14.24124843119899,
+            73.19187305624321
+          ],
+          "ci_lo_m": 14.24124843119899,
+          "ci_hi_m": 73.19187305624321,
+          "wilcoxon_p_one_sided_enkf_better": 0.9990319450007519,
+          "n_paired": 38,
+          "enkf_better_count": 11
+        },
+        "AUKF": {
+          "mean_enkf_minus_other_m": 11.39111461200058,
+          "ci95_m": [
+            -35.32529044569925,
+            58.150073245215275
+          ],
+          "ci_lo_m": -35.32529044569925,
+          "ci_hi_m": 58.150073245215275,
+          "wilcoxon_p_one_sided_enkf_better": 0.8097203484285274,
+          "n_paired": 38,
+          "enkf_better_count": 17
+        }
+      },
+      "decision": {
+        "best_non_enkf_estimator": "EKF",
+        "best_non_enkf_mean_m": 431.1794770888717,
+        "practical_significance_floor_fraction": 0.03,
+        "practical_significance_floor_abs_m": 12.93538431266615,
+        "enkf_minus_best_non_enkf_mean_m": 69.53783666929095,
+        "enkf_minus_best_non_enkf_ci95_m": [
+          39.54130424534085,
+          101.39473463932667
+        ],
+        "enkf_minus_best_non_enkf_ci_lo_m": 39.54130424534085,
+        "enkf_minus_best_non_enkf_ci_hi_m": 101.39473463932667,
+        "enkf_is_strictly_lowest_paired_mean": false,
+        "ci_strictly_negative_for_enkf": false,
+        "floor_exceeded": false,
+        "positive_criterion_met": false
+      }
+    },
+    "test": {
+      "split": "test",
+      "data_path": "results\\data\\test.npz",
+      "n_trajectories": 64,
+      "n_finite_enkf": 52,
+      "enkf_observed_pos_rmse_mean_m": 378.94753088848614,
+      "enkf_diagnostics": {
+        "ensemble_size": 64,
+        "inflation": 1.0,
+        "mean_pos_spread_m": 6060.6499011686665
+      },
+      "elapsed_seconds": 213.90533819999837,
+      "eval_start_step": 11,
+      "stations": 8,
+      "inflation": 1.0,
+      "observed_step_rmse_mean_m": {
+        "EnKF": 378.94753088848614,
+        "EKF": 376.3525018362828,
+        "UKF": 377.06058685666954,
+        "AUKF": 379.8364218257377
+      },
+      "observed_step_rmse_finite_count": {
+        "EnKF": 52,
+        "EKF": 52,
+        "UKF": 52,
+        "AUKF": 52
+      },
+      "all_method_paired_n": 52,
+      "all_method_paired_observed_step_rmse_mean_m": {
+        "EnKF": 378.94753088848614,
+        "EKF": 376.3525018362828,
+        "UKF": 377.06058685666954,
+        "AUKF": 379.8364218257377
+      },
+      "paired_enkf_vs_other": {
+        "EKF": {
+          "mean_enkf_minus_other_m": 2.5950290522034676,
+          "ci95_m": [
+            -12.480649117259327,
+            18.003632045868052
+          ],
+          "ci_lo_m": -12.480649117259327,
+          "ci_hi_m": 18.003632045868052,
+          "wilcoxon_p_one_sided_enkf_better": 0.600636005060291,
+          "n_paired": 52,
+          "enkf_better_count": 25
+        },
+        "UKF": {
+          "mean_enkf_minus_other_m": 1.8869440318166606,
+          "ci95_m": [
+            -8.802455131225917,
+            12.633338032359804
+          ],
+          "ci_lo_m": -8.802455131225917,
+          "ci_hi_m": 12.633338032359804,
+          "wilcoxon_p_one_sided_enkf_better": 0.6853337538436033,
+          "n_paired": 52,
+          "enkf_better_count": 23
+        },
+        "AUKF": {
+          "mean_enkf_minus_other_m": -0.8888909372515451,
+          "ci95_m": [
+            -20.55564971118933,
+            22.5574804589523
+          ],
+          "ci_lo_m": -20.55564971118933,
+          "ci_hi_m": 22.5574804589523,
+          "wilcoxon_p_one_sided_enkf_better": 0.26487841735272244,
+          "n_paired": 52,
+          "enkf_better_count": 24
+        }
+      },
+      "decision": {
+        "best_non_enkf_estimator": "EKF",
+        "best_non_enkf_mean_m": 376.3525018362828,
+        "practical_significance_floor_fraction": 0.03,
+        "practical_significance_floor_abs_m": 11.290575055088484,
+        "enkf_minus_best_non_enkf_mean_m": 2.5950290522034676,
+        "enkf_minus_best_non_enkf_ci95_m": [
+          -12.02203889710075,
+          18.4878133847655
+        ],
+        "enkf_minus_best_non_enkf_ci_lo_m": -12.02203889710075,
+        "enkf_minus_best_non_enkf_ci_hi_m": 18.4878133847655,
+        "enkf_is_strictly_lowest_paired_mean": false,
+        "ci_strictly_negative_for_enkf": false,
+        "floor_exceeded": false,
+        "positive_criterion_met": false
+      }
+    },
+    "stress_test": {
+      "split": "stress_test",
+      "data_path": "results\\data\\stress_test.npz",
+      "n_trajectories": 64,
+      "n_finite_enkf": 47,
+      "enkf_observed_pos_rmse_mean_m": 1447.9908868775924,
+      "enkf_diagnostics": {
+        "ensemble_size": 64,
+        "inflation": 1.0,
+        "mean_pos_spread_m": 8175.34566044277
+      },
+      "elapsed_seconds": 213.82998759999464,
+      "eval_start_step": 11,
+      "stations": 8,
+      "inflation": 1.0,
+      "observed_step_rmse_mean_m": {
+        "EnKF": 1447.9908868775924,
+        "EKF": 863.7424554328697,
+        "UKF": 1401.4390358401376,
+        "AUKF": 837.2841393397226
+      },
+      "observed_step_rmse_finite_count": {
+        "EnKF": 47,
+        "EKF": 47,
+        "UKF": 47,
+        "AUKF": 47
+      },
+      "all_method_paired_n": 47,
+      "all_method_paired_observed_step_rmse_mean_m": {
+        "EnKF": 1447.9908868775924,
+        "EKF": 863.7424554328697,
+        "UKF": 1401.4390358401376,
+        "AUKF": 837.2841393397226
+      },
+      "paired_enkf_vs_other": {
+        "EKF": {
+          "mean_enkf_minus_other_m": 584.2484314447223,
+          "ci95_m": [
+            328.57760427116534,
+            878.4952254913954
+          ],
+          "ci_lo_m": 328.57760427116534,
+          "ci_hi_m": 878.4952254913954,
+          "wilcoxon_p_one_sided_enkf_better": 0.9999999056697746,
+          "n_paired": 47,
+          "enkf_better_count": 11
+        },
+        "UKF": {
+          "mean_enkf_minus_other_m": 46.551851037454504,
+          "ci95_m": [
+            -13.824193033076664,
+            110.12327320930478
+          ],
+          "ci_lo_m": -13.824193033076664,
+          "ci_hi_m": 110.12327320930478,
+          "wilcoxon_p_one_sided_enkf_better": 0.9070385617646224,
+          "n_paired": 47,
+          "enkf_better_count": 22
+        },
+        "AUKF": {
+          "mean_enkf_minus_other_m": 610.7067475378697,
+          "ci95_m": [
+            324.72711508342053,
+            932.4009149817616
+          ],
+          "ci_lo_m": 324.72711508342053,
+          "ci_hi_m": 932.4009149817616,
+          "wilcoxon_p_one_sided_enkf_better": 0.99999988947188,
+          "n_paired": 47,
+          "enkf_better_count": 11
+        }
+      },
+      "decision": {
+        "best_non_enkf_estimator": "AUKF",
+        "best_non_enkf_mean_m": 837.2841393397226,
+        "practical_significance_floor_fraction": 0.03,
+        "practical_significance_floor_abs_m": 25.118524180191677,
+        "enkf_minus_best_non_enkf_mean_m": 610.7067475378697,
+        "enkf_minus_best_non_enkf_ci95_m": [
+          333.865220260306,
+          946.739899382353
+        ],
+        "enkf_minus_best_non_enkf_ci_lo_m": 333.865220260306,
+        "enkf_minus_best_non_enkf_ci_hi_m": 946.739899382353,
+        "enkf_is_strictly_lowest_paired_mean": false,
+        "ci_strictly_negative_for_enkf": false,
+        "floor_exceeded": false,
+        "positive_criterion_met": false
+      }
+    }
+  },
+  "primary_decision": {
+    "best_non_enkf_estimator": "EKF",
+    "best_non_enkf_mean_m": 431.1794770888717,
+    "practical_significance_floor_fraction": 0.03,
+    "practical_significance_floor_abs_m": 12.93538431266615,
+    "enkf_minus_best_non_enkf_mean_m": 69.53783666929095,
+    "enkf_minus_best_non_enkf_ci95_m": [
+      39.54130424534085,
+      101.39473463932667
+    ],
+    "enkf_minus_best_non_enkf_ci_lo_m": 39.54130424534085,
+    "enkf_minus_best_non_enkf_ci_hi_m": 101.39473463932667,
+    "enkf_is_strictly_lowest_paired_mean": false,
+    "ci_strictly_negative_for_enkf": false,
+    "floor_exceeded": false,
+    "positive_criterion_met": false
+  },
+  "overall_primary_positive": false,
+  "output_files": {
+    "json": "results\\validation_tuned_enkf_comparator\\validation_tuned_enkf_comparator.json",
+    "csv": "results\\validation_tuned_enkf_comparator\\validation_tuned_enkf_comparator.csv",
+    "tex_table": "paper\\tables\\validation_tuned_enkf_comparator.tex"
+  }
+}
