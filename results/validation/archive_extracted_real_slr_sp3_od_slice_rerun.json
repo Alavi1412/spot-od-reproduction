@@ -131,16 +131,50 @@
           "LAGEOS-2"
         ]
       },
+      "max_observed_abs_delta": 0.0,
       "mismatch_count": 0,
       "mismatches": [],
-      "status": "pass"
+      "status": "pass",
+      "tolerance_policy": {
+        "categorical_count_status_fields": "type-strict equality",
+        "other_float_abs_tolerance": 1e-12,
+        "pooled_rmse_abs_tolerance_m": 0.25,
+        "table_other_text_and_numbers": "strict equality after line-ending/final-newline normalization",
+        "table_targeted_abs_tolerance": 0.5,
+        "table_tolerated_fields": [
+          "UKF/AUKF table-row held-out RMSE mean and median values",
+          "compact-readout EKF-minus-AUKF mean, median, and 95% CI values",
+          "compact-readout UKF-minus-AUKF mean and 95% CI values",
+          "compact-readout pooled-mean parenthetical UKF and AUKF values"
+        ]
+      },
+      "tolerated_numeric_difference_count": 0,
+      "tolerated_numeric_differences": [],
+      "tolerated_numeric_differences_truncated": 0
     },
     "table_text": {
+      "byte_identical_after_normalization": true,
       "generated_sha256": "e47695122551706b67a17ef0dbb407de0f8e1095c52d24d6ccfd2b65bbd759dd",
       "matches_submitted_table": true,
+      "max_observed_abs_delta": 0.0,
       "normalization": "line endings and final newline ignored",
       "status": "pass",
-      "submitted_sha256": "e47695122551706b67a17ef0dbb407de0f8e1095c52d24d6ccfd2b65bbd759dd"
+      "submitted_sha256": "e47695122551706b67a17ef0dbb407de0f8e1095c52d24d6ccfd2b65bbd759dd",
+      "tolerance_policy": {
+        "categorical_count_status_fields": "type-strict equality",
+        "other_float_abs_tolerance": 1e-12,
+        "pooled_rmse_abs_tolerance_m": 0.25,
+        "table_other_text_and_numbers": "strict equality after line-ending/final-newline normalization",
+        "table_targeted_abs_tolerance": 0.5,
+        "table_tolerated_fields": [
+          "UKF/AUKF table-row held-out RMSE mean and median values",
+          "compact-readout EKF-minus-AUKF mean, median, and 95% CI values",
+          "compact-readout UKF-minus-AUKF mean and 95% CI values",
+          "compact-readout pooled-mean parenthetical UKF and AUKF values"
+        ]
+      },
+      "tolerated_numeric_difference_count": 0,
+      "tolerated_numeric_differences": []
     }
   },
   "ephemeral_rerun_artifacts": {

@@ -1,7 +1,7 @@
 {
   "package": "SPOT-OD supplementary evidence package",
   "version": "1.1.0-supplement",
-  "generated_utc": "2026-06-17T18:55:59.938513+00:00",
+  "generated_utc": "2026-06-17T21:13:15.334240+00:00",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
@@ -2954,34 +2954,34 @@
       {
         "path": "results\\validation\\archive_extracted_reproduction.json",
         "exists": true,
-        "bytes": 100439,
-        "sha256": "9541147767f6ab5bc5fb9c55eabfa76ecbe5f9b1ecfb5342b79a42ecc493e086",
+        "bytes": 106215,
+        "sha256": "cdea32152c7b3adcfabf828293d95bbc97cf18cfc90721f3eefac623ebb57e82",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 102029,
-        "source_sha256": "70c7b7985b1c33b8a3d9c7571d9e6df2a64274d4f0254914d2af8facc5bbb31f"
+        "source_bytes": 107897,
+        "source_sha256": "b84fd2785427ff1cbe420055b408477c114c6c2ead48db35d6cc71f3c75cf8e8"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.md",
         "exists": true,
-        "bytes": 2258,
-        "sha256": "1388754f10da3c7442b570094f511e86f5e4a31a0ce5e59fa291fe4c69ca9760"
+        "bytes": 2503,
+        "sha256": "06294187071dc9b6ba72ba01e54b1f161976c9bb7e1a505c234aef03421ad54f"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun.json",
         "exists": true,
-        "bytes": 10698,
-        "sha256": "b6739c9cc60f29a40f704378050e07e68d43b127cf75ba969fd353d1e27cc3f4",
+        "bytes": 12404,
+        "sha256": "227d0bf319d4942f4a6f4b318b8dc4f5c9a1972e986f96607b14c59d69488018",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 10983,
-        "source_sha256": "fd8a4331db01029a0d9321b022cf6572949c9d4e59930f84e725ebf53e09547b"
+        "source_bytes": 12723,
+        "source_sha256": "da54c8c9f412b8212881f8d1bac31d2ae21a281ca7a7fd81c4c1475908422b09"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun.md",
         "exists": true,
-        "bytes": 965,
-        "sha256": "a2fd469ba8ee37f81575275a592108758bcd1ebdbcc5a775e6c2aebb96b57db6"
+        "bytes": 1170,
+        "sha256": "21431d490dbf3df20e7b50d14973a0a087e95f7ae7682710de85268c4a20a6ee"
       },
       {
         "path": "results\\validation\\leakage_scan.json",
@@ -3294,8 +3294,8 @@
       {
         "path": "scripts\\run_real_slr_sp3_od_slice_rerun_validation.py",
         "exists": true,
-        "bytes": 17814,
-        "sha256": "2a8339fabd22498c5cf5c994329e50a257b491c84a474de12f96e6b46ff1b1a1"
+        "bytes": 29636,
+        "sha256": "f6fffc3a177fe9bf3e4f59a8599c1e8dc486835fe9f5c276eaa607452c75ebeb"
       },
       {
         "path": "scripts\\run_sp3_residual_calibrator.py",
@@ -3360,8 +3360,8 @@
       {
         "path": "tests\\test_real_slr_sp3_od_slice_rerun.py",
         "exists": true,
-        "bytes": 3527,
-        "sha256": "fd3e3c810e3a8afed4f7a16aadf3dbbd568fffc0e970c45d819dee1b87f8c66f"
+        "bytes": 10114,
+        "sha256": "40c15f9a2e113755b40c7a234bd57608fc26e9b71ed819a9f1ca344f9856ff34"
       },
       {
         "path": "tests\\test_sp3_residual_calibrator.py",
@@ -3524,12 +3524,12 @@
       {
         "path": "scripts\\verify_archive_extracted_reproduction.py",
         "exists": true,
-        "bytes": 52504,
-        "sha256": "cdca8e18dc84bb9b8d06d321fe1bf71f25c52b4b4f4c90fe76f06f8f670d4756",
+        "bytes": 71409,
+        "sha256": "9ccbc603c7f9d458ac722d150a4ff8abec6c8837cb6948e226f8501aa6e02f67",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 52314,
-        "source_sha256": "f3e0d2f1554c383db66b17081b1fcad65a4de61e625ab3b78769d97f72525a80"
+        "source_bytes": 71219,
+        "source_sha256": "0994c3f0cd7d28847c16ddac84252602a5537f8dd0873d5992a2d83b36f42cbc"
       },
       {
         "path": "scripts\\verify_manuscript_release_audit.py",
@@ -3564,6 +3564,16 @@
         "exists": true,
         "bytes": 6678,
         "sha256": "6325f2941de1091e2a15accec87464c4eeed9bc4cecaab58379469e038816cb3"
+      },
+      {
+        "path": "tests\\test_archive_extracted_reproduction.py",
+        "exists": true,
+        "bytes": 22453,
+        "sha256": "49c4a87209076606b646a58be4b1c68882a3f899647433a12bfc3b5f7b0ade18",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 22441,
+        "source_sha256": "45fd936734e5b27fd27cde4c91d5f9ba7f8296196302851fbf366fdd7c9f322d"
       },
       {
         "path": "tests\\test_adaptation_risk_diagnostic.py",
@@ -7872,18 +7882,18 @@
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun\\real_slr_sp3_od.tex",
         "exists": true,
-        "bytes": 3152,
-        "sha256": "be8a5113f1f2ea48453f4eba0c4593ae583957fde3b4e5d0b9551afc39733e35"
+        "bytes": 4289,
+        "sha256": "b90af0cb926a07eaa48d6d4329732f46325b3575012742e358a867d994a013a4"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun\\real_slr_sp3_od_validation.json",
         "exists": true,
         "bytes": 29677,
-        "sha256": "52244601b2d58140c7487c7dd60430f63797b9a6b84c93923740a4e93c0ceb4b",
+        "sha256": "774085abe1f3a239a62617eec7afe13c69cb69ad7f88c17853e6b23ab098c90c",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 30487,
-        "source_sha256": "acf23fe158e9a8e21332699e0480131f251bfdf888b0adf4ce43bf90abda6ab5"
+        "source_sha256": "c0321119a340acc645c53b7824790d1c79c9b5c1316bcfcfd6b641db4a9dbe3f"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun\\sp3_residual_calibrator.json",
@@ -7900,18 +7910,18 @@
       {
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.json",
         "exists": true,
-        "bytes": 12828,
-        "sha256": "efbac9ae8e5f55cbd86c1c0cb437da31cbd7e9dfea84d828117b9747be71b3c3",
+        "bytes": 14534,
+        "sha256": "fe87a844f53964decedddc26006fef803c585f1d119a6161d9f4dc10fab1a0e4",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 13172,
-        "source_sha256": "062fbb24b00210c7ad2fc53023846dbad63b9e4a2520690338cf8f27210f57d8"
+        "source_bytes": 14912,
+        "source_sha256": "4fafed9b1c3ceb685be9e09367d4e2c9c806ee823513fc9b7838760b405506ee"
       },
       {
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.md",
         "exists": true,
-        "bytes": 1748,
-        "sha256": "a737626a917cd6c0d94bb9f5223aafd7b8768979a5d1bbfc804be9f8c4af16be"
+        "bytes": 1953,
+        "sha256": "b9f28b51bd94b21d5f8165ac8f8168fb9856eae789cef35daada7a9de3ceddab"
       },
       {
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun\\public_claim_summary.json",
@@ -7931,19 +7941,19 @@
       }
     ]
   },
-  "artifact_count": 1013,
-  "artifacts_present": 1013,
+  "artifact_count": 1014,
+  "artifacts_present": 1014,
   "checksum_algorithm": "sha256",
   "review_archive": {
     "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
     "exists": true,
-    "bytes": 58860282,
-    "sha256": "48fe649f61368c90cddfce948002deab0d5b3dfe73a787836f452be1eb0ec779",
+    "bytes": 58874787,
+    "sha256": "fe593d5185c63941786bdf48e726f77c79fb64547cd96d648237467928b78fcd",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
-    "artifact_digest_coverage_count": 1013,
-    "artifacts_included": 1013,
+    "artifact_digest_coverage_count": 1014,
+    "artifacts_included": 1014,
     "member_timestamp_utc": "2026-05-19T00:00:00+00:00",
     "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count."
   }

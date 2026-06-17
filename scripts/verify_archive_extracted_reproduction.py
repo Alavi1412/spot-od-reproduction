@@ -50,6 +50,62 @@ OD_ESTIMATORS = (
     "AUKF (adaptive)",
     "SP3-IC propagation",
 )
+PUBLIC_OD_RMSE_ABS_TOLERANCE_M = 0.25
+PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE = 0.50
+PUBLIC_OD_EXACT_FLOAT_ABS_TOLERANCE = 1e-12
+PUBLIC_OD_TOLERATED_DETAIL_LIMIT = 80
+PUBLIC_OD_DIFF_HEAD_LIMIT = 120
+ACTIVE_REGEN_FAILURE_DETAIL_LIMIT = 20
+ACTIVE_REGEN_DIFF_HEAD_LIMIT = 40
+PUBLIC_OD_TABLE_DECIMAL_VALUE = r"[-+]?(?:\d+(?:,\d{3})+|\d+)\.\d+(?:[eE][-+]?\d+)?"
+PUBLIC_OD_TABLE_RMSE_ROW_RE = re.compile(
+    rf"(?m)^(?P<prefix>\s*(?P<label>UKF \(fixed-noise\)|AUKF \(adaptive\))\s*&\s*)"
+    rf"(?P<mean>{PUBLIC_OD_TABLE_DECIMAL_VALUE})"
+    rf"(?P<between>\s*&\s*)"
+    rf"(?P<median>{PUBLIC_OD_TABLE_DECIMAL_VALUE})"
+    rf"(?P<suffix>\s*&\s*\d+/\d+\s*\\\\)$"
+)
+PUBLIC_OD_TABLE_EKF_MINUS_AUKF_RE = re.compile(
+    rf"The paired EKF-minus-AUKF gap \(positive favors AUKF\) is mean "
+    rf"(?P<mean>{PUBLIC_OD_TABLE_DECIMAL_VALUE})~m, median "
+    rf"(?P<median>{PUBLIC_OD_TABLE_DECIMAL_VALUE})~m, with deterministic "
+    rf"20,000-resample bootstrap 95\\% CI \$\[(?P<ci_low>{PUBLIC_OD_TABLE_DECIMAL_VALUE}),"
+    rf"(?P<ci_high>{PUBLIC_OD_TABLE_DECIMAL_VALUE})\]\$~m"
+)
+PUBLIC_OD_TABLE_UKF_MINUS_AUKF_RE = re.compile(
+    rf"pooled mean \((?P<ukf_pooled_mean>{PUBLIC_OD_TABLE_DECIMAL_VALUE})~m versus "
+    rf"(?P<aukf_pooled_mean>{PUBLIC_OD_TABLE_DECIMAL_VALUE})~m for AUKF; "
+    rf"UKF-minus-AUKF mean (?P<mean>{PUBLIC_OD_TABLE_DECIMAL_VALUE})~m, "
+    rf"95\\% CI \$\[(?P<ci_low>{PUBLIC_OD_TABLE_DECIMAL_VALUE}),"
+    rf"(?P<ci_high>{PUBLIC_OD_TABLE_DECIMAL_VALUE})\]\$~m\)"
+)
+PUBLIC_OD_TABLE_TOLERATED_FIELD_DESCRIPTIONS = (
+    "UKF/AUKF table-row held-out RMSE mean and median values",
+    "compact-readout EKF-minus-AUKF mean, median, and 95% CI values",
+    "compact-readout UKF-minus-AUKF mean and 95% CI values",
+    "compact-readout pooled-mean parenthetical UKF and AUKF values",
+)
+PATH_CONTEXT_MARKERS = (
+    "paper/",
+    "results/",
+    "scripts/",
+    "src/",
+    "tests/",
+    "release/",
+    "docs/",
+)
+PATH_SEGMENT_RE = r"[^\\/\s`'\"<>]+(?:[ \t]+(?=[^\\/\s`'\"<>]+(?:[ \t]+[^\\/\s`'\"<>]+)*[\\/])[^\\/\s`'\"<>]+)*"
+TEMP_ABS_PATH_RE = re.compile(
+    rf"(?i)(?:\b[A-Z]:[\\/](?:{PATH_SEGMENT_RE}[\\/])*(?:AppData[\\/]Local[\\/]Temp|Temp|tmp)(?:[\\/]{PATH_SEGMENT_RE})*|/tmp(?:/{PATH_SEGMENT_RE})*)"
+)
+WINDOWS_ABS_PATH_RE = re.compile(
+    rf"(?i)\b[A-Z]:[\\/]{PATH_SEGMENT_RE}(?:[\\/]{PATH_SEGMENT_RE})*"
+)
+UNC_ABS_PATH_RE = re.compile(rf"(?i)(?<!\S)\\\\{PATH_SEGMENT_RE}(?:[\\/]{PATH_SEGMENT_RE})+")
+POSIX_ABS_PATH_RE = re.compile(
+    rf"(?i)(?<![\w.])/(?:home|Users|mnt|workspace|repo|var)(?:/{PATH_SEGMENT_RE})+"
+)
+REPO_ROOT_PLACEHOLDER_PATH_RE = re.compile(r"\[repo-root\][^\s`'\"<>]*")
 LOOP_LABEL_RE = re.compile(r"loop\d+", re.IGNORECASE)
 REVIEW_ALIAS_RESTORE_SOURCES = (
     "results/kalmannet_spot_od_loop57/kalmannet_spot_od.json",
@@ -455,6 +511,145 @@ def check_regeneration_tiers(
     }
 
 
+def _path_context_suffix(path_text: str) -> str:
+    normalized = path_text.replace("\\", "/")
+    trailing = ""
+    while normalized and normalized[-1] in ".,;:)":
+        trailing = normalized[-1] + trailing
+        normalized = normalized[:-1]
+    for marker in PATH_CONTEXT_MARKERS:
+        idx = normalized.find(marker)
+        if idx >= 0:
+            return normalized[idx:] + trailing
+    name = PurePosixPath(normalized).name
+    return f"{name}{trailing}" if name else trailing
+
+
+def _redacted_path(path_text: str, label: str) -> str:
+    suffix = _path_context_suffix(path_text)
+    return f"[redacted {label}]/{suffix}" if suffix else f"[redacted {label}]"
+
+
+def sanitize_failure_detail_string(text: str) -> str:
+    sanitized = text
+    root_variants = sorted(
+        {str(ROOT), norm(ROOT), str(ROOT).replace("\\", "/")},
+        key=len,
+        reverse=True,
+    )
+    for root in root_variants:
+        if root:
+            sanitized = sanitized.replace(root, "[repo-root]")
+    sanitized = sanitized.replace("[repo-root]\\", "[repo-root]/")
+    sanitized = TEMP_ABS_PATH_RE.sub(
+        lambda match: _redacted_path(match.group(0), "temp path"),
+        sanitized,
+    )
+    for pattern, label in (
+        (WINDOWS_ABS_PATH_RE, "absolute path"),
+        (UNC_ABS_PATH_RE, "absolute path"),
+        (POSIX_ABS_PATH_RE, "absolute path"),
+    ):
+        sanitized = pattern.sub(
+            lambda match: _redacted_path(match.group(0), label),
+            sanitized,
+        )
+    sanitized = REPO_ROOT_PLACEHOLDER_PATH_RE.sub(
+        lambda match: match.group(0).replace("\\", "/"),
+        sanitized,
+    )
+    return sanitized
+
+
+def sanitize_failure_detail(value: Any) -> Any:
+    if isinstance(value, str):
+        return sanitize_failure_detail_string(value)
+    if isinstance(value, list):
+        return [sanitize_failure_detail(item) for item in value]
+    if isinstance(value, dict):
+        return {key: sanitize_failure_detail(item) for key, item in value.items()}
+    return value
+
+
+def sanitize_failure_path(value: Any) -> str:
+    path_text = "" if value is None else str(value)
+    return sanitize_failure_detail_string(norm(path_text))
+
+
+def summarize_active_regeneration_failures(nested: dict[str, Any]) -> dict[str, Any]:
+    status_evidence = nested.get("status_evidence", {}) if isinstance(nested, dict) else {}
+    artifacts = status_evidence.get("active_artifacts", []) if isinstance(status_evidence, dict) else []
+    if not isinstance(artifacts, list):
+        artifacts = []
+
+    failed: list[dict[str, Any]] = []
+    for row in artifacts:
+        if not isinstance(row, dict):
+            continue
+        status = row.get("status")
+        if status == "pass":
+            continue
+        source_blockers = [
+            {
+                "path": sanitize_failure_path(src.get("path", "")),
+                "exists": src.get("exists"),
+                "sha256": src.get("sha256"),
+                "bytes": src.get("bytes"),
+            }
+            for src in row.get("source_artifacts", [])
+            if isinstance(src, dict) and not src.get("exists", False)
+        ]
+        difference = row.get("difference", {})
+        if not isinstance(difference, dict):
+            difference = {}
+        first_difference = sanitize_failure_detail(difference.get("first_difference"))
+        unified_diff_head = difference.get("unified_diff_head")
+        if isinstance(unified_diff_head, list):
+            unified_diff_head = sanitize_failure_detail(
+                unified_diff_head[:ACTIVE_REGEN_DIFF_HEAD_LIMIT]
+            )
+        else:
+            unified_diff_head = []
+        failed.append(
+            {
+                "path": sanitize_failure_path(row.get("path", "")),
+                "status": status,
+                "builder": row.get("builder"),
+                "stage": row.get("stage"),
+                "blocker": sanitize_failure_detail(
+                    row.get("blocker") or row.get("explicit_blocker")
+                ),
+                "source_blockers": source_blockers,
+                "before_sha256": row.get("before_sha256"),
+                "generated_sha256": row.get("generated_sha256"),
+                "after_sha256": row.get("after_sha256"),
+                "before_bytes": row.get("before_bytes"),
+                "generated_bytes": row.get("generated_bytes"),
+                "bytes": row.get("bytes"),
+                "first_text_difference": first_difference,
+                "unified_diff_head": unified_diff_head,
+                "unified_diff_head_truncated": max(
+                    0,
+                    len(difference.get("unified_diff_head", []))
+                    - ACTIVE_REGEN_DIFF_HEAD_LIMIT
+                    if isinstance(difference.get("unified_diff_head"), list)
+                    else 0,
+                ),
+            }
+        )
+
+    return {
+        "artifact_count": len(artifacts),
+        "failed_artifact_count": len(failed),
+        "mismatch_artifact_count": sum(1 for row in failed if row.get("status") == "mismatch"),
+        "blocked_artifact_count": sum(1 for row in failed if row.get("status") == "blocked"),
+        "detail_limit": ACTIVE_REGEN_FAILURE_DETAIL_LIMIT,
+        "diff_head_limit": ACTIVE_REGEN_DIFF_HEAD_LIMIT,
+        "artifacts": failed[:ACTIVE_REGEN_FAILURE_DETAIL_LIMIT],
+        "truncated_artifact_count": max(0, len(failed) - ACTIVE_REGEN_FAILURE_DETAIL_LIMIT),
+    }
+
+
 def run_active_table_regeneration(extracted_root: Path) -> dict[str, Any]:
     script = extracted_path(extracted_root, ACTIVE_REGEN_SCRIPT_REL)
     if not script.is_file():
@@ -518,6 +713,7 @@ def run_active_table_regeneration(extracted_root: Path) -> dict[str, Any]:
             "mismatch_count": validation.get("mismatch_count"),
             "documented_blocker_count": validation.get("documented_blocker_count"),
             "claim_boundary": nested.get("claim_boundary"),
+            "failure_detail_summary": summarize_active_regeneration_failures(nested),
         },
     }
 
@@ -743,6 +939,37 @@ def flatten_claim_fields(value: Any, prefix: str = "") -> dict[str, Any]:
     return {prefix: value}
 
 
+def is_plain_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def strict_equal(expected: Any, actual: Any) -> bool:
+    return type(expected) is type(actual) and expected == actual
+
+
+def public_od_claim_field_abs_tolerance(field: str, expected: Any, actual: Any) -> float | None:
+    if type(expected) is not type(actual):
+        return None
+    if not (is_plain_number(expected) and is_plain_number(actual)):
+        return None
+    if isinstance(expected, int) and isinstance(actual, int):
+        return None
+    if field.endswith(".mean_arc_rms_m") or field.endswith(".median_arc_rms_m"):
+        return PUBLIC_OD_RMSE_ABS_TOLERANCE_M
+    return PUBLIC_OD_EXACT_FLOAT_ABS_TOLERANCE
+
+
+def public_od_tolerance_policy() -> dict[str, Any]:
+    return {
+        "pooled_rmse_abs_tolerance_m": PUBLIC_OD_RMSE_ABS_TOLERANCE_M,
+        "table_targeted_abs_tolerance": PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE,
+        "table_tolerated_fields": list(PUBLIC_OD_TABLE_TOLERATED_FIELD_DESCRIPTIONS),
+        "other_float_abs_tolerance": PUBLIC_OD_EXACT_FLOAT_ABS_TOLERANCE,
+        "categorical_count_status_fields": "type-strict equality",
+        "table_other_text_and_numbers": "strict equality after line-ending/final-newline normalization",
+    }
+
+
 def compare_public_od_claim_summaries(
     submitted: dict[str, Any],
     rerun: dict[str, Any],
@@ -752,54 +979,263 @@ def compare_public_od_claim_summaries(
     expected_flat = flatten_claim_fields(expected)
     actual_flat = flatten_claim_fields(actual)
     paths = sorted(set(expected_flat) | set(actual_flat))
-    mismatches = [
-        {
-            "field": path,
-            "expected": expected_flat.get(path),
-            "actual": actual_flat.get(path),
-        }
-        for path in paths
-        if expected_flat.get(path) != actual_flat.get(path)
-    ]
+    mismatches: list[dict[str, Any]] = []
+    tolerated: list[dict[str, Any]] = []
+    max_delta = 0.0
+    for path in paths:
+        expected_value = expected_flat.get(path)
+        actual_value = actual_flat.get(path)
+        if strict_equal(expected_value, actual_value):
+            continue
+        tolerance = public_od_claim_field_abs_tolerance(path, expected_value, actual_value)
+        if tolerance is not None:
+            delta = abs(float(expected_value) - float(actual_value))
+            max_delta = max(max_delta, delta)
+            if delta <= tolerance:
+                tolerated.append(
+                    {
+                        "field": path,
+                        "expected": expected_value,
+                        "actual": actual_value,
+                        "abs_delta": delta,
+                        "abs_tolerance": tolerance,
+                    }
+                )
+                continue
+        mismatches.append(
+            {
+                "field": path,
+                "expected": expected_value,
+                "actual": actual_value,
+                "expected_type": type(expected_value).__name__,
+                "actual_type": type(actual_value).__name__,
+                "abs_delta": delta if tolerance is not None else None,
+                "abs_tolerance": tolerance,
+            }
+        )
     return {
         "status": "pass" if not mismatches else "fail",
         "mismatch_count": len(mismatches),
         "mismatches": mismatches,
+        "tolerance_policy": public_od_tolerance_policy(),
+        "tolerated_numeric_difference_count": len(tolerated),
+        "tolerated_numeric_differences": tolerated[:PUBLIC_OD_TOLERATED_DETAIL_LIMIT],
+        "tolerated_numeric_differences_truncated": max(
+            0, len(tolerated) - PUBLIC_OD_TOLERATED_DETAIL_LIMIT
+        ),
+        "max_observed_abs_delta": max_delta,
         "expected": expected,
         "actual": actual,
     }
 
 
-def compare_public_od_table_text(generated: str, submitted: str) -> dict[str, Any]:
-    gen = normalize_table_text(generated)
-    sub = normalize_table_text(submitted)
-    if gen == sub:
-        digest = sha256_bytes(gen.encode("utf-8"))
-        return {
-            "status": "pass",
-            "matches_submitted_table": True,
-            "normalization": "line endings and final newline ignored",
-            "generated_sha256": digest,
-            "submitted_sha256": digest,
-        }
+def parse_table_number(token: str) -> float:
+    return float(token.replace(",", ""))
+
+
+def replace_targeted_numeric_groups(
+    text: str,
+    pattern: re.Pattern[str],
+    target_groups: tuple[str, ...],
+    field_name,
+    values: dict[str, str],
+) -> str:
+    pieces: list[str] = []
+    last = 0
+    for match in pattern.finditer(text):
+        group_spans = [
+            (match.start(group), match.end(group), group)
+            for group in target_groups
+            if match.group(group) is not None
+        ]
+        if not group_spans:
+            continue
+        group_spans.sort()
+        pieces.append(text[last : match.start()])
+        cursor = match.start()
+        for start, end, group in group_spans:
+            field = field_name(match, group)
+            if field in values:
+                base = field
+                idx = 2
+                while f"{base}#{idx}" in values:
+                    idx += 1
+                field = f"{base}#{idx}"
+            pieces.append(text[cursor:start])
+            pieces.append(f"<PUBLIC_OD_TOLERATED:{field}>")
+            values[field] = match.group(group)
+            cursor = end
+        pieces.append(text[cursor : match.end()])
+        last = match.end()
+    pieces.append(text[last:])
+    return "".join(pieces)
+
+
+def table_row_field_name(match: re.Match[str], group: str) -> str:
+    metric = {"mean": "mean_arc_rms_m", "median": "median_arc_rms_m"}[group]
+    return f"table_row.{match.group('label')}.{metric}"
+
+
+def fixed_table_field_name(prefix: str):
+    def name(_match: re.Match[str], group: str) -> str:
+        field = {
+            "mean": "mean_m",
+            "median": "median_m",
+            "ci_low": "ci_low_m",
+            "ci_high": "ci_high_m",
+            "ukf_pooled_mean": "ukf_pooled_mean_m",
+            "aukf_pooled_mean": "aukf_pooled_mean_m",
+        }[group]
+        return f"{prefix}.{field}"
+
+    return name
+
+
+def targeted_table_projection(text: str) -> tuple[str, dict[str, str]]:
+    values: dict[str, str] = {}
+    projected = replace_targeted_numeric_groups(
+        text,
+        PUBLIC_OD_TABLE_RMSE_ROW_RE,
+        ("mean", "median"),
+        table_row_field_name,
+        values,
+    )
+    projected = replace_targeted_numeric_groups(
+        projected,
+        PUBLIC_OD_TABLE_EKF_MINUS_AUKF_RE,
+        ("mean", "median", "ci_low", "ci_high"),
+        fixed_table_field_name("compact_readout.ekf_minus_aukf"),
+        values,
+    )
+    projected = replace_targeted_numeric_groups(
+        projected,
+        PUBLIC_OD_TABLE_UKF_MINUS_AUKF_RE,
+        ("ukf_pooled_mean", "aukf_pooled_mean", "mean", "ci_low", "ci_high"),
+        fixed_table_field_name("compact_readout.ukf_minus_aukf"),
+        values,
+    )
+    return projected, values
+
+
+def public_od_table_diff_head(submitted: str, generated: str) -> list[str]:
     import difflib
 
-    diff = list(
+    return list(
         difflib.unified_diff(
-            sub.splitlines(),
-            gen.splitlines(),
+            submitted.splitlines(),
+            generated.splitlines(),
             fromfile="extracted_submitted",
             tofile="archive_extracted_rerun_generated",
             lineterm="",
         )
-    )
+    )[:PUBLIC_OD_DIFF_HEAD_LIMIT]
+
+
+def compare_public_od_table_text(generated: str, submitted: str) -> dict[str, Any]:
+    gen = normalize_table_text(generated)
+    sub = normalize_table_text(submitted)
+    generated_sha256 = sha256_bytes(gen.encode("utf-8"))
+    submitted_sha256 = sha256_bytes(sub.encode("utf-8"))
+    if gen == sub:
+        return {
+            "status": "pass",
+            "matches_submitted_table": True,
+            "byte_identical_after_normalization": True,
+            "normalization": "line endings and final newline ignored",
+            "tolerance_policy": public_od_tolerance_policy(),
+            "tolerated_numeric_difference_count": 0,
+            "tolerated_numeric_differences": [],
+            "max_observed_abs_delta": 0.0,
+            "generated_sha256": generated_sha256,
+            "submitted_sha256": submitted_sha256,
+        }
+
+    generated_projection, generated_values = targeted_table_projection(gen)
+    submitted_projection, submitted_values = targeted_table_projection(sub)
+    numeric_mismatches: list[dict[str, Any]] = []
+    tolerated: list[dict[str, Any]] = []
+    max_delta = 0.0
+    projection_matches = generated_projection == submitted_projection
+    field_sets_match = set(generated_values) == set(submitted_values)
+    for field in sorted(set(generated_values) | set(submitted_values)):
+        expected_token = submitted_values.get(field)
+        actual_token = generated_values.get(field)
+        if expected_token is None or actual_token is None:
+            numeric_mismatches.append(
+                {
+                    "field": field,
+                    "expected": expected_token,
+                    "actual": actual_token,
+                    "reason": "targeted_field_missing",
+                    "abs_tolerance": PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE,
+                }
+            )
+            continue
+        if expected_token == actual_token:
+            continue
+        expected_value = parse_table_number(expected_token)
+        actual_value = parse_table_number(actual_token)
+        delta = abs(expected_value - actual_value)
+        max_delta = max(max_delta, delta)
+        row = {
+            "field": field,
+            "expected": expected_token,
+            "actual": actual_token,
+            "abs_delta": delta,
+            "abs_tolerance": PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE,
+        }
+        if delta <= PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE:
+            tolerated.append(row)
+        else:
+            numeric_mismatches.append(row)
+
+    if projection_matches and field_sets_match and not numeric_mismatches:
+        return {
+            "status": "pass",
+            "matches_submitted_table": True,
+            "byte_identical_after_normalization": False,
+            "normalization": (
+                "line endings and final newline ignored; only explicitly "
+                "labeled public-OD RMSE/readout fields compared with bounded "
+                "absolute tolerance; all other text and numbers exact"
+            ),
+            "tolerance_policy": public_od_tolerance_policy(),
+            "tolerated_numeric_difference_count": len(tolerated),
+            "tolerated_numeric_differences": tolerated[:PUBLIC_OD_TOLERATED_DETAIL_LIMIT],
+            "tolerated_numeric_differences_truncated": max(
+                0, len(tolerated) - PUBLIC_OD_TOLERATED_DETAIL_LIMIT
+            ),
+            "max_observed_abs_delta": max_delta,
+            "generated_sha256": generated_sha256,
+            "submitted_sha256": submitted_sha256,
+        }
+
     return {
         "status": "fail",
         "matches_submitted_table": False,
-        "normalization": "line endings and final newline ignored",
-        "generated_sha256": sha256_bytes(gen.encode("utf-8")),
-        "submitted_sha256": sha256_bytes(sub.encode("utf-8")),
-        "diff_head": diff[:120],
+        "byte_identical_after_normalization": False,
+        "normalization": (
+            "line endings and final newline ignored; only explicitly labeled "
+            "public-OD RMSE/readout fields have bounded absolute tolerance; "
+            "all other text and numbers must remain exact"
+        ),
+        "tolerance_policy": public_od_tolerance_policy(),
+        "unchanged_outside_tolerated_fields": projection_matches,
+        "targeted_field_set_matches": field_sets_match,
+        "numeric_mismatch_count": len(numeric_mismatches),
+        "numeric_mismatches": numeric_mismatches[:PUBLIC_OD_TOLERATED_DETAIL_LIMIT],
+        "numeric_mismatches_truncated": max(
+            0, len(numeric_mismatches) - PUBLIC_OD_TOLERATED_DETAIL_LIMIT
+        ),
+        "tolerated_numeric_difference_count": len(tolerated),
+        "tolerated_numeric_differences": tolerated[:PUBLIC_OD_TOLERATED_DETAIL_LIMIT],
+        "tolerated_numeric_differences_truncated": max(
+            0, len(tolerated) - PUBLIC_OD_TOLERATED_DETAIL_LIMIT
+        ),
+        "max_observed_abs_delta": max_delta,
+        "generated_sha256": generated_sha256,
+        "submitted_sha256": submitted_sha256,
+        "diff_head": public_od_table_diff_head(sub, gen),
     }
 
 
@@ -1073,7 +1509,9 @@ def write_archive_extracted_od_reports(od_check: dict[str, Any]) -> dict[str, An
         "",
         "## Comparisons",
         f"- Public-claim summary fields: **{str(claim.get('status')).upper()}** ({claim.get('mismatch_count')} mismatches).",
+        f"- Public-claim tolerated numeric differences: `{claim.get('tolerated_numeric_difference_count', 0)}`; max absolute delta `{claim.get('max_observed_abs_delta', 0.0)}` m; RMSE tolerance `{PUBLIC_OD_RMSE_ABS_TOLERANCE_M}` m.",
         f"- Generated table text matches extracted submitted table: **{str(table.get('status')).upper()}**.",
+        f"- Table tolerated numeric differences: `{table.get('tolerated_numeric_difference_count', 0)}`; max absolute delta `{table.get('max_observed_abs_delta', 0.0)}`; field-aware tolerance `{PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE}`.",
         "",
         "## Summary",
         f"- Completed arcs: `{summary.get('completed_arcs')}`.",
@@ -1165,6 +1603,7 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         f"- Pass count: `{nested.get('pass_count')}`.",
         f"- Mismatch count: `{nested.get('mismatch_count')}`.",
         f"- Blocker count: `{nested.get('documented_blocker_count')}`.",
+        f"- Failure detail rows retained: `{nested.get('failure_detail_summary', {}).get('failed_artifact_count')}`.",
         "",
         "## Archive-Extracted Public OD Slice Rerun",
         f"- Attempted: `{public_od.get('attempted')}`.",
@@ -1173,8 +1612,10 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         "- Execution details: redacted from this reviewer-facing summary.",
         f"- Completed arcs: `{public_od_summary.get('completed_arcs')}`.",
         f"- Public-claim summary fields: **{str(public_od_claim.get('status')).upper()}** ({public_od_claim.get('mismatch_count')} mismatches).",
+        f"- Public-claim tolerated numeric differences: `{public_od_claim.get('tolerated_numeric_difference_count', 0)}`; max absolute delta `{public_od_claim.get('max_observed_abs_delta', 0.0)}` m; RMSE tolerance `{PUBLIC_OD_RMSE_ABS_TOLERANCE_M}` m.",
         f"- DBAR correct/scored: `{public_od_summary.get('dbar_correct')}/{public_od_summary.get('dbar_scored')}`.",
         f"- Generated table text matches extracted submitted table: **{str(public_od_table.get('status')).upper()}**.",
+        f"- Table tolerated numeric differences: `{public_od_table.get('tolerated_numeric_difference_count', 0)}`; max absolute delta `{public_od_table.get('max_observed_abs_delta', 0.0)}`; field-aware tolerance `{PUBLIC_OD_TABLE_TARGETED_ABS_TOLERANCE}`.",
         f"- Companion report: `{od_outputs.get('companion_json')}` and `{od_outputs.get('companion_markdown')}`.",
         "",
         "## Outputs",

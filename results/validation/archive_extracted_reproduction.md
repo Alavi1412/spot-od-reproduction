@@ -20,9 +20,9 @@ Archive-extracted integrity, active main-manuscript table-regeneration, and one 
 - Note: The review ZIP is digest-addressed by the paired release manifest; the manifest is therefore treated as an allowed release-level record rather than a self-referential ZIP member.
 
 ## Counts
-- Manifest-indexed artifacts checked after extraction: `955`.
-- Extracted ZIP members: `955`.
-- Claim-map entries: `21`.
+- Manifest-indexed artifacts checked after extraction: `1014`.
+- Extracted ZIP members: `1014`.
+- Claim-map entries: `28`.
 - Regeneration tiers: `6`.
 
 ## Extracted Active Table Regeneration
@@ -33,6 +33,7 @@ Archive-extracted integrity, active main-manuscript table-regeneration, and one 
 - Pass count: `10`.
 - Mismatch count: `0`.
 - Blocker count: `0`.
+- Failure detail rows retained: `0`.
 
 ## Archive-Extracted Public OD Slice Rerun
 - Attempted: `True`.
@@ -41,8 +42,10 @@ Archive-extracted integrity, active main-manuscript table-regeneration, and one 
 - Execution details: redacted from this reviewer-facing summary.
 - Completed arcs: `10`.
 - Public-claim summary fields: **PASS** (0 mismatches).
+- Public-claim tolerated numeric differences: `0`; max absolute delta `0.0` m; RMSE tolerance `0.25` m.
 - DBAR correct/scored: `6/10`.
 - Generated table text matches extracted submitted table: **PASS**.
+- Table tolerated numeric differences: `0`; max absolute delta `0.0`; field-aware tolerance `0.5`.
 - Companion report: `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.json` and `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.md`.
 
 ## Outputs

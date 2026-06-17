@@ -639,6 +639,7 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "scripts/verify_minimum_tier_reproduction.py",
         "scripts/verify_release_packet_sync.py",
         "docs/verify_release_packet_sync.py",
+        "tests/test_archive_extracted_reproduction.py",
         "tests/test_adaptation_risk_diagnostic.py",
         "tests/test_dbar_independent_sweep.py",
         "tests/test_observed_step_prospective_replication.py",

@@ -8,10 +8,10 @@
     },
     "source_input_dir": "results/real_slr_sp3_od",
     "table_tex": {
-      "bytes": 3152,
+      "bytes": 4289,
       "exists": true,
       "path": "paper/tables/real_slr_sp3_od.tex",
-      "sha256": "be8a5113f1f2ea48453f4eba0c4593ae583957fde3b4e5d0b9551afc39733e35"
+      "sha256": "b90af0cb926a07eaa48d6d4329732f46325b3575012742e358a867d994a013a4"
     }
   },
   "comparisons": {
@@ -146,32 +146,66 @@
           "LAGEOS-2"
         ]
       },
+      "max_observed_abs_delta": 0.0,
       "mismatch_count": 0,
       "mismatches": [],
-      "status": "pass"
+      "status": "pass",
+      "tolerance_policy": {
+        "categorical_count_status_fields": "type-strict equality",
+        "other_float_abs_tolerance": 1e-12,
+        "pooled_rmse_abs_tolerance_m": 0.25,
+        "table_other_text_and_numbers": "strict equality after line-ending/final-newline normalization",
+        "table_targeted_abs_tolerance": 0.5,
+        "table_tolerated_fields": [
+          "UKF/AUKF table-row held-out RMSE mean and median values",
+          "compact-readout EKF-minus-AUKF mean, median, and 95% CI values",
+          "compact-readout UKF-minus-AUKF mean and 95% CI values",
+          "compact-readout pooled-mean parenthetical UKF and AUKF values"
+        ]
+      },
+      "tolerated_numeric_difference_count": 0,
+      "tolerated_numeric_differences": [],
+      "tolerated_numeric_differences_truncated": 0
     },
     "table_text": {
-      "generated_sha256": "0c043924a11fa07d8e4d351ee8e4a2c9f4a46e9209c746564617effd1188f53f",
+      "byte_identical_after_normalization": true,
+      "generated_sha256": "e47695122551706b67a17ef0dbb407de0f8e1095c52d24d6ccfd2b65bbd759dd",
       "matches_submitted_table": true,
+      "max_observed_abs_delta": 0.0,
       "normalization": "line endings and final newline ignored",
       "status": "pass",
-      "submitted_sha256": "0c043924a11fa07d8e4d351ee8e4a2c9f4a46e9209c746564617effd1188f53f"
+      "submitted_sha256": "e47695122551706b67a17ef0dbb407de0f8e1095c52d24d6ccfd2b65bbd759dd",
+      "tolerance_policy": {
+        "categorical_count_status_fields": "type-strict equality",
+        "other_float_abs_tolerance": 1e-12,
+        "pooled_rmse_abs_tolerance_m": 0.25,
+        "table_other_text_and_numbers": "strict equality after line-ending/final-newline normalization",
+        "table_targeted_abs_tolerance": 0.5,
+        "table_tolerated_fields": [
+          "UKF/AUKF table-row held-out RMSE mean and median values",
+          "compact-readout EKF-minus-AUKF mean, median, and 95% CI values",
+          "compact-readout UKF-minus-AUKF mean and 95% CI values",
+          "compact-readout pooled-mean parenthetical UKF and AUKF values"
+        ]
+      },
+      "tolerated_numeric_difference_count": 0,
+      "tolerated_numeric_differences": []
     }
   },
-  "generated_utc": "2026-05-25T10:26:37+00:00",
+  "generated_utc": "2026-06-17T21:08:49+00:00",
   "rerun_artifacts": {
     "rerun_dir": "results/validation/real_slr_sp3_od_slice_rerun",
     "result_json": {
       "bytes": 30487,
       "exists": true,
       "path": "results/validation/real_slr_sp3_od_slice_rerun/real_slr_sp3_od_validation.json",
-      "sha256": "acf23fe158e9a8e21332699e0480131f251bfdf888b0adf4ce43bf90abda6ab5"
+      "sha256": "c0321119a340acc645c53b7824790d1c79c9b5c1316bcfcfd6b641db4a9dbe3f"
     },
     "table_tex": {
-      "bytes": 3152,
+      "bytes": 4289,
       "exists": true,
       "path": "results/validation/real_slr_sp3_od_slice_rerun/real_slr_sp3_od.tex",
-      "sha256": "be8a5113f1f2ea48453f4eba0c4593ae583957fde3b4e5d0b9551afc39733e35"
+      "sha256": "b90af0cb926a07eaa48d6d4329732f46325b3575012742e358a867d994a013a4"
     }
   },
   "rerun_execution": {

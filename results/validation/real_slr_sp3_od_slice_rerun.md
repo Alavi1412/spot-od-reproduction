@@ -14,7 +14,9 @@ One public LAGEOS CRD/SP3 precise-reference OD slice rerun from archived public 
 
 ## Comparisons
 - Public-claim summary fields: **PASS** (0 mismatches).
+- Public-claim tolerated numeric differences: `0`; max absolute delta `0.0` m; RMSE tolerance `0.25` m.
 - Generated table text matches submitted table: **PASS**.
+- Table tolerated numeric differences: `0`; max absolute delta `0.0`; field-aware tolerance `0.5`.
 
 ## Summary
 - Completed arcs: `10`.
