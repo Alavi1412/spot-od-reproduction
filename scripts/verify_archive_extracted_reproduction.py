@@ -626,6 +626,9 @@ def summarize_active_regeneration_failures(nested: dict[str, Any]) -> dict[str, 
                 "before_bytes": row.get("before_bytes"),
                 "generated_bytes": row.get("generated_bytes"),
                 "bytes": row.get("bytes"),
+                "byte_match": row.get("byte_match"),
+                "text_normalized_match": row.get("text_normalized_match"),
+                "comparison_mode": row.get("comparison_mode"),
                 "first_text_difference": first_difference,
                 "unified_diff_head": unified_diff_head,
                 "unified_diff_head_truncated": max(
@@ -634,6 +637,14 @@ def summarize_active_regeneration_failures(nested: dict[str, Any]) -> dict[str, 
                     - ACTIVE_REGEN_DIFF_HEAD_LIMIT
                     if isinstance(difference.get("unified_diff_head"), list)
                     else 0,
+                ),
+                "renderer": row.get("renderer"),
+                "renderer_error": sanitize_failure_detail(row.get("renderer_error")),
+                "direct_renderer_error": sanitize_failure_detail(
+                    row.get("direct_renderer_error")
+                ),
+                "figure_render_errors": sanitize_failure_detail(
+                    row.get("figure_render_errors")
                 ),
             }
         )

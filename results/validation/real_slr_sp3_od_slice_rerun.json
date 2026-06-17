@@ -192,14 +192,14 @@
       "tolerated_numeric_differences": []
     }
   },
-  "generated_utc": "2026-06-17T21:08:49+00:00",
+  "generated_utc": "2026-06-17T21:44:38+00:00",
   "rerun_artifacts": {
     "rerun_dir": "results/validation/real_slr_sp3_od_slice_rerun",
     "result_json": {
       "bytes": 30487,
       "exists": true,
       "path": "results/validation/real_slr_sp3_od_slice_rerun/real_slr_sp3_od_validation.json",
-      "sha256": "c0321119a340acc645c53b7824790d1c79c9b5c1316bcfcfd6b641db4a9dbe3f"
+      "sha256": "137af6d881b47a1ecd13ae0476dac37c5d31489f2e96d6322026354ae57704fc"
     },
     "table_tex": {
       "bytes": 4289,

@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import json
+import types
+from pathlib import Path
 
 import pytest
 
 from scripts.build_supplementary_manifest import ARTIFACT_GROUPS
+import scripts.regenerate_active_manuscript as regen
 from scripts.regenerate_active_manuscript import ROOT, active_artifacts
 from scripts.verify_archive_extracted_reproduction import (
     OD_CANONICAL_DIR_REL,
@@ -23,6 +26,108 @@ from scripts.verify_archive_extracted_reproduction import (
     safe_member_path,
     summarize_active_regeneration_failures,
 )
+
+
+def test_active_text_artifact_check_only_passes_normalized_line_endings(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "paper" / "tables" / "line_endings.tex"
+    generated = tmp_path / "generated" / "line_endings.tex"
+    target.parent.mkdir(parents=True)
+    generated.parent.mkdir(parents=True)
+    target.write_bytes(b"alpha\r\nbeta\r\n")
+    generated.write_bytes(b"alpha\nbeta\n")
+
+    result = regen.compare_or_update_artifact(
+        path="paper/tables/line_endings.tex",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "pass"
+    assert result["byte_match"] is False
+    assert result["text_normalized_match"] is True
+    assert result["comparison_mode"] == "normalized_text"
+    assert result["before_sha256"] != result["generated_sha256"]
+
+
+def test_active_text_artifact_check_only_rejects_actual_text_change(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "paper" / "tables" / "changed.tex"
+    generated = tmp_path / "generated" / "changed.tex"
+    target.parent.mkdir(parents=True)
+    generated.parent.mkdir(parents=True)
+    target.write_text("alpha\nbeta\n", encoding="utf-8")
+    generated.write_text("alpha\ngamma\n", encoding="utf-8")
+
+    result = regen.compare_or_update_artifact(
+        path="paper/tables/changed.tex",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "mismatch"
+    assert result["text_normalized_match"] is False
+    assert result["difference"]["first_difference"]["line"] == 2
+
+
+def test_active_figure_renderer_mapping_falls_back_when_report_omits_aukf(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    class FakeLoader:
+        def exec_module(self, module: types.SimpleNamespace) -> None:
+            def render_publication_figures(
+                *, results_dir: Path, paper_fig_dir: Path, report_path: Path
+            ) -> dict:
+                return {
+                    "figures": {},
+                    "render_errors": {
+                        "aukf_r_inflation_mechanism": "not registered in bulk report"
+                    },
+                }
+
+            def _render_aukf_r_inflation_mechanism(
+                results_dir: Path, paper_fig_dir: Path
+            ) -> dict:
+                path = paper_fig_dir / "aukf_r_inflation_mechanism.png"
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(b"generated figure bytes")
+                return {"path": str(path), "bytes": path.stat().st_size}
+
+            module.render_publication_figures = render_publication_figures
+            module._render_aukf_r_inflation_mechanism = (
+                _render_aukf_r_inflation_mechanism
+            )
+
+    fake_spec = types.SimpleNamespace(loader=FakeLoader())
+    monkeypatch.setattr(
+        regen.importlib.util,
+        "spec_from_file_location",
+        lambda name, script: fake_spec,
+    )
+    monkeypatch.setattr(
+        regen.importlib.util,
+        "module_from_spec",
+        lambda spec: types.SimpleNamespace(),
+    )
+
+    records, blockers = regen.render_figures_to(
+        tmp_path,
+        ["paper/figures/aukf_r_inflation_mechanism.png"],
+    )
+
+    assert blockers == []
+    assert records[0]["path"] == "paper/figures/aukf_r_inflation_mechanism.png"
+    assert records[0]["builder"].endswith("::_render_aukf_r_inflation_mechanism")
 
 
 def test_active_main_artifacts_are_indexed_for_review_archive() -> None:
@@ -373,6 +478,9 @@ def test_active_regeneration_failure_summary_is_bounded_and_path_safe() -> None:
                     "before_sha256": "before",
                     "generated_sha256": "generated",
                     "after_sha256": "after",
+                    "byte_match": False,
+                    "text_normalized_match": False,
+                    "comparison_mode": "byte_sha256",
                     "difference": {
                         "first_difference": {
                             "line": 3,
@@ -408,6 +516,14 @@ def test_active_regeneration_failure_summary_is_bounded_and_path_safe() -> None:
                         f"Missing source artifacts: {repo_missing_abs}; staged under "
                         "C:/Users/example/AppData/Local/Temp/archive_extract_x/results/missing.json"
                     ),
+                    "renderer": "scripts/render_publication_figures.py::_render_aukf_r_inflation_mechanism",
+                    "renderer_error": "missing source artifact",
+                    "figure_render_errors": {
+                        "aukf_r_inflation_mechanism": (
+                            "C:/Users/example/AppData/Local/Temp/"
+                            "archive_extract_x/results/missing.json"
+                        )
+                    },
                     "source_artifacts": [
                         {
                             "path": "results/missing.json",
@@ -430,8 +546,18 @@ def test_active_regeneration_failure_summary_is_bounded_and_path_safe() -> None:
     assert result["mismatch_artifact_count"] == 1
     assert result["blocked_artifact_count"] == 1
     assert result["artifacts"][0]["first_text_difference"]["line"] == 3
+    assert result["artifacts"][0]["byte_match"] is False
+    assert result["artifacts"][0]["text_normalized_match"] is False
+    assert result["artifacts"][0]["comparison_mode"] == "byte_sha256"
     assert len(result["artifacts"][0]["unified_diff_head"]) == 40
     assert result["artifacts"][1]["source_blockers"][0]["path"] == "results/missing.json"
+    assert result["artifacts"][1]["renderer"].endswith(
+        "::_render_aukf_r_inflation_mechanism"
+    )
+    assert result["artifacts"][1]["renderer_error"] == "missing source artifact"
+    assert "[redacted temp path]/results/missing.json" in json.dumps(
+        result["artifacts"][1]["figure_render_errors"], sort_keys=True
+    )
     assert "active_manuscript_regen_x" not in serialized
     assert "archive_extract_x" not in serialized
     assert "AppData" not in serialized
