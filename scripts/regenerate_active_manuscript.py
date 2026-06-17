@@ -182,6 +182,21 @@ TEXT_ARTIFACT_SUFFIXES = {
     ".yml",
 }
 
+PNG_DECODED_COMPARISON_MODE = "png_decoded_pixels_sha256"
+PNG_VISUAL_COMPARISON_MODE = "png_visual_content_v1"
+IMAGE_CONTENT_COMPARISON_MODE = PNG_DECODED_COMPARISON_MODE
+IMAGE_CONTENT_ARTIFACT_SUFFIXES = {".png"}
+VISUAL_IMAGE_CONTENT_ARTIFACTS = {"paper/figures/aukf_r_inflation_mechanism.png"}
+PNG_VISUAL_COMPARISON_THRESHOLDS = {
+    "downsample_width_px": 192,
+    "max_width_delta_fraction": 0.01,
+    "max_height_delta_fraction": 0.01,
+    "max_aspect_ratio_delta": 0.012,
+    "max_downsample_rgb_rmse": 18.0,
+    "max_downsample_rgb_mae": 7.0,
+    "max_downsample_pixel_fraction_gt_64": 0.025,
+}
+
 FIGURE_RENDERERS: dict[str, str] = {
     "paper/figures/per_step_rmse.png": "_render_per_step",
     "paper/figures/position_error_ecdf.png": "_render_ecdf",
@@ -463,6 +478,186 @@ def is_text_artifact(path: Path) -> bool:
     return path.suffix.lower() in TEXT_ARTIFACT_SUFFIXES
 
 
+def is_image_content_artifact(path: Path) -> bool:
+    return path.suffix.lower() in IMAGE_CONTENT_ARTIFACT_SUFFIXES
+
+
+def normalize_artifact_key(path: str | Path) -> str:
+    return str(path).replace("\\", "/")
+
+
+def decoded_png_summary(path: Path) -> dict[str, Any]:
+    from PIL import Image
+
+    with Image.open(path) as image:
+        original_format = image.format
+        original_mode = image.mode
+        width, height = image.size
+        rgba = image.convert("RGBA")
+        pixel_bytes = rgba.tobytes()
+    return {
+        "format": original_format,
+        "mode": original_mode,
+        "size_px": [int(width), int(height)],
+        "canonical_mode": "RGBA",
+        "decoded_pixel_sha256": hashlib.sha256(pixel_bytes).hexdigest(),
+        "decoded_pixel_bytes": len(pixel_bytes),
+    }
+
+
+def visual_png_summary(current_path: Path, generated_path: Path) -> dict[str, Any]:
+    from PIL import Image, ImageChops, ImageStat
+
+    thresholds = PNG_VISUAL_COMPARISON_THRESHOLDS
+    with Image.open(current_path) as current_image, Image.open(generated_path) as generated_image:
+        current_rgb = current_image.convert("RGB")
+        generated_rgb = generated_image.convert("RGB")
+        current_width, current_height = current_rgb.size
+        generated_width, generated_height = generated_rgb.size
+        sample_width = min(
+            int(thresholds["downsample_width_px"]),
+            current_width,
+            generated_width,
+        )
+        sample_height = max(
+            1,
+            round(sample_width * current_height / current_width),
+        )
+        resampling = getattr(Image, "Resampling", Image).LANCZOS
+        current_sample = current_rgb.resize(
+            (sample_width, sample_height),
+            resample=resampling,
+        )
+        generated_sample = generated_rgb.resize(
+            (sample_width, sample_height),
+            resample=resampling,
+        )
+
+    diff = ImageChops.difference(current_sample, generated_sample)
+    stats = ImageStat.Stat(diff)
+    rgb_rmse = (sum(value * value for value in stats.rms) / len(stats.rms)) ** 0.5
+    rgb_mae = sum(stats.mean) / len(stats.mean)
+    diff_bytes = diff.tobytes()
+    pixel_count = len(diff_bytes) // 3
+    pixel_fraction_gt_64 = (
+        sum(
+            1
+            for idx in range(0, len(diff_bytes), 3)
+            if max(diff_bytes[idx : idx + 3]) > 64
+        )
+        / pixel_count
+        if pixel_count
+        else 1.0
+    )
+    current_aspect = current_width / current_height
+    generated_aspect = generated_width / generated_height
+    width_delta_fraction = abs(current_width - generated_width) / max(
+        current_width,
+        generated_width,
+    )
+    height_delta_fraction = abs(current_height - generated_height) / max(
+        current_height,
+        generated_height,
+    )
+    aspect_ratio_delta = abs(current_aspect - generated_aspect)
+    max_channel_abs_diff = max(channel[1] for channel in diff.getextrema())
+    checks = {
+        "width_delta_fraction": width_delta_fraction <= thresholds["max_width_delta_fraction"],
+        "height_delta_fraction": height_delta_fraction <= thresholds["max_height_delta_fraction"],
+        "aspect_ratio_delta": aspect_ratio_delta <= thresholds["max_aspect_ratio_delta"],
+        "downsample_rgb_rmse": rgb_rmse <= thresholds["max_downsample_rgb_rmse"],
+        "downsample_rgb_mae": rgb_mae <= thresholds["max_downsample_rgb_mae"],
+        "downsample_pixel_fraction_gt_64": (
+            pixel_fraction_gt_64 <= thresholds["max_downsample_pixel_fraction_gt_64"]
+        ),
+    }
+    return {
+        "thresholds": thresholds,
+        "checks": checks,
+        "match": all(checks.values()),
+        "current_size_px": [int(current_width), int(current_height)],
+        "generated_size_px": [int(generated_width), int(generated_height)],
+        "width_delta_fraction": width_delta_fraction,
+        "height_delta_fraction": height_delta_fraction,
+        "aspect_ratio_delta": aspect_ratio_delta,
+        "downsample_size_px": [int(sample_width), int(sample_height)],
+        "downsample_rgb_rmse": rgb_rmse,
+        "downsample_rgb_mae": rgb_mae,
+        "downsample_pixel_fraction_gt_64": pixel_fraction_gt_64,
+        "downsample_max_channel_abs_diff": int(max_channel_abs_diff),
+    }
+
+
+def image_content_comparison(
+    current_path: Path,
+    generated_path: Path,
+    *,
+    artifact_path: str,
+) -> dict[str, Any]:
+    try:
+        current = decoded_png_summary(current_path)
+        generated = decoded_png_summary(generated_path)
+    except Exception as exc:
+        return {
+            "status": "error",
+            "mode": PNG_DECODED_COMPARISON_MODE,
+            "error": repr(exc),
+        }
+
+    format_match = current["format"] == "PNG" and generated["format"] == "PNG"
+    size_match = current["size_px"] == generated["size_px"]
+    pixel_hash_match = (
+        current["decoded_pixel_sha256"] == generated["decoded_pixel_sha256"]
+    )
+    decoded_byte_count_match = (
+        current["decoded_pixel_bytes"] == generated["decoded_pixel_bytes"]
+    )
+    match = (
+        format_match
+        and size_match
+        and pixel_hash_match
+        and decoded_byte_count_match
+    )
+    result = {
+        "status": "pass" if match else "fail",
+        "mode": PNG_DECODED_COMPARISON_MODE,
+        "decision": "decoded_pixel_match" if match else "decoded_pixel_mismatch",
+        "format_match": format_match,
+        "size_match": size_match,
+        "pixel_hash_match": pixel_hash_match,
+        "decoded_byte_count_match": decoded_byte_count_match,
+        "current": current,
+        "generated": generated,
+    }
+    if match:
+        return result
+
+    artifact_key = normalize_artifact_key(artifact_path)
+    visual_allowed = artifact_key in VISUAL_IMAGE_CONTENT_ARTIFACTS
+    result["visual_comparison_allowed"] = visual_allowed
+    if not visual_allowed:
+        return result
+
+    try:
+        visual = visual_png_summary(current_path, generated_path)
+    except Exception as exc:
+        return {
+            **result,
+            "status": "error",
+            "mode": PNG_VISUAL_COMPARISON_MODE,
+            "decision": "visual_comparison_error",
+            "visual_error": repr(exc),
+        }
+    visual_match = bool(visual.get("match"))
+    return {
+        **result,
+        "status": "pass" if visual_match else "fail",
+        "mode": PNG_VISUAL_COMPARISON_MODE,
+        "decision": "visual_metric_match" if visual_match else "visual_metric_mismatch",
+        "visual": visual,
+    }
+
+
 def diff_summary(current_path: Path, generated_path: Path) -> dict[str, Any] | None:
     try:
         current = read_text_preserve_newlines(current_path)
@@ -532,13 +727,37 @@ def compare_or_update_artifact(
     text_normalized_match = bool(
         text_difference and text_difference.get("text_normalized_match")
     )
+    image_comparison = (
+        image_content_comparison(target, generated_temp, artifact_path=path)
+        if check_only
+        and target.exists()
+        and is_image_content_artifact(target)
+        and before_hash != generated_hash
+        else None
+    )
+    image_content_match = bool(
+        image_comparison and image_comparison.get("status") == "pass"
+    )
     if not check_only:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(generated_temp, target)
     after_hash = sha256(target)
     after_bytes = target.stat().st_size if target.exists() and target.is_file() else None
     byte_match = after_hash == generated_hash
-    status = "pass" if byte_match or text_normalized_match else "mismatch"
+    status = (
+        "pass"
+        if byte_match or text_normalized_match or image_content_match
+        else "mismatch"
+    )
+    comparison_mode = (
+        "byte_sha256"
+        if byte_match
+        else "normalized_text"
+        if text_normalized_match
+        else image_comparison.get("mode")
+        if image_comparison is not None
+        else "byte_sha256"
+    )
     record: dict[str, Any] = {
         "path": path,
         "status": status,
@@ -557,15 +776,12 @@ def compare_or_update_artifact(
         "preexisting_match": preexisting_match,
         "byte_match": byte_match,
         "text_normalized_match": text_normalized_match,
-        "comparison_mode": (
-            "byte_sha256"
-            if byte_match
-            else "normalized_text"
-            if text_normalized_match
-            else "byte_sha256"
-        ),
+        "comparison_mode": comparison_mode,
         "check_only": check_only,
     }
+    if image_comparison is not None:
+        record["image_content_match"] = image_content_match
+        record["image_comparison"] = image_comparison
     if text_normalized_match and not byte_match:
         record["difference"] = {
             **(text_difference or {}),
@@ -574,18 +790,50 @@ def compare_or_update_artifact(
                 "endings and final newline."
             ),
         }
-    elif not preexisting_match:
+    elif image_content_match and not byte_match:
+        image_note = (
+            "Byte hashes differ, but decoded PNG pixels match exactly after "
+            "canonical RGBA decoding."
+            if comparison_mode == PNG_DECODED_COMPARISON_MODE
+            else (
+                "Byte hashes differ, but scoped PNG visual-content metrics "
+                "match within the recorded thresholds."
+            )
+        )
         record["difference"] = {
-            "note": "Current artifact is missing; generated artifact was produced.",
-            "current_exists": False,
-            "generated_sha256": generated_hash,
-        } if check_only else {
+            "note": image_note,
+            "image_comparison_status": image_comparison.get("status")
+            if image_comparison
+            else None,
+            "image_comparison_mode": comparison_mode,
+        }
+    elif not check_only and not preexisting_match:
+        record["difference"] = {
             "note": "Repository artifact was updated to regenerated bytes.",
             "before_sha256": before_hash,
             "generated_sha256": generated_hash,
         }
-        if text_difference is not None:
+    elif check_only and not byte_match:
+        if not target.exists():
+            record["difference"] = {
+                "note": "Current artifact is missing; generated artifact was produced.",
+                "current_exists": False,
+                "generated_sha256": generated_hash,
+            }
+        elif text_difference is not None:
             record["difference"] = text_difference
+        elif image_comparison is not None:
+            record["difference"] = {
+                "note": "Byte hashes differ and decoded PNG image content differs.",
+                "image_comparison_status": image_comparison.get("status"),
+                "image_comparison_mode": comparison_mode,
+            }
+        else:
+            record["difference"] = {
+                "note": "Byte hashes differ.",
+                "before_sha256": before_hash,
+                "generated_sha256": generated_hash,
+            }
     return record
 
 

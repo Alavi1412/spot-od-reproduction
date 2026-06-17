@@ -80,6 +80,200 @@ def test_active_text_artifact_check_only_rejects_actual_text_change(
     assert result["difference"]["first_difference"]["line"] == 2
 
 
+def _write_rgb_png(
+    path: Path,
+    pixels: list[tuple[int, int, int]],
+    *,
+    compress_level: int = 6,
+    text: str | None = None,
+) -> None:
+    from PIL import Image, PngImagePlugin
+
+    image = Image.new("RGB", (2, 2))
+    image.putdata(pixels)
+    pnginfo = PngImagePlugin.PngInfo()
+    if text is not None:
+        pnginfo.add_text("test-note", text)
+    image.save(path, format="PNG", compress_level=compress_level, pnginfo=pnginfo)
+
+
+def _write_visual_test_png(path: Path, *, variant: str = "reference") -> None:
+    from PIL import Image, ImageDraw
+
+    image = Image.new("RGB", (200, 120), "white")
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((14, 12, 186, 108), outline=(40, 40, 40), width=2)
+    draw.line((24, 92, 176, 28), fill=(25, 110, 180), width=3)
+    draw.line((24, 72, 176, 52), fill=(210, 90, 50), width=3)
+    draw.rectangle((50, 40, 82, 90), fill=(245, 166, 35))
+    draw.rectangle((104, 26, 136, 90), fill=(80, 160, 110))
+    if variant == "content_drift":
+        draw.rectangle((18, 16, 182, 104), fill=(10, 10, 10))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    image.save(path, format="PNG")
+
+
+def test_active_png_check_only_accepts_encoding_drift_with_same_pixels(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "paper" / "figures" / "same_pixels.png"
+    generated = tmp_path / "generated" / "same_pixels.png"
+    target.parent.mkdir(parents=True)
+    generated.parent.mkdir(parents=True)
+    pixels = [
+        (255, 0, 0),
+        (0, 255, 0),
+        (0, 0, 255),
+        (255, 255, 255),
+    ]
+    _write_rgb_png(target, pixels, compress_level=0, text="reference")
+    _write_rgb_png(generated, pixels, compress_level=9, text="regenerated")
+    assert target.read_bytes() != generated.read_bytes()
+
+    result = regen.compare_or_update_artifact(
+        path="paper/figures/same_pixels.png",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "pass"
+    assert result["byte_match"] is False
+    assert result["comparison_mode"] == regen.PNG_DECODED_COMPARISON_MODE
+    assert result["image_content_match"] is True
+    assert result["image_comparison"]["status"] == "pass"
+    assert result["image_comparison"]["decision"] == "decoded_pixel_match"
+    assert result["image_comparison"]["pixel_hash_match"] is True
+    assert result["before_sha256"] != result["generated_sha256"]
+
+
+def test_active_aukf_png_check_only_accepts_scoped_visual_render_drift(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "paper" / "figures" / "aukf_r_inflation_mechanism.png"
+    generated = tmp_path / "generated" / "aukf_r_inflation_mechanism.png"
+    _write_visual_test_png(target)
+    target_image = target.read_bytes()
+
+    from PIL import Image
+
+    with Image.open(target) as image:
+        resized = image.resize((199, 120), resample=Image.Resampling.BICUBIC)
+        generated.parent.mkdir(parents=True, exist_ok=True)
+        resized.save(generated, format="PNG")
+    assert target_image != generated.read_bytes()
+
+    result = regen.compare_or_update_artifact(
+        path="paper/figures/aukf_r_inflation_mechanism.png",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "pass"
+    assert result["byte_match"] is False
+    assert result["comparison_mode"] == regen.PNG_VISUAL_COMPARISON_MODE
+    assert result["image_content_match"] is True
+    assert result["image_comparison"]["decision"] == "visual_metric_match"
+    assert result["image_comparison"]["visual_comparison_allowed"] is True
+    assert result["image_comparison"]["visual"]["match"] is True
+
+
+def test_active_png_check_only_rejects_decoded_pixel_drift(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "paper" / "figures" / "pixel_drift.png"
+    generated = tmp_path / "generated" / "pixel_drift.png"
+    target.parent.mkdir(parents=True)
+    generated.parent.mkdir(parents=True)
+    _write_rgb_png(
+        target,
+        [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 255)],
+    )
+    _write_rgb_png(
+        generated,
+        [(255, 0, 0), (0, 255, 0), (0, 0, 0), (255, 255, 255)],
+    )
+
+    result = regen.compare_or_update_artifact(
+        path="paper/figures/pixel_drift.png",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "mismatch"
+    assert result["exit_code"] == 1
+    assert result["byte_match"] is False
+    assert result["comparison_mode"] == regen.PNG_DECODED_COMPARISON_MODE
+    assert result["image_content_match"] is False
+    assert result["image_comparison"]["status"] == "fail"
+    assert result["image_comparison"]["size_match"] is True
+    assert result["image_comparison"]["pixel_hash_match"] is False
+    assert result["image_comparison"]["visual_comparison_allowed"] is False
+
+
+def test_active_aukf_png_check_only_rejects_visual_content_drift(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "paper" / "figures" / "aukf_r_inflation_mechanism.png"
+    generated = tmp_path / "generated" / "aukf_r_inflation_mechanism.png"
+    _write_visual_test_png(target)
+    _write_visual_test_png(generated, variant="content_drift")
+
+    result = regen.compare_or_update_artifact(
+        path="paper/figures/aukf_r_inflation_mechanism.png",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "mismatch"
+    assert result["byte_match"] is False
+    assert result["comparison_mode"] == regen.PNG_VISUAL_COMPARISON_MODE
+    assert result["image_content_match"] is False
+    assert result["image_comparison"]["decision"] == "visual_metric_mismatch"
+    assert result["image_comparison"]["visual"]["match"] is False
+
+
+def test_active_non_image_binary_check_only_remains_byte_strict(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(regen, "ROOT", tmp_path)
+    target = tmp_path / "results" / "payload.npz"
+    generated = tmp_path / "generated" / "payload.npz"
+    target.parent.mkdir(parents=True)
+    generated.parent.mkdir(parents=True)
+    target.write_bytes(b"binary-reference")
+    generated.write_bytes(b"binary-regenerated")
+
+    result = regen.compare_or_update_artifact(
+        path="results/payload.npz",
+        generated_temp=generated,
+        source_evidence=[],
+        check_only=True,
+        command="test",
+        builder="test_builder",
+    )
+
+    assert result["status"] == "mismatch"
+    assert result["byte_match"] is False
+    assert result["comparison_mode"] == "byte_sha256"
+    assert "image_comparison" not in result
+
+
 def test_active_figure_renderer_mapping_falls_back_when_report_omits_aukf(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

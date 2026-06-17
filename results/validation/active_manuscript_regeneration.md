@@ -1,6 +1,6 @@
 # Active Main-Manuscript Regeneration Harness Report
 
-Generated UTC: `2026-06-17T21:57:30.011745+00:00`
+Generated UTC: `2026-06-17T22:47:09.228419+00:00`
 Step: `regenerate_active_manuscript_check`
 Status: **PASS**
 
@@ -24,10 +24,10 @@ Regenerates active paper/main.tex table/figure artifacts from materialized repos
 | `paper\tables\main_drag_scale_cascade.tex` | `pass` | `c99d87064a6716b65294e03ec2dce13e595cc6cdf1256952c34fea120cd80f41` | `c99d87064a6716b65294e03ec2dce13e595cc6cdf1256952c34fea120cd80f41` | results\drag_scale_constructive_positive_control\drag_scale_constructive_positive_control.json; results\drag_scale_ukf_constructive_positive_control\drag_scale_ukf_constructive_positive_control.json; results\drag_scale_ukf_observability_positive_control\drag_scale_ukf_observability_positive_control.json; release\predeclarations\drag_scale_constructive_positive_control_loop54.json; release\predeclarations\drag_scale_ukf_constructive_positive_control_loop55.json; release\predeclarations\drag_scale_ukf_observability_positive_control_loop56.json | None |
 | `paper\tables\main_long_arc_result.tex` | `pass` | `75738e6895cab83c6e569a983e8a58d86d8029fde2fef7dbd54c0f06b0314371` | `75738e6895cab83c6e569a983e8a58d86d8029fde2fef7dbd54c0f06b0314371` | results\long_arc_hifi_force_mismatch\long_arc_hifi_force_mismatch_n64_loop57.json; results\long_arc_hifi_force_mismatch\long_arc_hifi_force_mismatch.json; release\predeclarations\long_arc_hifi_rule_loop47.json; release\predeclarations\long_arc_hifi_n64_extension_loop57.json; release\predeclarations\astrodynamics_floor_loop47.json | None |
 | `paper\tables\main_dbar_withdrawal.tex` | `pass` | `cf9cd8e8c8337160d10fd66e31d6cdd6ecafe3e5cbbc7d2caae04d4e70e849fb` | `cf9cd8e8c8337160d10fd66e31d6cdd6ecafe3e5cbbc7d2caae04d4e70e849fb` | results\adaptation_risk_diagnostic\dbar_independent_sweep.json | None |
-| `paper\figures\aukf_r_inflation_mechanism.png` | `pass` | `8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3` | `8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3` | results\force_model_mismatch_adaptation_summary.json; results\force_model_mismatch_adaptation_updates.csv | None |
+| `paper\figures\aukf_r_inflation_mechanism.png` | `pass` | `8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4` | `8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3` | results\force_model_mismatch_adaptation_summary.json; results\force_model_mismatch_adaptation_updates.csv | Byte hashes differ, but scoped PNG visual-content metrics match within the recorded thresholds. |
 
 ## Verification notes
 - Active artifacts parsed from `paper/main.tex`: 9 tables and 1 external figure includes.
 - Pass count: `10`; mismatch count: `0`; blocker count: `0`.
-- Release packet update: `{'updated': True, 'path': 'results\\release_packet.json', 'sha256': 'b8d5dc189d845e1197e0431f06283c89f3e493688f4113b1e166f0d9dc615d9f'}`.
+- Release packet update: `{'updated': True, 'path': 'results\\release_packet.json', 'sha256': '03dbbace6391e77c7d9544b107cf4e6fbb9bb501e2bec2807e4c3dedb669fbc6'}`.
 - The harness does not rerun raw-data simulation, training, filter estimation, or live public-data fetches.

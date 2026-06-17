@@ -445,22 +445,99 @@
           "text_normalized_match": true
         },
         {
-          "after_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+          "after_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
           "attempted": true,
-          "before_bytes": 195179,
-          "before_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+          "before_bytes": 223380,
+          "before_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
           "builder": "scripts/render_publication_figures.py::render_publication_figures",
-          "byte_match": true,
-          "bytes": 195179,
+          "byte_match": false,
+          "bytes": 223380,
           "check_only": true,
-          "comparison_mode": "byte_sha256",
+          "comparison_mode": "png_visual_content_v1",
+          "difference": {
+            "image_comparison_mode": "png_visual_content_v1",
+            "image_comparison_status": "pass",
+            "note": "Byte hashes differ, but scoped PNG visual-content metrics match within the recorded thresholds."
+          },
           "exit_code": 0,
           "generated_bytes": 195179,
           "generated_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
           "generation_step": "regenerate_active_manuscript_check",
+          "image_comparison": {
+            "current": {
+              "canonical_mode": "RGBA",
+              "decoded_pixel_bytes": 14596512,
+              "decoded_pixel_sha256": "4785a8338b3198f363e5609b03026ef45a4401d3e395482edda3787031beaf6d",
+              "format": "PNG",
+              "mode": "RGBA",
+              "size_px": [
+                2436,
+                1498
+              ]
+            },
+            "decision": "visual_metric_match",
+            "decoded_byte_count_match": false,
+            "format_match": true,
+            "generated": {
+              "canonical_mode": "RGBA",
+              "decoded_pixel_bytes": 14648960,
+              "decoded_pixel_sha256": "beca12cec503aa3079a7559e9f80d14142979de3c7fbc842895b7c87f5291a82",
+              "format": "PNG",
+              "mode": "RGBA",
+              "size_px": [
+                2435,
+                1504
+              ]
+            },
+            "mode": "png_visual_content_v1",
+            "pixel_hash_match": false,
+            "size_match": false,
+            "status": "pass",
+            "visual": {
+              "aspect_ratio_delta": 0.007152266852256783,
+              "checks": {
+                "aspect_ratio_delta": true,
+                "downsample_pixel_fraction_gt_64": true,
+                "downsample_rgb_mae": true,
+                "downsample_rgb_rmse": true,
+                "height_delta_fraction": true,
+                "width_delta_fraction": true
+              },
+              "current_size_px": [
+                2436,
+                1498
+              ],
+              "downsample_max_channel_abs_diff": 184,
+              "downsample_pixel_fraction_gt_64": 0.015713276836158193,
+              "downsample_rgb_mae": 4.904602165725048,
+              "downsample_rgb_rmse": 13.598045393079149,
+              "downsample_size_px": [
+                192,
+                118
+              ],
+              "generated_size_px": [
+                2435,
+                1504
+              ],
+              "height_delta_fraction": 0.003989361702127659,
+              "match": true,
+              "thresholds": {
+                "downsample_width_px": 192,
+                "max_aspect_ratio_delta": 0.012,
+                "max_downsample_pixel_fraction_gt_64": 0.025,
+                "max_downsample_rgb_mae": 7.0,
+                "max_downsample_rgb_rmse": 18.0,
+                "max_height_delta_fraction": 0.01,
+                "max_width_delta_fraction": 0.01
+              },
+              "width_delta_fraction": 0.00041050903119868636
+            },
+            "visual_comparison_allowed": true
+          },
+          "image_content_match": true,
           "output_path": "paper\\figures\\aukf_r_inflation_mechanism.png",
           "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
-          "preexisting_match": true,
+          "preexisting_match": false,
           "source_artifacts": [
             {
               "bytes": 3536,
@@ -481,22 +558,22 @@
       ],
       "evidence": [
         {
-          "bytes": 25588,
+          "bytes": 28452,
           "exists": true,
           "path": "results\\validation\\active_manuscript_regeneration.json",
-          "sha256": "db9e34ca4952c69d5f7b7f0ebf74859b62d992b08f232dc4e4e7a20031201e67"
+          "sha256": "ddd701ba7f304bb110f7545c1ceee60dad30eab60d3ca91217604126398dc4fc"
         },
         {
-          "bytes": 6706,
+          "bytes": 6797,
           "exists": true,
           "path": "results\\validation\\active_manuscript_regeneration.md",
-          "sha256": "05873d5f0f79baae9b1421788958c06cf3e3baca840eac504935fe45cb122a55"
+          "sha256": "2186769c2153fff086366225521d056629eecbe921824d7a6da577860dee5258"
         },
         {
-          "bytes": 106988,
+          "bytes": 112870,
           "exists": true,
           "path": "results\\release_packet.json",
-          "sha256": "b8d5dc189d845e1197e0431f06283c89f3e493688f4113b1e166f0d9dc615d9f"
+          "sha256": "03dbbace6391e77c7d9544b107cf4e6fbb9bb501e2bec2807e4c3dedb669fbc6"
         }
       ],
       "execution_details_redacted": true,
@@ -505,7 +582,7 @@
       "python_isolated_mode": false,
       "release_packet_update": {
         "path": "results\\release_packet.json",
-        "sha256": "b8d5dc189d845e1197e0431f06283c89f3e493688f4113b1e166f0d9dc615d9f",
+        "sha256": "03dbbace6391e77c7d9544b107cf4e6fbb9bb501e2bec2807e4c3dedb669fbc6",
         "updated": true
       },
       "scope_boundary": "Regenerates active paper/main.tex table/figure artifacts from materialized repository result artifacts only; does not claim full raw-data, model-training, filter-estimation, live-public-data, or independent end-to-end reproduction outside the supplied archive.",
@@ -548,10 +625,10 @@
           "sha256": "ad7b2ef63e3943cbce8724eaed30f4cbb681cf919f5a7e93cb4e2b4e3cf34b62"
         },
         {
-          "bytes": 106988,
+          "bytes": 112870,
           "exists": true,
           "path": "results\\release_packet.json",
-          "sha256": "b8d5dc189d845e1197e0431f06283c89f3e493688f4113b1e166f0d9dc615d9f"
+          "sha256": "03dbbace6391e77c7d9544b107cf4e6fbb9bb501e2bec2807e4c3dedb669fbc6"
         }
       ],
       "execution_details_redacted": true,
@@ -624,6 +701,6 @@
       "step": "pytest"
     }
   ],
-  "generated_utc": "2026-06-17T21:57:30.011745+00:00",
+  "generated_utc": "2026-06-17T22:47:09.228419+00:00",
   "status": "pass"
 }

@@ -1,7 +1,7 @@
 {
   "package": "SPOT-OD supplementary evidence package",
   "version": "1.1.0-supplement",
-  "generated_utc": "2026-06-17T21:50:12.854855+00:00",
+  "generated_utc": "2026-06-17T23:02:40.552633+00:00",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
@@ -1338,8 +1338,8 @@
       {
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
         "exists": true,
-        "bytes": 195179,
-        "sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3"
+        "bytes": 223380,
+        "sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4"
       }
     ],
     "reviewer_access_documentation": [
@@ -1734,12 +1734,12 @@
       {
         "path": "results\\release_packet.json",
         "exists": true,
-        "bytes": 105264,
-        "sha256": "e8835af677280d00095542313e1ab615def3f51073a21428df9ed1411aa7be97",
+        "bytes": 110992,
+        "sha256": "66b5bdef5bc2dad0496d87b9f8a8408a617d5945febfde870140b74f06df8131",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 106988,
-        "source_sha256": "8f19335e010b11900c66aaed2166e2703433f7374f5665ec68fd397eea55fd7e"
+        "source_bytes": 112870,
+        "source_sha256": "03dbbace6391e77c7d9544b107cf4e6fbb9bb501e2bec2807e4c3dedb669fbc6"
       }
     ],
     "multi_revolution_sgp4_truth_benchmark": [
@@ -2934,22 +2934,22 @@
       {
         "path": "results\\validation\\active_manuscript_regeneration.json",
         "exists": true,
-        "bytes": 25220,
-        "sha256": "a976c387032bbcc1522fede1311ef86a23f64056a8e6c2fe293203f604686014",
+        "bytes": 28007,
+        "sha256": "29a589a0a5e8938dc7106416dfa648223f20c4880e8634adc215902fda955a44",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 25588,
-        "source_sha256": "553dfe5bd0f33b6d94526e8f7aff1a0c03ea9f7d5d8fc4774a540b35f5ddb148"
+        "source_bytes": 28452,
+        "source_sha256": "ddd701ba7f304bb110f7545c1ceee60dad30eab60d3ca91217604126398dc4fc"
       },
       {
         "path": "results\\validation\\active_manuscript_regeneration.md",
         "exists": true,
-        "bytes": 6896,
-        "sha256": "dff6b5a76ac673764d8ac0f3016b488cdc7f8883045295afe413f20052d36754",
+        "bytes": 6987,
+        "sha256": "e4a1c268eb93c955719d626bff13cdd9072545027e72065db2614e08583ec071",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 6706,
-        "source_sha256": "f4ed0b86f193ed9d6eabd8d73f0406f1b0ce513d289a5dd2299750a2b6fd97aa"
+        "source_bytes": 6797,
+        "source_sha256": "2186769c2153fff086366225521d056629eecbe921824d7a6da577860dee5258"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.json",
@@ -2996,12 +2996,12 @@
       {
         "path": "results\\validation\\command_manifest.json",
         "exists": true,
-        "bytes": 27310,
-        "sha256": "bfa940511e979287d13b10881491e30e8d12ac8c4e8c7aa8d6462978c5f2573e",
+        "bytes": 30251,
+        "sha256": "e44b1fb3a3fc995701f78b90d69e0b18c971e5e363f9b51dca9804055a5e4c7d",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 27729,
-        "source_sha256": "1056e0d8670e7b911465854a30a23e9d0ae3f4fc24e1d585f5b1f3902d7ddbdf"
+        "source_bytes": 30747,
+        "source_sha256": "0759e677884aec849a4c26eff36631a7ad82889793525a51852e15c615e11576"
       },
       {
         "path": "release\\CITATION.cff",
@@ -3504,12 +3504,12 @@
       {
         "path": "scripts\\regenerate_active_manuscript.py",
         "exists": true,
-        "bytes": 38351,
-        "sha256": "bf7443e28f6727ae2310948979a6b55c6d8cde5d9726f748566a98f45a3fdec3",
+        "bytes": 47465,
+        "sha256": "db2d5190f2fd2bf8639d08bf6ca3878721eedacb2467439b66ba353057fdb01e",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 38071,
-        "source_sha256": "2253cf99fc2b754e7c988dcd17b38b3ed89038992a49023118f1c4f15f53a341"
+        "source_bytes": 47185,
+        "source_sha256": "41810fa7987f84398fd8c1fd4c1261a7eb6b1ae438816e2d01c29470d4eff143"
       },
       {
         "path": "scripts\\validate_submission.py",
@@ -3524,12 +3524,12 @@
       {
         "path": "scripts\\verify_archive_extracted_reproduction.py",
         "exists": true,
-        "bytes": 72009,
-        "sha256": "49235eba9f3193738ace8e678dcd818b8b7ee804438aa40182695760cd9edf00",
+        "bytes": 72208,
+        "sha256": "192c43266a7f821cc804ba886408cb02121d16fa8b556f750d0668f3318ceb6a",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 71819,
-        "source_sha256": "feae4b8e288598107cc69c5debc918cf93a0104581fb72e6e35d4556138e9469"
+        "source_bytes": 72018,
+        "source_sha256": "a2eac634a69ce4bf170734e4df5ef9c9294a5466d0be69eba1fa66e0fe3ececd"
       },
       {
         "path": "scripts\\verify_manuscript_release_audit.py",
@@ -3568,12 +3568,12 @@
       {
         "path": "tests\\test_archive_extracted_reproduction.py",
         "exists": true,
-        "bytes": 27404,
-        "sha256": "9c79cc5ced0f6f6916365ba55539079199605fde8652d8317f2c9a493ef3fbb4",
+        "bytes": 34604,
+        "sha256": "c66a45dda6d24f4ced3f7e4fe60dc54c98a0ba9017af700e8af0fe46b66c246e",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 27392,
-        "source_sha256": "a5938479338c4afe003247e76bd8518982e8d8a00f6db95dd6d7ce3777195ef3"
+        "source_bytes": 34592,
+        "source_sha256": "f16e0d58bcb695fe21e377a982d91e25185ddbe24951225bca0f4bcab9f93780"
       },
       {
         "path": "tests\\test_adaptation_risk_diagnostic.py",
@@ -7947,8 +7947,8 @@
   "review_archive": {
     "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
     "exists": true,
-    "bytes": 58886311,
-    "sha256": "cb7c81a32ac88dc1a1b0b34f397812c9fd9199f4a6a6687d7e12b58aa2422571",
+    "bytes": 58908807,
+    "sha256": "9d6f34599b238749bfe1cc3e8bdda4d6a3034ee662f3e8b2f7c7cafc49831b3f",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,

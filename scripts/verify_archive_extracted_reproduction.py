@@ -628,6 +628,10 @@ def summarize_active_regeneration_failures(nested: dict[str, Any]) -> dict[str, 
                 "bytes": row.get("bytes"),
                 "byte_match": row.get("byte_match"),
                 "text_normalized_match": row.get("text_normalized_match"),
+                "image_content_match": row.get("image_content_match"),
+                "image_comparison": sanitize_failure_detail(
+                    row.get("image_comparison")
+                ),
                 "comparison_mode": row.get("comparison_mode"),
                 "first_text_difference": first_difference,
                 "unified_diff_head": unified_diff_head,

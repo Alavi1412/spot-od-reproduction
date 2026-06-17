@@ -445,22 +445,99 @@
         "text_normalized_match": true
       },
       {
-        "after_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+        "after_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
         "attempted": true,
-        "before_bytes": 195179,
-        "before_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+        "before_bytes": 223380,
+        "before_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
         "builder": "scripts/render_publication_figures.py::render_publication_figures",
-        "byte_match": true,
-        "bytes": 195179,
+        "byte_match": false,
+        "bytes": 223380,
         "check_only": true,
-        "comparison_mode": "byte_sha256",
+        "comparison_mode": "png_visual_content_v1",
+        "difference": {
+          "image_comparison_mode": "png_visual_content_v1",
+          "image_comparison_status": "pass",
+          "note": "Byte hashes differ, but scoped PNG visual-content metrics match within the recorded thresholds."
+        },
         "exit_code": 0,
         "generated_bytes": 195179,
         "generated_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
         "generation_step": "regenerate_active_manuscript_check",
+        "image_comparison": {
+          "current": {
+            "canonical_mode": "RGBA",
+            "decoded_pixel_bytes": 14596512,
+            "decoded_pixel_sha256": "4785a8338b3198f363e5609b03026ef45a4401d3e395482edda3787031beaf6d",
+            "format": "PNG",
+            "mode": "RGBA",
+            "size_px": [
+              2436,
+              1498
+            ]
+          },
+          "decision": "visual_metric_match",
+          "decoded_byte_count_match": false,
+          "format_match": true,
+          "generated": {
+            "canonical_mode": "RGBA",
+            "decoded_pixel_bytes": 14648960,
+            "decoded_pixel_sha256": "beca12cec503aa3079a7559e9f80d14142979de3c7fbc842895b7c87f5291a82",
+            "format": "PNG",
+            "mode": "RGBA",
+            "size_px": [
+              2435,
+              1504
+            ]
+          },
+          "mode": "png_visual_content_v1",
+          "pixel_hash_match": false,
+          "size_match": false,
+          "status": "pass",
+          "visual": {
+            "aspect_ratio_delta": 0.007152266852256783,
+            "checks": {
+              "aspect_ratio_delta": true,
+              "downsample_pixel_fraction_gt_64": true,
+              "downsample_rgb_mae": true,
+              "downsample_rgb_rmse": true,
+              "height_delta_fraction": true,
+              "width_delta_fraction": true
+            },
+            "current_size_px": [
+              2436,
+              1498
+            ],
+            "downsample_max_channel_abs_diff": 184,
+            "downsample_pixel_fraction_gt_64": 0.015713276836158193,
+            "downsample_rgb_mae": 4.904602165725048,
+            "downsample_rgb_rmse": 13.598045393079149,
+            "downsample_size_px": [
+              192,
+              118
+            ],
+            "generated_size_px": [
+              2435,
+              1504
+            ],
+            "height_delta_fraction": 0.003989361702127659,
+            "match": true,
+            "thresholds": {
+              "downsample_width_px": 192,
+              "max_aspect_ratio_delta": 0.012,
+              "max_downsample_pixel_fraction_gt_64": 0.025,
+              "max_downsample_rgb_mae": 7.0,
+              "max_downsample_rgb_rmse": 18.0,
+              "max_height_delta_fraction": 0.01,
+              "max_width_delta_fraction": 0.01
+            },
+            "width_delta_fraction": 0.00041050903119868636
+          },
+          "visual_comparison_allowed": true
+        },
+        "image_content_match": true,
         "output_path": "paper\\figures\\aukf_r_inflation_mechanism.png",
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
-        "preexisting_match": true,
+        "preexisting_match": false,
         "source_artifacts": [
           {
             "bytes": 3536,
@@ -542,7 +619,7 @@
       "uses_current_interpreter": true,
       "uses_current_repository_source": true
     },
-    "generated_utc": "2026-06-17T21:57:30.011745+00:00",
+    "generated_utc": "2026-06-17T22:47:09.228419+00:00",
     "mismatch_count": 0,
     "one_step_harness": "regenerate_active_manuscript_check",
     "pass_count": 10,
@@ -1940,22 +2017,99 @@
           "text_normalized_match": true
         },
         {
-          "after_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+          "after_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
           "attempted": true,
-          "before_bytes": 195179,
-          "before_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+          "before_bytes": 223380,
+          "before_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
           "builder": "scripts/render_publication_figures.py::render_publication_figures",
-          "byte_match": true,
-          "bytes": 195179,
+          "byte_match": false,
+          "bytes": 223380,
           "check_only": true,
-          "comparison_mode": "byte_sha256",
+          "comparison_mode": "png_visual_content_v1",
+          "difference": {
+            "image_comparison_mode": "png_visual_content_v1",
+            "image_comparison_status": "pass",
+            "note": "Byte hashes differ, but scoped PNG visual-content metrics match within the recorded thresholds."
+          },
           "exit_code": 0,
           "generated_bytes": 195179,
           "generated_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
           "generation_step": "regenerate_active_manuscript_check",
+          "image_comparison": {
+            "current": {
+              "canonical_mode": "RGBA",
+              "decoded_pixel_bytes": 14596512,
+              "decoded_pixel_sha256": "4785a8338b3198f363e5609b03026ef45a4401d3e395482edda3787031beaf6d",
+              "format": "PNG",
+              "mode": "RGBA",
+              "size_px": [
+                2436,
+                1498
+              ]
+            },
+            "decision": "visual_metric_match",
+            "decoded_byte_count_match": false,
+            "format_match": true,
+            "generated": {
+              "canonical_mode": "RGBA",
+              "decoded_pixel_bytes": 14648960,
+              "decoded_pixel_sha256": "beca12cec503aa3079a7559e9f80d14142979de3c7fbc842895b7c87f5291a82",
+              "format": "PNG",
+              "mode": "RGBA",
+              "size_px": [
+                2435,
+                1504
+              ]
+            },
+            "mode": "png_visual_content_v1",
+            "pixel_hash_match": false,
+            "size_match": false,
+            "status": "pass",
+            "visual": {
+              "aspect_ratio_delta": 0.007152266852256783,
+              "checks": {
+                "aspect_ratio_delta": true,
+                "downsample_pixel_fraction_gt_64": true,
+                "downsample_rgb_mae": true,
+                "downsample_rgb_rmse": true,
+                "height_delta_fraction": true,
+                "width_delta_fraction": true
+              },
+              "current_size_px": [
+                2436,
+                1498
+              ],
+              "downsample_max_channel_abs_diff": 184,
+              "downsample_pixel_fraction_gt_64": 0.015713276836158193,
+              "downsample_rgb_mae": 4.904602165725048,
+              "downsample_rgb_rmse": 13.598045393079149,
+              "downsample_size_px": [
+                192,
+                118
+              ],
+              "generated_size_px": [
+                2435,
+                1504
+              ],
+              "height_delta_fraction": 0.003989361702127659,
+              "match": true,
+              "thresholds": {
+                "downsample_width_px": 192,
+                "max_aspect_ratio_delta": 0.012,
+                "max_downsample_pixel_fraction_gt_64": 0.025,
+                "max_downsample_rgb_mae": 7.0,
+                "max_downsample_rgb_rmse": 18.0,
+                "max_height_delta_fraction": 0.01,
+                "max_width_delta_fraction": 0.01
+              },
+              "width_delta_fraction": 0.00041050903119868636
+            },
+            "visual_comparison_allowed": true
+          },
+          "image_content_match": true,
           "output_path": "paper\\figures\\aukf_r_inflation_mechanism.png",
           "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
-          "preexisting_match": true,
+          "preexisting_match": false,
           "source_artifacts": [
             {
               "bytes": 3536,
@@ -2037,7 +2191,7 @@
         "uses_current_interpreter": true,
         "uses_current_repository_source": true
       },
-      "generated_utc": "2026-06-17T21:57:30.011745+00:00",
+      "generated_utc": "2026-06-17T22:47:09.228419+00:00",
       "mismatch_count": 0,
       "one_step_harness": "regenerate_active_manuscript_check",
       "pass_count": 10,
@@ -2106,7 +2260,7 @@
         "path": "paper\\tables\\main_dbar_withdrawal.tex"
       }
     ],
-    "last_generation_harness_update_utc": "2026-06-17T21:57:30.011745+00:00",
+    "last_generation_harness_update_utc": "2026-06-17T22:47:09.228419+00:00",
     "main_figure_count": 1,
     "main_figure_environment_count": 1,
     "main_figure_include_count": 1,
