@@ -1,8 +1,8 @@
 {
   "package": "SPOT-OD supplementary evidence package",
   "version": "1.1.0-supplement",
-  "generated_utc": "2026-06-13T06:05:18.131302+00:00",
-  "manuscript_title": "SPOT-OD: A Simulator-Bound Orbit-Determination Self-Audit Record with Adaptive-Filter and Observability Mechanism Findings",
+  "generated_utc": "2026-06-17T18:55:59.938513+00:00",
+  "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
     42,
@@ -235,7 +235,10 @@
       "results/metrics_summary.json",
       "results/batch_wls_baseline/batch_wls_summary.csv",
       "paper/tables/main_results.tex",
-      "paper/tables/batch_wls_baseline.tex"
+      "paper/tables/batch_wls_baseline.tex",
+      "results/batch_wls_force_mismatch/batch_wls_summary.csv",
+      "results/batch_wls_force_mismatch/batch_wls_summary.json",
+      "results/batch_wls_force_mismatch/force_model_mismatch_test/batch_wls_summary.json"
     ],
     "protocol_subset_sufficiency": [
       "review_artifacts/release/predeclarations/protocol_subset_ablation.json",
@@ -425,6 +428,16 @@
       "results/real_slr_sp3_od_formal210_inputs/lageos1_20260520.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos1_20260521.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos1_20260522.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260608.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260609.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260610.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260611.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260612.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260615.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260616.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260617.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260618.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos1_20260619.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos2_20251215.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos2_20251216.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos2_20251217.np2",
@@ -540,6 +553,16 @@
       "results/real_slr_sp3_od_formal210_inputs/lageos2_20260520.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos2_20260521.np2",
       "results/real_slr_sp3_od_formal210_inputs/lageos2_20260522.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260608.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260609.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260610.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260611.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260612.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260615.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260616.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260617.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260618.np2",
+      "results/real_slr_sp3_od_formal210_inputs/lageos2_20260619.np2",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.251220.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.251227.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.260103.v80.sp3.gz",
@@ -563,6 +586,8 @@
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.260509.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.260516.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.260523.v80.sp3.gz",
+      "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.260613.v80.sp3.gz",
+      "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos1.260620.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.251220.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.251227.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.260103.v80.sp3.gz",
@@ -586,6 +611,8 @@
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.260509.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.260516.v80.sp3.gz",
       "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.260523.v80.sp3.gz",
+      "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.260613.v80.sp3.gz",
+      "results/real_slr_sp3_od_formal210_inputs/nsgf.orb.lageos2.260620.v80.sp3.gz",
       "results/real_slr_sp3_od_expanded80_inputs/lageos1_20260316.np2",
       "results/real_slr_sp3_od_expanded80_inputs/lageos1_20260317.np2",
       "results/real_slr_sp3_od_expanded80_inputs/lageos1_20260318.np2",
@@ -954,6 +981,23 @@
       "results/validation_tuned_enkf_comparator/validation_tuned_enkf_comparator.csv",
       "paper/tables/validation_tuned_enkf_comparator.tex"
     ],
+    "pending_public_real_measurement_temporal_od_prospective_260620": [
+      "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+      "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt",
+      "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots",
+      "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_availability_20260613.json",
+      "results/validation/public_precise_reference_status_20260617.json",
+      "results/validation/public_precise_reference_status_20260617.md",
+      "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.json",
+      "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.md"
+    ],
+    "pending_public_real_measurement_temporal_od_prospective_260627": [
+      "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json",
+      "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.sha256.txt",
+      "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json.ots",
+      "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.json",
+      "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.md"
+    ],
     "public_temporal_od_selection_stability_audit": [
       "results/real_slr_sp3_temporal_selection_stability/real_slr_sp3_temporal_selection_stability.json",
       "paper/tables/real_slr_sp3_temporal_selection_stability.tex",
@@ -1008,6 +1052,24 @@
       "results/validation/archive_extracted_real_slr_sp3_od_slice_rerun/public_claim_summary.json",
       "results/validation/archive_extracted_real_slr_sp3_od_slice_rerun/real_slr_sp3_od.tex"
     ],
+    "codex_clean_archive_attestation": [
+      "results/validation/codex_clean_archive_attestation_20260614.json",
+      "results/validation/codex_clean_archive_attestation_20260614.md"
+    ],
+    "containerized_minimum_tier_attestation": [
+      "results/validation/containerized_minimum_tier_attestation_20260614.json",
+      "results/validation/containerized_minimum_tier_attestation_20260614.md"
+    ],
+    "official_ilrs_precise_reference_availability_probe": [
+      "scripts/probe_ilrs_precise_reference_availability.py",
+      "tests/test_probe_ilrs_precise_reference_availability.py",
+      "results/validation/ilrs_precise_reference_availability_20260617.json",
+      "results/validation/ilrs_precise_reference_availability_20260617.md"
+    ],
+    "independent_machine_reproduction_request": [
+      "release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
+      ".gitlab-ci.yml"
+    ],
     "targeted_retraining_replay": [
       "results/validation/targeted_retraining_replay_public.json",
       "results/validation/targeted_retraining_replay_public.md",
@@ -1024,7 +1086,25 @@
       "results/retraining_replay/targeted_retraining_replay/data_slices/stress_val.npz",
       "results/retraining_replay/targeted_retraining_replay/data_slices/train.npz",
       "results/retraining_replay/targeted_retraining_replay/data_slices/val.npz"
+    ],
+    "full_rerun_divergence_audit": [
+      "results/validation/full_rerun_divergence_audit_20260617.json",
+      "results/validation/full_rerun_divergence_audit_20260617.md",
+      "scripts/build_full_rerun_divergence_audit.py",
+      "tests/test_full_rerun_divergence_audit.py",
+      "results/full_rerun_20260616/metrics_summary.json",
+      "results/full_rerun_20260616/scorecard_summary.json",
+      "results/full_rerun_20260616/trajectory_errors.csv"
     ]
+  },
+  "claim_boundary_map": {
+    "pending_public_real_measurement_temporal_od_prospective_260620": "Bitcoin-block-header-attested OpenTimestamps proof for the 260620 future public-week predeclaration; local Bitcoin-node verification was not performed, and the proof is not scored validation, not DOI/public archive, not independent reproduction, and not operational POD. The 2026-06-15..2026-06-19 dates remain pending/not scored as of 2026-06-17 because public 260613/260620 SP3 products are unavailable.",
+    "pending_public_real_measurement_temporal_od_prospective_260627": "Calendar-pending OpenTimestamps proof for the 260627 future public-week predeclaration; Bitcoin-block-header attestation and local Bitcoin-node verification were not performed, and the proof is not scored validation, not DOI/public archive, not independent reproduction, and not operational POD. The 2026-06-22..2026-06-26 test dates remain pending/not scored as of 2026-06-17. Public 260613/260620 SP3 products were unavailable in the 2026-06-17 EDC status artifact, so 260627 cannot be used as validation until validation/test public SP3 products become valid gzip/SP3 products and the frozen rule is scored once.",
+    "codex_clean_archive_attestation": "same-workspace separate-agent clean extracted archive attestation only; not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, and not independent external reproduction.",
+    "containerized_minimum_tier_attestation": "local Docker Desktop clean-container staged minimum-tier integrity attestation only; same-host and staged from the current workspace/review archive; not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, not independent external reproduction, and not a full scientific rerun.",
+    "official_ilrs_precise_reference_availability_probe": "Official-source availability gate only; unavailable products and cached HTML placeholders under .sp3.gz filenames are not scored validation, not usable precise-reference products, not independent reproduction, not DOI/public archive evidence, and not operational POD. A prospective campaign can be scored only after all required LAGEOS validation/test products are classified as valid gzip/SP3 products and the frozen campaign command is actually run.",
+    "independent_machine_reproduction_request": "Third-party clean-machine reproduction request/template only, with an optional private GitLab CI route; not a completed independent reproduction, not a passed CI attestation, not third-party validation, not scored external validation, not DOI/public archive evidence, and not operational POD. Passed GitLab job artifacts must be attached or cited before making an independent-machine reproduction claim from the CI route.",
+    "full_rerun_divergence_audit": "Diagnostic full-rerun divergence reconciliation only; not a canonical table replacement, not operational validation, not independent reproduction, and not a rerun success upgrade. Failure-conditioned rows are diagnostic only and do not redefine performance or rescue any method."
   },
   "claim_to_regeneration_tier_map": {
     "audited_learned_family_bounded_negative": [
@@ -1104,6 +1184,12 @@
       "minimum_integrity_check",
       "full_rerun"
     ],
+    "pending_public_real_measurement_temporal_od_prospective_260620": [
+      "minimum_integrity_check"
+    ],
+    "pending_public_real_measurement_temporal_od_prospective_260627": [
+      "minimum_integrity_check"
+    ],
     "public_temporal_od_selection_stability_audit": [
       "minimum_integrity_check",
       "full_rerun"
@@ -1119,9 +1205,26 @@
     "archive_extracted_reproduction_tier": [
       "archive_extracted_reproduction_check"
     ],
+    "codex_clean_archive_attestation": [
+      "minimum_integrity_check",
+      "archive_extracted_reproduction_check"
+    ],
+    "containerized_minimum_tier_attestation": [
+      "minimum_integrity_check"
+    ],
+    "official_ilrs_precise_reference_availability_probe": [
+      "minimum_integrity_check"
+    ],
+    "independent_machine_reproduction_request": [
+      "minimum_integrity_check"
+    ],
     "targeted_retraining_replay": [
       "minimum_integrity_check",
       "targeted_retraining_replay_check"
+    ],
+    "full_rerun_divergence_audit": [
+      "minimum_integrity_check",
+      "full_rerun"
     ]
   },
   "artifact_groups": {
@@ -1129,26 +1232,26 @@
       {
         "path": "paper\\main.tex",
         "exists": true,
-        "bytes": 127347,
-        "sha256": "dd6e7e391cb72c8f4117e385319b09fbd5869f5e9dfffa6b1b2092662f31c0a7"
+        "bytes": 133872,
+        "sha256": "a1fa423d7ca19c8af4c86763d33f9a48629f04a82d6288b9664d1c2e6c5c8a3c"
       },
       {
         "path": "paper\\supplement.tex",
         "exists": true,
-        "bytes": 126197,
-        "sha256": "279e79308a7ae03787ad220402ba6c6846e66f1237c10658c8316ca918405cfe"
+        "bytes": 126437,
+        "sha256": "8415067f45fcde4c54bdda1130193496bc3a7a8e6353c74003b396ce1ac3b00c"
       },
       {
         "path": "paper\\main.pdf",
         "exists": true,
-        "bytes": 721948,
-        "sha256": "33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
+        "bytes": 730825,
+        "sha256": "c0f2a904dd7c4d5cbad556aaace91e19419830ec3bb7ab370758bbef2c2595c5"
       },
       {
         "path": "paper\\supplement.pdf",
         "exists": true,
-        "bytes": 1117536,
-        "sha256": "74273e2ec845c489ea5813d0525277dc9beef3a7ad9543674b927c06b8c05b4f"
+        "bytes": 1107935,
+        "sha256": "0074813fe87d9a0b30fd17faafc8de52805c1d3ee72de771029fc0113aab60d1"
       },
       {
         "path": "paper\\references.bib",
@@ -1171,12 +1274,12 @@
       {
         "path": "paper\\RELEASE_PACKET.md",
         "exists": true,
-        "bytes": 12572,
-        "sha256": "9ebd261f60337d9e65daab05ed34ede25cea2a9a6f9180ad87fa20e8b4229a26",
+        "bytes": 18198,
+        "sha256": "e8f25f35078fa8473c290b32ea2b11acb7c1e7f6ca17883a10c77321f6e5bff9",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 12585,
-        "source_sha256": "6ac71c9ea5ab8da4b61e17cd8b619787cecc2bd2c9a86e1226a27ec7cf12afdf"
+        "source_bytes": 18211,
+        "source_sha256": "34a408dddb7e1a7727a9c6035ecf5b51e598a539b96ece7d475e0e1cc4c5e528"
       },
       {
         "path": "paper\\tables\\main_abbreviation_glossary.tex",
@@ -1187,8 +1290,8 @@
       {
         "path": "paper\\tables\\main_framework_portability.tex",
         "exists": true,
-        "bytes": 3587,
-        "sha256": "2db3414a05d14c23dff09f95d0fddaa1ae1291f627ec620b51f028161a499e06"
+        "bytes": 2918,
+        "sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06"
       },
       {
         "path": "paper\\tables\\main_findings_summary.tex",
@@ -1205,8 +1308,8 @@
       {
         "path": "paper\\tables\\main_drag_scale_cascade.tex",
         "exists": true,
-        "bytes": 1589,
-        "sha256": "806dfae57311eb0de256b597256e6b8da0d939c7602e8daca8d515e03feb87b3"
+        "bytes": 2120,
+        "sha256": "c99d87064a6716b65294e03ec2dce13e595cc6cdf1256952c34fea120cd80f41"
       },
       {
         "path": "paper\\tables\\main_k32_replication.tex",
@@ -1243,24 +1346,28 @@
       {
         "path": "release\\README.md",
         "exists": true,
-        "bytes": 27107,
-        "sha256": "6a6b4d385f053bba543a5ad52f7cf06fbf3ec0d32d7f32d2f284156617ea4c8d",
+        "bytes": 39644,
+        "sha256": "8a1119dacc754dbd6a0b50c06a538b183bbeb7e725cade91b68a3a175db917ca",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 27097,
-        "source_sha256": "43626b70139cd358ccc73e3e6297673959ab1d5a3355b08312bab7ab39fa6f4a"
+        "source_bytes": 39626,
+        "source_sha256": "f893cd62579ab56bdee55c26de66365e429f1bb2e28864a870cdb645f805d6e9"
       },
       {
         "path": "release\\REVIEWER_START_HERE.md",
         "exists": true,
-        "bytes": 21739,
-        "sha256": "1d620090b6fe973ba6ecdcc3a37ccab2c8a9cdde14bca9f20c340c97d232e345"
+        "bytes": 33217,
+        "sha256": "dbb1c024989b58138f9c562aeb0585584880ea5334c1969af996dad287b739a2",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 33193,
+        "source_sha256": "b2b8d85b7b0df9a445ac8a4449045a190a9c253019d370c093e7e3402ba5dd9e"
       },
       {
         "path": "release\\DEPOSIT_CHECKLIST.md",
         "exists": true,
-        "bytes": 4467,
-        "sha256": "7b77117db893efc54f7b3cf306000c679743c26bd24780234954825886538889"
+        "bytes": 4922,
+        "sha256": "588fd06ccb736d0eaf334d9401e2c7a2846fc7a427e1755b353fe5c20792dc63"
       },
       {
         "path": "release\\ZENODO_METADATA.json",
@@ -1607,32 +1714,32 @@
       {
         "path": "results\\data\\dataset_manifest.json",
         "exists": true,
-        "bytes": 15094,
-        "sha256": "ddaf1548c38863e72893fc56614e4232fe0e961a7f6b1f8e2aa36416d7e70acd",
+        "bytes": 22806,
+        "sha256": "9196b42e6bc58f4c83c0c4082b11a7b4973fa7db7ed2d4f038576531f720c097",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 15593,
-        "source_sha256": "44f65491944703214991f093be5ac3da0f66d7b29f3ffe910abf920710d35b19"
+        "source_bytes": 23619,
+        "source_sha256": "669681b107fc49df41a53d216f870e8b0bdd7d50f3476a064a3d1dd8b109d5ea"
       },
       {
         "path": "results\\metrics_summary.json",
         "exists": true,
-        "bytes": 557589,
-        "sha256": "779b0a469ae2c447584143cc7b6a40d4e8ccce8f22442f50232c4ec5753b6a9c",
+        "bytes": 1201909,
+        "sha256": "49b10fa2915825fa506fe995eb2a31d2bf0093688197fd83cf919132637a0e84",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 571787,
-        "source_sha256": "bb3e02c0ee186ab2dfdbd4627fb631acfaaac39b4c684ce14719f086116122fc"
+        "source_bytes": 1232229,
+        "source_sha256": "fe75e62cf3a013d7e359dedf58d4df9fd81fb158bb636a7edbf0859ebd6a829f"
       },
       {
         "path": "results\\release_packet.json",
         "exists": true,
-        "bytes": 99523,
-        "sha256": "d8942ab94c53bc3b8b41718781eef17aa6b508f1d75ecdfcf1fbd02fb713ad1b",
+        "bytes": 55849,
+        "sha256": "0c0e7a0731629ab816172b5d12741d9473614409dd2d16d20c70566d727f6547",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 101716,
-        "source_sha256": "bf542a81f6e494bad633380d2364fdebfd974b17ba0730d62205e94fcd70eaf6"
+        "source_bytes": 56890,
+        "source_sha256": "91fc981d9c391813bc866bead5a7b6cec43f236530a6968d413613c4cfadd93e"
       }
     ],
     "multi_revolution_sgp4_truth_benchmark": [
@@ -1899,8 +2006,8 @@
       {
         "path": "paper\\tables\\pukf_tuning_sensitivity.tex",
         "exists": true,
-        "bytes": 2071,
-        "sha256": "54b3712967d2795d33dec7aa8059245a802c887ede836325d11fd0aeba31eaa5"
+        "bytes": 2073,
+        "sha256": "851629e25540a9516344ab30ac9b94ef649ca4dd4062172473655d132cf51894"
       }
     ],
     "classical_and_offline_references": [
@@ -1913,20 +2020,46 @@
       {
         "path": "results\\trajectory_errors.csv",
         "exists": true,
-        "bytes": 372376,
-        "sha256": "49486bd6d72cb1a6928109b93d86046fcea7ad02909e0b42f4ea67c2d4af34cf"
+        "bytes": 836900,
+        "sha256": "2279ec98fd18b1b0a878a745762e4f49d179463fb0b56b7ea64d01618ac5f787"
       },
       {
         "path": "paper\\tables\\main_results.tex",
         "exists": true,
-        "bytes": 1412,
-        "sha256": "508a2f77742bd9ab7b7a6ef32bfa492d6537d392359d1033be310184d6331516"
+        "bytes": 1479,
+        "sha256": "c5432caae7f5e6727f2e901c94cff1f29f39ae2fd1819121f40b44782572852c"
       },
       {
         "path": "paper\\tables\\batch_wls_baseline.tex",
         "exists": true,
-        "bytes": 1063,
-        "sha256": "69067d761f2bc6623b9541ec79e4560a9fd29fb074388f6cc116b0032cedd604"
+        "bytes": 1211,
+        "sha256": "c611e0564e911d04f067446e48d4ebc8eafedbcbfd0b06a232b7123b45f41abf"
+      },
+      {
+        "path": "results\\batch_wls_force_mismatch\\batch_wls_summary.csv",
+        "exists": true,
+        "bytes": 1770,
+        "sha256": "fbf817e1651ebf0fe246c08ac0e1e414b42ef3385125de7f58b4944932d1dbe9"
+      },
+      {
+        "path": "results\\batch_wls_force_mismatch\\batch_wls_summary.json",
+        "exists": true,
+        "bytes": 2243,
+        "sha256": "10001cc2d46da4c3a61191c2f0954eec4fa99b4ae9f0fd9f4fa065181917b3b9",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 2293,
+        "source_sha256": "e29a9df75f5bf604b8ca78284c115195f5a7ab38ec41364cbf625b14bf48a658"
+      },
+      {
+        "path": "results\\batch_wls_force_mismatch\\force_model_mismatch_test\\batch_wls_summary.json",
+        "exists": true,
+        "bytes": 2151,
+        "sha256": "c2cbcd7f7d5fb0976766e9146be17b6da773dcf723fd29e013a69f7f1502e2a5",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 2210,
+        "source_sha256": "c0bf4c37e8e78095e51f8643567fe135438eea74b4283108212b628fdef31fd3"
       }
     ],
     "protocol_subset_audit": [
@@ -2495,6 +2628,108 @@
         "sha256": "78e61744d4cb38467c94e49f8bc196865d89c6102fe7bccfe384b1f577588bfe"
       }
     ],
+    "pending_public_real_measurement_temporal_od_prospective_260620": [
+      {
+        "path": "release\\predeclarations\\real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+        "exists": true,
+        "bytes": 25076,
+        "sha256": "76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca"
+      },
+      {
+        "path": "release\\predeclarations\\real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt",
+        "exists": true,
+        "bytes": 133,
+        "sha256": "a9544d5dc9dc31e3b59bfa8f4f7d0437b1fcdddb4809dc9c4fb42b6137d1d5ad"
+      },
+      {
+        "path": "release\\predeclarations\\real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots",
+        "exists": true,
+        "bytes": 3950,
+        "sha256": "b39558419976a16a8ae10ae53e0e2bbfbcf71d6391291f22226da85a37a40f83"
+      },
+      {
+        "path": "results\\validation\\real_slr_sp3_temporal_corrected_od_prospective_260620_availability_20260613.json",
+        "exists": true,
+        "bytes": 2761,
+        "sha256": "11b4fb3b3427bd68f722d815ce084947aba41f8b86a7c07191ca332d5f005fe0",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 2761,
+        "source_sha256": "8f802f1d78596b38f2343c0dd6c56ec57aa520deefec2a099065d81f875984b5"
+      },
+      {
+        "path": "results\\validation\\public_precise_reference_status_20260617.json",
+        "exists": true,
+        "bytes": 4498,
+        "sha256": "e92cb8fcce5793e19ada0e6b2c335ebb709e10ad92548397b2823b4a7dbc46d6",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 4498,
+        "source_sha256": "a5b4f8055b6ee3d90d9d3ed4bb14fa248d3dc5255b490fd2308cbf8d1fe2762d"
+      },
+      {
+        "path": "results\\validation\\public_precise_reference_status_20260617.md",
+        "exists": true,
+        "bytes": 1874,
+        "sha256": "a93537e64da73417d7d61f4f7633b1d8a73480cd6e4b3675fd33c344c59d791d"
+      },
+      {
+        "path": "results\\validation\\real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.json",
+        "exists": true,
+        "bytes": 5505,
+        "sha256": "26650f7db3be4d1764d200f5b5c4b1dc87cfb3f76efe26e6a8819becfd086732",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 6311,
+        "source_sha256": "c3457679b5c490402c862dddfad1a801df02af459ffb4c7bea668d1353f1a6fa"
+      },
+      {
+        "path": "results\\validation\\real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.md",
+        "exists": true,
+        "bytes": 4007,
+        "sha256": "b0f59c3f8916595f8afccb790ceabbc93cf457c0196531ded4ec50d86c9c8620",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 3976,
+        "source_sha256": "31ca7cce67912200dfe0508d50c389e2b72c630478558173f735044682a07a2d"
+      }
+    ],
+    "pending_public_real_measurement_temporal_od_prospective_260627": [
+      {
+        "path": "release\\predeclarations\\real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json",
+        "exists": true,
+        "bytes": 25076,
+        "sha256": "599c4f3f27873bf7b389ca9cef7e4aab841465126a7366a3db384cb738f765e6"
+      },
+      {
+        "path": "release\\predeclarations\\real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.sha256.txt",
+        "exists": true,
+        "bytes": 135,
+        "sha256": "6bc51ee0854cecc1ed9eb8fcae639734ce3040287e97b841c54848ddf8255131"
+      },
+      {
+        "path": "release\\predeclarations\\real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json.ots",
+        "exists": true,
+        "bytes": 1190,
+        "sha256": "8b7ede4ca59e3121cbcb69a989cada9c34005d128f1378136e37942fac9a38d0"
+      },
+      {
+        "path": "results\\validation\\real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.json",
+        "exists": true,
+        "bytes": 3630,
+        "sha256": "89ad7cff8696b49f0e1e8ae396ab3b802f2171e70cd462990ca192a3114dc989",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 3630,
+        "source_sha256": "88cd38255a38a5b63e2d22091f0c1de7a1cbc2a2881d44214206057154daeae6"
+      },
+      {
+        "path": "results\\validation\\real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.md",
+        "exists": true,
+        "bytes": 1356,
+        "sha256": "0ba2848e9afcc924704a4ff9c0b71a3da3b4456cfc049fac6f475d60ff4bb653"
+      }
+    ],
     "public_multi_target_sp3_crd_breadth_probe": [
       {
         "path": "results\\public_sp3_multi_target_breadth_probe\\public_sp3_multi_target_breadth_probe.json",
@@ -2589,16 +2824,74 @@
         "sha256": "2b7a1fd3195ea061d604d370979883785777215beaf22bec7652d11cc9aaa4d3"
       }
     ],
+    "full_rerun_divergence_audit": [
+      {
+        "path": "results\\validation\\full_rerun_divergence_audit_20260617.json",
+        "exists": true,
+        "bytes": 51774,
+        "sha256": "4a909f45fb8edf15153f64b476828ff6379c859b3c376871afcfd793ad28e796",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 52807,
+        "source_sha256": "a4fdc1c2e428f76a704726989a563b189bbc47819df5cbc87769aff76c7f4d10"
+      },
+      {
+        "path": "results\\validation\\full_rerun_divergence_audit_20260617.md",
+        "exists": true,
+        "bytes": 9756,
+        "sha256": "b76d50aae0cceb5f69c4d76ec6bcd7d70ec97ac961a461fb9ce00281b44da679"
+      },
+      {
+        "path": "scripts\\build_full_rerun_divergence_audit.py",
+        "exists": true,
+        "bytes": 21998,
+        "sha256": "5fd52dd91e8610e6715b2f37d98544ed5c4b1672fef977584249b4e84be50590"
+      },
+      {
+        "path": "tests\\test_full_rerun_divergence_audit.py",
+        "exists": true,
+        "bytes": 7163,
+        "sha256": "de7b1feedae147d351e50b87bbb89538175774ceea3b8e39d610fddd6b70447f"
+      },
+      {
+        "path": "results\\full_rerun_20260616\\metrics_summary.json",
+        "exists": true,
+        "bytes": 1238438,
+        "sha256": "1e27ed07fcf211f332790c09bcd670167d0ee087ce067fea6c7f04096850cc18",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 1269768,
+        "source_sha256": "ad14c74abb4b3cbcb74b4cafc7181d26ed188ff3aabc4c36008bd4fe07d69e6b"
+      },
+      {
+        "path": "results\\full_rerun_20260616\\scorecard_summary.json",
+        "exists": true,
+        "bytes": 196218,
+        "sha256": "37e2df6cb6ab3b9c99f15a870b9972aa00caf9fc38c9215cb8c3a70dd415e0ed",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 200899,
+        "source_sha256": "dd3169a9e654c2d5e3e0966cc29864b7cdfee4d53829d17d9332e3e23b228fc0"
+      },
+      {
+        "path": "results\\full_rerun_20260616\\trajectory_errors.csv",
+        "exists": true,
+        "bytes": 837150,
+        "sha256": "51a682b28dbe4785c5a64ad4a4b1ecf86b4ef020f0976ada3da582fd4db59111"
+      }
+    ],
     "validation": [
       {
         "path": "results\\validation\\submission_validation.json",
         "exists": true,
-        "bytes": 16489,
-        "sha256": "bfd748c5450d0d6bac12476585eef583bbc1b9ed8b2af33584d8a52b8a430ed7",
-        "review_content_redacted": true,
-        "content_scope": "review_archive_member",
-        "source_bytes": 17016,
-        "source_sha256": "ea9c2f1da3ea03dcb659d053c6aa848b308028b821c8c103cc7465a48252e85f"
+        "bytes": 16834,
+        "sha256": "74513dc3e2c572dd6302bd196665d07dd15c9af61e80fdbf1c1e51c2dc9eee34"
+      },
+      {
+        "path": "results\\validation\\submission_validation.md",
+        "exists": true,
+        "bytes": 1413,
+        "sha256": "308acc950e9c381c83bc2d15e674b6d5cf536dbb1ed9c64bdebe136744bebb56"
       },
       {
         "path": "results\\validation\\citation_validation.json",
@@ -2613,28 +2906,24 @@
       {
         "path": "results\\validation\\supplement_layout_warnings.json",
         "exists": true,
-        "bytes": 706,
-        "sha256": "3b5df5911ce14d3c420deffd312eb35858bb9eadf802a1cf7d19991f1113eaa9",
-        "review_content_redacted": true,
-        "content_scope": "review_archive_member",
-        "source_bytes": 727,
-        "source_sha256": "c4c64e907e4231e34f72177617ddd5ee429c5c69cecaf57a0a369cc994e85d85"
+        "bytes": 727,
+        "sha256": "3b29e743afa5cfa0c6537dde0edf6c4482f329b17793ff158af59a772aef87f7"
       },
       {
         "path": "results\\validation\\supplement_layout_warnings.md",
         "exists": true,
         "bytes": 462,
-        "sha256": "83c1cf45fc5612c1456137fd339d70aab779bc58bb8b854a7568a92182121f34"
+        "sha256": "b49fe3a4c6b80035d7f5b64cd0ae82e0f56366d161d8aeffcefc9a05eb7961bd"
       },
       {
         "path": "results\\validation\\minimum_tier_reproduction_check.json",
         "exists": true,
         "bytes": 763,
-        "sha256": "d3c7a44b301bb697395b8f87ea0f61b972c92e3061e727f6eea35283b27ba9ad",
+        "sha256": "70fd9a3423bbe2ab6d821f26b301588e4204d6a78c37c04803bf773c13d7e8f1",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 796,
-        "source_sha256": "56a0762e592e7c4577aa4ba3544e1fce4055a5caa671151fd5f906d645d129dc"
+        "source_sha256": "cdd493bba43952adf381d776dda0beaef6b79a6fbf4adeb08397349671030d98"
       },
       {
         "path": "results\\validation\\minimum_tier_reproduction_check.md",
@@ -2646,37 +2935,37 @@
         "path": "results\\validation\\active_manuscript_regeneration.json",
         "exists": true,
         "bytes": 24139,
-        "sha256": "1acfb030d1112caf573184a1cd97c7b080f4db57df5118aa1f400fd57f9aaf75",
+        "sha256": "4a33a69dc6d7547af0849482820385fa49df49556a5659ef67c9dfbe9ad6179b",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 24477,
-        "source_sha256": "54febb2faca0b0164c20c6b146787a10263cded8236b97b052354651f7a38810"
+        "source_sha256": "1223e5e786953329df5a5fffdfbe3f8585b064bde9f843d910e80bce165468dc"
       },
       {
         "path": "results\\validation\\active_manuscript_regeneration.md",
         "exists": true,
         "bytes": 6896,
-        "sha256": "1880020323f7ec92aec3bdb6ebd0285599467d5a1af23cf4490ad93e8becd9b4",
+        "sha256": "68ac410170f885716c04b86a20125d7b08621c9aa5d1db4728f859227e13291b",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 6706,
-        "source_sha256": "f0eb949b34f765039bdc111c969785468d476f24dd72a36f72afc61f43e2ded8"
+        "source_sha256": "bcf95ef334c50fb381a333a5230fbfb98f503dfd1a9790578d7a967a3a591536"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.json",
         "exists": true,
-        "bytes": 99413,
-        "sha256": "6b0ab9756ce04f7590765b4d3e8385b3c7531cfb666fc9de9d5c1d841958379e",
+        "bytes": 100439,
+        "sha256": "9541147767f6ab5bc5fb9c55eabfa76ecbe5f9b1ecfb5342b79a42ecc493e086",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 100992,
-        "source_sha256": "56a2f376bc58b80df0c921901200d410534bb72d2567ec3c7c78d14a24e2ec20"
+        "source_bytes": 102029,
+        "source_sha256": "70c7b7985b1c33b8a3d9c7571d9e6df2a64274d4f0254914d2af8facc5bbb31f"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.md",
         "exists": true,
         "bytes": 2258,
-        "sha256": "2d15f7d8b74fa98bee6de3c62aa3e26be07615530d7c549cbf4628f9b083dcfc"
+        "sha256": "1388754f10da3c7442b570094f511e86f5e4a31a0ce5e59fa291fe4c69ca9760"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun.json",
@@ -2707,18 +2996,106 @@
       {
         "path": "results\\validation\\command_manifest.json",
         "exists": true,
-        "bytes": 26169,
-        "sha256": "4296e41d5a03541e3c1da345d00d6cfd81162a641ff725bc345bd123ee70898e",
+        "bytes": 3491,
+        "sha256": "89d5c2c64bc13d44297c55f96e63393db3674cd18872a1c6b0dd379508498c55",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 26558,
-        "source_sha256": "f40ace0674ec125fa24a59770e1e68612ffac117cacccaddb5f22f5460102252"
+        "source_bytes": 3606,
+        "source_sha256": "8e55f8c64fd938e173d9066888f20857c4ff41ff21a5ed62b16317b5e52481c0"
       },
       {
         "path": "release\\CITATION.cff",
         "exists": true,
         "bytes": 1513,
         "sha256": "e3cbd87e35b78a6b8e218e14369626089b86169d2c51b449abc5b5b0fa9abb5c"
+      }
+    ],
+    "codex_clean_archive_attestation": [
+      {
+        "path": "results\\validation\\codex_clean_archive_attestation_20260614.json",
+        "exists": true,
+        "bytes": 5609,
+        "sha256": "bfb2ddf3a280543bde8d694aa2b33fb4d5275c2b3e653f21d6a50cb9b22581a3",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 5722,
+        "source_sha256": "9f0d4e50a7b6a9a25eb3687431910ce3a836dd775f4826dbed3cd51bac0946ce"
+      },
+      {
+        "path": "results\\validation\\codex_clean_archive_attestation_20260614.md",
+        "exists": true,
+        "bytes": 3593,
+        "sha256": "3199b39b3bcf0cfe0c75a95db224e2fb5efbddf4882af2a5250ffea30fa2f236",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 3577,
+        "source_sha256": "e189db46e877f56a50d24379251241a3d8712ac6ec1036038e80cd621a98e0bb"
+      }
+    ],
+    "containerized_minimum_tier_attestation": [
+      {
+        "path": "results\\validation\\containerized_minimum_tier_attestation_20260614.json",
+        "exists": true,
+        "bytes": 2858,
+        "sha256": "43755129ca5fa44bfcfdb22d3dc3f95710a89599cb84ed9d0df32f3c39464f62",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 2858,
+        "source_sha256": "780ee73b8a914a848cb4d40acc3d169d1a7a783291d0bd2aafaed19963eff529"
+      },
+      {
+        "path": "results\\validation\\containerized_minimum_tier_attestation_20260614.md",
+        "exists": true,
+        "bytes": 2378,
+        "sha256": "db52fa06a11ba28809482d32d74d09f54fdfce3ce6db938b80968c94a46e9e43"
+      }
+    ],
+    "official_ilrs_precise_reference_availability_probe": [
+      {
+        "path": "scripts\\probe_ilrs_precise_reference_availability.py",
+        "exists": true,
+        "bytes": 35317,
+        "sha256": "3cec0018baba8feb7e995bbb3cb36ec0539ac6df67ae584b8082e10e3e2e6c38"
+      },
+      {
+        "path": "tests\\test_probe_ilrs_precise_reference_availability.py",
+        "exists": true,
+        "bytes": 4211,
+        "sha256": "1c58e437187e90c3129d279b1cb8842bf6d84b48f04db8bd4eb78a547d570035"
+      },
+      {
+        "path": "results\\validation\\ilrs_precise_reference_availability_20260617.json",
+        "exists": true,
+        "bytes": 87422,
+        "sha256": "01f94f04f1b7f508c5fac12d7631cd11b1702d66e84748d57f070abbcd59e81c",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 90249,
+        "source_sha256": "510ea5084ee2ec988c0f9baaa3081cdae2ce368f9e6c7a5bf3dffc1bf812a79a"
+      },
+      {
+        "path": "results\\validation\\ilrs_precise_reference_availability_20260617.md",
+        "exists": true,
+        "bytes": 8143,
+        "sha256": "bcec4dbea4ea74efdb04ff4cb8f1894dad9786973c6d0994ba94f72771b44a30"
+      }
+    ],
+    "independent_machine_reproduction_request": [
+      {
+        "path": "release\\INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
+        "exists": true,
+        "bytes": 6206,
+        "sha256": "7e1b7070189c5788f8e04f52524e4cdc74e0c552110ec9b604be0b390641fd96",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 6129,
+        "source_sha256": "3aa42c45feadedf108cfe30627888e8bb4e113f93cec24cd58d6518f165c3846"
+      },
+      {
+        "path": ".gitlab-ci.yml",
+        "exists": true,
+        "bytes": 6283,
+        "sha256": "65d2e4c349bdfba391409b7fddaa5b49d428c581f2da77280a829af38e80ff65"
       }
     ],
     "source_code": [
@@ -2777,12 +3154,12 @@
       {
         "path": "src\\gnn_state_estimation\\filters\\ukf.py",
         "exists": true,
-        "bytes": 33055,
-        "sha256": "3126b508d4a5a50746daac2c024b7e077071158808d54e3fe060060ab35f0dea",
+        "bytes": 38923,
+        "sha256": "24efb3d4649943d429fec113c308ee98f37b5c4936acdf423965c2d88994bcde",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 33039,
-        "source_sha256": "38af667189fff1895c343a0a51d3de1e561cd957877a339461934ea8389992ad"
+        "source_bytes": 38907,
+        "source_sha256": "6634b85f7c56de60c19a14a3aebd9c1d4a4b08a33044780d4615ed959ad0ff41"
       },
       {
         "path": "src\\gnn_state_estimation\\slr.py",
@@ -2961,8 +3338,8 @@
       {
         "path": "scripts\\run_real_slr_sp3_temporal_corrected_od_campaign.py",
         "exists": true,
-        "bytes": 80641,
-        "sha256": "b673636ea10d0feb4bd6d87a8e721b3f5135e190b20d8e8fff82464c1b910e75"
+        "bytes": 81537,
+        "sha256": "18078b0ed79d450ba81e5cb0ee37e19cf55d30c710dcd471e1d15e0a0eadf59d"
       },
       {
         "path": "scripts\\run_real_slr_sp3_temporal_selection_stability.py",
@@ -3013,12 +3390,12 @@
       {
         "path": "tests\\test_real_slr_sp3_temporal_corrected_od_campaign.py",
         "exists": true,
-        "bytes": 54240,
-        "sha256": "995cbe8102e1ea1bd4a20de2ba0b197378192a30d76deb1c42d5c9a8237a9354",
+        "bytes": 54512,
+        "sha256": "c5134ac55bdf5242de18c4e387db98f25ac5c249b00626dc7c370ae47513b2f9",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 54236,
-        "source_sha256": "d6f750463717a82cc990adf7ee7e617b7e7a45a87db07b77af6d17d069b7fa18"
+        "source_bytes": 54508,
+        "source_sha256": "3a75fa7898a4061dd53fecb4e2406339767e8c8f265f8af4143be49e6855723f"
       },
       {
         "path": "tests\\test_real_slr_sp3_temporal_selection_stability.py",
@@ -3095,12 +3472,12 @@
       {
         "path": "scripts\\build_paper_assets.py",
         "exists": true,
-        "bytes": 554736,
-        "sha256": "46d0dc9d44641c3649edb017bf894da8f55ae0d581e1d589f9a68ab75d995470",
+        "bytes": 567136,
+        "sha256": "a0e4bc1c23fd33ac97a50ade2db64bb246bdb093f4c516d4751ac50b7429fc15",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 554461,
-        "source_sha256": "064e09d26a2ca2054354ea2262530e0da99228bf27d9b69660b918e3e8ef3c3a"
+        "source_bytes": 566861,
+        "source_sha256": "a24f842206ba68aad76a51c47741a230a2629ba894b68198d9638c8f445f9561"
       },
       {
         "path": "scripts\\build_observed_step_prospective_replication.py",
@@ -6249,6 +6626,66 @@
         "sha256": "57c893afc56dbd4026c004c4db52c7b7ec717e49b72d75bcf2708f291d7fc7b4"
       },
       {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260608.np2",
+        "exists": true,
+        "bytes": 33436,
+        "sha256": "9abf139a76f9c348f604c025a9a6801c7f33f72d199ed5ff1d92b6ffcded241c"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260609.np2",
+        "exists": true,
+        "bytes": 32430,
+        "sha256": "5109d11bf688b99f3a742652326aebc4e73d25cfd7281f76bce300a44943516a"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260610.np2",
+        "exists": true,
+        "bytes": 21848,
+        "sha256": "03ae7c63464c776dfdcc655e539928e51e20bca9accfcdc767e3dd7f63056ff2"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260611.np2",
+        "exists": true,
+        "bytes": 45585,
+        "sha256": "e098ce8958fcd02a70e3bde6aedcec031e7d4353b3c11d4ff707655114c9744d"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260612.np2",
+        "exists": true,
+        "bytes": 40393,
+        "sha256": "03e2259b82810ddd31b7c66e784d5d456a97f68547997cbca4865ad03b0daccf"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260615.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "981ed599d9412eadcdbf7366697957f7f31b3e1842e22e83d80b1979725c9842"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260616.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "60164568e06da11a825c5d8951ffefc669e8aa6ffeef18acd55d67fe2f067d68"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260617.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "75e4c510cd2e85ccf09c75fa609a78f6fe2ec8deeecfba0c2a2c98443b9a89a8"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260618.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "95aaad75ff2e080864b0ccc22cfc5a537d4ab78d8690632a2767abb61c2a8465"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos1_20260619.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "35ccc7a1ec18fc4009bf06e857727fdf105c7f41b05778136f1f822be9d0eda4"
+      },
+      {
         "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20251215.np2",
         "exists": true,
         "bytes": 36564,
@@ -6939,6 +7376,66 @@
         "sha256": "25c2158b56a024325c97e2ed7ce9b2aaa614b54073b6d947ed6698d7d16d9a9f"
       },
       {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260608.np2",
+        "exists": true,
+        "bytes": 44825,
+        "sha256": "e7d1435533cce1a45a0b9814eb22d479982562c2c4793535d23817c0474264ed"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260609.np2",
+        "exists": true,
+        "bytes": 20670,
+        "sha256": "2eaa82e2ead7fc97a97d65be94cceaa5ef22ac7e5a10400d8a74be73b0b4fdba"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260610.np2",
+        "exists": true,
+        "bytes": 29656,
+        "sha256": "f213b636e79bd9b1efe3b3191f13cd65a0ae52710d6a6f8d3ddf5ccdf5e5d03e"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260611.np2",
+        "exists": true,
+        "bytes": 23235,
+        "sha256": "5bd0e976aba7dcc175f2e9734b4691b40e5ca5ea739a0bcec6a35e3598d144ea"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260612.np2",
+        "exists": true,
+        "bytes": 24451,
+        "sha256": "f47b2288c8d4d998d48398a72973d47940c13de176cb8af7593fedc7103c56d0"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260615.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "45a721e6cca3362c38a5c00f91d5036e6d2e8a8fd9f05da607736c4a6260e47d"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260616.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "b25c04445f6dedc339319e883c7cc8dfdc95e02ab42b3b2b4e95c130ad26419c"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260617.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "5bcd03e22d2f600c50497887ba0c152ccc37847c02bd0ad4fa03539c91b448fc"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260618.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "165c07e78e804084a4b029682641d48012b81b88ee66de810b725ca4db50790e"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\lageos2_20260619.np2",
+        "exists": true,
+        "bytes": 809,
+        "sha256": "96ee2b4990ae972bb0bc4c08c0f0ad7253677d0bc92e4ee08eac745bebf22c62"
+      },
+      {
         "path": "results\\real_slr_sp3_od_formal210_inputs\\nsgf.orb.lageos1.251220.v80.sp3.gz",
         "exists": true,
         "bytes": 219187,
@@ -7077,6 +7574,18 @@
         "sha256": "187454689bec7cbeae95e3f483266d251a6045d8b0609ecb5143602469e16d54"
       },
       {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\nsgf.orb.lageos1.260613.v80.sp3.gz",
+        "exists": true,
+        "bytes": 825,
+        "sha256": "6a8a0a15ae1607b6ff813a4ee6acdf1c98c3b5e1f508e1c49939a6ba7beacaf2"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\nsgf.orb.lageos1.260620.v80.sp3.gz",
+        "exists": true,
+        "bytes": 825,
+        "sha256": "624229fb5c900ccd2717c13806d32024beb4f115c1776c57ee21f6c037b2df98"
+      },
+      {
         "path": "results\\real_slr_sp3_od_formal210_inputs\\nsgf.orb.lageos2.251220.v80.sp3.gz",
         "exists": true,
         "bytes": 218916,
@@ -7213,6 +7722,18 @@
         "exists": true,
         "bytes": 218888,
         "sha256": "cfd2a621cbed765d00a84b2a7151bb07b7c8a95af0ef7a3dc5ccd1fb63c38eb9"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\nsgf.orb.lageos2.260613.v80.sp3.gz",
+        "exists": true,
+        "bytes": 825,
+        "sha256": "a60dd5a93b9493007357e6f879fb59b08e25862e015bc987bbad4c7efb030810"
+      },
+      {
+        "path": "results\\real_slr_sp3_od_formal210_inputs\\nsgf.orb.lageos2.260620.v80.sp3.gz",
+        "exists": true,
+        "bytes": 825,
+        "sha256": "b0796cdfa5dfd1d28b20d2de5f549e8e4aa82fc6d01393d403ccc88dd6c780cc"
       }
     ],
     "targeted_retraining_replay_artifacts": [
@@ -7410,19 +7931,19 @@
       }
     ]
   },
-  "artifact_count": 955,
-  "artifacts_present": 955,
+  "artifact_count": 1013,
+  "artifacts_present": 1013,
   "checksum_algorithm": "sha256",
   "review_archive": {
     "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
     "exists": true,
-    "bytes": 58051552,
-    "sha256": "d33f09250f04043d16ac96b49d54c90a3276ef1756a15c60419180f82bef1528",
+    "bytes": 58860282,
+    "sha256": "48fe649f61368c90cddfce948002deab0d5b3dfe73a787836f452be1eb0ec779",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
-    "artifact_digest_coverage_count": 955,
-    "artifacts_included": 955,
+    "artifact_digest_coverage_count": 1013,
+    "artifacts_included": 1013,
     "member_timestamp_utc": "2026-05-19T00:00:00+00:00",
     "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count."
   }

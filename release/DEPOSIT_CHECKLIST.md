@@ -48,7 +48,14 @@ venue-required release point.
 8. Reviewer access guide (`release/REVIEWER_START_HERE.md`) and minimum-tier
    reproduction check reports under `results/validation/`, both indexed by
    `release/SUPPLEMENTARY_MANIFEST.json` and included in the reviewer archive.
-9. DOI-ready deposit metadata (`release/ZENODO_METADATA.json`) with no DOI or
+9. Independent-machine reproduction request/template
+   (`release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md`) so an external
+   operator can produce a signed clean-machine report without changing any
+   manuscript claim before the report exists.
+10. Official ILRS precise-reference availability probe output under
+   `results/validation/`, documenting whether pending LAGEOS prospective SP3
+   products are valid gzip/SP3 files before any scoring run.
+11. DOI-ready deposit metadata (`release/ZENODO_METADATA.json`) with no DOI or
    public URL asserted before an actual archive deposit.
 
 ## To complete a public archival deposit

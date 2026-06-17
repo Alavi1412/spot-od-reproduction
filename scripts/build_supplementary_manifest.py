@@ -150,7 +150,14 @@ REVIEW_ARCHIVE_FORBIDDEN_TOKEN_REPLACEMENTS = (
     ("OBSERVABILITY_CONTEXT_TRAINING_REVIEW", "TRAINING_REVIEW_RECORD"),
     ("historical_docs", "review_records"),
 )
-REVIEW_ARCHIVE_RAW_REQUIRED_RELS: set[str] = set()
+REVIEW_ARCHIVE_RAW_REQUIRED_RELS: set[str] = {
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json",
+    "results/validation/submission_validation.json",
+    "results/validation/submission_validation.md",
+    "results/validation/supplement_layout_warnings.json",
+    "results/validation/supplement_layout_warnings.md",
+}
 REVIEW_ARCHIVE_SENSITIVE_RE = re.compile(
     r"cuda:0|cuda|gpu|nvidia|\.venv|virtualenv|virtual env|"
     r"env_report|hardware|local environment|"
@@ -183,6 +190,129 @@ VALIDATION_TUNED_ENKF_INFLATION_AUDIT_PATHS = [
     "results/validation_tuned_enkf_comparator/validation_tuned_enkf_comparator.csv",
     "paper/tables/validation_tuned_enkf_comparator.tex",
 ]
+BATCH_WLS_FORCE_MISMATCH_PATHS = [
+    "results/batch_wls_force_mismatch/batch_wls_summary.csv",
+    "results/batch_wls_force_mismatch/batch_wls_summary.json",
+    "results/batch_wls_force_mismatch/force_model_mismatch_test/batch_wls_summary.json",
+]
+PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_CLAIM = (
+    "pending_public_real_measurement_temporal_od_prospective_260620"
+)
+PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_PATHS = [
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt",
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots",
+    "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_availability_20260613.json",
+    "results/validation/public_precise_reference_status_20260617.json",
+    "results/validation/public_precise_reference_status_20260617.md",
+    "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.json",
+    "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.md",
+]
+PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_BOUNDARY = (
+    "Bitcoin-block-header-attested OpenTimestamps proof for the 260620 "
+    "future public-week predeclaration; local Bitcoin-node verification was "
+    "not performed, and the proof is not scored validation, not DOI/public "
+    "archive, not independent reproduction, and not operational POD. The "
+    "2026-06-15..2026-06-19 dates remain pending/not scored as of "
+    "2026-06-17 because public 260613/260620 SP3 products are unavailable."
+)
+PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_CLAIM = (
+    "pending_public_real_measurement_temporal_od_prospective_260627"
+)
+PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_PATHS = [
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json",
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.sha256.txt",
+    "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json.ots",
+    "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.json",
+    "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.md",
+]
+PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_BOUNDARY = (
+    "Calendar-pending OpenTimestamps proof for the 260627 future public-week "
+    "predeclaration; Bitcoin-block-header attestation and local Bitcoin-node "
+    "verification were not performed, and the proof is not scored validation, "
+    "not DOI/public archive, not independent reproduction, and not operational "
+    "POD. The 2026-06-22..2026-06-26 test dates remain pending/not scored as "
+    "of 2026-06-17. Public 260613/260620 SP3 products were unavailable in "
+    "the 2026-06-17 EDC status artifact, so 260627 cannot be used as "
+    "validation until validation/test public SP3 products become valid "
+    "gzip/SP3 products and the frozen rule is scored once."
+)
+CODEX_CLEAN_ARCHIVE_ATTESTATION_CLAIM = "codex_clean_archive_attestation"
+CODEX_CLEAN_ARCHIVE_ATTESTATION_PATHS = [
+    "results/validation/codex_clean_archive_attestation_20260614.json",
+    "results/validation/codex_clean_archive_attestation_20260614.md",
+]
+CODEX_CLEAN_ARCHIVE_ATTESTATION_BOUNDARY = (
+    "same-workspace separate-agent clean extracted archive attestation only; "
+    "not independent-machine validation, not third-party reproduction, not "
+    "DOI/public archive, not full scientific reproduction, not operational "
+    "POD, and not independent external reproduction."
+)
+CONTAINERIZED_MINIMUM_TIER_ATTESTATION_CLAIM = (
+    "containerized_minimum_tier_attestation"
+)
+CONTAINERIZED_MINIMUM_TIER_ATTESTATION_PATHS = [
+    "results/validation/containerized_minimum_tier_attestation_20260614.json",
+    "results/validation/containerized_minimum_tier_attestation_20260614.md",
+]
+CONTAINERIZED_MINIMUM_TIER_ATTESTATION_BOUNDARY = (
+    "local Docker Desktop clean-container staged minimum-tier integrity "
+    "attestation only; same-host and staged from the current workspace/review "
+    "archive; not independent-machine validation, not third-party "
+    "reproduction, not DOI/public archive, not full scientific reproduction, "
+    "not operational POD, not independent external reproduction, and not a "
+    "full scientific rerun."
+)
+FULL_RERUN_DIVERGENCE_AUDIT_CLAIM = "full_rerun_divergence_audit"
+FULL_RERUN_DIVERGENCE_AUDIT_PATHS = [
+    "results/validation/full_rerun_divergence_audit_20260617.json",
+    "results/validation/full_rerun_divergence_audit_20260617.md",
+    "scripts/build_full_rerun_divergence_audit.py",
+    "tests/test_full_rerun_divergence_audit.py",
+    "results/full_rerun_20260616/metrics_summary.json",
+    "results/full_rerun_20260616/scorecard_summary.json",
+    "results/full_rerun_20260616/trajectory_errors.csv",
+]
+FULL_RERUN_DIVERGENCE_AUDIT_BOUNDARY = (
+    "Diagnostic full-rerun divergence reconciliation only; not a canonical "
+    "table replacement, not operational validation, not independent "
+    "reproduction, and not a rerun success upgrade. Failure-conditioned rows "
+    "are diagnostic only and do not redefine performance or rescue any method."
+)
+ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_CLAIM = (
+    "official_ilrs_precise_reference_availability_probe"
+)
+ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_PATHS = [
+    "scripts/probe_ilrs_precise_reference_availability.py",
+    "tests/test_probe_ilrs_precise_reference_availability.py",
+    "results/validation/ilrs_precise_reference_availability_20260617.json",
+    "results/validation/ilrs_precise_reference_availability_20260617.md",
+]
+ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_BOUNDARY = (
+    "Official-source availability gate only; unavailable products and cached "
+    "HTML placeholders under .sp3.gz filenames are not scored validation, not "
+    "usable precise-reference products, not independent reproduction, not "
+    "DOI/public archive evidence, and not operational POD. A prospective "
+    "campaign can be scored only after all required LAGEOS validation/test "
+    "products are classified as valid gzip/SP3 products and the frozen "
+    "campaign command is actually run."
+)
+INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM = (
+    "independent_machine_reproduction_request"
+)
+INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_PATHS = [
+    "release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
+    ".gitlab-ci.yml",
+]
+INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_BOUNDARY = (
+    "Third-party clean-machine reproduction request/template only, with an "
+    "optional private GitLab CI route; not a completed independent "
+    "reproduction, not a passed CI attestation, not third-party validation, "
+    "not scored external validation, not DOI/public archive evidence, and "
+    "not operational POD. Passed GitLab job artifacts must be attached or "
+    "cited before making an independent-machine reproduction claim from the "
+    "CI route."
+)
 
 # Curated evidence artifacts grouped by role.  Paths are archive-relative.
 ARTIFACT_GROUPS: dict[str, list[str]] = {
@@ -311,7 +441,8 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "results/trajectory_errors.csv",
         "paper/tables/main_results.tex",
         "paper/tables/batch_wls_baseline.tex",
-    ],
+    ]
+    + BATCH_WLS_FORCE_MISMATCH_PATHS,
     "protocol_subset_audit": [
         "release/predeclarations/protocol_subset_ablation_loop51.json",
         "paper/tables/protocol_subset_ablation.tex",
@@ -392,6 +523,12 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
     VALIDATION_TUNED_ENKF_INFLATION_AUDIT_CLAIM: (
         VALIDATION_TUNED_ENKF_INFLATION_AUDIT_PATHS
     ),
+    PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_CLAIM: (
+        PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_PATHS
+    ),
+    PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_CLAIM: (
+        PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_PATHS
+    ),
     "public_multi_target_sp3_crd_breadth_probe": [
         "results/public_sp3_multi_target_breadth_probe/public_sp3_multi_target_breadth_probe.json",
         "paper/tables/public_sp3_multi_target_breadth_probe.tex",
@@ -407,8 +544,10 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "scripts/train_models.py",
         "tests/test_targeted_retraining_replay.py",
     ],
+    FULL_RERUN_DIVERGENCE_AUDIT_CLAIM: FULL_RERUN_DIVERGENCE_AUDIT_PATHS,
     "validation": [
         "results/validation/submission_validation.json",
+        "results/validation/submission_validation.md",
         "results/validation/citation_validation.json",
         "results/validation/supplement_layout_warnings.json",
         "results/validation/supplement_layout_warnings.md",
@@ -424,6 +563,16 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "results/validation/command_manifest.json",
         "release/CITATION.cff",
     ],
+    CODEX_CLEAN_ARCHIVE_ATTESTATION_CLAIM: CODEX_CLEAN_ARCHIVE_ATTESTATION_PATHS,
+    CONTAINERIZED_MINIMUM_TIER_ATTESTATION_CLAIM: (
+        CONTAINERIZED_MINIMUM_TIER_ATTESTATION_PATHS
+    ),
+    ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_CLAIM: (
+        ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_PATHS
+    ),
+    INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM: (
+        INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_PATHS
+    ),
     # Runnable source so the learned estimators and the full evaluation can be
     # reconstructed independently, not only inspected as records.
     "source_code": [
@@ -931,8 +1080,8 @@ def main() -> int:
         "version": PACKAGE_VERSION,
         "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "manuscript_title": (
-            "SPOT-OD: A Simulator-Bound Orbit-Determination Self-Audit Record "
-            "with Adaptive-Filter and Observability Mechanism Findings"
+            "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for "
+            "Adaptive Filtering under Sparse Visibility"
         ),
         "canonical_seed_cohort": CANONICAL_SEED_COHORT,
         "headline_evidence": (
@@ -1103,7 +1252,8 @@ def main() -> int:
                 "results/batch_wls_baseline/batch_wls_summary.csv",
                 "paper/tables/main_results.tex",
                 "paper/tables/batch_wls_baseline.tex",
-            ],
+            ]
+            + BATCH_WLS_FORCE_MISMATCH_PATHS,
             "protocol_subset_sufficiency": [
                 "release/predeclarations/protocol_subset_ablation_loop51.json",
                 "paper/tables/protocol_subset_ablation.tex",
@@ -1207,6 +1357,12 @@ def main() -> int:
             VALIDATION_TUNED_ENKF_INFLATION_AUDIT_CLAIM: (
                 VALIDATION_TUNED_ENKF_INFLATION_AUDIT_PATHS
             ),
+            PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_CLAIM: (
+                PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_PATHS
+            ),
+            PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_CLAIM: (
+                PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_PATHS
+            ),
             "public_temporal_od_selection_stability_audit": [
                 "results/real_slr_sp3_temporal_selection_stability/real_slr_sp3_temporal_selection_stability.json",
                 "paper/tables/real_slr_sp3_temporal_selection_stability.tex",
@@ -1258,6 +1414,16 @@ def main() -> int:
                 "scripts/_bootstrap.py",
             ]
             + archive_extracted_od_rels,
+            CODEX_CLEAN_ARCHIVE_ATTESTATION_CLAIM: CODEX_CLEAN_ARCHIVE_ATTESTATION_PATHS,
+            CONTAINERIZED_MINIMUM_TIER_ATTESTATION_CLAIM: (
+                CONTAINERIZED_MINIMUM_TIER_ATTESTATION_PATHS
+            ),
+            ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_CLAIM: (
+                ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_PATHS
+            ),
+            INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM: (
+                INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_PATHS
+            ),
             "targeted_retraining_replay": [
                 "results/validation/targeted_retraining_replay_public.json",
                 "results/validation/targeted_retraining_replay_public.md",
@@ -1267,6 +1433,32 @@ def main() -> int:
                 "tests/test_targeted_retraining_replay.py",
             ]
             + targeted_replay_artifact_rels,
+            FULL_RERUN_DIVERGENCE_AUDIT_CLAIM: (
+                FULL_RERUN_DIVERGENCE_AUDIT_PATHS
+            ),
+        },
+        "claim_boundary_map": {
+            PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_CLAIM: (
+                PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_BOUNDARY
+            ),
+            PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_CLAIM: (
+                PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_BOUNDARY
+            ),
+            CODEX_CLEAN_ARCHIVE_ATTESTATION_CLAIM: (
+                CODEX_CLEAN_ARCHIVE_ATTESTATION_BOUNDARY
+            ),
+            CONTAINERIZED_MINIMUM_TIER_ATTESTATION_CLAIM: (
+                CONTAINERIZED_MINIMUM_TIER_ATTESTATION_BOUNDARY
+            ),
+            ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_CLAIM: (
+                ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_BOUNDARY
+            ),
+            INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM: (
+                INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_BOUNDARY
+            ),
+            FULL_RERUN_DIVERGENCE_AUDIT_CLAIM: (
+                FULL_RERUN_DIVERGENCE_AUDIT_BOUNDARY
+            ),
         },
         "claim_to_regeneration_tier_map": {
             "audited_learned_family_bounded_negative": [
@@ -1346,6 +1538,12 @@ def main() -> int:
                 "minimum_integrity_check",
                 "full_rerun",
             ],
+            PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260620_CLAIM: [
+                "minimum_integrity_check",
+            ],
+            PENDING_PUBLIC_TEMPORAL_OD_PROSPECTIVE_260627_CLAIM: [
+                "minimum_integrity_check",
+            ],
             "public_temporal_od_selection_stability_audit": [
                 "minimum_integrity_check",
                 "full_rerun",
@@ -1361,9 +1559,26 @@ def main() -> int:
             "archive_extracted_reproduction_tier": [
                 "archive_extracted_reproduction_check",
             ],
+            CODEX_CLEAN_ARCHIVE_ATTESTATION_CLAIM: [
+                "minimum_integrity_check",
+                "archive_extracted_reproduction_check",
+            ],
+            CONTAINERIZED_MINIMUM_TIER_ATTESTATION_CLAIM: [
+                "minimum_integrity_check",
+            ],
+            ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_CLAIM: [
+                "minimum_integrity_check",
+            ],
+            INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM: [
+                "minimum_integrity_check",
+            ],
             "targeted_retraining_replay": [
                 "minimum_integrity_check",
                 "targeted_retraining_replay_check",
+            ],
+            FULL_RERUN_DIVERGENCE_AUDIT_CLAIM: [
+                "minimum_integrity_check",
+                "full_rerun",
             ],
         },
         "artifact_groups": public_groups,
