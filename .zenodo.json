@@ -1,0 +1,23 @@
+{
+  "title": "SPOT-OD archive-extracted reproduction package",
+  "upload_type": "dataset",
+  "description": "Public archive-extracted reproduction package for the SPOT-OD supplementary review archive. The package contains the review archive ZIP, paired supplementary manifest, verifier script, GitHub Actions workflow, and attestation metadata for a narrow archive-extracted reproduction tier. It verifies archive extraction, manifest-indexed artifact hashes, active manuscript artifact regeneration from archived results, and one archived-input public OD slice rerun. It does not claim full raw/training/all-filter reruns, live public-data retrieval, operational POD validation, or third-party independent validation. Zenodo will assign a DOI after the GitHub release is archived.",
+  "creators": [
+    {
+      "name": "Alavi, Leo"
+    }
+  ],
+  "keywords": [
+    "orbit determination",
+    "satellite state estimation",
+    "sparse visibility",
+    "adaptive filtering",
+    "reproducibility",
+    "archive-extracted reproduction"
+  ],
+  "version": "1.1.0-supplement-reproduction",
+  "language": "eng",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "notes": "Zenodo will assign a DOI after the GitHub release is archived. Third-party components and dependencies referenced by or bundled in the archive retain their own licenses."
+}

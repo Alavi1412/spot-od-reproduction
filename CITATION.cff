@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this SPOT-OD archive-extracted reproduction package, please cite the Zenodo record after Zenodo assigns its DOI."
+title: "SPOT-OD archive-extracted reproduction package"
+type: dataset
+authors:
+  - family-names: "Alavi"
+    given-names: "Leo"
+version: "1.1.0-supplement-reproduction"
+date-released: "2026-06-20"
+license: "CC-BY-4.0"
+repository-code: "https://github.com/Alavi1412/spot-od-reproduction"
+abstract: >-
+  Public archive-extracted reproduction package for the SPOT-OD supplementary
+  review archive. The verifier checks archive extraction, manifest-indexed
+  artifact hashes, active manuscript artifact regeneration from archived
+  results, and one archived-input public OD slice rerun. It does not claim full
+  raw/training/all-filter reruns, live public-data retrieval, operational POD
+  validation, or third-party independent validation.
+keywords:
+  - orbit determination
+  - satellite state estimation
+  - sparse visibility
+  - adaptive filtering
+  - reproducibility
+  - archive-extracted reproduction

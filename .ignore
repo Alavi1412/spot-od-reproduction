@@ -1,0 +1,3 @@
+# The paired release manifest is immutable evidence verified by SHA-256.
+# Keep broad repository text scans focused on public wrapper files.
+release/SUPPLEMENTARY_MANIFEST.json
