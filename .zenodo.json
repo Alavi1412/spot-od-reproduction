@@ -1,7 +1,7 @@
 {
-  "title": "SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package",
+  "title": "SPOT-OD archive-extracted reproduction and corrected GraphAnchorPairGate PoC package",
   "upload_type": "dataset",
-  "description": "Public archive-extracted reproduction package for the SPOT-OD supplementary review archive plus a compact GraphAnchorPairGate proof-of-concept package. The unchanged v1.1.0 archive verifies archive extraction, manifest-indexed artifact hashes, active manuscript artifact regeneration from archived results, and one archived-input public OD slice rerun. The v1.2.0 GraphAnchorPairGate package adds local compact-simulator PoC code, tests, retained seed-sweep CSV/JSON/PNG evidence, selected paper artifacts, best checkpoints, and a stdlib verifier for the 9/10 scenario-row win and 4/5 paired-seed both-scenario win readout. The graph PoC uses all-step center-window RMSE and is not the primary observed-step endpoint, not operational precise-reference validation, not independent third-party reproduction, and not a full raw-data/training rerun. Zenodo will assign a DOI after the GitHub release is archived.",
+  "description": "Public archive-extracted reproduction package for the SPOT-OD supplementary review archive plus a corrected compact GraphAnchorPairGate proof-of-concept package. The unchanged v1.1.0 archive verifies archive extraction, manifest-indexed artifact hashes, active manuscript artifact regeneration from archived results, and one archived-input public OD slice rerun. The v1.2.1 GraphAnchorPairGate package supersedes the published v1.2.0 graph package (DOI 10.5281/zenodo.20810341) by rebuilding the same compact artifact set with synchronized manuscript/table/provenance text that cites the v1.2.0 DOI instead of stale pending-release wording. It includes local compact-simulator PoC code, tests, retained seed-sweep CSV/JSON/PNG evidence, selected paper artifacts, best checkpoints, and a stdlib verifier for the 9/10 scenario-row win and 4/5 paired-seed both-scenario win readout. The graph PoC uses all-step center-window RMSE and is not the primary observed-step endpoint, not operational precise-reference validation, not independent third-party reproduction, and not a full raw-data/training rerun. Zenodo will assign a DOI after this v1.2.1 GitHub release is archived.",
   "creators": [
     {
       "name": "Alavi, Leo"
@@ -17,9 +17,9 @@
     "graph neural networks",
     "proof of concept"
   ],
-  "version": "1.2.0-graph-anchor-gate-poc",
+  "version": "1.2.1-graph-anchor-gate-poc",
   "language": "eng",
   "access_right": "open",
   "license": "cc-by-4.0",
-  "notes": "Zenodo will assign a DOI after the GitHub release is archived. Third-party components and dependencies referenced by or bundled in the archives retain their own licenses. The GraphAnchorPairGate PoC is bounded local compact-simulator evidence, not operational POD validation or independent third-party reproduction."
+  "notes": "Zenodo will assign a DOI after this v1.2.1 GitHub release is archived. Third-party components and dependencies referenced by or bundled in the archives retain their own licenses. The v1.2.1 GraphAnchorPairGate PoC is bounded local compact-simulator evidence and supersedes v1.2.0 only by correcting embedded manuscript/provenance text; it is not operational POD validation or independent third-party reproduction."
 }

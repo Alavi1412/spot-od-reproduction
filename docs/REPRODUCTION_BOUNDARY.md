@@ -1,6 +1,6 @@
 # Reproduction Boundary
 
-This repository is intentionally narrow. It publishes and verifies the archive-extracted reproduction tier for the SPOT-OD supplementary evidence package and adds a compact v1.2.0 GraphAnchorPairGate proof-of-concept package.
+This repository is intentionally narrow. It publishes and verifies the archive-extracted reproduction tier for the SPOT-OD supplementary evidence package and adds a corrected compact v1.2.1 GraphAnchorPairGate proof-of-concept package.
 
 ## v1.1.0 Archive-Extracted Reproduction
 
@@ -24,11 +24,13 @@ This repository is intentionally narrow. It publishes and verifies the archive-e
 
 The v1.1.0 verifier is evidence that the archived package is internally consistent and that the defined archive-extracted tier can be rerun. It is not evidence that every upstream experiment can be regenerated from scratch.
 
-## v1.2.0 GraphAnchorPairGate PoC
+## v1.2.1 GraphAnchorPairGate PoC
+
+Version v1.2.1 supersedes the published v1.2.0 graph package (DOI `10.5281/zenodo.20810341`) only by rebuilding the same compact artifact set with synchronized manuscript/table/provenance text. Zenodo will assign the v1.2.1 DOI after release.
 
 ### In Scope
 
-- Extraction and embedded-manifest SHA-256 verification for `release/spot_od_v1_2_0_graph_anchor_gate_poc.zip`.
+- Extraction and embedded-manifest SHA-256 verification for `release/spot_od_v1_2_1_graph_anchor_gate_poc.zip`.
 - Verification that the embedded `MANIFEST.json` covers every non-manifest payload member.
 - Retained CSV-based recomputation of the GraphAnchorPairGate seed-sweep metrics.
 - Local compact-simulator held-out eval evidence for `process_noise_shift_test` and `maneuver_shift_test`.

@@ -22,9 +22,9 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_ARCHIVE_REL = "release/spot_od_v1_2_0_graph_anchor_gate_poc.zip"
-DEFAULT_JSON_OUT = "results/validation/graph_anchor_gate_poc_verification.json"
-DEFAULT_MD_OUT = "results/validation/graph_anchor_gate_poc_verification.md"
+DEFAULT_ARCHIVE_REL = "release/spot_od_v1_2_1_graph_anchor_gate_poc.zip"
+DEFAULT_JSON_OUT = "results/validation/graph_anchor_gate_poc_v121_verification.json"
+DEFAULT_MD_OUT = "results/validation/graph_anchor_gate_poc_v121_verification.md"
 MANIFEST_MEMBER = "MANIFEST.json"
 SUMMARY_CSV = "results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_summary.csv"
 BY_SCENARIO_CSV = "results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_by_scenario.csv"

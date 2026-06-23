@@ -1,21 +1,23 @@
 cff-version: 1.2.0
-message: "If you use this SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package, please cite the Zenodo record after Zenodo assigns its DOI."
-title: "SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package"
+message: "If you use this corrected SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package, please cite the Zenodo record after Zenodo assigns the v1.2.1 DOI."
+title: "SPOT-OD archive-extracted reproduction and corrected GraphAnchorPairGate PoC package"
 type: dataset
 authors:
   - family-names: "Alavi"
     given-names: "Leo"
-version: "1.2.0-graph-anchor-gate-poc"
+version: "1.2.1-graph-anchor-gate-poc"
 date-released: "2026-06-23"
 license: "CC-BY-4.0"
 repository-code: "https://github.com/Alavi1412/spot-od-reproduction"
 abstract: >-
   Public archive-extracted reproduction package for the SPOT-OD supplementary
-  review archive plus a compact GraphAnchorPairGate proof-of-concept package.
-  The graph PoC uses all-step center-window RMSE on local compact-simulator
-  shift scenarios and is not the primary observed-step endpoint, not
-  operational precise-reference validation, not independent third-party
-  reproduction, and not a full raw-data/training rerun.
+  review archive plus a corrected compact GraphAnchorPairGate proof-of-concept
+  package. Version 1.2.1 supersedes v1.2.0 by rebuilding the same graph artifact
+  set with synchronized manuscript/table/provenance text; Zenodo will assign the
+  v1.2.1 DOI after release. The graph PoC uses all-step center-window RMSE on
+  local compact-simulator shift scenarios and is not the primary observed-step
+  endpoint, not operational precise-reference validation, not independent
+  third-party reproduction, and not a full raw-data/training rerun.
 keywords:
   - orbit determination
   - satellite state estimation
