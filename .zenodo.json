@@ -1,7 +1,7 @@
 {
-  "title": "SPOT-OD archive-extracted reproduction package",
+  "title": "SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package",
   "upload_type": "dataset",
-  "description": "Public archive-extracted reproduction package for the SPOT-OD supplementary review archive. The package contains the review archive ZIP, paired supplementary manifest, verifier script, GitHub Actions workflow, and attestation metadata for a narrow archive-extracted reproduction tier. It verifies archive extraction, manifest-indexed artifact hashes, active manuscript artifact regeneration from archived results, and one archived-input public OD slice rerun. It does not claim full raw/training/all-filter reruns, live public-data retrieval, operational POD validation, or third-party independent validation. Zenodo will assign a DOI after the GitHub release is archived.",
+  "description": "Public archive-extracted reproduction package for the SPOT-OD supplementary review archive plus a compact GraphAnchorPairGate proof-of-concept package. The unchanged v1.1.0 archive verifies archive extraction, manifest-indexed artifact hashes, active manuscript artifact regeneration from archived results, and one archived-input public OD slice rerun. The v1.2.0 GraphAnchorPairGate package adds local compact-simulator PoC code, tests, retained seed-sweep CSV/JSON/PNG evidence, selected paper artifacts, best checkpoints, and a stdlib verifier for the 9/10 scenario-row win and 4/5 paired-seed both-scenario win readout. The graph PoC uses all-step center-window RMSE and is not the primary observed-step endpoint, not operational precise-reference validation, not independent third-party reproduction, and not a full raw-data/training rerun. Zenodo will assign a DOI after the GitHub release is archived.",
   "creators": [
     {
       "name": "Alavi, Leo"
@@ -13,11 +13,13 @@
     "sparse visibility",
     "adaptive filtering",
     "reproducibility",
-    "archive-extracted reproduction"
+    "archive-extracted reproduction",
+    "graph neural networks",
+    "proof of concept"
   ],
-  "version": "1.1.0-supplement-reproduction",
+  "version": "1.2.0-graph-anchor-gate-poc",
   "language": "eng",
   "access_right": "open",
   "license": "cc-by-4.0",
-  "notes": "Zenodo will assign a DOI after the GitHub release is archived. Third-party components and dependencies referenced by or bundled in the archive retain their own licenses."
+  "notes": "Zenodo will assign a DOI after the GitHub release is archived. Third-party components and dependencies referenced by or bundled in the archives retain their own licenses. The GraphAnchorPairGate PoC is bounded local compact-simulator evidence, not operational POD validation or independent third-party reproduction."
 }

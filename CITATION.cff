@@ -1,21 +1,21 @@
 cff-version: 1.2.0
-message: "If you use this SPOT-OD archive-extracted reproduction package, please cite the Zenodo record after Zenodo assigns its DOI."
-title: "SPOT-OD archive-extracted reproduction package"
+message: "If you use this SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package, please cite the Zenodo record after Zenodo assigns its DOI."
+title: "SPOT-OD archive-extracted reproduction and GraphAnchorPairGate PoC package"
 type: dataset
 authors:
   - family-names: "Alavi"
     given-names: "Leo"
-version: "1.1.0-supplement-reproduction"
-date-released: "2026-06-20"
+version: "1.2.0-graph-anchor-gate-poc"
+date-released: "2026-06-23"
 license: "CC-BY-4.0"
 repository-code: "https://github.com/Alavi1412/spot-od-reproduction"
 abstract: >-
   Public archive-extracted reproduction package for the SPOT-OD supplementary
-  review archive. The verifier checks archive extraction, manifest-indexed
-  artifact hashes, active manuscript artifact regeneration from archived
-  results, and one archived-input public OD slice rerun. It does not claim full
-  raw/training/all-filter reruns, live public-data retrieval, operational POD
-  validation, or third-party independent validation.
+  review archive plus a compact GraphAnchorPairGate proof-of-concept package.
+  The graph PoC uses all-step center-window RMSE on local compact-simulator
+  shift scenarios and is not the primary observed-step endpoint, not
+  operational precise-reference validation, not independent third-party
+  reproduction, and not a full raw-data/training rerun.
 keywords:
   - orbit determination
   - satellite state estimation
@@ -23,3 +23,5 @@ keywords:
   - adaptive filtering
   - reproducibility
   - archive-extracted reproduction
+  - graph neural networks
+  - proof of concept
