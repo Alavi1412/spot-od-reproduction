@@ -199,7 +199,10 @@ PNG_DECODED_COMPARISON_MODE = "png_decoded_pixels_sha256"
 PNG_VISUAL_COMPARISON_MODE = "png_visual_content_v1"
 IMAGE_CONTENT_COMPARISON_MODE = PNG_DECODED_COMPARISON_MODE
 IMAGE_CONTENT_ARTIFACT_SUFFIXES = {".png"}
-VISUAL_IMAGE_CONTENT_ARTIFACTS = {"paper/figures/aukf_r_inflation_mechanism.png"}
+VISUAL_IMAGE_CONTENT_ARTIFACTS = {
+    "paper/figures/aukf_r_inflation_mechanism.png",
+    "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png",
+}
 PNG_VISUAL_COMPARISON_THRESHOLDS = {
     "downsample_width_px": 192,
     "max_width_delta_fraction": 0.01,

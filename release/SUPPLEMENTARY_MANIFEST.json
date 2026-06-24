@@ -3,7 +3,7 @@
   "title": "SPOT-OD v1.2.2 ACF audit release",
   "version": "1.2.2-acf-audit",
   "description": "Version-pinned supplementary evidence package for the simulator-bound SPOT-OD sparse-visibility orbit-determination self-audit record. This v1.2.2 ACF audit release targets https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit; its Zenodo DOI is pending; fill after Zenodo mints the v1.2.2 DOI. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701. Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier; not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, and not universal learned-OD superiority.",
-  "generated_utc": "2026-06-24T03:55:27.207432+00:00",
+  "generated_utc": "2026-06-24T04:27:39.091008+00:00",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
@@ -3609,12 +3609,12 @@
       {
         "path": "scripts\\regenerate_active_manuscript.py",
         "exists": true,
-        "bytes": 48407,
-        "sha256": "a4d767c0dcab9495d4d52e894bc7e3301da59b52b3eac18b6b02ec31dcedc8d2",
+        "bytes": 48483,
+        "sha256": "1843d01a9bdacd3daef0cfa72bc5da9f8099d37a6cccd2691a7d57f82a524420",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 48127,
-        "source_sha256": "66b6c5c9fa3dee3a1f9d8ad78d9c99ad74fe5a75bf072f0a55a2cac7f5e9f9b7"
+        "source_bytes": 48203,
+        "source_sha256": "04092722563a46665071fd95c2bccd0668c92f1dacf13c490e849c5ca6fca5ff"
       },
       {
         "path": "scripts\\validate_submission.py",
@@ -3673,12 +3673,12 @@
       {
         "path": "tests\\test_archive_extracted_reproduction.py",
         "exists": true,
-        "bytes": 39093,
-        "sha256": "9ba7f82d5f46b8c5f83ea40d77b6e5975c6b6dafec2c8301af77d9a511335ebb",
+        "bytes": 40554,
+        "sha256": "b7614460f0c9705578cb8dd0eaa1f0a6a84bdf1bd052a1ec45a52b3b467d43b3",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 39081,
-        "source_sha256": "1db28636af18965018a6425b8375a83159430d09d0b56a5c559caee49e23a528"
+        "source_bytes": 40542,
+        "source_sha256": "87a30493f99e2341dc03eb538204dc7989dc764a672b46df407c3489a768da53"
       },
       {
         "path": "tests\\test_adaptation_risk_diagnostic.py",
@@ -8016,11 +8016,11 @@
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.json",
         "exists": true,
         "bytes": 14534,
-        "sha256": "920585168205969da9f6073dbc5989e139bf49ef4a704cf7d4916f0d3959f2f8",
+        "sha256": "fe87a844f53964decedddc26006fef803c585f1d119a6161d9f4dc10fab1a0e4",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 14912,
-        "source_sha256": "4262cdbcbb983c00128645549d82a2c26b2a1c681c916be1cdb2d84700a4af66"
+        "source_sha256": "4fafed9b1c3ceb685be9e09367d4e2c9c806ee823513fc9b7838760b405506ee"
       },
       {
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.md",
@@ -8052,8 +8052,8 @@
   "review_archive": {
     "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
     "exists": true,
-    "bytes": 59126911,
-    "sha256": "2684857f049a64b24dedfa61781b23e8dea38aa226926d750c12dd49191df76a",
+    "bytes": 59127034,
+    "sha256": "e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
