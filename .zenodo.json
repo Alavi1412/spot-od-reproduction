@@ -1,0 +1,52 @@
+{
+  "title": "SPOT-OD v1.2.5 Zenodo metadata repair release",
+  "upload_type": "software",
+  "description": "Metadata-only repair release for SPOT-OD v1.2.5-zenodo-metadata-repair. This release repairs GitHub-to-Zenodo import metadata after the Zenodo record for v1.2.4-acf-prospective-guard, DOI 10.5281/zenodo.20836876, inherited stale GraphAnchorPairGate/v1.2.1 title, version, and description text even though the GitHub release, link, and file were for v1.2.4. This release adds no new scientific result and does not upgrade the evidence to operational precise-reference validation, independent-machine reproduction, full raw/training/all-filter rerun, learned-superiority evidence, third-party validation, or confirmatory operational readiness.",
+  "creators": [
+    {
+      "name": "Leo Alavi"
+    }
+  ],
+  "keywords": [
+    "SPOT-OD",
+    "orbit determination",
+    "satellite state estimation",
+    "sparse visibility",
+    "AdaptiveCandidateFusion",
+    "Zenodo metadata repair",
+    "reproducibility",
+    "negative results"
+  ],
+  "version": "v1.2.5-zenodo-metadata-repair",
+  "language": "eng",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.5-zenodo-metadata-repair",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.20768672",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20825138",
+      "relation": "cites",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.20836876",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
+    }
+  ],
+  "notes": "The v1.2.4 DOI 10.5281/zenodo.20836876 is treated here as the previous Zenodo record affected by a metadata import mismatch: its archived GitHub release link and file targeted v1.2.4-acf-prospective-guard, but its imported title/version/description text remained stale GraphAnchorPairGate/v1.2.1 metadata. The clean public access and integrity boundary remains v1.2.3-acf-holdout-audit, DOI 10.5281/zenodo.20825138, until a corrected v1.2.5 Zenodo DOI is verified. This release is metadata repair only and adds no new scientific result."
+}
