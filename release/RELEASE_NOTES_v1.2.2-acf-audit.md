@@ -5,7 +5,28 @@ Release tag: `v1.2.2-acf-audit`
 GitHub release URL:
 <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit>
 
-Zenodo DOI: pending. Fill only after Zenodo mints the v1.2.2 DOI.
+GitHub release commit: `6fbc88745b6d96939736d59731089e99786c1f8c`
+
+Zenodo software record:
+<https://zenodo.org/records/20822968>
+
+Zenodo DOI: `10.5281/zenodo.20822968`
+
+DOI URL:
+<https://doi.org/10.5281/zenodo.20822968>
+
+Zenodo archived file: `Alavi1412/spot-od-reproduction-v1.2.2-acf-audit.zip`
+
+Zenodo archived file bytes: `72,607,548`
+
+Zenodo archived file MD5: `533b8363954cb6531f17bf4d405a5092`
+
+GitHub release asset: `spot_od_v1_2_2_acf_audit_review_archive.zip`
+
+GitHub release asset bytes: `59,127,034`
+
+GitHub release asset SHA-256:
+`e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240`
 
 Prior release DOI: v1.2.1 remains archived at `10.5281/zenodo.20811701`.
 
@@ -32,9 +53,3 @@ ACF remains validation-selected compact-simulator PoC evidence. It is not
 operational precise-reference validation, independent-machine reproduction,
 third-party validation, full raw/training/all-filter reproduction, or universal
 learned-OD superiority.
-
-## Pending Before Final Citation
-
-- v1.2.2 Zenodo DOI
-- v1.2.2 Zenodo archived-file name, byte count, and MD5
-- v1.2.2 GitHub release asset name, byte count, and SHA-256

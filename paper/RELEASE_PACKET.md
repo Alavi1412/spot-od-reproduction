@@ -66,14 +66,14 @@ The dev10/holdout5 split selected policies on development seeds 7, 11, 13, 17,
 3/5 wins mean -2.06% CI [-6.41,+1.37].
 
 These compact-simulator artifacts are included in the public
-`v1.2.3-acf-holdout-audit` reproduction-support package target. That release
-packaging is an access/integrity tier only: these artifacts are not operational
-precise-reference validation, not independent-machine reproduction, not a full
-raw/all-filter/public rerun, not confirmatory learned-superiority evidence, and
-not a universal learned orbit-determination claim. The prior v1.2.2 DOI
-`10.5281/zenodo.20822968` remains historical ACF audit package history, and the
-prior v1.2.1 DOI remains the historical GraphAnchorPairGate package DOI:
-`10.5281/zenodo.20811701`.
+`v1.2.3-acf-holdout-audit` reproduction-support package, Zenodo DOI
+`10.5281/zenodo.20825138`. That release packaging is an access/integrity tier
+only: these artifacts are not operational precise-reference validation, not
+independent-machine reproduction, not a full raw/all-filter/public rerun, not
+confirmatory learned-superiority evidence, and not a universal learned
+orbit-determination claim. The prior v1.2.2 DOI `10.5281/zenodo.20822968`
+remains historical ACF audit package history, and the prior v1.2.1 DOI remains
+the historical GraphAnchorPairGate package DOI: `10.5281/zenodo.20811701`.
 
 ## Current Main-Manuscript Figure Includes
 Static evidence from `paper/main.tex` currently shows these figure includes:

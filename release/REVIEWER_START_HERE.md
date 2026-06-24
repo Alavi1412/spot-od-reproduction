@@ -10,23 +10,32 @@ Release-facing metadata is prepared for the bounded reproduction-support
 package:
 
 - Short title: `SPOT-OD v1.2.3 ACF holdout audit release`
-- Zenodo record: pending after Zenodo imports the new GitHub release
-- DOI: pending after Zenodo imports the new GitHub release
-- DOI URL: pending after Zenodo imports the new GitHub release
-- Zenodo status: `pending_zenodo_import`
+- Zenodo record: <https://zenodo.org/records/20825138>
+- DOI: `10.5281/zenodo.20825138`
+- DOI URL: <https://doi.org/10.5281/zenodo.20825138>
+- Zenodo concept DOI: `10.5281/zenodo.20768672`
+- Zenodo status: `published`
 - Zenodo resource type: `Software`
 - Version: `1.2.3-acf-holdout-audit`
 - License: `CC-BY-4.0`
 - GitHub release:
   <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>
 - Release tag: `v1.2.3-acf-holdout-audit`
-- Release commit: pending until tag publication
-- Zenodo archived file: pending after Zenodo import
-- Zenodo archived file bytes: pending
-- Zenodo archived file MD5: pending
+- Release commit: `39e879d8665e489266bbf75f69634cab0e797fe8`
+- Zenodo archived file:
+  `Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip`
+- Zenodo archived file bytes: `187,254,529`
+- Zenodo archived file MD5: `7eb8b43a9af90a4783482a7a3a086f92`
 - GitHub release asset: `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
-- GitHub release asset bytes and SHA-256: recorded in the regenerated
-  `SUPPLEMENTARY_MANIFEST.json` under `review_archive`.
+- GitHub release asset bytes: `59,140,917`
+- GitHub release asset SHA-256:
+  `11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`
+- GitHub Actions verifier branch run:
+  <https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565>
+  (`success`)
+- GitHub Actions verifier tag run:
+  <https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253538>
+  (`success`)
 
 Prior public v1.2.2 release history:
 
@@ -199,6 +208,14 @@ models, regenerate estimates, or rebuild tables.
 `SUPPLEMENTARY_MANIFEST.json` is authoritative for final submitted-package
 artifact counts and `review_archive.sha256` / byte count. Read the current
 digest and counts directly from that manifest, not from this guide.
+For the current DOI-synced branch, that manifest records a regenerated local
+archive of 59,142,123 bytes with SHA-256
+`11451c2032243c972534f7de9eb40ba04c44ff69b6c45db179f2053f97ad9b7e` and
+`review_archive.matches_published_github_release_asset: false`. The immutable
+published v1.2.3 GitHub release asset is a separate 59,140,917-byte artifact
+with SHA-256
+`11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`; use it
+only with the exact release/tag manifest set.
 Archive-extracted reports intentionally omit the enclosing archive SHA-256 and
 byte size because they are themselves archived, which would create a
 self-referential digest cycle. Validation and attestation files are

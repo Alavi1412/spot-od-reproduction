@@ -2,8 +2,8 @@
   "package": "SPOT-OD supplementary evidence package",
   "title": "SPOT-OD v1.2.3 ACF holdout audit release",
   "version": "1.2.3-acf-holdout-audit",
-  "description": "Version-pinned supplementary evidence package for the simulator-bound SPOT-OD sparse-visibility orbit-determination self-audit record. This v1.2.3 ACF holdout audit release targets https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit; its Zenodo DOI and record are pending/expected after Zenodo imports the new GitHub release. The prior public v1.2.2 DOI is 10.5281/zenodo.20822968 for the historical ACF audit package before this public-boundary repair. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701. Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier, including public packaging of the development/holdout split summaries; the development/holdout readout is weak/mixed internal compact-simulator evidence only, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, not confirmatory learned superiority, and not universal learned-OD superiority.",
-  "generated_utc": "2026-06-24T07:11:54.878380+00:00",
+  "description": "Version-pinned supplementary evidence package for the simulator-bound SPOT-OD sparse-visibility orbit-determination self-audit record. This v1.2.3 ACF holdout audit release is published at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit; its Zenodo DOI is 10.5281/zenodo.20825138 at https://zenodo.org/records/20825138. The prior public v1.2.2 DOI is 10.5281/zenodo.20822968 for the historical ACF audit package before this public-boundary repair. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701. Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier, including public packaging of the development/holdout split summaries; the development/holdout readout is weak/mixed internal compact-simulator evidence only, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, not confirmatory learned superiority, and not universal learned-OD superiority.",
+  "generated_utc": "2026-06-24T08:03:42.078795+00:00",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
@@ -38,43 +38,43 @@
     "pyproject_toml_sha256": "c118bb2da111ab57531b20fab63a8c1d9c8019777da46814b2c0d15777165da8",
     "note": "Version-pinned dependency provenance. The package is reproducible offline from these pinned inputs and the recorded artifact checksums; no external network access is required."
   },
-  "public_identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit",
-  "public_identifier_type": "GitHub release URL; Zenodo DOI pending",
-  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit; release commit is pending until the GitHub release tag is published. The v1.2.3 Zenodo DOI and record are pending/expected after Zenodo imports the new GitHub release. The prior public v1.2.2 DOI is 10.5281/zenodo.20822968 and is historical ACF audit package history, not the v1.2.3 identifier. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701 and remains GraphAnchorPairGate package history.",
-  "public_archive_commitment": "Release metadata targets GitHub tag v1.2.3-acf-holdout-audit at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit. The Zenodo DOI and record for v1.2.3 are pending/expected after Zenodo imports that GitHub release. The v1.2.2 DOI 10.5281/zenodo.20822968 and v1.2.1 DOI 10.5281/zenodo.20811701 remain historical references only.",
-  "post_acceptance_public_archive_commitment": "After Zenodo imports the new GitHub release, public citation of v1.2.3 should use the minted Zenodo DOI/record for that release, paired with GitHub tag v1.2.3-acf-holdout-audit. Until then, the GitHub release target https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit is the current public-boundary target. The v1.2.2 and v1.2.1 DOIs remain historical references only.",
+  "public_identifier": "https://doi.org/10.5281/zenodo.20825138",
+  "public_identifier_type": "Zenodo DOI URL; GitHub release URL",
+  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; release URL is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit; release commit is GitHub tag target commit 39e879d8665e489266bbf75f69634cab0e797fe8. The v1.2.3 Zenodo record is https://zenodo.org/records/20825138, DOI 10.5281/zenodo.20825138, and DOI URL https://doi.org/10.5281/zenodo.20825138. The prior public v1.2.2 DOI is 10.5281/zenodo.20822968 and is historical ACF audit package history, not the v1.2.3 identifier. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701 and remains GraphAnchorPairGate package history.",
+  "public_archive_commitment": "Release metadata records GitHub tag v1.2.3-acf-holdout-audit at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit, target commit 39e879d8665e489266bbf75f69634cab0e797fe8, and Zenodo record https://zenodo.org/records/20825138 with DOI 10.5281/zenodo.20825138. The v1.2.2 DOI 10.5281/zenodo.20822968 and v1.2.1 DOI 10.5281/zenodo.20811701 remain historical references only.",
+  "post_acceptance_public_archive_commitment": "Public citation of v1.2.3 should use the minted Zenodo DOI 10.5281/zenodo.20825138 / record https://zenodo.org/records/20825138, paired with GitHub tag v1.2.3-acf-holdout-audit at target commit 39e879d8665e489266bbf75f69634cab0e797fe8. The v1.2.2 and v1.2.1 DOIs remain historical references only.",
   "public_archive_release": {
     "title": "SPOT-OD v1.2.3 ACF holdout audit release",
     "github_repository": "https://github.com/Alavi1412/spot-od-reproduction",
     "github_release_target": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit",
     "release_tag": "v1.2.3-acf-holdout-audit",
-    "github_release_commit": null,
-    "github_release_commit_note": "pending until the GitHub release tag is published",
-    "doi_status": "pending_zenodo_import",
-    "zenodo_record": null,
-    "doi": null,
-    "doi_url": null,
+    "github_release_commit": "39e879d8665e489266bbf75f69634cab0e797fe8",
+    "github_release_commit_note": "GitHub tag target commit 39e879d8665e489266bbf75f69634cab0e797fe8",
+    "doi_status": "published",
+    "zenodo_record": "https://zenodo.org/records/20825138",
+    "doi": "10.5281/zenodo.20825138",
+    "doi_url": "https://doi.org/10.5281/zenodo.20825138",
+    "concept_doi": "10.5281/zenodo.20768672",
+    "concept_doi_url": "https://doi.org/10.5281/zenodo.20768672",
     "zenodo_resource_type": "Software",
-    "publication_status_note": "The v1.2.3 GitHub release is the target for publication; the Zenodo DOI and record are pending/expected after Zenodo imports the new GitHub release.",
-    "pending_fields": [
-      "v1.2.3 Zenodo record URL",
-      "v1.2.3 Zenodo DOI",
-      "v1.2.3 Zenodo archived file bytes and MD5",
-      "v1.2.3 GitHub release commit",
-      "GitHub release publication/upload confirmation"
-    ],
-    "zenodo_archived_file": null,
+    "publication_status_note": "The v1.2.3 GitHub release and Zenodo software record are published; use DOI 10.5281/zenodo.20825138 for this release.",
+    "pending_fields": [],
+    "zenodo_archived_file": {
+      "key": "Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip",
+      "size_bytes": 187254529,
+      "md5": "7eb8b43a9af90a4783482a7a3a086f92"
+    },
     "github_release_asset": {
       "key": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
       "size_bytes": 59140917,
       "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
-      "source": "generated_local_review_archive",
-      "status": "pending_upload_to_new_github_release"
+      "source": "public_github_release_asset",
+      "status": "published"
     },
     "github_actions": {
-      "v1.2.3_branch_run": null,
-      "v1.2.3_tag_run": null,
-      "status": "pending new release verifier runs"
+      "v1.2.3_branch_run": "https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565",
+      "v1.2.3_tag_run": "https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253538",
+      "status": "success"
     },
     "prior_release": {
       "version": "1.2.2-acf-audit",
@@ -1330,12 +1330,12 @@
       {
         "path": "paper\\main.tex",
         "exists": true,
-        "bytes": 150408,
-        "sha256": "4580d29c96eef1e9437375359cc72760fcc10260301594c04d75696c138eb4a6",
+        "bytes": 150762,
+        "sha256": "29dc2466f4c980bedf1c50f9e7f73de7fb7ac209810279b014e45d7d5cca49b4",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 150400,
-        "source_sha256": "02c5171895bc96f4886db1d9cd55f6e33a9786528f93cfe4b33cb62c58f776b3"
+        "source_bytes": 150754,
+        "source_sha256": "2c2a0724ca85e9b7c147b680c0cbd2b16d3d74a1c007b69e65a8d7bc2f9fee65"
       },
       {
         "path": "paper\\supplement.tex",
@@ -1346,8 +1346,8 @@
       {
         "path": "paper\\main.pdf",
         "exists": true,
-        "bytes": 833846,
-        "sha256": "9a1f7171afd8be57cf36e3084b480fc1bace20ddd107cf8079ee8e1e4f93be2e"
+        "bytes": 834079,
+        "sha256": "86c1220b663e0aa330147be745294215b603a2c221210dd0e2c162b65da0dc84"
       },
       {
         "path": "paper\\supplement.pdf",
@@ -1376,12 +1376,12 @@
       {
         "path": "paper\\RELEASE_PACKET.md",
         "exists": true,
-        "bytes": 20984,
-        "sha256": "769380c8fae3d4a9c2f0acad4fd0c625ecbe4a61df85a40188b7b805d34c5cb7",
+        "bytes": 21015,
+        "sha256": "73ca75f1c2dea0eec0f7d71826fcba12ea464cf1c07aed552990afeabd3acbab",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 20997,
-        "source_sha256": "cfffe9af9d5724e8fe7bdfcad7c1524e3fd150badc1e7f6806df1869b3060bb9"
+        "source_bytes": 21028,
+        "source_sha256": "deea5cc27aff67dded23864a559576d4bc9eff8bc027467a7081d7050c71e206"
       },
       {
         "path": "paper\\tables\\main_abbreviation_glossary.tex",
@@ -1532,44 +1532,44 @@
       {
         "path": "release\\README.md",
         "exists": true,
-        "bytes": 62579,
-        "sha256": "a22d4c30e07c85b916f13de5543584fcce0d4488831fc97dc30532e300af543f",
+        "bytes": 62933,
+        "sha256": "747a56dc6e1a2714655b54c381b2fdb521a849fd316d10e3de28920aba5e777b",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 62581,
-        "source_sha256": "7e2adadc2bc1277ec8c150c17ed030ad3cbacded36cf714c43a1203ce5bb5552"
+        "source_bytes": 62935,
+        "source_sha256": "1c78d6d7cfd74220c7493ba1d504ef23582430a377bd1f6c6e769bcd428134d2"
       },
       {
         "path": "release\\REVIEWER_START_HERE.md",
         "exists": true,
-        "bytes": 56591,
-        "sha256": "a34b4257bb5726ae0630d3d7ecdc202df19f719268a13c4feab4bc6e49fc0775",
+        "bytes": 56936,
+        "sha256": "58cd9b4bfa4ecf423793bcdf23141587be7fdbcb561f1d84dcc13a370485a9fa",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 56603,
-        "source_sha256": "57dc4638d61089921e4f719f61b6d332b50456b0ce7fbe3517e4dc852bdf852e"
+        "source_bytes": 56948,
+        "source_sha256": "ce296069ffe93f616b392cc98d9274d4c944f86219ad54ffafcce73560bed705"
       },
       {
         "path": "release\\DEPOSIT_CHECKLIST.md",
         "exists": true,
-        "bytes": 6693,
-        "sha256": "e8dae07ab83b5042b5bcee4f7a496d6fc1eef7ecf372d0e3ce4c0334884fa35e"
+        "bytes": 7027,
+        "sha256": "a38f3b2265c9d93bd89a91a7aa2b8d1bdfc384d484c9e0ca47c20761641544d1"
       },
       {
         "path": "release\\ZENODO_METADATA.json",
         "exists": true,
-        "bytes": 5689,
-        "sha256": "3ab6dcf5cd79aad1dd63601571b5d2b4ee79e8a81a06995421a5f2b802c016b6",
+        "bytes": 6571,
+        "sha256": "3295a8bc5c7dcbe26c8efb01d9e3726f3f05561f1a043c7a290244a1b155d593",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 5689,
-        "source_sha256": "47bf881e91cefb1008cdd4530e01346e3ad394579e96e4525d6cc2aea2d72b44"
+        "source_bytes": 6571,
+        "source_sha256": "fa9b5aac826172fab46b9c54fc6259b6baac83ed074102a54956cf1ad7c56b90"
       },
       {
         "path": "release\\RELEASE_NOTES_v1.2.3-acf-holdout-audit.md",
         "exists": true,
-        "bytes": 1875,
-        "sha256": "77f7e5b0fd2a78c3cb5229a844b75f2647efb721a7916773da77f05ef1a68241"
+        "bytes": 2263,
+        "sha256": "6c110dc9284c4c179cd40f5560d8fa2cd6b680d3ec41160cbce90d518c1f38d6"
       }
     ],
     "kalmannet_spot_od_external_audit_case": [
@@ -3198,8 +3198,8 @@
       {
         "path": "release\\CITATION.cff",
         "exists": true,
-        "bytes": 2001,
-        "sha256": "7d642c7f110f53147ea1376cc037392cf84d6f987c59ec895993694f4bdc78cd"
+        "bytes": 2027,
+        "sha256": "9c207f4552ee6ae86a5fee99d23434031740c83ce4f6137c54f8565736bafb27"
       }
     ],
     "codex_clean_archive_attestation": [
@@ -3276,12 +3276,12 @@
       {
         "path": "release\\INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
         "exists": true,
-        "bytes": 8372,
-        "sha256": "0d75345396705e2a2631252900ea2bac8b61a2ac6ae9a87becbfde79c4d4e143",
+        "bytes": 8699,
+        "sha256": "78304eab81d6acb06067c57283f18c2b21ca794047b58738bed0ec96afbd6d77",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 8295,
-        "source_sha256": "a9b1198dc30ac8f128cff7bdd4c8d451f4a3e6cf81874282faa58019731d4b2c"
+        "source_bytes": 8622,
+        "source_sha256": "b5be16c5dcd7a4d74aa1d6c5ee6b86559f17c3fb1fb3708831476afac69ffed6"
       },
       {
         "path": ".github\\workflows\\archive-extracted-reproduction.yml",
@@ -8139,8 +8139,8 @@
   "review_archive": {
     "path": "release\\spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
     "exists": true,
-    "bytes": 59140917,
-    "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
+    "bytes": 59142123,
+    "sha256": "11451c2032243c972534f7de9eb40ba04c44ff69b6c45db179f2053f97ad9b7e",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
@@ -8153,9 +8153,9 @@
       "key": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
       "size_bytes": 59140917,
       "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
-      "source": "generated_local_review_archive",
-      "status": "pending_upload_to_new_github_release"
+      "source": "public_github_release_asset",
+      "status": "published"
     },
-    "matches_published_github_release_asset": true
+    "matches_published_github_release_asset": false
   }
 }

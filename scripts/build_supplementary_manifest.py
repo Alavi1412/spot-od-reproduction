@@ -33,15 +33,35 @@ RELEASE_LEVEL_RECORD_RELS = {
 PUBLIC_GITHUB_REPOSITORY = "https://github.com/Alavi1412/spot-od-reproduction"
 PUBLIC_RELEASE_TAG = "v1.2.3-acf-holdout-audit"
 PUBLIC_GITHUB_RELEASE = f"{PUBLIC_GITHUB_REPOSITORY}/releases/tag/{PUBLIC_RELEASE_TAG}"
-PUBLIC_RELEASE_COMMIT = None
-PUBLIC_RELEASE_COMMIT_NOTE = "pending until the GitHub release tag is published"
+PUBLIC_RELEASE_COMMIT = "39e879d8665e489266bbf75f69634cab0e797fe8"
+PUBLIC_RELEASE_COMMIT_NOTE = f"GitHub tag target commit {PUBLIC_RELEASE_COMMIT}"
 RELEASE_TITLE = "SPOT-OD v1.2.3 ACF holdout audit release"
-V123_ZENODO_RECORD = None
-V123_DOI = None
-V123_DOI_URL = None
-V123_DOI_STATUS = "pending_zenodo_import"
+V123_ZENODO_RECORD = "https://zenodo.org/records/20825138"
+V123_DOI = "10.5281/zenodo.20825138"
+V123_DOI_URL = f"https://doi.org/{V123_DOI}"
+V123_CONCEPT_DOI = "10.5281/zenodo.20768672"
+V123_CONCEPT_DOI_URL = f"https://doi.org/{V123_CONCEPT_DOI}"
+V123_DOI_STATUS = "published"
 V123_ZENODO_RESOURCE_TYPE = "Software"
 V123_GITHUB_RELEASE_ASSET_KEY = "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip"
+V123_ZENODO_ARCHIVED_FILE = {
+    "key": "Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip",
+    "size_bytes": 187254529,
+    "md5": "7eb8b43a9af90a4783482a7a3a086f92",
+}
+V123_GITHUB_RELEASE_ASSET = {
+    "key": V123_GITHUB_RELEASE_ASSET_KEY,
+    "size_bytes": 59140917,
+    "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
+    "source": "public_github_release_asset",
+    "status": "published",
+}
+V123_GITHUB_ACTIONS_BRANCH_RUN = (
+    "https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565"
+)
+V123_GITHUB_ACTIONS_TAG_RUN = (
+    "https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253538"
+)
 V122_HISTORICAL_ZENODO_RECORD = "https://zenodo.org/records/20822968"
 V122_HISTORICAL_DOI = "10.5281/zenodo.20822968"
 V122_HISTORICAL_DOI_URL = f"https://doi.org/{V122_HISTORICAL_DOI}"
@@ -81,9 +101,9 @@ ACF_AUDIT_SCOPE_BOUNDARY = (
 RELEASE_DESCRIPTION = (
     "Version-pinned supplementary evidence package for the simulator-bound "
     "SPOT-OD sparse-visibility orbit-determination self-audit record. This "
-    f"v1.2.3 ACF holdout audit release targets {PUBLIC_GITHUB_RELEASE}; its "
-    "Zenodo DOI and record are pending/expected after Zenodo imports the new "
-    f"GitHub release. The prior public v1.2.2 DOI is {V122_HISTORICAL_DOI} "
+    f"v1.2.3 ACF holdout audit release is published at {PUBLIC_GITHUB_RELEASE}; "
+    f"its Zenodo DOI is {V123_DOI} at {V123_ZENODO_RECORD}. The prior public "
+    f"v1.2.2 DOI is {V122_HISTORICAL_DOI} "
     "for the historical ACF audit package before this public-boundary repair. "
     f"The prior public v1.2.1 DOI is {V121_HISTORICAL_DOI}. "
     f"{ACF_AUDIT_SCOPE_BOUNDARY}"
@@ -1039,13 +1059,7 @@ def write_review_archive(entries: list[dict]) -> dict:
             "member."
         ),
     }
-    current_release_asset = {
-        "key": V123_GITHUB_RELEASE_ASSET_KEY,
-        "size_bytes": archive_bytes,
-        "sha256": archive_sha256,
-        "source": "generated_local_review_archive",
-        "status": "pending_upload_to_new_github_release",
-    }
+    current_release_asset = dict(V123_GITHUB_RELEASE_ASSET)
     archive_record["github_release_asset"] = V123_GITHUB_RELEASE_ASSET_KEY
     archive_record["published_github_release_asset"] = current_release_asset
     archive_record["matches_published_github_release_asset"] = (
@@ -1235,32 +1249,31 @@ def main() -> int:
             "observed_step_powered_stress_replication": K96_TEMPORAL_ORDERING_EVIDENCE,
         },
         "dependency_provenance": dependency_provenance,
-        "public_identifier": PUBLIC_GITHUB_RELEASE,
-        "public_identifier_type": "GitHub release URL; Zenodo DOI pending",
+        "public_identifier": V123_DOI_URL,
+        "public_identifier_type": "Zenodo DOI URL; GitHub release URL",
         "public_identifier_note": (
-            f"GitHub repository is {PUBLIC_GITHUB_REPOSITORY}; release target "
+            f"GitHub repository is {PUBLIC_GITHUB_REPOSITORY}; release URL "
             f"is {PUBLIC_GITHUB_RELEASE}; release commit is "
-            f"{PUBLIC_RELEASE_COMMIT_NOTE}. The v1.2.3 Zenodo DOI and record "
-            "are pending/expected after Zenodo imports the new GitHub release. "
+            f"{PUBLIC_RELEASE_COMMIT_NOTE}. The v1.2.3 Zenodo record is "
+            f"{V123_ZENODO_RECORD}, DOI {V123_DOI}, and DOI URL "
+            f"{V123_DOI_URL}. "
             f"The prior public v1.2.2 DOI is {V122_HISTORICAL_DOI} and is "
             "historical ACF audit package history, not the v1.2.3 identifier. "
             f"The prior public v1.2.1 DOI is {V121_HISTORICAL_DOI} and remains "
             "GraphAnchorPairGate package history."
         ),
         "public_archive_commitment": (
-            f"Release metadata targets GitHub tag {PUBLIC_RELEASE_TAG} at "
-            f"{PUBLIC_GITHUB_RELEASE}. The Zenodo DOI and record for v1.2.3 "
-            "are pending/expected after Zenodo imports that GitHub release. "
+            f"Release metadata records GitHub tag {PUBLIC_RELEASE_TAG} at "
+            f"{PUBLIC_GITHUB_RELEASE}, target commit {PUBLIC_RELEASE_COMMIT}, "
+            f"and Zenodo record {V123_ZENODO_RECORD} with DOI {V123_DOI}. "
             f"The v1.2.2 DOI {V122_HISTORICAL_DOI} and v1.2.1 DOI "
             f"{V121_HISTORICAL_DOI} remain historical references only."
         ),
         "post_acceptance_public_archive_commitment": (
-            "After Zenodo imports the new GitHub release, public citation of "
-            "v1.2.3 should use the minted Zenodo DOI/record for that release, "
-            f"paired with GitHub tag {PUBLIC_RELEASE_TAG}. Until then, the "
-            f"GitHub release target {PUBLIC_GITHUB_RELEASE} is the current "
-            "public-boundary target. The v1.2.2 and v1.2.1 DOIs remain "
-            "historical references only."
+            f"Public citation of v1.2.3 should use the minted Zenodo DOI "
+            f"{V123_DOI} / record {V123_ZENODO_RECORD}, paired with GitHub tag "
+            f"{PUBLIC_RELEASE_TAG} at target commit {PUBLIC_RELEASE_COMMIT}. "
+            "The v1.2.2 and v1.2.1 DOIs remain historical references only."
         ),
         "public_archive_release": {
             "title": RELEASE_TITLE,
@@ -1273,25 +1286,20 @@ def main() -> int:
             "zenodo_record": V123_ZENODO_RECORD,
             "doi": V123_DOI,
             "doi_url": V123_DOI_URL,
+            "concept_doi": V123_CONCEPT_DOI,
+            "concept_doi_url": V123_CONCEPT_DOI_URL,
             "zenodo_resource_type": V123_ZENODO_RESOURCE_TYPE,
             "publication_status_note": (
-                "The v1.2.3 GitHub release is the target for publication; "
-                "the Zenodo DOI and record are pending/expected after Zenodo "
-                "imports the new GitHub release."
+                f"The v1.2.3 GitHub release and Zenodo software record are "
+                f"published; use DOI {V123_DOI} for this release."
             ),
-            "pending_fields": [
-                "v1.2.3 Zenodo record URL",
-                "v1.2.3 Zenodo DOI",
-                "v1.2.3 Zenodo archived file bytes and MD5",
-                "v1.2.3 GitHub release commit",
-                "GitHub release publication/upload confirmation",
-            ],
-            "zenodo_archived_file": None,
+            "pending_fields": [],
+            "zenodo_archived_file": V123_ZENODO_ARCHIVED_FILE,
             "github_release_asset": review_archive["published_github_release_asset"],
             "github_actions": {
-                "v1.2.3_branch_run": None,
-                "v1.2.3_tag_run": None,
-                "status": "pending new release verifier runs",
+                "v1.2.3_branch_run": V123_GITHUB_ACTIONS_BRANCH_RUN,
+                "v1.2.3_tag_run": V123_GITHUB_ACTIONS_TAG_RUN,
+                "status": "success",
             },
             "prior_release": {
                 "version": "1.2.2-acf-audit",

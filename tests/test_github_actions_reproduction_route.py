@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import zipfile
 from pathlib import Path
@@ -12,6 +13,7 @@ from scripts.build_supplementary_manifest import (
     PACKAGE_VERSION,
     PUBLIC_GITHUB_RELEASE,
     PUBLIC_GITHUB_REPOSITORY,
+    PUBLIC_RELEASE_COMMIT,
     PUBLIC_RELEASE_TAG,
     REVIEW_ARCHIVE_REL,
     RELEASE_TITLE,
@@ -19,8 +21,14 @@ from scripts.build_supplementary_manifest import (
     SUPPLEMENTARY_MANIFEST_REL,
     V121_HISTORICAL_DOI,
     V122_HISTORICAL_DOI,
+    V123_CONCEPT_DOI,
+    V123_CONCEPT_DOI_URL,
+    V123_DOI,
+    V123_DOI_URL,
     V123_DOI_STATUS,
+    V123_GITHUB_RELEASE_ASSET,
     V123_GITHUB_RELEASE_ASSET_KEY,
+    V123_ZENODO_RECORD,
 )
 from scripts.verify_archive_extracted_reproduction import load_manifest_for_archive
 
@@ -77,11 +85,14 @@ def test_manifest_uses_v123_acf_holdout_audit_public_release_metadata() -> None:
         manifest["description"]
     )
     assert PUBLIC_GITHUB_RELEASE in manifest["description"]
-    assert "pending/expected" in manifest["description"]
+    assert V123_DOI in manifest["description"]
+    assert V123_ZENODO_RECORD in manifest["description"]
+    assert "pending/expected" not in manifest["description"]
     assert V122_HISTORICAL_DOI in manifest["description"]
     assert V121_HISTORICAL_DOI in manifest["description"]
     assert ACF_AUDIT_SCOPE_BOUNDARY in manifest["description"]
-    assert manifest["public_identifier"] == PUBLIC_GITHUB_RELEASE
+    assert manifest["public_identifier"] == V123_DOI_URL
+    assert "Zenodo DOI URL" in manifest["public_identifier_type"]
     assert "GitHub release URL" in manifest["public_identifier_type"]
 
     release = manifest["public_archive_release"]
@@ -89,16 +100,18 @@ def test_manifest_uses_v123_acf_holdout_audit_public_release_metadata() -> None:
     assert release["github_repository"] == PUBLIC_GITHUB_REPOSITORY
     assert release["github_release_target"] == PUBLIC_GITHUB_RELEASE
     assert release["release_tag"] == PUBLIC_RELEASE_TAG
+    assert release["github_release_commit"] == PUBLIC_RELEASE_COMMIT
     assert release["doi_status"] == V123_DOI_STATUS
-    assert release["zenodo_record"] is None
-    assert release["doi"] is None
-    assert release["doi_url"] is None
-    assert "pending/expected after Zenodo imports" in (
+    assert release["zenodo_record"] == V123_ZENODO_RECORD
+    assert release["doi"] == V123_DOI
+    assert release["doi_url"] == V123_DOI_URL
+    assert release["concept_doi"] == V123_CONCEPT_DOI
+    assert release["concept_doi_url"] == V123_CONCEPT_DOI_URL
+    assert "published; use DOI 10.5281/zenodo.20825138" in (
         release["publication_status_note"]
     )
-    assert "v1.2.3 Zenodo DOI" in release["pending_fields"]
-    assert "v1.2.3 GitHub release commit" in release["pending_fields"]
-    assert release["github_release_asset"]["key"] == V123_GITHUB_RELEASE_ASSET_KEY
+    assert release["pending_fields"] == []
+    assert release["github_release_asset"] == V123_GITHUB_RELEASE_ASSET
     assert release["prior_release"]["doi"] == V122_HISTORICAL_DOI
     assert release["prior_release"]["status"] == (
         "historical_acf_audit_before_public_boundary_repair"
@@ -108,6 +121,19 @@ def test_manifest_uses_v123_acf_holdout_audit_public_release_metadata() -> None:
         V121_HISTORICAL_DOI
     )
     assert release["scope_boundary"] == ACF_AUDIT_SCOPE_BOUNDARY
+
+    review_archive = manifest["review_archive"]
+    archive_bytes = ARCHIVE_PATH.read_bytes()
+    assert review_archive["path"].replace("\\", "/") == (
+        "release/" + V123_GITHUB_RELEASE_ASSET_KEY
+    )
+    assert review_archive["bytes"] == len(archive_bytes)
+    assert review_archive["sha256"] == hashlib.sha256(archive_bytes).hexdigest()
+    assert review_archive["github_release_asset"] == V123_GITHUB_RELEASE_ASSET_KEY
+    assert review_archive["published_github_release_asset"] == V123_GITHUB_RELEASE_ASSET
+    assert review_archive["matches_published_github_release_asset"] is False
+    assert review_archive["bytes"] != V123_GITHUB_RELEASE_ASSET["size_bytes"]
+    assert review_archive["sha256"] != V123_GITHUB_RELEASE_ASSET["sha256"]
 
     public_metadata = json.dumps(
         {
@@ -126,9 +152,15 @@ def test_manifest_uses_v123_acf_holdout_audit_public_release_metadata() -> None:
     assert PUBLIC_GITHUB_RELEASE in public_metadata
     assert PUBLIC_RELEASE_TAG in public_metadata
     assert V123_DOI_STATUS in public_metadata
+    assert V123_ZENODO_RECORD in public_metadata
+    assert V123_DOI in public_metadata
+    assert V123_DOI_URL in public_metadata
+    assert V123_CONCEPT_DOI in public_metadata
+    assert V123_CONCEPT_DOI_URL in public_metadata
     assert V122_HISTORICAL_DOI in public_metadata
     assert V121_HISTORICAL_DOI in public_metadata
     assert "historical references only" in public_metadata
+    assert "pending/expected" not in public_metadata
     assert "No external public " + "repository" not in public_metadata
     assert "deferred until explicit author " + "approval" not in public_metadata
     assert "1.1.0-" + "supplement" not in public_metadata

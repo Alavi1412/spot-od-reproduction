@@ -1,14 +1,15 @@
 cff-version: 1.2.0
-message: "If you use the SPOT-OD benchmark or its supplementary evidence package, cite the v1.2.3 ACF holdout audit release once its Zenodo DOI is minted; retain the v1.2.2 and v1.2.1 DOIs only as historical release references."
+message: "If you use the SPOT-OD benchmark or its supplementary evidence package, cite the v1.2.3 ACF holdout audit release DOI 10.5281/zenodo.20825138; retain the v1.2.2 and v1.2.1 DOIs only as historical release references."
 title: "SPOT-OD v1.2.3 ACF holdout audit release"
 abstract: >-
   Release-facing metadata for the SPOT-OD v1.2.3 ACF holdout audit release, a
   version-pinned supplementary evidence package for a simulator-bound
   sparse-visibility orbit-determination self-audit study. The v1.2.3 Zenodo
-  DOI and record are pending/expected after Zenodo imports the new GitHub
-  release. The prior v1.2.2 DOI 10.5281/zenodo.20822968 remains the historical
-  ACF audit package before this public-boundary repair. The prior v1.2.1 DOI
-  10.5281/zenodo.20811701 remains the historical GraphAnchorPairGate package.
+  DOI is 10.5281/zenodo.20825138, record
+  https://zenodo.org/records/20825138. The prior v1.2.2 DOI
+  10.5281/zenodo.20822968 remains the historical ACF audit package before this
+  public-boundary repair. The prior v1.2.1 DOI 10.5281/zenodo.20811701 remains
+  the historical GraphAnchorPairGate package.
   Version 1.2.3 packages the AdaptiveCandidateFusion fixed-soft full-training
   campaign summary, 15-seed validation-selected global scenario portfolio,
   development/holdout internal split summaries, compact manuscript table, and
@@ -23,6 +24,7 @@ authors:
   - name: "Authors omitted for review"
 version: "1.2.3-acf-holdout-audit"
 date-released: "2026-06-24"
+doi: "10.5281/zenodo.20825138"
 url: "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit"
 repository-code: "https://github.com/Alavi1412/spot-od-reproduction"
 license: "CC-BY-4.0"

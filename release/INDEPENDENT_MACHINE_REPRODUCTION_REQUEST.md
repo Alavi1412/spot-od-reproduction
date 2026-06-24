@@ -13,26 +13,28 @@ status, deviations, and output hashes.
 ## Public Release Reference
 
 - Short title: SPOT-OD v1.2.3 ACF holdout audit release
-- Zenodo record: pending after Zenodo imports the new GitHub release
-- DOI: pending after Zenodo imports the new GitHub release
-- DOI URL: pending after Zenodo imports the new GitHub release
-- Zenodo status: pending import
+- Zenodo record: https://zenodo.org/records/20825138
+- DOI: 10.5281/zenodo.20825138
+- DOI URL: https://doi.org/10.5281/zenodo.20825138
+- Zenodo concept DOI: 10.5281/zenodo.20768672
+- Zenodo status: published
 - Resource type: Software
 - GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
 - GitHub release:
   https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit
 - Release tag: v1.2.3-acf-holdout-audit
-- Release commit: pending until tag publication
+- Release commit: 39e879d8665e489266bbf75f69634cab0e797fe8
 - Supersession note: v1.2.3 repairs the public release boundary for the ACF
   audit/table tier by packaging the development/holdout split summaries in the
   new release. Scientific metrics are as recorded, not upgraded to operational
   validation.
-- Zenodo archived file: pending after Zenodo import
-- Zenodo archived file bytes: pending
-- Zenodo archived file MD5: pending
+- Zenodo archived file: Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip
+- Zenodo archived file bytes: 187,254,529
+- Zenodo archived file MD5: 7eb8b43a9af90a4783482a7a3a086f92
 - GitHub release asset: spot_od_v1_2_3_acf_holdout_audit_review_archive.zip
-- GitHub release asset bytes and SHA-256: recorded in the regenerated
-  release/SUPPLEMENTARY_MANIFEST.json under review_archive.
+- GitHub release asset bytes: 59,140,917
+- GitHub release asset SHA-256:
+  11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f
 
 Historical v1.2.2 ACF audit package reference:
 
@@ -72,6 +74,14 @@ Prior v1.2.1 public archive reference:
 - GitHub release asset SHA-256:
   3cc285f132b690695a5d2a453f7c21128b46333d183fcfca265c52d50184c69c
 
+Current v1.2.3 GitHub Actions verifier runs are recorded at:
+
+- Branch run:
+  https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565
+- Tag run:
+  https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253538
+- Status: success
+
 Historical v1.2.2 GitHub Actions verifier runs are recorded at:
 
 - Branch run:
@@ -85,30 +95,60 @@ and ran the archive-extracted reproduction workflow and graph verifier on
 GitHub-hosted runners. These runs are maintainer-run platform evidence for the
 release verifier tiers; they are not third-party independent validation.
 
+## Artifact Pairing Rule
+
+Choose exactly one verification route and keep every input from that same
+route. The immutable published release asset and the current DOI-synced
+working-branch packet must not be swapped or combined after the DOI metadata
+sync.
+
+- Immutable published v1.2.3 GitHub/Zenodo release route: use the files,
+  manifest, verifier scripts, dependency files, and review archive from the
+  exact `v1.2.3-acf-holdout-audit` release/tag/asset set together. The
+  published GitHub release asset is
+  `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, 59,140,917 bytes,
+  SHA-256
+  `11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`.
+  Do not pair this immutable asset with post-import DOI-synced manifests from
+  the current working branch.
+- Current DOI-synced working-branch/local-packet route: use the current
+  `release/SUPPLEMENTARY_MANIFEST.json` with the regenerated local archive at
+  `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, 59,142,123
+  bytes, SHA-256
+  `11451c2032243c972534f7de9eb40ba04c44ff69b6c45db179f2053f97ad9b7e`.
+  The current manifest records
+  `review_archive.matches_published_github_release_asset: false`; do not
+  substitute the published GitHub release asset for this route.
+
 ## Inputs To Obtain
 
+First select one route from the Artifact Pairing Rule above. Obtain all inputs
+from that same selected route:
+
 - `release/SUPPLEMENTARY_MANIFEST.json`
-- GitHub release asset `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, or the
-  equivalent local review packet path
+- the paired review archive:
   `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
 - `scripts/verify_minimum_tier_reproduction.py`
 - `scripts/verify_archive_extracted_reproduction.py`
-- `requirements.txt` and `pyproject.toml` from the archive or release packet
+- `requirements.txt` and `pyproject.toml` from the same archive, tag checkout,
+  or local packet
 
 ## Clean-Machine Procedure
 
 1. Create a new empty working directory on a machine not used to produce the
    submitted artifacts.
-2. Copy `release/SUPPLEMENTARY_MANIFEST.json` and
-   `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip` into a `release/`
-   subdirectory.
+2. Copy the route-paired `release/SUPPLEMENTARY_MANIFEST.json` and
+   `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip` into a
+   `release/` subdirectory. Do not mix the immutable published GitHub asset with
+   the current DOI-synced branch manifest, or the regenerated local archive with
+   the older release/tag manifest.
 3. Extract the archive into the working directory:
 
 ```powershell
 python -m zipfile -e release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip .
 ```
 
-4. Confirm the paired manifest and archive hashes:
+4. Confirm the paired manifest and archive hashes against the selected route:
 
 ```powershell
 python -c "import hashlib, pathlib; paths=['release/SUPPLEMENTARY_MANIFEST.json','release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip']; [print(p, hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()) for p in paths]"
@@ -145,11 +185,13 @@ If the operator uses Linux or macOS, use the same arguments with
 
 ## Manual External Operator Route
 
-An external operator may start from either the Zenodo archive or the GitHub
-release archive, verify the hashes above, and run the same clean-machine
-procedure. The operator should attach the generated JSON/Markdown reports and
-their SHA-256 hashes to the signed report. A signed report supports only the
-verifier scope actually run; it does not expand the manuscript claims.
+An external operator may start from the immutable Zenodo/GitHub release set or
+from the current DOI-synced local packet, but must keep the manifest, archive,
+verifier scripts, and dependency files from one selected route. The operator
+should verify the selected route's hashes, run the same clean-machine
+procedure, and attach the generated JSON/Markdown reports and their SHA-256
+hashes to the signed report. A signed report supports only the verifier scope
+actually run; it does not expand the manuscript claims.
 
 ## Report Template
 

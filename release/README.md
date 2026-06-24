@@ -3,11 +3,12 @@
 Version: `1.2.3-acf-holdout-audit` (`SPOT-OD v1.2.3 ACF holdout audit release`).
 The GitHub release URL is
 <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>.
-The v1.2.3 Zenodo DOI and record are pending/expected after Zenodo imports the
-new GitHub release. The prior public v1.2.2 DOI `10.5281/zenodo.20822968`
-remains the historical ACF audit package reference before this public-boundary
-repair. The prior public v1.2.1 DOI `10.5281/zenodo.20811701` remains the
-historical GraphAnchorPairGate package reference.
+The v1.2.3 Zenodo DOI is `10.5281/zenodo.20825138`, record
+<https://zenodo.org/records/20825138>. The prior public v1.2.2 DOI
+`10.5281/zenodo.20822968` remains the historical ACF audit package reference
+before this public-boundary repair. The prior public v1.2.1 DOI
+`10.5281/zenodo.20811701` remains the historical GraphAnchorPairGate package
+reference.
 
 This versioned package accompanies the simulator-bound SPOT-OD self-audit
 record submission and supports inspection of the displayed evidence. It is provided so
@@ -173,6 +174,16 @@ materialized artifacts, and selectively replayed at the documented tiers.
     and report template for an external operator, not a completed independent
     reproduction and not a completed independent reproduction record.
 
+Pairing note: the immutable published v1.2.3 GitHub release asset listed below
+is 59,140,917 bytes with SHA-256
+`11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`. The
+current DOI-synced branch manifest records a regenerated local review archive,
+59,142,123 bytes with SHA-256
+`11451c2032243c972534f7de9eb40ba04c44ff69b6c45db179f2053f97ad9b7e`, and
+`review_archive.matches_published_github_release_asset: false`. Use the
+published asset only with the exact release/tag manifest set; use the current
+manifest only with the regenerated local archive.
+
 ## Reading Manifest And Attestation Counts
 
 `SUPPLEMENTARY_MANIFEST.json` is authoritative for final submitted-package
@@ -279,23 +290,26 @@ is generated from retained full-rerun outputs and does not rerun models.
 Release-facing metadata for the Zenodo/GitHub archival release:
 
 - Short title: `SPOT-OD v1.2.3 ACF holdout audit release`
-- Zenodo record: pending after Zenodo imports the new GitHub release
-- DOI: pending after Zenodo imports the new GitHub release
-- DOI URL: pending after Zenodo imports the new GitHub release
-- Zenodo status: `pending_zenodo_import`
+- Zenodo record: <https://zenodo.org/records/20825138>
+- DOI: `10.5281/zenodo.20825138`
+- DOI URL: <https://doi.org/10.5281/zenodo.20825138>
+- Zenodo concept DOI: `10.5281/zenodo.20768672`
+- Zenodo status: `published`
 - Version: `1.2.3-acf-holdout-audit`
 - Resource type: Software
 - License: `CC-BY-4.0`
 - GitHub repository: <https://github.com/Alavi1412/spot-od-reproduction>
 - GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>
 - Release tag: `v1.2.3-acf-holdout-audit`
-- Release commit: pending until tag publication
-- Zenodo archived file: pending after Zenodo import
-- Zenodo archived file bytes: pending
-- Zenodo archived file MD5: pending
+- Release commit: `39e879d8665e489266bbf75f69634cab0e797fe8`
+- Zenodo archived file:
+  `Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip`
+- Zenodo archived file bytes: `187,254,529`
+- Zenodo archived file MD5: `7eb8b43a9af90a4783482a7a3a086f92`
 - GitHub release asset: `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
-- GitHub release asset bytes and SHA-256: recorded in the regenerated
-  `SUPPLEMENTARY_MANIFEST.json` under `review_archive`.
+- GitHub release asset bytes: `59,140,917`
+- GitHub release asset SHA-256:
+  `11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`
 
 Prior public release history is retained:
 
@@ -331,7 +345,13 @@ Prior public release history is retained:
 - v1.2.1 GitHub release asset bytes: `17,710,047`
 - v1.2.1 GitHub release asset SHA-256:
   `3cc285f132b690695a5d2a453f7c21128b46333d183fcfca265c52d50184c69c`
-- Release-triggered GitHub Actions verifier:
+- v1.2.3 branch GitHub Actions verifier:
+  <https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565>
+  (`success`)
+- v1.2.3 tag GitHub Actions verifier:
+  <https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253538>
+  (`success`)
+- Prior v1.2.1 release-triggered GitHub Actions verifier:
   <https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28018952357>
   (`success`; ran the archive-extracted reproduction workflow and graph
   verifier on GitHub-hosted runners)
@@ -363,7 +383,7 @@ history, and version 1.2.1 remains historical GraphAnchorPairGate package
 history. Scientific metrics are as recorded, not upgraded to operational
 validation.
 
-The v1.2.3 release target is bounded reproduction-support evidence for archive
+The v1.2.3 release is bounded reproduction-support evidence for archive
 extraction, manifest hashes, active manuscript artifact regeneration, one
 archived-input public OD slice rerun, public packaging of the GraphAnchorPairGate
 PoC, and public packaging of the ACF audit/table tier including the
@@ -402,12 +422,12 @@ claim.
 
 - `CITATION.cff` - local citation metadata for the package.
 - `ZENODO_METADATA.json` - Zenodo deposit metadata for v1.2.3, with the
-  v1.2.3 DOI/record pending and the v1.2.2/v1.2.1 DOIs retained as historical
+  minted v1.2.3 DOI/record and the v1.2.2/v1.2.1 DOIs retained as historical
   release references.
 - `REVIEWER_START_HERE.md` - reviewer-facing map from headline claims to
   manifest entries and regeneration tiers.
 - `RELEASE_NOTES_v1.2.3-acf-holdout-audit.md` - concise release note for the
-  v1.2.3 ACF holdout audit release and pending Zenodo fields.
+  v1.2.3 ACF holdout audit release and minted Zenodo fields.
 - `RELEASE_NOTES_v1.2.2-acf-audit.md` - historical release note for the v1.2.2
   ACF audit release.
 - `INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md` - clean-machine operator
