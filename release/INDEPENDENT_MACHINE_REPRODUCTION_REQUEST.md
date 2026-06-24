@@ -1,6 +1,6 @@
 # Independent-Machine Reproduction Request
 
-This file is a handoff template for a third-party operator. This is not a completed independent reproduction, not third-party validation, not a DOI or public archive record, and not scored external validation.
+This file is a handoff template for a third-party operator. This is not a completed independent reproduction, not third-party validation, not a minted v1.2.2 DOI or completed public archive record, and not scored external validation.
 
 ## Objective
 
@@ -9,6 +9,56 @@ package can be verified from a clean machine using the supplied manifest,
 review archive, and verifier scripts. The expected deliverable is a signed
 operator report with machine identity, command transcripts, hashes, pass/fail
 status, deviations, and output hashes.
+
+## Public Release Reference
+
+- Short title: SPOT-OD v1.2.2 ACF audit release
+- Zenodo record: pending
+- DOI: pending; fill after Zenodo mints the v1.2.2 DOI
+- DOI URL: pending
+- Zenodo status: pending publication
+- GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
+- GitHub release:
+  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit
+- Release tag: v1.2.2-acf-audit
+- Release commit: pending until the release tag is created
+- Supersession note: v1.2.2 supersedes v1.2.1 only by adding the ACF
+  audit/table tier and manuscript claim-boundary wording. Scientific metrics
+  are as recorded, not upgraded to operational validation.
+- Zenodo archived file: pending
+- Zenodo archived file bytes: pending
+- Zenodo archived file MD5: pending
+- GitHub release asset: pending
+- GitHub release asset bytes: pending
+- GitHub release asset SHA-256: pending
+
+Prior v1.2.1 public archive reference:
+
+- Zenodo record: https://zenodo.org/records/20811701
+- DOI: 10.5281/zenodo.20811701
+- DOI URL: https://doi.org/10.5281/zenodo.20811701
+- Zenodo status: published
+- GitHub release:
+  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.1-graph-anchor-gate-poc
+- Release tag: v1.2.1-graph-anchor-gate-poc
+- Release commit: 2dcd542dcb72f1622dfaf1cf8981a550862312bf
+- Zenodo archived file:
+  Alavi1412/spot-od-reproduction-v1.2.1-graph-anchor-gate-poc.zip
+- Zenodo archived file bytes: 94,265,950
+- Zenodo archived file MD5:
+  233d2fc7fce1bc57afdd66332a3a7dc1
+- GitHub release asset: spot_od_v1_2_1_graph_anchor_gate_poc.zip
+- GitHub release asset bytes: 17,710,047
+- GitHub release asset SHA-256:
+  3cc285f132b690695a5d2a453f7c21128b46333d183fcfca265c52d50184c69c
+
+No v1.2.2 release-triggered verifier run exists until the GitHub release is
+created. The prior v1.2.1 release-triggered GitHub Actions verifier passed at
+https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28018952357
+and ran the archive-extracted reproduction workflow and graph verifier on
+GitHub-hosted runners. That run is maintainer-run platform evidence
+for the v1.2.1 release verifier tiers; it is not third-party independent
+validation.
 
 ## Inputs To Obtain
 
@@ -66,40 +116,13 @@ python -c "import hashlib, pathlib; paths=['results/validation/independent_minim
 If the operator uses Linux or macOS, use the same arguments with
 `.venv/bin/python` instead of `.\.venv\Scripts\python`.
 
-## Optional Private GitLab CI Route
+## Manual External Operator Route
 
-This repository also provides `.gitlab-ci.yml` as a private GitLab CI
-route/request for clean-run evidence on GitLab shared runners after a branch
-push. This route is not completed reproduction until the
-`archive_extracted_reproduction` job has passed and its job URL plus artifacts
-are attached or cited.
-
-The CI job intentionally runs only the archive-extracted reproduction verifier:
-
-```bash
-python scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_1_0_supplement_review_archive.zip --json-out results/validation/gitlab_ci_archive_extracted_reproduction.json --md-out results/validation/gitlab_ci_archive_extracted_reproduction.md
-```
-
-It does not run the live-worktree minimum-tier verifier, because this CI route
-tests the release archive as the artifact under review and avoids requiring a
-branch checkout to contain every live workspace artifact indexed by the
-manifest. The job installs only the minimal archive-extracted verifier
-dependencies (`numpy scipy pandas matplotlib seaborn pyyaml tqdm sgp4 pytest`)
-with `MPLBACKEND=Agg`.
-
-Expected GitLab CI artifacts:
-
-- `results/validation/gitlab_ci_archive_extracted_reproduction.json`
-- `results/validation/gitlab_ci_archive_extracted_reproduction.md`
-- `results/validation/gitlab_ci_reproduction_attestation.json`
-- `results/validation/gitlab_ci_reproduction_attestation.md`
-
-A passing private GitLab CI job can support archive-extracted
-independent-machine reproduction evidence only. It is not DOI/public archive
-evidence, not operational POD validation, not a full scientific rerun, and not
-third-party independent validation. Do not claim independent-machine
-reproduction from this route unless the passed job URL and the four artifacts
-above are attached or cited.
+An external operator may start from either the Zenodo archive or the GitHub
+release archive, verify the hashes above, and run the same clean-machine
+procedure. The operator should attach the generated JSON/Markdown reports and
+their SHA-256 hashes to the signed report. A signed report supports only the
+verifier scope actually run; it does not expand the manuscript claims.
 
 ## Report Template
 
@@ -118,8 +141,8 @@ above are attached or cited.
 - Archive-extracted verifier pass/fail:
 - Generated report paths and SHA-256 hashes:
 - Output hash differences from submitted reports, if any:
-- GitLab CI project/pipeline/job URL, if the optional CI route was used:
-- GitLab CI artifact bundle attached or cited, if the optional CI route was used:
+- Public source used: Zenodo/GitHub/local transfer, with URL or transfer note:
+- GitHub Actions verifier URL cited, if used as contextual release evidence:
 - Deviations from the procedure:
 - Network access used: yes/no, with reason:
 - Local dependency changes or package-resolution notes:
@@ -133,5 +156,5 @@ above are attached or cited.
 A passing report from an independent machine would support the release-package
 reproduction claim for the verifier scope actually run. It would still not be
 operational POD validation, not a fresh full scientific rerun unless the full
-rerun tier is separately executed, and not a public archive/DOI unless a
-public deposit is separately created and cited.
+rerun tier is separately executed, not live public-data retrieval, and not
+third-party validation of claims outside the executed verifier scope.

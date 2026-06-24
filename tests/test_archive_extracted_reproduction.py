@@ -340,22 +340,121 @@ def test_active_main_artifacts_are_indexed_for_review_archive() -> None:
     assert active_paths <= manifest_paths
 
 
-def test_archive_extracted_active_regeneration_count_matches_current_active_set() -> None:
-    report_path = ROOT / "results" / "validation" / "archive_extracted_reproduction.json"
+def test_graph_anchor_pair_gate_active_registration_and_generators(tmp_path: Path) -> None:
+    active = active_artifacts()
+    active_paths = {
+        row["path"].replace("\\", "/")
+        for row in active["tables"] + active["figures"]
+    }
+    table_path = "paper/tables/graph_anchor_pair_gate_poc.tex"
+    figure_path = "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png"
+
+    assert table_path in active_paths
+    assert figure_path in active_paths
+    assert regen.TABLE_BUILDERS[table_path] == "build_graph_anchor_pair_gate_poc_table"
+    assert (
+        regen.FIGURE_RENDERERS[figure_path]
+        == "_render_graph_anchor_pair_gate_seed_sweep_aggregate"
+    )
+
+    import scripts.build_paper_assets as assets
+    import scripts.render_publication_figures as figures
+
+    table = assets.build_graph_anchor_pair_gate_poc_table()
+    assert "\\label{tab:graph_anchor_pair_gate_poc}" in table
+    assert "GraphAnchorPairGate: 9/10 scenario-seed row wins" in table
+
+    info = figures._render_graph_anchor_pair_gate_seed_sweep_aggregate(
+        ROOT / "results",
+        tmp_path,
+    )
+    output = Path(info["path"])
+    assert output.name == "graph_anchor_pair_gate_seed_sweep_aggregate.png"
+    assert output.read_bytes()[:8] == b"\x89PNG\r\n\x1a\n"
+    assert info["width_px"] > 0
+    assert info["height_px"] > 0
+
+
+def test_adaptive_candidate_fusion_table_active_registration() -> None:
+    active = active_artifacts()
+    active_paths = {
+        row["path"].replace("\\", "/")
+        for row in active["tables"] + active["figures"]
+    }
+    table_path = "paper/tables/adaptive_candidate_fusion_full_training_poc.tex"
+
+    assert table_path in active_paths
+    assert (
+        regen.TABLE_BUILDERS[table_path]
+        == "build_adaptive_candidate_fusion_full_training_poc_table"
+    )
+    assert (
+        "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/"
+        "adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json"
+    ) in regen.ACTIVE_TABLE_SOURCES[table_path]
+    assert (
+        "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/"
+        "summary.json"
+    ) in regen.ACTIVE_TABLE_SOURCES[table_path]
+
+    source_paths = {
+        "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+        "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md",
+        "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv",
+        "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json",
+        "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md",
+        "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.csv",
+    }
+    manifest_paths = {
+        path.replace("\\", "/")
+        for paths in ARTIFACT_GROUPS.values()
+        for path in paths
+    }
+    assert table_path in manifest_paths
+    assert source_paths <= manifest_paths
+
+    manifest = json.loads((ROOT / "release" / "SUPPLEMENTARY_MANIFEST.json").read_text(encoding="utf-8"))
+    claim_paths = set(
+        manifest["claim_to_artifact_map"]["active_main_manuscript_table_regeneration"]
+    )
+    assert table_path in claim_paths
+    assert source_paths <= claim_paths
+
+    import scripts.build_paper_assets as assets
+
+    table = assets.build_adaptive_candidate_fusion_full_training_poc_table()
+    assert "\\label{tab:adaptive_candidate_fusion_full_training_poc}" in table
+    assert "Centered fixed-soft full retraining" in table
+    assert "Observed-mask fixed-soft full retraining" in table
+    assert "global_scenario_portfolio_15seed" in table
+    assert "540 candidate policies per candidate set" in table
+    assert "25/30" in table
+    assert "13/15" in table
+    assert "95\\% CI [+1.83,+5.63]\\%" in table
+    assert "seed-paired 13/15 wins, 95\\% CI [+2.05,+5.50]\\%" in table
+    assert "process 14/15 wins, mean +6.16\\%, CI [+4.03,+8.06]\\%" in table
+    assert "maneuver 11/15 wins, mean +1.43\\%, CI [-1.46,+4.05]\\%" in table
+    assert "9/15 seed-paired wins, seed-paired CI [-1.16,+2.63]\\%" in table
+    assert "nonlearned-only" in table
+    assert "do not adjust for validation-policy search" in table
+    assert "summary.md" in table
+    assert "not public v1.2.1 release evidence" in table
+
+
+def test_current_active_regeneration_count_matches_current_active_set() -> None:
+    report_path = ROOT / "results" / "validation" / "active_manuscript_regeneration.json"
     if not report_path.exists():
-        pytest.skip("archive-extracted reproduction report has not been generated")
+        pytest.skip("active manuscript regeneration report has not been generated")
 
     report = json.loads(report_path.read_text(encoding="utf-8"))
-    nested = report["checks"]["active_table_regeneration_from_extracted_tree"][
-        "nested_report"
-    ]
     active = active_artifacts()
     expected_count = len(active["tables"]) + len(active["figures"])
+    validation = report["validation_results"]
 
-    assert nested["artifact_count"] == expected_count
-    assert nested["pass_count"] == expected_count
-    assert nested["mismatch_count"] == 0
-    assert nested["documented_blocker_count"] == 0
+    assert validation["artifact_count"] == expected_count
+    assert validation["pass_count"] == expected_count
+    assert validation["mismatch_count"] == 0
+    assert validation["documented_blocker_count"] == 0
 
 
 def test_manifest_entries_normalize_paths_and_preserve_group() -> None:

@@ -1,7 +1,9 @@
 {
   "package": "SPOT-OD supplementary evidence package",
-  "version": "1.1.0-supplement",
-  "generated_utc": "2026-06-17T23:02:40.552633+00:00",
+  "title": "SPOT-OD v1.2.2 ACF audit release",
+  "version": "1.2.2-acf-audit",
+  "description": "Version-pinned supplementary evidence package for the simulator-bound SPOT-OD sparse-visibility orbit-determination self-audit record. This v1.2.2 ACF audit release targets https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit; its Zenodo DOI is pending; fill after Zenodo mints the v1.2.2 DOI. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701. Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier; not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, and not universal learned-OD superiority.",
+  "generated_utc": "2026-06-24T03:55:27.207432+00:00",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
@@ -36,10 +38,38 @@
     "pyproject_toml_sha256": "c118bb2da111ab57531b20fab63a8c1d9c8019777da46814b2c0d15777165da8",
     "note": "Version-pinned dependency provenance. The package is reproducible offline from these pinned inputs and the recorded artifact checksums; no external network access is required."
   },
-  "public_identifier": null,
-  "public_identifier_note": "No external public repository or DOI is asserted; this version-pinned, anonymized package is included with the submission for reviewer-accessible independent inspection. Public archival deposition is deferred until explicit author approval or a venue-required release point.",
-  "public_archive_commitment": "If public archival deposition is explicitly approved by the authors or required by the venue, the authors will deposit the final versioned evidence package and record the assigned public identifier in README.md, CITATION.cff, and this manifest before any public citation of the archive.",
-  "post_acceptance_public_archive_commitment": "If public archival deposition is explicitly approved by the authors or required by the venue, the authors will deposit the final versioned evidence package and record the assigned public identifier in README.md, CITATION.cff, and this manifest before any public citation of the archive.",
+  "public_identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit",
+  "public_identifier_type": "GitHub release URL; v1.2.2 Zenodo DOI pending",
+  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit. The v1.2.2 Zenodo DOI is pending; fill after Zenodo mints the v1.2.2 DOI. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701 and is retained only as prior-version history, not as the v1.2.2 identifier.",
+  "public_archive_commitment": "Release metadata targets GitHub tag v1.2.2-acf-audit at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit. Fill the v1.2.2 Zenodo DOI, Zenodo record URL, GitHub asset byte count, GitHub asset SHA-256, and publication-status fields only after Zenodo/GitHub publish those concrete records. The prior v1.2.1 DOI 10.5281/zenodo.20811701 remains prior-version history only.",
+  "post_acceptance_public_archive_commitment": "Public citation of this release should use the minted v1.2.2 Zenodo DOI/record once available, paired with the GitHub release target v1.2.2-acf-audit. Until then, the asserted public target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit; the prior v1.2.1 DOI 10.5281/zenodo.20811701 remains prior-version history only.",
+  "public_archive_release": {
+    "title": "SPOT-OD v1.2.2 ACF audit release",
+    "github_repository": "https://github.com/Alavi1412/spot-od-reproduction",
+    "github_release_target": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit",
+    "release_tag": "v1.2.2-acf-audit",
+    "doi_status": "pending; fill after Zenodo mints the v1.2.2 DOI",
+    "zenodo_record": null,
+    "doi": null,
+    "doi_url": null,
+    "publication_status_note": "No completed v1.2.2 publication status is asserted by this manifest; fill only after publication occurs.",
+    "pending_fields": [
+      "v1.2.2 Zenodo DOI",
+      "v1.2.2 Zenodo record URL",
+      "v1.2.2 GitHub release asset byte count",
+      "v1.2.2 GitHub release asset SHA-256",
+      "v1.2.2 publication status"
+    ],
+    "prior_release": {
+      "version": "1.2.1-graph-anchor-gate-poc",
+      "doi": "10.5281/zenodo.20811701",
+      "doi_url": "https://doi.org/10.5281/zenodo.20811701",
+      "zenodo_record": "https://zenodo.org/records/20811701",
+      "status": "historical_only",
+      "not_current_release_identifier": true
+    },
+    "scope_boundary": "Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier; not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, and not universal learned-OD superiority."
+  },
   "regeneration_tiers": {
     "minimum_integrity_check": {
       "requires_retraining": false,
@@ -1033,7 +1063,16 @@
       "paper/tables/main_structural_recoverability.tex",
       "paper/tables/main_drag_scale_cascade.tex",
       "paper/tables/main_long_arc_result.tex",
-      "paper/tables/main_dbar_withdrawal.tex"
+      "paper/tables/main_dbar_withdrawal.tex",
+      "paper/tables/graph_anchor_pair_gate_poc.tex",
+      "paper/tables/adaptive_candidate_fusion_full_training_poc.tex",
+      "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+      "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md",
+      "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv",
+      "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json",
+      "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md",
+      "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.csv",
+      "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png"
     ],
     "archive_extracted_reproduction_tier": [
       "release/SUPPLEMENTARY_MANIFEST.json",
@@ -1068,7 +1107,7 @@
     ],
     "independent_machine_reproduction_request": [
       "release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
-      ".gitlab-ci.yml"
+      ".github/workflows/archive-extracted-reproduction.yml"
     ],
     "targeted_retraining_replay": [
       "results/validation/targeted_retraining_replay_public.json",
@@ -1103,7 +1142,7 @@
     "codex_clean_archive_attestation": "same-workspace separate-agent clean extracted archive attestation only; not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, and not independent external reproduction.",
     "containerized_minimum_tier_attestation": "local Docker Desktop clean-container staged minimum-tier integrity attestation only; same-host and staged from the current workspace/review archive; not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, not independent external reproduction, and not a full scientific rerun.",
     "official_ilrs_precise_reference_availability_probe": "Official-source availability gate only; unavailable products and cached HTML placeholders under .sp3.gz filenames are not scored validation, not usable precise-reference products, not independent reproduction, not DOI/public archive evidence, and not operational POD. A prospective campaign can be scored only after all required LAGEOS validation/test products are classified as valid gzip/SP3 products and the frozen campaign command is actually run.",
-    "independent_machine_reproduction_request": "Third-party clean-machine reproduction request/template only, with an optional private GitLab CI route; not a completed independent reproduction, not a passed CI attestation, not third-party validation, not scored external validation, not DOI/public archive evidence, and not operational POD. Passed GitLab job artifacts must be attached or cited before making an independent-machine reproduction claim from the CI route.",
+    "independent_machine_reproduction_request": "Clean-machine reproduction request/template only, with a GitHub Actions archive-extracted verifier route/request only; maintainer-run platform evidence when executed, not a completed independent reproduction, not third-party validation, not scored external validation, not DOI/public archive evidence, not operational POD, and not a full scientific rerun. Passed GitHub Actions artifacts must be attached or cited before claiming maintainer-run platform verifier evidence from the route.",
     "full_rerun_divergence_audit": "Diagnostic full-rerun divergence reconciliation only; not a canonical table replacement, not operational validation, not independent reproduction, and not a rerun success upgrade. Failure-conditioned rows are diagnostic only and do not redefine performance or rescue any method."
   },
   "claim_to_regeneration_tier_map": {
@@ -1232,26 +1271,30 @@
       {
         "path": "paper\\main.tex",
         "exists": true,
-        "bytes": 133872,
-        "sha256": "a1fa423d7ca19c8af4c86763d33f9a48629f04a82d6288b9664d1c2e6c5c8a3c"
+        "bytes": 147615,
+        "sha256": "245fb37d762a766583d1f7ab57c98b5016c426961ea024fdfa2fcecf7ef73390",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 147607,
+        "source_sha256": "abd6ea47c65e47d14e533b386e1fc00d94054ca092211efe616d38a73e130204"
       },
       {
         "path": "paper\\supplement.tex",
         "exists": true,
-        "bytes": 126437,
-        "sha256": "8415067f45fcde4c54bdda1130193496bc3a7a8e6353c74003b396ce1ac3b00c"
+        "bytes": 126680,
+        "sha256": "8a66f41494e3cadb6e4edc3ebe6477cc5430a6e8749bd6bc57d0afbe928683a1"
       },
       {
         "path": "paper\\main.pdf",
         "exists": true,
-        "bytes": 730825,
-        "sha256": "c0f2a904dd7c4d5cbad556aaace91e19419830ec3bb7ab370758bbef2c2595c5"
+        "bytes": 818915,
+        "sha256": "48021a75f56a4e3a8fb8055f73729508f3d11f1c442e138b35c473e8ed333e56"
       },
       {
         "path": "paper\\supplement.pdf",
         "exists": true,
-        "bytes": 1107935,
-        "sha256": "0074813fe87d9a0b30fd17faafc8de52805c1d3ee72de771029fc0113aab60d1"
+        "bytes": 1108154,
+        "sha256": "dafded42ac6cd7dc55e290f1ae249ba83ef34fb7d0c9bf374722fdade2f5c956"
       },
       {
         "path": "paper\\references.bib",
@@ -1274,12 +1317,12 @@
       {
         "path": "paper\\RELEASE_PACKET.md",
         "exists": true,
-        "bytes": 18198,
-        "sha256": "e8f25f35078fa8473c290b32ea2b11acb7c1e7f6ca17883a10c77321f6e5bff9",
+        "bytes": 19843,
+        "sha256": "d9fe27e2a2cb69f60e819c73f4a33e6e527265f729d980d0e1928ccd414422c4",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 18211,
-        "source_sha256": "34a408dddb7e1a7727a9c6035ecf5b51e598a539b96ece7d475e0e1cc4c5e528"
+        "source_bytes": 19856,
+        "source_sha256": "14b7baba0fbda60d6bc406469634e9f0c1e2ec55fafa6351ce5d7b5f532d7d66"
       },
       {
         "path": "paper\\tables\\main_abbreviation_glossary.tex",
@@ -1290,14 +1333,14 @@
       {
         "path": "paper\\tables\\main_framework_portability.tex",
         "exists": true,
-        "bytes": 2918,
-        "sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06"
+        "bytes": 3185,
+        "sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567"
       },
       {
         "path": "paper\\tables\\main_findings_summary.tex",
         "exists": true,
-        "bytes": 2493,
-        "sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80"
+        "bytes": 2622,
+        "sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc"
       },
       {
         "path": "paper\\tables\\main_structural_recoverability.tex",
@@ -1336,48 +1379,110 @@
         "sha256": "cf9cd8e8c8337160d10fd66e31d6cdd6ecafe3e5cbbc7d2caae04d4e70e849fb"
       },
       {
+        "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex",
+        "exists": true,
+        "bytes": 3408,
+        "sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7"
+      },
+      {
+        "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+        "exists": true,
+        "bytes": 3771,
+        "sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+        "exists": true,
+        "bytes": 86688,
+        "sha256": "80d50c2240c37145c81a2762c6e43db4627588ffc9317033f0ff9cfde64288ac",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 88556,
+        "source_sha256": "b939b4058cd6f7e2e5e809eec0506dbf565f9dac2a5710c1d3a6b60ccc288d69"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md",
+        "exists": true,
+        "bytes": 6395,
+        "sha256": "2e26e8f340c0e6b4e77688de7592762f226fe124f62e35b457c22819ed8f2dc0"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv",
+        "exists": true,
+        "bytes": 14193,
+        "sha256": "4932279c6949a93711214caa3c976bf510b6404ea36e89bb25644970672c2764"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624\\summary.json",
+        "exists": true,
+        "bytes": 377204,
+        "sha256": "785853781305ee356996eea5fa8756f0c684c0057c83e3d3f8bec10a13ba5ead",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 377202,
+        "source_sha256": "e967d4278bb0ed32beb02038bd77d05a4122723ee9866ad388b4ad2d8beb0360"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624\\summary.md",
+        "exists": true,
+        "bytes": 7602,
+        "sha256": "fd3e353b0bd1b7e28bb1573ccd69a28184c4b5752468f4b225cbf7e0b650c377"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624\\summary.csv",
+        "exists": true,
+        "bytes": 10207,
+        "sha256": "ae9fdaf764552c3949e3e89f5bbc701058e77f457efbd28b815fc06b887792d6"
+      },
+      {
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
         "exists": true,
-        "bytes": 223380,
-        "sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4"
+        "bytes": 195179,
+        "sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3"
+      },
+      {
+        "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
+        "exists": true,
+        "bytes": 58393,
+        "sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb"
       }
     ],
     "reviewer_access_documentation": [
       {
         "path": "release\\README.md",
         "exists": true,
-        "bytes": 39644,
-        "sha256": "8a1119dacc754dbd6a0b50c06a538b183bbeb7e725cade91b68a3a175db917ca",
+        "bytes": 60691,
+        "sha256": "e56c21a6f456ee0e1590b70ea5768aeb719fa0770feca052a21cff29c286944c",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 39626,
-        "source_sha256": "f893cd62579ab56bdee55c26de66365e429f1bb2e28864a870cdb645f805d6e9"
+        "source_bytes": 60693,
+        "source_sha256": "2e46591a36286dea6fa100881b7229447a193636a8883b5ec1c3afa2406ecf19"
       },
       {
         "path": "release\\REVIEWER_START_HERE.md",
         "exists": true,
-        "bytes": 33217,
-        "sha256": "dbb1c024989b58138f9c562aeb0585584880ea5334c1969af996dad287b739a2",
+        "bytes": 54694,
+        "sha256": "d16ba6d541e830834586759c367d21cb1e226d71cbec1ef002bb06579080181f",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 33193,
-        "source_sha256": "b2b8d85b7b0df9a445ac8a4449045a190a9c253019d370c093e7e3402ba5dd9e"
+        "source_bytes": 54706,
+        "source_sha256": "0ac8b9291eab38ad6652dc21a4eecadb49cbe4683d4ce8e454d9808cba8c1de6"
       },
       {
         "path": "release\\DEPOSIT_CHECKLIST.md",
         "exists": true,
-        "bytes": 4922,
-        "sha256": "588fd06ccb736d0eaf334d9401e2c7a2846fc7a427e1755b353fe5c20792dc63"
+        "bytes": 5792,
+        "sha256": "d12534fa91b83a04ca91abc5159111d69000643e42f4dc601acac7b8788d9abd"
       },
       {
         "path": "release\\ZENODO_METADATA.json",
         "exists": true,
-        "bytes": 1373,
-        "sha256": "9f8869654cd5029e2d2085971faaeef69c931052c843917a0a983765eb974849",
+        "bytes": 4471,
+        "sha256": "4a0cd5704e726995ba9abb6bc34a53f61376f557e64aa2fe2a2e48b08a7ae2d4",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 1373,
-        "source_sha256": "d2521ab507b75343985966c57933e5e33573db15caea7180b5eebedc7b1d8e72"
+        "source_bytes": 4471,
+        "source_sha256": "780d914217612e3592ff238d9ba76a99255f79c95339738920b873e103350cc8"
       }
     ],
     "kalmannet_spot_od_external_audit_case": [
@@ -1734,12 +1839,12 @@
       {
         "path": "results\\release_packet.json",
         "exists": true,
-        "bytes": 110992,
-        "sha256": "66b5bdef5bc2dad0496d87b9f8a8408a617d5945febfde870140b74f06df8131",
+        "bytes": 119999,
+        "sha256": "1d48eecbbd63103d49d818926ff224635a80f2babcd41fb74fc4d2f657bc4962",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 112870,
-        "source_sha256": "03dbbace6391e77c7d9544b107cf4e6fbb9bb501e2bec2807e4c3dedb669fbc6"
+        "source_bytes": 122053,
+        "source_sha256": "1d690beb76a138591793a02ce4e96d004158fa0f5ec8b3ce05b847802bbc4d03"
       }
     ],
     "multi_revolution_sgp4_truth_benchmark": [
@@ -2934,38 +3039,38 @@
       {
         "path": "results\\validation\\active_manuscript_regeneration.json",
         "exists": true,
-        "bytes": 28007,
-        "sha256": "29a589a0a5e8938dc7106416dfa648223f20c4880e8634adc215902fda955a44",
+        "bytes": 30120,
+        "sha256": "3f0f851dcad6270a972aaa961831361691377acffe6544634b86e8c81661acd5",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 28452,
-        "source_sha256": "ddd701ba7f304bb110f7545c1ceee60dad30eab60d3ca91217604126398dc4fc"
+        "source_bytes": 30599,
+        "source_sha256": "12e4d08581d4334477c5b63d5a284f9f44ddbb08d21dbbb79604eef162b3849c"
       },
       {
         "path": "results\\validation\\active_manuscript_regeneration.md",
         "exists": true,
-        "bytes": 6987,
-        "sha256": "e4a1c268eb93c955719d626bff13cdd9072545027e72065db2614e08583ec071",
+        "bytes": 7883,
+        "sha256": "2b846508ee4b4c433198d9d22bf4e838316d562056b2e490f7678ccabcd5a204",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 6797,
-        "source_sha256": "2186769c2153fff086366225521d056629eecbe921824d7a6da577860dee5258"
+        "source_bytes": 7693,
+        "source_sha256": "4a51bb3107b1b057435c959bd14c9565a4f0cd2f098afe55b55315e8499579f8"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.json",
         "exists": true,
-        "bytes": 106215,
-        "sha256": "cdea32152c7b3adcfabf828293d95bbc97cf18cfc90721f3eefac623ebb57e82",
+        "bytes": 106328,
+        "sha256": "7f7fb7590f6ad49e559420394665c3fc7b1f96944988eeacf32958ca29ed7d23",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 107897,
-        "source_sha256": "b84fd2785427ff1cbe420055b408477c114c6c2ead48db35d6cc71f3c75cf8e8"
+        "source_bytes": 108011,
+        "source_sha256": "f2051b90d1916029ec940593202b75c4fe6e99228a7459ba4ba65cd46f5e035e"
       },
       {
         "path": "results\\validation\\archive_extracted_reproduction.md",
         "exists": true,
         "bytes": 2503,
-        "sha256": "06294187071dc9b6ba72ba01e54b1f161976c9bb7e1a505c234aef03421ad54f"
+        "sha256": "0bfe77eb69555322936884c4997ab274502100e7c8565afe4f94f183f50fba59"
       },
       {
         "path": "results\\validation\\real_slr_sp3_od_slice_rerun.json",
@@ -2996,18 +3101,18 @@
       {
         "path": "results\\validation\\command_manifest.json",
         "exists": true,
-        "bytes": 30251,
-        "sha256": "e44b1fb3a3fc995701f78b90d69e0b18c971e5e363f9b51dca9804055a5e4c7d",
+        "bytes": 31790,
+        "sha256": "a77d129d2cb84ffe00c85274a77da0850261801f827cab60dd0b22e627bc5d95",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 30747,
-        "source_sha256": "0759e677884aec849a4c26eff36631a7ad82889793525a51852e15c615e11576"
+        "source_bytes": 32305,
+        "source_sha256": "09e60dd1d59a5087b5a14dda14b90d15c8fb233407a932e1de3d5dcc95a8266e"
       },
       {
         "path": "release\\CITATION.cff",
         "exists": true,
-        "bytes": 1513,
-        "sha256": "e3cbd87e35b78a6b8e218e14369626089b86169d2c51b449abc5b5b0fa9abb5c"
+        "bytes": 1789,
+        "sha256": "f22845a411aad2961aa3bbddb21ee432a5b24acff62652ffcfa95899ec5fb361"
       }
     ],
     "codex_clean_archive_attestation": [
@@ -3084,18 +3189,18 @@
       {
         "path": "release\\INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
         "exists": true,
-        "bytes": 6206,
-        "sha256": "7e1b7070189c5788f8e04f52524e4cdc74e0c552110ec9b604be0b390641fd96",
+        "bytes": 7042,
+        "sha256": "2a816619480020acc078461d201ea5ea2ed19ca4b1c7c32f1e486162c4cd76bd",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 6129,
-        "source_sha256": "3aa42c45feadedf108cfe30627888e8bb4e113f93cec24cd58d6518f165c3846"
+        "source_bytes": 6965,
+        "source_sha256": "fd25db41eb8b14cf169fcb7b16147ab9eacc544378ec752040ab41f8ed39d78c"
       },
       {
-        "path": ".gitlab-ci.yml",
+        "path": ".github\\workflows\\archive-extracted-reproduction.yml",
         "exists": true,
-        "bytes": 6283,
-        "sha256": "65d2e4c349bdfba391409b7fddaa5b49d428c581f2da77280a829af38e80ff65"
+        "bytes": 1445,
+        "sha256": "f6cc117dafa0d282b7536118385b9e7baa1681b97fa5dadfdee24cb1b5cf5fa6"
       }
     ],
     "source_code": [
@@ -3118,8 +3223,8 @@
       {
         "path": "src\\gnn_state_estimation\\evaluation.py",
         "exists": true,
-        "bytes": 24786,
-        "sha256": "9a18cced367b8c694dce8ef31b2c16dffd4c7f046cc4e439039d15f1e488b694"
+        "bytes": 29657,
+        "sha256": "cb746be7dc313e54c5a5ab8f17da58d6e5e7c0bac4fec081d4158135428f9bdd"
       },
       {
         "path": "src\\gnn_state_estimation\\simulation.py",
@@ -3136,8 +3241,8 @@
       {
         "path": "src\\gnn_state_estimation\\dataset.py",
         "exists": true,
-        "bytes": 9175,
-        "sha256": "a2ae55cf219f2ffc08f0812798af0753669f7a36d422ff8551c3daa90e3d0c1e"
+        "bytes": 13015,
+        "sha256": "7d5a5197dd38b6958321b86e975e78d5eac6dc1c5bcdbacc77fbf649d5bdbbfc"
       },
       {
         "path": "src\\gnn_state_estimation\\scenarios.py",
@@ -3446,8 +3551,8 @@
       {
         "path": "scripts\\render_publication_figures.py",
         "exists": true,
-        "bytes": 15621,
-        "sha256": "53101aa885fd1de7563a8bc84284503eca0f656327249d28775234dc8d1a495d"
+        "bytes": 20451,
+        "sha256": "feef4a25d516bb575b91414e237138147bfb8511b1fbb7ee75f8b270de28b589"
       },
       {
         "path": "scripts\\build_adaptation_risk_diagnostic.py",
@@ -3472,12 +3577,12 @@
       {
         "path": "scripts\\build_paper_assets.py",
         "exists": true,
-        "bytes": 567136,
-        "sha256": "a0e4bc1c23fd33ac97a50ade2db64bb246bdb093f4c516d4751ac50b7429fc15",
+        "bytes": 606914,
+        "sha256": "72f4407c7b1be5e73e345eafdabf801dbc3f6dfc22f04621631b1739ba24976e",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 566861,
-        "source_sha256": "a24f842206ba68aad76a51c47741a230a2629ba894b68198d9638c8f445f9561"
+        "source_bytes": 606631,
+        "source_sha256": "899c0471a6f8b430e8b593fdef1f2fde2516a0e9d1b0a0636263692fec36d284"
       },
       {
         "path": "scripts\\build_observed_step_prospective_replication.py",
@@ -3504,12 +3609,12 @@
       {
         "path": "scripts\\regenerate_active_manuscript.py",
         "exists": true,
-        "bytes": 47465,
-        "sha256": "db2d5190f2fd2bf8639d08bf6ca3878721eedacb2467439b66ba353057fdb01e",
+        "bytes": 48407,
+        "sha256": "a4d767c0dcab9495d4d52e894bc7e3301da59b52b3eac18b6b02ec31dcedc8d2",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 47185,
-        "source_sha256": "41810fa7987f84398fd8c1fd4c1261a7eb6b1ae438816e2d01c29470d4eff143"
+        "source_bytes": 48127,
+        "source_sha256": "66b6c5c9fa3dee3a1f9d8ad78d9c99ad74fe5a75bf072f0a55a2cac7f5e9f9b7"
       },
       {
         "path": "scripts\\validate_submission.py",
@@ -3568,12 +3673,12 @@
       {
         "path": "tests\\test_archive_extracted_reproduction.py",
         "exists": true,
-        "bytes": 34604,
-        "sha256": "c66a45dda6d24f4ced3f7e4fe60dc54c98a0ba9017af700e8af0fe46b66c246e",
+        "bytes": 39093,
+        "sha256": "9ba7f82d5f46b8c5f83ea40d77b6e5975c6b6dafec2c8301af77d9a511335ebb",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 34592,
-        "source_sha256": "f16e0d58bcb695fe21e377a982d91e25185ddbe24951225bca0f4bcab9f93780"
+        "source_bytes": 39081,
+        "source_sha256": "1db28636af18965018a6425b8375a83159430d09d0b56a5c559caee49e23a528"
       },
       {
         "path": "tests\\test_adaptation_risk_diagnostic.py",
@@ -7911,11 +8016,11 @@
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.json",
         "exists": true,
         "bytes": 14534,
-        "sha256": "fe87a844f53964decedddc26006fef803c585f1d119a6161d9f4dc10fab1a0e4",
+        "sha256": "920585168205969da9f6073dbc5989e139bf49ef4a704cf7d4916f0d3959f2f8",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
         "source_bytes": 14912,
-        "source_sha256": "4fafed9b1c3ceb685be9e09367d4e2c9c806ee823513fc9b7838760b405506ee"
+        "source_sha256": "4262cdbcbb983c00128645549d82a2c26b2a1c681c916be1cdb2d84700a4af66"
       },
       {
         "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.md",
@@ -7941,20 +8046,20 @@
       }
     ]
   },
-  "artifact_count": 1014,
-  "artifacts_present": 1014,
+  "artifact_count": 1023,
+  "artifacts_present": 1023,
   "checksum_algorithm": "sha256",
   "review_archive": {
     "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
     "exists": true,
-    "bytes": 58908807,
-    "sha256": "9d6f34599b238749bfe1cc3e8bdda4d6a3034ee662f3e8b2f7c7cafc49831b3f",
+    "bytes": 59126911,
+    "sha256": "2684857f049a64b24dedfa61781b23e8dea38aa226926d750c12dd49191df76a",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
-    "artifact_digest_coverage_count": 1014,
-    "artifacts_included": 1014,
+    "artifact_digest_coverage_count": 1023,
+    "artifacts_included": 1023,
     "member_timestamp_utc": "2026-05-19T00:00:00+00:00",
-    "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count."
+    "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count, and the paired release manifest is kept outside the ZIP to avoid a self-referential/stale manifest member."
   }
 }

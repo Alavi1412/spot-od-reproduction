@@ -10,12 +10,12 @@
       "execution_details_redacted": true,
       "exit_code": 0,
       "nested_report": {
-        "artifact_count": 10,
+        "artifact_count": 12,
         "claim_boundary": "Regenerates active paper/main.tex table/figure artifacts from materialized repository result artifacts only; does not claim full raw-data, model-training, filter-estimation, live-public-data, or independent end-to-end reproduction outside the supplied archive.",
         "documented_blocker_count": 0,
         "exists": true,
         "failure_detail_summary": {
-          "artifact_count": 10,
+          "artifact_count": 12,
           "artifacts": [],
           "blocked_artifact_count": 0,
           "detail_limit": 20,
@@ -25,7 +25,7 @@
           "truncated_artifact_count": 0
         },
         "mismatch_count": 0,
-        "pass_count": 10,
+        "pass_count": 12,
         "path": "results/validation/archive_extracted_active_manuscript_regeneration.json",
         "status": "pass"
       },
@@ -34,7 +34,7 @@
       "stderr_line_count": 0,
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_line_count": 11,
-      "stdout_sha256": "ce8c5ad36b9d36f20a24540d66123e04d89d8a0beb4a6e9282effc3def9b9932",
+      "stdout_sha256": "a41f3cd11502f5227f6a02d6cc429419558d192cab39a756e1ca0c6fe2f25bed",
       "step": "active_table_regeneration_from_extracted_tree"
     },
     "archive_extracted_public_od_slice_rerun": {
@@ -239,9 +239,9 @@
           "sha256": "68889b3eeedfd1da8d7161200efb5ba404000e3eb754a8cbd1485ae808b8a45e"
         },
         "submitted_table": {
-          "bytes": 4289,
+          "bytes": 4271,
           "path": "paper/tables/real_slr_sp3_od.tex",
-          "sha256": "b90af0cb926a07eaa48d6d4329732f46325b3575012742e358a867d994a013a4"
+          "sha256": "e47695122551706b67a17ef0dbb407de0f8e1095c52d24d6ccfd2b65bbd759dd"
         }
       },
       "persistent_report_outputs": {
@@ -448,22 +448,21 @@
     "extracted_artifacts": {
       "duplicate_path_count": 0,
       "duplicate_paths": [],
-      "expected_present_count": 1014,
+      "expected_present_count": 1015,
       "extra_member_count": 0,
       "extra_members": [],
-      "extracted_member_count": 1014,
+      "extracted_member_count": 1015,
       "failure_count": 0,
       "failures": [],
-      "indexed_artifact_count": 1014,
+      "indexed_artifact_count": 1015,
       "missing_member_count": 0,
       "missing_members": [],
       "status": "pass"
     },
     "extraction": {
       "failures": [],
-      "member_count": 1014,
+      "member_count": 1015,
       "members": [
-        ".gitlab-ci.yml",
         "configs/archived_tles.json",
         "configs/experiment.yaml",
         "docs/verify_release_packet_sync.py",
@@ -471,6 +470,7 @@
         "paper/RELEASE_PACKET.md",
         "paper/evidence_plan.tex",
         "paper/figures/aukf_r_inflation_mechanism.png",
+        "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png",
         "paper/highlights.txt",
         "paper/main.pdf",
         "paper/main.tex",
@@ -488,6 +488,7 @@
         "paper/tables/drag_scale_ukf_observability_positive_control.tex",
         "paper/tables/endpoint_selection_sensitivity.tex",
         "paper/tables/force_mismatch_mechanism.tex",
+        "paper/tables/graph_anchor_pair_gate_poc.tex",
         "paper/tables/hifi_force_mismatch.tex",
         "paper/tables/kalmannet_official_reproduction.tex",
         "paper/tables/kalmannet_spot_od_budget_adequacy.tex",
@@ -1661,8 +1662,8 @@
   },
   "claim_boundary": "Archive-extracted integrity, active main-manuscript table-regeneration, and one public LAGEOS CRD/SP3 precise-reference OD slice recomputation from archived public inputs only; this does not rerun full raw-data generation, model retraining, all recursive filters or tables, live public-data retrieval, operational POD validation, or independent end-to-end reproduction outside the supplied archive.",
   "manifest": {
-    "artifact_count": 1014,
-    "artifacts_present": 1014,
+    "artifact_count": 1015,
+    "artifacts_present": 1015,
     "claim_count": 28,
     "exists": true,
     "package": "SPOT-OD supplementary evidence package",
@@ -1674,7 +1675,7 @@
       "path": "release/SUPPLEMENTARY_MANIFEST.json",
       "source": "paired_release_manifest"
     },
-    "version": "1.1.0-supplement"
+    "version": "1.2.1-graph-anchor-gate-poc"
   },
   "requires_retraining": false,
   "scope": "archive_extracted_reproduction_check",

@@ -65,6 +65,8 @@ BUCKETS = [
     ("vis_2plus_pos_rmse_m", "2+ visible"),
 ]
 
+GRAPH_ANCHOR_PAIR_GATE_SWEEP_DIR = "graph_anchor_pair_gate_seed_sweep_20260623"
+
 
 def _read_csv(results_dir: Path, name: str) -> pd.DataFrame:
     path = results_dir / name
@@ -125,6 +127,10 @@ def _save(fig: plt.Figure, path: Path) -> dict:
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=220, bbox_inches="tight")
     plt.close(fig)
+    return _image_info(path)
+
+
+def _image_info(path: Path) -> dict:
     with Image.open(path) as image:
         width, height = image.size
     return {
@@ -134,6 +140,120 @@ def _save(fig: plt.Figure, path: Path) -> dict:
         "aspect_ratio": round(width / height, 3),
         "bytes": path.stat().st_size,
     }
+
+
+def _graph_anchor_pair_gate_fallback_summary_rows() -> pd.DataFrame:
+    try:
+        from build_paper_assets import _GRAPH_ANCHOR_PAIR_GATE_SUMMARY_FALLBACK
+    except ModuleNotFoundError:  # pragma: no cover - import mode depends on entrypoint
+        from scripts.build_paper_assets import _GRAPH_ANCHOR_PAIR_GATE_SUMMARY_FALLBACK
+
+    return pd.DataFrame(_GRAPH_ANCHOR_PAIR_GATE_SUMMARY_FALLBACK)
+
+
+def _graph_anchor_pair_gate_summary_rows(results_dir: Path) -> pd.DataFrame:
+    summary_path = (
+        results_dir
+        / GRAPH_ANCHOR_PAIR_GATE_SWEEP_DIR
+        / "graph_anchor_pair_gate_seed_sweep_summary.csv"
+    )
+    if summary_path.exists():
+        return pd.read_csv(summary_path)
+    return _graph_anchor_pair_gate_fallback_summary_rows()
+
+
+def _save_graph_anchor_pair_gate_seed_sweep_aggregate(
+    summary_rows: pd.DataFrame,
+    output_path: Path,
+) -> Path:
+    from matplotlib.patches import Patch
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    plot_rows = summary_rows.copy()
+    plot_rows["seed"] = pd.to_numeric(plot_rows["seed"])
+    plot_rows["gain_vs_best_candidate_all_step_percent"] = pd.to_numeric(
+        plot_rows["gain_vs_best_candidate_all_step_percent"]
+    )
+    scenario_rank = {"process_noise_shift_test": 0, "maneuver_shift_test": 1}
+    plot_rows["_scenario_rank"] = plot_rows["scenario"].map(scenario_rank).fillna(99).astype(int)
+    plot_rows = plot_rows.sort_values(["seed", "_scenario_rank"]).reset_index(drop=True)
+    gains = plot_rows["gain_vs_best_candidate_all_step_percent"].astype(float).to_numpy()
+    labels = [
+        f"s{int(row.seed)}\n{'process' if row.scenario == 'process_noise_shift_test' else 'maneuver'}"
+        for row in plot_rows.itertuples(index=False)
+    ]
+    colors = {
+        "process_noise_shift_test": "#4C78A8",
+        "maneuver_shift_test": "#F58518",
+    }
+    bar_colors = [colors.get(str(scenario), "#777777") for scenario in plot_rows["scenario"]]
+
+    fig, ax = plt.subplots(figsize=(8.2, 3.9))
+    x = np.arange(len(plot_rows), dtype=float)
+    bars = ax.bar(x, gains, color=bar_colors, width=0.74)
+    for bar, gain in zip(bars, gains):
+        y = gain + (0.55 if gain >= 0.0 else -0.85)
+        va = "bottom" if gain >= 0.0 else "top"
+        ax.text(
+            bar.get_x() + bar.get_width() / 2.0,
+            y,
+            f"{gain:+.1f}",
+            ha="center",
+            va=va,
+            fontsize=7.5,
+        )
+    ax.axhline(0.0, color="#333333", linewidth=0.9)
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=7.5)
+    ax.set_ylabel("Gain vs best candidate (%)")
+    ax.set_title("GraphAnchorPairGate five-seed sweep: all scenario-seed rows", fontsize=10.5)
+    ax.grid(axis="y", alpha=0.24)
+    ax.margins(x=0.02)
+    ymax = max(20.0, float(np.nanmax(gains)) + 3.0)
+    ymin = min(-5.0, float(np.nanmin(gains)) - 3.0)
+    ax.set_ylim(ymin, ymax)
+    ax.legend(
+        handles=[
+            Patch(facecolor=colors["process_noise_shift_test"], label="process-noise shift"),
+            Patch(facecolor=colors["maneuver_shift_test"], label="maneuver shift"),
+        ],
+        loc="upper right",
+        frameon=False,
+        fontsize=8,
+    )
+    fig.text(
+        0.01,
+        0.01,
+        "All-step center-window RMSE; retained CSV rows only. Seed 19 process shift is the single loss.",
+        fontsize=7.5,
+    )
+    fig.tight_layout(rect=(0.0, 0.06, 1.0, 1.0))
+    fig.savefig(output_path, dpi=180)
+    plt.close(fig)
+    return output_path
+
+
+def _render_graph_anchor_pair_gate_seed_sweep_aggregate(
+    results_dir: Path,
+    paper_fig_dir: Path,
+) -> dict:
+    summary_rows = _graph_anchor_pair_gate_summary_rows(results_dir)
+    output_path = paper_fig_dir / "graph_anchor_pair_gate_seed_sweep_aggregate.png"
+    try:
+        from build_graph_anchor_pair_gate_seed_sweep_artifacts import (
+            save_seed_sweep_aggregate_figure,
+        )
+    except ModuleNotFoundError:
+        try:
+            from scripts.build_graph_anchor_pair_gate_seed_sweep_artifacts import (
+                save_seed_sweep_aggregate_figure,
+            )
+        except ModuleNotFoundError:
+            save_seed_sweep_aggregate_figure = _save_graph_anchor_pair_gate_seed_sweep_aggregate
+
+    with plt.rc_context(plt.rcParamsDefault):
+        save_seed_sweep_aggregate_figure(summary_rows, output_path)
+    return _image_info(output_path)
 
 
 def _render_per_step(results_dir: Path, paper_fig_dir: Path) -> dict:
@@ -378,6 +498,9 @@ def render_publication_figures(
         "visibility_bucket_rmse": _render_visibility,
         "uncertainty_calibration": _render_calibration,
         "aukf_r_inflation_mechanism": _render_aukf_r_inflation_mechanism,
+        "graph_anchor_pair_gate_seed_sweep_aggregate": (
+            _render_graph_anchor_pair_gate_seed_sweep_aggregate
+        ),
     }
     for name, renderer in renderers.items():
         record = _try_render(name, renderer, results_dir, paper_fig_dir, errors)
@@ -391,6 +514,11 @@ def render_publication_figures(
             str(results_dir / "uncertainty_calibration.csv"),
             str(results_dir / "force_model_mismatch_adaptation_summary.json"),
             str(results_dir / "force_model_mismatch_adaptation_updates.csv"),
+            str(
+                results_dir
+                / GRAPH_ANCHOR_PAIR_GATE_SWEEP_DIR
+                / "graph_anchor_pair_gate_seed_sweep_summary.csv"
+            ),
         ],
         "scenarios": SCENARIOS,
         "tracking_methods": {method: METHOD_LABELS[method] for method in TRACKING_METHODS},

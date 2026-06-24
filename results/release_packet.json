@@ -1,6 +1,6 @@
 {
   "active_artifact_generation_status": {
-    "active_artifact_count": 10,
+    "active_artifact_count": 13,
     "active_artifacts": [
       {
         "after_sha256": "2841df27ce12aff41da027f148d7fa1f31041f72f15ef24925fb0dc4583b0743",
@@ -24,18 +24,18 @@
         "text_normalized_match": true
       },
       {
-        "after_sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06",
+        "after_sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567",
         "attempted": true,
-        "before_bytes": 2918,
-        "before_sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06",
+        "before_bytes": 3185,
+        "before_sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567",
         "builder": "scripts/build_paper_assets.py::build_main_framework_portability_table",
         "byte_match": true,
-        "bytes": 2918,
+        "bytes": 3185,
         "check_only": true,
         "comparison_mode": "byte_sha256",
         "exit_code": 0,
-        "generated_bytes": 2918,
-        "generated_sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06",
+        "generated_bytes": 3185,
+        "generated_sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567",
         "generation_step": "regenerate_active_manuscript_check",
         "output_path": "paper\\tables\\main_framework_portability.tex",
         "path": "paper\\tables\\main_framework_portability.tex",
@@ -45,18 +45,18 @@
         "text_normalized_match": true
       },
       {
-        "after_sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80",
+        "after_sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc",
         "attempted": true,
-        "before_bytes": 2493,
-        "before_sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80",
+        "before_bytes": 2622,
+        "before_sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc",
         "builder": "scripts/build_paper_assets.py::build_main_findings_summary_table",
         "byte_match": true,
-        "bytes": 2493,
+        "bytes": 2622,
         "check_only": true,
         "comparison_mode": "byte_sha256",
         "exit_code": 0,
-        "generated_bytes": 2493,
-        "generated_sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80",
+        "generated_bytes": 2622,
+        "generated_sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc",
         "generation_step": "regenerate_active_manuscript_check",
         "output_path": "paper\\tables\\main_findings_summary.tex",
         "path": "paper\\tables\\main_findings_summary.tex",
@@ -195,16 +195,16 @@
             "sha256": "d7fc30d8a09c1f96f333e26eacbb98032d716b8d68f37487fbc9d5c56a4d9718"
           },
           {
-            "bytes": 107897,
+            "bytes": 108011,
             "exists": true,
             "path": "results\\validation\\archive_extracted_reproduction.json",
-            "sha256": "b84fd2785427ff1cbe420055b408477c114c6c2ead48db35d6cc71f3c75cf8e8"
+            "sha256": "f2051b90d1916029ec940593202b75c4fe6e99228a7459ba4ba65cd46f5e035e"
           },
           {
             "bytes": 14912,
             "exists": true,
             "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.json",
-            "sha256": "4fafed9b1c3ceb685be9e09367d4e2c9c806ee823513fc9b7838760b405506ee"
+            "sha256": "4262cdbcbb983c00128645549d82a2c26b2a1c681c916be1cdb2d84700a4af66"
           }
         ],
         "status": "pass",
@@ -239,6 +239,74 @@
             "exists": true,
             "path": "release\\predeclarations\\observed_step_prospective_replication_loop71.json",
             "sha256": "367639416c148d2ca42018ddee9a4930b7c03470b25dea2368f474e17021dd66"
+          }
+        ],
+        "status": "pass",
+        "text_normalized_match": true
+      },
+      {
+        "after_sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c",
+        "attempted": true,
+        "before_bytes": 3771,
+        "before_sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c",
+        "builder": "scripts/build_paper_assets.py::build_adaptive_candidate_fusion_full_training_poc_table",
+        "byte_match": true,
+        "bytes": 3771,
+        "check_only": true,
+        "comparison_mode": "byte_sha256",
+        "exit_code": 0,
+        "generated_bytes": 3771,
+        "generated_sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c",
+        "generation_step": "regenerate_active_manuscript_check",
+        "output_path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+        "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+        "preexisting_match": true,
+        "source_artifacts": [
+          {
+            "bytes": 88556,
+            "exists": true,
+            "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+            "sha256": "b939b4058cd6f7e2e5e809eec0506dbf565f9dac2a5710c1d3a6b60ccc288d69"
+          },
+          {
+            "bytes": 377202,
+            "exists": true,
+            "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624\\summary.json",
+            "sha256": "e967d4278bb0ed32beb02038bd77d05a4122723ee9866ad388b4ad2d8beb0360"
+          },
+          {
+            "bytes": 606631,
+            "exists": true,
+            "path": "scripts\\build_paper_assets.py",
+            "sha256": "899c0471a6f8b430e8b593fdef1f2fde2516a0e9d1b0a0636263692fec36d284"
+          }
+        ],
+        "status": "pass",
+        "text_normalized_match": true
+      },
+      {
+        "after_sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7",
+        "attempted": true,
+        "before_bytes": 3408,
+        "before_sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7",
+        "builder": "scripts/build_paper_assets.py::build_graph_anchor_pair_gate_poc_table",
+        "byte_match": true,
+        "bytes": 3408,
+        "check_only": true,
+        "comparison_mode": "byte_sha256",
+        "exit_code": 0,
+        "generated_bytes": 3408,
+        "generated_sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7",
+        "generation_step": "regenerate_active_manuscript_check",
+        "output_path": "paper\\tables\\graph_anchor_pair_gate_poc.tex",
+        "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex",
+        "preexisting_match": true,
+        "source_artifacts": [
+          {
+            "bytes": 606631,
+            "exists": true,
+            "path": "scripts\\build_paper_assets.py",
+            "sha256": "899c0471a6f8b430e8b593fdef1f2fde2516a0e9d1b0a0636263692fec36d284"
           }
         ],
         "status": "pass",
@@ -445,99 +513,50 @@
         "text_normalized_match": true
       },
       {
-        "after_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
+        "after_sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb",
         "attempted": true,
-        "before_bytes": 223380,
-        "before_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
+        "before_bytes": 58393,
+        "before_sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb",
         "builder": "scripts/render_publication_figures.py::render_publication_figures",
-        "byte_match": false,
-        "bytes": 223380,
+        "byte_match": true,
+        "bytes": 58393,
         "check_only": true,
-        "comparison_mode": "png_visual_content_v1",
-        "difference": {
-          "image_comparison_mode": "png_visual_content_v1",
-          "image_comparison_status": "pass",
-          "note": "Byte hashes differ, but scoped PNG visual-content metrics match within the recorded thresholds."
-        },
+        "comparison_mode": "byte_sha256",
+        "exit_code": 0,
+        "generated_bytes": 58393,
+        "generated_sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb",
+        "generation_step": "regenerate_active_manuscript_check",
+        "output_path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
+        "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
+        "preexisting_match": true,
+        "source_artifacts": [
+          {
+            "bytes": 20451,
+            "exists": true,
+            "path": "scripts\\render_publication_figures.py",
+            "sha256": "feef4a25d516bb575b91414e237138147bfb8511b1fbb7ee75f8b270de28b589"
+          }
+        ],
+        "status": "pass",
+        "text_normalized_match": false
+      },
+      {
+        "after_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+        "attempted": true,
+        "before_bytes": 195179,
+        "before_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+        "builder": "scripts/render_publication_figures.py::render_publication_figures",
+        "byte_match": true,
+        "bytes": 195179,
+        "check_only": true,
+        "comparison_mode": "byte_sha256",
         "exit_code": 0,
         "generated_bytes": 195179,
         "generated_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
         "generation_step": "regenerate_active_manuscript_check",
-        "image_comparison": {
-          "current": {
-            "canonical_mode": "RGBA",
-            "decoded_pixel_bytes": 14596512,
-            "decoded_pixel_sha256": "4785a8338b3198f363e5609b03026ef45a4401d3e395482edda3787031beaf6d",
-            "format": "PNG",
-            "mode": "RGBA",
-            "size_px": [
-              2436,
-              1498
-            ]
-          },
-          "decision": "visual_metric_match",
-          "decoded_byte_count_match": false,
-          "format_match": true,
-          "generated": {
-            "canonical_mode": "RGBA",
-            "decoded_pixel_bytes": 14648960,
-            "decoded_pixel_sha256": "beca12cec503aa3079a7559e9f80d14142979de3c7fbc842895b7c87f5291a82",
-            "format": "PNG",
-            "mode": "RGBA",
-            "size_px": [
-              2435,
-              1504
-            ]
-          },
-          "mode": "png_visual_content_v1",
-          "pixel_hash_match": false,
-          "size_match": false,
-          "status": "pass",
-          "visual": {
-            "aspect_ratio_delta": 0.007152266852256783,
-            "checks": {
-              "aspect_ratio_delta": true,
-              "downsample_pixel_fraction_gt_64": true,
-              "downsample_rgb_mae": true,
-              "downsample_rgb_rmse": true,
-              "height_delta_fraction": true,
-              "width_delta_fraction": true
-            },
-            "current_size_px": [
-              2436,
-              1498
-            ],
-            "downsample_max_channel_abs_diff": 184,
-            "downsample_pixel_fraction_gt_64": 0.015713276836158193,
-            "downsample_rgb_mae": 4.904602165725048,
-            "downsample_rgb_rmse": 13.598045393079149,
-            "downsample_size_px": [
-              192,
-              118
-            ],
-            "generated_size_px": [
-              2435,
-              1504
-            ],
-            "height_delta_fraction": 0.003989361702127659,
-            "match": true,
-            "thresholds": {
-              "downsample_width_px": 192,
-              "max_aspect_ratio_delta": 0.012,
-              "max_downsample_pixel_fraction_gt_64": 0.025,
-              "max_downsample_rgb_mae": 7.0,
-              "max_downsample_rgb_rmse": 18.0,
-              "max_height_delta_fraction": 0.01,
-              "max_width_delta_fraction": 0.01
-            },
-            "width_delta_fraction": 0.00041050903119868636
-          },
-          "visual_comparison_allowed": true
-        },
-        "image_content_match": true,
         "output_path": "paper\\figures\\aukf_r_inflation_mechanism.png",
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
-        "preexisting_match": false,
+        "preexisting_match": true,
         "source_artifacts": [
           {
             "bytes": 3536,
@@ -558,8 +577,13 @@
     ],
     "active_figures_from_main_tex": [
       {
+        "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+        "line": 201,
+        "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+      },
+      {
         "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-        "line": 206,
+        "line": 227,
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
       }
     ],
@@ -585,28 +609,38 @@
         "path": "paper\\tables\\main_k32_replication.tex"
       },
       {
+        "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+        "line": 195,
+        "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+      },
+      {
+        "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+        "line": 197,
+        "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+      },
+      {
         "content": "\\input{tables/main_aukf_mechanism.tex}",
-        "line": 211,
+        "line": 232,
         "path": "paper\\tables\\main_aukf_mechanism.tex"
       },
       {
         "content": "\\input{tables/main_structural_recoverability.tex}",
-        "line": 246,
+        "line": 267,
         "path": "paper\\tables\\main_structural_recoverability.tex"
       },
       {
         "content": "\\input{tables/main_drag_scale_cascade.tex}",
-        "line": 250,
+        "line": 271,
         "path": "paper\\tables\\main_drag_scale_cascade.tex"
       },
       {
         "content": "\\input{tables/main_long_arc_result.tex}",
-        "line": 261,
+        "line": 282,
         "path": "paper\\tables\\main_long_arc_result.tex"
       },
       {
         "content": "\\input{tables/main_dbar_withdrawal.tex}",
-        "line": 278,
+        "line": 299,
         "path": "paper\\tables\\main_dbar_withdrawal.tex"
       }
     ],
@@ -619,18 +653,23 @@
       "uses_current_interpreter": true,
       "uses_current_repository_source": true
     },
-    "generated_utc": "2026-06-17T22:47:09.228419+00:00",
+    "generated_utc": "2026-06-24T02:49:52.667454+00:00",
     "mismatch_count": 0,
     "one_step_harness": "regenerate_active_manuscript_check",
-    "pass_count": 10,
+    "pass_count": 13,
     "regeneration_complete": true,
     "scope_boundary": "Regenerates active paper/main.tex table/figure artifacts from materialized repository result artifacts only; does not claim full raw-data, model-training, filter-estimation, live-public-data, or independent end-to-end reproduction outside the supplied archive.",
     "status": "pass"
   },
   "active_figure_line_evidence": [
     {
+      "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+      "line": 199,
+      "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+    },
+    {
       "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-      "line": 206,
+      "line": 225,
       "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
     }
   ],
@@ -656,34 +695,46 @@
       "path": "paper\\tables\\main_k32_replication.tex"
     },
     {
+      "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+      "line": 193,
+      "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+    },
+    {
+      "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+      "line": 195,
+      "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+    },
+    {
       "content": "\\input{tables/main_aukf_mechanism.tex}",
-      "line": 211,
+      "line": 230,
       "path": "paper\\tables\\main_aukf_mechanism.tex"
     },
     {
       "content": "\\input{tables/main_structural_recoverability.tex}",
-      "line": 246,
+      "line": 265,
       "path": "paper\\tables\\main_structural_recoverability.tex"
     },
     {
       "content": "\\input{tables/main_drag_scale_cascade.tex}",
-      "line": 250,
+      "line": 269,
       "path": "paper\\tables\\main_drag_scale_cascade.tex"
     },
     {
       "content": "\\input{tables/main_long_arc_result.tex}",
-      "line": 261,
+      "line": 280,
       "path": "paper\\tables\\main_long_arc_result.tex"
     },
     {
       "content": "\\input{tables/main_dbar_withdrawal.tex}",
-      "line": 278,
+      "line": 297,
       "path": "paper\\tables\\main_dbar_withdrawal.tex"
     }
   ],
   "auxiliary_artifacts": {
     "figures": [
+      "paper\\figures\\anchor_pair_gate_candidate_comparison.png",
       "paper\\figures\\dropout_sensitivity.png",
+      "paper\\figures\\graph_anchor_pair_gate_candidate_comparison.png",
       "paper\\figures\\hybrid_vs_ukf_improvement_hist.png",
       "paper\\figures\\observability_vs_ekf_error.png",
       "paper\\figures\\per_step_rmse.png",
@@ -715,6 +766,7 @@
     "tables": [
       "paper\\tables\\ablation.tex",
       "paper\\tables\\adaptation_risk_diagnostic.tex",
+      "paper\\tables\\anchor_pair_gate_poc.tex",
       "paper\\tables\\batch_wls_baseline.tex",
       "paper\\tables\\benchmark_suite.tex",
       "paper\\tables\\benchmark_tasks.tex",
@@ -819,6 +871,7 @@
     "classical_tuning_summary": "results/classical_tuning/classical_tuning_summary.json",
     "evaluation_manifest": "results\\manifests\\evaluation.json",
     "figures": [
+      "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
       "paper\\figures\\aukf_r_inflation_mechanism.png"
     ],
     "formal_review": "paper/FORMAL_PEER_REVIEW_2026-04-11.md",
@@ -850,6 +903,8 @@
       "paper\\tables\\main_framework_portability.tex",
       "paper\\tables\\main_findings_summary.tex",
       "paper\\tables\\main_k32_replication.tex",
+      "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+      "paper\\tables\\graph_anchor_pair_gate_poc.tex",
       "paper\\tables\\main_aukf_mechanism.tex",
       "paper\\tables\\main_structural_recoverability.tex",
       "paper\\tables\\main_drag_scale_cascade.tex",
@@ -865,6 +920,7 @@
   },
   "current_main_manuscript_artifacts": {
     "figures": [
+      "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
       "paper\\figures\\aukf_r_inflation_mechanism.png"
     ],
     "generated_tables": [
@@ -872,6 +928,8 @@
       "paper\\tables\\main_framework_portability.tex",
       "paper\\tables\\main_findings_summary.tex",
       "paper\\tables\\main_k32_replication.tex",
+      "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+      "paper\\tables\\graph_anchor_pair_gate_poc.tex",
       "paper\\tables\\main_aukf_mechanism.tex",
       "paper\\tables\\main_structural_recoverability.tex",
       "paper\\tables\\main_drag_scale_cascade.tex",
@@ -1219,14 +1277,24 @@
     "active_figure_environment_lines": [
       {
         "content": "\\begin{figure}[t]",
-        "line": 204,
+        "line": 197,
+        "path": "paper\\main.tex"
+      },
+      {
+        "content": "\\begin{figure}[t]",
+        "line": 223,
         "path": "paper\\main.tex"
       }
     ],
     "active_figure_line_evidence": [
       {
+        "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+        "line": 199,
+        "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+      },
+      {
         "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-        "line": 206,
+        "line": 225,
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
       }
     ],
@@ -1252,34 +1320,47 @@
         "path": "paper\\tables\\main_k32_replication.tex"
       },
       {
+        "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+        "line": 193,
+        "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+      },
+      {
+        "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+        "line": 195,
+        "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+      },
+      {
         "content": "\\input{tables/main_aukf_mechanism.tex}",
-        "line": 211,
+        "line": 230,
         "path": "paper\\tables\\main_aukf_mechanism.tex"
       },
       {
         "content": "\\input{tables/main_structural_recoverability.tex}",
-        "line": 246,
+        "line": 265,
         "path": "paper\\tables\\main_structural_recoverability.tex"
       },
       {
         "content": "\\input{tables/main_drag_scale_cascade.tex}",
-        "line": 250,
+        "line": 269,
         "path": "paper\\tables\\main_drag_scale_cascade.tex"
       },
       {
         "content": "\\input{tables/main_long_arc_result.tex}",
-        "line": 261,
+        "line": 280,
         "path": "paper\\tables\\main_long_arc_result.tex"
       },
       {
         "content": "\\input{tables/main_dbar_withdrawal.tex}",
-        "line": 278,
+        "line": 297,
         "path": "paper\\tables\\main_dbar_withdrawal.tex"
       }
     ],
     "figures": {
+      "paper\\figures\\anchor_pair_gate_candidate_comparison.png": "historical_auxiliary",
       "paper\\figures\\aukf_r_inflation_mechanism.png": "main_includegraphics",
       "paper\\figures\\dropout_sensitivity.png": "historical_auxiliary",
+      "paper\\figures\\graph_anchor_pair_gate_candidate_comparison.png": "historical_auxiliary",
+      "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png": "main_includegraphics",
       "paper\\figures\\hybrid_vs_ukf_improvement_hist.png": "release_only_diagnostic",
       "paper\\figures\\observability_vs_ekf_error.png": "release_only_diagnostic",
       "paper\\figures\\per_step_rmse.png": "supplement_input",
@@ -1309,6 +1390,8 @@
     "tables": {
       "paper\\tables\\ablation.tex": "supplement_input",
       "paper\\tables\\adaptation_risk_diagnostic.tex": "supplement_input",
+      "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex": "main_input",
+      "paper\\tables\\anchor_pair_gate_poc.tex": "historical_auxiliary",
       "paper\\tables\\batch_wls_baseline.tex": "historical_auxiliary",
       "paper\\tables\\benchmark_suite.tex": "supplement_input",
       "paper\\tables\\benchmark_tasks.tex": "supplement_input",
@@ -1335,6 +1418,7 @@
       "paper\\tables\\force_mismatch_mechanism.tex": "supplement_input",
       "paper\\tables\\force_mismatch_significance.tex": "supplement_input",
       "paper\\tables\\force_model_mismatch.tex": "supplement_input",
+      "paper\\tables\\graph_anchor_pair_gate_poc.tex": "main_input",
       "paper\\tables\\graph_matched_control.tex": "supplement_input",
       "paper\\tables\\hifi_force_mismatch.tex": "supplement_input",
       "paper\\tables\\hifi_force_mismatch_extended.tex": "supplement_input",
@@ -1417,7 +1501,7 @@
     "config_path": "configs/experiment.yaml",
     "config_sha256": "dd941062a09cee590256228fecee54200c8642add324570ddf1eead28534543f",
     "runtime_execution_boundary": "Machine-specific execution details are omitted from this reviewer-facing summary; raw run records retain their original metadata.",
-    "source_snapshot_sha256": "3022b4299b345abcebccf2790f066856ad998c4bed3068df51d8971ee770f2d3",
+    "source_snapshot_sha256": "721d19444b826366533bc8ec07e8dff3bac3efc2cf4437e8b2af553865107f9c",
     "vcs": {
       "available": true,
       "backend": "git",
@@ -1428,8 +1512,13 @@
   "release_metadata": {
     "active_figure_line_evidence": [
       {
+        "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+        "line": 199,
+        "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+      },
+      {
         "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-        "line": 206,
+        "line": 225,
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
       }
     ],
@@ -1455,35 +1544,45 @@
         "path": "paper\\tables\\main_k32_replication.tex"
       },
       {
+        "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+        "line": 193,
+        "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+      },
+      {
+        "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+        "line": 195,
+        "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+      },
+      {
         "content": "\\input{tables/main_aukf_mechanism.tex}",
-        "line": 211,
+        "line": 230,
         "path": "paper\\tables\\main_aukf_mechanism.tex"
       },
       {
         "content": "\\input{tables/main_structural_recoverability.tex}",
-        "line": 246,
+        "line": 265,
         "path": "paper\\tables\\main_structural_recoverability.tex"
       },
       {
         "content": "\\input{tables/main_drag_scale_cascade.tex}",
-        "line": 250,
+        "line": 269,
         "path": "paper\\tables\\main_drag_scale_cascade.tex"
       },
       {
         "content": "\\input{tables/main_long_arc_result.tex}",
-        "line": 261,
+        "line": 280,
         "path": "paper\\tables\\main_long_arc_result.tex"
       },
       {
         "content": "\\input{tables/main_dbar_withdrawal.tex}",
-        "line": 278,
+        "line": 297,
         "path": "paper\\tables\\main_dbar_withdrawal.tex"
       }
     ],
-    "main_figure_count": 1,
-    "main_figure_environment_count": 1,
-    "main_figure_include_count": 1,
-    "main_generated_table_count": 9,
+    "main_figure_count": 2,
+    "main_figure_environment_count": 2,
+    "main_figure_include_count": 2,
+    "main_generated_table_count": 11,
     "main_inline_table_count": 0
   },
   "release_packet_truth_sync": {
@@ -1491,14 +1590,24 @@
       "active_figure_environment_lines": [
         {
           "content": "\\begin{figure}[t]",
-          "line": 204,
+          "line": 197,
+          "path": "paper\\main.tex"
+        },
+        {
+          "content": "\\begin{figure}[t]",
+          "line": 223,
           "path": "paper\\main.tex"
         }
       ],
       "active_includegraphics_lines": [
         {
+          "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+          "line": 199,
+          "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+        },
+        {
           "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-          "line": 206,
+          "line": 225,
           "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
         }
       ],
@@ -1524,28 +1633,38 @@
           "path": "paper\\tables\\main_k32_replication.tex"
         },
         {
+          "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+          "line": 193,
+          "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+        },
+        {
+          "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+          "line": 195,
+          "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+        },
+        {
           "content": "\\input{tables/main_aukf_mechanism.tex}",
-          "line": 211,
+          "line": 230,
           "path": "paper\\tables\\main_aukf_mechanism.tex"
         },
         {
           "content": "\\input{tables/main_structural_recoverability.tex}",
-          "line": 246,
+          "line": 265,
           "path": "paper\\tables\\main_structural_recoverability.tex"
         },
         {
           "content": "\\input{tables/main_drag_scale_cascade.tex}",
-          "line": 250,
+          "line": 269,
           "path": "paper\\tables\\main_drag_scale_cascade.tex"
         },
         {
           "content": "\\input{tables/main_long_arc_result.tex}",
-          "line": 261,
+          "line": 280,
           "path": "paper\\tables\\main_long_arc_result.tex"
         },
         {
           "content": "\\input{tables/main_dbar_withdrawal.tex}",
-          "line": 278,
+          "line": 297,
           "path": "paper\\tables\\main_dbar_withdrawal.tex"
         }
       ]
@@ -1572,7 +1691,7 @@
   },
   "status_evidence": {
     "active_artifact_generation": {
-      "active_artifact_count": 10,
+      "active_artifact_count": 13,
       "active_artifacts": [
         {
           "after_sha256": "2841df27ce12aff41da027f148d7fa1f31041f72f15ef24925fb0dc4583b0743",
@@ -1596,18 +1715,18 @@
           "text_normalized_match": true
         },
         {
-          "after_sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06",
+          "after_sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567",
           "attempted": true,
-          "before_bytes": 2918,
-          "before_sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06",
+          "before_bytes": 3185,
+          "before_sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567",
           "builder": "scripts/build_paper_assets.py::build_main_framework_portability_table",
           "byte_match": true,
-          "bytes": 2918,
+          "bytes": 3185,
           "check_only": true,
           "comparison_mode": "byte_sha256",
           "exit_code": 0,
-          "generated_bytes": 2918,
-          "generated_sha256": "74aafc887179706dd5b1dbde6b050f6d5ab457b51f05e531720033ce34992f06",
+          "generated_bytes": 3185,
+          "generated_sha256": "e70b5dd8b6c1542516700eb5e9d49f7773078d027a0ec6e698faf14dd6258567",
           "generation_step": "regenerate_active_manuscript_check",
           "output_path": "paper\\tables\\main_framework_portability.tex",
           "path": "paper\\tables\\main_framework_portability.tex",
@@ -1617,18 +1736,18 @@
           "text_normalized_match": true
         },
         {
-          "after_sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80",
+          "after_sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc",
           "attempted": true,
-          "before_bytes": 2493,
-          "before_sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80",
+          "before_bytes": 2622,
+          "before_sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc",
           "builder": "scripts/build_paper_assets.py::build_main_findings_summary_table",
           "byte_match": true,
-          "bytes": 2493,
+          "bytes": 2622,
           "check_only": true,
           "comparison_mode": "byte_sha256",
           "exit_code": 0,
-          "generated_bytes": 2493,
-          "generated_sha256": "e9fa04ee2230b1b8442c454266d248335a5fb999f52dbbc248c060a964894e80",
+          "generated_bytes": 2622,
+          "generated_sha256": "1abfd7671443e6e1010119457b09eff4f1f55b966e0abb37524f2fd90e5237cc",
           "generation_step": "regenerate_active_manuscript_check",
           "output_path": "paper\\tables\\main_findings_summary.tex",
           "path": "paper\\tables\\main_findings_summary.tex",
@@ -1767,16 +1886,16 @@
               "sha256": "d7fc30d8a09c1f96f333e26eacbb98032d716b8d68f37487fbc9d5c56a4d9718"
             },
             {
-              "bytes": 107897,
+              "bytes": 108011,
               "exists": true,
               "path": "results\\validation\\archive_extracted_reproduction.json",
-              "sha256": "b84fd2785427ff1cbe420055b408477c114c6c2ead48db35d6cc71f3c75cf8e8"
+              "sha256": "f2051b90d1916029ec940593202b75c4fe6e99228a7459ba4ba65cd46f5e035e"
             },
             {
               "bytes": 14912,
               "exists": true,
               "path": "results\\validation\\archive_extracted_real_slr_sp3_od_slice_rerun.json",
-              "sha256": "4fafed9b1c3ceb685be9e09367d4e2c9c806ee823513fc9b7838760b405506ee"
+              "sha256": "4262cdbcbb983c00128645549d82a2c26b2a1c681c916be1cdb2d84700a4af66"
             }
           ],
           "status": "pass",
@@ -1811,6 +1930,74 @@
               "exists": true,
               "path": "release\\predeclarations\\observed_step_prospective_replication_loop71.json",
               "sha256": "367639416c148d2ca42018ddee9a4930b7c03470b25dea2368f474e17021dd66"
+            }
+          ],
+          "status": "pass",
+          "text_normalized_match": true
+        },
+        {
+          "after_sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c",
+          "attempted": true,
+          "before_bytes": 3771,
+          "before_sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c",
+          "builder": "scripts/build_paper_assets.py::build_adaptive_candidate_fusion_full_training_poc_table",
+          "byte_match": true,
+          "bytes": 3771,
+          "check_only": true,
+          "comparison_mode": "byte_sha256",
+          "exit_code": 0,
+          "generated_bytes": 3771,
+          "generated_sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c",
+          "generation_step": "regenerate_active_manuscript_check",
+          "output_path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+          "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+          "preexisting_match": true,
+          "source_artifacts": [
+            {
+              "bytes": 88556,
+              "exists": true,
+              "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+              "sha256": "b939b4058cd6f7e2e5e809eec0506dbf565f9dac2a5710c1d3a6b60ccc288d69"
+            },
+            {
+              "bytes": 377202,
+              "exists": true,
+              "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624\\summary.json",
+              "sha256": "e967d4278bb0ed32beb02038bd77d05a4122723ee9866ad388b4ad2d8beb0360"
+            },
+            {
+              "bytes": 606631,
+              "exists": true,
+              "path": "scripts\\build_paper_assets.py",
+              "sha256": "899c0471a6f8b430e8b593fdef1f2fde2516a0e9d1b0a0636263692fec36d284"
+            }
+          ],
+          "status": "pass",
+          "text_normalized_match": true
+        },
+        {
+          "after_sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7",
+          "attempted": true,
+          "before_bytes": 3408,
+          "before_sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7",
+          "builder": "scripts/build_paper_assets.py::build_graph_anchor_pair_gate_poc_table",
+          "byte_match": true,
+          "bytes": 3408,
+          "check_only": true,
+          "comparison_mode": "byte_sha256",
+          "exit_code": 0,
+          "generated_bytes": 3408,
+          "generated_sha256": "3d89eb32e5c1a93613c5786663ba4633eddcd33b18e7513de44ee4219f1c31a7",
+          "generation_step": "regenerate_active_manuscript_check",
+          "output_path": "paper\\tables\\graph_anchor_pair_gate_poc.tex",
+          "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex",
+          "preexisting_match": true,
+          "source_artifacts": [
+            {
+              "bytes": 606631,
+              "exists": true,
+              "path": "scripts\\build_paper_assets.py",
+              "sha256": "899c0471a6f8b430e8b593fdef1f2fde2516a0e9d1b0a0636263692fec36d284"
             }
           ],
           "status": "pass",
@@ -2017,99 +2204,50 @@
           "text_normalized_match": true
         },
         {
-          "after_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
+          "after_sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb",
           "attempted": true,
-          "before_bytes": 223380,
-          "before_sha256": "8c204a4bc6cfdd49007ee257494ef8adfc30b6231044f82094edfc72459599f4",
+          "before_bytes": 58393,
+          "before_sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb",
           "builder": "scripts/render_publication_figures.py::render_publication_figures",
-          "byte_match": false,
-          "bytes": 223380,
+          "byte_match": true,
+          "bytes": 58393,
           "check_only": true,
-          "comparison_mode": "png_visual_content_v1",
-          "difference": {
-            "image_comparison_mode": "png_visual_content_v1",
-            "image_comparison_status": "pass",
-            "note": "Byte hashes differ, but scoped PNG visual-content metrics match within the recorded thresholds."
-          },
+          "comparison_mode": "byte_sha256",
+          "exit_code": 0,
+          "generated_bytes": 58393,
+          "generated_sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb",
+          "generation_step": "regenerate_active_manuscript_check",
+          "output_path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
+          "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
+          "preexisting_match": true,
+          "source_artifacts": [
+            {
+              "bytes": 20451,
+              "exists": true,
+              "path": "scripts\\render_publication_figures.py",
+              "sha256": "feef4a25d516bb575b91414e237138147bfb8511b1fbb7ee75f8b270de28b589"
+            }
+          ],
+          "status": "pass",
+          "text_normalized_match": false
+        },
+        {
+          "after_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+          "attempted": true,
+          "before_bytes": 195179,
+          "before_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
+          "builder": "scripts/render_publication_figures.py::render_publication_figures",
+          "byte_match": true,
+          "bytes": 195179,
+          "check_only": true,
+          "comparison_mode": "byte_sha256",
           "exit_code": 0,
           "generated_bytes": 195179,
           "generated_sha256": "8056f47de7c6ea193a847024968d5502a5333c442375959d6b0518b7c4bb69e3",
           "generation_step": "regenerate_active_manuscript_check",
-          "image_comparison": {
-            "current": {
-              "canonical_mode": "RGBA",
-              "decoded_pixel_bytes": 14596512,
-              "decoded_pixel_sha256": "4785a8338b3198f363e5609b03026ef45a4401d3e395482edda3787031beaf6d",
-              "format": "PNG",
-              "mode": "RGBA",
-              "size_px": [
-                2436,
-                1498
-              ]
-            },
-            "decision": "visual_metric_match",
-            "decoded_byte_count_match": false,
-            "format_match": true,
-            "generated": {
-              "canonical_mode": "RGBA",
-              "decoded_pixel_bytes": 14648960,
-              "decoded_pixel_sha256": "beca12cec503aa3079a7559e9f80d14142979de3c7fbc842895b7c87f5291a82",
-              "format": "PNG",
-              "mode": "RGBA",
-              "size_px": [
-                2435,
-                1504
-              ]
-            },
-            "mode": "png_visual_content_v1",
-            "pixel_hash_match": false,
-            "size_match": false,
-            "status": "pass",
-            "visual": {
-              "aspect_ratio_delta": 0.007152266852256783,
-              "checks": {
-                "aspect_ratio_delta": true,
-                "downsample_pixel_fraction_gt_64": true,
-                "downsample_rgb_mae": true,
-                "downsample_rgb_rmse": true,
-                "height_delta_fraction": true,
-                "width_delta_fraction": true
-              },
-              "current_size_px": [
-                2436,
-                1498
-              ],
-              "downsample_max_channel_abs_diff": 184,
-              "downsample_pixel_fraction_gt_64": 0.015713276836158193,
-              "downsample_rgb_mae": 4.904602165725048,
-              "downsample_rgb_rmse": 13.598045393079149,
-              "downsample_size_px": [
-                192,
-                118
-              ],
-              "generated_size_px": [
-                2435,
-                1504
-              ],
-              "height_delta_fraction": 0.003989361702127659,
-              "match": true,
-              "thresholds": {
-                "downsample_width_px": 192,
-                "max_aspect_ratio_delta": 0.012,
-                "max_downsample_pixel_fraction_gt_64": 0.025,
-                "max_downsample_rgb_mae": 7.0,
-                "max_downsample_rgb_rmse": 18.0,
-                "max_height_delta_fraction": 0.01,
-                "max_width_delta_fraction": 0.01
-              },
-              "width_delta_fraction": 0.00041050903119868636
-            },
-            "visual_comparison_allowed": true
-          },
-          "image_content_match": true,
           "output_path": "paper\\figures\\aukf_r_inflation_mechanism.png",
           "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
-          "preexisting_match": false,
+          "preexisting_match": true,
           "source_artifacts": [
             {
               "bytes": 3536,
@@ -2130,8 +2268,13 @@
       ],
       "active_figures_from_main_tex": [
         {
+          "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+          "line": 201,
+          "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+        },
+        {
           "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-          "line": 206,
+          "line": 227,
           "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
         }
       ],
@@ -2157,28 +2300,38 @@
           "path": "paper\\tables\\main_k32_replication.tex"
         },
         {
+          "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+          "line": 195,
+          "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+        },
+        {
+          "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+          "line": 197,
+          "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+        },
+        {
           "content": "\\input{tables/main_aukf_mechanism.tex}",
-          "line": 211,
+          "line": 232,
           "path": "paper\\tables\\main_aukf_mechanism.tex"
         },
         {
           "content": "\\input{tables/main_structural_recoverability.tex}",
-          "line": 246,
+          "line": 267,
           "path": "paper\\tables\\main_structural_recoverability.tex"
         },
         {
           "content": "\\input{tables/main_drag_scale_cascade.tex}",
-          "line": 250,
+          "line": 271,
           "path": "paper\\tables\\main_drag_scale_cascade.tex"
         },
         {
           "content": "\\input{tables/main_long_arc_result.tex}",
-          "line": 261,
+          "line": 282,
           "path": "paper\\tables\\main_long_arc_result.tex"
         },
         {
           "content": "\\input{tables/main_dbar_withdrawal.tex}",
-          "line": 278,
+          "line": 299,
           "path": "paper\\tables\\main_dbar_withdrawal.tex"
         }
       ],
@@ -2191,10 +2344,10 @@
         "uses_current_interpreter": true,
         "uses_current_repository_source": true
       },
-      "generated_utc": "2026-06-17T22:47:09.228419+00:00",
+      "generated_utc": "2026-06-24T02:49:52.667454+00:00",
       "mismatch_count": 0,
       "one_step_harness": "regenerate_active_manuscript_check",
-      "pass_count": 10,
+      "pass_count": 13,
       "regeneration_complete": true,
       "scope_boundary": "Regenerates active paper/main.tex table/figure artifacts from materialized repository result artifacts only; does not claim full raw-data, model-training, filter-estimation, live-public-data, or independent end-to-end reproduction outside the supplied archive.",
       "status": "pass"
@@ -2202,14 +2355,24 @@
     "active_figure_environment_lines": [
       {
         "content": "\\begin{figure}[t]",
-        "line": 204,
+        "line": 197,
+        "path": "paper\\main.tex"
+      },
+      {
+        "content": "\\begin{figure}[t]",
+        "line": 223,
         "path": "paper\\main.tex"
       }
     ],
     "active_figure_include_lines": [
       {
+        "content": "\\includegraphics[width=\\linewidth]{figures/graph_anchor_pair_gate_seed_sweep_aggregate.png}",
+        "line": 199,
+        "path": "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png"
+      },
+      {
         "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-        "line": 206,
+        "line": 225,
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
       }
     ],
@@ -2235,44 +2398,57 @@
         "path": "paper\\tables\\main_k32_replication.tex"
       },
       {
+        "content": "\\input{tables/adaptive_candidate_fusion_full_training_poc.tex}",
+        "line": 193,
+        "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex"
+      },
+      {
+        "content": "\\input{tables/graph_anchor_pair_gate_poc.tex}",
+        "line": 195,
+        "path": "paper\\tables\\graph_anchor_pair_gate_poc.tex"
+      },
+      {
         "content": "\\input{tables/main_aukf_mechanism.tex}",
-        "line": 211,
+        "line": 230,
         "path": "paper\\tables\\main_aukf_mechanism.tex"
       },
       {
         "content": "\\input{tables/main_structural_recoverability.tex}",
-        "line": 246,
+        "line": 265,
         "path": "paper\\tables\\main_structural_recoverability.tex"
       },
       {
         "content": "\\input{tables/main_drag_scale_cascade.tex}",
-        "line": 250,
+        "line": 269,
         "path": "paper\\tables\\main_drag_scale_cascade.tex"
       },
       {
         "content": "\\input{tables/main_long_arc_result.tex}",
-        "line": 261,
+        "line": 280,
         "path": "paper\\tables\\main_long_arc_result.tex"
       },
       {
         "content": "\\input{tables/main_dbar_withdrawal.tex}",
-        "line": 278,
+        "line": 297,
         "path": "paper\\tables\\main_dbar_withdrawal.tex"
       }
     ],
-    "last_generation_harness_update_utc": "2026-06-17T22:47:09.228419+00:00",
-    "main_figure_count": 1,
-    "main_figure_environment_count": 1,
-    "main_figure_include_count": 1,
+    "last_generation_harness_update_utc": "2026-06-24T02:49:52.667454+00:00",
+    "main_figure_count": 2,
+    "main_figure_environment_count": 2,
+    "main_figure_include_count": 2,
     "main_figure_includes": [
+      "paper\\figures\\graph_anchor_pair_gate_seed_sweep_aggregate.png",
       "paper\\figures\\aukf_r_inflation_mechanism.png"
     ],
-    "main_generated_table_count": 9,
+    "main_generated_table_count": 11,
     "main_generated_table_inputs": [
       "paper\\tables\\main_abbreviation_glossary.tex",
       "paper\\tables\\main_framework_portability.tex",
       "paper\\tables\\main_findings_summary.tex",
       "paper\\tables\\main_k32_replication.tex",
+      "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
+      "paper\\tables\\graph_anchor_pair_gate_poc.tex",
       "paper\\tables\\main_aukf_mechanism.tex",
       "paper\\tables\\main_structural_recoverability.tex",
       "paper\\tables\\main_drag_scale_cascade.tex",

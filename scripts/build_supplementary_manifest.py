@@ -23,8 +23,35 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 
-PACKAGE_VERSION = "1.1.0-supplement"
+PACKAGE_VERSION = "1.2.2-acf-audit"
 REVIEW_ARCHIVE_REL = "release/spot_od_v1_1_0_supplement_review_archive.zip"
+SUPPLEMENTARY_MANIFEST_REL = "release/SUPPLEMENTARY_MANIFEST.json"
+RELEASE_LEVEL_RECORD_RELS = {
+    SUPPLEMENTARY_MANIFEST_REL,
+    REVIEW_ARCHIVE_REL,
+}
+PUBLIC_GITHUB_REPOSITORY = "https://github.com/Alavi1412/spot-od-reproduction"
+PUBLIC_RELEASE_TAG = "v1.2.2-acf-audit"
+PUBLIC_GITHUB_RELEASE = f"{PUBLIC_GITHUB_REPOSITORY}/releases/tag/{PUBLIC_RELEASE_TAG}"
+RELEASE_TITLE = "SPOT-OD v1.2.2 ACF audit release"
+V122_DOI_STATUS = "pending; fill after Zenodo mints the v1.2.2 DOI"
+V121_HISTORICAL_DOI = "10.5281/zenodo.20811701"
+V121_HISTORICAL_ZENODO_RECORD = "https://zenodo.org/records/20811701"
+ACF_AUDIT_SCOPE_BOUNDARY = (
+    "Release-support evidence for reviewer inspection and the ACF "
+    "validation-selected compact-simulator PoC/audit-table evidence tier; not "
+    "operational precise-reference validation, not independent-machine "
+    "reproduction, not third-party validation, not a full scientific rerun, "
+    "not full raw/training/all-filter reproduction, and not universal "
+    "learned-OD superiority."
+)
+RELEASE_DESCRIPTION = (
+    "Version-pinned supplementary evidence package for the simulator-bound "
+    "SPOT-OD sparse-visibility orbit-determination self-audit record. This "
+    f"v1.2.2 ACF audit release targets {PUBLIC_GITHUB_RELEASE}; its Zenodo "
+    f"DOI is {V122_DOI_STATUS}. The prior public v1.2.1 DOI is "
+    f"{V121_HISTORICAL_DOI}. {ACF_AUDIT_SCOPE_BOUNDARY}"
+)
 ARCHIVE_MEMBER_TIMESTAMP = (2026, 5, 19, 0, 0, 0)
 TARGETED_RETRAINING_REPLAY_ENTRYPOINT = {
     "script": "scripts/run_targeted_retraining_replay.py",
@@ -151,6 +178,7 @@ REVIEW_ARCHIVE_FORBIDDEN_TOKEN_REPLACEMENTS = (
     ("historical_docs", "review_records"),
 )
 REVIEW_ARCHIVE_RAW_REQUIRED_RELS: set[str] = {
+    "paper/tables/graph_anchor_pair_gate_poc.tex",
     "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
     "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json",
     "results/validation/submission_validation.json",
@@ -297,22 +325,39 @@ ILRS_PRECISE_REFERENCE_AVAILABILITY_PROBE_BOUNDARY = (
     "products are classified as valid gzip/SP3 products and the frozen "
     "campaign command is actually run."
 )
-INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM = (
+GITHUB_ACTIONS_REPRODUCTION_ROUTE_CLAIM = (
     "independent_machine_reproduction_request"
 )
-INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_PATHS = [
+GITHUB_ACTIONS_REPRODUCTION_ROUTE_PATHS = [
     "release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
-    ".gitlab-ci.yml",
+    ".github/workflows/archive-extracted-reproduction.yml",
 ]
-INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_BOUNDARY = (
-    "Third-party clean-machine reproduction request/template only, with an "
-    "optional private GitLab CI route; not a completed independent "
-    "reproduction, not a passed CI attestation, not third-party validation, "
-    "not scored external validation, not DOI/public archive evidence, and "
-    "not operational POD. Passed GitLab job artifacts must be attached or "
-    "cited before making an independent-machine reproduction claim from the "
-    "CI route."
+GITHUB_ACTIONS_REPRODUCTION_ROUTE_BOUNDARY = (
+    "Clean-machine reproduction request/template only, with a GitHub Actions "
+    "archive-extracted verifier route/request only; maintainer-run platform "
+    "evidence when executed, not a completed independent reproduction, not "
+    "third-party validation, not scored external validation, not DOI/public "
+    "archive evidence, not operational POD, and not a full scientific rerun. "
+    "Passed GitHub Actions artifacts must be attached or cited before "
+    "claiming maintainer-run platform verifier evidence from the route."
 )
+INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_CLAIM = (
+    GITHUB_ACTIONS_REPRODUCTION_ROUTE_CLAIM
+)
+INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_PATHS = (
+    GITHUB_ACTIONS_REPRODUCTION_ROUTE_PATHS
+)
+INDEPENDENT_MACHINE_REPRODUCTION_REQUEST_BOUNDARY = (
+    GITHUB_ACTIONS_REPRODUCTION_ROUTE_BOUNDARY
+)
+ADAPTIVE_CANDIDATE_FUSION_FULL_TRAINING_POC_SOURCE_PATHS = [
+    "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+    "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md",
+    "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv",
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json",
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md",
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.csv",
+]
 
 # Curated evidence artifacts grouped by role.  Paths are archive-relative.
 ARTIFACT_GROUPS: dict[str, list[str]] = {
@@ -334,7 +379,11 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "paper/tables/main_aukf_mechanism.tex",
         "paper/tables/main_long_arc_result.tex",
         "paper/tables/main_dbar_withdrawal.tex",
+        "paper/tables/graph_anchor_pair_gate_poc.tex",
+        "paper/tables/adaptive_candidate_fusion_full_training_poc.tex",
+        *ADAPTIVE_CANDIDATE_FUSION_FULL_TRAINING_POC_SOURCE_PATHS,
         "paper/figures/aukf_r_inflation_mechanism.png",
+        "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png",
     ],
     "reviewer_access_documentation": [
         "release/README.md",
@@ -786,6 +835,10 @@ def safe_claim_paths(paths: list[str]) -> list[str]:
     return [review_safe_path(path) for path in paths]
 
 
+def is_release_level_record(path: str) -> bool:
+    return path.replace("\\", "/") in RELEASE_LEVEL_RECORD_RELS
+
+
 def describe(rel_path: str) -> dict:
     p = ROOT / rel_path
     exists = p.exists() and p.is_file()
@@ -906,7 +959,11 @@ def write_review_archive(entries: list[dict]) -> dict:
     """
     archive_path = ROOT / REVIEW_ARCHIVE_REL
     archive_path.parent.mkdir(parents=True, exist_ok=True)
-    included = [entry for entry in entries if entry.get("exists")]
+    included = [
+        entry
+        for entry in entries
+        if entry.get("exists") and not is_release_level_record(entry["path"])
+    ]
     with zipfile.ZipFile(
         archive_path,
         "w",
@@ -935,7 +992,9 @@ def write_review_archive(entries: list[dict]) -> dict:
         "note": (
             "Review-stage transport archive generated from the indexed "
             "supplementary evidence artifacts. The archive itself is not "
-            "included in artifact_count."
+            "included in artifact_count, and the paired release manifest is "
+            "kept outside the ZIP to avoid a self-referential/stale manifest "
+            "member."
         ),
     }
 
@@ -1048,6 +1107,14 @@ def main() -> int:
         groups["archive_extracted_real_slr_sp3_od_slice_rerun_validation"] = [
             describe(rel) for rel in archive_extracted_od_rels
         ]
+    groups = {
+        group: [
+            entry
+            for entry in entries
+            if not is_release_level_record(entry["path"])
+        ]
+        for group, entries in groups.items()
+    }
     all_entries = [e for entries in groups.values() for e in entries]
     public_groups = {
         group: [public_manifest_entry(entry) for entry in entries]
@@ -1078,7 +1145,9 @@ def main() -> int:
 
     manifest = {
         "package": "SPOT-OD supplementary evidence package",
+        "title": RELEASE_TITLE,
         "version": PACKAGE_VERSION,
+        "description": RELEASE_DESCRIPTION,
         "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "manuscript_title": (
             "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for "
@@ -1109,28 +1178,60 @@ def main() -> int:
             "observed_step_powered_stress_replication": K96_TEMPORAL_ORDERING_EVIDENCE,
         },
         "dependency_provenance": dependency_provenance,
-        "public_identifier": None,
+        "public_identifier": PUBLIC_GITHUB_RELEASE,
+        "public_identifier_type": "GitHub release URL; v1.2.2 Zenodo DOI pending",
         "public_identifier_note": (
-            "No external public repository or DOI is asserted; this "
-            "version-pinned, anonymized package is included with the "
-            "submission for reviewer-accessible independent inspection. Public "
-            "archival deposition is deferred until explicit author approval "
-            "or a venue-required release point."
+            f"GitHub repository is {PUBLIC_GITHUB_REPOSITORY}; release target "
+            f"is {PUBLIC_GITHUB_RELEASE}. The v1.2.2 Zenodo DOI is "
+            f"{V122_DOI_STATUS}. The prior public v1.2.1 DOI is "
+            f"{V121_HISTORICAL_DOI} and is retained only as prior-version "
+            "history, not as the v1.2.2 identifier."
         ),
         "public_archive_commitment": (
-            "If public archival deposition is explicitly approved by the authors "
-            "or required by the venue, the authors will deposit the final "
-            "versioned evidence package and record the assigned public identifier "
-            "in README.md, CITATION.cff, and this manifest before any public "
-            "citation of the archive."
+            f"Release metadata targets GitHub tag {PUBLIC_RELEASE_TAG} at "
+            f"{PUBLIC_GITHUB_RELEASE}. Fill the v1.2.2 Zenodo DOI, Zenodo "
+            "record URL, GitHub asset byte count, GitHub asset SHA-256, and "
+            "publication-status fields only after Zenodo/GitHub publish those "
+            f"concrete records. The prior v1.2.1 DOI {V121_HISTORICAL_DOI} "
+            "remains prior-version history only."
         ),
         "post_acceptance_public_archive_commitment": (
-            "If public archival deposition is explicitly approved by the authors "
-            "or required by the venue, the authors will deposit the final "
-            "versioned evidence package and record the assigned public identifier "
-            "in README.md, CITATION.cff, and this manifest before any public "
-            "citation of the archive."
+            "Public citation of this release should use the minted v1.2.2 "
+            "Zenodo DOI/record once available, paired with the GitHub release "
+            f"target {PUBLIC_RELEASE_TAG}. Until then, the asserted public "
+            f"target is {PUBLIC_GITHUB_RELEASE}; the prior v1.2.1 DOI "
+            f"{V121_HISTORICAL_DOI} remains prior-version history only."
         ),
+        "public_archive_release": {
+            "title": RELEASE_TITLE,
+            "github_repository": PUBLIC_GITHUB_REPOSITORY,
+            "github_release_target": PUBLIC_GITHUB_RELEASE,
+            "release_tag": PUBLIC_RELEASE_TAG,
+            "doi_status": V122_DOI_STATUS,
+            "zenodo_record": None,
+            "doi": None,
+            "doi_url": None,
+            "publication_status_note": (
+                "No completed v1.2.2 publication status is asserted by this "
+                "manifest; fill only after publication occurs."
+            ),
+            "pending_fields": [
+                "v1.2.2 Zenodo DOI",
+                "v1.2.2 Zenodo record URL",
+                "v1.2.2 GitHub release asset byte count",
+                "v1.2.2 GitHub release asset SHA-256",
+                "v1.2.2 publication status",
+            ],
+            "prior_release": {
+                "version": "1.2.1-graph-anchor-gate-poc",
+                "doi": V121_HISTORICAL_DOI,
+                "doi_url": f"https://doi.org/{V121_HISTORICAL_DOI}",
+                "zenodo_record": V121_HISTORICAL_ZENODO_RECORD,
+                "status": "historical_only",
+                "not_current_release_identifier": True,
+            },
+            "scope_boundary": ACF_AUDIT_SCOPE_BOUNDARY,
+        },
         "regeneration_tiers": {
             "minimum_integrity_check": {
                 "requires_retraining": False,
@@ -1400,6 +1501,10 @@ def main() -> int:
                 "paper/tables/main_drag_scale_cascade.tex",
                 "paper/tables/main_long_arc_result.tex",
                 "paper/tables/main_dbar_withdrawal.tex",
+                "paper/tables/graph_anchor_pair_gate_poc.tex",
+                "paper/tables/adaptive_candidate_fusion_full_training_poc.tex",
+                *ADAPTIVE_CANDIDATE_FUSION_FULL_TRAINING_POC_SOURCE_PATHS,
+                "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png",
             ],
             "archive_extracted_reproduction_tier": [
                 "release/SUPPLEMENTARY_MANIFEST.json",

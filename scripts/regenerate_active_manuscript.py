@@ -99,6 +99,14 @@ ACTIVE_TABLE_SOURCES: dict[str, list[str]] = {
     "paper/tables/main_dbar_withdrawal.tex": [
         "results/adaptation_risk_diagnostic/dbar_independent_sweep.json",
     ],
+    "paper/tables/graph_anchor_pair_gate_poc.tex": [
+        "scripts/build_paper_assets.py",
+    ],
+    "paper/tables/adaptive_candidate_fusion_full_training_poc.tex": [
+        "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
+        "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json",
+        "scripts/build_paper_assets.py",
+    ],
     "paper/tables/protocol_subset_ablation.tex": [
         "release/predeclarations/protocol_subset_ablation_loop51.json",
     ],
@@ -147,6 +155,8 @@ TABLE_BUILDERS: dict[str, str] = {
     "paper/tables/main_aukf_mechanism.tex": "build_main_aukf_mechanism_table",
     "paper/tables/main_long_arc_result.tex": "build_main_long_arc_result_table",
     "paper/tables/main_dbar_withdrawal.tex": "build_main_dbar_withdrawal_table",
+    "paper/tables/graph_anchor_pair_gate_poc.tex": "build_graph_anchor_pair_gate_poc_table",
+    "paper/tables/adaptive_candidate_fusion_full_training_poc.tex": "build_adaptive_candidate_fusion_full_training_poc_table",
     "paper/tables/protocol_subset_ablation.tex": "build_protocol_subset_ablation_table",
     "paper/tables/observed_step_prospective_replication.tex": "build_observed_step_prospective_replication_table",
     "paper/tables/seed_observed_significance.tex": "build_seed_observed_significance_table",
@@ -166,6 +176,9 @@ FIGURE_SOURCES: dict[str, list[str]] = {
     "paper/figures/aukf_r_inflation_mechanism.png": [
         "results/force_model_mismatch_adaptation_summary.json",
         "results/force_model_mismatch_adaptation_updates.csv",
+    ],
+    "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png": [
+        "scripts/render_publication_figures.py",
     ],
 }
 
@@ -203,6 +216,7 @@ FIGURE_RENDERERS: dict[str, str] = {
     "paper/figures/visibility_bucket_rmse.png": "_render_visibility",
     "paper/figures/uncertainty_calibration.png": "_render_calibration",
     "paper/figures/aukf_r_inflation_mechanism.png": "_render_aukf_r_inflation_mechanism",
+    "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png": "_render_graph_anchor_pair_gate_seed_sweep_aggregate",
 }
 
 

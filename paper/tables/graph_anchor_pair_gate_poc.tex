@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\caption{Post-existing-manuscript GraphAnchorPairGate proof of concept. The method is a GNN-based station-time graph message-passing plus GRU gate over the existing \texttt{RFIS:VA\_RFIS} anchor pair, using no-truth anchor features. The metric is all-step center-window position RMSE, not the primary observed-step endpoint. Seed 7 is illustrative; the five-seed aggregate over seeds 7, 11, 13, 17, and 19 is the compact-simulator robustness evidence. Full precision is in \nolinkurl{results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_summary.csv}, \nolinkurl{results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_by_scenario.csv}, \nolinkurl{results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_paired_seed_gains.csv}, \nolinkurl{results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_uncertainty_summary.csv}, \nolinkurl{results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_seed_sweep_statistical_summary.md}, and \nolinkurl{results/graph_anchor_pair_gate_rfis_va_gpu_holdout_shift_all_candidates_seed7/graph_anchor_pair_gate_summary.csv}. These records are archived in the public \texttt{1.2.1-graph-anchor-gate-poc} package, Zenodo DOI \nolinkurl{10.5281/zenodo.20811701}, and remain outside the primary observed-step endpoint hierarchy.}
+\label{tab:graph_anchor_pair_gate_poc}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3.4cm} p{3.2cm} r r p{3.2cm} p{7.0cm}}
+\toprule
+Evidence row & Scenario/scope & GraphAnchorPairGate RMSE (m) & Best candidate RMSE (m) & Gain (\%) & Interpretation \\
+\midrule
+Seed 7, illustrative & \texttt{process\_noise\_shift\_test} & 3503.8 & \texttt{VA\_RFIS} 4065.0 & 13.81 & Beats the best candidate on this displayed seed; not the whole evidence. \\
+Seed 7, illustrative & \texttt{maneuver\_shift\_test} & 8951.0 & \texttt{RFIS} 10547.1 & 15.13 & Beats the best candidate on this displayed seed; not the whole evidence. \\
+\addlinespace
+Five-seed aggregate & \texttt{process\_noise\_shift\_test} & -- & -- & 7.95663495038935 mean & 4/5 row wins. The failure is seed 19: -2.0925251807980216\%, 5116.480181866038~m versus \texttt{VA\_RFIS} 5011.610960552836~m. \\
+Five-seed aggregate & \texttt{maneuver\_shift\_test} & -- & -- & 8.05274642630686 mean & 5/5 row wins. \\
+Paired seed-level gains & Both shift scenarios & -- & -- & +14.47, +6.08, +1.73, +12.97, +4.77 mean & Seed-level mean gains for seeds 7, 11, 13, 17, and 19; all are positive, but seed 19 does not win both scenarios because process shift fails. \\
+Binomial-style uncertainty & Both shift scenarios & -- & -- & -- & Scenario-seed row wins: 9/10, Wilson 95\% CI [0.596, 0.982], exact one-sided sign/binomial \(p=0.0107\). Paired both-scenario seed wins: 4/5, CI [0.376, 0.964], \(p=0.1875\). Positive seed-mean gains: 5/5, CI [0.566, 1.000], \(p=0.0312\). Descriptive only. \\
+Robustness comparison & Both shift scenarios & -- & -- & -- & GraphAnchorPairGate: 9/10 scenario-seed row wins and 4/5 paired seeds winning both scenarios. Earlier scalar AnchorPairGate: 7/10 row wins and 2/5 paired-seed wins. This is exploratory compact-simulator evidence, not universal, not an operational precise-reference claim, and not independent-machine reproduction. \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
