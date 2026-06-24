@@ -1,0 +1,945 @@
+{
+  "schema_version": "real_slr_sp3_temporal_corrected_od_campaign_v1",
+  "generated_utc": "2026-05-26T10:02:55Z",
+  "status": "completed",
+  "predeclared_schedule": {
+    "artifact_role": "predeclared_rule_schedule_before_scoring",
+    "candidate_set": {
+      "classical": [
+        "EKF (full correction)",
+        "UKF (full correction)",
+        "AUKF (full correction)",
+        "SP3-IC propagation (full correction)"
+      ],
+      "classical_skill_reference": [
+        "EKF (full correction)",
+        "UKF (full correction)",
+        "AUKF (full correction)"
+      ],
+      "learned": "Learned residual UKF (full correction)"
+    },
+    "claim_boundary": {
+      "appropriate_use": "A temporally frozen, full-correction real-measurement stress test of transfer under public LAGEOS CRD/SP3 data. It can reduce measurement-pipeline risk but cannot validate operational POD or the simulator-bound learned-negative claim.",
+      "can_be_used_as_central_external_validation": false,
+      "can_be_used_as_learned_estimator_skill_validation": false,
+      "can_be_used_as_operational_pod_validation": false,
+      "post_hoc_robustness_not_confirmatory": true
+    },
+    "correction_stack": {
+      "earth_orientation": "IERS finals2000A polar motion and UT1-UTC",
+      "frame": "IAU-76/80 ITRF-to-GCRS reduction",
+      "range_reductions": [
+        "Marini-Murray troposphere from CRD meteorology",
+        "LAGEOS centre-of-mass offset",
+        "relativistic Shapiro delay"
+      ]
+    },
+    "created_utc": "2026-05-26T09:05:20Z",
+    "fixed_filter_settings": {
+      "accel_psd": 1e-12,
+      "bootstrap_resamples": 5000,
+      "bootstrap_seed": 20260526,
+      "max_step_s": 30.0,
+      "range_std_m": 20.0,
+      "train_frac": 0.6
+    },
+    "learned_ridge_grid": [
+      "1e-06",
+      "1e-03",
+      "1e+00",
+      "1e+03",
+      "1e+06"
+    ],
+    "schedule": {
+      "confirmatory_status": "post_hoc_robustness",
+      "reason_for_boundary": "Later public EDC weeks were not reachable during this run; the default therefore uses already materialized formal210-style weeks and excludes the previously scored 260509 temporal-test week from scoring. It is robustness evidence only.",
+      "schedule_name": "formal210_mini_pre260509_posthoc",
+      "targets": [
+        "LAGEOS-1",
+        "LAGEOS-2"
+      ],
+      "test_arcs": [
+        {
+          "date": "20260427",
+          "sat_key": "lageos1",
+          "sp3_sat_id": "L51",
+          "sp3_week": "260502",
+          "split": "test",
+          "target": "LAGEOS-1"
+        },
+        {
+          "date": "20260427",
+          "sat_key": "lageos2",
+          "sp3_sat_id": "L52",
+          "sp3_week": "260502",
+          "split": "test",
+          "target": "LAGEOS-2"
+        }
+      ],
+      "test_weeks": [
+        "260502"
+      ],
+      "train_week_objects": [
+        {
+          "sat_key": "lageos1",
+          "sp3_sat_id": "L51",
+          "sp3_week": "260418",
+          "split": "train",
+          "target": "LAGEOS-1"
+        },
+        {
+          "sat_key": "lageos2",
+          "sp3_sat_id": "L52",
+          "sp3_week": "260418",
+          "split": "train",
+          "target": "LAGEOS-2"
+        }
+      ],
+      "train_weeks": [
+        "260418"
+      ],
+      "unused_weeks": [
+        "251220",
+        "251227",
+        "260103",
+        "260110",
+        "260117",
+        "260124",
+        "260131",
+        "260207",
+        "260214",
+        "260221",
+        "260228",
+        "260307",
+        "260314",
+        "260321",
+        "260328",
+        "260404",
+        "260411",
+        "260509"
+      ],
+      "validation_arcs": [
+        {
+          "date": "20260420",
+          "sat_key": "lageos1",
+          "sp3_sat_id": "L51",
+          "sp3_week": "260425",
+          "split": "validation",
+          "target": "LAGEOS-1"
+        },
+        {
+          "date": "20260420",
+          "sat_key": "lageos2",
+          "sp3_sat_id": "L52",
+          "sp3_week": "260425",
+          "split": "validation",
+          "target": "LAGEOS-2"
+        }
+      ],
+      "validation_weeks": [
+        "260425"
+      ],
+      "weeks": {
+        "251220": {
+          "dates": [
+            "20251215",
+            "20251216",
+            "20251217",
+            "20251218",
+            "20251219"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20251215",
+            "20251216",
+            "20251217",
+            "20251218",
+            "20251219"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "251227": {
+          "dates": [
+            "20251222",
+            "20251223",
+            "20251224",
+            "20251225",
+            "20251226"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20251222",
+            "20251223",
+            "20251224",
+            "20251225",
+            "20251226"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260103": {
+          "dates": [
+            "20251229",
+            "20251230",
+            "20251231",
+            "20260101",
+            "20260102"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20251229",
+            "20251230",
+            "20251231",
+            "20260101",
+            "20260102"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260110": {
+          "dates": [
+            "20260105",
+            "20260106",
+            "20260107",
+            "20260108",
+            "20260109"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260105",
+            "20260106",
+            "20260107",
+            "20260108",
+            "20260109"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260117": {
+          "dates": [
+            "20260112",
+            "20260113",
+            "20260114",
+            "20260115",
+            "20260116"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260112",
+            "20260113",
+            "20260114",
+            "20260115",
+            "20260116"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260124": {
+          "dates": [
+            "20260119",
+            "20260120",
+            "20260121",
+            "20260122",
+            "20260123"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260119",
+            "20260120",
+            "20260121",
+            "20260122",
+            "20260123"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260131": {
+          "dates": [
+            "20260126",
+            "20260127",
+            "20260128",
+            "20260129",
+            "20260130"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260126",
+            "20260127",
+            "20260128",
+            "20260129",
+            "20260130"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260207": {
+          "dates": [
+            "20260202",
+            "20260203",
+            "20260204",
+            "20260205",
+            "20260206"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260202",
+            "20260203",
+            "20260204",
+            "20260205",
+            "20260206"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260214": {
+          "dates": [
+            "20260209",
+            "20260210",
+            "20260211",
+            "20260212",
+            "20260213"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260209",
+            "20260210",
+            "20260211",
+            "20260212",
+            "20260213"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260221": {
+          "dates": [
+            "20260216",
+            "20260217",
+            "20260218",
+            "20260219",
+            "20260220"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260216",
+            "20260217",
+            "20260218",
+            "20260219",
+            "20260220"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260228": {
+          "dates": [
+            "20260223",
+            "20260224",
+            "20260225",
+            "20260226",
+            "20260227"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260223",
+            "20260224",
+            "20260225",
+            "20260226",
+            "20260227"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260307": {
+          "dates": [
+            "20260302",
+            "20260303",
+            "20260304",
+            "20260305",
+            "20260306"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260302",
+            "20260303",
+            "20260304",
+            "20260305",
+            "20260306"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260314": {
+          "dates": [
+            "20260309",
+            "20260310",
+            "20260311",
+            "20260312",
+            "20260313"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260309",
+            "20260310",
+            "20260311",
+            "20260312",
+            "20260313"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260321": {
+          "dates": [
+            "20260316",
+            "20260317",
+            "20260318",
+            "20260319",
+            "20260320"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260316",
+            "20260317",
+            "20260318",
+            "20260319",
+            "20260320"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260328": {
+          "dates": [
+            "20260323",
+            "20260324",
+            "20260325",
+            "20260326",
+            "20260327"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260323",
+            "20260324",
+            "20260325",
+            "20260326",
+            "20260327"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260404": {
+          "dates": [
+            "20260330",
+            "20260331",
+            "20260401",
+            "20260402",
+            "20260403"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260330",
+            "20260331",
+            "20260401",
+            "20260402",
+            "20260403"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260411": {
+          "dates": [
+            "20260406",
+            "20260407",
+            "20260408",
+            "20260409",
+            "20260410"
+          ],
+          "original_formal210_split": "preceding",
+          "source_week_dates": [
+            "20260406",
+            "20260407",
+            "20260408",
+            "20260409",
+            "20260410"
+          ],
+          "temporal_corrected_split": "unused"
+        },
+        "260418": {
+          "dates": [
+            "20260413",
+            "20260414",
+            "20260415",
+            "20260416",
+            "20260417"
+          ],
+          "original_formal210_split": "train",
+          "source_week_dates": [
+            "20260413",
+            "20260414",
+            "20260415",
+            "20260416",
+            "20260417"
+          ],
+          "temporal_corrected_split": "train"
+        },
+        "260425": {
+          "dates": [
+            "20260420"
+          ],
+          "original_formal210_split": "train",
+          "source_week_dates": [
+            "20260420",
+            "20260421",
+            "20260422",
+            "20260423",
+            "20260424"
+          ],
+          "temporal_corrected_split": "validation"
+        },
+        "260502": {
+          "dates": [
+            "20260427"
+          ],
+          "original_formal210_split": "val",
+          "source_week_dates": [
+            "20260427",
+            "20260428",
+            "20260429",
+            "20260430",
+            "20260501"
+          ],
+          "temporal_corrected_split": "test"
+        },
+        "260509": {
+          "dates": [
+            "20260504",
+            "20260505",
+            "20260506",
+            "20260507",
+            "20260508"
+          ],
+          "original_formal210_split": "test",
+          "source_week_dates": [
+            "20260504",
+            "20260505",
+            "20260506",
+            "20260507",
+            "20260508"
+          ],
+          "temporal_corrected_split": "unused"
+        }
+      }
+    },
+    "schema_version": "real_slr_sp3_temporal_corrected_od_predeclaration_v1",
+    "selection_rule": {
+      "candidate_selection": "choose the candidate with lowest validation mean arc RMSE, then score that frozen choice once on the test split",
+      "learned_hyperparameter_selection": "select ridge lambda by lowest validation mean arc RMSE",
+      "learned_model_training": "fit ridge residual-acceleration calibrators only on training-week SP3 states",
+      "primary_metric": "mean arc-level held-out SP3 position RMSE in metres on the frozen test split",
+      "test_set_information_used_for_selection": false
+    }
+  },
+  "source_artifacts": [
+    {
+      "artifact_id": "release/predeclarations/real_slr_sp3_temporal_corrected_od_campaign_20260526.json",
+      "sha256": "e97ce6144f15183f8e2309dfa49d2a8e9e3dba437abd1b3e24ff3f16eccf0d3b"
+    }
+  ],
+  "public_corpus": {
+    "targets": [
+      "LAGEOS-1",
+      "LAGEOS-2"
+    ],
+    "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+    "normal_point_source": "public ILRS CRD v2 normal points",
+    "state_reference": "independent ILRS analysis-centre SP3 precise orbit",
+    "schedule_name": "formal210_mini_pre260509_posthoc"
+  },
+  "eop_series": {
+    "archived_input_id": "finals2000A.all.csv",
+    "input_source": "archived_input",
+    "sha256": "f4a4f34c416f475ff13153f858a2bd52ffcd3945182434b09a9edfdfdd4c9917",
+    "bytes": 3946872,
+    "n_rows": 19864
+  },
+  "predeclared": {
+    "range_std_m": 20.0,
+    "accel_psd": 1e-12,
+    "train_frac": 0.6,
+    "max_step_s": 30.0,
+    "learned_candidate": "Learned residual UKF (full correction)",
+    "classical_candidate_pool": [
+      "EKF (full correction)",
+      "UKF (full correction)",
+      "AUKF (full correction)",
+      "SP3-IC propagation (full correction)"
+    ],
+    "classical_skill_reference_pool": [
+      "EKF (full correction)",
+      "UKF (full correction)",
+      "AUKF (full correction)"
+    ],
+    "learned_ridge_grid": [
+      "1e-06",
+      "1e-03",
+      "1e+00",
+      "1e+03",
+      "1e+06"
+    ],
+    "bootstrap_resamples": 5000,
+    "bootstrap_seed": 20260526
+  },
+  "learned_calibrator_fit": {
+    "schedule_name": "formal210_mini_pre260509_posthoc",
+    "training_weeks": [
+      "260418"
+    ],
+    "n_train_samples": 4028,
+    "feature_count": 16,
+    "residual_sample_step_s": 300.0,
+    "ridge_grid": [
+      "1e-06",
+      "1e-03",
+      "1e+00",
+      "1e+03",
+      "1e+06"
+    ],
+    "per_week_object_samples": [
+      {
+        "target": "LAGEOS-1",
+        "sp3_week": "260418",
+        "split": "train",
+        "n_samples": 2014
+      },
+      {
+        "target": "LAGEOS-2",
+        "sp3_week": "260418",
+        "split": "train",
+        "n_samples": 2014
+      }
+    ],
+    "sp3_used_for_fit_splits": [
+      "train"
+    ]
+  },
+  "selection_integrity": {
+    "predeclaration_artifact_required_before_scoring": true,
+    "predeclaration_sha256": "e97ce6144f15183f8e2309dfa49d2a8e9e3dba437abd1b3e24ff3f16eccf0d3b",
+    "calibrator_fit_uses_only_train_weeks": true,
+    "learned_ridge_selected_on_validation_only": true,
+    "candidate_selected_on_validation_only": true,
+    "test_set_information_used_for_selection": false,
+    "train_weeks": [
+      "260418"
+    ],
+    "validation_weeks": [
+      "260425"
+    ],
+    "test_weeks": [
+      "260502"
+    ],
+    "unused_weeks": [
+      "251220",
+      "251227",
+      "260103",
+      "260110",
+      "260117",
+      "260124",
+      "260131",
+      "260207",
+      "260214",
+      "260221",
+      "260228",
+      "260307",
+      "260314",
+      "260321",
+      "260328",
+      "260404",
+      "260411",
+      "260509"
+    ],
+    "selected_learned_ridge_lambda": "1e+06"
+  },
+  "validation": {
+    "n_arcs": 2,
+    "n_failed_or_excluded_arcs": 0,
+    "learned_ridge_mean_rms_m": {
+      "1e-06": 1159.05,
+      "1e-03": 1158.21,
+      "1e+00": 1159.58,
+      "1e+03": 1237.39,
+      "1e+06": 731.38
+    },
+    "classical_mean_rms_m": {
+      "EKF (full correction)": 875.69,
+      "UKF (full correction)": 836.58,
+      "AUKF (full correction)": 523.21,
+      "SP3-IC propagation (full correction)": 1159.24
+    },
+    "rows": [
+      {
+        "arc_id": "LAGEOS-1 20260420",
+        "target": "LAGEOS-1",
+        "date": "20260420",
+        "sp3_week": "260425",
+        "split": "validation",
+        "status": "completed",
+        "num_observations": 85,
+        "num_fit": 51,
+        "num_held_out": 34,
+        "distinct_stations": 4,
+        "provenance": {
+          "arc_id": "LAGEOS-1 20260420",
+          "target": "LAGEOS-1",
+          "date": "20260420",
+          "sp3_week": "260425",
+          "split": "validation",
+          "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+          "wavelength_nm": 532.0,
+          "num_met_records": 130,
+          "crd": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260420.np2",
+            "archived_input_id": "lageos1_20260420.np2",
+            "input_source": "archived_input",
+            "sha256": "9f7c450d13d03d88cfda8a1f073a9df4d163e4c8f1ad151a36fed248c328b919",
+            "bytes": 42274
+          },
+          "sp3": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz",
+            "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+            "input_source": "archived_input",
+            "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+            "bytes": 219210,
+            "n_epochs": 5043
+          }
+        },
+        "held_out_position_rmse_m": {
+          "EKF (full correction)": 1443.82,
+          "UKF (full correction)": 1373.22,
+          "AUKF (full correction)": 818.3,
+          "SP3-IC propagation (full correction)": 670.24,
+          "Learned residual UKF (full correction)": 1216.28
+        },
+        "best_held_out_candidate": "SP3-IC propagation (full correction)"
+      },
+      {
+        "arc_id": "LAGEOS-2 20260420",
+        "target": "LAGEOS-2",
+        "date": "20260420",
+        "sp3_week": "260425",
+        "split": "validation",
+        "status": "completed",
+        "num_observations": 51,
+        "num_fit": 30,
+        "num_held_out": 21,
+        "distinct_stations": 3,
+        "provenance": {
+          "arc_id": "LAGEOS-2 20260420",
+          "target": "LAGEOS-2",
+          "date": "20260420",
+          "sp3_week": "260425",
+          "split": "validation",
+          "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+          "wavelength_nm": 532.0,
+          "num_met_records": 65,
+          "crd": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260420.np2",
+            "archived_input_id": "lageos2_20260420.np2",
+            "input_source": "archived_input",
+            "sha256": "f7eb1cff09daac3045753d001d47ac7f1d30e3cf6b5f49fa68fd01c74de9ca9e",
+            "bytes": 21216
+          },
+          "sp3": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz",
+            "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+            "input_source": "archived_input",
+            "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+            "bytes": 219082,
+            "n_epochs": 5043
+          }
+        },
+        "held_out_position_rmse_m": {
+          "EKF (full correction)": 307.56,
+          "UKF (full correction)": 299.94,
+          "AUKF (full correction)": 228.13,
+          "SP3-IC propagation (full correction)": 1648.25,
+          "Learned residual UKF (full correction)": 246.48
+        },
+        "best_held_out_candidate": "AUKF (full correction)"
+      }
+    ],
+    "failed_or_excluded_arcs": []
+  },
+  "selection": {
+    "selection_rule": "choose the candidate with lowest validation mean arc RMSE, then score that frozen choice once on the test split",
+    "validation_mean_rms_m": {
+      "EKF (full correction)": 875.69,
+      "UKF (full correction)": 836.58,
+      "AUKF (full correction)": 523.21,
+      "SP3-IC propagation (full correction)": 1159.24,
+      "Learned residual UKF (full correction)": 731.38
+    },
+    "selected_candidate": "AUKF (full correction)",
+    "selected_candidate_family": "classical",
+    "selected_validation_mean_rms_m": 523.21,
+    "best_classical_validation_candidate": "AUKF (full correction)",
+    "best_classical_validation_mean_rms_m": 523.21,
+    "selected_learned_ridge_lambda": "1e+06"
+  },
+  "test_readout": {
+    "n_arcs": 2,
+    "n_failed_or_excluded_arcs": 0,
+    "test_mean_rms_m": {
+      "EKF (full correction)": 927.12,
+      "UKF (full correction)": 933.52,
+      "AUKF (full correction)": 1008.72,
+      "SP3-IC propagation (full correction)": 311.31,
+      "Learned residual UKF (full correction)": 885.75
+    },
+    "selected_candidate": "AUKF (full correction)",
+    "selected_test_mean_rms_m": 1008.72,
+    "test_best_candidate": "SP3-IC propagation (full correction)",
+    "test_best_mean_rms_m": 311.31,
+    "best_classical_test_candidate": "EKF (full correction)",
+    "best_classical_test_mean_rms_m": 927.12,
+    "selected_vs_test_best_paired_gap": {
+      "n": 2,
+      "mean_gap_m": 697.41,
+      "median_gap_m": 697.41,
+      "n_a_lower_rmse": 0,
+      "fraction_a_lower_rmse": 0.0,
+      "bootstrap95_mean_gap_m": [
+        460.1,
+        934.72
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "selected_vs_best_classical_paired_gap": {
+      "n": 2,
+      "mean_gap_m": 81.6,
+      "median_gap_m": 81.6,
+      "n_a_lower_rmse": 0,
+      "fraction_a_lower_rmse": 0.0,
+      "bootstrap95_mean_gap_m": [
+        2.06,
+        161.14
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "learned_vs_best_classical_paired_gap": {
+      "n": 2,
+      "mean_gap_m": -41.37,
+      "median_gap_m": -41.37,
+      "n_a_lower_rmse": 2,
+      "fraction_a_lower_rmse": 1.0,
+      "bootstrap95_mean_gap_m": [
+        -64.5,
+        -18.24
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "arcs": [
+      {
+        "arc_id": "LAGEOS-1 20260427",
+        "target": "LAGEOS-1",
+        "date": "20260427",
+        "sp3_week": "260502",
+        "split": "test",
+        "status": "completed",
+        "num_observations": 56,
+        "num_fit": 33,
+        "num_held_out": 23,
+        "distinct_stations": 3,
+        "provenance": {
+          "arc_id": "LAGEOS-1 20260427",
+          "target": "LAGEOS-1",
+          "date": "20260427",
+          "sp3_week": "260502",
+          "split": "test",
+          "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+          "wavelength_nm": 532.0,
+          "num_met_records": 95,
+          "crd": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260427.np2",
+            "archived_input_id": "lageos1_20260427.np2",
+            "input_source": "archived_input",
+            "sha256": "cdacde5f2b52cf8f2dd7494e6bf4abbb668059519e68e2e75c51cde31030e4b9",
+            "bytes": 44782
+          },
+          "sp3": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz",
+            "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+            "input_source": "archived_input",
+            "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+            "bytes": 219280,
+            "n_epochs": 5043
+          }
+        },
+        "held_out_position_rmse_m": {
+          "EKF (full correction)": 1112.2,
+          "UKF (full correction)": 1121.99,
+          "AUKF (full correction)": 1273.34,
+          "SP3-IC propagation (full correction)": 338.62,
+          "Learned residual UKF (full correction)": 1093.96
+        },
+        "best_held_out_candidate": "SP3-IC propagation (full correction)"
+      },
+      {
+        "arc_id": "LAGEOS-2 20260427",
+        "target": "LAGEOS-2",
+        "date": "20260427",
+        "sp3_week": "260502",
+        "split": "test",
+        "status": "completed",
+        "num_observations": 103,
+        "num_fit": 61,
+        "num_held_out": 42,
+        "distinct_stations": 4,
+        "provenance": {
+          "arc_id": "LAGEOS-2 20260427",
+          "target": "LAGEOS-2",
+          "date": "20260427",
+          "sp3_week": "260502",
+          "split": "test",
+          "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+          "wavelength_nm": 1064.0,
+          "num_met_records": 153,
+          "crd": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260427.np2",
+            "archived_input_id": "lageos2_20260427.np2",
+            "input_source": "archived_input",
+            "sha256": "df436a24116efa72cc9cb315cd6ade41b7a6e6b8bdc79c5518ca1157dcef6418",
+            "bytes": 63175
+          },
+          "sp3": {
+            "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz",
+            "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+            "input_source": "archived_input",
+            "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+            "bytes": 218908,
+            "n_epochs": 5043
+          }
+        },
+        "held_out_position_rmse_m": {
+          "EKF (full correction)": 742.04,
+          "UKF (full correction)": 745.05,
+          "AUKF (full correction)": 744.1,
+          "SP3-IC propagation (full correction)": 284.0,
+          "Learned residual UKF (full correction)": 677.54
+        },
+        "best_held_out_candidate": "SP3-IC propagation (full correction)"
+      }
+    ],
+    "failed_or_excluded_arcs": []
+  },
+  "headline_readout": {
+    "selected_candidate": "AUKF (full correction)",
+    "selected_candidate_family": "classical",
+    "selected_test_mean_rms_m": 1008.72,
+    "test_best_candidate": "SP3-IC propagation (full correction)",
+    "test_best_mean_rms_m": 311.31,
+    "test_floor_candidate": "SP3-IC propagation (full correction)",
+    "learned_test_mean_rms_m": 885.75,
+    "best_classical_test_mean_rms_m": 927.12,
+    "learned_minus_best_classical_mean_gap_m": -41.37,
+    "learned_residual_is_validation_selected_candidate": false,
+    "learned_lower_than_best_recursive_classical_on_two_posthoc_test_arcs": true,
+    "learned_vs_recursive_classical_readout_scope": "bounded_post_hoc_two_arc_readout_not_validation_selection",
+    "paper_strength_class": "post_hoc_full_correction_public_real_measurement_stress"
+  },
+  "claim_boundary": {
+    "defensible_status": "post_hoc_full_correction_public_real_measurement_stress",
+    "post_hoc_robustness_not_confirmatory": true,
+    "central_external_validation_status": false,
+    "can_be_used_as_central_external_validation": false,
+    "can_be_used_as_bounded_public_real_measurement_od_probe": true,
+    "is_operational_validation": false,
+    "is_centimetre_slr_or_flight_validation": false,
+    "is_simulator_result_validation": false,
+    "does_not_relabel_provenance_as_validation": true,
+    "learned_vs_recursive_classical_boundary": "The learned residual has lower held-out SP3 state RMSE than the best recursive classical candidate on this bounded post-hoc two-arc test readout only; SP3-IC propagation remains the test-floor candidate. This is not validation-selected evidence, operational POD validation, central external validation, or simulator-result validation.",
+    "appropriate_use": "Use as full-correction real-measurement stress evidence and measurement-pipeline risk reduction, not as operational POD or simulator-result validation."
+  }
+}

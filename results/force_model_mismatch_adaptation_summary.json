@@ -1,0 +1,105 @@
+{
+  "scenario": "force_model_mismatch_test",
+  "trajectories_processed": 48,
+  "total_trajectories_in_split": 48,
+  "window_size": 12,
+  "eval_start_step": 11,
+  "runtime_s": 46.556204699969385,
+  "estimator_truth_model_mismatch": true,
+  "dynamics_provenance": {
+    "ballistic_coeff_m2_per_kg": {
+      "estimator": 0.018,
+      "truth": 0.045,
+      "mismatched": true
+    },
+    "process_noise_std": {
+      "estimator": 0.0,
+      "truth": 0.45,
+      "mismatched": true
+    },
+    "drag_rho_ref": {
+      "estimator": 4e-11,
+      "truth": 7e-11,
+      "mismatched": true
+    },
+    "srp_area_to_mass_m2_per_kg": {
+      "estimator": 0.02,
+      "truth": 0.06,
+      "mismatched": true
+    },
+    "srp_cr": {
+      "estimator": 1.35,
+      "truth": 1.6,
+      "mismatched": true
+    }
+  },
+  "aukf_config": {
+    "adapt_rate": 0.08,
+    "nis_soft_gate": 16.0,
+    "huber_kappa": 2.8,
+    "min_r_scale": 0.4,
+    "max_r_scale": 30.0
+  },
+  "aukf_adaptation_mechanism": {
+    "n_visible_updates": 1238,
+    "mean_pre_adapt_nis": 4.899784877508426,
+    "median_pre_adapt_nis": 3.493451727540632,
+    "p90_pre_adapt_nis": 9.15630108872013,
+    "max_pre_adapt_nis": 207.07891356195233,
+    "percent_updates_exceeding_soft_gate": 2.504038772213247,
+    "nis_soft_gate": 16.0,
+    "mean_robust_scale": 1.039390808918276,
+    "median_robust_scale": 1.0,
+    "mean_r_scale_pre": 2.8912163805150093,
+    "mean_r_proposal_scale": 4.51253486521613,
+    "mean_r_scale_post": 3.020921859291099,
+    "mean_r_eff_scale": 3.3145002380686606,
+    "mean_state_update_norm": 466.3122994403388,
+    "mean_state_update_pos_norm_m": 466.30858615148367
+  },
+  "cross_filter_r_only_nis": {
+    "EKF": {
+      "n_visible_updates": 1250,
+      "mean_r_only_nis": 415.661629396182,
+      "median_r_only_nis": 1.604505153008299,
+      "p90_r_only_nis": 4.979365008868928
+    },
+    "UKF": {
+      "n_visible_updates": 1250,
+      "mean_r_only_nis": 416.44300969853504,
+      "median_r_only_nis": 1.827015506455716,
+      "p90_r_only_nis": 5.252145317676229
+    },
+    "AUKF": {
+      "n_visible_updates": 1250,
+      "mean_r_only_nis": 423.75937720892114,
+      "median_r_only_nis": 4.725146821762003,
+      "p90_r_only_nis": 20.379952337044788
+    }
+  },
+  "observed_step_pos_rmse": {
+    "EKF": {
+      "observed_step_pos_rmse_m": 448.78586550315055,
+      "all_step_pos_rmse_m": 14352.166754446256,
+      "observed_steps": 1079
+    },
+    "UKF": {
+      "observed_step_pos_rmse_m": 469.40639725179784,
+      "all_step_pos_rmse_m": 14353.92825513818,
+      "observed_steps": 1079
+    },
+    "AUKF": {
+      "observed_step_pos_rmse_m": 526.3917466162163,
+      "all_step_pos_rmse_m": 14361.998575304937,
+      "observed_steps": 1079
+    }
+  },
+  "aukf_reconstruction": {
+    "max_abs_pos_diff_vs_cached_aukf_m": 0.0,
+    "max_abs_vel_diff_vs_cached_aukf_mps": 0.0,
+    "tolerance_m": 0.001,
+    "matches_cached_aukf_prior": true,
+    "cached_aukf_prior_available": true
+  },
+  "interpretation": "Under true force-model/process-noise mismatch the visible-update innovations are dominated by an unmodelled dynamics bias, not by measurement noise. The AUKF reacts by inflating its measurement-noise diagonal (mean effective R scale > 1) and applying robust down-weighting, which shrinks the very state corrections needed to track the biased prior. EKF keeps a tighter gain and so tracks the drifting truth best; AUKF damps itself the most and is worst."
+}

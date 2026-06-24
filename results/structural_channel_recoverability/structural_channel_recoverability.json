@@ -1,0 +1,99 @@
+{
+  "scenario": "structural_channel_recoverability",
+  "schema_version": "structural_channel_recoverability_v1",
+  "scope": "Cheap favorable-geometry implementation sanity diagnostic for recoverability of two structural channels. The diagnostic uses matched synthetic signals and all-visible low-noise geometry; it is not an operational OD setting and not a primary endpoint.",
+  "predeclared_rule_path": "release\\predeclarations\\structural_channel_recoverability_loop70.json",
+  "predeclared_rule_digest_sha256": "d7fc30d8a09c1f96f333e26eacbb98032d716b8d68f37487fbc9d5c56a4d9718",
+  "nominal_ballistic_coeff_m2_per_kg": 0.018,
+  "dsa_drag_scale": {
+    "target": "drag_scale_beta",
+    "truth_beta": 4.0,
+    "last100_beta_mean": 3.9814024673002084,
+    "last100_beta_std": 0.007580271237039386,
+    "beta_abs_error": 0.018597532699791586,
+    "beta_relative_error": 0.0046493831749478964,
+    "beta_final": 3.989090385499924,
+    "beta_min": 0.9991772915065248,
+    "beta_max": 4.000897918433468,
+    "rmse_m": {
+      "EKF": 0.7177757598140551,
+      "DSA_EKF": 0.7073708110421133
+    },
+    "candidate_improves_over_ekf": true,
+    "visible_fraction": 1.0,
+    "elapsed_seconds": 4.270709999953397,
+    "n_steps": 180,
+    "dt_s": 20.0,
+    "eval_start_step": 20,
+    "seed": 770701,
+    "n_stations": 4,
+    "measurement_noise": {
+      "range_std_m": 1.0,
+      "az_std_deg": 0.0002,
+      "el_std_deg": 0.0002,
+      "range_rate_std_mps": 0.001
+    },
+    "orbit": {
+      "altitude_km": 300.0,
+      "eccentricity": 0.001,
+      "inclination_deg": 53.0,
+      "raan_deg": 20.0,
+      "arg_perigee_deg": 35.0,
+      "true_anomaly_deg": 5.0
+    }
+  },
+  "dmc_empirical_acceleration": {
+    "target": "constant_inertial_empirical_acceleration",
+    "truth_empirical_acceleration_mps2": [
+      2e-05,
+      -1e-05,
+      1.5e-05
+    ],
+    "last100_empirical_acceleration_mean_mps2": [
+      2.024969636009738e-05,
+      -1.0523577064205298e-05,
+      1.5000664092845463e-05
+    ],
+    "empirical_acceleration_relative_l2_error": 0.02154327338579743,
+    "empirical_acceleration_abs_l2_error_mps2": 5.800703883383686e-07,
+    "empirical_acceleration_final_mps2": [
+      1.9689328802000408e-05,
+      -1.1440802178062158e-05,
+      1.4662829483226927e-05
+    ],
+    "rmse_m": {
+      "EKF": 4.1975137767054935,
+      "DMC_EKF": 3.4532406876839437
+    },
+    "candidate_improves_over_ekf": true,
+    "visible_fraction": 1.0,
+    "elapsed_seconds": 4.719010700006038,
+    "n_steps": 180,
+    "dt_s": 40.0,
+    "eval_start_step": 20,
+    "seed": 456,
+    "n_stations": 4,
+    "measurement_noise": {
+      "range_std_m": 10.0,
+      "az_std_deg": 0.002,
+      "el_std_deg": 0.002,
+      "range_rate_std_mps": 0.01
+    },
+    "orbit": {
+      "altitude_km": 500.0,
+      "eccentricity": 0.001,
+      "inclination_deg": 53.0,
+      "raan_deg": 20.0,
+      "arg_perigee_deg": 35.0,
+      "true_anomaly_deg": 5.0
+    }
+  },
+  "decision": {
+    "dsa_beta_recovery_within_tolerance": true,
+    "dsa_improves_over_ekf": true,
+    "dmc_empirical_acceleration_recovery_within_tolerance": true,
+    "dmc_improves_over_ekf": true,
+    "all_checks_pass": true
+  },
+  "elapsed_seconds_total": 9.321805999963544
+}

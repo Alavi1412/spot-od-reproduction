@@ -30,7 +30,7 @@ jobs:
       - name: Run archive-extracted verifier
         run: |
           mkdir -p results/validation
-          python scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_1_0_supplement_review_archive.zip --json-out results/validation/github_actions_archive_extracted_reproduction.json --md-out results/validation/github_actions_archive_extracted_reproduction.md
+          python scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip --json-out results/validation/github_actions_archive_extracted_reproduction.json --md-out results/validation/github_actions_archive_extracted_reproduction.md
 
       - name: Upload verifier outputs
         if: always()

@@ -23,34 +23,70 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 
-PACKAGE_VERSION = "1.2.2-acf-audit"
-REVIEW_ARCHIVE_REL = "release/spot_od_v1_1_0_supplement_review_archive.zip"
+PACKAGE_VERSION = "1.2.3-acf-holdout-audit"
+REVIEW_ARCHIVE_REL = "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip"
 SUPPLEMENTARY_MANIFEST_REL = "release/SUPPLEMENTARY_MANIFEST.json"
 RELEASE_LEVEL_RECORD_RELS = {
     SUPPLEMENTARY_MANIFEST_REL,
     REVIEW_ARCHIVE_REL,
 }
 PUBLIC_GITHUB_REPOSITORY = "https://github.com/Alavi1412/spot-od-reproduction"
-PUBLIC_RELEASE_TAG = "v1.2.2-acf-audit"
+PUBLIC_RELEASE_TAG = "v1.2.3-acf-holdout-audit"
 PUBLIC_GITHUB_RELEASE = f"{PUBLIC_GITHUB_REPOSITORY}/releases/tag/{PUBLIC_RELEASE_TAG}"
-RELEASE_TITLE = "SPOT-OD v1.2.2 ACF audit release"
-V122_DOI_STATUS = "pending; fill after Zenodo mints the v1.2.2 DOI"
+PUBLIC_RELEASE_COMMIT = None
+PUBLIC_RELEASE_COMMIT_NOTE = "pending until the GitHub release tag is published"
+RELEASE_TITLE = "SPOT-OD v1.2.3 ACF holdout audit release"
+V123_ZENODO_RECORD = None
+V123_DOI = None
+V123_DOI_URL = None
+V123_DOI_STATUS = "pending_zenodo_import"
+V123_ZENODO_RESOURCE_TYPE = "Software"
+V123_GITHUB_RELEASE_ASSET_KEY = "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip"
+V122_HISTORICAL_ZENODO_RECORD = "https://zenodo.org/records/20822968"
+V122_HISTORICAL_DOI = "10.5281/zenodo.20822968"
+V122_HISTORICAL_DOI_URL = f"https://doi.org/{V122_HISTORICAL_DOI}"
+V122_HISTORICAL_RELEASE_TAG = "v1.2.2-acf-audit"
+V122_HISTORICAL_GITHUB_RELEASE = (
+    f"{PUBLIC_GITHUB_REPOSITORY}/releases/tag/{V122_HISTORICAL_RELEASE_TAG}"
+)
+V122_HISTORICAL_ZENODO_ARCHIVED_FILE = {
+    "key": "Alavi1412/spot-od-reproduction-v1.2.2-acf-audit.zip",
+    "size_bytes": 72607548,
+    "md5": "533b8363954cb6531f17bf4d405a5092",
+}
+V122_HISTORICAL_GITHUB_RELEASE_ASSET = {
+    "key": "spot_od_v1_2_2_acf_audit_review_archive.zip",
+    "size_bytes": 59127034,
+    "sha256": "e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240",
+}
+V122_GITHUB_ACTIONS_BRANCH_RUN = (
+    "https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28075721074"
+)
+V122_GITHUB_ACTIONS_TAG_RUN = (
+    "https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28075722522"
+)
 V121_HISTORICAL_DOI = "10.5281/zenodo.20811701"
 V121_HISTORICAL_ZENODO_RECORD = "https://zenodo.org/records/20811701"
 ACF_AUDIT_SCOPE_BOUNDARY = (
     "Release-support evidence for reviewer inspection and the ACF "
-    "validation-selected compact-simulator PoC/audit-table evidence tier; not "
-    "operational precise-reference validation, not independent-machine "
-    "reproduction, not third-party validation, not a full scientific rerun, "
-    "not full raw/training/all-filter reproduction, and not universal "
-    "learned-OD superiority."
+    "validation-selected compact-simulator PoC/audit-table evidence tier, "
+    "including public packaging of the development/holdout split summaries; "
+    "the development/holdout readout is weak/mixed internal compact-simulator "
+    "evidence only, not operational precise-reference validation, not "
+    "independent-machine reproduction, not third-party validation, not a full "
+    "scientific rerun, not full raw/training/all-filter reproduction, not "
+    "confirmatory learned superiority, and not universal learned-OD "
+    "superiority."
 )
 RELEASE_DESCRIPTION = (
     "Version-pinned supplementary evidence package for the simulator-bound "
     "SPOT-OD sparse-visibility orbit-determination self-audit record. This "
-    f"v1.2.2 ACF audit release targets {PUBLIC_GITHUB_RELEASE}; its Zenodo "
-    f"DOI is {V122_DOI_STATUS}. The prior public v1.2.1 DOI is "
-    f"{V121_HISTORICAL_DOI}. {ACF_AUDIT_SCOPE_BOUNDARY}"
+    f"v1.2.3 ACF holdout audit release targets {PUBLIC_GITHUB_RELEASE}; its "
+    "Zenodo DOI and record are pending/expected after Zenodo imports the new "
+    f"GitHub release. The prior public v1.2.2 DOI is {V122_HISTORICAL_DOI} "
+    "for the historical ACF audit package before this public-boundary repair. "
+    f"The prior public v1.2.1 DOI is {V121_HISTORICAL_DOI}. "
+    f"{ACF_AUDIT_SCOPE_BOUNDARY}"
 )
 ARCHIVE_MEMBER_TIMESTAMP = (2026, 5, 19, 0, 0, 0)
 TARGETED_RETRAINING_REPLAY_ENTRYPOINT = {
@@ -357,6 +393,9 @@ ADAPTIVE_CANDIDATE_FUSION_FULL_TRAINING_POC_SOURCE_PATHS = [
     "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json",
     "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md",
     "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.csv",
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.json",
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.md",
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.csv",
 ]
 
 # Curated evidence artifacts grouped by role.  Paths are archive-relative.
@@ -390,6 +429,7 @@ ARTIFACT_GROUPS: dict[str, list[str]] = {
         "release/REVIEWER_START_HERE.md",
         "release/DEPOSIT_CHECKLIST.md",
         "release/ZENODO_METADATA.json",
+        "release/RELEASE_NOTES_v1.2.3-acf-holdout-audit.md",
     ],
     "kalmannet_spot_od_external_audit_case": [
         "results/kalmannet_repro/sanity_check.json",
@@ -978,11 +1018,13 @@ def write_review_archive(entries: list[dict]) -> dict:
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             zf.writestr(info, member_bytes)
-    return {
+    archive_bytes = archive_path.stat().st_size if archive_path.exists() else None
+    archive_sha256 = sha256(archive_path)
+    archive_record = {
         "path": REVIEW_ARCHIVE_REL.replace("/", "\\"),
         "exists": archive_path.exists(),
-        "bytes": archive_path.stat().st_size if archive_path.exists() else None,
-        "sha256": sha256(archive_path),
+        "bytes": archive_bytes,
+        "sha256": archive_sha256,
         "format": "zip",
         "immutable_review_artifact": True,
         "derived_from_indexed_artifacts": True,
@@ -997,6 +1039,21 @@ def write_review_archive(entries: list[dict]) -> dict:
             "member."
         ),
     }
+    current_release_asset = {
+        "key": V123_GITHUB_RELEASE_ASSET_KEY,
+        "size_bytes": archive_bytes,
+        "sha256": archive_sha256,
+        "source": "generated_local_review_archive",
+        "status": "pending_upload_to_new_github_release",
+    }
+    archive_record["github_release_asset"] = V123_GITHUB_RELEASE_ASSET_KEY
+    archive_record["published_github_release_asset"] = current_release_asset
+    archive_record["matches_published_github_release_asset"] = (
+        archive_path.name == V123_GITHUB_RELEASE_ASSET_KEY
+        and archive_bytes == current_release_asset["size_bytes"]
+        and archive_sha256 == current_release_asset["sha256"]
+    )
+    return archive_record
 
 
 def main() -> int:
@@ -1179,56 +1236,94 @@ def main() -> int:
         },
         "dependency_provenance": dependency_provenance,
         "public_identifier": PUBLIC_GITHUB_RELEASE,
-        "public_identifier_type": "GitHub release URL; v1.2.2 Zenodo DOI pending",
+        "public_identifier_type": "GitHub release URL; Zenodo DOI pending",
         "public_identifier_note": (
             f"GitHub repository is {PUBLIC_GITHUB_REPOSITORY}; release target "
-            f"is {PUBLIC_GITHUB_RELEASE}. The v1.2.2 Zenodo DOI is "
-            f"{V122_DOI_STATUS}. The prior public v1.2.1 DOI is "
-            f"{V121_HISTORICAL_DOI} and is retained only as prior-version "
-            "history, not as the v1.2.2 identifier."
+            f"is {PUBLIC_GITHUB_RELEASE}; release commit is "
+            f"{PUBLIC_RELEASE_COMMIT_NOTE}. The v1.2.3 Zenodo DOI and record "
+            "are pending/expected after Zenodo imports the new GitHub release. "
+            f"The prior public v1.2.2 DOI is {V122_HISTORICAL_DOI} and is "
+            "historical ACF audit package history, not the v1.2.3 identifier. "
+            f"The prior public v1.2.1 DOI is {V121_HISTORICAL_DOI} and remains "
+            "GraphAnchorPairGate package history."
         ),
         "public_archive_commitment": (
             f"Release metadata targets GitHub tag {PUBLIC_RELEASE_TAG} at "
-            f"{PUBLIC_GITHUB_RELEASE}. Fill the v1.2.2 Zenodo DOI, Zenodo "
-            "record URL, GitHub asset byte count, GitHub asset SHA-256, and "
-            "publication-status fields only after Zenodo/GitHub publish those "
-            f"concrete records. The prior v1.2.1 DOI {V121_HISTORICAL_DOI} "
-            "remains prior-version history only."
+            f"{PUBLIC_GITHUB_RELEASE}. The Zenodo DOI and record for v1.2.3 "
+            "are pending/expected after Zenodo imports that GitHub release. "
+            f"The v1.2.2 DOI {V122_HISTORICAL_DOI} and v1.2.1 DOI "
+            f"{V121_HISTORICAL_DOI} remain historical references only."
         ),
         "post_acceptance_public_archive_commitment": (
-            "Public citation of this release should use the minted v1.2.2 "
-            "Zenodo DOI/record once available, paired with the GitHub release "
-            f"target {PUBLIC_RELEASE_TAG}. Until then, the asserted public "
-            f"target is {PUBLIC_GITHUB_RELEASE}; the prior v1.2.1 DOI "
-            f"{V121_HISTORICAL_DOI} remains prior-version history only."
+            "After Zenodo imports the new GitHub release, public citation of "
+            "v1.2.3 should use the minted Zenodo DOI/record for that release, "
+            f"paired with GitHub tag {PUBLIC_RELEASE_TAG}. Until then, the "
+            f"GitHub release target {PUBLIC_GITHUB_RELEASE} is the current "
+            "public-boundary target. The v1.2.2 and v1.2.1 DOIs remain "
+            "historical references only."
         ),
         "public_archive_release": {
             "title": RELEASE_TITLE,
             "github_repository": PUBLIC_GITHUB_REPOSITORY,
             "github_release_target": PUBLIC_GITHUB_RELEASE,
             "release_tag": PUBLIC_RELEASE_TAG,
-            "doi_status": V122_DOI_STATUS,
-            "zenodo_record": None,
-            "doi": None,
-            "doi_url": None,
+            "github_release_commit": PUBLIC_RELEASE_COMMIT,
+            "github_release_commit_note": PUBLIC_RELEASE_COMMIT_NOTE,
+            "doi_status": V123_DOI_STATUS,
+            "zenodo_record": V123_ZENODO_RECORD,
+            "doi": V123_DOI,
+            "doi_url": V123_DOI_URL,
+            "zenodo_resource_type": V123_ZENODO_RESOURCE_TYPE,
             "publication_status_note": (
-                "No completed v1.2.2 publication status is asserted by this "
-                "manifest; fill only after publication occurs."
+                "The v1.2.3 GitHub release is the target for publication; "
+                "the Zenodo DOI and record are pending/expected after Zenodo "
+                "imports the new GitHub release."
             ),
             "pending_fields": [
-                "v1.2.2 Zenodo DOI",
-                "v1.2.2 Zenodo record URL",
-                "v1.2.2 GitHub release asset byte count",
-                "v1.2.2 GitHub release asset SHA-256",
-                "v1.2.2 publication status",
+                "v1.2.3 Zenodo record URL",
+                "v1.2.3 Zenodo DOI",
+                "v1.2.3 Zenodo archived file bytes and MD5",
+                "v1.2.3 GitHub release commit",
+                "GitHub release publication/upload confirmation",
             ],
+            "zenodo_archived_file": None,
+            "github_release_asset": review_archive["published_github_release_asset"],
+            "github_actions": {
+                "v1.2.3_branch_run": None,
+                "v1.2.3_tag_run": None,
+                "status": "pending new release verifier runs",
+            },
             "prior_release": {
-                "version": "1.2.1-graph-anchor-gate-poc",
-                "doi": V121_HISTORICAL_DOI,
-                "doi_url": f"https://doi.org/{V121_HISTORICAL_DOI}",
-                "zenodo_record": V121_HISTORICAL_ZENODO_RECORD,
-                "status": "historical_only",
+                "version": "1.2.2-acf-audit",
+                "doi": V122_HISTORICAL_DOI,
+                "doi_url": V122_HISTORICAL_DOI_URL,
+                "zenodo_record": V122_HISTORICAL_ZENODO_RECORD,
+                "github_release": V122_HISTORICAL_GITHUB_RELEASE,
+                "release_tag": V122_HISTORICAL_RELEASE_TAG,
+                "zenodo_archived_file": V122_HISTORICAL_ZENODO_ARCHIVED_FILE,
+                "github_release_asset": V122_HISTORICAL_GITHUB_RELEASE_ASSET,
+                "status": "historical_acf_audit_before_public_boundary_repair",
                 "not_current_release_identifier": True,
+            },
+            "historical_releases": {
+                "v1.2.2_acf_audit": {
+                    "version": "1.2.2-acf-audit",
+                    "doi": V122_HISTORICAL_DOI,
+                    "doi_url": V122_HISTORICAL_DOI_URL,
+                    "zenodo_record": V122_HISTORICAL_ZENODO_RECORD,
+                    "github_release": V122_HISTORICAL_GITHUB_RELEASE,
+                    "release_tag": V122_HISTORICAL_RELEASE_TAG,
+                    "zenodo_archived_file": V122_HISTORICAL_ZENODO_ARCHIVED_FILE,
+                    "github_release_asset": V122_HISTORICAL_GITHUB_RELEASE_ASSET,
+                    "status": "historical_acf_audit_before_public_boundary_repair",
+                },
+                "v1.2.1_graph_anchor_gate_poc": {
+                    "version": "1.2.1-graph-anchor-gate-poc",
+                    "doi": V121_HISTORICAL_DOI,
+                    "doi_url": f"https://doi.org/{V121_HISTORICAL_DOI}",
+                    "zenodo_record": V121_HISTORICAL_ZENODO_RECORD,
+                    "status": "historical_graph_anchor_pair_gate_package",
+                },
             },
             "scope_boundary": ACF_AUDIT_SCOPE_BOUNDARY,
         },

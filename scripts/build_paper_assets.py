@@ -9240,6 +9240,10 @@ _ADAPTIVE_CANDIDATE_FUSION_GLOBAL_PORTFOLIO_SUMMARY_JSON = Path(
     "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/"
     "summary.json"
 )
+_ADAPTIVE_CANDIDATE_FUSION_DEV10_HOLDOUT5_SUMMARY_JSON = Path(
+    "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/"
+    "summary.json"
+)
 
 
 def _acf_campaign_metric(summary: dict, campaign_key: str, metric_key: str) -> dict:
@@ -9371,6 +9375,26 @@ def _acf_policy_string(summary: dict, scenario: str) -> str:
             f"{selection_metric!r}"
         )
     return f"{alpha:.2f}*{components[0]} + {1.0 - alpha:.2f}*{components[1]}"
+
+
+def _acf_devholdout_policy_string(summary: dict, scenario: str) -> str:
+    rows = _acf_required_path(summary, ("eval", "global_scenario_policy_rows"))
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("AdaptiveCandidateFusion development/holdout summary has no policy rows")
+    for row in rows:
+        if isinstance(row, dict) and row.get("scenario") == scenario:
+            alpha = float(row["policy_alpha"])
+            components = row["policy_components"]
+            if not isinstance(components, list) or len(components) != 2:
+                raise ValueError(
+                    "AdaptiveCandidateFusion development/holdout summary has invalid "
+                    f"policy_components for {scenario}: {components!r}"
+                )
+            return f"{alpha:.2f}*{components[0]} + {1.0 - alpha:.2f}*{components[1]}"
+    raise ValueError(
+        "AdaptiveCandidateFusion development/holdout summary has no policy row "
+        f"for {scenario}"
+    )
 
 
 def _acf_latex_policy(policy: str) -> str:
@@ -9545,14 +9569,85 @@ def _acf_global_portfolio_metric(summary: dict) -> dict[str, object]:
     return metric
 
 
+def _acf_devholdout_metric(summary: dict) -> dict[str, object]:
+    schema_version = _acf_required_path(summary, ("schema_version",))
+    if schema_version != "adaptive_candidate_fusion_global_portfolio.v1":
+        raise ValueError(
+            "AdaptiveCandidateFusion development/holdout summary has unexpected "
+            f"schema_version: {schema_version!r}"
+        )
+    split_enabled = _acf_required_path(summary, ("selection_eval_split", "enabled"))
+    if split_enabled is not True:
+        raise ValueError("AdaptiveCandidateFusion development/holdout split is not enabled")
+    stats = _acf_required_path(summary, ("eval", "global_scenario_policy_statistics"))
+    if not isinstance(stats, dict):
+        raise ValueError("AdaptiveCandidateFusion development/holdout statistics missing")
+    metric = {
+        "process_policy": _acf_devholdout_policy_string(
+            summary, "process_noise_shift_test"
+        ),
+        "maneuver_policy": _acf_devholdout_policy_string(
+            summary, "maneuver_shift_test"
+        ),
+        "row_wins": _acf_required_int(stats, ("rows", "wins")),
+        "rows": _acf_required_int(stats, ("rows", "rows")),
+        "mean_gain_percent": _acf_required_number(stats, ("rows", "mean_gain_percent")),
+        "row_mean_gain_ci95": _acf_required_ci95(
+            stats, ("rows", "bootstrap_mean_gain_percent_ci95")
+        ),
+        "paired_seed_wins": _acf_required_int(stats, ("seed_paired", "seed_wins")),
+        "paired_seed_count": _acf_required_int(stats, ("seed_paired", "seeds")),
+        "seed_mean_gain_ci95": _acf_required_ci95(
+            stats, ("seed_paired", "bootstrap_seed_mean_gain_percent_ci95")
+        ),
+        "process_row_wins": _acf_required_int(
+            stats, ("by_scenario", "process_noise_shift_test", "wins")
+        ),
+        "process_rows": _acf_required_int(
+            stats, ("by_scenario", "process_noise_shift_test", "rows")
+        ),
+        "process_mean_gain_percent": _acf_required_number(
+            stats, ("by_scenario", "process_noise_shift_test", "mean_gain_percent")
+        ),
+        "process_mean_gain_ci95": _acf_required_ci95(
+            stats,
+            (
+                "by_scenario",
+                "process_noise_shift_test",
+                "bootstrap_mean_gain_percent_ci95",
+            ),
+        ),
+        "maneuver_row_wins": _acf_required_int(
+            stats, ("by_scenario", "maneuver_shift_test", "wins")
+        ),
+        "maneuver_rows": _acf_required_int(
+            stats, ("by_scenario", "maneuver_shift_test", "rows")
+        ),
+        "maneuver_mean_gain_percent": _acf_required_number(
+            stats, ("by_scenario", "maneuver_shift_test", "mean_gain_percent")
+        ),
+        "maneuver_mean_gain_ci95": _acf_required_ci95(
+            stats,
+            (
+                "by_scenario",
+                "maneuver_shift_test",
+                "bootstrap_mean_gain_percent_ci95",
+            ),
+        ),
+    }
+    return metric
+
+
 def build_adaptive_candidate_fusion_full_training_poc_table(
     summary_path: Path = _ADAPTIVE_CANDIDATE_FUSION_FULL_TRAINING_SUMMARY_JSON,
     global_summary_path: Path = _ADAPTIVE_CANDIDATE_FUSION_GLOBAL_PORTFOLIO_SUMMARY_JSON,
+    devholdout_summary_path: Path = _ADAPTIVE_CANDIDATE_FUSION_DEV10_HOLDOUT5_SUMMARY_JSON,
 ) -> str:
     """Return the compact main-text AdaptiveCandidateFusion campaign table."""
 
     summary = load_json(Path(summary_path))
     global_summary = load_json(Path(global_summary_path))
+    devholdout_summary = load_json(Path(devholdout_summary_path))
     centered_obs = _acf_campaign_metric(
         summary, "centered_fixed_soft_full_retraining", "observed_step"
     )
@@ -9566,11 +9661,12 @@ def build_adaptive_candidate_fusion_full_training_poc_table(
         summary, "observed_mask_fixed_soft_full_retraining", "all_step_caveat"
     )
     global_metric = _acf_global_portfolio_metric(global_summary)
+    devholdout_metric = _acf_devholdout_metric(devholdout_summary)
 
     lines = [
         "\\begin{table*}[t]",
         "\\centering",
-        "\\caption{Current-workspace AdaptiveCandidateFusion fixed-soft full-training and validation-selected global-portfolio proof-of-concept records. Gains are versus the best input candidate in each scenario-seed row; positive values mean AdaptiveCandidateFusion is lower RMSE. The validation-selected global scenario portfolio is the strongest observed-step learned-including signal; centered fixed-soft training and observed-mask retraining remain lower-level diagnostics, and all-step readouts remain caveats. These are current-workspace compact-simulator artifacts only, not public v1.2.1 release evidence and not external validation.}",
+        "\\caption{AdaptiveCandidateFusion fixed-soft full-training and validation-selected global-portfolio proof-of-concept records. Gains are versus the best input candidate in each scenario-seed row; positive values mean AdaptiveCandidateFusion is lower RMSE. The validation-selected global scenario portfolio is the strongest observed-step learned-including signal; centered fixed-soft training and observed-mask retraining remain lower-level diagnostics, and all-step readouts remain caveats. These compact-simulator artifacts are included in the public \\texttt{v1.2.3-acf-holdout-audit} reproduction-support package target, not external validation or full scientific reproduction.}",
         "\\label{tab:adaptive_candidate_fusion_full_training_poc}",
         "\\scriptsize",
         "\\resizebox{\\textwidth}{!}{%",
@@ -9608,7 +9704,7 @@ def build_adaptive_candidate_fusion_full_training_poc_table(
         f"{_acf_signed_percent_2(float(global_metric['min_gain_percent']))} / "
         f"{_acf_signed_percent_2(float(global_metric['max_gain_percent']))} & "
         "Observed-step portfolio; all-step remains a propagation-dominated reference/caveat, not the decision endpoint. & "
-        "Strongest current-workspace internal learned-including observed-step signal; the nonlearned-only validation-selected blend baseline is weaker "
+        "Strongest internal learned-including observed-step signal; the nonlearned-only validation-selected blend baseline is weaker "
         f"({int(global_metric['nonlearned_row_wins'])}/{int(global_metric['nonlearned_rows'])} wins, "
         f"{_acf_signed_percent_2(float(global_metric['nonlearned_mean_gain_percent']))}\\% mean), "
         "but this remains internal compact-simulator evidence, not operational precise-reference validation or independent-machine reproduction. \\\\",
@@ -9616,7 +9712,7 @@ def build_adaptive_candidate_fusion_full_training_poc_table(
         "\\end{tabular}%",
         "}",
         "\\par\\smallskip",
-        "\\footnotesize Sources: \\nolinkurl{results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md} and \\nolinkurl{results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md}. "
+        "\\footnotesize Sources: \\nolinkurl{results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md}, \\nolinkurl{results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md}, and the dev10/holdout5 split summaries at \\nolinkurl{results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.md}, \\nolinkurl{results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.json}, and \\nolinkurl{results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.csv}. "
         "Global portfolio audit: validation selected from "
         f"{int(global_metric['policy_count_per_candidate_set'])} candidate policies per candidate set; "
         f"all rows {int(global_metric['row_wins'])}/{int(global_metric['rows'])} wins, "
@@ -9634,8 +9730,22 @@ def build_adaptive_candidate_fusion_full_training_poc_table(
         f"mean {_acf_signed_percent_2(float(global_metric['nonlearned_mean_gain_percent']))}\\%, "
         f"{int(global_metric['nonlearned_paired_seed_wins'])}/{int(global_metric['nonlearned_paired_seed_count'])} seed-paired wins, "
         f"seed-paired CI {_acf_ci95_percent_2(global_metric['nonlearned_seed_mean_gain_ci95'])}\\%. "
+        "The dev10/holdout5 artifact selected policies on seeds 7, 11, 13, 17, 19, 23, 29, 31, 37, and 41 and evaluated seeds 43, 47, 53, 59, and 61; selected policies were process "
+        f"\\texttt{{{str(devholdout_metric['process_policy'])}}} and maneuver "
+        f"\\texttt{{{str(devholdout_metric['maneuver_policy'])}}}, with weak/mixed holdout results: overall "
+        f"{int(devholdout_metric['row_wins'])}/{int(devholdout_metric['rows'])} row wins, "
+        f"mean {_acf_signed_percent_2(float(devholdout_metric['mean_gain_percent']))}\\%, "
+        f"row CI {_acf_ci95_percent_2(devholdout_metric['row_mean_gain_ci95'])}, "
+        f"seed-paired {int(devholdout_metric['paired_seed_wins'])}/{int(devholdout_metric['paired_seed_count'])} wins, "
+        f"seed-paired CI {_acf_ci95_percent_2(devholdout_metric['seed_mean_gain_ci95'])}, "
+        f"process {int(devholdout_metric['process_row_wins'])}/{int(devholdout_metric['process_rows'])} wins mean "
+        f"{_acf_signed_percent_2(float(devholdout_metric['process_mean_gain_percent']))}\\% CI "
+        f"{_acf_ci95_percent_2(devholdout_metric['process_mean_gain_ci95'])}, and maneuver "
+        f"{int(devholdout_metric['maneuver_row_wins'])}/{int(devholdout_metric['maneuver_rows'])} wins mean "
+        f"{_acf_signed_percent_2(float(devholdout_metric['maneuver_mean_gain_percent']))}\\% CI "
+        f"{_acf_ci95_percent_2(devholdout_metric['maneuver_mean_gain_ci95'])}. "
         "Sign/binomial $p$-values and bootstrap CIs do not adjust for validation-policy search. "
-        "These artifacts validate fixed-soft rows, campaign metadata, non-empty train/validation histories, checkpoint files, and pooled validation-selected portfolio policies; they are not independent-machine reproduction, operational precise-reference validation, a full raw/all-filter/public rerun, or a universal learned orbit-determination claim.",
+        "The 15-seed ACF audit and split artifact are included in \\texttt{v1.2.3-acf-holdout-audit}; they validate fixed-soft rows, campaign metadata, non-empty train/validation histories, checkpoint files, pooled validation-selected portfolio policies, and a selection/evaluation separation check, but they are not independent-machine reproduction, operational precise-reference validation, a full raw/all-filter/public rerun, confirmatory learned-superiority evidence, or a universal learned orbit-determination claim.",
         "\\end{table*}",
     ]
     return "\n".join(lines)

@@ -1,0 +1,5331 @@
+{
+  "boundary_language": "Internal compact-simulator development/holdout AdaptiveCandidateFusion portfolio evidence. Policies are selected only from validation recomputations for selection_run_dirs and are applied to saved compact-simulator eval rows from eval_run_dirs. This run-directory split is an internal development check; it is not independent-machine reproduction, operational precise-reference validation, third-party validation, or a claim of universal learned orbit-determination performance.",
+  "eval": {
+    "global_all_scenarios_policy_by_scenario": {
+      "maneuver_shift_test": {
+        "losses": 4,
+        "max_gain_percent": 2.5305367112626267,
+        "mean_gain_percent": -7.657277117519486,
+        "median_gain_percent": -4.92567758808498,
+        "min_gain_percent": -26.18856259052855,
+        "rows": 5,
+        "ties": 0,
+        "wins": 1
+      },
+      "process_noise_shift_test": {
+        "losses": 1,
+        "max_gain_percent": 10.464172492244064,
+        "mean_gain_percent": 4.478455953400312,
+        "median_gain_percent": 8.200554071405337,
+        "min_gain_percent": -5.601027217857026,
+        "rows": 5,
+        "ties": 0,
+        "wins": 4
+      }
+    },
+    "global_all_scenarios_policy_rows": [
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 321.8012669576178,
+        "best_input_candidate_observed_steps": 139,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 0.5222419243926711,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 12314.559062193646,
+        "portfolio_observed_step_pos_rmse_m": 320.12068582833837,
+        "portfolio_observed_step_sse": 14244338.235833593,
+        "portfolio_observed_steps": 139,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 43,
+        "split": 43,
+        "trajectory_indices": [
+          24,
+          28,
+          41,
+          36,
+          4,
+          47,
+          35
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 476.8500442161331,
+        "best_input_candidate_observed_steps": 95,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -0.9905904411218074,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 20992.889315458146,
+        "portfolio_observed_step_pos_rmse_m": 481.5736751726232,
+        "portfolio_observed_step_sse": 22031754.438830383,
+        "portfolio_observed_steps": 95,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 43,
+        "split": 43,
+        "trajectory_indices": [
+          24,
+          17,
+          13,
+          4,
+          15,
+          43,
+          38
+        ]
+      },
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 375.04409497616916,
+        "best_input_candidate_observed_steps": 213,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -5.601027217857026,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 4217.54856478531,
+        "portfolio_observed_step_pos_rmse_m": 396.05041681474995,
+        "portfolio_observed_step_sse": 33410313.65639622,
+        "portfolio_observed_steps": 213,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 47,
+        "split": 47,
+        "trajectory_indices": [
+          46,
+          23,
+          44,
+          11,
+          42,
+          30,
+          2
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 438.73411724283,
+        "best_input_candidate_observed_steps": 92,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -8.712091679124716,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 20718.35904944422,
+        "portfolio_observed_step_pos_rmse_m": 476.95703576462387,
+        "portfolio_observed_step_sse": 20928897.284814656,
+        "portfolio_observed_steps": 92,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 47,
+        "split": 47,
+        "trajectory_indices": [
+          37,
+          16,
+          24,
+          32,
+          44,
+          2,
+          28
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 308.87798534243973,
+        "best_input_candidate_observed_steps": 266,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 10.464172492244064,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 4260.2404423025955,
+        "portfolio_observed_step_pos_rmse_m": 276.5564601656385,
+        "portfolio_observed_step_sse": 20344604.525386676,
+        "portfolio_observed_steps": 266,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 53,
+        "split": 53,
+        "trajectory_indices": [
+          43,
+          15,
+          3,
+          29,
+          46,
+          19,
+          1
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 407.5192620267138,
+        "best_input_candidate_observed_steps": 74,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -26.18856259052855,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 23678.6500616725,
+        "portfolio_observed_step_pos_rmse_m": 514.2426990310398,
+        "portfolio_observed_step_sse": 19568970.959497914,
+        "portfolio_observed_steps": 74,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 53,
+        "split": 53,
+        "trajectory_indices": [
+          40,
+          16,
+          12,
+          24,
+          46,
+          39,
+          9
+        ]
+      },
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 412.7719078197348,
+        "best_input_candidate_observed_steps": 274,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 8.200554071405337,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 3115.3811487134826,
+        "portfolio_observed_step_pos_rmse_m": 378.92232432740605,
+        "portfolio_observed_step_sse": 39341503.03738939,
+        "portfolio_observed_steps": 274,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 59,
+        "split": 59,
+        "trajectory_indices": [
+          45,
+          8,
+          37,
+          40,
+          1,
+          26,
+          31
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 529.2630673685954,
+        "best_input_candidate_observed_steps": 117,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 2.5305367112626267,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 11396.964594188956,
+        "portfolio_observed_step_pos_rmse_m": 515.8698711496785,
+        "portfolio_observed_step_sse": 31136241.70331835,
+        "portfolio_observed_steps": 117,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 59,
+        "split": 59,
+        "trajectory_indices": [
+          22,
+          4,
+          25,
+          11,
+          6,
+          2,
+          36
+        ]
+      },
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 384.62872567273433,
+        "best_input_candidate_observed_steps": 193,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 8.806338496816512,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 9582.164742284805,
+        "portfolio_observed_step_pos_rmse_m": 350.75701813400156,
+        "portfolio_observed_step_sse": 23744883.753659464,
+        "portfolio_observed_steps": 193,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 61,
+        "split": 61,
+        "trajectory_indices": [
+          10,
+          34,
+          15,
+          42,
+          12,
+          0,
+          28
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 554.2617062538278,
+        "best_input_candidate_observed_steps": 226,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -4.92567758808498,
+        "policy_alpha": 0.75,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.75",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 472.14180461149374,
+        "policy_validation_steps": 3497,
+        "portfolio_all_step_pos_rmse_m": 5209.765883159051,
+        "portfolio_observed_step_pos_rmse_m": 581.56285089811,
+        "portfolio_observed_step_sse": 76436668.99711065,
+        "portfolio_observed_steps": 226,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 61,
+        "split": 61,
+        "trajectory_indices": [
+          32,
+          43,
+          40,
+          45,
+          47,
+          30,
+          42
+        ]
+      }
+    ],
+    "global_all_scenarios_policy_statistics": {
+      "by_scenario": {
+        "maneuver_shift_test": {
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_mean_gain_percent_ci95": [
+            -16.94944854788955,
+            -0.3691570095606683
+          ],
+          "bootstrap_method": "percentile",
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 12345,
+          "exact_one_sided_sign_p_value": 0.96875,
+          "finite_gain_rows": 5,
+          "losses": 4,
+          "max_gain_percent": 2.5305367112626267,
+          "mean_gain_percent": -7.657277117519486,
+          "median_gain_percent": -4.92567758808498,
+          "min_gain_percent": -26.18856259052855,
+          "nonpositive": 4,
+          "rows": 5,
+          "ties": 0,
+          "wins": 1
+        },
+        "process_noise_shift_test": {
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_mean_gain_percent_ci95": [
+            -1.4949002464723788,
+            9.348315209905298
+          ],
+          "bootstrap_method": "percentile",
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 12345,
+          "exact_one_sided_sign_p_value": 0.1875,
+          "finite_gain_rows": 5,
+          "losses": 1,
+          "max_gain_percent": 10.464172492244064,
+          "mean_gain_percent": 4.478455953400312,
+          "median_gain_percent": 8.200554071405337,
+          "min_gain_percent": -5.601027217857026,
+          "nonpositive": 1,
+          "rows": 5,
+          "ties": 0,
+          "wins": 4
+        }
+      },
+      "rows": {
+        "bootstrap_confidence_level": 0.95,
+        "bootstrap_mean_gain_percent_ci95": [
+          -8.382594208564809,
+          4.209102115545324
+        ],
+        "bootstrap_method": "percentile",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 12345,
+        "exact_one_sided_sign_p_value": 0.623046875,
+        "finite_gain_rows": 10,
+        "losses": 5,
+        "max_gain_percent": 10.464172492244064,
+        "mean_gain_percent": -1.5894105820595872,
+        "median_gain_percent": -0.23417425836456812,
+        "min_gain_percent": -26.18856259052855,
+        "nonpositive": 5,
+        "rows": 10,
+        "ties": 0,
+        "wins": 5
+      },
+      "seed_paired": {
+        "bootstrap_confidence_level": 0.95,
+        "bootstrap_method": "percentile",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 12345,
+        "bootstrap_seed_mean_gain_percent_ci95": [
+          -6.054336650726159,
+          2.875515486606985
+        ],
+        "exact_one_sided_sign_p_value": 0.8125,
+        "finite_gain_seeds": 5,
+        "seed_losses": 3,
+        "seed_max_gain_percent": 5.365545391333982,
+        "seed_mean_gain_percent": -1.5894105820595872,
+        "seed_mean_gain_percent_values": [
+          -0.23417425836456812,
+          -7.156559448490871,
+          -7.862195049142244,
+          5.365545391333982,
+          1.9403304543657658
+        ],
+        "seed_mean_gains": [
+          {
+            "mean_gain_percent": -0.23417425836456812,
+            "seed": 43
+          },
+          {
+            "mean_gain_percent": -7.156559448490871,
+            "seed": 47
+          },
+          {
+            "mean_gain_percent": -7.862195049142244,
+            "seed": 53
+          },
+          {
+            "mean_gain_percent": 5.365545391333982,
+            "seed": 59
+          },
+          {
+            "mean_gain_percent": 1.9403304543657658,
+            "seed": 61
+          }
+        ],
+        "seed_median_gain_percent": -0.23417425836456812,
+        "seed_min_gain_percent": -7.862195049142244,
+        "seed_nonpositive": 3,
+        "seed_ties": 0,
+        "seed_wins": 2,
+        "seeds": 5
+      }
+    },
+    "global_all_scenarios_policy_summary": {
+      "losses": 5,
+      "max_gain_percent": 10.464172492244064,
+      "mean_gain_percent": -1.5894105820595872,
+      "median_gain_percent": -0.23417425836456812,
+      "min_gain_percent": -26.18856259052855,
+      "rows": 10,
+      "ties": 0,
+      "wins": 5
+    },
+    "global_scenario_policy_by_scenario": {
+      "maneuver_shift_test": {
+        "losses": 2,
+        "max_gain_percent": 2.011872467353905,
+        "mean_gain_percent": -2.057760607970649,
+        "median_gain_percent": 0.30575685773292066,
+        "min_gain_percent": -10.095730779773614,
+        "rows": 5,
+        "ties": 0,
+        "wins": 3
+      },
+      "process_noise_shift_test": {
+        "losses": 1,
+        "max_gain_percent": 9.567444616133807,
+        "mean_gain_percent": 4.948536037820249,
+        "median_gain_percent": 7.84989524582123,
+        "min_gain_percent": -2.8643558724870877,
+        "rows": 5,
+        "ties": 0,
+        "wins": 4
+      }
+    },
+    "global_scenario_policy_rows": [
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 321.8012669576178,
+        "best_input_candidate_observed_steps": 139,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 1.8153056506370786,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 367.44451554789913,
+        "policy_validation_steps": 1920,
+        "portfolio_all_step_pos_rmse_m": 12357.010321051079,
+        "portfolio_observed_step_pos_rmse_m": 315.9595903747145,
+        "portfolio_observed_step_sse": 13876434.322216276,
+        "portfolio_observed_steps": 139,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 43,
+        "split": 43,
+        "trajectory_indices": [
+          24,
+          28,
+          41,
+          36,
+          4,
+          47,
+          35
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 476.8500442161331,
+        "best_input_candidate_observed_steps": 95,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 1.2633615732526977,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "EKF"
+        ],
+        "policy_id": "blend:learned:EKF:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 562.5090763601526,
+        "policy_validation_steps": 1577,
+        "portfolio_all_step_pos_rmse_m": 21020.967247937264,
+        "portfolio_observed_step_pos_rmse_m": 470.82570399546796,
+        "portfolio_observed_step_sse": 21059300.136568658,
+        "portfolio_observed_steps": 95,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 43,
+        "split": 43,
+        "trajectory_indices": [
+          24,
+          17,
+          13,
+          4,
+          15,
+          43,
+          38
+        ]
+      },
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 375.04409497616916,
+        "best_input_candidate_observed_steps": 213,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -2.8643558724870877,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 367.44451554789913,
+        "policy_validation_steps": 1920,
+        "portfolio_all_step_pos_rmse_m": 4450.25580485147,
+        "portfolio_observed_step_pos_rmse_m": 385.7866925350351,
+        "portfolio_observed_step_sse": 31701082.265206933,
+        "portfolio_observed_steps": 213,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 47,
+        "split": 47,
+        "trajectory_indices": [
+          46,
+          23,
+          44,
+          11,
+          42,
+          30,
+          2
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 438.73411724283,
+        "best_input_candidate_observed_steps": 92,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -3.7740631584191524,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "EKF"
+        ],
+        "policy_id": "blend:learned:EKF:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 562.5090763601526,
+        "policy_validation_steps": 1577,
+        "portfolio_all_step_pos_rmse_m": 20803.324593954017,
+        "portfolio_observed_step_pos_rmse_m": 455.29221992510713,
+        "portfolio_observed_step_sse": 19070772.508238554,
+        "portfolio_observed_steps": 92,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 47,
+        "split": 47,
+        "trajectory_indices": [
+          37,
+          16,
+          24,
+          32,
+          44,
+          2,
+          28
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 308.87798534243973,
+        "best_input_candidate_observed_steps": 266,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 9.567444616133807,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 367.44451554789913,
+        "policy_validation_steps": 1920,
+        "portfolio_all_step_pos_rmse_m": 4472.305080524017,
+        "portfolio_observed_step_pos_rmse_m": 279.3262551633719,
+        "portfolio_observed_step_sse": 20754159.71507578,
+        "portfolio_observed_steps": 266,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 53,
+        "split": 53,
+        "trajectory_indices": [
+          43,
+          15,
+          3,
+          29,
+          46,
+          19,
+          1
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 407.5192620267138,
+        "best_input_candidate_observed_steps": 74,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": -10.095730779773614,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "EKF"
+        ],
+        "policy_id": "blend:learned:EKF:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 562.5090763601526,
+        "policy_validation_steps": 1577,
+        "portfolio_all_step_pos_rmse_m": 23694.551332152645,
+        "portfolio_observed_step_pos_rmse_m": 448.66130959665105,
+        "portfolio_observed_step_sse": 14895975.833944665,
+        "portfolio_observed_steps": 74,
+        "result_vs_best_input": "loss",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 53,
+        "split": 53,
+        "trajectory_indices": [
+          40,
+          16,
+          12,
+          24,
+          46,
+          39,
+          9
+        ]
+      },
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 412.7719078197348,
+        "best_input_candidate_observed_steps": 274,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 7.84989524582123,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 367.44451554789913,
+        "policy_validation_steps": 1920,
+        "portfolio_all_step_pos_rmse_m": 3208.9867272847905,
+        "portfolio_observed_step_pos_rmse_m": 380.36974545170784,
+        "portfolio_observed_step_sse": 39642633.25186919,
+        "portfolio_observed_steps": 274,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 59,
+        "split": 59,
+        "trajectory_indices": [
+          45,
+          8,
+          37,
+          40,
+          1,
+          26,
+          31
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 529.2630673685954,
+        "best_input_candidate_observed_steps": 117,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 2.011872467353905,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "EKF"
+        ],
+        "policy_id": "blend:learned:EKF:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 562.5090763601526,
+        "policy_validation_steps": 1577,
+        "portfolio_all_step_pos_rmse_m": 11804.763146760988,
+        "portfolio_observed_step_pos_rmse_m": 518.6149694363339,
+        "portfolio_observed_step_sse": 31468493.9232436,
+        "portfolio_observed_steps": 117,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 59,
+        "split": 59,
+        "trajectory_indices": [
+          22,
+          4,
+          25,
+          11,
+          6,
+          2,
+          36
+        ]
+      },
+      {
+        "best_input_candidate_method": "RFIS",
+        "best_input_candidate_observed_step_pos_rmse_m": 384.62872567273433,
+        "best_input_candidate_observed_steps": 193,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 8.374390548996221,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "RFIS"
+        ],
+        "policy_id": "blend:learned:RFIS:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 367.44451554789913,
+        "policy_validation_steps": 1920,
+        "portfolio_all_step_pos_rmse_m": 10131.388508509717,
+        "portfolio_observed_step_pos_rmse_m": 352.41841402127227,
+        "portfolio_observed_step_sse": 23970356.53846489,
+        "portfolio_observed_steps": 193,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "scenario": "process_noise_shift_test",
+        "seed": 61,
+        "split": 61,
+        "trajectory_indices": [
+          10,
+          34,
+          15,
+          42,
+          12,
+          0,
+          28
+        ]
+      },
+      {
+        "best_input_candidate_method": "EKF",
+        "best_input_candidate_observed_step_pos_rmse_m": 554.2617062538278,
+        "best_input_candidate_observed_steps": 226,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "gain_vs_best_input_observed_step_percent": 0.30575685773292066,
+        "policy_alpha": 0.6,
+        "policy_components": [
+          "learned",
+          "EKF"
+        ],
+        "policy_id": "blend:learned:EKF:0.6",
+        "policy_kind": "blend",
+        "policy_validation_rmse_m": 562.5090763601526,
+        "policy_validation_steps": 1577,
+        "portfolio_all_step_pos_rmse_m": 5319.562084021679,
+        "portfolio_observed_step_pos_rmse_m": 552.5670130771692,
+        "portfolio_observed_step_sse": 69004648.69067153,
+        "portfolio_observed_steps": 226,
+        "result_vs_best_input": "win",
+        "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+        "scenario": "maneuver_shift_test",
+        "seed": 61,
+        "split": 61,
+        "trajectory_indices": [
+          32,
+          43,
+          40,
+          45,
+          47,
+          30,
+          42
+        ]
+      }
+    ],
+    "global_scenario_policy_statistics": {
+      "by_scenario": {
+        "maneuver_shift_test": {
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_mean_gain_percent_ci95": [
+            -6.409876606077219,
+            1.371244987789225
+          ],
+          "bootstrap_method": "percentile",
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 12345,
+          "exact_one_sided_sign_p_value": 0.5,
+          "finite_gain_rows": 5,
+          "losses": 2,
+          "max_gain_percent": 2.011872467353905,
+          "mean_gain_percent": -2.057760607970649,
+          "median_gain_percent": 0.30575685773292066,
+          "min_gain_percent": -10.095730779773614,
+          "nonpositive": 2,
+          "rows": 5,
+          "ties": 0,
+          "wins": 3
+        },
+        "process_noise_shift_test": {
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_mean_gain_percent_ci95": [
+            0.3193257164344073,
+            8.746713115216258
+          ],
+          "bootstrap_method": "percentile",
+          "bootstrap_samples": 20000,
+          "bootstrap_seed": 12345,
+          "exact_one_sided_sign_p_value": 0.1875,
+          "finite_gain_rows": 5,
+          "losses": 1,
+          "max_gain_percent": 9.567444616133807,
+          "mean_gain_percent": 4.948536037820249,
+          "median_gain_percent": 7.84989524582123,
+          "min_gain_percent": -2.8643558724870877,
+          "nonpositive": 1,
+          "rows": 5,
+          "ties": 0,
+          "wins": 4
+        }
+      },
+      "rows": {
+        "bootstrap_confidence_level": 0.95,
+        "bootstrap_mean_gain_percent_ci95": [
+          -2.2225119490591987,
+          4.958079092109266
+        ],
+        "bootstrap_method": "percentile",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 12345,
+        "exact_one_sided_sign_p_value": 0.171875,
+        "finite_gain_rows": 10,
+        "losses": 3,
+        "max_gain_percent": 9.567444616133807,
+        "mean_gain_percent": 1.4453877149248004,
+        "median_gain_percent": 1.5393336119448882,
+        "min_gain_percent": -10.095730779773614,
+        "nonpositive": 3,
+        "rows": 10,
+        "ties": 0,
+        "wins": 7
+      },
+      "seed_paired": {
+        "bootstrap_confidence_level": 0.95,
+        "bootstrap_method": "percentile",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 12345,
+        "bootstrap_seed_mean_gain_percent_ci95": [
+          -1.1763395849629386,
+          4.016249746369833
+        ],
+        "exact_one_sided_sign_p_value": 0.5,
+        "finite_gain_seeds": 5,
+        "seed_losses": 2,
+        "seed_max_gain_percent": 4.930883856587568,
+        "seed_mean_gain_percent": 1.4453877149248004,
+        "seed_mean_gain_percent_values": [
+          1.5393336119448882,
+          -3.31920951545312,
+          -0.26414308181990354,
+          4.930883856587568,
+          4.34007370336457
+        ],
+        "seed_mean_gains": [
+          {
+            "mean_gain_percent": 1.5393336119448882,
+            "seed": 43
+          },
+          {
+            "mean_gain_percent": -3.31920951545312,
+            "seed": 47
+          },
+          {
+            "mean_gain_percent": -0.26414308181990354,
+            "seed": 53
+          },
+          {
+            "mean_gain_percent": 4.930883856587568,
+            "seed": 59
+          },
+          {
+            "mean_gain_percent": 4.34007370336457,
+            "seed": 61
+          }
+        ],
+        "seed_median_gain_percent": 1.5393336119448882,
+        "seed_min_gain_percent": -3.31920951545312,
+        "seed_nonpositive": 2,
+        "seed_ties": 0,
+        "seed_wins": 3,
+        "seeds": 5
+      }
+    },
+    "global_scenario_policy_summary": {
+      "losses": 3,
+      "max_gain_percent": 9.567444616133807,
+      "mean_gain_percent": 1.4453877149248004,
+      "median_gain_percent": 1.5393336119448882,
+      "min_gain_percent": -10.095730779773614,
+      "rows": 10,
+      "ties": 0,
+      "wins": 7
+    },
+    "policy_family_diagnostics": {
+      "all": {
+        "by_scenario": {
+          "maneuver_shift_test": {
+            "losses": 2,
+            "max_gain_percent": 2.011872467353905,
+            "mean_gain_percent": -2.057760607970649,
+            "median_gain_percent": 0.30575685773292066,
+            "min_gain_percent": -10.095730779773614,
+            "rows": 5,
+            "ties": 0,
+            "wins": 3
+          },
+          "process_noise_shift_test": {
+            "losses": 1,
+            "max_gain_percent": 9.567444616133807,
+            "mean_gain_percent": 4.948536037820249,
+            "median_gain_percent": 7.84989524582123,
+            "min_gain_percent": -2.8643558724870877,
+            "rows": 5,
+            "ties": 0,
+            "wins": 4
+          }
+        },
+        "scenario_policy_rows": [
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 321.8012669576178,
+            "best_input_candidate_observed_steps": 139,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 1.8153056506370786,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 12357.010321051079,
+            "portfolio_observed_step_pos_rmse_m": 315.9595903747145,
+            "portfolio_observed_step_sse": 13876434.322216276,
+            "portfolio_observed_steps": 139,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 43,
+            "split": 43,
+            "trajectory_indices": [
+              24,
+              28,
+              41,
+              36,
+              4,
+              47,
+              35
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 476.8500442161331,
+            "best_input_candidate_observed_steps": 95,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 1.2633615732526977,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 21020.967247937264,
+            "portfolio_observed_step_pos_rmse_m": 470.82570399546796,
+            "portfolio_observed_step_sse": 21059300.136568658,
+            "portfolio_observed_steps": 95,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 43,
+            "split": 43,
+            "trajectory_indices": [
+              24,
+              17,
+              13,
+              4,
+              15,
+              43,
+              38
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 375.04409497616916,
+            "best_input_candidate_observed_steps": 213,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -2.8643558724870877,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 4450.25580485147,
+            "portfolio_observed_step_pos_rmse_m": 385.7866925350351,
+            "portfolio_observed_step_sse": 31701082.265206933,
+            "portfolio_observed_steps": 213,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 47,
+            "split": 47,
+            "trajectory_indices": [
+              46,
+              23,
+              44,
+              11,
+              42,
+              30,
+              2
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 438.73411724283,
+            "best_input_candidate_observed_steps": 92,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -3.7740631584191524,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 20803.324593954017,
+            "portfolio_observed_step_pos_rmse_m": 455.29221992510713,
+            "portfolio_observed_step_sse": 19070772.508238554,
+            "portfolio_observed_steps": 92,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 47,
+            "split": 47,
+            "trajectory_indices": [
+              37,
+              16,
+              24,
+              32,
+              44,
+              2,
+              28
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 308.87798534243973,
+            "best_input_candidate_observed_steps": 266,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 9.567444616133807,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 4472.305080524017,
+            "portfolio_observed_step_pos_rmse_m": 279.3262551633719,
+            "portfolio_observed_step_sse": 20754159.71507578,
+            "portfolio_observed_steps": 266,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 53,
+            "split": 53,
+            "trajectory_indices": [
+              43,
+              15,
+              3,
+              29,
+              46,
+              19,
+              1
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 407.5192620267138,
+            "best_input_candidate_observed_steps": 74,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -10.095730779773614,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 23694.551332152645,
+            "portfolio_observed_step_pos_rmse_m": 448.66130959665105,
+            "portfolio_observed_step_sse": 14895975.833944665,
+            "portfolio_observed_steps": 74,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 53,
+            "split": 53,
+            "trajectory_indices": [
+              40,
+              16,
+              12,
+              24,
+              46,
+              39,
+              9
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 412.7719078197348,
+            "best_input_candidate_observed_steps": 274,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 7.84989524582123,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 3208.9867272847905,
+            "portfolio_observed_step_pos_rmse_m": 380.36974545170784,
+            "portfolio_observed_step_sse": 39642633.25186919,
+            "portfolio_observed_steps": 274,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 59,
+            "split": 59,
+            "trajectory_indices": [
+              45,
+              8,
+              37,
+              40,
+              1,
+              26,
+              31
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 529.2630673685954,
+            "best_input_candidate_observed_steps": 117,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 2.011872467353905,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 11804.763146760988,
+            "portfolio_observed_step_pos_rmse_m": 518.6149694363339,
+            "portfolio_observed_step_sse": 31468493.9232436,
+            "portfolio_observed_steps": 117,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 59,
+            "split": 59,
+            "trajectory_indices": [
+              22,
+              4,
+              25,
+              11,
+              6,
+              2,
+              36
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 384.62872567273433,
+            "best_input_candidate_observed_steps": 193,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 8.374390548996221,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 10131.388508509717,
+            "portfolio_observed_step_pos_rmse_m": 352.41841402127227,
+            "portfolio_observed_step_sse": 23970356.53846489,
+            "portfolio_observed_steps": 193,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 61,
+            "split": 61,
+            "trajectory_indices": [
+              10,
+              34,
+              15,
+              42,
+              12,
+              0,
+              28
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 554.2617062538278,
+            "best_input_candidate_observed_steps": 226,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 0.30575685773292066,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 5319.562084021679,
+            "portfolio_observed_step_pos_rmse_m": 552.5670130771692,
+            "portfolio_observed_step_sse": 69004648.69067153,
+            "portfolio_observed_steps": 226,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 61,
+            "split": 61,
+            "trajectory_indices": [
+              32,
+              43,
+              40,
+              45,
+              47,
+              30,
+              42
+            ]
+          }
+        ],
+        "statistics": {
+          "by_scenario": {
+            "maneuver_shift_test": {
+              "bootstrap_confidence_level": 0.95,
+              "bootstrap_mean_gain_percent_ci95": [
+                -6.409876606077219,
+                1.371244987789225
+              ],
+              "bootstrap_method": "percentile",
+              "bootstrap_samples": 20000,
+              "bootstrap_seed": 12345,
+              "exact_one_sided_sign_p_value": 0.5,
+              "finite_gain_rows": 5,
+              "losses": 2,
+              "max_gain_percent": 2.011872467353905,
+              "mean_gain_percent": -2.057760607970649,
+              "median_gain_percent": 0.30575685773292066,
+              "min_gain_percent": -10.095730779773614,
+              "nonpositive": 2,
+              "rows": 5,
+              "ties": 0,
+              "wins": 3
+            },
+            "process_noise_shift_test": {
+              "bootstrap_confidence_level": 0.95,
+              "bootstrap_mean_gain_percent_ci95": [
+                0.3193257164344073,
+                8.746713115216258
+              ],
+              "bootstrap_method": "percentile",
+              "bootstrap_samples": 20000,
+              "bootstrap_seed": 12345,
+              "exact_one_sided_sign_p_value": 0.1875,
+              "finite_gain_rows": 5,
+              "losses": 1,
+              "max_gain_percent": 9.567444616133807,
+              "mean_gain_percent": 4.948536037820249,
+              "median_gain_percent": 7.84989524582123,
+              "min_gain_percent": -2.8643558724870877,
+              "nonpositive": 1,
+              "rows": 5,
+              "ties": 0,
+              "wins": 4
+            }
+          },
+          "rows": {
+            "bootstrap_confidence_level": 0.95,
+            "bootstrap_mean_gain_percent_ci95": [
+              -2.2225119490591987,
+              4.958079092109266
+            ],
+            "bootstrap_method": "percentile",
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 12345,
+            "exact_one_sided_sign_p_value": 0.171875,
+            "finite_gain_rows": 10,
+            "losses": 3,
+            "max_gain_percent": 9.567444616133807,
+            "mean_gain_percent": 1.4453877149248004,
+            "median_gain_percent": 1.5393336119448882,
+            "min_gain_percent": -10.095730779773614,
+            "nonpositive": 3,
+            "rows": 10,
+            "ties": 0,
+            "wins": 7
+          },
+          "seed_paired": {
+            "bootstrap_confidence_level": 0.95,
+            "bootstrap_method": "percentile",
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 12345,
+            "bootstrap_seed_mean_gain_percent_ci95": [
+              -1.1763395849629386,
+              4.016249746369833
+            ],
+            "exact_one_sided_sign_p_value": 0.5,
+            "finite_gain_seeds": 5,
+            "seed_losses": 2,
+            "seed_max_gain_percent": 4.930883856587568,
+            "seed_mean_gain_percent": 1.4453877149248004,
+            "seed_mean_gain_percent_values": [
+              1.5393336119448882,
+              -3.31920951545312,
+              -0.26414308181990354,
+              4.930883856587568,
+              4.34007370336457
+            ],
+            "seed_mean_gains": [
+              {
+                "mean_gain_percent": 1.5393336119448882,
+                "seed": 43
+              },
+              {
+                "mean_gain_percent": -3.31920951545312,
+                "seed": 47
+              },
+              {
+                "mean_gain_percent": -0.26414308181990354,
+                "seed": 53
+              },
+              {
+                "mean_gain_percent": 4.930883856587568,
+                "seed": 59
+              },
+              {
+                "mean_gain_percent": 4.34007370336457,
+                "seed": 61
+              }
+            ],
+            "seed_median_gain_percent": 1.5393336119448882,
+            "seed_min_gain_percent": -3.31920951545312,
+            "seed_nonpositive": 2,
+            "seed_ties": 0,
+            "seed_wins": 3,
+            "seeds": 5
+          }
+        },
+        "summary": {
+          "losses": 3,
+          "max_gain_percent": 9.567444616133807,
+          "mean_gain_percent": 1.4453877149248004,
+          "median_gain_percent": 1.5393336119448882,
+          "min_gain_percent": -10.095730779773614,
+          "rows": 10,
+          "ties": 0,
+          "wins": 7
+        }
+      },
+      "learned_including": {
+        "by_scenario": {
+          "maneuver_shift_test": {
+            "losses": 2,
+            "max_gain_percent": 2.011872467353905,
+            "mean_gain_percent": -2.057760607970649,
+            "median_gain_percent": 0.30575685773292066,
+            "min_gain_percent": -10.095730779773614,
+            "rows": 5,
+            "ties": 0,
+            "wins": 3
+          },
+          "process_noise_shift_test": {
+            "losses": 1,
+            "max_gain_percent": 9.567444616133807,
+            "mean_gain_percent": 4.948536037820249,
+            "median_gain_percent": 7.84989524582123,
+            "min_gain_percent": -2.8643558724870877,
+            "rows": 5,
+            "ties": 0,
+            "wins": 4
+          }
+        },
+        "scenario_policy_rows": [
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 321.8012669576178,
+            "best_input_candidate_observed_steps": 139,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 1.8153056506370786,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 12357.010321051079,
+            "portfolio_observed_step_pos_rmse_m": 315.9595903747145,
+            "portfolio_observed_step_sse": 13876434.322216276,
+            "portfolio_observed_steps": 139,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 43,
+            "split": 43,
+            "trajectory_indices": [
+              24,
+              28,
+              41,
+              36,
+              4,
+              47,
+              35
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 476.8500442161331,
+            "best_input_candidate_observed_steps": 95,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 1.2633615732526977,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 21020.967247937264,
+            "portfolio_observed_step_pos_rmse_m": 470.82570399546796,
+            "portfolio_observed_step_sse": 21059300.136568658,
+            "portfolio_observed_steps": 95,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 43,
+            "split": 43,
+            "trajectory_indices": [
+              24,
+              17,
+              13,
+              4,
+              15,
+              43,
+              38
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 375.04409497616916,
+            "best_input_candidate_observed_steps": 213,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -2.8643558724870877,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 4450.25580485147,
+            "portfolio_observed_step_pos_rmse_m": 385.7866925350351,
+            "portfolio_observed_step_sse": 31701082.265206933,
+            "portfolio_observed_steps": 213,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 47,
+            "split": 47,
+            "trajectory_indices": [
+              46,
+              23,
+              44,
+              11,
+              42,
+              30,
+              2
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 438.73411724283,
+            "best_input_candidate_observed_steps": 92,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -3.7740631584191524,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 20803.324593954017,
+            "portfolio_observed_step_pos_rmse_m": 455.29221992510713,
+            "portfolio_observed_step_sse": 19070772.508238554,
+            "portfolio_observed_steps": 92,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 47,
+            "split": 47,
+            "trajectory_indices": [
+              37,
+              16,
+              24,
+              32,
+              44,
+              2,
+              28
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 308.87798534243973,
+            "best_input_candidate_observed_steps": 266,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 9.567444616133807,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 4472.305080524017,
+            "portfolio_observed_step_pos_rmse_m": 279.3262551633719,
+            "portfolio_observed_step_sse": 20754159.71507578,
+            "portfolio_observed_steps": 266,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 53,
+            "split": 53,
+            "trajectory_indices": [
+              43,
+              15,
+              3,
+              29,
+              46,
+              19,
+              1
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 407.5192620267138,
+            "best_input_candidate_observed_steps": 74,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -10.095730779773614,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 23694.551332152645,
+            "portfolio_observed_step_pos_rmse_m": 448.66130959665105,
+            "portfolio_observed_step_sse": 14895975.833944665,
+            "portfolio_observed_steps": 74,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 53,
+            "split": 53,
+            "trajectory_indices": [
+              40,
+              16,
+              12,
+              24,
+              46,
+              39,
+              9
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 412.7719078197348,
+            "best_input_candidate_observed_steps": 274,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 7.84989524582123,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 3208.9867272847905,
+            "portfolio_observed_step_pos_rmse_m": 380.36974545170784,
+            "portfolio_observed_step_sse": 39642633.25186919,
+            "portfolio_observed_steps": 274,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 59,
+            "split": 59,
+            "trajectory_indices": [
+              45,
+              8,
+              37,
+              40,
+              1,
+              26,
+              31
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 529.2630673685954,
+            "best_input_candidate_observed_steps": 117,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 2.011872467353905,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 11804.763146760988,
+            "portfolio_observed_step_pos_rmse_m": 518.6149694363339,
+            "portfolio_observed_step_sse": 31468493.9232436,
+            "portfolio_observed_steps": 117,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 59,
+            "split": 59,
+            "trajectory_indices": [
+              22,
+              4,
+              25,
+              11,
+              6,
+              2,
+              36
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 384.62872567273433,
+            "best_input_candidate_observed_steps": 193,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 8.374390548996221,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "RFIS"
+            ],
+            "policy_id": "blend:learned:RFIS:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 367.44451554789913,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 10131.388508509717,
+            "portfolio_observed_step_pos_rmse_m": 352.41841402127227,
+            "portfolio_observed_step_sse": 23970356.53846489,
+            "portfolio_observed_steps": 193,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 61,
+            "split": 61,
+            "trajectory_indices": [
+              10,
+              34,
+              15,
+              42,
+              12,
+              0,
+              28
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 554.2617062538278,
+            "best_input_candidate_observed_steps": 226,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 0.30575685773292066,
+            "policy_alpha": 0.6,
+            "policy_components": [
+              "learned",
+              "EKF"
+            ],
+            "policy_id": "blend:learned:EKF:0.6",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 562.5090763601526,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 5319.562084021679,
+            "portfolio_observed_step_pos_rmse_m": 552.5670130771692,
+            "portfolio_observed_step_sse": 69004648.69067153,
+            "portfolio_observed_steps": 226,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 61,
+            "split": 61,
+            "trajectory_indices": [
+              32,
+              43,
+              40,
+              45,
+              47,
+              30,
+              42
+            ]
+          }
+        ],
+        "statistics": {
+          "by_scenario": {
+            "maneuver_shift_test": {
+              "bootstrap_confidence_level": 0.95,
+              "bootstrap_mean_gain_percent_ci95": [
+                -6.409876606077219,
+                1.371244987789225
+              ],
+              "bootstrap_method": "percentile",
+              "bootstrap_samples": 20000,
+              "bootstrap_seed": 12345,
+              "exact_one_sided_sign_p_value": 0.5,
+              "finite_gain_rows": 5,
+              "losses": 2,
+              "max_gain_percent": 2.011872467353905,
+              "mean_gain_percent": -2.057760607970649,
+              "median_gain_percent": 0.30575685773292066,
+              "min_gain_percent": -10.095730779773614,
+              "nonpositive": 2,
+              "rows": 5,
+              "ties": 0,
+              "wins": 3
+            },
+            "process_noise_shift_test": {
+              "bootstrap_confidence_level": 0.95,
+              "bootstrap_mean_gain_percent_ci95": [
+                0.3193257164344073,
+                8.746713115216258
+              ],
+              "bootstrap_method": "percentile",
+              "bootstrap_samples": 20000,
+              "bootstrap_seed": 12345,
+              "exact_one_sided_sign_p_value": 0.1875,
+              "finite_gain_rows": 5,
+              "losses": 1,
+              "max_gain_percent": 9.567444616133807,
+              "mean_gain_percent": 4.948536037820249,
+              "median_gain_percent": 7.84989524582123,
+              "min_gain_percent": -2.8643558724870877,
+              "nonpositive": 1,
+              "rows": 5,
+              "ties": 0,
+              "wins": 4
+            }
+          },
+          "rows": {
+            "bootstrap_confidence_level": 0.95,
+            "bootstrap_mean_gain_percent_ci95": [
+              -2.2225119490591987,
+              4.958079092109266
+            ],
+            "bootstrap_method": "percentile",
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 12345,
+            "exact_one_sided_sign_p_value": 0.171875,
+            "finite_gain_rows": 10,
+            "losses": 3,
+            "max_gain_percent": 9.567444616133807,
+            "mean_gain_percent": 1.4453877149248004,
+            "median_gain_percent": 1.5393336119448882,
+            "min_gain_percent": -10.095730779773614,
+            "nonpositive": 3,
+            "rows": 10,
+            "ties": 0,
+            "wins": 7
+          },
+          "seed_paired": {
+            "bootstrap_confidence_level": 0.95,
+            "bootstrap_method": "percentile",
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 12345,
+            "bootstrap_seed_mean_gain_percent_ci95": [
+              -1.1763395849629386,
+              4.016249746369833
+            ],
+            "exact_one_sided_sign_p_value": 0.5,
+            "finite_gain_seeds": 5,
+            "seed_losses": 2,
+            "seed_max_gain_percent": 4.930883856587568,
+            "seed_mean_gain_percent": 1.4453877149248004,
+            "seed_mean_gain_percent_values": [
+              1.5393336119448882,
+              -3.31920951545312,
+              -0.26414308181990354,
+              4.930883856587568,
+              4.34007370336457
+            ],
+            "seed_mean_gains": [
+              {
+                "mean_gain_percent": 1.5393336119448882,
+                "seed": 43
+              },
+              {
+                "mean_gain_percent": -3.31920951545312,
+                "seed": 47
+              },
+              {
+                "mean_gain_percent": -0.26414308181990354,
+                "seed": 53
+              },
+              {
+                "mean_gain_percent": 4.930883856587568,
+                "seed": 59
+              },
+              {
+                "mean_gain_percent": 4.34007370336457,
+                "seed": 61
+              }
+            ],
+            "seed_median_gain_percent": 1.5393336119448882,
+            "seed_min_gain_percent": -3.31920951545312,
+            "seed_nonpositive": 2,
+            "seed_ties": 0,
+            "seed_wins": 3,
+            "seeds": 5
+          }
+        },
+        "summary": {
+          "losses": 3,
+          "max_gain_percent": 9.567444616133807,
+          "mean_gain_percent": 1.4453877149248004,
+          "median_gain_percent": 1.5393336119448882,
+          "min_gain_percent": -10.095730779773614,
+          "rows": 10,
+          "ties": 0,
+          "wins": 7
+        }
+      },
+      "nonlearned_only": {
+        "by_scenario": {
+          "maneuver_shift_test": {
+            "losses": 4,
+            "max_gain_percent": 5.844373376061877,
+            "mean_gain_percent": -2.341798075487694,
+            "median_gain_percent": -2.018018875702743,
+            "min_gain_percent": -9.133144213326865,
+            "rows": 5,
+            "ties": 0,
+            "wins": 1
+          },
+          "process_noise_shift_test": {
+            "losses": 0,
+            "max_gain_percent": 4.957936185702414,
+            "mean_gain_percent": 2.5550429336686316,
+            "median_gain_percent": 2.6355661348236,
+            "min_gain_percent": 0.5488124327629799,
+            "rows": 5,
+            "ties": 0,
+            "wins": 5
+          }
+        },
+        "scenario_policy_rows": [
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 321.8012669576178,
+            "best_input_candidate_observed_steps": 139,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 0.8366122967120221,
+            "policy_alpha": 0.05,
+            "policy_components": [
+              "BatchWLS",
+              "RFIS"
+            ],
+            "policy_id": "blend:BatchWLS:RFIS:0.05",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 379.56582990408106,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 12539.717917241638,
+            "portfolio_observed_step_pos_rmse_m": 319.1090379872753,
+            "portfolio_observed_step_sse": 14154450.359397843,
+            "portfolio_observed_steps": 139,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 43,
+            "split": 43,
+            "trajectory_indices": [
+              24,
+              28,
+              41,
+              36,
+              4,
+              47,
+              35
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 476.8500442161331,
+            "best_input_candidate_observed_steps": 95,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -0.7983154107942637,
+            "policy_alpha": 0.9,
+            "policy_components": [
+              "EKF",
+              "BatchWLS"
+            ],
+            "policy_id": "blend:EKF:BatchWLS:0.9",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 571.0340834530643,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 21089.13462055469,
+            "portfolio_observed_step_pos_rmse_m": 480.65681160548974,
+            "portfolio_observed_step_sse": 21947942.20156175,
+            "portfolio_observed_steps": 95,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 43,
+            "split": 43,
+            "trajectory_indices": [
+              24,
+              17,
+              13,
+              4,
+              15,
+              43,
+              38
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 375.04409497616916,
+            "best_input_candidate_observed_steps": 213,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 0.5488124327629799,
+            "policy_alpha": 0.05,
+            "policy_components": [
+              "BatchWLS",
+              "RFIS"
+            ],
+            "policy_id": "blend:BatchWLS:RFIS:0.05",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 379.56582990408106,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 5204.859451545455,
+            "portfolio_observed_step_pos_rmse_m": 372.98580635459655,
+            "portfolio_observed_step_sse": 29632221.70104357,
+            "portfolio_observed_steps": 213,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 47,
+            "split": 47,
+            "trajectory_indices": [
+              46,
+              23,
+              44,
+              11,
+              42,
+              30,
+              2
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 438.73411724283,
+            "best_input_candidate_observed_steps": 92,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -5.603885253676476,
+            "policy_alpha": 0.9,
+            "policy_components": [
+              "EKF",
+              "BatchWLS"
+            ],
+            "policy_id": "blend:EKF:BatchWLS:0.9",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 571.0340834530643,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 21058.82834846872,
+            "portfolio_observed_step_pos_rmse_m": 463.3202737418486,
+            "portfolio_observed_step_sse": 19749242.19754038,
+            "portfolio_observed_steps": 92,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 47,
+            "split": 47,
+            "trajectory_indices": [
+              37,
+              16,
+              24,
+              32,
+              44,
+              2,
+              28
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 308.87798534243973,
+            "best_input_candidate_observed_steps": 266,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 4.957936185702414,
+            "policy_alpha": 0.05,
+            "policy_components": [
+              "BatchWLS",
+              "RFIS"
+            ],
+            "policy_id": "blend:BatchWLS:RFIS:0.05",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 379.56582990408106,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 5147.805680318842,
+            "portfolio_observed_step_pos_rmse_m": 293.5640119374783,
+            "portfolio_observed_step_sse": 22923834.54188423,
+            "portfolio_observed_steps": 266,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 53,
+            "split": 53,
+            "trajectory_indices": [
+              43,
+              15,
+              3,
+              29,
+              46,
+              19,
+              1
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 407.5192620267138,
+            "best_input_candidate_observed_steps": 74,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -2.018018875702743,
+            "policy_alpha": 0.9,
+            "policy_components": [
+              "EKF",
+              "BatchWLS"
+            ],
+            "policy_id": "blend:EKF:BatchWLS:0.9",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 571.0340834530643,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 23734.933459734515,
+            "portfolio_observed_step_pos_rmse_m": 415.7430776565374,
+            "portfolio_observed_step_sse": 12790330.689830398,
+            "portfolio_observed_steps": 74,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 53,
+            "split": 53,
+            "trajectory_indices": [
+              40,
+              16,
+              12,
+              24,
+              46,
+              39,
+              9
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 412.7719078197348,
+            "best_input_candidate_observed_steps": 274,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 3.7962876183421437,
+            "policy_alpha": 0.05,
+            "policy_components": [
+              "BatchWLS",
+              "RFIS"
+            ],
+            "policy_id": "blend:BatchWLS:RFIS:0.05",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 379.56582990408106,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 3661.9405982592875,
+            "portfolio_observed_step_pos_rmse_m": 397.10189899117955,
+            "portfolio_observed_step_sse": 43207037.581977874,
+            "portfolio_observed_steps": 274,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 59,
+            "split": 59,
+            "trajectory_indices": [
+              45,
+              8,
+              37,
+              40,
+              1,
+              26,
+              31
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 529.2630673685954,
+            "best_input_candidate_observed_steps": 117,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 5.844373376061877,
+            "policy_alpha": 0.9,
+            "policy_components": [
+              "EKF",
+              "BatchWLS"
+            ],
+            "policy_id": "blend:EKF:BatchWLS:0.9",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 571.0340834530643,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 12678.495425871963,
+            "portfolio_observed_step_pos_rmse_m": 498.3309575699768,
+            "portfolio_observed_step_sse": 29055047.96289537,
+            "portfolio_observed_steps": 117,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 59,
+            "split": 59,
+            "trajectory_indices": [
+              22,
+              4,
+              25,
+              11,
+              6,
+              2,
+              36
+            ]
+          },
+          {
+            "best_input_candidate_method": "RFIS",
+            "best_input_candidate_observed_step_pos_rmse_m": 384.62872567273433,
+            "best_input_candidate_observed_steps": 193,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": 2.6355661348236,
+            "policy_alpha": 0.05,
+            "policy_components": [
+              "BatchWLS",
+              "RFIS"
+            ],
+            "policy_id": "blend:BatchWLS:RFIS:0.05",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 379.56582990408106,
+            "policy_validation_steps": 1920,
+            "portfolio_all_step_pos_rmse_m": 11861.327554370384,
+            "portfolio_observed_step_pos_rmse_m": 374.4915812341002,
+            "portfolio_observed_step_sse": 27067081.272136815,
+            "portfolio_observed_steps": 193,
+            "result_vs_best_input": "win",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "scenario": "process_noise_shift_test",
+            "seed": 61,
+            "split": 61,
+            "trajectory_indices": [
+              10,
+              34,
+              15,
+              42,
+              12,
+              0,
+              28
+            ]
+          },
+          {
+            "best_input_candidate_method": "EKF",
+            "best_input_candidate_observed_step_pos_rmse_m": 554.2617062538278,
+            "best_input_candidate_observed_steps": 226,
+            "candidate_methods": [
+              "EKF",
+              "UKF",
+              "AUKF",
+              "BatchWLS",
+              "RFIS",
+              "VA_RFIS"
+            ],
+            "gain_vs_best_input_observed_step_percent": -9.133144213326865,
+            "policy_alpha": 0.9,
+            "policy_components": [
+              "EKF",
+              "BatchWLS"
+            ],
+            "policy_id": "blend:EKF:BatchWLS:0.9",
+            "policy_kind": "blend",
+            "policy_validation_rmse_m": 571.0340834530643,
+            "policy_validation_steps": 1577,
+            "portfolio_all_step_pos_rmse_m": 5614.4418348085055,
+            "portfolio_observed_step_pos_rmse_m": 604.883227205236,
+            "portfolio_observed_step_sse": 82689720.39325398,
+            "portfolio_observed_steps": 226,
+            "result_vs_best_input": "loss",
+            "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623",
+            "scenario": "maneuver_shift_test",
+            "seed": 61,
+            "split": 61,
+            "trajectory_indices": [
+              32,
+              43,
+              40,
+              45,
+              47,
+              30,
+              42
+            ]
+          }
+        ],
+        "statistics": {
+          "by_scenario": {
+            "maneuver_shift_test": {
+              "bootstrap_confidence_level": 0.95,
+              "bootstrap_mean_gain_percent_ci95": [
+                -6.760326660890267,
+                2.226183892742978
+              ],
+              "bootstrap_method": "percentile",
+              "bootstrap_samples": 20000,
+              "bootstrap_seed": 12345,
+              "exact_one_sided_sign_p_value": 0.96875,
+              "finite_gain_rows": 5,
+              "losses": 4,
+              "max_gain_percent": 5.844373376061877,
+              "mean_gain_percent": -2.341798075487694,
+              "median_gain_percent": -2.018018875702743,
+              "min_gain_percent": -9.133144213326865,
+              "nonpositive": 4,
+              "rows": 5,
+              "ties": 0,
+              "wins": 1
+            },
+            "process_noise_shift_test": {
+              "bootstrap_confidence_level": 0.95,
+              "bootstrap_mean_gain_percent_ci95": [
+                1.0812831187547207,
+                4.028802748582543
+              ],
+              "bootstrap_method": "percentile",
+              "bootstrap_samples": 20000,
+              "bootstrap_seed": 12345,
+              "exact_one_sided_sign_p_value": 0.03125,
+              "finite_gain_rows": 5,
+              "losses": 0,
+              "max_gain_percent": 4.957936185702414,
+              "mean_gain_percent": 2.5550429336686316,
+              "median_gain_percent": 2.6355661348236,
+              "min_gain_percent": 0.5488124327629799,
+              "nonpositive": 0,
+              "rows": 5,
+              "ties": 0,
+              "wins": 5
+            }
+          },
+          "rows": {
+            "bootstrap_confidence_level": 0.95,
+            "bootstrap_mean_gain_percent_ci95": [
+              -2.8344820567522,
+              2.6791042595869294
+            ],
+            "bootstrap_method": "percentile",
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 12345,
+            "exact_one_sided_sign_p_value": 0.376953125,
+            "finite_gain_rows": 10,
+            "losses": 4,
+            "max_gain_percent": 5.844373376061877,
+            "mean_gain_percent": 0.10662242909046889,
+            "median_gain_percent": 0.692712364737501,
+            "min_gain_percent": -9.133144213326865,
+            "nonpositive": 4,
+            "rows": 10,
+            "ties": 0,
+            "wins": 6
+          },
+          "seed_paired": {
+            "bootstrap_confidence_level": 0.95,
+            "bootstrap_method": "percentile",
+            "bootstrap_samples": 20000,
+            "bootstrap_seed": 12345,
+            "bootstrap_seed_mean_gain_percent_ci95": [
+              -2.3067004912915765,
+              2.680682747229824
+            ],
+            "exact_one_sided_sign_p_value": 0.5,
+            "finite_gain_seeds": 5,
+            "seed_losses": 2,
+            "seed_max_gain_percent": 4.8203304972020105,
+            "seed_mean_gain_percent": 0.10662242909046889,
+            "seed_mean_gain_percent_values": [
+              0.019148442958879186,
+              -2.527536410456748,
+              1.4699586549998354,
+              4.8203304972020105,
+              -3.2487890392516325
+            ],
+            "seed_mean_gains": [
+              {
+                "mean_gain_percent": 0.019148442958879186,
+                "seed": 43
+              },
+              {
+                "mean_gain_percent": -2.527536410456748,
+                "seed": 47
+              },
+              {
+                "mean_gain_percent": 1.4699586549998354,
+                "seed": 53
+              },
+              {
+                "mean_gain_percent": 4.8203304972020105,
+                "seed": 59
+              },
+              {
+                "mean_gain_percent": -3.2487890392516325,
+                "seed": 61
+              }
+            ],
+            "seed_median_gain_percent": 0.019148442958879186,
+            "seed_min_gain_percent": -3.2487890392516325,
+            "seed_nonpositive": 2,
+            "seed_ties": 0,
+            "seed_wins": 3,
+            "seeds": 5
+          }
+        },
+        "summary": {
+          "losses": 4,
+          "max_gain_percent": 5.844373376061877,
+          "mean_gain_percent": 0.10662242909046889,
+          "median_gain_percent": 0.692712364737501,
+          "min_gain_percent": -9.133144213326865,
+          "rows": 10,
+          "ties": 0,
+          "wins": 6
+        }
+      }
+    }
+  },
+  "inputs": {
+    "blend_grid_step": 0.05,
+    "bootstrap_samples": 20000,
+    "bootstrap_seed": 12345,
+    "device": "cpu",
+    "eval_batch_size": 128,
+    "eval_run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623"
+    ],
+    "run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623"
+    ],
+    "scenarios": [
+      "process_noise_shift_test",
+      "maneuver_shift_test"
+    ],
+    "selection_metric": "observed_step_pos_rmse_m",
+    "selection_run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+    ]
+  },
+  "run_contexts": [
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "seed": 7,
+      "split": 7,
+      "training_seed": 7
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "seed": 11,
+      "split": 11,
+      "training_seed": 11
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "seed": 13,
+      "split": 13,
+      "training_seed": 13
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "seed": 17,
+      "split": 17,
+      "training_seed": 17
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "seed": 19,
+      "split": 19,
+      "training_seed": 19
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "seed": 23,
+      "split": 23,
+      "training_seed": 23
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "seed": 29,
+      "split": 29,
+      "training_seed": 29
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "seed": 31,
+      "split": 31,
+      "training_seed": 42
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "seed": 37,
+      "split": 37,
+      "training_seed": 42
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624",
+      "seed": 41,
+      "split": 41,
+      "training_seed": 42
+    }
+  ],
+  "schema_version": "adaptive_candidate_fusion_global_portfolio.v1",
+  "selection_eval_split": {
+    "boundary_note": "Internal compact-simulator development/holdout evidence only; not independent-machine or precise-reference validation.",
+    "enabled": true,
+    "eval_only_run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623"
+    ],
+    "eval_run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed43_split43_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed47_split47_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed53_split53_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed59_split59_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed61_split61_20260623"
+    ],
+    "eval_source": "eval_run_dirs saved compact-simulator eval rows",
+    "mode": "internal_compact_simulator_development_holdout",
+    "overlap_run_dirs": [],
+    "selection_only_run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+    ],
+    "selection_run_dirs": [
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+    ],
+    "selection_source": "selection_run_dirs validation recomputations"
+  },
+  "selection_run_contexts": [
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+      "seed": 7,
+      "split": 7,
+      "training_seed": 7
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+      "seed": 11,
+      "split": 11,
+      "training_seed": 11
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+      "seed": 13,
+      "split": 13,
+      "training_seed": 13
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+      "seed": 17,
+      "split": 17,
+      "training_seed": 17
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+      "seed": 19,
+      "split": 19,
+      "training_seed": 19
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+      "seed": 23,
+      "split": 23,
+      "training_seed": 23
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+      "seed": 29,
+      "split": 29,
+      "training_seed": 29
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+      "seed": 31,
+      "split": 31,
+      "training_seed": 42
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+      "seed": 37,
+      "split": 37,
+      "training_seed": 42
+    },
+    {
+      "best_checkpoint": "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624/checkpoints/best_adaptive_candidate_fusion.pt",
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "candidate_residual_features": "center",
+      "lookahead": 5,
+      "lookback": 6,
+      "run_dir": "results/adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624",
+      "run_name": "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624",
+      "seed": 41,
+      "split": 41,
+      "training_seed": 42
+    }
+  ],
+  "validation": {
+    "global_all_scenarios_policy": {
+      "alpha": 0.75,
+      "candidate_methods": [
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "components": [
+        "learned",
+        "RFIS"
+      ],
+      "evaluated_validation_steps": 3497,
+      "kind": "blend",
+      "policy_id": "blend:learned:RFIS:0.75",
+      "selection_metric": "observed_step_pos_rmse_m",
+      "selection_rank": [
+        1,
+        5,
+        14
+      ],
+      "selection_source": "pooled_selection_validation_global_all_scenarios",
+      "top_validation_policies": [
+        {
+          "alpha": 0.75,
+          "components": [
+            "learned",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:RFIS:0.75",
+          "selection_rank": [
+            1,
+            5,
+            14
+          ],
+          "validation_rmse_m": 472.14180461149374,
+          "validation_sse": 779543839.1653073
+        },
+        {
+          "alpha": 0.7,
+          "components": [
+            "learned",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:RFIS:0.7",
+          "selection_rank": [
+            1,
+            5,
+            13
+          ],
+          "validation_rmse_m": 472.30907191481543,
+          "validation_sse": 780096280.367381
+        },
+        {
+          "alpha": 0.8,
+          "components": [
+            "learned",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:RFIS:0.8",
+          "selection_rank": [
+            1,
+            5,
+            15
+          ],
+          "validation_rmse_m": 472.6308198367749,
+          "validation_sse": 781159481.8329581
+        },
+        {
+          "alpha": 0.7,
+          "components": [
+            "learned",
+            "EKF"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:EKF:0.7",
+          "selection_rank": [
+            1,
+            1,
+            13
+          ],
+          "validation_rmse_m": 472.63908930461514,
+          "validation_sse": 781186817.4592197
+        },
+        {
+          "alpha": 0.7,
+          "components": [
+            "learned",
+            "VA_RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:VA_RFIS:0.7",
+          "selection_rank": [
+            1,
+            6,
+            13
+          ],
+          "validation_rmse_m": 472.63908930461514,
+          "validation_sse": 781186817.4592197
+        },
+        {
+          "alpha": 0.65,
+          "components": [
+            "learned",
+            "EKF"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:EKF:0.65",
+          "selection_rank": [
+            1,
+            1,
+            12
+          ],
+          "validation_rmse_m": 472.8518953201207,
+          "validation_sse": 781890435.4326829
+        },
+        {
+          "alpha": 0.65,
+          "components": [
+            "learned",
+            "VA_RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:VA_RFIS:0.65",
+          "selection_rank": [
+            1,
+            6,
+            12
+          ],
+          "validation_rmse_m": 472.8518953201207,
+          "validation_sse": 781890435.4326829
+        },
+        {
+          "alpha": 0.75,
+          "components": [
+            "learned",
+            "EKF"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:EKF:0.75",
+          "selection_rank": [
+            1,
+            1,
+            14
+          ],
+          "validation_rmse_m": 472.89200651683853,
+          "validation_sse": 782023093.8468432
+        },
+        {
+          "alpha": 0.75,
+          "components": [
+            "learned",
+            "VA_RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:VA_RFIS:0.75",
+          "selection_rank": [
+            1,
+            6,
+            14
+          ],
+          "validation_rmse_m": 472.89200651683853,
+          "validation_sse": 782023093.8468432
+        },
+        {
+          "alpha": 0.65,
+          "components": [
+            "learned",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 3497,
+          "kind": "blend",
+          "policy_id": "blend:learned:RFIS:0.65",
+          "selection_rank": [
+            1,
+            5,
+            12
+          ],
+          "validation_rmse_m": 473.1319256965146,
+          "validation_sse": 782816805.4391829
+        }
+      ],
+      "validation_record_count": 20,
+      "validation_rmse_m": 472.14180461149374,
+      "validation_run_names": [
+        "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624",
+        "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+      ],
+      "validation_scenarios": [
+        "maneuver_shift_test",
+        "process_noise_shift_test"
+      ],
+      "validation_sse": 779543839.1653073
+    },
+    "global_scenario_policies": {
+      "maneuver_shift_test": {
+        "alpha": 0.6,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "components": [
+          "learned",
+          "EKF"
+        ],
+        "evaluated_validation_steps": 1577,
+        "kind": "blend",
+        "policy_id": "blend:learned:EKF:0.6",
+        "selection_metric": "observed_step_pos_rmse_m",
+        "selection_rank": [
+          1,
+          1,
+          11
+        ],
+        "selection_source": "pooled_selection_validation_global_scenario",
+        "top_validation_policies": [
+          {
+            "alpha": 0.6,
+            "components": [
+              "learned",
+              "EKF"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:EKF:0.6",
+            "selection_rank": [
+              1,
+              1,
+              11
+            ],
+            "validation_rmse_m": 562.5090763601526,
+            "validation_sse": 498988758.9773694
+          },
+          {
+            "alpha": 0.6,
+            "components": [
+              "learned",
+              "VA_RFIS"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:VA_RFIS:0.6",
+            "selection_rank": [
+              1,
+              6,
+              11
+            ],
+            "validation_rmse_m": 562.5090763601526,
+            "validation_sse": 498988758.9773694
+          },
+          {
+            "alpha": 0.55,
+            "components": [
+              "learned",
+              "EKF"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:EKF:0.55",
+            "selection_rank": [
+              1,
+              1,
+              10
+            ],
+            "validation_rmse_m": 562.670963854447,
+            "validation_sse": 499276013.59183526
+          },
+          {
+            "alpha": 0.55,
+            "components": [
+              "learned",
+              "VA_RFIS"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:VA_RFIS:0.55",
+            "selection_rank": [
+              1,
+              6,
+              10
+            ],
+            "validation_rmse_m": 562.670963854447,
+            "validation_sse": 499276013.59183526
+          },
+          {
+            "alpha": 0.65,
+            "components": [
+              "learned",
+              "EKF"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:EKF:0.65",
+            "selection_rank": [
+              1,
+              1,
+              12
+            ],
+            "validation_rmse_m": 562.991745638995,
+            "validation_sse": 499845455.82210267
+          },
+          {
+            "alpha": 0.65,
+            "components": [
+              "learned",
+              "VA_RFIS"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:VA_RFIS:0.65",
+            "selection_rank": [
+              1,
+              6,
+              12
+            ],
+            "validation_rmse_m": 562.991745638995,
+            "validation_sse": 499845455.82210267
+          },
+          {
+            "alpha": 0.5,
+            "components": [
+              "learned",
+              "EKF"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:EKF:0.5",
+            "selection_rank": [
+              1,
+              1,
+              9
+            ],
+            "validation_rmse_m": 563.4768525766325,
+            "validation_sse": 500707219.66550654
+          },
+          {
+            "alpha": 0.5,
+            "components": [
+              "learned",
+              "VA_RFIS"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:VA_RFIS:0.5",
+            "selection_rank": [
+              1,
+              6,
+              9
+            ],
+            "validation_rmse_m": 563.4768525766325,
+            "validation_sse": 500707219.66550654
+          },
+          {
+            "alpha": 0.7,
+            "components": [
+              "learned",
+              "EKF"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:EKF:0.7",
+            "selection_rank": [
+              1,
+              1,
+              13
+            ],
+            "validation_rmse_m": 564.1173172090595,
+            "validation_sse": 501846104.1260063
+          },
+          {
+            "alpha": 0.7,
+            "components": [
+              "learned",
+              "VA_RFIS"
+            ],
+            "evaluated_validation_steps": 1577,
+            "kind": "blend",
+            "policy_id": "blend:learned:VA_RFIS:0.7",
+            "selection_rank": [
+              1,
+              6,
+              13
+            ],
+            "validation_rmse_m": 564.1173172090595,
+            "validation_sse": 501846104.1260063
+          }
+        ],
+        "validation_record_count": 10,
+        "validation_rmse_m": 562.5090763601526,
+        "validation_run_names": [
+          "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+        ],
+        "validation_scenarios": [
+          "maneuver_shift_test"
+        ],
+        "validation_sse": 498988758.9773694
+      },
+      "process_noise_shift_test": {
+        "alpha": 0.6,
+        "candidate_methods": [
+          "EKF",
+          "UKF",
+          "AUKF",
+          "BatchWLS",
+          "RFIS",
+          "VA_RFIS"
+        ],
+        "components": [
+          "learned",
+          "RFIS"
+        ],
+        "evaluated_validation_steps": 1920,
+        "kind": "blend",
+        "policy_id": "blend:learned:RFIS:0.6",
+        "selection_metric": "observed_step_pos_rmse_m",
+        "selection_rank": [
+          1,
+          5,
+          11
+        ],
+        "selection_source": "pooled_selection_validation_global_scenario",
+        "top_validation_policies": [
+          {
+            "alpha": 0.6,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.6",
+            "selection_rank": [
+              1,
+              5,
+              11
+            ],
+            "validation_rmse_m": 367.44451554789913,
+            "validation_sse": 259229706.2519621
+          },
+          {
+            "alpha": 0.65,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.65",
+            "selection_rank": [
+              1,
+              5,
+              12
+            ],
+            "validation_rmse_m": 367.5782856615068,
+            "validation_sse": 259418488.4925164
+          },
+          {
+            "alpha": 0.55,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.55",
+            "selection_rank": [
+              1,
+              5,
+              10
+            ],
+            "validation_rmse_m": 367.5812750453529,
+            "validation_sse": 259422708.0268174
+          },
+          {
+            "alpha": 0.7,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.7",
+            "selection_rank": [
+              1,
+              5,
+              13
+            ],
+            "validation_rmse_m": 367.98229035492005,
+            "validation_sse": 259989054.74851716
+          },
+          {
+            "alpha": 0.5,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.5",
+            "selection_rank": [
+              1,
+              5,
+              9
+            ],
+            "validation_rmse_m": 367.98826253437403,
+            "validation_sse": 259997493.81708938
+          },
+          {
+            "alpha": 0.75,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.75",
+            "selection_rank": [
+              1,
+              5,
+              14
+            ],
+            "validation_rmse_m": 368.65564119000203,
+            "validation_sse": 260941405.01992607
+          },
+          {
+            "alpha": 0.45,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.45",
+            "selection_rank": [
+              1,
+              5,
+              8
+            ],
+            "validation_rmse_m": 368.6645830610052,
+            "validation_sse": 260954063.62280607
+          },
+          {
+            "alpha": 0.8,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.8",
+            "selection_rank": [
+              1,
+              5,
+              15
+            ],
+            "validation_rmse_m": 369.5968660431977,
+            "validation_sse": 262275539.3067905
+          },
+          {
+            "alpha": 0.4,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.4",
+            "selection_rank": [
+              1,
+              5,
+              7
+            ],
+            "validation_rmse_m": 369.60875812860434,
+            "validation_sse": 262292417.44390872
+          },
+          {
+            "alpha": 0.85,
+            "components": [
+              "learned",
+              "RFIS"
+            ],
+            "evaluated_validation_steps": 1920,
+            "kind": "blend",
+            "policy_id": "blend:learned:RFIS:0.85",
+            "selection_rank": [
+              1,
+              5,
+              16
+            ],
+            "validation_rmse_m": 370.8039250574928,
+            "validation_sse": 263991457.60904205
+          }
+        ],
+        "validation_record_count": 10,
+        "validation_rmse_m": 367.44451554789913,
+        "validation_run_names": [
+          "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+          "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+        ],
+        "validation_scenarios": [
+          "process_noise_shift_test"
+        ],
+        "validation_sse": 259229706.2519621
+      }
+    },
+    "per_split_scenario_policy_diagnostic_scope": "overlapping_selection_eval_run_dirs_only",
+    "per_split_scenario_policy_diagnostics": [],
+    "policy_family_scenario_policies": {
+      "all": {
+        "maneuver_shift_test": {
+          "alpha": 0.6,
+          "candidate_methods": [
+            "EKF",
+            "UKF",
+            "AUKF",
+            "BatchWLS",
+            "RFIS",
+            "VA_RFIS"
+          ],
+          "components": [
+            "learned",
+            "EKF"
+          ],
+          "evaluated_validation_steps": 1577,
+          "kind": "blend",
+          "policy_family": "all",
+          "policy_id": "blend:learned:EKF:0.6",
+          "selection_metric": "observed_step_pos_rmse_m",
+          "selection_rank": [
+            1,
+            1,
+            11
+          ],
+          "selection_source": "pooled_selection_validation_global_scenario_policy_family_all",
+          "top_validation_policies": [
+            {
+              "alpha": 0.6,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.6",
+              "selection_rank": [
+                1,
+                1,
+                11
+              ],
+              "validation_rmse_m": 562.5090763601526,
+              "validation_sse": 498988758.9773694
+            },
+            {
+              "alpha": 0.6,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.6",
+              "selection_rank": [
+                1,
+                6,
+                11
+              ],
+              "validation_rmse_m": 562.5090763601526,
+              "validation_sse": 498988758.9773694
+            },
+            {
+              "alpha": 0.55,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.55",
+              "selection_rank": [
+                1,
+                1,
+                10
+              ],
+              "validation_rmse_m": 562.670963854447,
+              "validation_sse": 499276013.59183526
+            },
+            {
+              "alpha": 0.55,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.55",
+              "selection_rank": [
+                1,
+                6,
+                10
+              ],
+              "validation_rmse_m": 562.670963854447,
+              "validation_sse": 499276013.59183526
+            },
+            {
+              "alpha": 0.65,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.65",
+              "selection_rank": [
+                1,
+                1,
+                12
+              ],
+              "validation_rmse_m": 562.991745638995,
+              "validation_sse": 499845455.82210267
+            },
+            {
+              "alpha": 0.65,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.65",
+              "selection_rank": [
+                1,
+                6,
+                12
+              ],
+              "validation_rmse_m": 562.991745638995,
+              "validation_sse": 499845455.82210267
+            },
+            {
+              "alpha": 0.5,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.5",
+              "selection_rank": [
+                1,
+                1,
+                9
+              ],
+              "validation_rmse_m": 563.4768525766325,
+              "validation_sse": 500707219.66550654
+            },
+            {
+              "alpha": 0.5,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.5",
+              "selection_rank": [
+                1,
+                6,
+                9
+              ],
+              "validation_rmse_m": 563.4768525766325,
+              "validation_sse": 500707219.66550654
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.7",
+              "selection_rank": [
+                1,
+                1,
+                13
+              ],
+              "validation_rmse_m": 564.1173172090595,
+              "validation_sse": 501846104.1260063
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.7",
+              "selection_rank": [
+                1,
+                6,
+                13
+              ],
+              "validation_rmse_m": 564.1173172090595,
+              "validation_sse": 501846104.1260063
+            }
+          ],
+          "validation_record_count": 10,
+          "validation_rmse_m": 562.5090763601526,
+          "validation_run_names": [
+            "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+          ],
+          "validation_scenarios": [
+            "maneuver_shift_test"
+          ],
+          "validation_sse": 498988758.9773694
+        },
+        "process_noise_shift_test": {
+          "alpha": 0.6,
+          "candidate_methods": [
+            "EKF",
+            "UKF",
+            "AUKF",
+            "BatchWLS",
+            "RFIS",
+            "VA_RFIS"
+          ],
+          "components": [
+            "learned",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 1920,
+          "kind": "blend",
+          "policy_family": "all",
+          "policy_id": "blend:learned:RFIS:0.6",
+          "selection_metric": "observed_step_pos_rmse_m",
+          "selection_rank": [
+            1,
+            5,
+            11
+          ],
+          "selection_source": "pooled_selection_validation_global_scenario_policy_family_all",
+          "top_validation_policies": [
+            {
+              "alpha": 0.6,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.6",
+              "selection_rank": [
+                1,
+                5,
+                11
+              ],
+              "validation_rmse_m": 367.44451554789913,
+              "validation_sse": 259229706.2519621
+            },
+            {
+              "alpha": 0.65,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.65",
+              "selection_rank": [
+                1,
+                5,
+                12
+              ],
+              "validation_rmse_m": 367.5782856615068,
+              "validation_sse": 259418488.4925164
+            },
+            {
+              "alpha": 0.55,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.55",
+              "selection_rank": [
+                1,
+                5,
+                10
+              ],
+              "validation_rmse_m": 367.5812750453529,
+              "validation_sse": 259422708.0268174
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.7",
+              "selection_rank": [
+                1,
+                5,
+                13
+              ],
+              "validation_rmse_m": 367.98229035492005,
+              "validation_sse": 259989054.74851716
+            },
+            {
+              "alpha": 0.5,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.5",
+              "selection_rank": [
+                1,
+                5,
+                9
+              ],
+              "validation_rmse_m": 367.98826253437403,
+              "validation_sse": 259997493.81708938
+            },
+            {
+              "alpha": 0.75,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.75",
+              "selection_rank": [
+                1,
+                5,
+                14
+              ],
+              "validation_rmse_m": 368.65564119000203,
+              "validation_sse": 260941405.01992607
+            },
+            {
+              "alpha": 0.45,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.45",
+              "selection_rank": [
+                1,
+                5,
+                8
+              ],
+              "validation_rmse_m": 368.6645830610052,
+              "validation_sse": 260954063.62280607
+            },
+            {
+              "alpha": 0.8,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.8",
+              "selection_rank": [
+                1,
+                5,
+                15
+              ],
+              "validation_rmse_m": 369.5968660431977,
+              "validation_sse": 262275539.3067905
+            },
+            {
+              "alpha": 0.4,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.4",
+              "selection_rank": [
+                1,
+                5,
+                7
+              ],
+              "validation_rmse_m": 369.60875812860434,
+              "validation_sse": 262292417.44390872
+            },
+            {
+              "alpha": 0.85,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.85",
+              "selection_rank": [
+                1,
+                5,
+                16
+              ],
+              "validation_rmse_m": 370.8039250574928,
+              "validation_sse": 263991457.60904205
+            }
+          ],
+          "validation_record_count": 10,
+          "validation_rmse_m": 367.44451554789913,
+          "validation_run_names": [
+            "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+          ],
+          "validation_scenarios": [
+            "process_noise_shift_test"
+          ],
+          "validation_sse": 259229706.2519621
+        }
+      },
+      "learned_including": {
+        "maneuver_shift_test": {
+          "alpha": 0.6,
+          "candidate_methods": [
+            "EKF",
+            "UKF",
+            "AUKF",
+            "BatchWLS",
+            "RFIS",
+            "VA_RFIS"
+          ],
+          "components": [
+            "learned",
+            "EKF"
+          ],
+          "evaluated_validation_steps": 1577,
+          "kind": "blend",
+          "policy_family": "learned_including",
+          "policy_id": "blend:learned:EKF:0.6",
+          "selection_metric": "observed_step_pos_rmse_m",
+          "selection_rank": [
+            1,
+            1,
+            11
+          ],
+          "selection_source": "pooled_selection_validation_global_scenario_policy_family_learned_including",
+          "top_validation_policies": [
+            {
+              "alpha": 0.6,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.6",
+              "selection_rank": [
+                1,
+                1,
+                11
+              ],
+              "validation_rmse_m": 562.5090763601526,
+              "validation_sse": 498988758.9773694
+            },
+            {
+              "alpha": 0.6,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.6",
+              "selection_rank": [
+                1,
+                6,
+                11
+              ],
+              "validation_rmse_m": 562.5090763601526,
+              "validation_sse": 498988758.9773694
+            },
+            {
+              "alpha": 0.55,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.55",
+              "selection_rank": [
+                1,
+                1,
+                10
+              ],
+              "validation_rmse_m": 562.670963854447,
+              "validation_sse": 499276013.59183526
+            },
+            {
+              "alpha": 0.55,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.55",
+              "selection_rank": [
+                1,
+                6,
+                10
+              ],
+              "validation_rmse_m": 562.670963854447,
+              "validation_sse": 499276013.59183526
+            },
+            {
+              "alpha": 0.65,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.65",
+              "selection_rank": [
+                1,
+                1,
+                12
+              ],
+              "validation_rmse_m": 562.991745638995,
+              "validation_sse": 499845455.82210267
+            },
+            {
+              "alpha": 0.65,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.65",
+              "selection_rank": [
+                1,
+                6,
+                12
+              ],
+              "validation_rmse_m": 562.991745638995,
+              "validation_sse": 499845455.82210267
+            },
+            {
+              "alpha": 0.5,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.5",
+              "selection_rank": [
+                1,
+                1,
+                9
+              ],
+              "validation_rmse_m": 563.4768525766325,
+              "validation_sse": 500707219.66550654
+            },
+            {
+              "alpha": 0.5,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.5",
+              "selection_rank": [
+                1,
+                6,
+                9
+              ],
+              "validation_rmse_m": 563.4768525766325,
+              "validation_sse": 500707219.66550654
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "learned",
+                "EKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:EKF:0.7",
+              "selection_rank": [
+                1,
+                1,
+                13
+              ],
+              "validation_rmse_m": 564.1173172090595,
+              "validation_sse": 501846104.1260063
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "learned",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:learned:VA_RFIS:0.7",
+              "selection_rank": [
+                1,
+                6,
+                13
+              ],
+              "validation_rmse_m": 564.1173172090595,
+              "validation_sse": 501846104.1260063
+            }
+          ],
+          "validation_record_count": 10,
+          "validation_rmse_m": 562.5090763601526,
+          "validation_run_names": [
+            "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+          ],
+          "validation_scenarios": [
+            "maneuver_shift_test"
+          ],
+          "validation_sse": 498988758.9773694
+        },
+        "process_noise_shift_test": {
+          "alpha": 0.6,
+          "candidate_methods": [
+            "EKF",
+            "UKF",
+            "AUKF",
+            "BatchWLS",
+            "RFIS",
+            "VA_RFIS"
+          ],
+          "components": [
+            "learned",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 1920,
+          "kind": "blend",
+          "policy_family": "learned_including",
+          "policy_id": "blend:learned:RFIS:0.6",
+          "selection_metric": "observed_step_pos_rmse_m",
+          "selection_rank": [
+            1,
+            5,
+            11
+          ],
+          "selection_source": "pooled_selection_validation_global_scenario_policy_family_learned_including",
+          "top_validation_policies": [
+            {
+              "alpha": 0.6,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.6",
+              "selection_rank": [
+                1,
+                5,
+                11
+              ],
+              "validation_rmse_m": 367.44451554789913,
+              "validation_sse": 259229706.2519621
+            },
+            {
+              "alpha": 0.65,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.65",
+              "selection_rank": [
+                1,
+                5,
+                12
+              ],
+              "validation_rmse_m": 367.5782856615068,
+              "validation_sse": 259418488.4925164
+            },
+            {
+              "alpha": 0.55,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.55",
+              "selection_rank": [
+                1,
+                5,
+                10
+              ],
+              "validation_rmse_m": 367.5812750453529,
+              "validation_sse": 259422708.0268174
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.7",
+              "selection_rank": [
+                1,
+                5,
+                13
+              ],
+              "validation_rmse_m": 367.98229035492005,
+              "validation_sse": 259989054.74851716
+            },
+            {
+              "alpha": 0.5,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.5",
+              "selection_rank": [
+                1,
+                5,
+                9
+              ],
+              "validation_rmse_m": 367.98826253437403,
+              "validation_sse": 259997493.81708938
+            },
+            {
+              "alpha": 0.75,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.75",
+              "selection_rank": [
+                1,
+                5,
+                14
+              ],
+              "validation_rmse_m": 368.65564119000203,
+              "validation_sse": 260941405.01992607
+            },
+            {
+              "alpha": 0.45,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.45",
+              "selection_rank": [
+                1,
+                5,
+                8
+              ],
+              "validation_rmse_m": 368.6645830610052,
+              "validation_sse": 260954063.62280607
+            },
+            {
+              "alpha": 0.8,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.8",
+              "selection_rank": [
+                1,
+                5,
+                15
+              ],
+              "validation_rmse_m": 369.5968660431977,
+              "validation_sse": 262275539.3067905
+            },
+            {
+              "alpha": 0.4,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.4",
+              "selection_rank": [
+                1,
+                5,
+                7
+              ],
+              "validation_rmse_m": 369.60875812860434,
+              "validation_sse": 262292417.44390872
+            },
+            {
+              "alpha": 0.85,
+              "components": [
+                "learned",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:learned:RFIS:0.85",
+              "selection_rank": [
+                1,
+                5,
+                16
+              ],
+              "validation_rmse_m": 370.8039250574928,
+              "validation_sse": 263991457.60904205
+            }
+          ],
+          "validation_record_count": 10,
+          "validation_rmse_m": 367.44451554789913,
+          "validation_run_names": [
+            "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+          ],
+          "validation_scenarios": [
+            "process_noise_shift_test"
+          ],
+          "validation_sse": 259229706.2519621
+        }
+      },
+      "nonlearned_only": {
+        "maneuver_shift_test": {
+          "alpha": 0.9,
+          "candidate_methods": [
+            "EKF",
+            "UKF",
+            "AUKF",
+            "BatchWLS",
+            "RFIS",
+            "VA_RFIS"
+          ],
+          "components": [
+            "EKF",
+            "BatchWLS"
+          ],
+          "evaluated_validation_steps": 1577,
+          "kind": "blend",
+          "policy_family": "nonlearned_only",
+          "policy_id": "blend:EKF:BatchWLS:0.9",
+          "selection_metric": "observed_step_pos_rmse_m",
+          "selection_rank": [
+            1,
+            15,
+            17
+          ],
+          "selection_source": "pooled_selection_validation_global_scenario_policy_family_nonlearned_only",
+          "top_validation_policies": [
+            {
+              "alpha": 0.9,
+              "components": [
+                "EKF",
+                "BatchWLS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:EKF:BatchWLS:0.9",
+              "selection_rank": [
+                1,
+                15,
+                17
+              ],
+              "validation_rmse_m": 571.0340834530643,
+              "validation_sse": 514228040.881433
+            },
+            {
+              "alpha": 0.1,
+              "components": [
+                "BatchWLS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:BatchWLS:VA_RFIS:0.1",
+              "selection_rank": [
+                1,
+                26,
+                1
+              ],
+              "validation_rmse_m": 571.0340834530762,
+              "validation_sse": 514228040.8814545
+            },
+            {
+              "alpha": 0.05,
+              "components": [
+                "BatchWLS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:BatchWLS:VA_RFIS:0.05",
+              "selection_rank": [
+                1,
+                26,
+                0
+              ],
+              "validation_rmse_m": 573.8993124871122,
+              "validation_sse": 519401383.71700495
+            },
+            {
+              "alpha": 0.95,
+              "components": [
+                "EKF",
+                "BatchWLS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:EKF:BatchWLS:0.95",
+              "selection_rank": [
+                1,
+                15,
+                18
+              ],
+              "validation_rmse_m": 573.8993124871322,
+              "validation_sse": 519401383.71704113
+            },
+            {
+              "alpha": 0.85,
+              "components": [
+                "EKF",
+                "BatchWLS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:EKF:BatchWLS:0.85",
+              "selection_rank": [
+                1,
+                15,
+                16
+              ],
+              "validation_rmse_m": 597.1909418442656,
+              "validation_sse": 562416582.1498663
+            },
+            {
+              "alpha": 0.15,
+              "components": [
+                "BatchWLS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:BatchWLS:VA_RFIS:0.15",
+              "selection_rank": [
+                1,
+                26,
+                2
+              ],
+              "validation_rmse_m": 597.190941844285,
+              "validation_sse": 562416582.1499028
+            },
+            {
+              "alpha": 0.15,
+              "components": [
+                "UKF",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:UKF:VA_RFIS:0.15",
+              "selection_rank": [
+                1,
+                21,
+                2
+              ],
+              "validation_rmse_m": 602.8182565583544,
+              "validation_sse": 573065794.143965
+            },
+            {
+              "alpha": 0.85,
+              "components": [
+                "EKF",
+                "UKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:EKF:UKF:0.85",
+              "selection_rank": [
+                1,
+                13,
+                16
+              ],
+              "validation_rmse_m": 602.8182565583754,
+              "validation_sse": 573065794.1440051
+            },
+            {
+              "alpha": 0.9,
+              "components": [
+                "EKF",
+                "UKF"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:EKF:UKF:0.9",
+              "selection_rank": [
+                1,
+                13,
+                17
+              ],
+              "validation_rmse_m": 602.8763333577605,
+              "validation_sse": 573176220.2302095
+            },
+            {
+              "alpha": 0.1,
+              "components": [
+                "UKF",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1577,
+              "kind": "blend",
+              "policy_id": "blend:UKF:VA_RFIS:0.1",
+              "selection_rank": [
+                1,
+                21,
+                1
+              ],
+              "validation_rmse_m": 602.8763333577919,
+              "validation_sse": 573176220.230269
+            }
+          ],
+          "validation_record_count": 10,
+          "validation_rmse_m": 571.0340834530643,
+          "validation_run_names": [
+            "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+          ],
+          "validation_scenarios": [
+            "maneuver_shift_test"
+          ],
+          "validation_sse": 514228040.881433
+        },
+        "process_noise_shift_test": {
+          "alpha": 0.05,
+          "candidate_methods": [
+            "EKF",
+            "UKF",
+            "AUKF",
+            "BatchWLS",
+            "RFIS",
+            "VA_RFIS"
+          ],
+          "components": [
+            "BatchWLS",
+            "RFIS"
+          ],
+          "evaluated_validation_steps": 1920,
+          "kind": "blend",
+          "policy_family": "nonlearned_only",
+          "policy_id": "blend:BatchWLS:RFIS:0.05",
+          "selection_metric": "observed_step_pos_rmse_m",
+          "selection_rank": [
+            1,
+            25,
+            0
+          ],
+          "selection_source": "pooled_selection_validation_global_scenario_policy_family_nonlearned_only",
+          "top_validation_policies": [
+            {
+              "alpha": 0.05,
+              "components": [
+                "BatchWLS",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:BatchWLS:RFIS:0.05",
+              "selection_rank": [
+                1,
+                25,
+                0
+              ],
+              "validation_rmse_m": 379.56582990408106,
+              "validation_sse": 276614820.9230857
+            },
+            {
+              "alpha": 0.25,
+              "components": [
+                "EKF",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:EKF:RFIS:0.25",
+              "selection_rank": [
+                1,
+                16,
+                4
+              ],
+              "validation_rmse_m": 381.2343377208609,
+              "validation_sse": 279052070.8943297
+            },
+            {
+              "alpha": 0.75,
+              "components": [
+                "RFIS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:RFIS:VA_RFIS:0.75",
+              "selection_rank": [
+                1,
+                27,
+                14
+              ],
+              "validation_rmse_m": 381.2343377208609,
+              "validation_sse": 279052070.8943297
+            },
+            {
+              "alpha": 0.8,
+              "components": [
+                "RFIS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:RFIS:VA_RFIS:0.8",
+              "selection_rank": [
+                1,
+                27,
+                15
+              ],
+              "validation_rmse_m": 381.3993146840359,
+              "validation_sse": 279293639.5035883
+            },
+            {
+              "alpha": 0.2,
+              "components": [
+                "EKF",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:EKF:RFIS:0.2",
+              "selection_rank": [
+                1,
+                16,
+                3
+              ],
+              "validation_rmse_m": 381.3993146840422,
+              "validation_sse": 279293639.5035976
+            },
+            {
+              "alpha": 0.3,
+              "components": [
+                "EKF",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:EKF:RFIS:0.3",
+              "selection_rank": [
+                1,
+                16,
+                5
+              ],
+              "validation_rmse_m": 381.5121080891828,
+              "validation_sse": 279458858.14781237
+            },
+            {
+              "alpha": 0.7,
+              "components": [
+                "RFIS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:RFIS:VA_RFIS:0.7",
+              "selection_rank": [
+                1,
+                27,
+                13
+              ],
+              "validation_rmse_m": 381.5121080891918,
+              "validation_sse": 279458858.1478256
+            },
+            {
+              "alpha": 0.15,
+              "components": [
+                "EKF",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:EKF:RFIS:0.15",
+              "selection_rank": [
+                1,
+                16,
+                2
+              ],
+              "validation_rmse_m": 382.00646535184006,
+              "validation_sse": 280183563.97556466
+            },
+            {
+              "alpha": 0.85,
+              "components": [
+                "RFIS",
+                "VA_RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:RFIS:VA_RFIS:0.85",
+              "selection_rank": [
+                1,
+                27,
+                16
+              ],
+              "validation_rmse_m": 382.00646535185604,
+              "validation_sse": 280183563.9755881
+            },
+            {
+              "alpha": 0.35,
+              "components": [
+                "EKF",
+                "RFIS"
+              ],
+              "evaluated_validation_steps": 1920,
+              "kind": "blend",
+              "policy_id": "blend:EKF:RFIS:0.35",
+              "selection_rank": [
+                1,
+                16,
+                6
+              ],
+              "validation_rmse_m": 382.23166054770746,
+              "validation_sse": 280514001.26411104
+            }
+          ],
+          "validation_record_count": 10,
+          "validation_rmse_m": 379.56582990408106,
+          "validation_run_names": [
+            "adaptive_candidate_fusion_centered_fixed_soft_seed7_split7_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed11_split11_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed13_split13_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed17_split17_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed19_split19_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed23_split23_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed29_split29_20260623",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed31_split31_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed37_split37_20260624",
+            "adaptive_candidate_fusion_centered_fixed_soft_seed41_split41_20260624"
+          ],
+          "validation_scenarios": [
+            "process_noise_shift_test"
+          ],
+          "validation_sse": 276614820.9230857
+        }
+      }
+    },
+    "policy_space": {
+      "components": [
+        "learned",
+        "learned_hard",
+        "EKF",
+        "UKF",
+        "AUKF",
+        "BatchWLS",
+        "RFIS",
+        "VA_RFIS"
+      ],
+      "policy_count_per_candidate_set": 540,
+      "policy_family_counts_per_candidate_set": {
+        "all": 540,
+        "learned_including": 249,
+        "nonlearned_only": 291
+      }
+    }
+  }
+}

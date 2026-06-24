@@ -1,0 +1,189 @@
+{
+  "schema_version": "real_slr_sp3_state_scoring_campaign_v1",
+  "generated_utc": "2026-05-22T02:54:55Z",
+  "status": "completed",
+  "source_artifacts": [
+    {
+      "artifact_id": "results/real_slr_sp3_hifi/real_slr_sp3_hifi_validation.json",
+      "sha256": "bba46d8c004e0cd1de9bcc007668fd11ef3075ddd8d3b6809c74f10dad533bcd"
+    },
+    {
+      "artifact_id": "results/real_slr_sp3_od/sp3_residual_calibrator.json",
+      "sha256": "c9178a4f86800dfa5bdea2ce2fe0a0283b4be8b093b34827cbde8e1a46070fba"
+    }
+  ],
+  "public_corpus": {
+    "targets": [
+      "LAGEOS-1",
+      "LAGEOS-2"
+    ],
+    "num_sparse_slr_arcs": 40,
+    "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+    "split_weeks": {
+      "260418": "train",
+      "260425": "train",
+      "260502": "val",
+      "260509": "test"
+    }
+  },
+  "selection_integrity": {
+    "test_set_information_used_for_selection": false,
+    "temporal_test_week": "260509",
+    "validation_week": "260502",
+    "learned_ridge_selected_on_validation_only": true,
+    "paired_uncertainty_where_available": true
+  },
+  "campaigns": {
+    "sparse_slr_temporal_selector": {
+      "status": "completed",
+      "uses_public_crd_normal_points": true,
+      "uses_independent_sp3_reference": true,
+      "candidate_pool_includes_learned_model": false,
+      "selection_rule": "choose the lowest mean arc RMSE on the validation week",
+      "selection_split": "validation week 260502",
+      "test_split": "strictly later week 260509",
+      "validation_mean_arc_rms_m": {
+        "UKF (compact)": 577.14,
+        "UKF (higher-fidelity)": 525.87,
+        "AUKF (higher-fidelity)": 550.23
+      },
+      "test_mean_arc_rms_m": {
+        "UKF (compact)": 368.64,
+        "UKF (higher-fidelity)": 395.77,
+        "AUKF (higher-fidelity)": 405.99
+      },
+      "selected_candidate": "UKF (higher-fidelity)",
+      "selected_candidate_family": "classical",
+      "selected_test_mean_arc_rms_m": 395.77,
+      "test_best_candidate": "UKF (compact)",
+      "test_best_mean_arc_rms_m": 368.64,
+      "selected_minus_test_best_m": 27.13,
+      "selected_vs_test_best_paired_gap": {
+        "n": 10,
+        "mean_gap_m": 27.13,
+        "median_gap_m": 3.84,
+        "n_a_lower_rmse": 5,
+        "fraction_a_lower_rmse": 0.5,
+        "bootstrap95_mean_gap_m": [
+          -2.26,
+          62.1
+        ],
+        "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+      },
+      "interpretation": "Honest public CRD/SP3 state-scoring arm for classical filters. It cannot adjudicate learned-versus-classical performance because the sparse-SLR temporal candidate pool contains no learned filter."
+    },
+    "controlled_sp3_dynamics_temporal_selector": {
+      "status": "completed",
+      "uses_public_crd_normal_points": false,
+      "uses_independent_sp3_reference": true,
+      "candidate_pool_includes_learned_model": true,
+      "selection_rule": "choose the lowest validation-week mean RMSE after selecting the learned ridge strength only on the validation week",
+      "selection_split": "validation week 260502",
+      "test_split": "strictly later week 260509",
+      "validation_mean_rms_m": {
+        "compact_classical": 219.69,
+        "higher_fidelity_classical": 226.01,
+        "learned_calibrated_hifi": 260.85
+      },
+      "test_mean_rms_m": {
+        "compact_classical": 261.59,
+        "higher_fidelity_classical": 250.02,
+        "learned_calibrated_hifi": 256.48
+      },
+      "selected_candidate": "compact_classical",
+      "selected_candidate_family": "classical",
+      "selected_test_mean_rms_m": 261.59,
+      "test_best_candidate": "higher_fidelity_classical",
+      "test_best_mean_rms_m": 250.02,
+      "selected_vs_test_best_paired_gap": {
+        "n": 12,
+        "mean_gap_m": 11.57,
+        "bootstrap95_mean_gap_m": [
+          -4.51,
+          29.79
+        ],
+        "gap_convention": "selected_minus_test_best; positive means the validation-selected candidate has larger held-out RMSE"
+      },
+      "learned_candidate_vs_higher_fidelity_classical": {
+        "n": 12,
+        "mean_improvement_m": -6.47,
+        "bootstrap95_mean_improvement_m": [
+          -46.8,
+          32.81
+        ],
+        "improvement_convention": "higher_fidelity_classical_rmse minus learned_calibrated_hifi_rmse; positive would favor learned"
+      },
+      "interpretation": "This is a leakage-controlled public-SP3 state propagation arm that includes a learned candidate, but it is not sparse-SLR OD because candidate scoring starts from precise SP3 states."
+    },
+    "sparse_slr_learned_no_leakage_check": {
+      "status": "completed",
+      "uses_public_crd_normal_points": true,
+      "uses_independent_sp3_reference": true,
+      "candidate_pool_includes_learned_model": true,
+      "selection_rule": "learned calibrator hyperparameters predeclared; no temporal validation selector in this older ten-arc arm",
+      "protocols": {
+        "leave_one_arc_out": {
+          "classical_reference_mean_rmse_m": 334.72,
+          "learned_mean_rmse_m": 697.44,
+          "learned_minus_classical_paired_gap": {
+            "n": 10,
+            "mean_gap_m": 362.73,
+            "median_gap_m": 324.28,
+            "n_a_lower_rmse": 0,
+            "fraction_a_lower_rmse": 0.0,
+            "bootstrap95_mean_gap_m": [
+              231.09,
+              503.73
+            ],
+            "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+          },
+          "beats_classical_reference": false
+        },
+        "leave_one_object_out": {
+          "classical_reference_mean_rmse_m": 334.72,
+          "learned_mean_rmse_m": 680.99,
+          "learned_minus_classical_paired_gap": {
+            "n": 10,
+            "mean_gap_m": 346.28,
+            "median_gap_m": 237.12,
+            "n_a_lower_rmse": 0,
+            "fraction_a_lower_rmse": 0.0,
+            "bootstrap95_mean_gap_m": [
+              206.75,
+              493.05
+            ],
+            "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+          },
+          "beats_classical_reference": false
+        }
+      },
+      "claimed_as_positive_contribution": false,
+      "interpretation": "No-leakage CRD/SP3 learned-vs-classical check.  It is negative and not a temporally validation-selected campaign."
+    }
+  },
+  "headline_readout": {
+    "sparse_slr_selected_candidate": "UKF (higher-fidelity)",
+    "sparse_slr_selected_test_mean_arc_rms_m": 395.77,
+    "sparse_slr_test_best_candidate": "UKF (compact)",
+    "controlled_selected_candidate": "compact_classical",
+    "controlled_selected_test_mean_rms_m": 261.59,
+    "controlled_test_best_candidate": "higher_fidelity_classical",
+    "learned_sparse_slr_positive": false,
+    "learned_controlled_positive": false,
+    "paper_strength_class": "bounded_public_probe"
+  },
+  "claim_boundary": {
+    "defensible_status": "bounded_public_precise_reference_probe",
+    "true_external_validation_campaign_feasible_in_this_loop": false,
+    "is_operational_validation": false,
+    "is_central_learned_vs_classical_validation": false,
+    "is_centimetre_slr_or_flight_validation": false,
+    "does_not_relabel_provenance_as_validation": true,
+    "appropriate_use": "Use only as a bounded public precise-reference state-scoring probe.  It strengthens external-state-scoring transparency but is not strong enough to support a central operational validation claim.",
+    "why_not_full_external_validation": [
+      "The sparse-SLR temporal selector contains only classical filters; the learned sparse-SLR check is no-leakage but not a train/validation/test temporal selector.",
+      "The controlled learned candidate is selected honestly but starts from SP3 states, so it is a propagation-state scoring arm rather than real-measurement OD.",
+      "The test evidence is small and LAGEOS-specific, with wide paired intervals and no independent analysis-centre cross-check."
+    ]
+  }
+}

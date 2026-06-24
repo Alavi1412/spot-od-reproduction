@@ -1,9 +1,9 @@
 {
   "package": "SPOT-OD supplementary evidence package",
-  "title": "SPOT-OD v1.2.2 ACF audit release",
-  "version": "1.2.2-acf-audit",
-  "description": "Version-pinned supplementary evidence package for the simulator-bound SPOT-OD sparse-visibility orbit-determination self-audit record. This v1.2.2 ACF audit release targets https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit; its Zenodo DOI is pending; fill after Zenodo mints the v1.2.2 DOI. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701. Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier; not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, and not universal learned-OD superiority.",
-  "generated_utc": "2026-06-24T04:27:39.091008+00:00",
+  "title": "SPOT-OD v1.2.3 ACF holdout audit release",
+  "version": "1.2.3-acf-holdout-audit",
+  "description": "Version-pinned supplementary evidence package for the simulator-bound SPOT-OD sparse-visibility orbit-determination self-audit record. This v1.2.3 ACF holdout audit release targets https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit; its Zenodo DOI and record are pending/expected after Zenodo imports the new GitHub release. The prior public v1.2.2 DOI is 10.5281/zenodo.20822968 for the historical ACF audit package before this public-boundary repair. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701. Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier, including public packaging of the development/holdout split summaries; the development/holdout readout is weak/mixed internal compact-simulator evidence only, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, not confirmatory learned superiority, and not universal learned-OD superiority.",
+  "generated_utc": "2026-06-24T07:11:54.878380+00:00",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
     41,
@@ -38,37 +38,93 @@
     "pyproject_toml_sha256": "c118bb2da111ab57531b20fab63a8c1d9c8019777da46814b2c0d15777165da8",
     "note": "Version-pinned dependency provenance. The package is reproducible offline from these pinned inputs and the recorded artifact checksums; no external network access is required."
   },
-  "public_identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit",
-  "public_identifier_type": "GitHub release URL; v1.2.2 Zenodo DOI pending",
-  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit. The v1.2.2 Zenodo DOI is pending; fill after Zenodo mints the v1.2.2 DOI. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701 and is retained only as prior-version history, not as the v1.2.2 identifier.",
-  "public_archive_commitment": "Release metadata targets GitHub tag v1.2.2-acf-audit at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit. Fill the v1.2.2 Zenodo DOI, Zenodo record URL, GitHub asset byte count, GitHub asset SHA-256, and publication-status fields only after Zenodo/GitHub publish those concrete records. The prior v1.2.1 DOI 10.5281/zenodo.20811701 remains prior-version history only.",
-  "post_acceptance_public_archive_commitment": "Public citation of this release should use the minted v1.2.2 Zenodo DOI/record once available, paired with the GitHub release target v1.2.2-acf-audit. Until then, the asserted public target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit; the prior v1.2.1 DOI 10.5281/zenodo.20811701 remains prior-version history only.",
+  "public_identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit",
+  "public_identifier_type": "GitHub release URL; Zenodo DOI pending",
+  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit; release commit is pending until the GitHub release tag is published. The v1.2.3 Zenodo DOI and record are pending/expected after Zenodo imports the new GitHub release. The prior public v1.2.2 DOI is 10.5281/zenodo.20822968 and is historical ACF audit package history, not the v1.2.3 identifier. The prior public v1.2.1 DOI is 10.5281/zenodo.20811701 and remains GraphAnchorPairGate package history.",
+  "public_archive_commitment": "Release metadata targets GitHub tag v1.2.3-acf-holdout-audit at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit. The Zenodo DOI and record for v1.2.3 are pending/expected after Zenodo imports that GitHub release. The v1.2.2 DOI 10.5281/zenodo.20822968 and v1.2.1 DOI 10.5281/zenodo.20811701 remain historical references only.",
+  "post_acceptance_public_archive_commitment": "After Zenodo imports the new GitHub release, public citation of v1.2.3 should use the minted Zenodo DOI/record for that release, paired with GitHub tag v1.2.3-acf-holdout-audit. Until then, the GitHub release target https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit is the current public-boundary target. The v1.2.2 and v1.2.1 DOIs remain historical references only.",
   "public_archive_release": {
-    "title": "SPOT-OD v1.2.2 ACF audit release",
+    "title": "SPOT-OD v1.2.3 ACF holdout audit release",
     "github_repository": "https://github.com/Alavi1412/spot-od-reproduction",
-    "github_release_target": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit",
-    "release_tag": "v1.2.2-acf-audit",
-    "doi_status": "pending; fill after Zenodo mints the v1.2.2 DOI",
+    "github_release_target": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit",
+    "release_tag": "v1.2.3-acf-holdout-audit",
+    "github_release_commit": null,
+    "github_release_commit_note": "pending until the GitHub release tag is published",
+    "doi_status": "pending_zenodo_import",
     "zenodo_record": null,
     "doi": null,
     "doi_url": null,
-    "publication_status_note": "No completed v1.2.2 publication status is asserted by this manifest; fill only after publication occurs.",
+    "zenodo_resource_type": "Software",
+    "publication_status_note": "The v1.2.3 GitHub release is the target for publication; the Zenodo DOI and record are pending/expected after Zenodo imports the new GitHub release.",
     "pending_fields": [
-      "v1.2.2 Zenodo DOI",
-      "v1.2.2 Zenodo record URL",
-      "v1.2.2 GitHub release asset byte count",
-      "v1.2.2 GitHub release asset SHA-256",
-      "v1.2.2 publication status"
+      "v1.2.3 Zenodo record URL",
+      "v1.2.3 Zenodo DOI",
+      "v1.2.3 Zenodo archived file bytes and MD5",
+      "v1.2.3 GitHub release commit",
+      "GitHub release publication/upload confirmation"
     ],
+    "zenodo_archived_file": null,
+    "github_release_asset": {
+      "key": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
+      "size_bytes": 59140917,
+      "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
+      "source": "generated_local_review_archive",
+      "status": "pending_upload_to_new_github_release"
+    },
+    "github_actions": {
+      "v1.2.3_branch_run": null,
+      "v1.2.3_tag_run": null,
+      "status": "pending new release verifier runs"
+    },
     "prior_release": {
-      "version": "1.2.1-graph-anchor-gate-poc",
-      "doi": "10.5281/zenodo.20811701",
-      "doi_url": "https://doi.org/10.5281/zenodo.20811701",
-      "zenodo_record": "https://zenodo.org/records/20811701",
-      "status": "historical_only",
+      "version": "1.2.2-acf-audit",
+      "doi": "10.5281/zenodo.20822968",
+      "doi_url": "https://doi.org/10.5281/zenodo.20822968",
+      "zenodo_record": "https://zenodo.org/records/20822968",
+      "github_release": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit",
+      "release_tag": "v1.2.2-acf-audit",
+      "zenodo_archived_file": {
+        "key": "Alavi1412/spot-od-reproduction-v1.2.2-acf-audit.zip",
+        "size_bytes": 72607548,
+        "md5": "533b8363954cb6531f17bf4d405a5092"
+      },
+      "github_release_asset": {
+        "key": "spot_od_v1_2_2_acf_audit_review_archive.zip",
+        "size_bytes": 59127034,
+        "sha256": "e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240"
+      },
+      "status": "historical_acf_audit_before_public_boundary_repair",
       "not_current_release_identifier": true
     },
-    "scope_boundary": "Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier; not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, and not universal learned-OD superiority."
+    "historical_releases": {
+      "v1.2.2_acf_audit": {
+        "version": "1.2.2-acf-audit",
+        "doi": "10.5281/zenodo.20822968",
+        "doi_url": "https://doi.org/10.5281/zenodo.20822968",
+        "zenodo_record": "https://zenodo.org/records/20822968",
+        "github_release": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit",
+        "release_tag": "v1.2.2-acf-audit",
+        "zenodo_archived_file": {
+          "key": "Alavi1412/spot-od-reproduction-v1.2.2-acf-audit.zip",
+          "size_bytes": 72607548,
+          "md5": "533b8363954cb6531f17bf4d405a5092"
+        },
+        "github_release_asset": {
+          "key": "spot_od_v1_2_2_acf_audit_review_archive.zip",
+          "size_bytes": 59127034,
+          "sha256": "e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240"
+        },
+        "status": "historical_acf_audit_before_public_boundary_repair"
+      },
+      "v1.2.1_graph_anchor_gate_poc": {
+        "version": "1.2.1-graph-anchor-gate-poc",
+        "doi": "10.5281/zenodo.20811701",
+        "doi_url": "https://doi.org/10.5281/zenodo.20811701",
+        "zenodo_record": "https://zenodo.org/records/20811701",
+        "status": "historical_graph_anchor_pair_gate_package"
+      }
+    },
+    "scope_boundary": "Release-support evidence for reviewer inspection and the ACF validation-selected compact-simulator PoC/audit-table evidence tier, including public packaging of the development/holdout split summaries; the development/holdout readout is weak/mixed internal compact-simulator evidence only, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full scientific rerun, not full raw/training/all-filter reproduction, not confirmatory learned superiority, and not universal learned-OD superiority."
   },
   "regeneration_tiers": {
     "minimum_integrity_check": {
@@ -1036,7 +1092,7 @@
     ],
     "review_stage_archive_integrity": [
       "release/SUPPLEMENTARY_MANIFEST.json",
-      "release/spot_od_v1_1_0_supplement_review_archive.zip",
+      "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
       "release/REVIEWER_START_HERE.md",
       "results/validation/minimum_tier_reproduction_check.json",
       "results/validation/minimum_tier_reproduction_check.md",
@@ -1072,11 +1128,14 @@
       "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json",
       "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md",
       "results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.csv",
+      "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.json",
+      "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.md",
+      "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.csv",
       "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png"
     ],
     "archive_extracted_reproduction_tier": [
       "release/SUPPLEMENTARY_MANIFEST.json",
-      "release/spot_od_v1_1_0_supplement_review_archive.zip",
+      "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
       "results/validation/archive_extracted_reproduction.json",
       "results/validation/archive_extracted_reproduction.md",
       "results/real_slr_sp3_od/real_slr_sp3_od_validation.json",
@@ -1271,12 +1330,12 @@
       {
         "path": "paper\\main.tex",
         "exists": true,
-        "bytes": 147615,
-        "sha256": "245fb37d762a766583d1f7ab57c98b5016c426961ea024fdfa2fcecf7ef73390",
+        "bytes": 150408,
+        "sha256": "4580d29c96eef1e9437375359cc72760fcc10260301594c04d75696c138eb4a6",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 147607,
-        "source_sha256": "abd6ea47c65e47d14e533b386e1fc00d94054ca092211efe616d38a73e130204"
+        "source_bytes": 150400,
+        "source_sha256": "02c5171895bc96f4886db1d9cd55f6e33a9786528f93cfe4b33cb62c58f776b3"
       },
       {
         "path": "paper\\supplement.tex",
@@ -1287,8 +1346,8 @@
       {
         "path": "paper\\main.pdf",
         "exists": true,
-        "bytes": 818915,
-        "sha256": "48021a75f56a4e3a8fb8055f73729508f3d11f1c442e138b35c473e8ed333e56"
+        "bytes": 833846,
+        "sha256": "9a1f7171afd8be57cf36e3084b480fc1bace20ddd107cf8079ee8e1e4f93be2e"
       },
       {
         "path": "paper\\supplement.pdf",
@@ -1317,12 +1376,12 @@
       {
         "path": "paper\\RELEASE_PACKET.md",
         "exists": true,
-        "bytes": 19843,
-        "sha256": "d9fe27e2a2cb69f60e819c73f4a33e6e527265f729d980d0e1928ccd414422c4",
+        "bytes": 20984,
+        "sha256": "769380c8fae3d4a9c2f0acad4fd0c625ecbe4a61df85a40188b7b805d34c5cb7",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 19856,
-        "source_sha256": "14b7baba0fbda60d6bc406469634e9f0c1e2ec55fafa6351ce5d7b5f532d7d66"
+        "source_bytes": 20997,
+        "source_sha256": "cfffe9af9d5724e8fe7bdfcad7c1524e3fd150badc1e7f6806df1869b3060bb9"
       },
       {
         "path": "paper\\tables\\main_abbreviation_glossary.tex",
@@ -1387,8 +1446,8 @@
       {
         "path": "paper\\tables\\adaptive_candidate_fusion_full_training_poc.tex",
         "exists": true,
-        "bytes": 3771,
-        "sha256": "b3b0e33062c446214bae05425dc1fb490688a3dcfd2e2bdcff1f77fa9a5b435c"
+        "bytes": 4833,
+        "sha256": "92f7d4383d8387e38c08e1d54bea45e3a69327724dc552dc7c7692c56c166a83"
       },
       {
         "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
@@ -1435,6 +1494,28 @@
         "sha256": "ae9fdaf764552c3949e3e89f5bbc701058e77f457efbd28b815fc06b887792d6"
       },
       {
+        "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624\\summary.json",
+        "exists": true,
+        "bytes": 181227,
+        "sha256": "ce69519bcc4bbd0f73ea406d6ca06dca4ae35b0dc3a7502ad17f77450d30005a",
+        "review_content_redacted": true,
+        "content_scope": "review_archive_member",
+        "source_bytes": 186553,
+        "source_sha256": "b285e7016c0a48b93aa0b1df0e5cbbcb0e8574cae538ed0a21a1ebfa07c179a1"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624\\summary.md",
+        "exists": true,
+        "bytes": 7185,
+        "sha256": "c5c91fee03462e7776004ae07a5e31ecba8de3d83f75fc9242f150d4baaba4c0"
+      },
+      {
+        "path": "results\\adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624\\summary.csv",
+        "exists": true,
+        "bytes": 3629,
+        "sha256": "58d961f1dd25e11e215e418e0979c97d799e4de70623f284b613b06005c95721"
+      },
+      {
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
         "exists": true,
         "bytes": 195179,
@@ -1451,38 +1532,44 @@
       {
         "path": "release\\README.md",
         "exists": true,
-        "bytes": 60691,
-        "sha256": "e56c21a6f456ee0e1590b70ea5768aeb719fa0770feca052a21cff29c286944c",
+        "bytes": 62579,
+        "sha256": "a22d4c30e07c85b916f13de5543584fcce0d4488831fc97dc30532e300af543f",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 60693,
-        "source_sha256": "2e46591a36286dea6fa100881b7229447a193636a8883b5ec1c3afa2406ecf19"
+        "source_bytes": 62581,
+        "source_sha256": "7e2adadc2bc1277ec8c150c17ed030ad3cbacded36cf714c43a1203ce5bb5552"
       },
       {
         "path": "release\\REVIEWER_START_HERE.md",
         "exists": true,
-        "bytes": 54694,
-        "sha256": "d16ba6d541e830834586759c367d21cb1e226d71cbec1ef002bb06579080181f",
+        "bytes": 56591,
+        "sha256": "a34b4257bb5726ae0630d3d7ecdc202df19f719268a13c4feab4bc6e49fc0775",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 54706,
-        "source_sha256": "0ac8b9291eab38ad6652dc21a4eecadb49cbe4683d4ce8e454d9808cba8c1de6"
+        "source_bytes": 56603,
+        "source_sha256": "57dc4638d61089921e4f719f61b6d332b50456b0ce7fbe3517e4dc852bdf852e"
       },
       {
         "path": "release\\DEPOSIT_CHECKLIST.md",
         "exists": true,
-        "bytes": 5792,
-        "sha256": "d12534fa91b83a04ca91abc5159111d69000643e42f4dc601acac7b8788d9abd"
+        "bytes": 6693,
+        "sha256": "e8dae07ab83b5042b5bcee4f7a496d6fc1eef7ecf372d0e3ce4c0334884fa35e"
       },
       {
         "path": "release\\ZENODO_METADATA.json",
         "exists": true,
-        "bytes": 4471,
-        "sha256": "4a0cd5704e726995ba9abb6bc34a53f61376f557e64aa2fe2a2e48b08a7ae2d4",
+        "bytes": 5689,
+        "sha256": "3ab6dcf5cd79aad1dd63601571b5d2b4ee79e8a81a06995421a5f2b802c016b6",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 4471,
-        "source_sha256": "780d914217612e3592ff238d9ba76a99255f79c95339738920b873e103350cc8"
+        "source_bytes": 5689,
+        "source_sha256": "47bf881e91cefb1008cdd4530e01346e3ad394579e96e4525d6cc2aea2d72b44"
+      },
+      {
+        "path": "release\\RELEASE_NOTES_v1.2.3-acf-holdout-audit.md",
+        "exists": true,
+        "bytes": 1875,
+        "sha256": "77f7e5b0fd2a78c3cb5229a844b75f2647efb721a7916773da77f05ef1a68241"
       }
     ],
     "kalmannet_spot_od_external_audit_case": [
@@ -3023,12 +3110,12 @@
       {
         "path": "results\\validation\\minimum_tier_reproduction_check.json",
         "exists": true,
-        "bytes": 763,
-        "sha256": "70fd9a3423bbe2ab6d821f26b301588e4204d6a78c37c04803bf773c13d7e8f1",
+        "bytes": 770,
+        "sha256": "fe18a06d9476256443ff08e65d2c8ae2ef5f723320fda3ffb7eefebfa087a405",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 796,
-        "source_sha256": "cdd493bba43952adf381d776dda0beaef6b79a6fbf4adeb08397349671030d98"
+        "source_bytes": 803,
+        "source_sha256": "b604d602c761125ffb45f7ecb4700a9b6ec04e7bb733111d36df5c81f65d8194"
       },
       {
         "path": "results\\validation\\minimum_tier_reproduction_check.md",
@@ -3111,8 +3198,8 @@
       {
         "path": "release\\CITATION.cff",
         "exists": true,
-        "bytes": 1789,
-        "sha256": "f22845a411aad2961aa3bbddb21ee432a5b24acff62652ffcfa95899ec5fb361"
+        "bytes": 2001,
+        "sha256": "7d642c7f110f53147ea1376cc037392cf84d6f987c59ec895993694f4bdc78cd"
       }
     ],
     "codex_clean_archive_attestation": [
@@ -3189,18 +3276,18 @@
       {
         "path": "release\\INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
         "exists": true,
-        "bytes": 7042,
-        "sha256": "2a816619480020acc078461d201ea5ea2ed19ca4b1c7c32f1e486162c4cd76bd",
+        "bytes": 8372,
+        "sha256": "0d75345396705e2a2631252900ea2bac8b61a2ac6ae9a87becbfde79c4d4e143",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 6965,
-        "source_sha256": "fd25db41eb8b14cf169fcb7b16147ab9eacc544378ec752040ab41f8ed39d78c"
+        "source_bytes": 8295,
+        "source_sha256": "a9b1198dc30ac8f128cff7bdd4c8d451f4a3e6cf81874282faa58019731d4b2c"
       },
       {
         "path": ".github\\workflows\\archive-extracted-reproduction.yml",
         "exists": true,
-        "bytes": 1445,
-        "sha256": "f6cc117dafa0d282b7536118385b9e7baa1681b97fa5dadfdee24cb1b5cf5fa6"
+        "bytes": 1452,
+        "sha256": "7898204a1668e7143ab3b38526548cf816b94e86f02a4098f19468fc115c664f"
       }
     ],
     "source_code": [
@@ -3577,12 +3664,12 @@
       {
         "path": "scripts\\build_paper_assets.py",
         "exists": true,
-        "bytes": 606914,
-        "sha256": "72f4407c7b1be5e73e345eafdabf801dbc3f6dfc22f04621631b1739ba24976e",
+        "bytes": 613318,
+        "sha256": "44fb0cc272a4b2b1c9a4398227c49734cfb176e4aa1f97d7366dd5fded769297",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 606631,
-        "source_sha256": "899c0471a6f8b430e8b593fdef1f2fde2516a0e9d1b0a0636263692fec36d284"
+        "source_bytes": 613035,
+        "source_sha256": "c9ae014bf660ae5689e75843c813a7afc0058d34d8c90c4d5a1d823c9bade8eb"
       },
       {
         "path": "scripts\\build_observed_step_prospective_replication.py",
@@ -3629,12 +3716,12 @@
       {
         "path": "scripts\\verify_archive_extracted_reproduction.py",
         "exists": true,
-        "bytes": 72208,
-        "sha256": "192c43266a7f821cc804ba886408cb02121d16fa8b556f750d0668f3318ceb6a",
+        "bytes": 72215,
+        "sha256": "b6c5c7bc0442e57a56f80ba09cb2aaef872c974d825f6fc5b1cd537ae0880379",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 72018,
-        "source_sha256": "a2eac634a69ce4bf170734e4df5ef9c9294a5466d0be69eba1fa66e0fe3ececd"
+        "source_bytes": 72025,
+        "source_sha256": "37a190a196192694b1411ab9dfd5cbcd3f40a7ed745e017b37e059e698a116a6"
       },
       {
         "path": "scripts\\verify_manuscript_release_audit.py",
@@ -8046,20 +8133,29 @@
       }
     ]
   },
-  "artifact_count": 1023,
-  "artifacts_present": 1023,
+  "artifact_count": 1027,
+  "artifacts_present": 1027,
   "checksum_algorithm": "sha256",
   "review_archive": {
-    "path": "release\\spot_od_v1_1_0_supplement_review_archive.zip",
+    "path": "release\\spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
     "exists": true,
-    "bytes": 59127034,
-    "sha256": "e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240",
+    "bytes": 59140917,
+    "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
     "format": "zip",
     "immutable_review_artifact": true,
     "derived_from_indexed_artifacts": true,
-    "artifact_digest_coverage_count": 1023,
-    "artifacts_included": 1023,
+    "artifact_digest_coverage_count": 1027,
+    "artifacts_included": 1027,
     "member_timestamp_utc": "2026-05-19T00:00:00+00:00",
-    "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count, and the paired release manifest is kept outside the ZIP to avoid a self-referential/stale manifest member."
+    "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count, and the paired release manifest is kept outside the ZIP to avoid a self-referential/stale manifest member.",
+    "github_release_asset": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
+    "published_github_release_asset": {
+      "key": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
+      "size_bytes": 59140917,
+      "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
+      "source": "generated_local_review_archive",
+      "status": "pending_upload_to_new_github_release"
+    },
+    "matches_published_github_release_asset": true
   }
 }

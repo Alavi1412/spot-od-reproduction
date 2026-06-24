@@ -1,6 +1,6 @@
 # Independent-Machine Reproduction Request
 
-This file is a handoff template for a third-party operator. This is not a completed independent reproduction, not third-party validation, not a minted v1.2.2 DOI or completed public archive record, and not scored external validation.
+This file is a handoff template for a third-party operator. This is not a completed independent reproduction, not third-party validation, and not scored external validation.
 
 ## Objective
 
@@ -12,25 +12,45 @@ status, deviations, and output hashes.
 
 ## Public Release Reference
 
-- Short title: SPOT-OD v1.2.2 ACF audit release
-- Zenodo record: pending
-- DOI: pending; fill after Zenodo mints the v1.2.2 DOI
-- DOI URL: pending
-- Zenodo status: pending publication
+- Short title: SPOT-OD v1.2.3 ACF holdout audit release
+- Zenodo record: pending after Zenodo imports the new GitHub release
+- DOI: pending after Zenodo imports the new GitHub release
+- DOI URL: pending after Zenodo imports the new GitHub release
+- Zenodo status: pending import
+- Resource type: Software
 - GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
+- GitHub release:
+  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit
+- Release tag: v1.2.3-acf-holdout-audit
+- Release commit: pending until tag publication
+- Supersession note: v1.2.3 repairs the public release boundary for the ACF
+  audit/table tier by packaging the development/holdout split summaries in the
+  new release. Scientific metrics are as recorded, not upgraded to operational
+  validation.
+- Zenodo archived file: pending after Zenodo import
+- Zenodo archived file bytes: pending
+- Zenodo archived file MD5: pending
+- GitHub release asset: spot_od_v1_2_3_acf_holdout_audit_review_archive.zip
+- GitHub release asset bytes and SHA-256: recorded in the regenerated
+  release/SUPPLEMENTARY_MANIFEST.json under review_archive.
+
+Historical v1.2.2 ACF audit package reference:
+
+- Zenodo record: https://zenodo.org/records/20822968
+- DOI: 10.5281/zenodo.20822968
+- DOI URL: https://doi.org/10.5281/zenodo.20822968
+- Zenodo status: published
 - GitHub release:
   https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit
 - Release tag: v1.2.2-acf-audit
-- Release commit: pending until the release tag is created
-- Supersession note: v1.2.2 supersedes v1.2.1 only by adding the ACF
-  audit/table tier and manuscript claim-boundary wording. Scientific metrics
-  are as recorded, not upgraded to operational validation.
-- Zenodo archived file: pending
-- Zenodo archived file bytes: pending
-- Zenodo archived file MD5: pending
-- GitHub release asset: pending
-- GitHub release asset bytes: pending
-- GitHub release asset SHA-256: pending
+- Release commit: 6fbc88745b6d96939736d59731089e99786c1f8c
+- Zenodo archived file: Alavi1412/spot-od-reproduction-v1.2.2-acf-audit.zip
+- Zenodo archived file bytes: 72,607,548
+- Zenodo archived file MD5: 533b8363954cb6531f17bf4d405a5092
+- GitHub release asset: spot_od_v1_2_2_acf_audit_review_archive.zip
+- GitHub release asset bytes: 59,127,034
+- GitHub release asset SHA-256:
+  e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240
 
 Prior v1.2.1 public archive reference:
 
@@ -52,18 +72,25 @@ Prior v1.2.1 public archive reference:
 - GitHub release asset SHA-256:
   3cc285f132b690695a5d2a453f7c21128b46333d183fcfca265c52d50184c69c
 
-No v1.2.2 release-triggered verifier run exists until the GitHub release is
-created. The prior v1.2.1 release-triggered GitHub Actions verifier passed at
+Historical v1.2.2 GitHub Actions verifier runs are recorded at:
+
+- Branch run:
+  https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28075721074
+- Tag run:
+  https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28075722522
+
+The prior v1.2.1 release-triggered GitHub Actions verifier passed at
 https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28018952357
 and ran the archive-extracted reproduction workflow and graph verifier on
-GitHub-hosted runners. That run is maintainer-run platform evidence
-for the v1.2.1 release verifier tiers; it is not third-party independent
-validation.
+GitHub-hosted runners. These runs are maintainer-run platform evidence for the
+release verifier tiers; they are not third-party independent validation.
 
 ## Inputs To Obtain
 
 - `release/SUPPLEMENTARY_MANIFEST.json`
-- `release/spot_od_v1_1_0_supplement_review_archive.zip`
+- GitHub release asset `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, or the
+  equivalent local review packet path
+  `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
 - `scripts/verify_minimum_tier_reproduction.py`
 - `scripts/verify_archive_extracted_reproduction.py`
 - `requirements.txt` and `pyproject.toml` from the archive or release packet
@@ -73,18 +100,18 @@ validation.
 1. Create a new empty working directory on a machine not used to produce the
    submitted artifacts.
 2. Copy `release/SUPPLEMENTARY_MANIFEST.json` and
-   `release/spot_od_v1_1_0_supplement_review_archive.zip` into a `release/`
+   `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip` into a `release/`
    subdirectory.
 3. Extract the archive into the working directory:
 
 ```powershell
-python -m zipfile -e release/spot_od_v1_1_0_supplement_review_archive.zip .
+python -m zipfile -e release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip .
 ```
 
 4. Confirm the paired manifest and archive hashes:
 
 ```powershell
-python -c "import hashlib, pathlib; paths=['release/SUPPLEMENTARY_MANIFEST.json','release/spot_od_v1_1_0_supplement_review_archive.zip']; [print(p, hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()) for p in paths]"
+python -c "import hashlib, pathlib; paths=['release/SUPPLEMENTARY_MANIFEST.json','release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip']; [print(p, hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()) for p in paths]"
 ```
 
 5. Create and activate a local Python environment, then install dependencies:
@@ -104,7 +131,7 @@ python -m venv .venv
 7. Run the archive-extracted verifier:
 
 ```powershell
-.\.venv\Scripts\python -I scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_1_0_supplement_review_archive.zip --json-out results/validation/independent_archive_extracted_reproduction.json --md-out results/validation/independent_archive_extracted_reproduction.md
+.\.venv\Scripts\python -I scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip --json-out results/validation/independent_archive_extracted_reproduction.json --md-out results/validation/independent_archive_extracted_reproduction.md
 ```
 
 8. Hash the generated reports:

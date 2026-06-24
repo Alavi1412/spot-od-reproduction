@@ -44,20 +44,36 @@ Static evidence from `paper/main.tex` currently shows exactly these generated ta
 
 ### AdaptiveCandidateFusion Table Source Artifacts
 `paper\tables\adaptive_candidate_fusion_full_training_poc.tex` is generated
-from both the fixed-soft full-training campaign summary and the 15-seed
-validation-selected global scenario portfolio:
+from the fixed-soft full-training campaign summary, the 15-seed
+validation-selected global scenario portfolio, and the internal dev10/holdout5
+selection/evaluation separation artifact:
 - `results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json`
 - `results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md`
 - `results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv`
 - `results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json`
 - `results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.md`
 - `results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.csv`
+- `results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.json`
+- `results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.md`
+- `results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.csv`
 
-These are current-workspace internal compact-simulator artifacts only. They are
-not part of the published public v1.2.1 package unless a later release includes
-them, not operational precise-reference validation, not independent-machine
-reproduction, not a full raw/all-filter/public rerun, and not a universal
-learned orbit-determination claim.
+The dev10/holdout5 split selected policies on development seeds 7, 11, 13, 17,
+19, 23, 29, 31, 37, and 41, then evaluated holdout seeds 43, 47, 53, 59, and
+61. It selected process `0.60*learned + 0.40*RFIS` and maneuver
+`0.60*learned + 0.40*EKF`; the holdout result is weak/mixed: overall 7/10 row wins, mean
++1.45%, row CI [-2.22,+4.96], seed-paired 3/5 wins, seed-paired CI
+[-1.18,+4.02], process 4/5 wins mean +4.95% CI [+0.32,+8.75], and maneuver
+3/5 wins mean -2.06% CI [-6.41,+1.37].
+
+These compact-simulator artifacts are included in the public
+`v1.2.3-acf-holdout-audit` reproduction-support package target. That release
+packaging is an access/integrity tier only: these artifacts are not operational
+precise-reference validation, not independent-machine reproduction, not a full
+raw/all-filter/public rerun, not confirmatory learned-superiority evidence, and
+not a universal learned orbit-determination claim. The prior v1.2.2 DOI
+`10.5281/zenodo.20822968` remains historical ACF audit package history, and the
+prior v1.2.1 DOI remains the historical GraphAnchorPairGate package DOI:
+`10.5281/zenodo.20811701`.
 
 ## Current Main-Manuscript Figure Includes
 Static evidence from `paper/main.tex` currently shows these figure includes:

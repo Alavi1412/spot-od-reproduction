@@ -1,0 +1,156 @@
+{
+  "scenario": "drag_scale_constructive_positive_control",
+  "schema_version": "drag_scale_constructive_positive_control_v1",
+  "scope": "Constructive positive control for DSA-EKF. Truth-side dynamics: compact two-body + J2 + exponential-atmosphere drag with the truth-side ballistic coefficient multiplied by truth_beta=2.50. Estimator-side dynamics: same compact two-body + J2 + drag at the nominal ballistic coefficient. DSA-EKF estimates beta online; every other estimator keeps the unscaled compact flow. No additional zonal geopotential, no luni-solar third body, no SRP, no time-varying density modulation; the multiplicative drag-scale mismatch is the only unmodelled physics.",
+  "n_trajectories": 64,
+  "steps": 540,
+  "dt_s": 20.0,
+  "eval_start_step": 11,
+  "epoch_unix": 1736640000.0,
+  "rng_seed": 770540,
+  "truth_beta_value": 2.5,
+  "orbit_altitude_min_km": 250.0,
+  "orbit_altitude_max_km": 450.0,
+  "bootstrap_samples": 5000,
+  "predeclared_rule_path": "release/predeclarations/drag_scale_constructive_positive_control_loop54.json",
+  "predeclared_rule_digest_sha256": "92f65a250cc21f11e9f29b2ae21d6ee5aba852997ebc9fb76e63c025b33e4ea7",
+  "selection_artifact_source": "results\\drag_scale_aekf_validation\\drag_scale_aekf_validation.json",
+  "selection_artifact_sha256": "963257132df7f8086917f35081e8b3a25ae9401e853ac1b6f3c5fca85f345ea6",
+  "selected_grid_point_label": "G1",
+  "selected_init_drag_scale_std": 0.3,
+  "selected_drag_scale_sigma_ss": 0.3,
+  "selected_drag_scale_tau_s": 600.0,
+  "truth_acceleration": "compact two-body + J2 + exponential drag with truth-side ballistic coefficient scaled by truth_beta",
+  "estimator_acceleration": "compact two-body + J2 + exponential drag at nominal ballistic coefficient (DSA-EKF estimates beta online)",
+  "observed_step_rmse_mean_m": {
+    "EKF": 1598.9440860958152,
+    "UKF": 359.6553608971954,
+    "AUKF": 374.732685890291,
+    "PUKF": 426.6178181065451,
+    "DMC_EKF": 1598.9450212204804,
+    "DSA_EKF": 1648.5266667923609
+  },
+  "paired": {
+    "DSA_EKF_minus_EKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "EKF",
+      "mean_diff_m": 49.58258069654593,
+      "ci_lo_m": -5.261002351823353,
+      "ci_hi_m": 113.32813675252324,
+      "wilcoxon_p_one_sided_candidate_better": 0.04469481886687329,
+      "n_paired": 64,
+      "candidate_better_count": 47
+    },
+    "DSA_EKF_minus_UKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "UKF",
+      "mean_diff_m": 1288.8713058951653,
+      "ci_lo_m": 364.60029062300106,
+      "ci_hi_m": 2520.8482058560257,
+      "wilcoxon_p_one_sided_candidate_better": 0.8113144873492852,
+      "n_paired": 64,
+      "candidate_better_count": 31
+    },
+    "DSA_EKF_minus_AUKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 1273.7939809020697,
+      "ci_lo_m": 366.79556803082517,
+      "ci_hi_m": 2462.9042133500343,
+      "wilcoxon_p_one_sided_candidate_better": 0.9883068446945469,
+      "n_paired": 64,
+      "candidate_better_count": 26
+    },
+    "DSA_EKF_minus_PUKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "PUKF",
+      "mean_diff_m": 1221.9088486858159,
+      "ci_lo_m": 298.37417933283854,
+      "ci_hi_m": 2505.5158478108888,
+      "wilcoxon_p_one_sided_candidate_better": 0.02542453153190015,
+      "n_paired": 64,
+      "candidate_better_count": 48
+    },
+    "DSA_EKF_minus_DMC_EKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "DMC_EKF",
+      "mean_diff_m": 49.581645571880365,
+      "ci_lo_m": -5.827460925654975,
+      "ci_hi_m": 113.20032459784754,
+      "wilcoxon_p_one_sided_candidate_better": 0.04469481886687329,
+      "n_paired": 64,
+      "candidate_better_count": 47
+    },
+    "EKF_minus_AUKF": {
+      "candidate": "EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 1224.2114002055237,
+      "ci_lo_m": 345.7213582455054,
+      "ci_hi_m": 2390.4705674270194,
+      "wilcoxon_p_one_sided_candidate_better": 0.9998794061864879,
+      "n_paired": 64,
+      "candidate_better_count": 22
+    }
+  },
+  "decision": {
+    "best_non_dsa_estimator": "UKF",
+    "best_non_dsa_mean_m": 359.6553608971954,
+    "practical_significance_floor_fraction": 0.03,
+    "practical_significance_floor_abs_m": 10.789660826915862,
+    "dsa_minus_best_non_dsa_mean_m": 1288.8713058951653,
+    "dsa_minus_best_non_dsa_ci_lo_m": 378.13835172954026,
+    "dsa_minus_best_non_dsa_ci_hi_m": 2561.4261420357548,
+    "dsa_is_strictly_lowest_mean": false,
+    "ci_strictly_negative_for_dsa": false,
+    "floor_exceeded": false,
+    "predeclared_positive_criterion_met": false
+  },
+  "dsa_diagnostics": {
+    "median_max_abs_beta_deviation": 0.001170146722640819,
+    "median_mean_beta": 1.0000032625867408,
+    "median_final_beta": 0.9999999919939633,
+    "truth_beta_target": 2.5
+  },
+  "cross_filter_r_only_nis": {
+    "EKF": {
+      "median": 1.368339071229313,
+      "mean": 758.7474243540476,
+      "p90": 6.168390538079656,
+      "n": 3282
+    },
+    "UKF": {
+      "median": 1.3875934102729337,
+      "mean": 94.13425679665485,
+      "p90": 4.603340600372861,
+      "n": 3282
+    },
+    "AUKF": {
+      "median": 1.4365666258488,
+      "mean": 114.4735565811115,
+      "p90": 5.082541811714017,
+      "n": 3282
+    },
+    "PUKF": {
+      "median": 0.9411108758349406,
+      "mean": 129.75746443050357,
+      "p90": 3.7931953002774,
+      "n": 3282
+    },
+    "DMC_EKF": {
+      "median": 1.3683402516569374,
+      "mean": 758.7474296886962,
+      "p90": 6.168392351443782,
+      "n": 3282
+    },
+    "DSA_EKF": {
+      "median": 1.4523680253929807,
+      "mean": 740.868495717855,
+      "p90": 6.446602983118431,
+      "n": 3282
+    }
+  },
+  "elapsed_seconds": {
+    "truth_generation": 42.06481520005036,
+    "filters": 1352.230278700008
+  }
+}

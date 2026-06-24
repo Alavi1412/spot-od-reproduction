@@ -1,0 +1,325 @@
+{
+  "schema_version": "sp3_residual_calibrator_v1",
+  "generated_utc": "2026-05-19T08:12:28Z",
+  "status": "completed",
+  "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+  "num_arcs": 10,
+  "predeclared_calibrator": {
+    "model": "empirical RSW acceleration, Fourier in argument of latitude",
+    "fourier_order": 2,
+    "n_coefficients": 15,
+    "ridge_lambda": 1e-18,
+    "accel_sample_step_s": 60.0,
+    "second_diff_step_s": 20.0,
+    "fit_method": "ridge least squares on SP3-derived residual accel."
+  },
+  "no_leakage_protocol": "The calibrator is fitted only on SP3-derived residual accelerations from training arcs. Under LOAO the held-out arc's SP3 and observations are fully excluded from the fit; under LOOO the calibrator is trained on one LAGEOS object and scored on the other (cross-object). Held-out error is a predict-only state error versus the independent ILRS analysis-centre SP3-c precise orbit, identical to the uncalibrated slice. Calibrator hyper-parameters are predeclared from standard empirical-acceleration practice, not tuned to held-out scores.",
+  "pooled_held_out_position_rmse_m": {
+    "uncalibrated": {
+      "EKF": 367.98,
+      "UKF (fixed-noise)": 334.72,
+      "AUKF (adaptive)": 341.33,
+      "SP3-IC propagation": 402.92
+    },
+    "loao_calibrated": {
+      "Calibrated-EKF": 769.78,
+      "Calibrated-UKF (fixed-noise)": 697.44,
+      "Calibrated-SP3-IC propagation": 3500.45
+    },
+    "looo_calibrated": {
+      "Calibrated-EKF": 772.68,
+      "Calibrated-UKF (fixed-noise)": 680.99,
+      "Calibrated-SP3-IC propagation": 3582.71
+    }
+  },
+  "verdict": {
+    "best_uncalibrated_classical_reference": "UKF (fixed-noise)",
+    "best_uncalibrated_classical_reference_pooled_mean_m": 334.72,
+    "loao": {
+      "best_calibrated_estimator": "Calibrated-UKF (fixed-noise)",
+      "best_calibrated_pooled_mean_m": 697.44,
+      "beats_best_uncalibrated_reference": false,
+      "calibrated_ukf_vs_uncalibrated_ukf": {
+        "n_arcs": 10,
+        "n_arcs_calibrated_better": 0,
+        "mean_rmse_reduction_m": -362.73,
+        "median_rmse_reduction_m": -324.29
+      }
+    },
+    "looo": {
+      "best_calibrated_estimator": "Calibrated-UKF (fixed-noise)",
+      "best_calibrated_pooled_mean_m": 680.99,
+      "beats_best_uncalibrated_reference": false,
+      "calibrated_ukf_vs_uncalibrated_ukf": {
+        "n_arcs": 10,
+        "n_arcs_calibrated_better": 0,
+        "mean_rmse_reduction_m": -346.27,
+        "median_rmse_reduction_m": -237.12
+      }
+    },
+    "claimed_as_positive_contribution": false
+  },
+  "arcs": [
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "target": "LAGEOS-1",
+      "date": "20260505",
+      "num_observations": 72,
+      "num_fit": 43,
+      "num_held_out": 29,
+      "uncalibrated_rmse_m": {
+        "EKF": 168.11,
+        "UKF (fixed-noise)": 157.96,
+        "AUKF (adaptive)": 145.03,
+        "SP3-IC propagation": 604.52
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 399.99,
+        "Calibrated-UKF (fixed-noise)": 390.42,
+        "Calibrated-SP3-IC propagation": 4342.61
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 413.39,
+        "Calibrated-UKF (fixed-noise)": 395.31,
+        "Calibrated-SP3-IC propagation": 4397.47
+      },
+      "loao_n_train_samples": 6428,
+      "looo_n_train_samples": 3024
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "target": "LAGEOS-1",
+      "date": "20260506",
+      "num_observations": 109,
+      "num_fit": 65,
+      "num_held_out": 44,
+      "uncalibrated_rmse_m": {
+        "EKF": 791.0,
+        "UKF (fixed-noise)": 823.98,
+        "AUKF (adaptive)": 778.57,
+        "SP3-IC propagation": 141.47
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 1143.45,
+        "Calibrated-UKF (fixed-noise)": 1138.62,
+        "Calibrated-SP3-IC propagation": 6276.68
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 1058.15,
+        "Calibrated-UKF (fixed-noise)": 1012.45,
+        "Calibrated-SP3-IC propagation": 7139.68
+      },
+      "loao_n_train_samples": 6006,
+      "looo_n_train_samples": 3024
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "target": "LAGEOS-1",
+      "date": "20260507",
+      "num_observations": 55,
+      "num_fit": 33,
+      "num_held_out": 22,
+      "uncalibrated_rmse_m": {
+        "EKF": 223.01,
+        "UKF (fixed-noise)": 213.55,
+        "AUKF (adaptive)": 415.74,
+        "SP3-IC propagation": 457.84
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 284.16,
+        "Calibrated-UKF (fixed-noise)": 273.61,
+        "Calibrated-SP3-IC propagation": 1970.55
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 255.59,
+        "Calibrated-UKF (fixed-noise)": 244.75,
+        "Calibrated-SP3-IC propagation": 1672.68
+      },
+      "loao_n_train_samples": 6855,
+      "looo_n_train_samples": 3024
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "target": "LAGEOS-1",
+      "date": "20260508",
+      "num_observations": 61,
+      "num_fit": 36,
+      "num_held_out": 25,
+      "uncalibrated_rmse_m": {
+        "EKF": 242.67,
+        "UKF (fixed-noise)": 230.55,
+        "AUKF (adaptive)": 208.01,
+        "SP3-IC propagation": 284.11
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 585.89,
+        "Calibrated-UKF (fixed-noise)": 564.48,
+        "Calibrated-SP3-IC propagation": 2887.32
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 492.38,
+        "Calibrated-UKF (fixed-noise)": 467.43,
+        "Calibrated-SP3-IC propagation": 2912.01
+      },
+      "loao_n_train_samples": 6749,
+      "looo_n_train_samples": 3024
+    },
+    {
+      "arc_id": "LAGEOS-1 20260509",
+      "target": "LAGEOS-1",
+      "date": "20260509",
+      "num_observations": 63,
+      "num_fit": 37,
+      "num_held_out": 26,
+      "uncalibrated_rmse_m": {
+        "EKF": 450.17,
+        "UKF (fixed-noise)": 417.22,
+        "AUKF (adaptive)": 358.71,
+        "SP3-IC propagation": 237.26
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 1263.79,
+        "Calibrated-UKF (fixed-noise)": 1192.41,
+        "Calibrated-SP3-IC propagation": 3926.37
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 1228.29,
+        "Calibrated-UKF (fixed-noise)": 1138.22,
+        "Calibrated-SP3-IC propagation": 3718.69
+      },
+      "loao_n_train_samples": 6546,
+      "looo_n_train_samples": 3024
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "target": "LAGEOS-2",
+      "date": "20260505",
+      "num_observations": 56,
+      "num_fit": 33,
+      "num_held_out": 23,
+      "uncalibrated_rmse_m": {
+        "EKF": 63.52,
+        "UKF (fixed-noise)": 63.95,
+        "AUKF (adaptive)": 85.24,
+        "SP3-IC propagation": 800.0
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 664.98,
+        "Calibrated-UKF (fixed-noise)": 669.78,
+        "Calibrated-SP3-IC propagation": 2421.25
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 645.95,
+        "Calibrated-UKF (fixed-noise)": 648.98,
+        "Calibrated-SP3-IC propagation": 2451.55
+      },
+      "loao_n_train_samples": 7009,
+      "looo_n_train_samples": 4366
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "target": "LAGEOS-2",
+      "date": "20260506",
+      "num_observations": 112,
+      "num_fit": 67,
+      "num_held_out": 45,
+      "uncalibrated_rmse_m": {
+        "EKF": 875.58,
+        "UKF (fixed-noise)": 570.17,
+        "AUKF (adaptive)": 550.81,
+        "SP3-IC propagation": 68.12
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 1626.0,
+        "Calibrated-UKF (fixed-noise)": 1085.63,
+        "Calibrated-SP3-IC propagation": 3667.08
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 1837.32,
+        "Calibrated-UKF (fixed-noise)": 1179.31,
+        "Calibrated-SP3-IC propagation": 3848.58
+      },
+      "loao_n_train_samples": 6509,
+      "looo_n_train_samples": 4366
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "target": "LAGEOS-2",
+      "date": "20260507",
+      "num_observations": 38,
+      "num_fit": 22,
+      "num_held_out": 16,
+      "uncalibrated_rmse_m": {
+        "EKF": 254.67,
+        "UKF (fixed-noise)": 237.52,
+        "AUKF (adaptive)": 233.56,
+        "SP3-IC propagation": 1164.24
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 454.58,
+        "Calibrated-UKF (fixed-noise)": 420.47,
+        "Calibrated-SP3-IC propagation": 3855.79
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 430.18,
+        "Calibrated-UKF (fixed-noise)": 398.4,
+        "Calibrated-SP3-IC propagation": 3703.42
+      },
+      "loao_n_train_samples": 6872,
+      "looo_n_train_samples": 4366
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "target": "LAGEOS-2",
+      "date": "20260508",
+      "num_observations": 64,
+      "num_fit": 38,
+      "num_held_out": 26,
+      "uncalibrated_rmse_m": {
+        "EKF": 424.34,
+        "UKF (fixed-noise)": 429.95,
+        "AUKF (adaptive)": 430.07,
+        "SP3-IC propagation": 124.02
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 975.89,
+        "Calibrated-UKF (fixed-noise)": 943.96,
+        "Calibrated-SP3-IC propagation": 2820.22
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 1036.47,
+        "Calibrated-UKF (fixed-noise)": 1003.6,
+        "Calibrated-SP3-IC propagation": 2962.05
+      },
+      "loao_n_train_samples": 6762,
+      "looo_n_train_samples": 4366
+    },
+    {
+      "arc_id": "LAGEOS-2 20260509",
+      "target": "LAGEOS-2",
+      "date": "20260509",
+      "num_observations": 59,
+      "num_fit": 35,
+      "num_held_out": 24,
+      "uncalibrated_rmse_m": {
+        "EKF": 186.74,
+        "UKF (fixed-noise)": 202.31,
+        "AUKF (adaptive)": 207.56,
+        "SP3-IC propagation": 147.59
+      },
+      "loao_calibrated_rmse_m": {
+        "Calibrated-EKF": 299.07,
+        "Calibrated-UKF (fixed-noise)": 295.06,
+        "Calibrated-SP3-IC propagation": 2836.6
+      },
+      "looo_calibrated_rmse_m": {
+        "Calibrated-EKF": 329.06,
+        "Calibrated-UKF (fixed-noise)": 321.46,
+        "Calibrated-SP3-IC propagation": 3020.93
+      },
+      "loao_n_train_samples": 6774,
+      "looo_n_train_samples": 4366
+    }
+  ],
+  "caveats": "Bounded precise-reference real-data OD slice (same fidelity as the uncalibrated slice: approximate GMST-only Earth rotation common-mode between station geometry and the SP3 reference, compact two-body+J2 base dynamics, no precise SLR reduction, precise SP3 initial condition). The learned calibrator is a least-squares empirical-acceleration correction fitted on SP3-derived residual accelerations from strictly disjoint training arcs and is reported honestly whether or not it beats the best uncalibrated classical reference; absolute magnitudes remain a hundreds-of-metres model-mismatch stress, not centimetre operational OD or flight readiness."
+}

@@ -1,0 +1,92 @@
+{
+  "run_started_at_utc": "2026-05-25T17:17:10Z",
+  "run_duration_sec": 134.08137169999827,
+  "models": {
+    "ObservabilityContextHybridGNN": {
+      "best_checkpoint": "results\\retraining_replay\\targeted_retraining_replay\\artifacts\\checkpoints\\replay_observabilitycontexthybridgnn.pt",
+      "stages": [
+        {
+          "stage": "nominal_pretrain_replay",
+          "train_splits": [
+            "train"
+          ],
+          "val_splits": [
+            "val"
+          ],
+          "checkpoint": "results\\retraining_replay\\targeted_retraining_replay\\artifacts\\checkpoints\\replay_observabilitycontexthybridgnn_nominal_pretrain_replay.pt",
+          "history": {
+            "train_loss": [
+              -1.1341346057310728,
+              -1.5996679136718528,
+              -1.5996568997701008
+            ],
+            "val_loss": [
+              -1.5990827083587646,
+              -1.5985509327479772,
+              -1.5986842683383398
+            ]
+          }
+        },
+        {
+          "stage": "mixed_train_replay",
+          "train_splits": [
+            "train",
+            "stress_train"
+          ],
+          "val_splits": [
+            "val",
+            "stress_val",
+            "satnogs_observation_replay_val"
+          ],
+          "checkpoint": "results\\retraining_replay\\targeted_retraining_replay\\artifacts\\checkpoints\\replay_observabilitycontexthybridgnn_mixed_train_replay.pt",
+          "history": {
+            "train_loss": [
+              -1.599701450505388,
+              -1.5997252486167697,
+              -1.599725450944463
+            ],
+            "val_loss": [
+              -1.3296755519608225,
+              -1.5567349570052105,
+              -1.523287608165934
+            ]
+          }
+        },
+        {
+          "stage": "stress_focus_replay",
+          "train_splits": [
+            "stress_train"
+          ],
+          "val_splits": [
+            "stress_val",
+            "satnogs_observation_replay_val"
+          ],
+          "checkpoint": "results\\retraining_replay\\targeted_retraining_replay\\artifacts\\checkpoints\\replay_observabilitycontexthybridgnn.pt",
+          "history": {
+            "train_loss": [
+              -1.5997534263424757,
+              -1.5997755789175265
+            ],
+            "val_loss": [
+              1.4636917848091622,
+              -1.1646566140187251
+            ]
+          }
+        }
+      ],
+      "model_kwargs": {
+        "use_graph": true,
+        "residual_scale": 0.03,
+        "use_gating": true,
+        "bounded_residual": true,
+        "use_innovation_features": true,
+        "use_context_budget": true,
+        "use_prior_bank_fusion": true,
+        "prior_bank_size": 3,
+        "use_observability_context": true,
+        "predict_noise_scale": true,
+        "fusion_temperature": 0.85
+      }
+    }
+  }
+}

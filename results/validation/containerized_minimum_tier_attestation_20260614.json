@@ -1,0 +1,43 @@
+{
+  "artifact": "containerized_minimum_tier_attestation",
+  "attestation_date": "2026-06-14",
+  "attestation_scope": "local Docker Desktop clean-container staged minimum-tier integrity attestation",
+  "claim_boundary": "This is a local Docker Desktop clean-container staged minimum-tier integrity attestation only. It is same-host and staged from the current workspace/review archive. It is not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, not independent external reproduction, and not a full scientific rerun.",
+  "archive_observed_from_manifest": {
+    "manifest_path": "release/SUPPLEMENTARY_MANIFEST.json",
+    "archive_path": "release/spot_od_v1_1_0_supplement_review_archive.zip",
+    "archive_sha256_observed_before_this_attestation_was_indexed": "f06b351e7c9dd6fd47066f45535f7db5e7ff254589a7bc68b32ea05575dbe4ad",
+    "archive_bytes_observed_before_this_attestation_was_indexed": 58073055,
+    "artifact_digest_coverage_count_observed_before_this_attestation_was_indexed": 968,
+    "artifacts_included_observed_before_this_attestation_was_indexed": 968,
+    "self_reference_note": "The regenerated release/SUPPLEMENTARY_MANIFEST.json remains authoritative for the current review archive SHA-256. This attestation is itself indexed and archived, so the pre-indexing archive digest is recorded as the observed paired-manifest digest at attestation time rather than as a self-referential fixed-point claim."
+  },
+  "staged_inputs": [
+    "release/SUPPLEMENTARY_MANIFEST.json",
+    "release/spot_od_v1_1_0_supplement_review_archive.zip",
+    "scripts/verify_minimum_tier_reproduction.py"
+  ],
+  "container_runtime": {
+    "runtime": "Docker Desktop",
+    "docker_context": "desktop-linux",
+    "docker_version": "Docker 27.3.1",
+    "image": "python:3.11",
+    "local_image_id": "69feacea6aaa",
+    "local_image_size": "1.59GB"
+  },
+  "local_path_redaction": "The local staging path was intentionally redacted and represented as <local-stage>.",
+  "verifier_command": {
+    "command_template": "docker run --rm -v <local-stage>:/work -w /work python:3.11 python scripts/verify_minimum_tier_reproduction.py --check-only",
+    "exit_code": 0,
+    "status": "pass",
+    "summary": {
+      "status": "pass",
+      "manifest_summary_check": "pass",
+      "artifact_check": "pass",
+      "review_archive_check": "pass",
+      "claim_map_check": "pass",
+      "requires_retraining": false
+    }
+  },
+  "interpretation": "This records that a same-host local Python 3.11 Docker container could run the minimum-tier no-write integrity check on a staged copy containing the manifest, review archive, and verifier script. It improves reviewer inspection evidence for the minimum integrity surface only and does not claim independent validation or full reproduction."
+}

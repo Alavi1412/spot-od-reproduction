@@ -1,0 +1,438 @@
+{
+  "schema_version": "real_slr_sp3_temporal_selection_stability_v1",
+  "generated_utc": "2026-05-22T04:04:02Z",
+  "status": "completed",
+  "source_artifacts": [
+    {
+      "artifact_id": "results/real_slr_sp3_temporal_od_campaign/real_slr_sp3_temporal_od_campaign.json",
+      "sha256": "6e05fa0585a31b5a2196eb6b3fb3d2044b78dd219175f0bcf188bfa686be7ce7"
+    },
+    {
+      "artifact_id": "results/real_slr_sp3_hifi/real_slr_sp3_hifi_validation.json",
+      "sha256": "bba46d8c004e0cd1de9bcc007668fd11ef3075ddd8d3b6809c74f10dad533bcd"
+    }
+  ],
+  "predeclared": {
+    "bootstrap_resamples": 5000,
+    "bootstrap_seed": 20260522,
+    "jackknife_unit": "validation arc",
+    "selector_repeated_on_validation_only": true,
+    "test_set_information_used_for_selection": false,
+    "station_coverage_min_fit_observations_without_station": 6,
+    "station_coverage_min_held_out_observations_at_station": 3
+  },
+  "temporal_campaign_readout": {
+    "train_weeks": [
+      "260418",
+      "260425"
+    ],
+    "validation_week": "260502",
+    "test_week": "260509",
+    "validation_selected_learned_ridge_lambda": "1e+06",
+    "validation_selected_candidate": "Learned calibrated higher-fidelity UKF",
+    "validation_selected_candidate_family": "learned",
+    "validation_mean_rms_m": {
+      "UKF (compact)": 577.14,
+      "UKF (higher-fidelity)": 525.87,
+      "AUKF (higher-fidelity)": 550.23,
+      "Learned calibrated higher-fidelity UKF": 525.44
+    },
+    "frozen_test_readout": {
+      "n_arcs": 10,
+      "selected_candidate": "Learned calibrated higher-fidelity UKF",
+      "selected_mean_rms_m": 411.51,
+      "test_best_candidate": "UKF (compact)",
+      "test_best_mean_rms_m": 368.64,
+      "best_classical_candidate": "UKF (compact)",
+      "best_classical_mean_rms_m": 368.64,
+      "learned_mean_rms_m": 411.51,
+      "learned_minus_best_classical_mean_gap_m": 42.87,
+      "learned_vs_best_classical_bootstrap95_mean_gap_m": [
+        23.69,
+        63.38
+      ],
+      "learned_arcs_better_than_best_classical": 0
+    }
+  },
+  "validation_margin": {
+    "winner": "Learned calibrated higher-fidelity UKF",
+    "winner_mean_rms_m": 525.44,
+    "runner_up": "UKF (higher-fidelity)",
+    "runner_up_mean_rms_m": 525.87,
+    "winner_margin_to_runner_up_m": 0.43,
+    "learned_vs_best_classical_paired_gap": {
+      "n": 10,
+      "mean_gap_m": -0.43,
+      "median_gap_m": -4.75,
+      "n_a_lower_rmse": 7,
+      "fraction_a_lower_rmse": 0.7,
+      "bootstrap95_mean_gap_m": [
+        -7.85,
+        8.03
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "interpretation": "The nominal validation win by the learned candidate is small relative to arc-level variation; stability is therefore the relevant readout, not a positive learned-OD claim."
+  },
+  "jackknife_selection_stability": {
+    "n_resamples": 10,
+    "candidate_selection_counts": {
+      "Learned calibrated higher-fidelity UKF": 6,
+      "UKF (higher-fidelity)": 4
+    },
+    "candidate_selection_fraction": {
+      "Learned calibrated higher-fidelity UKF": 0.6,
+      "UKF (higher-fidelity)": 0.4
+    },
+    "learned_ridge_selection_counts": {
+      "1e+00": 1,
+      "1e+06": 7,
+      "1e-03": 1,
+      "1e-06": 1
+    },
+    "learned_ridge_selection_fraction": {
+      "1e+00": 0.1,
+      "1e+06": 0.7,
+      "1e-03": 0.1,
+      "1e-06": 0.1
+    },
+    "rows": [
+      {
+        "left_out_arc_id": "LAGEOS-1 20260427",
+        "selected_learned_ridge_lambda": "1e-03",
+        "selected_candidate": "Learned calibrated higher-fidelity UKF",
+        "selected_candidate_family": "learned",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 499.41,
+          "UKF (higher-fidelity)": 446.95,
+          "AUKF (higher-fidelity)": 450.17,
+          "Learned calibrated higher-fidelity UKF": 424.76
+        },
+        "winner_margin_to_runner_up_m": 22.19
+      },
+      {
+        "left_out_arc_id": "LAGEOS-1 20260428",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "Learned calibrated higher-fidelity UKF",
+        "selected_candidate_family": "learned",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 547.02,
+          "UKF (higher-fidelity)": 507.35,
+          "AUKF (higher-fidelity)": 530.42,
+          "Learned calibrated higher-fidelity UKF": 505.67
+        },
+        "winner_margin_to_runner_up_m": 1.69
+      },
+      {
+        "left_out_arc_id": "LAGEOS-1 20260429",
+        "selected_learned_ridge_lambda": "1e+00",
+        "selected_candidate": "Learned calibrated higher-fidelity UKF",
+        "selected_candidate_family": "learned",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 488.87,
+          "UKF (higher-fidelity)": 446.8,
+          "AUKF (higher-fidelity)": 475.19,
+          "Learned calibrated higher-fidelity UKF": 437.87
+        },
+        "winner_margin_to_runner_up_m": 8.93
+      },
+      {
+        "left_out_arc_id": "LAGEOS-1 20260430",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "UKF (higher-fidelity)",
+        "selected_candidate_family": "classical",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 612.48,
+          "UKF (higher-fidelity)": 556.29,
+          "AUKF (higher-fidelity)": 583.34,
+          "Learned calibrated higher-fidelity UKF": 557.34
+        },
+        "winner_margin_to_runner_up_m": 1.05
+      },
+      {
+        "left_out_arc_id": "LAGEOS-1 20260501",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "UKF (higher-fidelity)",
+        "selected_candidate_family": "classical",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 594.07,
+          "UKF (higher-fidelity)": 543.89,
+          "AUKF (higher-fidelity)": 570.97,
+          "Learned calibrated higher-fidelity UKF": 544.72
+        },
+        "winner_margin_to_runner_up_m": 0.83
+      },
+      {
+        "left_out_arc_id": "LAGEOS-2 20260427",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "UKF (higher-fidelity)",
+        "selected_candidate_family": "classical",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 560.59,
+          "UKF (higher-fidelity)": 510.01,
+          "AUKF (higher-fidelity)": 537.07,
+          "Learned calibrated higher-fidelity UKF": 510.29
+        },
+        "winner_margin_to_runner_up_m": 0.28
+      },
+      {
+        "left_out_arc_id": "LAGEOS-2 20260428",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "Learned calibrated higher-fidelity UKF",
+        "selected_candidate_family": "learned",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 622.91,
+          "UKF (higher-fidelity)": 568.99,
+          "AUKF (higher-fidelity)": 595.0,
+          "Learned calibrated higher-fidelity UKF": 568.81
+        },
+        "winner_margin_to_runner_up_m": 0.18
+      },
+      {
+        "left_out_arc_id": "LAGEOS-2 20260429",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "Learned calibrated higher-fidelity UKF",
+        "selected_candidate_family": "learned",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 618.46,
+          "UKF (higher-fidelity)": 568.99,
+          "AUKF (higher-fidelity)": 596.56,
+          "Learned calibrated higher-fidelity UKF": 568.57
+        },
+        "winner_margin_to_runner_up_m": 0.42
+      },
+      {
+        "left_out_arc_id": "LAGEOS-2 20260430",
+        "selected_learned_ridge_lambda": "1e+06",
+        "selected_candidate": "UKF (higher-fidelity)",
+        "selected_candidate_family": "classical",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 610.8,
+          "UKF (higher-fidelity)": 549.11,
+          "AUKF (higher-fidelity)": 575.1,
+          "Learned calibrated higher-fidelity UKF": 549.58
+        },
+        "winner_margin_to_runner_up_m": 0.47
+      },
+      {
+        "left_out_arc_id": "LAGEOS-2 20260501",
+        "selected_learned_ridge_lambda": "1e-06",
+        "selected_candidate": "Learned calibrated higher-fidelity UKF",
+        "selected_candidate_family": "learned",
+        "candidate_mean_rms_m": {
+          "UKF (compact)": 616.78,
+          "UKF (higher-fidelity)": 560.33,
+          "AUKF (higher-fidelity)": 588.48,
+          "Learned calibrated higher-fidelity UKF": 550.61
+        },
+        "winner_margin_to_runner_up_m": 9.72
+      }
+    ]
+  },
+  "bootstrap_selection_stability": {
+    "n_resamples": 5000,
+    "sample_size_arcs": 10,
+    "seed": 20260522,
+    "candidate_selection_counts": {
+      "AUKF (higher-fidelity)": 172,
+      "Learned calibrated higher-fidelity UKF": 3118,
+      "UKF (higher-fidelity)": 1710
+    },
+    "candidate_selection_fraction": {
+      "AUKF (higher-fidelity)": 0.0344,
+      "Learned calibrated higher-fidelity UKF": 0.6236,
+      "UKF (higher-fidelity)": 0.342
+    },
+    "learned_ridge_selection_counts": {
+      "1e+00": 809,
+      "1e+03": 9,
+      "1e+06": 2916,
+      "1e-03": 996,
+      "1e-06": 270
+    },
+    "learned_ridge_selection_fraction": {
+      "1e+00": 0.1618,
+      "1e+03": 0.0018,
+      "1e+06": 0.5832,
+      "1e-03": 0.1992,
+      "1e-06": 0.054
+    },
+    "winner_margin_to_runner_up_m": {
+      "mean": 18.13,
+      "median": 5.06,
+      "p05": 0.44,
+      "p95": 78.06
+    }
+  },
+  "negative_control_sentinels": {
+    "test_oracle_candidate": "UKF (compact)",
+    "validation_selector_differs_from_test_oracle": true,
+    "test_oracle_is_forbidden_for_model_selection": true,
+    "interpretation": "The candidate that would be selected by looking at the test week is reported only after frozen scoring as a leakage sentinel; it is not used to change the selected candidate."
+  },
+  "public_breadth_feasibility": {
+    "held_out_object_beyond_lageos_feasible_from_archived_corpus": false,
+    "archived_public_targets": [
+      "LAGEOS-1",
+      "LAGEOS-2"
+    ],
+    "larger_temporal_campaign_feasible_from_archived_corpus": false,
+    "archived_temporal_weeks": {
+      "260418": "train",
+      "260425": "train",
+      "260502": "val",
+      "260509": "test"
+    },
+    "held_out_station_campaign_general_feasible_from_archived_corpus": false,
+    "station_holdout_test_eligible_arcs_by_station": {
+      "YARL": 7,
+      "HERL": 3,
+      "MATM": 0,
+      "WETL": 0
+    },
+    "stations_with_any_test_station_holdout_support": {
+      "YARL": 7,
+      "HERL": 3
+    },
+    "feasibility_summary": "The archived public real-measurement corpus is limited to LAGEOS-1/LAGEOS-2 and four weekly windows. Station diversity is useful for an audit, but the held-out test week has station-holdout support for only a subset of the four supported stations; therefore a general held-out-station campaign would be too small for a stronger breadth claim without adding a newly predeclared public-data collection.",
+    "fallback_implemented": "validation-only selector jackknife/bootstrap stability plus a post-scoring test-oracle leakage sentinel"
+  },
+  "station_coverage_audit": {
+    "parsed_crd_files": 40,
+    "supported_station_count": 4,
+    "minimum_fit_observations_without_station": 6,
+    "minimum_held_out_observations_at_station": 3,
+    "by_split": {
+      "train": {
+        "7090": {
+          "station_code": "YARL",
+          "fit_observations": 329,
+          "held_out_observations": 283,
+          "arcs_with_held_out_observations": 20,
+          "station_holdout_eligible_arcs": 16
+        },
+        "7840": {
+          "station_code": "HERL",
+          "fit_observations": 308,
+          "held_out_observations": 251,
+          "arcs_with_held_out_observations": 18,
+          "station_holdout_eligible_arcs": 18
+        },
+        "7941": {
+          "station_code": "MATM",
+          "fit_observations": 16,
+          "held_out_observations": 0,
+          "arcs_with_held_out_observations": 0,
+          "station_holdout_eligible_arcs": 0
+        },
+        "8834": {
+          "station_code": "WETL",
+          "fit_observations": 204,
+          "held_out_observations": 52,
+          "arcs_with_held_out_observations": 6,
+          "station_holdout_eligible_arcs": 4
+        }
+      },
+      "val": {
+        "7090": {
+          "station_code": "YARL",
+          "fit_observations": 82,
+          "held_out_observations": 146,
+          "arcs_with_held_out_observations": 7,
+          "station_holdout_eligible_arcs": 7
+        },
+        "7840": {
+          "station_code": "HERL",
+          "fit_observations": 141,
+          "held_out_observations": 111,
+          "arcs_with_held_out_observations": 8,
+          "station_holdout_eligible_arcs": 8
+        },
+        "7941": {
+          "station_code": "MATM",
+          "fit_observations": 81,
+          "held_out_observations": 55,
+          "arcs_with_held_out_observations": 6,
+          "station_holdout_eligible_arcs": 6
+        },
+        "8834": {
+          "station_code": "WETL",
+          "fit_observations": 260,
+          "held_out_observations": 74,
+          "arcs_with_held_out_observations": 8,
+          "station_holdout_eligible_arcs": 7
+        }
+      },
+      "test": {
+        "7090": {
+          "station_code": "YARL",
+          "fit_observations": 304,
+          "held_out_observations": 231,
+          "arcs_with_held_out_observations": 10,
+          "station_holdout_eligible_arcs": 7
+        },
+        "7840": {
+          "station_code": "HERL",
+          "fit_observations": 59,
+          "held_out_observations": 44,
+          "arcs_with_held_out_observations": 3,
+          "station_holdout_eligible_arcs": 3
+        },
+        "7941": {
+          "station_code": "MATM",
+          "fit_observations": 20,
+          "held_out_observations": 0,
+          "arcs_with_held_out_observations": 0,
+          "station_holdout_eligible_arcs": 0
+        },
+        "8834": {
+          "station_code": "WETL",
+          "fit_observations": 19,
+          "held_out_observations": 0,
+          "arcs_with_held_out_observations": 0,
+          "station_holdout_eligible_arcs": 0
+        }
+      },
+      "all": {
+        "7090": {
+          "station_code": "YARL",
+          "fit_observations": 715,
+          "held_out_observations": 660,
+          "arcs_with_held_out_observations": 37,
+          "station_holdout_eligible_arcs": 30
+        },
+        "7840": {
+          "station_code": "HERL",
+          "fit_observations": 508,
+          "held_out_observations": 406,
+          "arcs_with_held_out_observations": 29,
+          "station_holdout_eligible_arcs": 29
+        },
+        "7941": {
+          "station_code": "MATM",
+          "fit_observations": 117,
+          "held_out_observations": 55,
+          "arcs_with_held_out_observations": 6,
+          "station_holdout_eligible_arcs": 6
+        },
+        "8834": {
+          "station_code": "WETL",
+          "fit_observations": 483,
+          "held_out_observations": 126,
+          "arcs_with_held_out_observations": 14,
+          "station_holdout_eligible_arcs": 11
+        }
+      }
+    }
+  },
+  "claim_boundary": {
+    "defensible_status": "auditable_selection_stability_and_breadth_feasibility_audit",
+    "can_be_used_as_central_external_validation": false,
+    "can_be_used_as_operational_pod_validation": false,
+    "can_be_used_as_centimetre_slr_validation": false,
+    "can_be_used_as_public_temporal_probe_stability_audit": true,
+    "does_not_expand_targets_beyond_lageos": true,
+    "does_not_select_or_tune_on_test": true,
+    "appropriate_use": "Use to show that the temporal public-data selector is fragile under validation-only resampling and remains negative when frozen on the held-out test week."
+  }
+}

@@ -1,0 +1,5707 @@
+{
+  "schema_version": "real_slr_sp3_correction_corpus_audit_v1",
+  "generated_utc": "2026-05-22T02:34:49Z",
+  "status": "completed",
+  "scope": "Forty-arc public LAGEOS CRD/SP3 corpus-level correction and provenance audit. No filter estimates are recomputed.",
+  "input_dir": "results\\real_slr_sp3_hifi",
+  "eop_series": {
+    "path": "results\\real_slr_sp3_corrected\\finals2000A.all.csv",
+    "sha256": "f4a4f34c416f475ff13153f858a2bd52ffcd3945182434b09a9edfdfdd4c9917",
+    "bytes": 3946872,
+    "n_rows": 19864,
+    "source": "IERS finals2000A.all (CSV distribution)"
+  },
+  "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+  "num_arcs": 40,
+  "num_arcs_completed": 40,
+  "targets": [
+    "LAGEOS-1",
+    "LAGEOS-2"
+  ],
+  "sp3_weeks": [
+    "260418",
+    "260425",
+    "260502",
+    "260509"
+  ],
+  "splits": {
+    "train": 20,
+    "val": 10,
+    "test": 10
+  },
+  "num_observations_total": 3070,
+  "met_coverage": {
+    "num_met_records_total": 5037,
+    "met_missing_observations": 0,
+    "fraction_observations_with_nearest_met": 1.0
+  },
+  "eop_coverage": {
+    "eop_outside_range_observations": 0,
+    "fraction_observations_inside_eop_range": 1.0
+  },
+  "pooled_correction_component_stats": {
+    "troposphere_m": {
+      "count": 3070,
+      "mean": 3.768433,
+      "median": 3.489178,
+      "min": 2.116389,
+      "max": 11.120086,
+      "p95": 6.231328
+    },
+    "centre_of_mass_m": {
+      "count": 3070,
+      "mean": 0.251,
+      "median": 0.251,
+      "min": 0.251,
+      "max": 0.251,
+      "p95": 0.251
+    },
+    "relativity_m": {
+      "count": 3070,
+      "mean": 0.007051,
+      "median": 0.006982,
+      "min": 0.005663,
+      "max": 0.009585,
+      "p95": 0.00853
+    },
+    "total_range_correction_m": {
+      "count": 3070,
+      "mean": 4.026484,
+      "median": 3.747452,
+      "min": 2.373135,
+      "max": 11.380671,
+      "p95": 6.490934
+    },
+    "elevation_deg": {
+      "count": 3070,
+      "mean": 45.044586,
+      "median": 42.675913,
+      "min": 12.192844,
+      "max": 88.831045,
+      "p95": 75.258562
+    },
+    "nearest_met_delta_s": {
+      "count": 3070,
+      "mean": 33.009788,
+      "median": 3.757015,
+      "min": 0.0,
+      "max": 445.919549,
+      "p95": 140.191111
+    }
+  },
+  "pooled_frame_displacement_stats": {
+    "station_full_vs_no_eop_m": {
+      "count": 3070,
+      "mean": 10.908425,
+      "median": 5.031436,
+      "min": 1.799221,
+      "max": 22.519886,
+      "p95": 21.700445
+    },
+    "station_full_vs_gmst_m": {
+      "count": 3070,
+      "mean": 33724.405356,
+      "median": 35746.736951,
+      "min": 11343.207931,
+      "max": 40630.458953,
+      "p95": 40572.067034
+    },
+    "satellite_full_vs_no_eop_m": {
+      "count": 3070,
+      "mean": 25.119511,
+      "median": 24.447855,
+      "min": 0.365587,
+      "max": 48.346013,
+      "p95": 42.999543
+    },
+    "satellite_full_vs_gmst_m": {
+      "count": 3070,
+      "mean": 63728.71347,
+      "median": 67193.326382,
+      "min": 31873.203565,
+      "max": 78905.301798,
+      "p95": 78121.524677
+    }
+  },
+  "arcs": [
+    {
+      "arc_id": "LAGEOS-1 20260413",
+      "target": "LAGEOS-1",
+      "date": "20260413",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 82,
+      "arc_span_hours": 23.179722,
+      "station_counts": {
+        "HERL": 28,
+        "YARL": 54
+      },
+      "distinct_stations": 2,
+      "num_met_records": 128,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260413.np2",
+        "sha256": "93ba09edf15b2601b186a6a7c13dc01dfb5a1e723c5486a611582b6d3b99ea13",
+        "bytes": 60212
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 82,
+          "mean": 3.49397,
+          "median": 3.386664,
+          "min": 2.364684,
+          "max": 5.724864,
+          "p95": 4.890725
+        },
+        "centre_of_mass_m": {
+          "count": 82,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 82,
+          "mean": 0.00692,
+          "median": 0.00689,
+          "min": 0.005838,
+          "max": 0.008323,
+          "p95": 0.00792
+        },
+        "total_range_correction_m": {
+          "count": 82,
+          "mean": 3.75189,
+          "median": 3.644552,
+          "min": 2.621752,
+          "max": 5.984186,
+          "p95": 5.149647
+        },
+        "elevation_deg": {
+          "count": 82,
+          "mean": 47.451671,
+          "median": 44.993335,
+          "min": 25.176565,
+          "max": 84.863958,
+          "p95": 72.926562
+        },
+        "nearest_met_delta_s": {
+          "count": 82,
+          "mean": 24.144196,
+          "median": 0.000414,
+          "min": 0.000407,
+          "max": 257.882827,
+          "p95": 118.334701
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 82,
+          "mean": 16.630102,
+          "median": 22.263909,
+          "min": 5.543731,
+          "max": 22.519886,
+          "p95": 22.519755
+        },
+        "station_full_vs_gmst_m": {
+          "count": 82,
+          "mean": 28443.017912,
+          "median": 28404.60237,
+          "min": 12028.645573,
+          "max": 40394.966625,
+          "p95": 40365.328776
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 82,
+          "mean": 32.856517,
+          "median": 34.346771,
+          "min": 1.908731,
+          "max": 48.174662,
+          "p95": 46.877135
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 82,
+          "mean": 52935.307531,
+          "median": 50650.301811,
+          "min": 35704.918594,
+          "max": 76063.833476,
+          "p95": 74860.21568
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260414",
+      "target": "LAGEOS-1",
+      "date": "20260414",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 31,
+      "arc_span_hours": 19.552944,
+      "station_counts": {
+        "HERL": 13,
+        "YARL": 18
+      },
+      "distinct_stations": 2,
+      "num_met_records": 100,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260414.np2",
+        "sha256": "e5477912261fd2579a638ef39b402a9cbf5301253d309acb44ea137fcdbd4911",
+        "bytes": 25003
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 31,
+          "mean": 4.098322,
+          "median": 4.055239,
+          "min": 2.614116,
+          "max": 6.450023,
+          "p95": 5.839147
+        },
+        "centre_of_mass_m": {
+          "count": 31,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 31,
+          "mean": 0.007357,
+          "median": 0.007424,
+          "min": 0.006059,
+          "max": 0.008625,
+          "p95": 0.008401
+        },
+        "total_range_correction_m": {
+          "count": 31,
+          "mean": 4.356679,
+          "median": 4.313637,
+          "min": 2.871174,
+          "max": 6.709648,
+          "p95": 6.098548
+        },
+        "elevation_deg": {
+          "count": 31,
+          "mean": 39.682372,
+          "median": 36.588689,
+          "min": 21.571299,
+          "max": 69.966544,
+          "p95": 69.155832
+        },
+        "nearest_met_delta_s": {
+          "count": 31,
+          "mean": 35.41646,
+          "median": 0.000416,
+          "min": 0.00041,
+          "max": 178.865129,
+          "p95": 149.001952
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 31,
+          "mean": 15.159543,
+          "median": 21.934212,
+          "min": 5.453556,
+          "max": 22.21515,
+          "p95": 22.215113
+        },
+        "station_full_vs_gmst_m": {
+          "count": 31,
+          "mean": 30464.941276,
+          "median": 33784.22992,
+          "min": 25053.447061,
+          "max": 35993.514997,
+          "p95": 35982.668739
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 31,
+          "mean": 32.390591,
+          "median": 29.787067,
+          "min": 4.806818,
+          "max": 48.197594,
+          "p95": 48.174884
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 31,
+          "mean": 61306.122313,
+          "median": 62049.826928,
+          "min": 35533.172857,
+          "max": 78723.801923,
+          "p95": 78539.657137
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260415",
+      "target": "LAGEOS-1",
+      "date": "20260415",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 76,
+      "arc_span_hours": 23.015056,
+      "station_counts": {
+        "HERL": 26,
+        "YARL": 50
+      },
+      "distinct_stations": 2,
+      "num_met_records": 107,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260415.np2",
+        "sha256": "6bc5f86ecef49af5c20f8ad1d9e8d396d37debcd447a867e848b237296062bcf",
+        "bytes": 40753
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 76,
+          "mean": 3.54802,
+          "median": 3.367347,
+          "min": 2.366854,
+          "max": 5.914416,
+          "p95": 5.207996
+        },
+        "centre_of_mass_m": {
+          "count": 76,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 76,
+          "mean": 0.006934,
+          "median": 0.006892,
+          "min": 0.005812,
+          "max": 0.008445,
+          "p95": 0.008138
+        },
+        "total_range_correction_m": {
+          "count": 76,
+          "mean": 3.805954,
+          "median": 3.625239,
+          "min": 2.623892,
+          "max": 6.173861,
+          "p95": 5.467084
+        },
+        "elevation_deg": {
+          "count": 76,
+          "mean": 48.439602,
+          "median": 44.976286,
+          "min": 23.589061,
+          "max": 81.388021,
+          "p95": 75.770844
+        },
+        "nearest_met_delta_s": {
+          "count": 76,
+          "mean": 20.700511,
+          "median": 0.000415,
+          "min": 0.000409,
+          "max": 178.609312,
+          "p95": 121.303604
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 76,
+          "mean": 16.05877,
+          "median": 21.528661,
+          "min": 5.180033,
+          "max": 21.898151,
+          "p95": 21.888604
+        },
+        "station_full_vs_gmst_m": {
+          "count": 76,
+          "mean": 26481.016116,
+          "median": 26328.893176,
+          "min": 11343.207931,
+          "max": 40510.359534,
+          "p95": 40505.218295
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 76,
+          "mean": 35.507422,
+          "median": 40.005669,
+          "min": 7.318631,
+          "max": 47.302111,
+          "p95": 46.689426
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 76,
+          "mean": 56243.442867,
+          "median": 55661.193883,
+          "min": 35423.958286,
+          "max": 78048.492831,
+          "p95": 76050.429277
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260416",
+      "target": "LAGEOS-1",
+      "date": "20260416",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 31,
+      "arc_span_hours": 13.740954,
+      "station_counts": {
+        "HERL": 9,
+        "YARL": 22
+      },
+      "distinct_stations": 2,
+      "num_met_records": 100,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260416.np2",
+        "sha256": "388413596114dffda4f5c8801e6f85d0f189ba0947d777a1b72084c3007e5cda",
+        "bytes": 44715
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 31,
+          "mean": 3.619583,
+          "median": 3.146887,
+          "min": 2.727803,
+          "max": 6.20687,
+          "p95": 5.483404
+        },
+        "centre_of_mass_m": {
+          "count": 31,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 31,
+          "mean": 0.007044,
+          "median": 0.006851,
+          "min": 0.00641,
+          "max": 0.008509,
+          "p95": 0.008227
+        },
+        "total_range_correction_m": {
+          "count": 31,
+          "mean": 3.877627,
+          "median": 3.404548,
+          "min": 2.98533,
+          "max": 6.46638,
+          "p95": 5.74263
+        },
+        "elevation_deg": {
+          "count": 31,
+          "mean": 43.790482,
+          "median": 46.798212,
+          "min": 22.361877,
+          "max": 55.200336,
+          "p95": 54.671828
+        },
+        "nearest_met_delta_s": {
+          "count": 31,
+          "mean": 9.961222,
+          "median": 0.000413,
+          "min": 0.000409,
+          "max": 115.440131,
+          "p95": 52.50236
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 31,
+          "mean": 16.64711,
+          "median": 21.321646,
+          "min": 5.074292,
+          "max": 21.528834,
+          "p95": 21.528711
+        },
+        "station_full_vs_gmst_m": {
+          "count": 31,
+          "mean": 36034.589839,
+          "median": 40149.61637,
+          "min": 28009.122919,
+          "max": 40330.631801,
+          "p95": 40309.688743
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 31,
+          "mean": 28.915531,
+          "median": 32.6418,
+          "min": 11.937616,
+          "max": 45.486961,
+          "p95": 44.093368
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 31,
+          "mean": 59961.182121,
+          "median": 68263.093196,
+          "min": 35342.120394,
+          "max": 78119.15027,
+          "p95": 77916.86839
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260417",
+      "target": "LAGEOS-1",
+      "date": "20260417",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 73,
+      "arc_span_hours": 12.711018,
+      "station_counts": {
+        "HERL": 39,
+        "MATM": 10,
+        "WETL": 13,
+        "YARL": 11
+      },
+      "distinct_stations": 4,
+      "num_met_records": 124,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260417.np2",
+        "sha256": "49acc0a31fcf08b612580d899d0006533a49b4fd8ae3eba2f6d4b5d494212146",
+        "bytes": 60988
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 73,
+          "mean": 3.630546,
+          "median": 3.431295,
+          "min": 2.347832,
+          "max": 6.544878,
+          "p95": 5.614168
+        },
+        "centre_of_mass_m": {
+          "count": 73,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 73,
+          "mean": 0.007016,
+          "median": 0.006897,
+          "min": 0.005843,
+          "max": 0.008709,
+          "p95": 0.008301
+        },
+        "total_range_correction_m": {
+          "count": 73,
+          "mean": 3.888562,
+          "median": 3.689192,
+          "min": 2.604867,
+          "max": 6.804545,
+          "p95": 5.873471
+        },
+        "elevation_deg": {
+          "count": 73,
+          "mean": 47.167588,
+          "median": 45.743172,
+          "min": 20.902933,
+          "max": 83.553354,
+          "p95": 77.371078
+        },
+        "nearest_met_delta_s": {
+          "count": 73,
+          "mean": 54.494945,
+          "median": 34.857574,
+          "min": 0.0,
+          "max": 277.799629,
+          "p95": 152.125701
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 73,
+          "mean": 7.076213,
+          "median": 4.93786,
+          "min": 2.832926,
+          "max": 20.88118,
+          "p95": 20.881044
+        },
+        "station_full_vs_gmst_m": {
+          "count": 73,
+          "mean": 31217.751815,
+          "median": 35025.032412,
+          "min": 16799.877936,
+          "max": 38866.035466,
+          "p95": 38032.890131
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 73,
+          "mean": 16.923528,
+          "median": 14.000666,
+          "min": 4.105184,
+          "max": 33.164768,
+          "p95": 29.020025
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 73,
+          "mean": 51926.084857,
+          "median": 48081.254889,
+          "min": 35044.88495,
+          "max": 77790.014932,
+          "p95": 75381.049941
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260413",
+      "target": "LAGEOS-2",
+      "date": "20260413",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 54,
+      "arc_span_hours": 7.170618,
+      "station_counts": {
+        "HERL": 22,
+        "YARL": 32
+      },
+      "distinct_stations": 2,
+      "num_met_records": 64,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260413.np2",
+        "sha256": "ef3cea77ce9026d38ddd0f1a595d9c559d6993d08cd2c3d2389b15dc62bccf4d",
+        "bytes": 24464
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 54,
+          "mean": 3.80358,
+          "median": 3.818703,
+          "min": 2.459561,
+          "max": 6.390484,
+          "p95": 5.289932
+        },
+        "centre_of_mass_m": {
+          "count": 54,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 54,
+          "mean": 0.007009,
+          "median": 0.007202,
+          "min": 0.005683,
+          "max": 0.008349,
+          "p95": 0.008011
+        },
+        "total_range_correction_m": {
+          "count": 54,
+          "mean": 4.061589,
+          "median": 4.076991,
+          "min": 2.716244,
+          "max": 6.649832,
+          "p95": 5.548907
+        },
+        "elevation_deg": {
+          "count": 54,
+          "mean": 44.146457,
+          "median": 38.025484,
+          "min": 21.78975,
+          "max": 83.194207,
+          "p95": 75.44009
+        },
+        "nearest_met_delta_s": {
+          "count": 54,
+          "mean": 30.056765,
+          "median": 0.000416,
+          "min": 0.00041,
+          "max": 173.888331,
+          "p95": 159.803855
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 54,
+          "mean": 15.519682,
+          "median": 22.336448,
+          "min": 5.556496,
+          "max": 22.385806,
+          "p95": 22.385602
+        },
+        "station_full_vs_gmst_m": {
+          "count": 54,
+          "mean": 35256.969876,
+          "median": 40186.699629,
+          "min": 19745.041238,
+          "max": 40388.670658,
+          "p95": 40375.214596
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 54,
+          "mean": 30.523512,
+          "median": 31.088151,
+          "min": 11.698505,
+          "max": 47.409449,
+          "p95": 46.747451
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 54,
+          "mean": 68115.248389,
+          "median": 67051.539896,
+          "min": 62043.542658,
+          "max": 76243.219946,
+          "p95": 75252.043792
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260414",
+      "target": "LAGEOS-2",
+      "date": "20260414",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 37,
+      "arc_span_hours": 22.579,
+      "station_counts": {
+        "HERL": 11,
+        "YARL": 26
+      },
+      "distinct_stations": 2,
+      "num_met_records": 70,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260414.np2",
+        "sha256": "142a7bda46ed1703a84207c0d771dc3a8333eed41f6c5d9a88e3de48aa7ac15b",
+        "bytes": 21984
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 37,
+          "mean": 3.975105,
+          "median": 3.683883,
+          "min": 2.663673,
+          "max": 6.553308,
+          "p95": 6.140393
+        },
+        "centre_of_mass_m": {
+          "count": 37,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 37,
+          "mean": 0.007205,
+          "median": 0.007084,
+          "min": 0.006017,
+          "max": 0.008671,
+          "p95": 0.008528
+        },
+        "total_range_correction_m": {
+          "count": 37,
+          "mean": 4.233311,
+          "median": 3.942083,
+          "min": 2.92069,
+          "max": 6.812978,
+          "p95": 6.399922
+        },
+        "elevation_deg": {
+          "count": 37,
+          "mean": 42.35992,
+          "median": 41.484595,
+          "min": 21.237805,
+          "max": 67.193701,
+          "p95": 66.218859
+        },
+        "nearest_met_delta_s": {
+          "count": 37,
+          "mean": 26.535147,
+          "median": 0.000415,
+          "min": 0.00041,
+          "max": 167.857113,
+          "p95": 132.128772
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 37,
+          "mean": 17.100739,
+          "median": 21.922131,
+          "min": 5.459938,
+          "max": 22.239531,
+          "p95": 22.239443
+        },
+        "station_full_vs_gmst_m": {
+          "count": 37,
+          "mean": 32298.216359,
+          "median": 31670.928661,
+          "min": 26655.065619,
+          "max": 39155.289308,
+          "p95": 39113.063588
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 37,
+          "mean": 37.131166,
+          "median": 45.415575,
+          "min": 9.135291,
+          "max": 48.346013,
+          "p95": 48.269493
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 37,
+          "mean": 71120.330124,
+          "median": 71735.533373,
+          "min": 63914.443513,
+          "max": 78160.920158,
+          "p95": 77924.896256
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260415",
+      "target": "LAGEOS-2",
+      "date": "20260415",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 29,
+      "arc_span_hours": 4.694056,
+      "station_counts": {
+        "YARL": 29
+      },
+      "distinct_stations": 1,
+      "num_met_records": 52,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260415.np2",
+        "sha256": "404aefae3ebc510ac7c2d4b23a010f7cb9e9baaada82cdd01643c7f49ff4a9c1",
+        "bytes": 21815
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 29,
+          "mean": 3.704378,
+          "median": 3.558714,
+          "min": 2.384029,
+          "max": 7.277,
+          "p95": 6.152886
+        },
+        "centre_of_mass_m": {
+          "count": 29,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 29,
+          "mean": 0.006958,
+          "median": 0.007012,
+          "min": 0.005668,
+          "max": 0.008833,
+          "p95": 0.008514
+        },
+        "total_range_correction_m": {
+          "count": 29,
+          "mean": 3.962336,
+          "median": 3.816726,
+          "min": 2.640697,
+          "max": 7.536833,
+          "p95": 6.4124
+        },
+        "elevation_deg": {
+          "count": 29,
+          "mean": 47.177117,
+          "median": 41.861268,
+          "min": 18.896631,
+          "max": 87.040202,
+          "p95": 83.964192
+        },
+        "nearest_met_delta_s": {
+          "count": 29,
+          "mean": 0.000413,
+          "median": 0.000413,
+          "min": 0.000409,
+          "max": 0.000416,
+          "p95": 0.000415
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 29,
+          "mean": 21.669732,
+          "median": 21.639028,
+          "min": 21.626189,
+          "max": 21.712997,
+          "p95": 21.712814
+        },
+        "station_full_vs_gmst_m": {
+          "count": 29,
+          "mean": 40263.496769,
+          "median": 40271.234336,
+          "min": 40073.32491,
+          "max": 40390.583717,
+          "p95": 40376.233743
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 29,
+          "mean": 32.707708,
+          "median": 33.989499,
+          "min": 17.290946,
+          "max": 43.135587,
+          "p95": 42.036845
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 29,
+          "mean": 69789.302453,
+          "median": 69845.35613,
+          "min": 63623.897302,
+          "max": 76865.586917,
+          "p95": 76644.034981
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260416",
+      "target": "LAGEOS-2",
+      "date": "20260416",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 33,
+      "arc_span_hours": 4.212306,
+      "station_counts": {
+        "HERL": 13,
+        "YARL": 20
+      },
+      "distinct_stations": 2,
+      "num_met_records": 99,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260416.np2",
+        "sha256": "4b4af958e2c8d3fb158d4962fa7ee86d48c8d016e86a2213bb5ecd6705df3878",
+        "bytes": 41829
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 33,
+          "mean": 3.437455,
+          "median": 3.297428,
+          "min": 2.216919,
+          "max": 5.330554,
+          "p95": 4.914867
+        },
+        "centre_of_mass_m": {
+          "count": 33,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 33,
+          "mean": 0.006786,
+          "median": 0.006781,
+          "min": 0.005686,
+          "max": 0.007985,
+          "p95": 0.007826
+        },
+        "total_range_correction_m": {
+          "count": 33,
+          "mean": 3.695241,
+          "median": 3.555409,
+          "min": 2.473606,
+          "max": 5.589539,
+          "p95": 5.173692
+        },
+        "elevation_deg": {
+          "count": 33,
+          "mean": 46.992839,
+          "median": 44.614461,
+          "min": 26.357335,
+          "max": 87.136105,
+          "p95": 73.331361
+        },
+        "nearest_met_delta_s": {
+          "count": 33,
+          "mean": 9.920324,
+          "median": 0.000414,
+          "min": 0.000409,
+          "max": 90.464147,
+          "p95": 53.995498
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 33,
+          "mean": 14.927494,
+          "median": 21.29752,
+          "min": 5.074002,
+          "max": 21.370713,
+          "p95": 21.358328
+        },
+        "station_full_vs_gmst_m": {
+          "count": 33,
+          "mean": 37632.076788,
+          "median": 39214.445145,
+          "min": 33768.720889,
+          "max": 40524.616722,
+          "p95": 40524.430572
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 33,
+          "mean": 30.607736,
+          "median": 32.726256,
+          "min": 6.184286,
+          "max": 45.026752,
+          "p95": 44.898656
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 33,
+          "mean": 72068.158069,
+          "median": 75035.498995,
+          "min": 62539.464823,
+          "max": 76952.431178,
+          "p95": 76854.156486
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260417",
+      "target": "LAGEOS-2",
+      "date": "20260417",
+      "sp3_week": "260418",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 51,
+      "arc_span_hours": 14.472714,
+      "station_counts": {
+        "HERL": 30,
+        "WETL": 6,
+        "YARL": 15
+      },
+      "distinct_stations": 3,
+      "num_met_records": 66,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 1064.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260417.np2",
+        "sha256": "b1cf4afb1b1ecaee584f19edbdf3510c1d1ed6336f0b6d4a40d1b8243b002cc1",
+        "bytes": 31142
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 51,
+          "mean": 3.265486,
+          "median": 3.130182,
+          "min": 2.28354,
+          "max": 5.40147,
+          "p95": 4.414852
+        },
+        "centre_of_mass_m": {
+          "count": 51,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 51,
+          "mean": 0.006791,
+          "median": 0.006694,
+          "min": 0.00586,
+          "max": 0.008415,
+          "p95": 0.007804
+        },
+        "total_range_correction_m": {
+          "count": 51,
+          "mean": 3.523277,
+          "median": 3.387877,
+          "min": 2.5404,
+          "max": 5.660885,
+          "p95": 4.673656
+        },
+        "elevation_deg": {
+          "count": 51,
+          "mean": 48.535757,
+          "median": 47.407943,
+          "min": 23.831692,
+          "max": 85.536401,
+          "p95": 74.710793
+        },
+        "nearest_met_delta_s": {
+          "count": 51,
+          "mean": 61.216124,
+          "median": 49.641747,
+          "min": 0.000406,
+          "max": 224.507119,
+          "p95": 170.804426
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 51,
+          "mean": 9.392957,
+          "median": 4.970775,
+          "min": 2.852793,
+          "max": 20.881362,
+          "p95": 20.881155
+        },
+        "station_full_vs_gmst_m": {
+          "count": 51,
+          "mean": 34020.201547,
+          "median": 34777.418526,
+          "min": 29645.021233,
+          "max": 36116.235198,
+          "p95": 36070.191395
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 51,
+          "mean": 24.021382,
+          "median": 21.147174,
+          "min": 8.092434,
+          "max": 42.527551,
+          "p95": 41.235585
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 51,
+          "mean": 68675.210812,
+          "median": 66712.497972,
+          "min": 62701.957172,
+          "max": 78455.248878,
+          "p95": 78024.924499
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260420",
+      "target": "LAGEOS-1",
+      "date": "20260420",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 85,
+      "arc_span_hours": 23.075639,
+      "station_counts": {
+        "HERL": 42,
+        "MATM": 6,
+        "WETL": 5,
+        "YARL": 32
+      },
+      "distinct_stations": 4,
+      "num_met_records": 130,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260420.np2",
+        "sha256": "9f7c450d13d03d88cfda8a1f073a9df4d163e4c8f1ad151a36fed248c328b919",
+        "bytes": 42274
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 85,
+          "mean": 3.507126,
+          "median": 3.20519,
+          "min": 2.398209,
+          "max": 5.962311,
+          "p95": 4.999567
+        },
+        "centre_of_mass_m": {
+          "count": 85,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 85,
+          "mean": 0.006905,
+          "median": 0.006766,
+          "min": 0.005828,
+          "max": 0.008382,
+          "p95": 0.007918
+        },
+        "total_range_correction_m": {
+          "count": 85,
+          "mean": 3.765031,
+          "median": 3.462946,
+          "min": 2.655037,
+          "max": 6.221692,
+          "p95": 5.258485
+        },
+        "elevation_deg": {
+          "count": 85,
+          "mean": 49.048936,
+          "median": 47.557122,
+          "min": 24.316064,
+          "max": 86.785796,
+          "p95": 80.921227
+        },
+        "nearest_met_delta_s": {
+          "count": 85,
+          "mean": 47.76743,
+          "median": 10.880968,
+          "min": 0.0,
+          "max": 314.221177,
+          "p95": 161.884612
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 85,
+          "mean": 10.569746,
+          "median": 4.803611,
+          "min": 2.366298,
+          "max": 20.491394,
+          "p95": 20.491242
+        },
+        "station_full_vs_gmst_m": {
+          "count": 85,
+          "mean": 27679.339877,
+          "median": 27604.195078,
+          "min": 11498.332337,
+          "max": 38886.951282,
+          "p95": 38879.281717
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 85,
+          "mean": 28.164375,
+          "median": 27.244305,
+          "min": 8.221798,
+          "max": 44.024761,
+          "p95": 43.735899
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 85,
+          "mean": 56292.101498,
+          "median": 57435.85809,
+          "min": 34730.263298,
+          "max": 78781.819023,
+          "p95": 78500.549478
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260421",
+      "target": "LAGEOS-1",
+      "date": "20260421",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 67,
+      "arc_span_hours": 10.457611,
+      "station_counts": {
+        "HERL": 29,
+        "WETL": 2,
+        "YARL": 36
+      },
+      "distinct_stations": 3,
+      "num_met_records": 154,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260421.np2",
+        "sha256": "349015670ed546918ea6d13bf4996c434a29d36a19a748fe1c5815bb25483a44",
+        "bytes": 57651
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 67,
+          "mean": 3.692285,
+          "median": 3.488448,
+          "min": 2.624137,
+          "max": 6.942104,
+          "p95": 6.051409
+        },
+        "centre_of_mass_m": {
+          "count": 67,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 67,
+          "mean": 0.007014,
+          "median": 0.006967,
+          "min": 0.006044,
+          "max": 0.008728,
+          "p95": 0.008441
+        },
+        "total_range_correction_m": {
+          "count": 67,
+          "mean": 3.9503,
+          "median": 3.746733,
+          "min": 2.881209,
+          "max": 7.201832,
+          "p95": 6.310849
+        },
+        "elevation_deg": {
+          "count": 67,
+          "mean": 45.424676,
+          "median": 44.521295,
+          "min": 19.981725,
+          "max": 69.583794,
+          "p95": 65.332351
+        },
+        "nearest_met_delta_s": {
+          "count": 67,
+          "mean": 24.369119,
+          "median": 0.000409,
+          "min": 0.00039,
+          "max": 172.794935,
+          "p95": 115.240677
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 67,
+          "mean": 13.113355,
+          "median": 20.390724,
+          "min": 2.320541,
+          "max": 20.41884,
+          "p95": 20.409561
+        },
+        "station_full_vs_gmst_m": {
+          "count": 67,
+          "mean": 30617.259602,
+          "median": 32629.15644,
+          "min": 11754.18783,
+          "max": 40485.847236,
+          "p95": 40462.310957
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 67,
+          "mean": 28.228361,
+          "median": 28.388437,
+          "min": 0.365587,
+          "max": 43.451864,
+          "p95": 43.339386
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 67,
+          "mean": 57270.066728,
+          "median": 54702.378952,
+          "min": 34526.97366,
+          "max": 78118.976912,
+          "p95": 77989.760331
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260422",
+      "target": "LAGEOS-1",
+      "date": "20260422",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 114,
+      "arc_span_hours": 14.658286,
+      "station_counts": {
+        "HERL": 57,
+        "WETL": 38,
+        "YARL": 19
+      },
+      "distinct_stations": 3,
+      "num_met_records": 305,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260422.np2",
+        "sha256": "45b7c4cbc0ecb8c79681b65987878e14d5dd8e69bba5d5b01d91071aaef5c0b1",
+        "bytes": 75339
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 114,
+          "mean": 3.420483,
+          "median": 3.212273,
+          "min": 2.415225,
+          "max": 6.197587,
+          "p95": 4.87006
+        },
+        "centre_of_mass_m": {
+          "count": 114,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 114,
+          "mean": 0.006896,
+          "median": 0.00679,
+          "min": 0.005863,
+          "max": 0.008669,
+          "p95": 0.007925
+        },
+        "total_range_correction_m": {
+          "count": 114,
+          "mean": 3.678379,
+          "median": 3.470141,
+          "min": 2.672371,
+          "max": 6.457257,
+          "p95": 5.128963
+        },
+        "elevation_deg": {
+          "count": 114,
+          "mean": 48.365713,
+          "median": 48.083088,
+          "min": 21.604356,
+          "max": 86.105381,
+          "p95": 74.002908
+        },
+        "nearest_met_delta_s": {
+          "count": 114,
+          "mean": 40.234498,
+          "median": 28.86028,
+          "min": 0.000399,
+          "max": 165.637185,
+          "p95": 126.160497
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 114,
+          "mean": 6.569989,
+          "median": 4.811137,
+          "min": 2.292929,
+          "max": 20.38063,
+          "p95": 20.377454
+        },
+        "station_full_vs_gmst_m": {
+          "count": 114,
+          "mean": 31029.431887,
+          "median": 34418.127471,
+          "min": 13968.963172,
+          "max": 40547.489202,
+          "p95": 40534.53405
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 114,
+          "mean": 19.397022,
+          "median": 17.452201,
+          "min": 0.642269,
+          "max": 43.078357,
+          "p95": 39.660452
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 114,
+          "mean": 57498.481569,
+          "median": 58846.112772,
+          "min": 34366.384615,
+          "max": 78797.126199,
+          "p95": 78370.195349
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260423",
+      "target": "LAGEOS-1",
+      "date": "20260423",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 132,
+      "arc_span_hours": 23.182194,
+      "station_counts": {
+        "HERL": 36,
+        "WETL": 35,
+        "YARL": 61
+      },
+      "distinct_stations": 3,
+      "num_met_records": 241,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260423.np2",
+        "sha256": "305681c2d6508a61179adaa253924b32a581f0843a2e4e25f95a17278c23d88a",
+        "bytes": 99511
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 132,
+          "mean": 3.722962,
+          "median": 3.417932,
+          "min": 2.342031,
+          "max": 7.161123,
+          "p95": 6.205546
+        },
+        "centre_of_mass_m": {
+          "count": 132,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 132,
+          "mean": 0.007081,
+          "median": 0.006957,
+          "min": 0.005801,
+          "max": 0.008806,
+          "p95": 0.008515
+        },
+        "total_range_correction_m": {
+          "count": 132,
+          "mean": 3.981043,
+          "median": 3.675936,
+          "min": 2.599056,
+          "max": 7.420929,
+          "p95": 6.465062
+        },
+        "elevation_deg": {
+          "count": 132,
+          "mean": 45.076394,
+          "median": 44.404156,
+          "min": 19.282597,
+          "max": 82.835916,
+          "p95": 76.126295
+        },
+        "nearest_met_delta_s": {
+          "count": 132,
+          "mean": 30.467321,
+          "median": 7.561218,
+          "min": 0.000399,
+          "max": 180.523731,
+          "p95": 132.443244
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 132,
+          "mean": 11.297671,
+          "median": 4.811436,
+          "min": 2.249785,
+          "max": 20.353254,
+          "p95": 20.353062
+        },
+        "station_full_vs_gmst_m": {
+          "count": 132,
+          "mean": 32166.918095,
+          "median": 35237.946726,
+          "min": 11346.255644,
+          "max": 40558.416429,
+          "p95": 40548.662765
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 132,
+          "mean": 26.314929,
+          "median": 25.399875,
+          "min": 7.759368,
+          "max": 43.499592,
+          "p95": 43.087884
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 132,
+          "mean": 57388.492095,
+          "median": 59115.458509,
+          "min": 34117.899425,
+          "max": 78792.496336,
+          "p95": 78047.094162
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260424",
+      "target": "LAGEOS-1",
+      "date": "20260424",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 102,
+      "arc_span_hours": 20.788044,
+      "station_counts": {
+        "HERL": 45,
+        "WETL": 24,
+        "YARL": 33
+      },
+      "distinct_stations": 3,
+      "num_met_records": 169,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260424.np2",
+        "sha256": "ebf0503cbec534db755e74b60977a43d09386391d3934b6142dfdfe534a17112",
+        "bytes": 77334
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 102,
+          "mean": 3.872917,
+          "median": 3.427255,
+          "min": 2.318481,
+          "max": 8.736744,
+          "p95": 6.827752
+        },
+        "centre_of_mass_m": {
+          "count": 102,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 102,
+          "mean": 0.007187,
+          "median": 0.006961,
+          "min": 0.005897,
+          "max": 0.009221,
+          "p95": 0.008755
+        },
+        "total_range_correction_m": {
+          "count": 102,
+          "mean": 4.131104,
+          "median": 3.685319,
+          "min": 2.575378,
+          "max": 8.996966,
+          "p95": 7.087507
+        },
+        "elevation_deg": {
+          "count": 102,
+          "mean": 42.683922,
+          "median": 43.657886,
+          "min": 15.687544,
+          "max": 80.99025,
+          "p95": 65.713867
+        },
+        "nearest_met_delta_s": {
+          "count": 102,
+          "mean": 38.688809,
+          "median": 20.360886,
+          "min": 0.000395,
+          "max": 202.202932,
+          "p95": 125.684928
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 102,
+          "mean": 9.169915,
+          "median": 4.800335,
+          "min": 2.180543,
+          "max": 20.277184,
+          "p95": 20.254901
+        },
+        "station_full_vs_gmst_m": {
+          "count": 102,
+          "mean": 31839.991912,
+          "median": 33231.144689,
+          "min": 12389.516932,
+          "max": 40443.966917,
+          "p95": 40415.610096
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 102,
+          "mean": 23.821668,
+          "median": 21.665204,
+          "min": 5.129884,
+          "max": 43.148107,
+          "p95": 42.782891
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 102,
+          "mean": 55809.767003,
+          "median": 56549.7191,
+          "min": 34030.180143,
+          "max": 78795.655065,
+          "p95": 78030.890907
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260420",
+      "target": "LAGEOS-2",
+      "date": "20260420",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 51,
+      "arc_span_hours": 18.111258,
+      "station_counts": {
+        "HERL": 36,
+        "WETL": 7,
+        "YARL": 8
+      },
+      "distinct_stations": 3,
+      "num_met_records": 65,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260420.np2",
+        "sha256": "f7eb1cff09daac3045753d001d47ac7f1d30e3cf6b5f49fa68fd01c74de9ca9e",
+        "bytes": 21216
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 51,
+          "mean": 3.87985,
+          "median": 4.107625,
+          "min": 2.284999,
+          "max": 5.124784,
+          "p95": 4.798642
+        },
+        "centre_of_mass_m": {
+          "count": 51,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 51,
+          "mean": 0.007093,
+          "median": 0.007291,
+          "min": 0.005673,
+          "max": 0.007991,
+          "p95": 0.007845
+        },
+        "total_range_correction_m": {
+          "count": 51,
+          "mean": 4.137943,
+          "median": 4.365807,
+          "min": 2.541672,
+          "max": 5.383735,
+          "p95": 5.057354
+        },
+        "elevation_deg": {
+          "count": 51,
+          "mean": 42.888561,
+          "median": 36.626184,
+          "min": 26.312073,
+          "max": 86.177904,
+          "p95": 80.447698
+        },
+        "nearest_met_delta_s": {
+          "count": 51,
+          "mean": 65.400046,
+          "median": 54.236546,
+          "min": 0.000409,
+          "max": 266.847884,
+          "p95": 177.501373
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 51,
+          "mean": 6.918666,
+          "median": 4.80167,
+          "min": 2.360797,
+          "max": 20.432592,
+          "p95": 20.420451
+        },
+        "station_full_vs_gmst_m": {
+          "count": 51,
+          "mean": 29810.967904,
+          "median": 32610.703251,
+          "min": 20058.456086,
+          "max": 36627.933916,
+          "p95": 36095.029315
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 51,
+          "mean": 22.716287,
+          "median": 22.281777,
+          "min": 6.611346,
+          "max": 43.92998,
+          "p95": 43.844847
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 51,
+          "mean": 68774.895561,
+          "median": 67422.099538,
+          "min": 63204.682082,
+          "max": 77453.616592,
+          "p95": 76505.617441
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260421",
+      "target": "LAGEOS-2",
+      "date": "20260421",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 56,
+      "arc_span_hours": 12.8865,
+      "station_counts": {
+        "HERL": 12,
+        "YARL": 44
+      },
+      "distinct_stations": 2,
+      "num_met_records": 91,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260421.np2",
+        "sha256": "9b2c1bf7780bd78cc4282f48beb97fbc0b205bcff4202d70f8b0c9d097e8182f",
+        "bytes": 38208
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 56,
+          "mean": 3.829492,
+          "median": 3.475542,
+          "min": 2.599727,
+          "max": 9.084264,
+          "p95": 5.55412
+        },
+        "centre_of_mass_m": {
+          "count": 56,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 56,
+          "mean": 0.006988,
+          "median": 0.006908,
+          "min": 0.005957,
+          "max": 0.009282,
+          "p95": 0.008041
+        },
+        "total_range_correction_m": {
+          "count": 56,
+          "mean": 4.08748,
+          "median": 3.733479,
+          "min": 2.856684,
+          "max": 9.344545,
+          "p95": 5.813161
+        },
+        "elevation_deg": {
+          "count": 56,
+          "mean": 43.272529,
+          "median": 43.931269,
+          "min": 15.024471,
+          "max": 66.994296,
+          "p95": 64.951715
+        },
+        "nearest_met_delta_s": {
+          "count": 56,
+          "mean": 23.425109,
+          "median": 0.000406,
+          "min": 0.000391,
+          "max": 173.049823,
+          "p95": 154.549598
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 17.064501,
+          "median": 20.407046,
+          "min": 4.804102,
+          "max": 20.419292,
+          "p95": 20.416932
+        },
+        "station_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 36696.806151,
+          "median": 39590.902923,
+          "min": 27587.79146,
+          "max": 40544.266081,
+          "p95": 40531.099222
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 33.269815,
+          "median": 33.882402,
+          "min": 14.453245,
+          "max": 43.398922,
+          "p95": 43.047491
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 71584.533718,
+          "median": 73861.68721,
+          "min": 63511.665447,
+          "max": 76966.628,
+          "p95": 76950.587364
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260422",
+      "target": "LAGEOS-2",
+      "date": "20260422",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 106,
+      "arc_span_hours": 18.314755,
+      "station_counts": {
+        "HERL": 41,
+        "WETL": 40,
+        "YARL": 25
+      },
+      "distinct_stations": 3,
+      "num_met_records": 136,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 1064.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260422.np2",
+        "sha256": "18c05a533da2c0265c681d52f122b711210b7ce5e109bdb0cdae55c4b322081c",
+        "bytes": 47943
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 106,
+          "mean": 3.422049,
+          "median": 3.326368,
+          "min": 2.116389,
+          "max": 5.725013,
+          "p95": 5.307544
+        },
+        "centre_of_mass_m": {
+          "count": 106,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 106,
+          "mean": 0.006862,
+          "median": 0.006927,
+          "min": 0.005707,
+          "max": 0.008495,
+          "p95": 0.008293
+        },
+        "total_range_correction_m": {
+          "count": 106,
+          "mean": 3.679912,
+          "median": 3.584252,
+          "min": 2.373135,
+          "max": 5.984497,
+          "p95": 5.566856
+        },
+        "elevation_deg": {
+          "count": 106,
+          "mean": 48.729906,
+          "median": 41.936589,
+          "min": 23.184793,
+          "max": 85.928746,
+          "p95": 81.090851
+        },
+        "nearest_met_delta_s": {
+          "count": 106,
+          "mean": 37.350122,
+          "median": 19.107657,
+          "min": 0.000399,
+          "max": 212.516825,
+          "p95": 124.054495
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 106,
+          "mean": 7.535191,
+          "median": 4.809854,
+          "min": 2.299862,
+          "max": 20.381058,
+          "p95": 20.377585
+        },
+        "station_full_vs_gmst_m": {
+          "count": 106,
+          "mean": 32905.971247,
+          "median": 33011.164892,
+          "min": 21160.024857,
+          "max": 40472.179543,
+          "p95": 40103.940205
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 106,
+          "mean": 22.212083,
+          "median": 20.296269,
+          "min": 4.935804,
+          "max": 43.706775,
+          "p95": 43.386965
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 106,
+          "mean": 70233.901043,
+          "median": 69308.9663,
+          "min": 63532.479158,
+          "max": 78607.345053,
+          "p95": 78338.738064
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260423",
+      "target": "LAGEOS-2",
+      "date": "20260423",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 118,
+      "arc_span_hours": 18.203094,
+      "station_counts": {
+        "HERL": 37,
+        "WETL": 36,
+        "YARL": 45
+      },
+      "distinct_stations": 3,
+      "num_met_records": 162,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260423.np2",
+        "sha256": "b532598c3c6ff945c0edcfa4b45bcfc5539d421ee74148e70ea97fd8850ae72b",
+        "bytes": 74659
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 118,
+          "mean": 3.516303,
+          "median": 3.262057,
+          "min": 2.38243,
+          "max": 7.37086,
+          "p95": 5.045365
+        },
+        "centre_of_mass_m": {
+          "count": 118,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 118,
+          "mean": 0.006851,
+          "median": 0.006755,
+          "min": 0.005795,
+          "max": 0.008884,
+          "p95": 0.008234
+        },
+        "total_range_correction_m": {
+          "count": 118,
+          "mean": 3.774154,
+          "median": 3.519693,
+          "min": 2.639225,
+          "max": 7.630744,
+          "p95": 5.304418
+        },
+        "elevation_deg": {
+          "count": 118,
+          "mean": 47.170836,
+          "median": 47.414213,
+          "min": 18.710501,
+          "max": 74.788771,
+          "p95": 66.857146
+        },
+        "nearest_met_delta_s": {
+          "count": 118,
+          "mean": 26.900481,
+          "median": 8.523824,
+          "min": 0.000399,
+          "max": 173.272519,
+          "p95": 105.605123
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 118,
+          "mean": 9.940589,
+          "median": 4.809508,
+          "min": 2.256895,
+          "max": 20.324454,
+          "p95": 20.31632
+        },
+        "station_full_vs_gmst_m": {
+          "count": 118,
+          "mean": 35180.518127,
+          "median": 35184.574465,
+          "min": 26623.828861,
+          "max": 40560.146017,
+          "p95": 40555.427424
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 118,
+          "mean": 23.85487,
+          "median": 22.703997,
+          "min": 2.462589,
+          "max": 43.453704,
+          "p95": 43.098879
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 118,
+          "mean": 69767.636714,
+          "median": 68684.280679,
+          "min": 63678.63743,
+          "max": 78409.122471,
+          "p95": 77676.298103
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260424",
+      "target": "LAGEOS-2",
+      "date": "20260424",
+      "sp3_week": "260425",
+      "split": "train",
+      "status": "completed",
+      "num_observations": 115,
+      "arc_span_hours": 12.277713,
+      "station_counts": {
+        "HERL": 33,
+        "WETL": 50,
+        "YARL": 32
+      },
+      "distinct_stations": 3,
+      "num_met_records": 170,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260424.np2",
+        "sha256": "8f367c4cb8b844cbe25a918c57a63c491b05aaa46e2cc4f2b328d38901c69066",
+        "bytes": 73199
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 115,
+          "mean": 3.444143,
+          "median": 3.398733,
+          "min": 2.306953,
+          "max": 9.138019,
+          "p95": 4.89247
+        },
+        "centre_of_mass_m": {
+          "count": 115,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 115,
+          "mean": 0.006766,
+          "median": 0.006845,
+          "min": 0.005663,
+          "max": 0.009257,
+          "p95": 0.007725
+        },
+        "total_range_correction_m": {
+          "count": 115,
+          "mean": 3.701908,
+          "median": 3.656762,
+          "min": 2.563717,
+          "max": 9.398275,
+          "p95": 5.151132
+        },
+        "elevation_deg": {
+          "count": 115,
+          "mean": 48.954431,
+          "median": 44.323475,
+          "min": 14.955381,
+          "max": 87.237003,
+          "p95": 79.200267
+        },
+        "nearest_met_delta_s": {
+          "count": 115,
+          "mean": 25.866753,
+          "median": 19.720765,
+          "min": 0.000395,
+          "max": 137.594793,
+          "p95": 79.618097
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 115,
+          "mean": 7.953935,
+          "median": 4.798686,
+          "min": 2.173598,
+          "max": 20.219269,
+          "p95": 20.21869
+        },
+        "station_full_vs_gmst_m": {
+          "count": 115,
+          "mean": 35226.037144,
+          "median": 35388.56453,
+          "min": 20462.637259,
+          "max": 40438.900451,
+          "p95": 40402.124822
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 115,
+          "mean": 21.350439,
+          "median": 17.48462,
+          "min": 6.470171,
+          "max": 42.205851,
+          "p95": 41.403459
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 115,
+          "mean": 69950.027131,
+          "median": 68171.309727,
+          "min": 63810.703223,
+          "max": 78577.500248,
+          "p95": 77456.360551
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260427",
+      "target": "LAGEOS-1",
+      "date": "20260427",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 56,
+      "arc_span_hours": 10.381536,
+      "station_counts": {
+        "HERL": 25,
+        "MATM": 6,
+        "WETL": 25
+      },
+      "distinct_stations": 3,
+      "num_met_records": 95,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260427.np2",
+        "sha256": "cdacde5f2b52cf8f2dd7494e6bf4abbb668059519e68e2e75c51cde31030e4b9",
+        "bytes": 44782
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 56,
+          "mean": 3.409705,
+          "median": 3.134084,
+          "min": 2.308862,
+          "max": 6.25517,
+          "p95": 5.604734
+        },
+        "centre_of_mass_m": {
+          "count": 56,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 56,
+          "mean": 0.006873,
+          "median": 0.00675,
+          "min": 0.005868,
+          "max": 0.008668,
+          "p95": 0.008339
+        },
+        "total_range_correction_m": {
+          "count": 56,
+          "mean": 3.667579,
+          "median": 3.391814,
+          "min": 2.565734,
+          "max": 6.514838,
+          "p95": 5.864073
+        },
+        "elevation_deg": {
+          "count": 56,
+          "mean": 50.414738,
+          "median": 48.930555,
+          "min": 21.369212,
+          "max": 84.985127,
+          "p95": 84.268028
+        },
+        "nearest_met_delta_s": {
+          "count": 56,
+          "mean": 58.82982,
+          "median": 50.480629,
+          "min": 0.0,
+          "max": 207.584849,
+          "p95": 143.069283
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 3.351278,
+          "median": 3.688272,
+          "min": 1.874593,
+          "max": 4.744457,
+          "p95": 4.743208
+        },
+        "station_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 31806.236831,
+          "median": 33786.524277,
+          "min": 18852.10993,
+          "max": 36608.090394,
+          "p95": 36606.865526
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 16.246313,
+          "median": 15.538743,
+          "min": 3.925425,
+          "max": 31.043213,
+          "p95": 28.973715
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 60621.338038,
+          "median": 67633.939879,
+          "min": 33612.897023,
+          "max": 78518.161208,
+          "p95": 77991.879968
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260428",
+      "target": "LAGEOS-1",
+      "date": "20260428",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 123,
+      "arc_span_hours": 16.559866,
+      "station_counts": {
+        "HERL": 27,
+        "MATM": 15,
+        "WETL": 32,
+        "YARL": 49
+      },
+      "distinct_stations": 4,
+      "num_met_records": 238,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260428.np2",
+        "sha256": "7446f4f5ad11d09d3d737ea5ced0ec11ac1b9034b829a6afe2290cd0e79ba84b",
+        "bytes": 70268
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 123,
+          "mean": 3.996655,
+          "median": 3.520164,
+          "min": 2.382908,
+          "max": 9.55626,
+          "p95": 6.53106
+        },
+        "centre_of_mass_m": {
+          "count": 123,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 123,
+          "mean": 0.007208,
+          "median": 0.007107,
+          "min": 0.005823,
+          "max": 0.009362,
+          "p95": 0.008709
+        },
+        "total_range_correction_m": {
+          "count": 123,
+          "mean": 4.254864,
+          "median": 3.778171,
+          "min": 2.639731,
+          "max": 9.816622,
+          "p95": 6.790703
+        },
+        "elevation_deg": {
+          "count": 123,
+          "mean": 44.274787,
+          "median": 41.881371,
+          "min": 14.150221,
+          "max": 88.831045,
+          "p95": 78.364237
+        },
+        "nearest_met_delta_s": {
+          "count": 123,
+          "mean": 37.725029,
+          "median": 3.756035,
+          "min": 0.0,
+          "max": 395.570574,
+          "p95": 155.386605
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 123,
+          "mean": 9.611259,
+          "median": 4.723224,
+          "min": 1.811918,
+          "max": 19.32243,
+          "p95": 19.321201
+        },
+        "station_full_vs_gmst_m": {
+          "count": 123,
+          "mean": 32843.71449,
+          "median": 35654.121845,
+          "min": 11675.142736,
+          "max": 40581.838365,
+          "p95": 40580.989087
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 123,
+          "mean": 24.526722,
+          "median": 26.07116,
+          "min": 4.225928,
+          "max": 40.633303,
+          "p95": 39.260252
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 123,
+          "mean": 58440.399796,
+          "median": 59777.475826,
+          "min": 33440.318986,
+          "max": 78838.060302,
+          "p95": 78133.251928
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260429",
+      "target": "LAGEOS-1",
+      "date": "20260429",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 108,
+      "arc_span_hours": 14.544371,
+      "station_counts": {
+        "HERL": 48,
+        "MATM": 25,
+        "WETL": 35
+      },
+      "distinct_stations": 3,
+      "num_met_records": 211,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260429.np2",
+        "sha256": "3e44d39a9336033c93f96428e2a1678a462b19a7ae26b1325838e2f6bd7a4183",
+        "bytes": 63567
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 108,
+          "mean": 4.037352,
+          "median": 4.096863,
+          "min": 2.40721,
+          "max": 6.989387,
+          "p95": 5.714066
+        },
+        "centre_of_mass_m": {
+          "count": 108,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 108,
+          "mean": 0.007347,
+          "median": 0.007473,
+          "min": 0.005915,
+          "max": 0.008763,
+          "p95": 0.008353
+        },
+        "total_range_correction_m": {
+          "count": 108,
+          "mean": 4.295698,
+          "median": 4.355391,
+          "min": 2.664187,
+          "max": 7.24915,
+          "p95": 5.973401
+        },
+        "elevation_deg": {
+          "count": 108,
+          "mean": 40.184002,
+          "median": 35.830871,
+          "min": 20.430324,
+          "max": 79.295528,
+          "p95": 71.226672
+        },
+        "nearest_met_delta_s": {
+          "count": 108,
+          "mean": 70.782116,
+          "median": 48.740993,
+          "min": 0.0,
+          "max": 445.919549,
+          "p95": 245.874033
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 108,
+          "mean": 3.419224,
+          "median": 3.247313,
+          "min": 1.799221,
+          "max": 4.724408,
+          "p95": 4.724132
+        },
+        "station_full_vs_gmst_m": {
+          "count": 108,
+          "mean": 30785.855888,
+          "median": 34607.257211,
+          "min": 11539.478605,
+          "max": 38704.593834,
+          "p95": 38633.125863
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 108,
+          "mean": 20.081265,
+          "median": 21.305452,
+          "min": 8.36225,
+          "max": 30.600093,
+          "p95": 28.571181
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 108,
+          "mean": 58588.621408,
+          "median": 61745.31783,
+          "min": 33249.393334,
+          "max": 78847.828595,
+          "p95": 78760.533864
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260430",
+      "target": "LAGEOS-1",
+      "date": "20260430",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 123,
+      "arc_span_hours": 17.636878,
+      "station_counts": {
+        "HERL": 35,
+        "WETL": 45,
+        "YARL": 43
+      },
+      "distinct_stations": 3,
+      "num_met_records": 167,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260430.np2",
+        "sha256": "8722ba97984bf7d7673cd9de6b1751160d88091b4ed534123d03747f33779c61",
+        "bytes": 63059
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 123,
+          "mean": 3.598469,
+          "median": 3.49622,
+          "min": 2.347891,
+          "max": 6.168697,
+          "p95": 5.020767
+        },
+        "centre_of_mass_m": {
+          "count": 123,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 123,
+          "mean": 0.00703,
+          "median": 0.007061,
+          "min": 0.005906,
+          "max": 0.00847,
+          "p95": 0.007982
+        },
+        "total_range_correction_m": {
+          "count": 123,
+          "mean": 3.856499,
+          "median": 3.75438,
+          "min": 2.604797,
+          "max": 6.428168,
+          "p95": 5.279749
+        },
+        "elevation_deg": {
+          "count": 123,
+          "mean": 45.305081,
+          "median": 42.717301,
+          "min": 22.64463,
+          "max": 80.026978,
+          "p95": 70.184569
+        },
+        "nearest_met_delta_s": {
+          "count": 123,
+          "mean": 34.533553,
+          "median": 14.957223,
+          "min": 0.000406,
+          "max": 211.944104,
+          "p95": 118.853748
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 123,
+          "mean": 8.61799,
+          "median": 4.7361,
+          "min": 1.813865,
+          "max": 18.954323,
+          "p95": 18.94306
+        },
+        "station_full_vs_gmst_m": {
+          "count": 123,
+          "mean": 32920.487096,
+          "median": 34328.548722,
+          "min": 14456.831604,
+          "max": 40573.825227,
+          "p95": 40560.6538
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 123,
+          "mean": 22.439823,
+          "median": 20.327008,
+          "min": 2.385368,
+          "max": 40.118155,
+          "p95": 40.000865
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 123,
+          "mean": 60053.008379,
+          "median": 62476.507041,
+          "min": 33163.251018,
+          "max": 78865.670273,
+          "p95": 78176.930178
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260501",
+      "target": "LAGEOS-1",
+      "date": "20260501",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 139,
+      "arc_span_hours": 21.057783,
+      "station_counts": {
+        "HERL": 15,
+        "MATM": 34,
+        "WETL": 54,
+        "YARL": 36
+      },
+      "distinct_stations": 4,
+      "num_met_records": 237,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260501.np2",
+        "sha256": "4f7c52af607d497dd92134676010bf57aca3cf264dd4afa4c0dc0287e4bf3875",
+        "bytes": 98163
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 139,
+          "mean": 4.012185,
+          "median": 3.770758,
+          "min": 2.345671,
+          "max": 7.720987,
+          "p95": 6.480533
+        },
+        "centre_of_mass_m": {
+          "count": 139,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 139,
+          "mean": 0.007299,
+          "median": 0.007291,
+          "min": 0.005885,
+          "max": 0.008948,
+          "p95": 0.008662
+        },
+        "total_range_correction_m": {
+          "count": 139,
+          "mean": 4.270484,
+          "median": 4.028949,
+          "min": 2.602556,
+          "max": 7.980935,
+          "p95": 6.740196
+        },
+        "elevation_deg": {
+          "count": 139,
+          "mean": 41.665834,
+          "median": 38.591092,
+          "min": 17.911608,
+          "max": 79.299305,
+          "p95": 71.119537
+        },
+        "nearest_met_delta_s": {
+          "count": 139,
+          "mean": 42.348128,
+          "median": 7.35481,
+          "min": 0.0,
+          "max": 436.841228,
+          "p95": 193.718945
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 139,
+          "mean": 6.777524,
+          "median": 2.804749,
+          "min": 1.849911,
+          "max": 18.78407,
+          "p95": 18.783953
+        },
+        "station_full_vs_gmst_m": {
+          "count": 139,
+          "mean": 32443.654326,
+          "median": 35658.5333,
+          "min": 13752.761289,
+          "max": 40597.727194,
+          "p95": 40595.693486
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 139,
+          "mean": 22.746951,
+          "median": 20.456374,
+          "min": 6.468865,
+          "max": 39.470207,
+          "p95": 39.13295
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 139,
+          "mean": 58709.305831,
+          "median": 58466.995598,
+          "min": 33005.293958,
+          "max": 78874.749217,
+          "p95": 78539.026104
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260427",
+      "target": "LAGEOS-2",
+      "date": "20260427",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 103,
+      "arc_span_hours": 14.353676,
+      "station_counts": {
+        "HERL": 23,
+        "MATM": 21,
+        "WETL": 41,
+        "YARL": 18
+      },
+      "distinct_stations": 4,
+      "num_met_records": 153,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 1064.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260427.np2",
+        "sha256": "df436a24116efa72cc9cb315cd6ade41b7a6e6b8bdc79c5518ca1157dcef6418",
+        "bytes": 63175
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 103,
+          "mean": 3.360056,
+          "median": 3.275473,
+          "min": 2.220329,
+          "max": 5.620731,
+          "p95": 5.197923
+        },
+        "centre_of_mass_m": {
+          "count": 103,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 103,
+          "mean": 0.006881,
+          "median": 0.006845,
+          "min": 0.005689,
+          "max": 0.008468,
+          "p95": 0.008289
+        },
+        "total_range_correction_m": {
+          "count": 103,
+          "mean": 3.617937,
+          "median": 3.533522,
+          "min": 2.477066,
+          "max": 5.880057,
+          "p95": 5.457248
+        },
+        "elevation_deg": {
+          "count": 103,
+          "mean": 47.182311,
+          "median": 43.339918,
+          "min": 22.836178,
+          "max": 87.423994,
+          "p95": 73.502824
+        },
+        "nearest_met_delta_s": {
+          "count": 103,
+          "mean": 37.887252,
+          "median": 20.67714,
+          "min": 0.0,
+          "max": 228.934704,
+          "p95": 122.319366
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 103,
+          "mean": 5.998397,
+          "median": 3.772303,
+          "min": 1.874583,
+          "max": 19.532187,
+          "p95": 19.532082
+        },
+        "station_full_vs_gmst_m": {
+          "count": 103,
+          "mean": 35452.611327,
+          "median": 35963.351446,
+          "min": 24922.73964,
+          "max": 39043.713165,
+          "p95": 38915.066618
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 103,
+          "mean": 19.757153,
+          "median": 20.275631,
+          "min": 2.199342,
+          "max": 37.126303,
+          "p95": 33.719078
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 103,
+          "mean": 70145.862836,
+          "median": 68194.458241,
+          "min": 64237.985135,
+          "max": 78690.333759,
+          "p95": 78463.704105
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260428",
+      "target": "LAGEOS-2",
+      "date": "20260428",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 56,
+      "arc_span_hours": 13.925332,
+      "station_counts": {
+        "MATM": 9,
+        "WETL": 10,
+        "YARL": 37
+      },
+      "distinct_stations": 3,
+      "num_met_records": 84,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.1,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260428.np2",
+        "sha256": "d67d64330812778fbee7a4b4cef9674fc9addef3af4538756b08623a5c393d42",
+        "bytes": 38658
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 56,
+          "mean": 3.437217,
+          "median": 3.315321,
+          "min": 2.323327,
+          "max": 6.380542,
+          "p95": 5.157404
+        },
+        "centre_of_mass_m": {
+          "count": 56,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 56,
+          "mean": 0.00682,
+          "median": 0.006841,
+          "min": 0.005754,
+          "max": 0.008639,
+          "p95": 0.008057
+        },
+        "total_range_correction_m": {
+          "count": 56,
+          "mean": 3.695037,
+          "median": 3.573161,
+          "min": 2.58008,
+          "max": 6.640181,
+          "p95": 5.416461
+        },
+        "elevation_deg": {
+          "count": 56,
+          "mean": 49.338197,
+          "median": 45.632048,
+          "min": 21.727069,
+          "max": 80.232554,
+          "p95": 75.854443
+        },
+        "nearest_met_delta_s": {
+          "count": 56,
+          "mean": 19.724676,
+          "median": 0.000411,
+          "min": 0.0,
+          "max": 215.617737,
+          "p95": 109.447696
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 13.617833,
+          "median": 19.240338,
+          "min": 1.811907,
+          "max": 19.334232,
+          "p95": 19.287322
+        },
+        "station_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 37431.001298,
+          "median": 38004.810098,
+          "min": 29122.658398,
+          "max": 40431.81414,
+          "p95": 40246.406889
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 25.553414,
+          "median": 26.312882,
+          "min": 2.242865,
+          "max": 40.258395,
+          "p95": 39.777637
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 68083.719214,
+          "median": 66616.338554,
+          "min": 64391.790698,
+          "max": 77490.239022,
+          "p95": 75571.504676
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260429",
+      "target": "LAGEOS-2",
+      "date": "20260429",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 75,
+      "arc_span_hours": 12.445886,
+      "station_counts": {
+        "HERL": 35,
+        "MATM": 12,
+        "WETL": 28
+      },
+      "distinct_stations": 3,
+      "num_met_records": 86,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260429.np2",
+        "sha256": "0086796fa76b2fb2048639d09434f4facf9ef214bcfa9164778f795c4c4f4aa2",
+        "bytes": 30934
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 75,
+          "mean": 3.431383,
+          "median": 3.21847,
+          "min": 2.25968,
+          "max": 6.257963,
+          "p95": 4.827659
+        },
+        "centre_of_mass_m": {
+          "count": 75,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 75,
+          "mean": 0.006747,
+          "median": 0.006696,
+          "min": 0.00572,
+          "max": 0.008543,
+          "p95": 0.007815
+        },
+        "total_range_correction_m": {
+          "count": 75,
+          "mean": 3.68913,
+          "median": 3.476325,
+          "min": 2.516452,
+          "max": 6.517506,
+          "p95": 5.086475
+        },
+        "elevation_deg": {
+          "count": 75,
+          "mean": 48.648678,
+          "median": 46.08237,
+          "min": 21.349185,
+          "max": 81.590607,
+          "p95": 73.340464
+        },
+        "nearest_met_delta_s": {
+          "count": 75,
+          "mean": 69.313766,
+          "median": 52.100341,
+          "min": 0.0,
+          "max": 329.848766,
+          "p95": 195.6348
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 75,
+          "mean": 3.394258,
+          "median": 3.273133,
+          "min": 1.799504,
+          "max": 4.723415,
+          "p95": 4.72328
+        },
+        "station_full_vs_gmst_m": {
+          "count": 75,
+          "mean": 33292.041516,
+          "median": 33534.188782,
+          "min": 23548.703965,
+          "max": 37162.815578,
+          "p95": 36941.733392
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 75,
+          "mean": 15.441416,
+          "median": 14.309113,
+          "min": 2.063759,
+          "max": 27.448378,
+          "p95": 24.990688
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 75,
+          "mean": 69526.386319,
+          "median": 67722.612004,
+          "min": 64584.481771,
+          "max": 78577.580645,
+          "p95": 77925.519492
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260430",
+      "target": "LAGEOS-2",
+      "date": "20260430",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 76,
+      "arc_span_hours": 9.947361,
+      "station_counts": {
+        "HERL": 20,
+        "WETL": 28,
+        "YARL": 28
+      },
+      "distinct_stations": 3,
+      "num_met_records": 132,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260430.np2",
+        "sha256": "24c943641ef3c6ad54d51bd1d0ff108e798d450d34bae3bfa09c319aa09d0e70",
+        "bytes": 53312
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 76,
+          "mean": 3.573545,
+          "median": 3.361993,
+          "min": 2.316606,
+          "max": 6.342477,
+          "p95": 5.180132
+        },
+        "centre_of_mass_m": {
+          "count": 76,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 76,
+          "mean": 0.006861,
+          "median": 0.006857,
+          "min": 0.005723,
+          "max": 0.008532,
+          "p95": 0.008095
+        },
+        "total_range_correction_m": {
+          "count": 76,
+          "mean": 3.831407,
+          "median": 3.619838,
+          "min": 2.57333,
+          "max": 6.602009,
+          "p95": 5.439113
+        },
+        "elevation_deg": {
+          "count": 76,
+          "mean": 47.179408,
+          "median": 44.022654,
+          "min": 21.995363,
+          "max": 85.678818,
+          "p95": 72.557042
+        },
+        "nearest_met_delta_s": {
+          "count": 76,
+          "mean": 35.298463,
+          "median": 14.00294,
+          "min": 0.000406,
+          "max": 147.870123,
+          "p95": 117.094174
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 76,
+          "mean": 8.866843,
+          "median": 4.734433,
+          "min": 1.811421,
+          "max": 18.89734,
+          "p95": 18.87448
+        },
+        "station_full_vs_gmst_m": {
+          "count": 76,
+          "mean": 36506.333874,
+          "median": 35875.119357,
+          "min": 27730.949966,
+          "max": 40553.840563,
+          "p95": 40538.103939
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 76,
+          "mean": 22.252966,
+          "median": 22.804641,
+          "min": 3.001898,
+          "max": 39.031539,
+          "p95": 38.232399
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 76,
+          "mean": 70925.296922,
+          "median": 69575.090253,
+          "min": 64753.910495,
+          "max": 78677.748931,
+          "p95": 78135.769267
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260501",
+      "target": "LAGEOS-2",
+      "date": "20260501",
+      "sp3_week": "260502",
+      "split": "val",
+      "status": "completed",
+      "num_observations": 91,
+      "arc_span_hours": 13.921853,
+      "station_counts": {
+        "HERL": 24,
+        "MATM": 14,
+        "WETL": 36,
+        "YARL": 17
+      },
+      "distinct_stations": 4,
+      "num_met_records": 122,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 1064.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260501.np2",
+        "sha256": "dfce582f68a08662453e160602ec9e8e8e3be4f8152fc01e08604dbfe9d94ca7",
+        "bytes": 46913
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 91,
+          "mean": 3.477006,
+          "median": 3.296296,
+          "min": 2.213828,
+          "max": 6.298268,
+          "p95": 5.08468
+        },
+        "centre_of_mass_m": {
+          "count": 91,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 91,
+          "mean": 0.006932,
+          "median": 0.006926,
+          "min": 0.005758,
+          "max": 0.008624,
+          "p95": 0.008105
+        },
+        "total_range_correction_m": {
+          "count": 91,
+          "mean": 3.734938,
+          "median": 3.554158,
+          "min": 2.470586,
+          "max": 6.557892,
+          "p95": 5.343779
+        },
+        "elevation_deg": {
+          "count": 91,
+          "mean": 46.653269,
+          "median": 42.866853,
+          "min": 20.505196,
+          "max": 85.560442,
+          "p95": 79.867425
+        },
+        "nearest_met_delta_s": {
+          "count": 91,
+          "mean": 36.751926,
+          "median": 21.494914,
+          "min": 0.0,
+          "max": 228.1,
+          "p95": 119.00354
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 91,
+          "mean": 5.917491,
+          "median": 2.805494,
+          "min": 1.845573,
+          "max": 18.72456,
+          "p95": 18.724388
+        },
+        "station_full_vs_gmst_m": {
+          "count": 91,
+          "mean": 35713.551998,
+          "median": 36146.640407,
+          "min": 20244.628423,
+          "max": 40572.535249,
+          "p95": 40561.150774
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 91,
+          "mean": 18.093814,
+          "median": 16.104992,
+          "min": 3.228012,
+          "max": 38.454617,
+          "p95": 36.465506
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 91,
+          "mean": 70590.956836,
+          "median": 69978.122304,
+          "min": 64814.083593,
+          "max": 78757.847246,
+          "p95": 77468.29905
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260504",
+      "target": "LAGEOS-1",
+      "date": "20260504",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 32,
+      "arc_span_hours": 10.758722,
+      "station_counts": {
+        "YARL": 32
+      },
+      "distinct_stations": 1,
+      "num_met_records": 67,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260504.np2",
+        "sha256": "dc014c72baf4153b05d11df91b758345c7d7669a2037f32ee55bfea69d8eebfb",
+        "bytes": 32132
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 32,
+          "mean": 4.342109,
+          "median": 4.261259,
+          "min": 2.513266,
+          "max": 10.302883,
+          "p95": 7.647479
+        },
+        "centre_of_mass_m": {
+          "count": 32,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 32,
+          "mean": 0.007323,
+          "median": 0.007526,
+          "min": 0.005924,
+          "max": 0.009467,
+          "p95": 0.008877
+        },
+        "total_range_correction_m": {
+          "count": 32,
+          "mean": 4.600432,
+          "median": 4.519786,
+          "min": 2.770191,
+          "max": 10.56335,
+          "p95": 7.907355
+        },
+        "elevation_deg": {
+          "count": 32,
+          "mean": 40.915488,
+          "median": 34.26871,
+          "min": 13.1898,
+          "max": 72.819116,
+          "p95": 71.338386
+        },
+        "nearest_met_delta_s": {
+          "count": 32,
+          "mean": 0.000423,
+          "median": 0.000422,
+          "min": 0.00042,
+          "max": 0.000426,
+          "p95": 0.000426
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 32,
+          "mean": 18.620669,
+          "median": 18.617055,
+          "min": 18.616382,
+          "max": 18.631181,
+          "p95": 18.631101
+        },
+        "station_full_vs_gmst_m": {
+          "count": 32,
+          "mean": 40079.064528,
+          "median": 40573.465223,
+          "min": 28034.969981,
+          "max": 40608.630986,
+          "p95": 40607.14391
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 32,
+          "mean": 34.048264,
+          "median": 36.638392,
+          "min": 21.662545,
+          "max": 38.977099,
+          "p95": 38.904739
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 32,
+          "mean": 70342.086059,
+          "median": 72320.391262,
+          "min": 32713.664255,
+          "max": 78234.666921,
+          "p95": 77779.678425
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "target": "LAGEOS-1",
+      "date": "20260505",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 72,
+      "arc_span_hours": 16.022056,
+      "station_counts": {
+        "HERL": 6,
+        "MATM": 5,
+        "WETL": 2,
+        "YARL": 59
+      },
+      "distinct_stations": 4,
+      "num_met_records": 120,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260505.np2",
+        "sha256": "1c10297d95d31922c2bcdb2946da0e43015264d33dcae268f96501abab136779",
+        "bytes": 63465
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 72,
+          "mean": 4.882309,
+          "median": 4.145323,
+          "min": 2.534023,
+          "max": 9.745772,
+          "p95": 8.50829
+        },
+        "centre_of_mass_m": {
+          "count": 72,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 72,
+          "mean": 0.007657,
+          "median": 0.007452,
+          "min": 0.00598,
+          "max": 0.009409,
+          "p95": 0.009162
+        },
+        "total_range_correction_m": {
+          "count": 72,
+          "mean": 5.140965,
+          "median": 4.403775,
+          "min": 2.791002,
+          "max": 10.006181,
+          "p95": 8.768452
+        },
+        "elevation_deg": {
+          "count": 72,
+          "mean": 35.073205,
+          "median": 35.317167,
+          "min": 13.998807,
+          "max": 74.255884,
+          "p95": 52.479776
+        },
+        "nearest_met_delta_s": {
+          "count": 72,
+          "mean": 8.453442,
+          "median": 0.000425,
+          "min": 0.0,
+          "max": 189.089279,
+          "p95": 75.902892
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 72,
+          "mean": 15.934442,
+          "median": 18.648776,
+          "min": 2.068579,
+          "max": 18.654906,
+          "p95": 18.654826
+        },
+        "station_full_vs_gmst_m": {
+          "count": 72,
+          "mean": 38179.683694,
+          "median": 40317.568348,
+          "min": 25579.298239,
+          "max": 40542.241786,
+          "p95": 40526.857149
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 72,
+          "mean": 29.466749,
+          "median": 33.102084,
+          "min": 7.337955,
+          "max": 39.15414,
+          "p95": 39.018803
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 72,
+          "mean": 64921.827853,
+          "median": 67439.746971,
+          "min": 34048.266603,
+          "max": 78278.78349,
+          "p95": 78172.854554
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "target": "LAGEOS-1",
+      "date": "20260506",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 109,
+      "arc_span_hours": 23.051889,
+      "station_counts": {
+        "HERL": 22,
+        "YARL": 87
+      },
+      "distinct_stations": 2,
+      "num_met_records": 134,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260506.np2",
+        "sha256": "efad86119dc466074ca9856162528d5fff17ac6acf2ddf4cb887f03945960971",
+        "bytes": 67694
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 109,
+          "mean": 4.709508,
+          "median": 3.996804,
+          "min": 2.41982,
+          "max": 11.120086,
+          "p95": 8.038829
+        },
+        "centre_of_mass_m": {
+          "count": 109,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 109,
+          "mean": 0.007505,
+          "median": 0.00738,
+          "min": 0.005835,
+          "max": 0.009585,
+          "p95": 0.009027
+        },
+        "total_range_correction_m": {
+          "count": 109,
+          "mean": 4.968013,
+          "median": 4.255183,
+          "min": 2.676656,
+          "max": 11.380671,
+          "p95": 8.298856
+        },
+        "elevation_deg": {
+          "count": 109,
+          "mean": 39.036681,
+          "median": 36.985689,
+          "min": 12.192844,
+          "max": 84.797752,
+          "p95": 74.623893
+        },
+        "nearest_met_delta_s": {
+          "count": 109,
+          "mean": 22.172034,
+          "median": 0.000422,
+          "min": 0.000413,
+          "max": 259.589696,
+          "p95": 146.965311
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 109,
+          "mean": 15.915433,
+          "median": 18.680493,
+          "min": 4.968378,
+          "max": 18.698969,
+          "p95": 18.698618
+        },
+        "station_full_vs_gmst_m": {
+          "count": 109,
+          "mean": 34741.428309,
+          "median": 35878.786075,
+          "min": 25115.870618,
+          "max": 40622.322652,
+          "p95": 40621.872621
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 109,
+          "mean": 29.528763,
+          "median": 33.350651,
+          "min": 3.594578,
+          "max": 39.232956,
+          "p95": 38.983144
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 109,
+          "mean": 59867.315642,
+          "median": 64901.580761,
+          "min": 32152.582369,
+          "max": 78905.301798,
+          "p95": 78194.14214
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "target": "LAGEOS-1",
+      "date": "20260507",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 55,
+      "arc_span_hours": 8.915214,
+      "station_counts": {
+        "HERL": 21,
+        "YARL": 34
+      },
+      "distinct_stations": 2,
+      "num_met_records": 80,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260507.np2",
+        "sha256": "b2cd99838e78394c595a366cb815c712f14203b0a45566637114aeb84cca5362",
+        "bytes": 35483
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 55,
+          "mean": 4.222459,
+          "median": 3.911542,
+          "min": 2.622077,
+          "max": 7.732176,
+          "p95": 7.099291
+        },
+        "centre_of_mass_m": {
+          "count": 55,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 55,
+          "mean": 0.007317,
+          "median": 0.007283,
+          "min": 0.006055,
+          "max": 0.008943,
+          "p95": 0.00879
+        },
+        "total_range_correction_m": {
+          "count": 55,
+          "mean": 4.480776,
+          "median": 4.169825,
+          "min": 2.879132,
+          "max": 7.992119,
+          "p95": 7.359081
+        },
+        "elevation_deg": {
+          "count": 55,
+          "mean": 40.239805,
+          "median": 37.885769,
+          "min": 17.923677,
+          "max": 68.570607,
+          "p95": 66.383881
+        },
+        "nearest_met_delta_s": {
+          "count": 55,
+          "mean": 42.721923,
+          "median": 0.000424,
+          "min": 0.000419,
+          "max": 274.764085,
+          "p95": 175.632804
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 55,
+          "mean": 13.475021,
+          "median": 18.696003,
+          "min": 5.005947,
+          "max": 18.708564,
+          "p95": 18.70849
+        },
+        "station_full_vs_gmst_m": {
+          "count": 55,
+          "mean": 30616.123006,
+          "median": 40171.422279,
+          "min": 11406.513277,
+          "max": 40592.470091,
+          "p95": 40586.388981
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 55,
+          "mean": 27.315189,
+          "median": 26.690509,
+          "min": 6.845992,
+          "max": 39.057829,
+          "p95": 39.045535
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 55,
+          "mean": 57047.406873,
+          "median": 58958.571917,
+          "min": 32122.203936,
+          "max": 78319.925744,
+          "p95": 78295.177773
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "target": "LAGEOS-1",
+      "date": "20260508",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 61,
+      "arc_span_hours": 10.670098,
+      "station_counts": {
+        "HERL": 24,
+        "WETL": 3,
+        "YARL": 34
+      },
+      "distinct_stations": 3,
+      "num_met_records": 120,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos1_20260508.np2",
+        "sha256": "a7612b9ac41b955290a34fe47fe2a2ac921490ffde0aaff222f4b1cbee7c6efb",
+        "bytes": 51171
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 61,
+          "mean": 4.321884,
+          "median": 3.80347,
+          "min": 2.436663,
+          "max": 10.390998,
+          "p95": 7.354181
+        },
+        "centre_of_mass_m": {
+          "count": 61,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 61,
+          "mean": 0.007349,
+          "median": 0.007209,
+          "min": 0.00594,
+          "max": 0.009482,
+          "p95": 0.008841
+        },
+        "total_range_correction_m": {
+          "count": 61,
+          "mean": 4.580232,
+          "median": 4.061678,
+          "min": 2.693836,
+          "max": 10.65148,
+          "p95": 7.614022
+        },
+        "elevation_deg": {
+          "count": 61,
+          "mean": 40.088054,
+          "median": 39.618905,
+          "min": 13.070613,
+          "max": 74.898218,
+          "p95": 62.749705
+        },
+        "nearest_met_delta_s": {
+          "count": 61,
+          "mean": 28.223524,
+          "median": 0.000428,
+          "min": 0.000418,
+          "max": 170.783653,
+          "p95": 156.292778
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 61,
+          "mean": 12.505436,
+          "median": 18.691455,
+          "min": 2.145348,
+          "max": 18.702595,
+          "p95": 18.702494
+        },
+        "station_full_vs_gmst_m": {
+          "count": 61,
+          "mean": 32236.87422,
+          "median": 38887.936037,
+          "min": 13876.648709,
+          "max": 40592.473079,
+          "p95": 40585.079652
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 61,
+          "mean": 26.631555,
+          "median": 29.200273,
+          "min": 9.164404,
+          "max": 39.036476,
+          "p95": 38.941339
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 61,
+          "mean": 59004.106417,
+          "median": 65430.574598,
+          "min": 31873.203565,
+          "max": 78678.719751,
+          "p95": 78305.578647
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260504",
+      "target": "LAGEOS-2",
+      "date": "20260504",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 78,
+      "arc_span_hours": 14.484971,
+      "station_counts": {
+        "MATM": 15,
+        "YARL": 63
+      },
+      "distinct_stations": 2,
+      "num_met_records": 92,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260504.np2",
+        "sha256": "2cfc3f23fb7c815b383d359b4126eecbba4741618133ed40d5f9881aba48b164",
+        "bytes": 33506
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 78,
+          "mean": 3.889011,
+          "median": 3.55344,
+          "min": 2.8804,
+          "max": 7.366563,
+          "p95": 5.800362
+        },
+        "centre_of_mass_m": {
+          "count": 78,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 78,
+          "mean": 0.007132,
+          "median": 0.006968,
+          "min": 0.006304,
+          "max": 0.008871,
+          "p95": 0.008355
+        },
+        "total_range_correction_m": {
+          "count": 78,
+          "mean": 4.147143,
+          "median": 3.811384,
+          "min": 3.137809,
+          "max": 7.626433,
+          "p95": 6.059675
+        },
+        "elevation_deg": {
+          "count": 78,
+          "mean": 40.8943,
+          "median": 42.419414,
+          "min": 18.823655,
+          "max": 56.378025,
+          "p95": 55.40643
+        },
+        "nearest_met_delta_s": {
+          "count": 78,
+          "mean": 8.132393,
+          "median": 0.000423,
+          "min": 0.0,
+          "max": 154.9,
+          "p95": 75.32
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 78,
+          "mean": 15.54409,
+          "median": 18.616759,
+          "min": 2.630974,
+          "max": 18.632289,
+          "p95": 18.62789
+        },
+        "station_full_vs_gmst_m": {
+          "count": 78,
+          "mean": 39044.245495,
+          "median": 39226.91311,
+          "min": 34912.635495,
+          "max": 40612.780837,
+          "p95": 40610.741454
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 78,
+          "mean": 28.268975,
+          "median": 29.339418,
+          "min": 8.093408,
+          "max": 38.237576,
+          "p95": 37.915934
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 78,
+          "mean": 71580.715361,
+          "median": 71973.60231,
+          "min": 65579.294544,
+          "max": 78813.171946,
+          "p95": 77188.527665
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "target": "LAGEOS-2",
+      "date": "20260505",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 56,
+      "arc_span_hours": 6.342295,
+      "station_counts": {
+        "HERL": 5,
+        "WETL": 5,
+        "YARL": 46
+      },
+      "distinct_stations": 3,
+      "num_met_records": 68,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260505.np2",
+        "sha256": "1a253c94565dff5cf057e6681e4b158c44637f249a14ab2d5bdc65323b314c32",
+        "bytes": 38639
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 56,
+          "mean": 3.821917,
+          "median": 3.452337,
+          "min": 2.293993,
+          "max": 10.328721,
+          "p95": 7.515505
+        },
+        "centre_of_mass_m": {
+          "count": 56,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 56,
+          "mean": 0.006903,
+          "median": 0.006895,
+          "min": 0.005682,
+          "max": 0.00955,
+          "p95": 0.008889
+        },
+        "total_range_correction_m": {
+          "count": 56,
+          "mean": 4.07982,
+          "median": 3.710223,
+          "min": 2.550779,
+          "max": 10.589271,
+          "p95": 7.775395
+        },
+        "elevation_deg": {
+          "count": 56,
+          "mean": 48.681002,
+          "median": 44.0069,
+          "min": 13.161805,
+          "max": 83.337678,
+          "p95": 80.650255
+        },
+        "nearest_met_delta_s": {
+          "count": 56,
+          "mean": 14.577692,
+          "median": 0.000426,
+          "min": 0.00042,
+          "max": 185.581981,
+          "p95": 106.906025
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 15.94311,
+          "median": 18.648454,
+          "min": 2.06141,
+          "max": 18.652618,
+          "p95": 18.652429
+        },
+        "station_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 39597.821866,
+          "median": 40298.018865,
+          "min": 36139.424713,
+          "max": 40487.885754,
+          "p95": 40472.813048
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 56,
+          "mean": 26.859121,
+          "median": 28.118663,
+          "min": 6.726314,
+          "max": 38.29223,
+          "p95": 38.113315
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 56,
+          "mean": 70905.037227,
+          "median": 70048.330605,
+          "min": 66254.658022,
+          "max": 76972.165422,
+          "p95": 76883.78228
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "target": "LAGEOS-2",
+      "date": "20260506",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 112,
+      "arc_span_hours": 14.678893,
+      "station_counts": {
+        "HERL": 25,
+        "YARL": 87
+      },
+      "distinct_stations": 2,
+      "num_met_records": 109,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260506.np2",
+        "sha256": "9da911a7cff6bae43938b34651833a1ad181f74a2c01df83a540cefdd986ecd1",
+        "bytes": 47864
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 112,
+          "mean": 3.984123,
+          "median": 3.58074,
+          "min": 2.444587,
+          "max": 9.491596,
+          "p95": 7.114284
+        },
+        "centre_of_mass_m": {
+          "count": 112,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 112,
+          "mean": 0.007101,
+          "median": 0.006941,
+          "min": 0.005695,
+          "max": 0.009379,
+          "p95": 0.008839
+        },
+        "total_range_correction_m": {
+          "count": 112,
+          "mean": 4.242224,
+          "median": 3.838741,
+          "min": 2.701282,
+          "max": 9.751966,
+          "p95": 7.374122
+        },
+        "elevation_deg": {
+          "count": 112,
+          "mean": 43.399341,
+          "median": 42.16555,
+          "min": 14.436303,
+          "max": 86.019735,
+          "p95": 70.664586
+        },
+        "nearest_met_delta_s": {
+          "count": 112,
+          "mean": 14.586043,
+          "median": 0.000422,
+          "min": 0.000414,
+          "max": 178.622737,
+          "p95": 92.705974
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 112,
+          "mean": 15.622989,
+          "median": 18.680454,
+          "min": 4.967813,
+          "max": 18.697629,
+          "p95": 18.697366
+        },
+        "station_full_vs_gmst_m": {
+          "count": 112,
+          "mean": 37289.119246,
+          "median": 38900.175409,
+          "min": 30466.123598,
+          "max": 40622.319736,
+          "p95": 40621.843126
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 112,
+          "mean": 28.713253,
+          "median": 31.769347,
+          "min": 1.832167,
+          "max": 39.38026,
+          "p95": 39.281702
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 112,
+          "mean": 71957.530604,
+          "median": 72224.529157,
+          "min": 65456.196122,
+          "max": 78846.460517,
+          "p95": 78364.376287
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "target": "LAGEOS-2",
+      "date": "20260507",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 38,
+      "arc_span_hours": 8.616722,
+      "station_counts": {
+        "YARL": 38
+      },
+      "distinct_stations": 1,
+      "num_met_records": 55,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260507.np2",
+        "sha256": "4a08297d891480e0cb5001513c854f1ae2ab49eeb1aa1ee6b986a5744f80cc9b",
+        "bytes": 25182
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 38,
+          "mean": 4.45331,
+          "median": 4.153996,
+          "min": 2.484719,
+          "max": 8.564965,
+          "p95": 6.843313
+        },
+        "centre_of_mass_m": {
+          "count": 38,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 38,
+          "mean": 0.007365,
+          "median": 0.00746,
+          "min": 0.005774,
+          "max": 0.009136,
+          "p95": 0.008693
+        },
+        "total_range_correction_m": {
+          "count": 38,
+          "mean": 4.711675,
+          "median": 4.412496,
+          "min": 2.741494,
+          "max": 8.825102,
+          "p95": 7.102986
+        },
+        "elevation_deg": {
+          "count": 38,
+          "mean": 39.668495,
+          "median": 35.314403,
+          "min": 16.063185,
+          "max": 75.270608,
+          "p95": 73.376323
+        },
+        "nearest_met_delta_s": {
+          "count": 38,
+          "mean": 0.000424,
+          "median": 0.000424,
+          "min": 0.000419,
+          "max": 0.000428,
+          "p95": 0.000428
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 38,
+          "mean": 18.704809,
+          "median": 18.704897,
+          "min": 18.693704,
+          "max": 18.707015,
+          "p95": 18.706972
+        },
+        "station_full_vs_gmst_m": {
+          "count": 38,
+          "mean": 39774.188808,
+          "median": 40355.051385,
+          "min": 36541.586815,
+          "max": 40487.932369,
+          "p95": 40479.493899
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 38,
+          "mean": 27.428251,
+          "median": 27.025293,
+          "min": 15.322636,
+          "max": 36.595723,
+          "p95": 36.061388
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 38,
+          "mean": 70617.410283,
+          "median": 69011.760226,
+          "min": 66470.924058,
+          "max": 76862.140297,
+          "p95": 76579.674454
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "target": "LAGEOS-2",
+      "date": "20260508",
+      "sp3_week": "260509",
+      "split": "test",
+      "status": "completed",
+      "num_observations": 64,
+      "arc_span_hours": 10.46253,
+      "station_counts": {
+        "WETL": 9,
+        "YARL": 55
+      },
+      "distinct_stations": 2,
+      "num_met_records": 134,
+      "met_missing_observations": 0,
+      "eop_outside_range_observations": 0,
+      "wavelength_nm": 532.0,
+      "wavelength_source": "crd_c0_record",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "archived_input_id": "lageos2_20260508.np2",
+        "sha256": "cb99de9674b94f4d6950619a920d8a77990846f57183452a774fb89c2c5b7786",
+        "bytes": 56509
+      },
+      "sp3": {
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043,
+        "coordinate_frame": "ECEF/ITRF",
+        "time_system": "UTC"
+      },
+      "correction_component_stats": {
+        "troposphere_m": {
+          "count": 64,
+          "mean": 3.523926,
+          "median": 3.27658,
+          "min": 2.208295,
+          "max": 9.575053,
+          "p95": 6.559936
+        },
+        "centre_of_mass_m": {
+          "count": 64,
+          "mean": 0.251,
+          "median": 0.251,
+          "min": 0.251,
+          "max": 0.251,
+          "p95": 0.251
+        },
+        "relativity_m": {
+          "count": 64,
+          "mean": 0.00677,
+          "median": 0.006692,
+          "min": 0.005749,
+          "max": 0.009392,
+          "p95": 0.008586
+        },
+        "total_range_correction_m": {
+          "count": 64,
+          "mean": 3.781696,
+          "median": 3.534279,
+          "min": 2.465044,
+          "max": 9.835445,
+          "p95": 6.819522
+        },
+        "elevation_deg": {
+          "count": 64,
+          "mean": 50.445454,
+          "median": 47.132683,
+          "min": 14.276198,
+          "max": 87.693571,
+          "p95": 79.599425
+        },
+        "nearest_met_delta_s": {
+          "count": 64,
+          "mean": 19.033632,
+          "median": 0.000423,
+          "min": 0.000414,
+          "max": 234.946903,
+          "p95": 150.037628
+        }
+      },
+      "frame_displacement_stats": {
+        "station_full_vs_no_eop_m": {
+          "count": 64,
+          "mean": 16.367158,
+          "median": 18.692148,
+          "min": 2.144156,
+          "max": 18.703266,
+          "p95": 18.703113
+        },
+        "station_full_vs_gmst_m": {
+          "count": 64,
+          "mean": 39238.016832,
+          "median": 39291.783543,
+          "min": 36692.593816,
+          "max": 40630.458953,
+          "p95": 40630.22943
+        },
+        "satellite_full_vs_no_eop_m": {
+          "count": 64,
+          "mean": 28.643251,
+          "median": 32.586154,
+          "min": 4.662112,
+          "max": 38.436054,
+          "p95": 38.068119
+        },
+        "satellite_full_vs_gmst_m": {
+          "count": 64,
+          "mean": 71515.123657,
+          "median": 71267.455843,
+          "min": 66543.107551,
+          "max": 76977.871124,
+          "p95": 76845.671957
+        }
+      }
+    }
+  ],
+  "input_digests": [
+    {
+      "arc_id": "LAGEOS-1 20260413",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260413.np2",
+      "sha256": "93ba09edf15b2601b186a6a7c13dc01dfb5a1e723c5486a611582b6d3b99ea13",
+      "bytes": 60212
+    },
+    {
+      "arc_id": "LAGEOS-1 20260413",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491
+    },
+    {
+      "arc_id": "LAGEOS-1 20260414",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260414.np2",
+      "sha256": "e5477912261fd2579a638ef39b402a9cbf5301253d309acb44ea137fcdbd4911",
+      "bytes": 25003
+    },
+    {
+      "arc_id": "LAGEOS-1 20260414",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491
+    },
+    {
+      "arc_id": "LAGEOS-1 20260415",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260415.np2",
+      "sha256": "6bc5f86ecef49af5c20f8ad1d9e8d396d37debcd447a867e848b237296062bcf",
+      "bytes": 40753
+    },
+    {
+      "arc_id": "LAGEOS-1 20260415",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491
+    },
+    {
+      "arc_id": "LAGEOS-1 20260416",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260416.np2",
+      "sha256": "388413596114dffda4f5c8801e6f85d0f189ba0947d777a1b72084c3007e5cda",
+      "bytes": 44715
+    },
+    {
+      "arc_id": "LAGEOS-1 20260416",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491
+    },
+    {
+      "arc_id": "LAGEOS-1 20260417",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260417.np2",
+      "sha256": "49acc0a31fcf08b612580d899d0006533a49b4fd8ae3eba2f6d4b5d494212146",
+      "bytes": 60988
+    },
+    {
+      "arc_id": "LAGEOS-1 20260417",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491
+    },
+    {
+      "arc_id": "LAGEOS-2 20260413",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260413.np2",
+      "sha256": "ef3cea77ce9026d38ddd0f1a595d9c559d6993d08cd2c3d2389b15dc62bccf4d",
+      "bytes": 24464
+    },
+    {
+      "arc_id": "LAGEOS-2 20260413",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100
+    },
+    {
+      "arc_id": "LAGEOS-2 20260414",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260414.np2",
+      "sha256": "142a7bda46ed1703a84207c0d771dc3a8333eed41f6c5d9a88e3de48aa7ac15b",
+      "bytes": 21984
+    },
+    {
+      "arc_id": "LAGEOS-2 20260414",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100
+    },
+    {
+      "arc_id": "LAGEOS-2 20260415",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260415.np2",
+      "sha256": "404aefae3ebc510ac7c2d4b23a010f7cb9e9baaada82cdd01643c7f49ff4a9c1",
+      "bytes": 21815
+    },
+    {
+      "arc_id": "LAGEOS-2 20260415",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100
+    },
+    {
+      "arc_id": "LAGEOS-2 20260416",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260416.np2",
+      "sha256": "4b4af958e2c8d3fb158d4962fa7ee86d48c8d016e86a2213bb5ecd6705df3878",
+      "bytes": 41829
+    },
+    {
+      "arc_id": "LAGEOS-2 20260416",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100
+    },
+    {
+      "arc_id": "LAGEOS-2 20260417",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260417.np2",
+      "sha256": "b1cf4afb1b1ecaee584f19edbdf3510c1d1ed6336f0b6d4a40d1b8243b002cc1",
+      "bytes": 31142
+    },
+    {
+      "arc_id": "LAGEOS-2 20260417",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100
+    },
+    {
+      "arc_id": "LAGEOS-1 20260420",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260420.np2",
+      "sha256": "9f7c450d13d03d88cfda8a1f073a9df4d163e4c8f1ad151a36fed248c328b919",
+      "bytes": 42274
+    },
+    {
+      "arc_id": "LAGEOS-1 20260420",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210
+    },
+    {
+      "arc_id": "LAGEOS-1 20260421",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260421.np2",
+      "sha256": "349015670ed546918ea6d13bf4996c434a29d36a19a748fe1c5815bb25483a44",
+      "bytes": 57651
+    },
+    {
+      "arc_id": "LAGEOS-1 20260421",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210
+    },
+    {
+      "arc_id": "LAGEOS-1 20260422",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260422.np2",
+      "sha256": "45b7c4cbc0ecb8c79681b65987878e14d5dd8e69bba5d5b01d91071aaef5c0b1",
+      "bytes": 75339
+    },
+    {
+      "arc_id": "LAGEOS-1 20260422",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210
+    },
+    {
+      "arc_id": "LAGEOS-1 20260423",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260423.np2",
+      "sha256": "305681c2d6508a61179adaa253924b32a581f0843a2e4e25f95a17278c23d88a",
+      "bytes": 99511
+    },
+    {
+      "arc_id": "LAGEOS-1 20260423",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210
+    },
+    {
+      "arc_id": "LAGEOS-1 20260424",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260424.np2",
+      "sha256": "ebf0503cbec534db755e74b60977a43d09386391d3934b6142dfdfe534a17112",
+      "bytes": 77334
+    },
+    {
+      "arc_id": "LAGEOS-1 20260424",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210
+    },
+    {
+      "arc_id": "LAGEOS-2 20260420",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260420.np2",
+      "sha256": "f7eb1cff09daac3045753d001d47ac7f1d30e3cf6b5f49fa68fd01c74de9ca9e",
+      "bytes": 21216
+    },
+    {
+      "arc_id": "LAGEOS-2 20260420",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082
+    },
+    {
+      "arc_id": "LAGEOS-2 20260421",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260421.np2",
+      "sha256": "9b2c1bf7780bd78cc4282f48beb97fbc0b205bcff4202d70f8b0c9d097e8182f",
+      "bytes": 38208
+    },
+    {
+      "arc_id": "LAGEOS-2 20260421",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082
+    },
+    {
+      "arc_id": "LAGEOS-2 20260422",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260422.np2",
+      "sha256": "18c05a533da2c0265c681d52f122b711210b7ce5e109bdb0cdae55c4b322081c",
+      "bytes": 47943
+    },
+    {
+      "arc_id": "LAGEOS-2 20260422",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082
+    },
+    {
+      "arc_id": "LAGEOS-2 20260423",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260423.np2",
+      "sha256": "b532598c3c6ff945c0edcfa4b45bcfc5539d421ee74148e70ea97fd8850ae72b",
+      "bytes": 74659
+    },
+    {
+      "arc_id": "LAGEOS-2 20260423",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082
+    },
+    {
+      "arc_id": "LAGEOS-2 20260424",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260424.np2",
+      "sha256": "8f367c4cb8b844cbe25a918c57a63c491b05aaa46e2cc4f2b328d38901c69066",
+      "bytes": 73199
+    },
+    {
+      "arc_id": "LAGEOS-2 20260424",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082
+    },
+    {
+      "arc_id": "LAGEOS-1 20260427",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260427.np2",
+      "sha256": "cdacde5f2b52cf8f2dd7494e6bf4abbb668059519e68e2e75c51cde31030e4b9",
+      "bytes": 44782
+    },
+    {
+      "arc_id": "LAGEOS-1 20260427",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280
+    },
+    {
+      "arc_id": "LAGEOS-1 20260428",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260428.np2",
+      "sha256": "7446f4f5ad11d09d3d737ea5ced0ec11ac1b9034b829a6afe2290cd0e79ba84b",
+      "bytes": 70268
+    },
+    {
+      "arc_id": "LAGEOS-1 20260428",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280
+    },
+    {
+      "arc_id": "LAGEOS-1 20260429",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260429.np2",
+      "sha256": "3e44d39a9336033c93f96428e2a1678a462b19a7ae26b1325838e2f6bd7a4183",
+      "bytes": 63567
+    },
+    {
+      "arc_id": "LAGEOS-1 20260429",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280
+    },
+    {
+      "arc_id": "LAGEOS-1 20260430",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260430.np2",
+      "sha256": "8722ba97984bf7d7673cd9de6b1751160d88091b4ed534123d03747f33779c61",
+      "bytes": 63059
+    },
+    {
+      "arc_id": "LAGEOS-1 20260430",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280
+    },
+    {
+      "arc_id": "LAGEOS-1 20260501",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260501.np2",
+      "sha256": "4f7c52af607d497dd92134676010bf57aca3cf264dd4afa4c0dc0287e4bf3875",
+      "bytes": 98163
+    },
+    {
+      "arc_id": "LAGEOS-1 20260501",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280
+    },
+    {
+      "arc_id": "LAGEOS-2 20260427",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260427.np2",
+      "sha256": "df436a24116efa72cc9cb315cd6ade41b7a6e6b8bdc79c5518ca1157dcef6418",
+      "bytes": 63175
+    },
+    {
+      "arc_id": "LAGEOS-2 20260427",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908
+    },
+    {
+      "arc_id": "LAGEOS-2 20260428",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260428.np2",
+      "sha256": "d67d64330812778fbee7a4b4cef9674fc9addef3af4538756b08623a5c393d42",
+      "bytes": 38658
+    },
+    {
+      "arc_id": "LAGEOS-2 20260428",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908
+    },
+    {
+      "arc_id": "LAGEOS-2 20260429",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260429.np2",
+      "sha256": "0086796fa76b2fb2048639d09434f4facf9ef214bcfa9164778f795c4c4f4aa2",
+      "bytes": 30934
+    },
+    {
+      "arc_id": "LAGEOS-2 20260429",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908
+    },
+    {
+      "arc_id": "LAGEOS-2 20260430",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260430.np2",
+      "sha256": "24c943641ef3c6ad54d51bd1d0ff108e798d450d34bae3bfa09c319aa09d0e70",
+      "bytes": 53312
+    },
+    {
+      "arc_id": "LAGEOS-2 20260430",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908
+    },
+    {
+      "arc_id": "LAGEOS-2 20260501",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260501.np2",
+      "sha256": "dfce582f68a08662453e160602ec9e8e8e3be4f8152fc01e08604dbfe9d94ca7",
+      "bytes": 46913
+    },
+    {
+      "arc_id": "LAGEOS-2 20260501",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908
+    },
+    {
+      "arc_id": "LAGEOS-1 20260504",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260504.np2",
+      "sha256": "dc014c72baf4153b05d11df91b758345c7d7669a2037f32ee55bfea69d8eebfb",
+      "bytes": 32132
+    },
+    {
+      "arc_id": "LAGEOS-1 20260504",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293
+    },
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260505.np2",
+      "sha256": "1c10297d95d31922c2bcdb2946da0e43015264d33dcae268f96501abab136779",
+      "bytes": 63465
+    },
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260506.np2",
+      "sha256": "efad86119dc466074ca9856162528d5fff17ac6acf2ddf4cb887f03945960971",
+      "bytes": 67694
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260507.np2",
+      "sha256": "b2cd99838e78394c595a366cb815c712f14203b0a45566637114aeb84cca5362",
+      "bytes": 35483
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260508.np2",
+      "sha256": "a7612b9ac41b955290a34fe47fe2a2ac921490ffde0aaff222f4b1cbee7c6efb",
+      "bytes": 51171
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293
+    },
+    {
+      "arc_id": "LAGEOS-2 20260504",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260504.np2",
+      "sha256": "2cfc3f23fb7c815b383d359b4126eecbba4741618133ed40d5f9881aba48b164",
+      "bytes": 33506
+    },
+    {
+      "arc_id": "LAGEOS-2 20260504",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260505.np2",
+      "sha256": "1a253c94565dff5cf057e6681e4b158c44637f249a14ab2d5bdc65323b314c32",
+      "bytes": 38639
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260506.np2",
+      "sha256": "9da911a7cff6bae43938b34651833a1ad181f74a2c01df83a540cefdd986ecd1",
+      "bytes": 47864
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260507.np2",
+      "sha256": "4a08297d891480e0cb5001513c854f1ae2ab49eeb1aa1ee6b986a5744f80cc9b",
+      "bytes": 25182
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260508.np2",
+      "sha256": "cb99de9674b94f4d6950619a920d8a77990846f57183452a774fb89c2c5b7786",
+      "bytes": 56509
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040
+    }
+  ],
+  "existing_outcome_context": {
+    "forty_arc_hifi": {
+      "path": "results\\real_slr_sp3_hifi\\real_slr_sp3_hifi_validation.json",
+      "sha256": "bba46d8c004e0cd1de9bcc007668fd11ef3075ddd8d3b6809c74f10dad533bcd",
+      "num_arcs_completed": 40,
+      "controlled_pure_dynamics_all": {
+        "n": 48,
+        "compact_mean_rms_m": 253.6,
+        "hifi_mean_rms_m": 249.34,
+        "hifi_vs_compact": {
+          "n": 48,
+          "a_mean_rms_m": 249.34,
+          "b_mean_rms_m": 253.6,
+          "mean_improvement_m": 4.26,
+          "median_improvement_m": 2.43,
+          "n_a_better": 27,
+          "fraction_a_better": 0.562,
+          "bootstrap95_mean_improvement_m": [
+            -6.93,
+            15.04
+          ]
+        }
+      },
+      "controlled_pure_dynamics_test": {
+        "n": 12,
+        "compact_mean_rms_m": 261.59,
+        "hifi_mean_rms_m": 250.02,
+        "hifi_vs_compact": {
+          "n": 12,
+          "a_mean_rms_m": 250.02,
+          "b_mean_rms_m": 261.59,
+          "mean_improvement_m": 11.57,
+          "median_improvement_m": 4.84,
+          "n_a_better": 7,
+          "fraction_a_better": 0.583,
+          "bootstrap95_mean_improvement_m": [
+            -4.51,
+            29.79
+          ]
+        }
+      },
+      "sparse_slr_test": {
+        "UKF (compact)": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 368.64,
+          "median_arc_rms_m": 208.94
+        },
+        "UKF (higher-fidelity)": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 395.77,
+          "median_arc_rms_m": 291.77
+        },
+        "AUKF (higher-fidelity)": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 405.99,
+          "median_arc_rms_m": 368.08
+        }
+      },
+      "learned_calibrator_verdict": "honest negative: the strictly held-out learned calibrator does not beat the higher-fidelity classical reference on the strictly future test week with a CI excluding zero"
+    },
+    "ten_arc_full_correction": {
+      "path": "results\\real_slr_sp3_corrected\\real_slr_sp3_corrected_validation.json",
+      "sha256": "b221c8ca39e33863bbb5623cd8421989c04ada2629d7caa5915cc10719e8ef43",
+      "num_arcs_completed": 10,
+      "full_mean_m": {
+        "EKF": 382.45,
+        "UKF (fixed-noise)": 355.72,
+        "AUKF (adaptive)": 359.68,
+        "SP3-IC propagation": 430.76
+      },
+      "gmst_only_mean_m": {
+        "EKF": 367.98,
+        "UKF (fixed-noise)": 334.72,
+        "AUKF (adaptive)": 341.33,
+        "SP3-IC propagation": 402.92
+      },
+      "correction_sensitivity_audit": {
+        "no_eop": {
+          "pooled_mean_rms_m": 351.06,
+          "delta_vs_full_m": -4.66
+        },
+        "no_troposphere": {
+          "pooled_mean_rms_m": 384.89,
+          "delta_vs_full_m": 29.17
+        },
+        "no_centre_of_mass": {
+          "pooled_mean_rms_m": 356.93,
+          "delta_vs_full_m": 1.21
+        },
+        "no_relativity": {
+          "pooled_mean_rms_m": 355.7,
+          "delta_vs_full_m": -0.02
+        },
+        "gmst_only": {
+          "pooled_mean_rms_m": 334.72,
+          "delta_vs_full_m": -21.0
+        }
+      }
+    },
+    "ten_arc_gmst_od": {
+      "path": "results\\real_slr_sp3_od\\real_slr_sp3_od_validation.json",
+      "sha256": "8bc41092db2f140452585c6933b30d92ea474fad56e0f56356ca40c93c37af70",
+      "num_arcs_completed": 10,
+      "pooled_held_out_position_rmse_m": {
+        "EKF": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 367.98,
+          "median_arc_rms_m": 248.67,
+          "arcs_best_of": 1
+        },
+        "UKF (fixed-noise)": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 334.72,
+          "median_arc_rms_m": 234.04,
+          "arcs_best_of": 1
+        },
+        "AUKF (adaptive)": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 341.33,
+          "median_arc_rms_m": 296.13,
+          "arcs_best_of": 3
+        },
+        "SP3-IC propagation": {
+          "n_arcs": 10,
+          "mean_arc_rms_m": 402.92,
+          "median_arc_rms_m": 260.68,
+          "arcs_best_of": 5
+        }
+      },
+      "dbar_external_validation": {
+        "n_arcs_scored": 10,
+        "n_correct": 6,
+        "external_label_definition": "adaptation counterproductive iff the adaptive UKF held-out SP3 position RMSE exceeds the fixed-noise UKF held-out SP3 position RMSE by more than the predeclared 5% margin (external precise reference; not the DBAR statistic, not a simulator label)",
+        "classification_accuracy": 0.6,
+        "confusion": {
+          "true_fire": 0,
+          "true_no_fire": 6,
+          "false_fire": 2,
+          "false_no_fire": 2
+        },
+        "sensitivity": 0.0,
+        "specificity": 0.75,
+        "n_counterproductive_arcs": 2,
+        "n_non_counterproductive_arcs": 8,
+        "classification_report": {
+          "n": 10,
+          "n_positive": 2,
+          "n_negative": 8,
+          "confidence": 0.95,
+          "accuracy": 0.6,
+          "accuracy_ci": [
+            0.3127,
+            0.8318
+          ],
+          "sensitivity": 0.0,
+          "sensitivity_ci": [
+            0.0,
+            0.6576
+          ],
+          "specificity": 0.75,
+          "specificity_ci": [
+            0.4093,
+            0.9285
+          ],
+          "precision": 0.0,
+          "no_information": {
+            "majority_class": "no_fire (negative)",
+            "majority_class_accuracy": 0.8,
+            "accuracy_minus_majority": -0.2,
+            "n_correct_above_majority": -2,
+            "beats_majority": false
+          },
+          "power": {
+            "n_for_80pct_power_vs_majority_alpha05": 1000000000,
+            "positive_class_underpowered": true,
+            "note": "Sensitivity rests on the positive class only; with a small positive class its Wilson interval is wide and no inferential claim is made."
+          }
+        },
+        "no_information_baseline": {
+          "majority_class": "no_fire (negative)",
+          "majority_class_accuracy": 0.8,
+          "accuracy_minus_majority": -0.2,
+          "n_correct_above_majority": -2,
+          "beats_majority": false
+        },
+        "incremental_accuracy_over_majority_class": -0.2,
+        "beats_trivial_majority_classifier": false
+      }
+    },
+    "four_arc_range_residual": {
+      "path": "results\\real_slr_lageos\\real_slr_lageos_validation.json",
+      "sha256": "f6c62f4752e936a27da251dda1f1cc38900778b0350955d7df13934d9110327a",
+      "num_arcs_completed": 4,
+      "num_held_out_total": 117,
+      "pooled_estimators": {
+        "SGP4 prior": {
+          "fit": {
+            "count": 267,
+            "rms_m": 109.19555230178995,
+            "mae_m": 89.98084615082008,
+            "median_abs_m": 82.95187281165272,
+            "p95_abs_m": 207.68766788067296
+          },
+          "held_out": {
+            "count": 117,
+            "rms_m": 103.31550616190042,
+            "mae_m": 73.24872448147299,
+            "median_abs_m": 51.49718902632594,
+            "p95_abs_m": 245.18351520542043
+          }
+        },
+        "Range-only WLS fit": {
+          "fit": {
+            "count": 267,
+            "rms_m": 17.014475280924554,
+            "mae_m": 12.387234007158362,
+            "median_abs_m": 9.990932896733284,
+            "p95_abs_m": 29.25948902741074
+          },
+          "held_out": {
+            "count": 117,
+            "rms_m": 93.09465245390213,
+            "mae_m": 65.25951034889326,
+            "median_abs_m": 49.77162351552397,
+            "p95_abs_m": 205.29260845594095
+          }
+        },
+        "Learned residual (SGP4 prior)": {
+          "fit": {
+            "count": 267,
+            "rms_m": 6.084793723082763,
+            "mae_m": 4.2702894117439,
+            "median_abs_m": 2.701059273444116,
+            "p95_abs_m": 14.511296817567196
+          },
+          "held_out": {
+            "count": 117,
+            "rms_m": 207.48912181962194,
+            "mae_m": 167.57735744881262,
+            "median_abs_m": 166.27750195749104,
+            "p95_abs_m": 355.96327644977714
+          }
+        },
+        "WLS + learned residual calibration": {
+          "fit": {
+            "count": 267,
+            "rms_m": 1.939411597709938,
+            "mae_m": 0.852515874772371,
+            "median_abs_m": 0.3460531895980239,
+            "p95_abs_m": 3.262082697357979
+          },
+          "held_out": {
+            "count": 117,
+            "rms_m": 96.07963318033703,
+            "mae_m": 66.85908558031815,
+            "median_abs_m": 50.97495867032558,
+            "p95_abs_m": 179.04951673615707
+          }
+        }
+      },
+      "learned_beats_classical_wls": false
+    }
+  },
+  "claim_boundary": {
+    "is_operational_validation": false,
+    "is_central_learned_vs_classical_validation": false,
+    "appropriate_use": "Use as public-data provenance and measurement-reduction coverage evidence only; do not use as operational POD, centimetre SLR validation, or external validation of the central simulator-bound learned-vs-classical conclusion.",
+    "smallest_defensible_paper_use": "A supplement or evidence-index row can state that the existing forty-arc public corpus has complete archived CRD/SP3/EOP coverage and quantified correction/frame magnitudes, while retaining the existing bounded-probe language."
+  }
+}

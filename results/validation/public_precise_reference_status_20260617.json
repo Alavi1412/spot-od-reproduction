@@ -1,0 +1,92 @@
+{
+  "schema_version": "public_precise_reference_status_v2",
+  "generated_at_utc": "2026-06-17T12:54:45.9236175Z",
+  "evidence_basis": "Live EDC availability check reported by the main session on 2026-06-17.",
+  "official_sources": {
+    "edc_lageos1_orbit_listing": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/",
+    "edc_lageos2_orbit_listing": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/",
+    "edc_precise_orbits_description": "https://edc.dgfi.tum.de/en/products/precise-orbits/",
+    "nasa_earthdata_slr_ac_orbit_product": "https://www.earthdata.nasa.gov/data/space-geodesy-techniques/slr/analysis-center-orbit-product"
+  },
+  "live_edc_listing_recheck": {
+    "lageos1": {
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/",
+      "has_260613": false,
+      "has_260620": false
+    },
+    "lageos2": {
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/",
+      "has_260613": false,
+      "has_260620": false
+    }
+  },
+  "direct_nsgf_url_checks": [
+    {
+      "target": "lageos1",
+      "week": "260613",
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260613/nsgf.orb.lageos1.260613.v80.sp3.gz",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "byte_length": 825,
+      "valid_gzip_sp3_product": false,
+      "interpretation": "EDC missing-file HTML placeholder, not a gzip/SP3 product."
+    },
+    {
+      "target": "lageos2",
+      "week": "260613",
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260613/nsgf.orb.lageos2.260613.v80.sp3.gz",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "byte_length": 825,
+      "valid_gzip_sp3_product": false,
+      "interpretation": "EDC missing-file HTML placeholder, not a gzip/SP3 product."
+    },
+    {
+      "target": "lageos1",
+      "week": "260620",
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260620/nsgf.orb.lageos1.260620.v80.sp3.gz",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "byte_length": 825,
+      "valid_gzip_sp3_product": false,
+      "interpretation": "EDC missing-file HTML placeholder, not a gzip/SP3 product."
+    },
+    {
+      "target": "lageos2",
+      "week": "260620",
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260620/nsgf.orb.lageos2.260620.v80.sp3.gz",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "byte_length": 825,
+      "valid_gzip_sp3_product": false,
+      "interpretation": "EDC missing-file HTML placeholder, not a gzip/SP3 product."
+    }
+  ],
+  "prospective_public_week_260620": {
+    "predeclaration_created_utc": "2026-06-12T12:20:48Z",
+    "predeclaration_path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+    "predeclaration_sha256": "76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca",
+    "timestamp_attestation_path": "results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.json",
+    "timestamp_proof_status": "bitcoin_block_header_attested_not_scored_validation",
+    "can_score_260620_now": false,
+    "status": "pending_not_scored",
+    "test_dates": [
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19"
+    ],
+    "reason": "EDC parent listings for both LAGEOS targets do not list 260613 or 260620, and direct NSGF 260613/260620 URLs for both targets return HTTP 200 text/html placeholders of length 825 rather than gzip/SP3 products."
+  },
+  "boundary": {
+    "can_score_260620_prospective_rule_now": false,
+    "can_be_reported_as_completed_validation": false,
+    "can_be_used_as_scored_validation": false,
+    "sp3_260613_available_for_checked_targets": false,
+    "sp3_260620_available_for_checked_targets": false,
+    "timestamp_proof_changes_validation_status": false,
+    "availability_conclusion": "As of the 2026-06-17 live check, public 260613/260620 SP3 products remain unavailable for the checked LAGEOS targets; the 260620 prospective campaign remains pending/not scored."
+  },
+  "overall_interpretation": "The 260620 OpenTimestamps proof is now Bitcoin-block-header-attested, but this timestamp proof is not scored validation and does not change public precise-reference availability. The 260620 prospective campaign remains pending/not scored because current public 260613/260620 SP3 products are not available."
+}

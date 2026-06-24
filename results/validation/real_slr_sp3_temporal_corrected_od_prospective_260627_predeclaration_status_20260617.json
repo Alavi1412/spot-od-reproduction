@@ -1,0 +1,70 @@
+{
+  "schema_version": "real_slr_sp3_temporal_corrected_od_prospective_predeclaration_status_v1",
+  "generated_at_utc": "2026-06-17T14:55:00Z",
+  "artifact": "real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status",
+  "status": "pending_not_scored",
+  "campaign_run_performed": false,
+  "scoring_performed": false,
+  "predeclaration": {
+    "path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json",
+    "sha256": "599c4f3f27873bf7b389ca9cef7e4aab841465126a7366a3db384cb738f765e6",
+    "created_utc": "2026-06-17T14:50:56Z",
+    "created_locally_on": "2026-06-17",
+    "created_before_test_dates": true,
+    "schedule_name": "prospective_260627",
+    "validation_week": "260620",
+    "test_week": "260627",
+    "validation_dates": [
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19"
+    ],
+    "test_dates": [
+      "2026-06-22",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-06-25",
+      "2026-06-26"
+    ]
+  },
+  "sha256_sidecar": {
+    "path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.sha256.txt",
+    "matched_source_json": true
+  },
+  "opentimestamps": {
+    "path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json.ots",
+    "byte_length": 1190,
+    "sha256": "8b7ede4ca59e3121cbcb69a989cada9c34005d128f1378136e37942fac9a38d0",
+    "source_sha256_matched_predeclaration": true,
+    "status": "calendar_pending_not_bitcoin_block_header_attested",
+    "local_bitcoin_node_verification_performed": false,
+    "no_bitcoin_verify_exit_status": 1,
+    "verify_interpretation": "OpenTimestamps verification reported pending confirmation in the Bitcoin blockchain for the contacted calendars; this is timestamp evidence only, not scored validation."
+  },
+  "public_precise_reference_availability_basis": {
+    "current_status_json": "results/validation/public_precise_reference_status_20260617.json",
+    "current_status_md": "results/validation/public_precise_reference_status_20260617.md",
+    "status_artifact_generated_at_utc": "2026-06-17T12:54:45.9236175Z",
+    "status_artifact_scope": "Live EDC availability check for 260613 and 260620 reported by the main session on 2026-06-17.",
+    "public_260613_sp3_available_for_checked_targets": false,
+    "public_260620_sp3_available_for_checked_targets": false,
+    "edc_observation": "Direct 260613 and 260620 NSGF URLs returned HTTP 200 text/html; charset=utf-8 responses of length 825, not valid gzip/SP3 products."
+  },
+  "claim_boundary": {
+    "prospective_public_temporal_holdout": true,
+    "rule_created_before_test_dates": true,
+    "can_be_used_as_scored_validation_now": false,
+    "can_be_reported_as_completed_validation": false,
+    "can_be_used_as_operational_pod_validation": false,
+    "can_be_used_as_central_external_validation": false,
+    "timestamp_proof_changes_validation_status": false,
+    "required_before_any_scoring": [
+      "public 260620 validation-week SP3 products must become valid gzip/SP3 products for the checked LAGEOS targets",
+      "public 260627 test-week SP3 products must become valid gzip/SP3 products for the checked LAGEOS targets",
+      "the frozen 260627 rule must be scored once without changing the predeclaration"
+    ],
+    "interpretation": "The 260627 rule was created locally on 2026-06-17 before the 2026-06-22..2026-06-26 test dates. It is pending/not scored and cannot be used as validation until validation/test public SP3 products become valid gzip/SP3 products and the frozen rule is scored once."
+  }
+}

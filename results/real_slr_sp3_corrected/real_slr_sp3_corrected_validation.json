@@ -1,0 +1,810 @@
+{
+  "schema_version": "real_slr_sp3_corrected_v1",
+  "generated_utc": "2026-05-19T13:17:45Z",
+  "status": "completed",
+  "targets": [
+    "LAGEOS-1",
+    "LAGEOS-2"
+  ],
+  "num_arcs": 10,
+  "num_arcs_completed": 10,
+  "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+  "sp3_week_product": "260509",
+  "fixed_station_subset": [
+    "HERL",
+    "MATM",
+    "WETL",
+    "YARL"
+  ],
+  "eop_series": {
+    "url": "https://datacenter.iers.org/data/csv/finals2000A.all.csv",
+    "archived_input_id": "finals2000A.all.csv",
+    "input_source": "archived_input",
+    "sha256": "f4a4f34c416f475ff13153f858a2bd52ffcd3945182434b09a9edfdfdd4c9917",
+    "bytes": 3946872,
+    "n_rows": 19864
+  },
+  "audit_configs": [
+    "full",
+    "no_eop",
+    "no_troposphere",
+    "no_centre_of_mass",
+    "no_relativity",
+    "gmst_only"
+  ],
+  "predeclared": {
+    "range_std_m": 20.0,
+    "accel_psd": 1e-12,
+    "train_frac": 0.6,
+    "max_step_s": 30.0,
+    "lageos_centre_of_mass_offset_m": 0.251,
+    "troposphere_model": "Marini-Murray (1973)"
+  },
+  "pooled_held_out_position_rmse_m": {
+    "full": {
+      "EKF": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 382.45,
+        "median_arc_rms_m": 276.4
+      },
+      "UKF (fixed-noise)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 355.72,
+        "median_arc_rms_m": 270.81
+      },
+      "AUKF (adaptive)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 359.68,
+        "median_arc_rms_m": 321.84
+      },
+      "SP3-IC propagation": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 430.76,
+        "median_arc_rms_m": 273.75
+      }
+    },
+    "no_eop": {
+      "EKF": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 378.55,
+        "median_arc_rms_m": 272.63
+      },
+      "UKF (fixed-noise)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 351.06,
+        "median_arc_rms_m": 278.01
+      },
+      "AUKF (adaptive)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 352.58,
+        "median_arc_rms_m": 343.6
+      },
+      "SP3-IC propagation": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 401.57,
+        "median_arc_rms_m": 280.62
+      }
+    },
+    "no_troposphere": {
+      "EKF": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 417.08,
+        "median_arc_rms_m": 260.87
+      },
+      "UKF (fixed-noise)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 384.89,
+        "median_arc_rms_m": 266.11
+      },
+      "AUKF (adaptive)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 390.52,
+        "median_arc_rms_m": 342.56
+      },
+      "SP3-IC propagation": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 430.76,
+        "median_arc_rms_m": 273.75
+      }
+    },
+    "no_centre_of_mass": {
+      "EKF": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 383.97,
+        "median_arc_rms_m": 275.75
+      },
+      "UKF (fixed-noise)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 356.93,
+        "median_arc_rms_m": 273.01
+      },
+      "AUKF (adaptive)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 361.21,
+        "median_arc_rms_m": 324.4
+      },
+      "SP3-IC propagation": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 430.76,
+        "median_arc_rms_m": 273.75
+      }
+    },
+    "no_relativity": {
+      "EKF": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 382.49,
+        "median_arc_rms_m": 276.38
+      },
+      "UKF (fixed-noise)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 355.7,
+        "median_arc_rms_m": 270.85
+      },
+      "AUKF (adaptive)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 359.8,
+        "median_arc_rms_m": 321.95
+      },
+      "SP3-IC propagation": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 430.76,
+        "median_arc_rms_m": 273.75
+      }
+    },
+    "gmst_only": {
+      "EKF": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 367.98,
+        "median_arc_rms_m": 248.67
+      },
+      "UKF (fixed-noise)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 334.72,
+        "median_arc_rms_m": 234.04
+      },
+      "AUKF (adaptive)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 341.33,
+        "median_arc_rms_m": 296.13
+      },
+      "SP3-IC propagation": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 402.92,
+        "median_arc_rms_m": 260.69
+      }
+    }
+  },
+  "pooled_ekf_fit_innovation_rms_m": {
+    "full": 45.528,
+    "no_eop": 45.126,
+    "no_troposphere": 48.654,
+    "no_centre_of_mass": 45.561,
+    "no_relativity": 45.53,
+    "gmst_only": 46.727
+  },
+  "correction_sensitivity_audit": {
+    "no_eop": {
+      "pooled_mean_rms_m": 351.06,
+      "delta_vs_full_m": -4.66
+    },
+    "no_troposphere": {
+      "pooled_mean_rms_m": 384.89,
+      "delta_vs_full_m": 29.17
+    },
+    "no_centre_of_mass": {
+      "pooled_mean_rms_m": 356.93,
+      "delta_vs_full_m": 1.21
+    },
+    "no_relativity": {
+      "pooled_mean_rms_m": 355.7,
+      "delta_vs_full_m": -0.02
+    },
+    "gmst_only": {
+      "pooled_mean_rms_m": 334.72,
+      "delta_vs_full_m": -21.0
+    }
+  },
+  "head_to_head_vs_committed_gmst_only": {
+    "committed_real_slr_sp3_od_mean_m": {
+      "EKF": 367.98,
+      "UKF (fixed-noise)": 334.72,
+      "AUKF (adaptive)": 341.33,
+      "SP3-IC propagation": 402.92
+    },
+    "corrected_full_mean_m": {
+      "EKF": 382.45,
+      "UKF (fixed-noise)": 355.72,
+      "AUKF (adaptive)": 359.68,
+      "SP3-IC propagation": 430.76
+    },
+    "gmst_only_reproduction_mean_m": {
+      "EKF": 367.98,
+      "UKF (fixed-noise)": 334.72,
+      "AUKF (adaptive)": 341.33,
+      "SP3-IC propagation": 402.92
+    }
+  },
+  "arcs": [
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "target": "LAGEOS-1",
+      "date": "20260505",
+      "wavelength_nm": 532.0,
+      "num_met_records": 120,
+      "crd_sha256": "1c10297d95d31922c2bcdb2946da0e43015264d33dcae268f96501abab136779",
+      "sp3_sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "status": "completed",
+      "num_observations": 72,
+      "arc_span_hours": 16.022055556376774,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 164.84,
+          "UKF (fixed-noise)": 161.86,
+          "AUKF (adaptive)": 157.92,
+          "SP3-IC propagation": 898.67
+        },
+        "no_eop": {
+          "EKF": 160.05,
+          "UKF (fixed-noise)": 156.96,
+          "AUKF (adaptive)": 161.18,
+          "SP3-IC propagation": 246.81
+        },
+        "no_troposphere": {
+          "EKF": 155.78,
+          "UKF (fixed-noise)": 152.62,
+          "AUKF (adaptive)": 160.93,
+          "SP3-IC propagation": 898.67
+        },
+        "no_centre_of_mass": {
+          "EKF": 164.21,
+          "UKF (fixed-noise)": 161.23,
+          "AUKF (adaptive)": 157.63,
+          "SP3-IC propagation": 898.67
+        },
+        "no_relativity": {
+          "EKF": 164.82,
+          "UKF (fixed-noise)": 161.84,
+          "AUKF (adaptive)": 157.92,
+          "SP3-IC propagation": 898.67
+        },
+        "gmst_only": {
+          "EKF": 168.11,
+          "UKF (fixed-noise)": 157.96,
+          "AUKF (adaptive)": 145.03,
+          "SP3-IC propagation": 604.52
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 48.764,
+        "no_eop": 45.077,
+        "no_troposphere": 53.101,
+        "no_centre_of_mass": 48.18,
+        "no_relativity": 48.752,
+        "gmst_only": 34.111
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "target": "LAGEOS-1",
+      "date": "20260506",
+      "wavelength_nm": 532.0,
+      "num_met_records": 134,
+      "crd_sha256": "efad86119dc466074ca9856162528d5fff17ac6acf2ddf4cb887f03945960971",
+      "sp3_sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "status": "completed",
+      "num_observations": 109,
+      "arc_span_hours": 23.05188888993528,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 796.58,
+          "UKF (fixed-noise)": 819.95,
+          "AUKF (adaptive)": 714.76,
+          "SP3-IC propagation": 796.34
+        },
+        "no_eop": {
+          "EKF": 857.07,
+          "UKF (fixed-noise)": 881.17,
+          "AUKF (adaptive)": 771.97,
+          "SP3-IC propagation": 560.35
+        },
+        "no_troposphere": {
+          "EKF": 908.51,
+          "UKF (fixed-noise)": 946.46,
+          "AUKF (adaptive)": 876.61,
+          "SP3-IC propagation": 796.34
+        },
+        "no_centre_of_mass": {
+          "EKF": 800.77,
+          "UKF (fixed-noise)": 824.0,
+          "AUKF (adaptive)": 719.62,
+          "SP3-IC propagation": 796.34
+        },
+        "no_relativity": {
+          "EKF": 796.72,
+          "UKF (fixed-noise)": 819.65,
+          "AUKF (adaptive)": 714.85,
+          "SP3-IC propagation": 796.34
+        },
+        "gmst_only": {
+          "EKF": 791.0,
+          "UKF (fixed-noise)": 823.98,
+          "AUKF (adaptive)": 778.57,
+          "SP3-IC propagation": 141.47
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 36.321,
+        "no_eop": 35.615,
+        "no_troposphere": 32.298,
+        "no_centre_of_mass": 36.157,
+        "no_relativity": 36.315,
+        "gmst_only": 33.984
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "target": "LAGEOS-1",
+      "date": "20260507",
+      "wavelength_nm": 532.0,
+      "num_met_records": 80,
+      "crd_sha256": "b2cd99838e78394c595a366cb815c712f14203b0a45566637114aeb84cca5362",
+      "sp3_sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "status": "completed",
+      "num_observations": 55,
+      "arc_span_hours": 8.915213940872086,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 193.99,
+          "UKF (fixed-noise)": 186.58,
+          "AUKF (adaptive)": 299.97,
+          "SP3-IC propagation": 210.63
+        },
+        "no_eop": {
+          "EKF": 225.18,
+          "UKF (fixed-noise)": 215.06,
+          "AUKF (adaptive)": 340.43,
+          "SP3-IC propagation": 215.73
+        },
+        "no_troposphere": {
+          "EKF": 185.33,
+          "UKF (fixed-noise)": 177.58,
+          "AUKF (adaptive)": 325.24,
+          "SP3-IC propagation": 210.63
+        },
+        "no_centre_of_mass": {
+          "EKF": 194.36,
+          "UKF (fixed-noise)": 187.08,
+          "AUKF (adaptive)": 302.26,
+          "SP3-IC propagation": 210.63
+        },
+        "no_relativity": {
+          "EKF": 193.99,
+          "UKF (fixed-noise)": 186.7,
+          "AUKF (adaptive)": 300.26,
+          "SP3-IC propagation": 210.63
+        },
+        "gmst_only": {
+          "EKF": 223.01,
+          "UKF (fixed-noise)": 213.55,
+          "AUKF (adaptive)": 415.74,
+          "SP3-IC propagation": 457.84
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 36.154,
+        "no_eop": 40.26,
+        "no_troposphere": 44.931,
+        "no_centre_of_mass": 36.423,
+        "no_relativity": 36.163,
+        "gmst_only": 57.066
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "target": "LAGEOS-1",
+      "date": "20260508",
+      "wavelength_nm": 532.0,
+      "num_met_records": 120,
+      "crd_sha256": "a7612b9ac41b955290a34fe47fe2a2ac921490ffde0aaff222f4b1cbee7c6efb",
+      "sp3_sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "status": "completed",
+      "num_observations": 61,
+      "arc_span_hours": 10.670097714066506,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 148.43,
+          "UKF (fixed-noise)": 155.93,
+          "AUKF (adaptive)": 168.7,
+          "SP3-IC propagation": 119.97
+        },
+        "no_eop": {
+          "EKF": 150.89,
+          "UKF (fixed-noise)": 147.88,
+          "AUKF (adaptive)": 138.38,
+          "SP3-IC propagation": 110.03
+        },
+        "no_troposphere": {
+          "EKF": 138.46,
+          "UKF (fixed-noise)": 137.47,
+          "AUKF (adaptive)": 134.59,
+          "SP3-IC propagation": 119.97
+        },
+        "no_centre_of_mass": {
+          "EKF": 147.2,
+          "UKF (fixed-noise)": 154.48,
+          "AUKF (adaptive)": 166.88,
+          "SP3-IC propagation": 119.97
+        },
+        "no_relativity": {
+          "EKF": 148.38,
+          "UKF (fixed-noise)": 155.87,
+          "AUKF (adaptive)": 168.71,
+          "SP3-IC propagation": 119.97
+        },
+        "gmst_only": {
+          "EKF": 242.67,
+          "UKF (fixed-noise)": 230.55,
+          "AUKF (adaptive)": 208.01,
+          "SP3-IC propagation": 284.11
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 93.532,
+        "no_eop": 92.062,
+        "no_troposphere": 99.448,
+        "no_centre_of_mass": 93.673,
+        "no_relativity": 93.539,
+        "gmst_only": 100.114
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260509",
+      "target": "LAGEOS-1",
+      "date": "20260509",
+      "wavelength_nm": 532.0,
+      "num_met_records": 64,
+      "crd_sha256": "9d3856e0fb9c23bf7c73204c175e0f5bf66801b30134df7a68220ccfea295e88",
+      "sp3_sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "status": "completed",
+      "num_observations": 63,
+      "arc_span_hours": 14.053252901302443,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 389.36,
+          "UKF (fixed-noise)": 355.04,
+          "AUKF (adaptive)": 343.7,
+          "SP3-IC propagation": 220.37
+        },
+        "no_eop": {
+          "EKF": 442.16,
+          "UKF (fixed-noise)": 406.98,
+          "AUKF (adaptive)": 395.59,
+          "SP3-IC propagation": 142.82
+        },
+        "no_troposphere": {
+          "EKF": 483.54,
+          "UKF (fixed-noise)": 448.02,
+          "AUKF (adaptive)": 385.88,
+          "SP3-IC propagation": 220.37
+        },
+        "no_centre_of_mass": {
+          "EKF": 393.68,
+          "UKF (fixed-noise)": 358.95,
+          "AUKF (adaptive)": 346.54,
+          "SP3-IC propagation": 220.37
+        },
+        "no_relativity": {
+          "EKF": 389.49,
+          "UKF (fixed-noise)": 355.0,
+          "AUKF (adaptive)": 343.64,
+          "SP3-IC propagation": 220.37
+        },
+        "gmst_only": {
+          "EKF": 450.17,
+          "UKF (fixed-noise)": 417.22,
+          "AUKF (adaptive)": 358.71,
+          "SP3-IC propagation": 237.26
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 62.055,
+        "no_eop": 60.043,
+        "no_troposphere": 70.671,
+        "no_centre_of_mass": 62.176,
+        "no_relativity": 62.062,
+        "gmst_only": 66.355
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "target": "LAGEOS-2",
+      "date": "20260505",
+      "wavelength_nm": 532.0,
+      "num_met_records": 68,
+      "crd_sha256": "1a253c94565dff5cf057e6681e4b158c44637f249a14ab2d5bdc65323b314c32",
+      "sp3_sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "status": "completed",
+      "num_observations": 56,
+      "arc_span_hours": 6.342295154796706,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 83.35,
+          "UKF (fixed-noise)": 92.55,
+          "AUKF (adaptive)": 117.91,
+          "SP3-IC propagation": 149.56
+        },
+        "no_eop": {
+          "EKF": 86.6,
+          "UKF (fixed-noise)": 95.59,
+          "AUKF (adaptive)": 106.93,
+          "SP3-IC propagation": 786.99
+        },
+        "no_troposphere": {
+          "EKF": 119.49,
+          "UKF (fixed-noise)": 123.02,
+          "AUKF (adaptive)": 163.61,
+          "SP3-IC propagation": 149.56
+        },
+        "no_centre_of_mass": {
+          "EKF": 81.98,
+          "UKF (fixed-noise)": 90.84,
+          "AUKF (adaptive)": 118.37,
+          "SP3-IC propagation": 149.56
+        },
+        "no_relativity": {
+          "EKF": 83.33,
+          "UKF (fixed-noise)": 92.54,
+          "AUKF (adaptive)": 118.02,
+          "SP3-IC propagation": 149.56
+        },
+        "gmst_only": {
+          "EKF": 63.52,
+          "UKF (fixed-noise)": 63.95,
+          "AUKF (adaptive)": 85.24,
+          "SP3-IC propagation": 800.0
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 72.245,
+        "no_eop": 73.662,
+        "no_troposphere": 71.475,
+        "no_centre_of_mass": 72.289,
+        "no_relativity": 72.244,
+        "gmst_only": 69.849
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "target": "LAGEOS-2",
+      "date": "20260506",
+      "wavelength_nm": 532.0,
+      "num_met_records": 109,
+      "crd_sha256": "9da911a7cff6bae43938b34651833a1ad181f74a2c01df83a540cefdd986ecd1",
+      "sp3_sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "status": "completed",
+      "num_observations": 112,
+      "arc_span_hours": 14.678892936838997,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 801.64,
+          "UKF (fixed-noise)": 500.79,
+          "AUKF (adaptive)": 498.72,
+          "SP3-IC propagation": 465.01
+        },
+        "no_eop": {
+          "EKF": 795.14,
+          "UKF (fixed-noise)": 503.27,
+          "AUKF (adaptive)": 497.11,
+          "SP3-IC propagation": 400.99
+        },
+        "no_troposphere": {
+          "EKF": 897.2,
+          "UKF (fixed-noise)": 567.47,
+          "AUKF (adaptive)": 556.86,
+          "SP3-IC propagation": 465.01
+        },
+        "no_centre_of_mass": {
+          "EKF": 809.56,
+          "UKF (fixed-noise)": 506.71,
+          "AUKF (adaptive)": 504.86,
+          "SP3-IC propagation": 465.01
+        },
+        "no_relativity": {
+          "EKF": 801.84,
+          "UKF (fixed-noise)": 500.56,
+          "AUKF (adaptive)": 499.43,
+          "SP3-IC propagation": 465.01
+        },
+        "gmst_only": {
+          "EKF": 875.58,
+          "UKF (fixed-noise)": 570.17,
+          "AUKF (adaptive)": 550.81,
+          "SP3-IC propagation": 68.12
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 36.112,
+        "no_eop": 35.793,
+        "no_troposphere": 39.78,
+        "no_centre_of_mass": 36.376,
+        "no_relativity": 36.119,
+        "gmst_only": 36.789
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "target": "LAGEOS-2",
+      "date": "20260507",
+      "wavelength_nm": 532.0,
+      "num_met_records": 55,
+      "crd_sha256": "4a08297d891480e0cb5001513c854f1ae2ab49eeb1aa1ee6b986a5744f80cc9b",
+      "sp3_sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "status": "completed",
+      "num_observations": 38,
+      "arc_span_hours": 8.616722223096424,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 119.19,
+          "UKF (fixed-noise)": 133.78,
+          "AUKF (adaptive)": 135.42,
+          "SP3-IC propagation": 224.46
+        },
+        "no_eop": {
+          "EKF": 110.06,
+          "UKF (fixed-noise)": 119.97,
+          "AUKF (adaptive)": 121.35,
+          "SP3-IC propagation": 990.71
+        },
+        "no_troposphere": {
+          "EKF": 111.91,
+          "UKF (fixed-noise)": 105.19,
+          "AUKF (adaptive)": 104.4,
+          "SP3-IC propagation": 224.46
+        },
+        "no_centre_of_mass": {
+          "EKF": 117.82,
+          "UKF (fixed-noise)": 132.15,
+          "AUKF (adaptive)": 133.72,
+          "SP3-IC propagation": 224.46
+        },
+        "no_relativity": {
+          "EKF": 119.13,
+          "UKF (fixed-noise)": 133.77,
+          "AUKF (adaptive)": 135.35,
+          "SP3-IC propagation": 224.46
+        },
+        "gmst_only": {
+          "EKF": 254.67,
+          "UKF (fixed-noise)": 237.52,
+          "AUKF (adaptive)": 233.56,
+          "SP3-IC propagation": 1164.24
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 26.801,
+        "no_eop": 26.691,
+        "no_troposphere": 29.366,
+        "no_centre_of_mass": 26.894,
+        "no_relativity": 26.803,
+        "gmst_only": 27.575
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "target": "LAGEOS-2",
+      "date": "20260508",
+      "wavelength_nm": 532.0,
+      "num_met_records": 134,
+      "crd_sha256": "cb99de9674b94f4d6950619a920d8a77990846f57183452a774fb89c2c5b7786",
+      "sp3_sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "status": "completed",
+      "num_observations": 64,
+      "arc_span_hours": 10.462530451681879,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 768.34,
+          "UKF (fixed-noise)": 770.42,
+          "AUKF (adaptive)": 774.69,
+          "SP3-IC propagation": 323.03
+        },
+        "no_eop": {
+          "EKF": 638.28,
+          "UKF (fixed-noise)": 642.77,
+          "AUKF (adaptive)": 646.14,
+          "SP3-IC propagation": 277.99
+        },
+        "no_troposphere": {
+          "EKF": 834.22,
+          "UKF (fixed-noise)": 836.39,
+          "AUKF (adaptive)": 837.16,
+          "SP3-IC propagation": 323.03
+        },
+        "no_centre_of_mass": {
+          "EKF": 773.01,
+          "UKF (fixed-noise)": 775.12,
+          "AUKF (adaptive)": 779.14,
+          "SP3-IC propagation": 323.03
+        },
+        "no_relativity": {
+          "EKF": 768.47,
+          "UKF (fixed-noise)": 770.76,
+          "AUKF (adaptive)": 774.75,
+          "SP3-IC propagation": 323.03
+        },
+        "gmst_only": {
+          "EKF": 424.34,
+          "UKF (fixed-noise)": 429.95,
+          "AUKF (adaptive)": 430.07,
+          "SP3-IC propagation": 124.02
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 18.231,
+        "no_eop": 17.835,
+        "no_troposphere": 19.359,
+        "no_centre_of_mass": 18.33,
+        "no_relativity": 18.233,
+        "gmst_only": 17.413
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260509",
+      "target": "LAGEOS-2",
+      "date": "20260509",
+      "wavelength_nm": 532.0,
+      "num_met_records": 77,
+      "crd_sha256": "a56b56041eb824d1e3c1599c387f32592377849ed7477367cde6560c002d1806",
+      "sp3_sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "status": "completed",
+      "num_observations": 59,
+      "arc_span_hours": 10.261110160814392,
+      "held_out_position_rmse_m_by_config": {
+        "full": {
+          "EKF": 358.82,
+          "UKF (fixed-noise)": 380.26,
+          "AUKF (adaptive)": 384.97,
+          "SP3-IC propagation": 899.54
+        },
+        "no_eop": {
+          "EKF": 320.08,
+          "UKF (fixed-noise)": 340.96,
+          "AUKF (adaptive)": 346.77,
+          "SP3-IC propagation": 283.25
+        },
+        "no_troposphere": {
+          "EKF": 336.4,
+          "UKF (fixed-noise)": 354.64,
+          "AUKF (adaptive)": 359.88,
+          "SP3-IC propagation": 899.54
+        },
+        "no_centre_of_mass": {
+          "EKF": 357.14,
+          "UKF (fixed-noise)": 378.71,
+          "AUKF (adaptive)": 383.11,
+          "SP3-IC propagation": 899.54
+        },
+        "no_relativity": {
+          "EKF": 358.77,
+          "UKF (fixed-noise)": 380.26,
+          "AUKF (adaptive)": 385.09,
+          "SP3-IC propagation": 899.54
+        },
+        "gmst_only": {
+          "EKF": 186.74,
+          "UKF (fixed-noise)": 202.31,
+          "AUKF (adaptive)": 207.56,
+          "SP3-IC propagation": 147.59
+        }
+      },
+      "ekf_fit_innovation_rms_m_by_config": {
+        "full": 25.069,
+        "no_eop": 24.221,
+        "no_troposphere": 26.108,
+        "no_centre_of_mass": 25.11,
+        "no_relativity": 25.071,
+        "gmst_only": 24.011
+      }
+    }
+  ],
+  "caveats": "Operationally-corrected precise-reference real-data sanity probe. The approximate GMST-only Earth rotation is replaced with a full IAU-76/80 reduction ingesting the real public IERS finals2000A.all Earth-orientation series (polar motion and UT1-UTC), and the standard precise-SLR-reduction corrections the prior bounded slice omitted are applied: tropospheric refraction (Marini--Murray, from the real CRD surface meteorology and transmit wavelength), the satellite centre-of-mass offset, and the relativistic (Shapiro) range delay. The dynamics remain the compact two-body+J2 model, so this isolates the Earth-orientation and SLR-reduction effect and is not a force-model change. Held-out error is a state error against the same independent ILRS analysis-centre SP3-c precise orbit product. This is a bounded sanity / provenance probe with explicit approximation caveats, not a centimetre operational or flight-grade orbit determination claim; the correction-sensitivity audit reports the magnitude of each individual correction so the residual gap is quantified rather than hidden."
+}

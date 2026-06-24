@@ -2,7 +2,7 @@
   "active_figure_environment_lines": [
     {
       "content": "\\begin{figure}[t]",
-      "line": 199,
+      "line": 204,
       "path": "paper\\main.tex"
     }
   ],
@@ -11,7 +11,7 @@
       "bytes": 195179,
       "directive": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
       "exists": true,
-      "line": 201,
+      "line": 206,
       "path": "paper\\figures\\aukf_r_inflation_mechanism.png",
       "target": "figures/aukf_r_inflation_mechanism.png"
     }
@@ -21,15 +21,15 @@
       "bytes": 1627,
       "directive": "\\input{tables/main_abbreviation_glossary.tex}",
       "exists": true,
-      "line": 47,
+      "line": 49,
       "path": "paper\\tables\\main_abbreviation_glossary.tex",
       "target": "tables/main_abbreviation_glossary.tex"
     },
     {
-      "bytes": 3587,
+      "bytes": 2918,
       "directive": "\\input{tables/main_framework_portability.tex}",
       "exists": true,
-      "line": 93,
+      "line": 98,
       "path": "paper\\tables\\main_framework_portability.tex",
       "target": "tables/main_framework_portability.tex"
     },
@@ -37,7 +37,7 @@
       "bytes": 2493,
       "directive": "\\input{tables/main_findings_summary.tex}",
       "exists": true,
-      "line": 162,
+      "line": 167,
       "path": "paper\\tables\\main_findings_summary.tex",
       "target": "tables/main_findings_summary.tex"
     },
@@ -45,7 +45,7 @@
       "bytes": 2316,
       "directive": "\\input{tables/main_k32_replication.tex}",
       "exists": true,
-      "line": 168,
+      "line": 173,
       "path": "paper\\tables\\main_k32_replication.tex",
       "target": "tables/main_k32_replication.tex"
     },
@@ -53,7 +53,7 @@
       "bytes": 1376,
       "directive": "\\input{tables/main_aukf_mechanism.tex}",
       "exists": true,
-      "line": 206,
+      "line": 211,
       "path": "paper\\tables\\main_aukf_mechanism.tex",
       "target": "tables/main_aukf_mechanism.tex"
     },
@@ -61,15 +61,15 @@
       "bytes": 1137,
       "directive": "\\input{tables/main_structural_recoverability.tex}",
       "exists": true,
-      "line": 233,
+      "line": 246,
       "path": "paper\\tables\\main_structural_recoverability.tex",
       "target": "tables/main_structural_recoverability.tex"
     },
     {
-      "bytes": 1589,
+      "bytes": 2120,
       "directive": "\\input{tables/main_drag_scale_cascade.tex}",
       "exists": true,
-      "line": 237,
+      "line": 250,
       "path": "paper\\tables\\main_drag_scale_cascade.tex",
       "target": "tables/main_drag_scale_cascade.tex"
     },
@@ -77,7 +77,7 @@
       "bytes": 1142,
       "directive": "\\input{tables/main_long_arc_result.tex}",
       "exists": true,
-      "line": 248,
+      "line": 261,
       "path": "paper\\tables\\main_long_arc_result.tex",
       "target": "tables/main_long_arc_result.tex"
     },
@@ -85,7 +85,7 @@
       "bytes": 1018,
       "directive": "\\input{tables/main_dbar_withdrawal.tex}",
       "exists": true,
-      "line": 265,
+      "line": 278,
       "path": "paper\\tables\\main_dbar_withdrawal.tex",
       "target": "tables/main_dbar_withdrawal.tex"
     }
@@ -96,15 +96,15 @@
       "bytes": 1627,
       "directive": "\\input{tables/main_abbreviation_glossary.tex}",
       "exists": true,
-      "line": 47,
+      "line": 49,
       "path": "paper\\tables\\main_abbreviation_glossary.tex",
       "target": "tables/main_abbreviation_glossary.tex"
     },
     {
-      "bytes": 3587,
+      "bytes": 2918,
       "directive": "\\input{tables/main_framework_portability.tex}",
       "exists": true,
-      "line": 93,
+      "line": 98,
       "path": "paper\\tables\\main_framework_portability.tex",
       "target": "tables/main_framework_portability.tex"
     },
@@ -112,7 +112,7 @@
       "bytes": 2493,
       "directive": "\\input{tables/main_findings_summary.tex}",
       "exists": true,
-      "line": 162,
+      "line": 167,
       "path": "paper\\tables\\main_findings_summary.tex",
       "target": "tables/main_findings_summary.tex"
     },
@@ -120,7 +120,7 @@
       "bytes": 2316,
       "directive": "\\input{tables/main_k32_replication.tex}",
       "exists": true,
-      "line": 168,
+      "line": 173,
       "path": "paper\\tables\\main_k32_replication.tex",
       "target": "tables/main_k32_replication.tex"
     },
@@ -128,7 +128,7 @@
       "bytes": 1376,
       "directive": "\\input{tables/main_aukf_mechanism.tex}",
       "exists": true,
-      "line": 206,
+      "line": 211,
       "path": "paper\\tables\\main_aukf_mechanism.tex",
       "target": "tables/main_aukf_mechanism.tex"
     },
@@ -136,15 +136,15 @@
       "bytes": 1137,
       "directive": "\\input{tables/main_structural_recoverability.tex}",
       "exists": true,
-      "line": 233,
+      "line": 246,
       "path": "paper\\tables\\main_structural_recoverability.tex",
       "target": "tables/main_structural_recoverability.tex"
     },
     {
-      "bytes": 1589,
+      "bytes": 2120,
       "directive": "\\input{tables/main_drag_scale_cascade.tex}",
       "exists": true,
-      "line": 237,
+      "line": 250,
       "path": "paper\\tables\\main_drag_scale_cascade.tex",
       "target": "tables/main_drag_scale_cascade.tex"
     },
@@ -152,7 +152,7 @@
       "bytes": 1142,
       "directive": "\\input{tables/main_long_arc_result.tex}",
       "exists": true,
-      "line": 248,
+      "line": 261,
       "path": "paper\\tables\\main_long_arc_result.tex",
       "target": "tables/main_long_arc_result.tex"
     },
@@ -160,7 +160,7 @@
       "bytes": 1018,
       "directive": "\\input{tables/main_dbar_withdrawal.tex}",
       "exists": true,
-      "line": 265,
+      "line": 278,
       "path": "paper\\tables\\main_dbar_withdrawal.tex",
       "target": "tables/main_dbar_withdrawal.tex"
     }
@@ -307,7 +307,7 @@
     "main_generated_table_count": 9,
     "main_inline_table_count": 0
   },
-  "generated_utc": "2026-06-13T05:15:05.541116+00:00",
+  "generated_utc": "2026-06-17T16:33:06.373425+00:00",
   "latex_warnings": {
     "category_counts": {
       "latex_warning": 0,
@@ -376,32 +376,26 @@
     "release_packet_json_and_active_artifacts": true
   },
   "pdf": {
-    "bytes": 721948,
+    "bytes": 730825,
     "exists": true,
-    "page_count": 34,
-    "page_readback_errors": [
-      "pypdf: No module named 'pypdf'",
-      "PyPDF2: No module named 'PyPDF2'"
-    ],
-    "page_source": "pdfinfo",
-    "pages": 34,
+    "page_count": 35,
+    "page_readback_errors": [],
+    "page_source": "pypdf",
+    "pages": 35,
     "passed": true,
     "path": "paper\\main.pdf",
-    "sha256": "33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
+    "sha256": "c0f2a904dd7c4d5cbad556aaace91e19419830ec3bb7ab370758bbef2c2595c5"
   },
   "pdf_evidence": {
-    "bytes": 721948,
+    "bytes": 730825,
     "exists": true,
-    "page_count": 34,
-    "page_readback_errors": [
-      "pypdf: No module named 'pypdf'",
-      "PyPDF2: No module named 'PyPDF2'"
-    ],
-    "page_source": "pdfinfo",
-    "pages": 34,
+    "page_count": 35,
+    "page_readback_errors": [],
+    "page_source": "pypdf",
+    "pages": 35,
     "passed": true,
     "path": "paper\\main.pdf",
-    "sha256": "33edaba6684aec1384f32bfd685ef005de0ad1e035e479b799b22beac5bfcfd1"
+    "sha256": "c0f2a904dd7c4d5cbad556aaace91e19419830ec3bb7ab370758bbef2c2595c5"
   },
   "release_evidence_index": {
     "active_include_counts": {
@@ -430,61 +424,61 @@
     "expected_active_figure_environment_lines": [
       {
         "content": "\\begin{figure}[t]",
-        "line": 199,
+        "line": 204,
         "path": "paper\\main.tex"
       }
     ],
     "expected_active_figure_line_evidence": [
       {
         "content": "\\includegraphics[width=\\linewidth]{figures/aukf_r_inflation_mechanism.png}",
-        "line": 201,
+        "line": 206,
         "path": "paper\\figures\\aukf_r_inflation_mechanism.png"
       }
     ],
     "expected_active_table_line_evidence": [
       {
         "content": "\\input{tables/main_abbreviation_glossary.tex}",
-        "line": 47,
+        "line": 49,
         "path": "paper\\tables\\main_abbreviation_glossary.tex"
       },
       {
         "content": "\\input{tables/main_framework_portability.tex}",
-        "line": 93,
+        "line": 98,
         "path": "paper\\tables\\main_framework_portability.tex"
       },
       {
         "content": "\\input{tables/main_findings_summary.tex}",
-        "line": 162,
+        "line": 167,
         "path": "paper\\tables\\main_findings_summary.tex"
       },
       {
         "content": "\\input{tables/main_k32_replication.tex}",
-        "line": 168,
+        "line": 173,
         "path": "paper\\tables\\main_k32_replication.tex"
       },
       {
         "content": "\\input{tables/main_aukf_mechanism.tex}",
-        "line": 206,
+        "line": 211,
         "path": "paper\\tables\\main_aukf_mechanism.tex"
       },
       {
         "content": "\\input{tables/main_structural_recoverability.tex}",
-        "line": 233,
+        "line": 246,
         "path": "paper\\tables\\main_structural_recoverability.tex"
       },
       {
         "content": "\\input{tables/main_drag_scale_cascade.tex}",
-        "line": 237,
+        "line": 250,
         "path": "paper\\tables\\main_drag_scale_cascade.tex"
       },
       {
         "content": "\\input{tables/main_long_arc_result.tex}",
-        "line": 248,
+        "line": 261,
         "path": "paper\\tables\\main_long_arc_result.tex"
       },
       {
         "content": "\\input{tables/main_dbar_withdrawal.tex}",
-        "line": 265,
+        "line": 278,
         "path": "paper\\tables\\main_dbar_withdrawal.tex"
       }
     ],
@@ -492,7 +486,7 @@
     "missing_artifacts": [],
     "passed": true,
     "path": "results\\release_packet.json",
-    "sha256": "4d280586d590c01562938a526ddc2e715432ab87d1c7d5a69172b2d5695d513a",
+    "sha256": "91fc981d9c391813bc866bead5a7b6cec43f236530a6968d413613c4cfadd93e",
     "status": "pass"
   },
   "root_label": "submission_root",

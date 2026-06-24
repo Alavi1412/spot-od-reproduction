@@ -14,7 +14,7 @@ from scripts.build_supplementary_manifest import (
 
 
 MANIFEST_PATH = ROOT / "release" / "SUPPLEMENTARY_MANIFEST.json"
-ARCHIVE_PATH = ROOT / "release" / "spot_od_v1_1_0_supplement_review_archive.zip"
+ARCHIVE_PATH = ROOT / "release" / "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip"
 ILRS_REPORT_JSON = "results/validation/ilrs_precise_reference_availability_20260617.json"
 ILRS_REPORT_MD = "results/validation/ilrs_precise_reference_availability_20260617.md"
 REPRO_REQUEST = "release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md"
@@ -43,7 +43,7 @@ def test_independent_machine_reproduction_request_is_indexed_as_request_only() -
     request = (ROOT / REPRO_REQUEST).read_text(encoding="utf-8")
     assert "not a completed independent reproduction" in request
     assert "release/SUPPLEMENTARY_MANIFEST.json" in request
-    assert "release/spot_od_v1_1_0_supplement_review_archive.zip" in request
+    assert "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip" in request
     assert "scripts/verify_minimum_tier_reproduction.py" in request
     assert "scripts/verify_archive_extracted_reproduction.py" in request
 

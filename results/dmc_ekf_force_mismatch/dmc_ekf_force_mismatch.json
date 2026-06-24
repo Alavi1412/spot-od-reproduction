@@ -1,0 +1,146 @@
+{
+  "scenario": "dmc_ekf_force_mismatch",
+  "schema_version": "dmc_ekf_force_mismatch_v1",
+  "scope": "Dynamic-model-compensation EKF on higher-fidelity force-mismatch: truth uses two-body + J2..J6 zonal geopotential + luni-solar third-body acceleration + exponential drag with a one-sided diurnal-bulge density modulation (alpha=0.30); EKF/UKF/AUKF/PUKF/DMC-EKF all use the compact two-body+J2+drag deterministic flow; DMC-EKF augments the state with a per-axis first-order Gauss-Markov empirical-acceleration channel (sigma=1.0e-06 m/s^2, tau=300 s).",
+  "n_trajectories": 48,
+  "steps": 120,
+  "dt_s": 20.0,
+  "eval_start_step": 11,
+  "epoch_unix": 1736640000.0,
+  "rng_seed": 20260544,
+  "diurnal_alpha": 0.3,
+  "bootstrap_samples": 5000,
+  "predeclared_rule_path": "release/predeclarations/dmc_ekf_rule_loop44.json",
+  "predeclared_rule_digest_sha256": "912663588197f8e30df21f8e37ad47e32ad3ce592ad268a7ca383b227e6c9d7f",
+  "pukf_predeclared_rule_path": "release/predeclarations/pukf_q_adaptive_rule_loop41.json",
+  "truth_acceleration": "accel_hifi_extended(r, epoch_unix) (J2..J6 + luni-solar) + exponential drag with diurnal-bulge density modulation",
+  "estimator_acceleration": "compact two-body + J2 + time-invariant exponential drag",
+  "dmc_augmented_state": "[r, v, w] with w a per-axis Gauss-Markov empirical-acceleration",
+  "observed_step_rmse_mean_m": {
+    "EKF": 279.044035091146,
+    "UKF": 276.1299025756331,
+    "AUKF": 283.1407072892856,
+    "PUKF": 313.39320309657114,
+    "DMC_EKF": 279.0440428501467
+  },
+  "paired": {
+    "DMC_EKF_minus_EKF": {
+      "candidate": "DMC_EKF",
+      "baseline": "EKF",
+      "mean_diff_m": 7.759000744051042e-06,
+      "ci_lo_m": -4.7872871020039425e-05,
+      "ci_hi_m": 5.692818591913193e-05,
+      "wilcoxon_p_one_sided_candidate_better": 0.7724308375909459,
+      "n_paired": 37,
+      "candidate_better_count": 17
+    },
+    "DMC_EKF_minus_UKF": {
+      "candidate": "DMC_EKF",
+      "baseline": "UKF",
+      "mean_diff_m": 2.914140274513584,
+      "ci_lo_m": -3.792948631755496,
+      "ci_hi_m": 8.092069232341071,
+      "wilcoxon_p_one_sided_candidate_better": 0.9989279351284495,
+      "n_paired": 37,
+      "candidate_better_count": 8
+    },
+    "DMC_EKF_minus_AUKF": {
+      "candidate": "DMC_EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": -4.096664439138901,
+      "ci_lo_m": -18.0500620142336,
+      "ci_hi_m": 8.148825782726679,
+      "wilcoxon_p_one_sided_candidate_better": 0.6172214463367709,
+      "n_paired": 37,
+      "candidate_better_count": 12
+    },
+    "DMC_EKF_minus_PUKF": {
+      "candidate": "DMC_EKF",
+      "baseline": "PUKF",
+      "mean_diff_m": -34.34916024642443,
+      "ci_lo_m": -44.065698536885975,
+      "ci_hi_m": -24.76933853098983,
+      "wilcoxon_p_one_sided_candidate_better": 6.577465683221817e-09,
+      "n_paired": 37,
+      "candidate_better_count": 35
+    },
+    "EKF_minus_AUKF": {
+      "candidate": "EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": -4.096672198139645,
+      "ci_lo_m": -17.243725048847576,
+      "ci_hi_m": 8.282911833271923,
+      "wilcoxon_p_one_sided_candidate_better": 0.6172214463367709,
+      "n_paired": 37,
+      "candidate_better_count": 12
+    },
+    "UKF_minus_AUKF": {
+      "candidate": "UKF",
+      "baseline": "AUKF",
+      "mean_diff_m": -7.010804713652487,
+      "ci_lo_m": -20.924715284513194,
+      "ci_hi_m": 6.324987934865835,
+      "wilcoxon_p_one_sided_candidate_better": 0.4173426918059704,
+      "n_paired": 37,
+      "candidate_better_count": 15
+    }
+  },
+  "decision": {
+    "best_non_dmc_estimator": "UKF",
+    "best_non_dmc_mean_m": 276.1299025756331,
+    "practical_significance_floor_fraction": 0.03,
+    "practical_significance_floor_abs_m": 8.283897077268993,
+    "dmc_minus_best_non_dmc_mean_m": 2.914140274513584,
+    "dmc_minus_best_non_dmc_ci_lo_m": -3.596331922189419,
+    "dmc_minus_best_non_dmc_ci_hi_m": 8.13498314542024,
+    "dmc_is_strictly_lowest_mean": false,
+    "ci_strictly_negative_for_dmc": false,
+    "floor_exceeded": false,
+    "predeclared_positive_criterion_met": false
+  },
+  "dmc_diagnostics": {
+    "max_abs_empirical_acceleration_mps2": 2.3450633094225843e-10,
+    "median_max_abs_empirical_acceleration_mps2": 9.95158202907308e-11
+  },
+  "pukf_diagnostics": {
+    "mean_q_scale": 4.236863155017562,
+    "median_q_scale": 1.1428933174370814,
+    "max_q_scale": 9.999999999999996
+  },
+  "cross_filter_r_only_nis": {
+    "EKF": {
+      "median": 1.3583045591620089,
+      "mean": 2.2261514382138543,
+      "p90": 4.254841891778919,
+      "n": 1397
+    },
+    "UKF": {
+      "median": 1.4833637699061542,
+      "mean": 2.4667901926603153,
+      "p90": 4.492292739351697,
+      "n": 1397
+    },
+    "AUKF": {
+      "median": 1.538817187383858,
+      "mean": 2.783783509682764,
+      "p90": 4.950924349487274,
+      "n": 1397
+    },
+    "PUKF": {
+      "median": 1.0454313614183144,
+      "mean": 2.1099846567515805,
+      "p90": 3.8300438182095253,
+      "n": 1397
+    },
+    "DMC_EKF": {
+      "median": 1.3583038589714889,
+      "mean": 2.226151341987287,
+      "p90": 4.254838093819656,
+      "n": 1397
+    }
+  },
+  "elapsed_seconds": {
+    "truth_generation": 7.724950399948284,
+    "filters": 233.97114819998387
+  }
+}

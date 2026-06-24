@@ -1,0 +1,28 @@
+{
+  "vendor_path": "external\\third_party\\KalmanNet_TSP",
+  "config": {
+    "state_dim": 2,
+    "T": 30,
+    "N_E": 200,
+    "N_CV": 50,
+    "N_T": 50,
+    "n_steps": 300,
+    "n_batch": 20,
+    "lr": 0.001,
+    "wd": 0.001,
+    "vdB": -20.0,
+    "seed": 41,
+    "device": "cpu"
+  },
+  "n_params_kalmannet": 5208,
+  "observation_floor_db": -0.03841461846604943,
+  "optimal_kf_db": -8.086575508117676,
+  "kalmannet_db": -7.931547164916992,
+  "knet_train_seconds": 50.66725754737854,
+  "sanity_checks": {
+    "knet_below_obs_floor": true,
+    "knet_within_2db_of_kf": true,
+    "knet_within_5db_of_kf": true
+  },
+  "expected_qualitative_ordering": "observation_floor > kalmannet_test_mse >= optimal_kf_mse"
+}

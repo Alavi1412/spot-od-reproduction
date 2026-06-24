@@ -1,0 +1,309 @@
+{
+  "schema_version": "sgp4_truth_multirev_v1",
+  "generated_utc": "2026-05-19T03:46:33Z",
+  "status": "completed",
+  "arc_hours": 12.0,
+  "dt_s": 30.0,
+  "steps": 1440,
+  "train_frac": 0.6,
+  "targets": [
+    "ISS (ZARYA)",
+    "CSS (TIANHE)",
+    "DMSP 5D-3 F16 (USA 172)",
+    "SCD 1",
+    "TECHSAT 1B (GO-32)"
+  ],
+  "num_targets": 5,
+  "min_revolutions": 7.072368025000001,
+  "max_revolutions": 7.81060398,
+  "station_subset": [
+    "Alaska",
+    "Hawaii",
+    "California",
+    "Spain",
+    "Australia",
+    "Chile",
+    "SouthAfrica",
+    "India"
+  ],
+  "num_stations": 8,
+  "tle_catalog": "configs\\archived_tles.json",
+  "tle_catalog_sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+  "num_observations_total": 1440,
+  "num_held_out_steps_total": 2880,
+  "best_held_out_estimator": "UKF (compact)",
+  "learned_beats_best_classical": false,
+  "estimators_summary": [
+    {
+      "name": "EKF (compact)",
+      "kind": "classical recursive",
+      "pooled_fit_pos_rmse_m": 6393.135734532663,
+      "pooled_held_out_pos_rmse_m": 2052.3509053768225,
+      "pooled_held_out_observed_pos_rmse_m": 341.311198868645,
+      "pooled_held_out_p95_pos_err_m": 4787.1764012308295,
+      "targets_best_of": 0
+    },
+    {
+      "name": "UKF (compact)",
+      "kind": "classical recursive",
+      "pooled_fit_pos_rmse_m": 6244.933915782249,
+      "pooled_held_out_pos_rmse_m": 1809.536766279829,
+      "pooled_held_out_observed_pos_rmse_m": 324.534705606456,
+      "pooled_held_out_p95_pos_err_m": 4278.561389116989,
+      "targets_best_of": 3
+    },
+    {
+      "name": "AUKF (compact, tuned)",
+      "kind": "classical recursive",
+      "pooled_fit_pos_rmse_m": 6093.338596043077,
+      "pooled_held_out_pos_rmse_m": 1968.293942668764,
+      "pooled_held_out_observed_pos_rmse_m": 321.38926707555424,
+      "pooled_held_out_p95_pos_err_m": 4508.171128073722,
+      "targets_best_of": 2
+    },
+    {
+      "name": "Batch WLS (compact)",
+      "kind": "classical offline",
+      "pooled_fit_pos_rmse_m": 13669.602160443761,
+      "pooled_held_out_pos_rmse_m": 26256.531536981627,
+      "pooled_held_out_observed_pos_rmse_m": 17578.11994854272,
+      "pooled_held_out_p95_pos_err_m": 62801.80028585171,
+      "targets_best_of": 0
+    },
+    {
+      "name": "Learned residual (UKF prior)",
+      "kind": "learned",
+      "pooled_fit_pos_rmse_m": 3890.999735945664,
+      "pooled_held_out_pos_rmse_m": 2755.4349145616247,
+      "pooled_held_out_observed_pos_rmse_m": 2295.5344730235274,
+      "pooled_held_out_p95_pos_err_m": 6567.5521924196455,
+      "targets_best_of": 0
+    }
+  ],
+  "per_target": [
+    {
+      "target": "ISS (ZARYA)",
+      "norad_catalog_id": 25544,
+      "tle_catalog_sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+      "mean_motion_rev_per_day": 15.48832031,
+      "orbital_period_min": 92.97328381504785,
+      "arc_hours": 12.0,
+      "revolutions": 7.744160155,
+      "steps": 1440,
+      "num_train_steps": 864,
+      "num_held_out_steps": 576,
+      "num_visible_measurements": 192,
+      "observed_step_fraction": 0.13333333333333333,
+      "altitude_km": 419.56438483528325,
+      "inclination_deg": 51.633,
+      "estimators": {
+        "EKF (compact)": {
+          "fit_pos_rmse_m": 1650.0766539937215,
+          "held_out_pos_rmse_m": 1812.9438550171121,
+          "held_out_observed_pos_rmse_m": 304.3235704909376
+        },
+        "UKF (compact)": {
+          "fit_pos_rmse_m": 1602.8581256718444,
+          "held_out_pos_rmse_m": 1449.5457536274007,
+          "held_out_observed_pos_rmse_m": 274.22885399036016
+        },
+        "AUKF (compact, tuned)": {
+          "fit_pos_rmse_m": 1584.033442453377,
+          "held_out_pos_rmse_m": 2119.8436536094405,
+          "held_out_observed_pos_rmse_m": 264.82632688146913
+        },
+        "Batch WLS (compact)": {
+          "fit_pos_rmse_m": 7590.529396178644,
+          "held_out_pos_rmse_m": 19069.607945966894,
+          "held_out_observed_pos_rmse_m": 20274.15701337017
+        },
+        "Learned residual (UKF prior)": {
+          "fit_pos_rmse_m": 386.54841572877746,
+          "held_out_pos_rmse_m": 1613.3359168752422,
+          "held_out_observed_pos_rmse_m": 769.1664755637348
+        }
+      }
+    },
+    {
+      "target": "CSS (TIANHE)",
+      "norad_catalog_id": 48274,
+      "tle_catalog_sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+      "mean_motion_rev_per_day": 15.62120796,
+      "orbital_period_min": 92.18237179143219,
+      "arc_hours": 12.0,
+      "revolutions": 7.81060398,
+      "steps": 1440,
+      "num_train_steps": 864,
+      "num_held_out_steps": 576,
+      "num_visible_measurements": 153,
+      "observed_step_fraction": 0.10625,
+      "altitude_km": 383.82780669428314,
+      "inclination_deg": 41.4683,
+      "estimators": {
+        "EKF (compact)": {
+          "fit_pos_rmse_m": 11789.726606115197,
+          "held_out_pos_rmse_m": 3203.118879854376,
+          "held_out_observed_pos_rmse_m": 315.54884777016593
+        },
+        "UKF (compact)": {
+          "fit_pos_rmse_m": 11482.645218207681,
+          "held_out_pos_rmse_m": 2816.902515429181,
+          "held_out_observed_pos_rmse_m": 307.85726353732224
+        },
+        "AUKF (compact, tuned)": {
+          "fit_pos_rmse_m": 11476.1413735574,
+          "held_out_pos_rmse_m": 2600.657456758627,
+          "held_out_observed_pos_rmse_m": 309.3535158185316
+        },
+        "Batch WLS (compact)": {
+          "fit_pos_rmse_m": 11200.022824954322,
+          "held_out_pos_rmse_m": 29213.818226425334,
+          "held_out_observed_pos_rmse_m": 27251.210986744896
+        },
+        "Learned residual (UKF prior)": {
+          "fit_pos_rmse_m": 7662.253077258145,
+          "held_out_pos_rmse_m": 4616.760091915768,
+          "held_out_observed_pos_rmse_m": 6755.473125870882
+        }
+      }
+    },
+    {
+      "target": "DMSP 5D-3 F16 (USA 172)",
+      "norad_catalog_id": 28054,
+      "tle_catalog_sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+      "mean_motion_rev_per_day": 14.144736050000002,
+      "orbital_period_min": 101.80465686385146,
+      "arc_hours": 12.0,
+      "revolutions": 7.072368025000001,
+      "steps": 1440,
+      "num_train_steps": 864,
+      "num_held_out_steps": 576,
+      "num_visible_measurements": 350,
+      "observed_step_fraction": 0.23472222222222222,
+      "altitude_km": 836.3529467610969,
+      "inclination_deg": 98.9956,
+      "estimators": {
+        "EKF (compact)": {
+          "fit_pos_rmse_m": 13015.713104991351,
+          "held_out_pos_rmse_m": 2318.6852264380686,
+          "held_out_observed_pos_rmse_m": 448.8475375380021
+        },
+        "UKF (compact)": {
+          "fit_pos_rmse_m": 13016.994651893836,
+          "held_out_pos_rmse_m": 2163.7648623904497,
+          "held_out_observed_pos_rmse_m": 432.9529756235223
+        },
+        "AUKF (compact, tuned)": {
+          "fit_pos_rmse_m": 13031.421473453167,
+          "held_out_pos_rmse_m": 2473.606480624148,
+          "held_out_observed_pos_rmse_m": 430.58635746608206
+        },
+        "Batch WLS (compact)": {
+          "fit_pos_rmse_m": 41052.35163658521,
+          "held_out_pos_rmse_m": 46815.74491233399,
+          "held_out_observed_pos_rmse_m": 34576.05101407231
+        },
+        "Learned residual (UKF prior)": {
+          "fit_pos_rmse_m": 10463.15927124612,
+          "held_out_pos_rmse_m": 3303.863324660625,
+          "held_out_observed_pos_rmse_m": 1557.79147881626
+        }
+      }
+    },
+    {
+      "target": "SCD 1",
+      "norad_catalog_id": 22490,
+      "tle_catalog_sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+      "mean_motion_rev_per_day": 14.460889489999998,
+      "orbital_period_min": 99.57893675875123,
+      "arc_hours": 12.0,
+      "revolutions": 7.230444744999999,
+      "steps": 1440,
+      "num_train_steps": 864,
+      "num_held_out_steps": 576,
+      "num_visible_measurements": 384,
+      "observed_step_fraction": 0.2638888888888889,
+      "altitude_km": 721.826199254442,
+      "inclination_deg": 24.9695,
+      "estimators": {
+        "EKF (compact)": {
+          "fit_pos_rmse_m": 2712.8253928902514,
+          "held_out_pos_rmse_m": 1090.458012802896,
+          "held_out_observed_pos_rmse_m": 232.70780193192635
+        },
+        "UKF (compact)": {
+          "fit_pos_rmse_m": 2444.075529697054,
+          "held_out_pos_rmse_m": 987.9084338375848,
+          "held_out_observed_pos_rmse_m": 218.78833074466317
+        },
+        "AUKF (compact, tuned)": {
+          "fit_pos_rmse_m": 1937.883444955363,
+          "held_out_pos_rmse_m": 976.8355154396912,
+          "held_out_observed_pos_rmse_m": 205.01709587845426
+        },
+        "Batch WLS (compact)": {
+          "fit_pos_rmse_m": 6073.510865692561,
+          "held_out_pos_rmse_m": 5993.623575032624,
+          "held_out_observed_pos_rmse_m": 4105.577261364065
+        },
+        "Learned residual (UKF prior)": {
+          "fit_pos_rmse_m": 428.706087823416,
+          "held_out_pos_rmse_m": 1380.9133170941861,
+          "held_out_observed_pos_rmse_m": 1189.8156601225742
+        }
+      }
+    },
+    {
+      "target": "TECHSAT 1B (GO-32)",
+      "norad_catalog_id": 25397,
+      "tle_catalog_sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+      "mean_motion_rev_per_day": 14.24414549,
+      "orbital_period_min": 101.09416538962914,
+      "arc_hours": 12.0,
+      "revolutions": 7.122072745,
+      "steps": 1440,
+      "num_train_steps": 864,
+      "num_held_out_steps": 576,
+      "num_visible_measurements": 361,
+      "observed_step_fraction": 0.2465277777777778,
+      "altitude_km": 812.8537184138298,
+      "inclination_deg": 99.0055,
+      "estimators": {
+        "EKF (compact)": {
+          "fit_pos_rmse_m": 2797.3369146727932,
+          "held_out_pos_rmse_m": 973.9534676221765,
+          "held_out_observed_pos_rmse_m": 405.1282366121931
+        },
+        "UKF (compact)": {
+          "fit_pos_rmse_m": 2678.096053440829,
+          "held_out_pos_rmse_m": 823.5001007521693,
+          "held_out_observed_pos_rmse_m": 388.8461041364122
+        },
+        "AUKF (compact, tuned)": {
+          "fit_pos_rmse_m": 2437.21324579608,
+          "held_out_pos_rmse_m": 1020.20206595564,
+          "held_out_observed_pos_rmse_m": 397.16303933323405
+        },
+        "Batch WLS (compact)": {
+          "fit_pos_rmse_m": 2431.596078808068,
+          "held_out_pos_rmse_m": 1514.1413167654607,
+          "held_out_observed_pos_rmse_m": 1683.6034671621599
+        },
+        "Learned residual (UKF prior)": {
+          "fit_pos_rmse_m": 514.3318276718587,
+          "held_out_pos_rmse_m": 1105.597963807257,
+          "held_out_observed_pos_rmse_m": 1205.4256247441858
+        }
+      }
+    }
+  ],
+  "input_digests": [
+    {
+      "kind": "archived_tle_catalog",
+      "path": "configs\\archived_tles.json",
+      "sha256": "5885df66c3bfd1147fd2ade8a464d9a024747002b09254da51fb85974eb93fdb",
+      "bytes": 1666
+    }
+  ],
+  "caveats": "Bounded multi-revolution model-mismatch benchmark. Truth is an analytic SGP4 mean-element propagation of an archived public CelesTrak TLE, not a precise numerically integrated OD truth, so absolute magnitudes are not operational OD accuracy. Every estimator uses the compact two-body+J2+drag(+third-body/SRP) OD model, so SGP4 truth is a genuine multi-revolution dynamics-model mismatch over operationally longer arcs with the real eight-station ground geometry of the main study. The Earth-rotation transform used to form measurements is the same simplified constant-rate transform for the truth measurement generation and for the estimators, so the evaluated stress is the dynamics model mismatch over multiple revolutions, not a measurement-frame discrepancy. Position RMSE is scored against the SGP4 truth state on a deterministic earlier-fit / later-held-out time split, pooled across targets. Not an operational orbit determination or a flight-readiness validation."
+}

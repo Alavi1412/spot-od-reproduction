@@ -1,0 +1,737 @@
+{
+  "schema_version": "real_slr_multi_v1",
+  "generated_utc": "2026-05-19T02:46:50Z",
+  "status": "completed",
+  "targets": [
+    "LAGEOS-1",
+    "LAGEOS-2"
+  ],
+  "num_objects": 2,
+  "num_arcs": 4,
+  "num_arcs_completed": 4,
+  "days": [
+    "20260517",
+    "20260518"
+  ],
+  "fixed_station_subset": [
+    "HERL",
+    "MATM",
+    "WETL",
+    "YARL"
+  ],
+  "num_observations_total": 384,
+  "num_held_out_total": 117,
+  "train_frac": 0.7,
+  "max_step_s": 30.0,
+  "learned_correction_clip_k": 4.0,
+  "arcs": [
+    {
+      "arc_id": "LAGEOS-1 20260517",
+      "target": "LAGEOS-1",
+      "norad_cat_id": 8820,
+      "date": "20260517",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260517.np2",
+        "archived_input_id": "lageos1_20260517.np2",
+        "input_source": "archived_input",
+        "sha256": "17defdba310179b48e7ede9355ac662eb6bbfcffb90de4aed1e45030408d88ae",
+        "bytes": 45908
+      },
+      "tle": {
+        "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=8820&FORMAT=TLE",
+        "archived_input_id": "lageos1_8820.tle",
+        "input_source": "archived_input",
+        "sha256": "817aa1fc26389e2541a8d2ee091c565ceec7b9192117272fcb3f04f40eb8e15c",
+        "bytes": 168,
+        "line1": "1 08820U 76039A   26138.55302979  .00000009  00000+0  00000+0 0  9990",
+        "line2": "2 08820 109.8037 169.1965 0044674 308.6197 221.3746  6.38664680911243"
+      },
+      "status": "completed",
+      "fit_success": true,
+      "fit_message": "Both `ftol` and `xtol` termination conditions are satisfied.",
+      "num_observations": 75,
+      "num_train": 52,
+      "num_validation": 23,
+      "time_span_hours": 16.159889284637238,
+      "first_epoch_iso": "2026-05-17T06:47:07.399162Z",
+      "last_epoch_iso": "2026-05-17T22:56:43.000586Z",
+      "station_counts": {
+        "WETL": 6,
+        "MATM": 11,
+        "YARL": 58
+      },
+      "distinct_stations": 3,
+      "learned_backend": "torch:cpu",
+      "estimators": {
+        "SGP4 prior": {
+          "all": {
+            "count": 75,
+            "rms_m": 101.64888674541696,
+            "mae_m": 73.00760209962726,
+            "median_abs_m": 50.009781944565475,
+            "p95_abs_m": 210.8075446278788
+          },
+          "train": {
+            "count": 52,
+            "rms_m": 114.9275213675813,
+            "mae_m": 84.3910920360448,
+            "median_abs_m": 53.25682640820742,
+            "p95_abs_m": 219.8484159560874
+          },
+          "validation": {
+            "count": 23,
+            "rms_m": 61.89183570640928,
+            "mae_m": 47.27101615642238,
+            "median_abs_m": 42.07662327028811,
+            "p95_abs_m": 118.16118320543318
+          }
+        },
+        "Range-only WLS fit": {
+          "all": {
+            "count": 75,
+            "rms_m": 94.51018244105958,
+            "mae_m": 46.15942131449779,
+            "median_abs_m": 13.177078653126955,
+            "p95_abs_m": 221.55269135683773
+          },
+          "train": {
+            "count": 52,
+            "rms_m": 13.317317805174003,
+            "mae_m": 11.331536129367752,
+            "median_abs_m": 10.523781412746757,
+            "p95_abs_m": 29.011249272618443
+          },
+          "validation": {
+            "count": 23,
+            "rms_m": 169.4865448417314,
+            "mae_m": 124.90072695044395,
+            "median_abs_m": 91.10455431044102,
+            "p95_abs_m": 354.9092965985648
+          }
+        },
+        "Learned residual (SGP4 prior)": {
+          "all": {
+            "count": 75,
+            "rms_m": 115.22725608390009,
+            "mae_m": 60.73925395066539,
+            "median_abs_m": 7.120759855024517,
+            "p95_abs_m": 277.63210957553235
+          },
+          "train": {
+            "count": 52,
+            "rms_m": 6.938349652119574,
+            "mae_m": 4.846795354557869,
+            "median_abs_m": 2.223814357072115,
+            "p95_abs_m": 15.080863771028815
+          },
+          "validation": {
+            "count": 23,
+            "rms_m": 207.81426957118393,
+            "mae_m": 187.10481251577806,
+            "median_abs_m": 195.78817119076848,
+            "p95_abs_m": 285.4926246979274
+          }
+        },
+        "WLS + learned residual calibration": {
+          "all": {
+            "count": 75,
+            "rms_m": 93.57478527594749,
+            "mae_m": 37.523637059877316,
+            "median_abs_m": 0.6275385562330484,
+            "p95_abs_m": 241.88502453863617
+          },
+          "train": {
+            "count": 52,
+            "rms_m": 1.2320499424908526,
+            "mae_m": 0.6983674697291392,
+            "median_abs_m": 0.33161377534270287,
+            "p95_abs_m": 2.8687416847329583
+          },
+          "validation": {
+            "count": 23,
+            "rms_m": 168.96605006445304,
+            "mae_m": 120.78076830716884,
+            "median_abs_m": 73.99918276630342,
+            "p95_abs_m": 376.7456767979077
+          }
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-1 20260518",
+      "target": "LAGEOS-1",
+      "norad_cat_id": 8820,
+      "date": "20260518",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260518.np2",
+        "archived_input_id": "lageos1_20260518.np2",
+        "input_source": "archived_input",
+        "sha256": "c65d48f86841297037ab843fd49ee9abb23a078a521aa3d343a791f99bba00ef",
+        "bytes": 59861
+      },
+      "tle": {
+        "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=8820&FORMAT=TLE",
+        "archived_input_id": "lageos1_8820.tle",
+        "input_source": "archived_input",
+        "sha256": "817aa1fc26389e2541a8d2ee091c565ceec7b9192117272fcb3f04f40eb8e15c",
+        "bytes": 168,
+        "line1": "1 08820U 76039A   26138.55302979  .00000009  00000+0  00000+0 0  9990",
+        "line2": "2 08820 109.8037 169.1965 0044674 308.6197 221.3746  6.38664680911243"
+      },
+      "status": "completed",
+      "fit_success": true,
+      "fit_message": "Both `ftol` and `xtol` termination conditions are satisfied.",
+      "num_observations": 98,
+      "num_train": 68,
+      "num_validation": 30,
+      "time_span_hours": 12.976911600364579,
+      "first_epoch_iso": "2026-05-18T05:13:47.518825Z",
+      "last_epoch_iso": "2026-05-18T18:12:24.400587Z",
+      "station_counts": {
+        "WETL": 22,
+        "MATM": 27,
+        "HERL": 2,
+        "YARL": 47
+      },
+      "distinct_stations": 4,
+      "learned_backend": "torch:cpu",
+      "estimators": {
+        "SGP4 prior": {
+          "all": {
+            "count": 98,
+            "rms_m": 84.95352772242062,
+            "mae_m": 72.14156919205561,
+            "median_abs_m": 66.50402732612565,
+            "p95_abs_m": 146.02778506199823
+          },
+          "train": {
+            "count": 68,
+            "rms_m": 95.05623083148278,
+            "mae_m": 83.7537328871104,
+            "median_abs_m": 81.18824470974505,
+            "p95_abs_m": 157.01841594097203
+          },
+          "validation": {
+            "count": 30,
+            "rms_m": 55.63250433306275,
+            "mae_m": 45.8206648165981,
+            "median_abs_m": 38.43391288165003,
+            "p95_abs_m": 95.4929346605204
+          }
+        },
+        "Range-only WLS fit": {
+          "all": {
+            "count": 98,
+            "rms_m": 40.57767937849283,
+            "mae_m": 24.201499074992096,
+            "median_abs_m": 10.43429539212957,
+            "p95_abs_m": 107.66611615275029
+          },
+          "train": {
+            "count": 68,
+            "rms_m": 11.18134091769992,
+            "mae_m": 8.674404244335806,
+            "median_abs_m": 8.817206738516688,
+            "p95_abs_m": 19.674994632042942
+          },
+          "validation": {
+            "count": 30,
+            "rms_m": 71.3816475213987,
+            "mae_m": 59.39624735781302,
+            "median_abs_m": 54.760552724357694,
+            "p95_abs_m": 122.29432322313075
+          }
+        },
+        "Learned residual (SGP4 prior)": {
+          "all": {
+            "count": 98,
+            "rms_m": 102.90583579363104,
+            "mae_m": 47.77136373602576,
+            "median_abs_m": 3.8431209651753306,
+            "p95_abs_m": 288.1333677117712
+          },
+          "train": {
+            "count": 68,
+            "rms_m": 4.607385102737718,
+            "mae_m": 3.09430094889146,
+            "median_abs_m": 1.9536724193021655,
+            "p95_abs_m": 8.370328500960023
+          },
+          "validation": {
+            "count": 30,
+            "rms_m": 185.86181050526298,
+            "mae_m": 149.03937272019684,
+            "median_abs_m": 94.18981833895668,
+            "p95_abs_m": 315.3403294343501
+          }
+        },
+        "WLS + learned residual calibration": {
+          "all": {
+            "count": 98,
+            "rms_m": 40.916092085516105,
+            "mae_m": 19.376926251848666,
+            "median_abs_m": 0.5213501458056271,
+            "p95_abs_m": 97.81448022988624
+          },
+          "train": {
+            "count": 68,
+            "rms_m": 0.7578207330335407,
+            "mae_m": 0.4634063273860032,
+            "median_abs_m": 0.26545591838657856,
+            "p95_abs_m": 1.3411026993766426
+          },
+          "validation": {
+            "count": 30,
+            "rms_m": 73.9426250769316,
+            "mae_m": 62.24757141396403,
+            "median_abs_m": 60.80386758688837,
+            "p95_abs_m": 133.24371535759417
+          }
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260517",
+      "target": "LAGEOS-2",
+      "norad_cat_id": 22195,
+      "date": "20260517",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260517.np2",
+        "archived_input_id": "lageos2_20260517.np2",
+        "input_source": "archived_input",
+        "sha256": "d6c894198226cd427235888243f7ebbdc98dd22fc6c399dcecd6295cff209d9a",
+        "bytes": 41063
+      },
+      "tle": {
+        "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=22195&FORMAT=TLE",
+        "archived_input_id": "lageos2_22195.tle",
+        "input_source": "archived_input",
+        "sha256": "e2efb7b75fcdf9dc0b70c752827b7082fc06830f72abb021756925c97ded3d44",
+        "bytes": 168,
+        "line1": "1 22195U 92070B   26135.94328602 -.00000009  00000+0  00000+0 0  9996",
+        "line2": "2 22195  52.6609 287.0389 0137740 173.1968   5.5334  6.47293620793337"
+      },
+      "status": "completed",
+      "fit_success": true,
+      "fit_message": "Both `ftol` and `xtol` termination conditions are satisfied.",
+      "num_observations": 89,
+      "num_train": 62,
+      "num_validation": 27,
+      "time_span_hours": 14.446721273461977,
+      "first_epoch_iso": "2026-05-17T06:43:46.404000Z",
+      "last_epoch_iso": "2026-05-17T21:10:34.600585Z",
+      "station_counts": {
+        "MATM": 8,
+        "YARL": 81
+      },
+      "distinct_stations": 2,
+      "learned_backend": "torch:cpu",
+      "estimators": {
+        "SGP4 prior": {
+          "all": {
+            "count": 89,
+            "rms_m": 136.29006981922285,
+            "mae_m": 114.76463409221282,
+            "median_abs_m": 109.2733072815463,
+            "p95_abs_m": 260.35754548124964
+          },
+          "train": {
+            "count": 62,
+            "rms_m": 116.86533205134631,
+            "mae_m": 102.4113042932905,
+            "median_abs_m": 107.64747581025586,
+            "p95_abs_m": 219.00823094933293
+          },
+          "validation": {
+            "count": 27,
+            "rms_m": 172.8206238645338,
+            "mae_m": 143.1315395564048,
+            "median_abs_m": 118.2947252029553,
+            "p95_abs_m": 292.20565968900917
+          }
+        },
+        "Range-only WLS fit": {
+          "all": {
+            "count": 89,
+            "rms_m": 40.92892495370865,
+            "mae_m": 28.22077194030993,
+            "median_abs_m": 12.133930899202824,
+            "p95_abs_m": 100.42211105376482
+          },
+          "train": {
+            "count": 62,
+            "rms_m": 17.910200529977562,
+            "mae_m": 14.075100351185087,
+            "median_abs_m": 10.706826206296682,
+            "p95_abs_m": 39.44761627223341
+          },
+          "validation": {
+            "count": 27,
+            "rms_m": 69.17574943378948,
+            "mae_m": 60.70342521904105,
+            "median_abs_m": 62.43624217621982,
+            "p95_abs_m": 102.36419394677505
+          }
+        },
+        "Learned residual (SGP4 prior)": {
+          "all": {
+            "count": 89,
+            "rms_m": 148.7615623178026,
+            "mae_m": 75.32599292738426,
+            "median_abs_m": 6.83191819768399,
+            "p95_abs_m": 373.32297211699176
+          },
+          "train": {
+            "count": 62,
+            "rms_m": 6.823710740870985,
+            "mae_m": 5.60924451092198,
+            "median_abs_m": 5.221586853731424,
+            "p95_abs_m": 12.773701818753024
+          },
+          "validation": {
+            "count": 27,
+            "rms_m": 269.88909299073225,
+            "mae_m": 235.41630410592728,
+            "median_abs_m": 197.4149777488783,
+            "p95_abs_m": 464.0623293057084
+          }
+        },
+        "WLS + learned residual calibration": {
+          "all": {
+            "count": 89,
+            "rms_m": 43.02931492768143,
+            "mae_m": 20.762831586580514,
+            "median_abs_m": 0.6243334030732512,
+            "p95_abs_m": 112.33350421246139
+          },
+          "train": {
+            "count": 62,
+            "rms_m": 1.7150866866219479,
+            "mae_m": 0.8155781853823892,
+            "median_abs_m": 0.3086095256730914,
+            "p95_abs_m": 3.4654430342838105
+          },
+          "validation": {
+            "count": 27,
+            "rms_m": 78.07951278562946,
+            "mae_m": 66.56763569303547,
+            "median_abs_m": 70.02343372721225,
+            "p95_abs_m": 116.12244532620534
+          }
+        }
+      }
+    },
+    {
+      "arc_id": "LAGEOS-2 20260518",
+      "target": "LAGEOS-2",
+      "norad_cat_id": 22195,
+      "date": "20260518",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260518.np2",
+        "archived_input_id": "lageos2_20260518.np2",
+        "input_source": "archived_input",
+        "sha256": "3a44d79e6231eb770fbea874e16c5e48abc7f8eec5062946443870f27bf96462",
+        "bytes": 56668
+      },
+      "tle": {
+        "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=22195&FORMAT=TLE",
+        "archived_input_id": "lageos2_22195.tle",
+        "input_source": "archived_input",
+        "sha256": "e2efb7b75fcdf9dc0b70c752827b7082fc06830f72abb021756925c97ded3d44",
+        "bytes": 168,
+        "line1": "1 22195U 92070B   26135.94328602 -.00000009  00000+0  00000+0 0  9996",
+        "line2": "2 22195  52.6609 287.0389 0137740 173.1968   5.5334  6.47293620793337"
+      },
+      "status": "completed",
+      "fit_success": true,
+      "fit_message": "`xtol` termination condition is satisfied.",
+      "num_observations": 122,
+      "num_train": 85,
+      "num_validation": 37,
+      "time_span_hours": 18.1471934965584,
+      "first_epoch_iso": "2026-05-18T01:03:50.104000Z",
+      "last_epoch_iso": "2026-05-18T19:12:40.000587Z",
+      "station_counts": {
+        "MATM": 22,
+        "WETL": 16,
+        "YARL": 78,
+        "HERL": 6
+      },
+      "distinct_stations": 4,
+      "learned_backend": "torch:cpu",
+      "estimators": {
+        "SGP4 prior": {
+          "all": {
+            "count": 122,
+            "rms_m": 103.11150292354313,
+            "mae_m": 80.61877306640056,
+            "median_abs_m": 57.63081566244364,
+            "p95_abs_m": 199.7900440931319
+          },
+          "train": {
+            "count": 85,
+            "rms_m": 110.37870743483995,
+            "mae_m": 89.31522863396607,
+            "median_abs_m": 59.470616860315204,
+            "p95_abs_m": 206.22781362701204
+          },
+          "validation": {
+            "count": 37,
+            "rms_m": 84.07007833152043,
+            "mae_m": 60.64042919496628,
+            "median_abs_m": 32.92218603473157,
+            "p95_abs_m": 172.77868924215434
+          }
+        },
+        "Range-only WLS fit": {
+          "all": {
+            "count": 122,
+            "rms_m": 30.152996401899134,
+            "mae_m": 21.290180164816803,
+            "median_abs_m": 15.001762872096151,
+            "p95_abs_m": 69.8615908711683
+          },
+          "train": {
+            "count": 85,
+            "rms_m": 21.606813537073197,
+            "mae_m": 14.772186950539403,
+            "median_abs_m": 10.032202781178057,
+            "p95_abs_m": 58.73942287322132
+          },
+          "validation": {
+            "count": 37,
+            "rms_m": 43.879492892737844,
+            "mae_m": 36.263948359778404,
+            "median_abs_m": 28.194466369226575,
+            "p95_abs_m": 78.78563630394636
+          }
+        },
+        "Learned residual (SGP4 prior)": {
+          "all": {
+            "count": 122,
+            "rms_m": 92.49667845771856,
+            "mae_m": 39.390713372779246,
+            "median_abs_m": 3.262946634553373,
+            "p95_abs_m": 267.36268153516556
+          },
+          "train": {
+            "count": 85,
+            "rms_m": 5.992025135063935,
+            "mae_m": 3.8817445917274145,
+            "median_abs_m": 1.8571435427293181,
+            "p95_abs_m": 14.543627895414827
+          },
+          "validation": {
+            "count": 37,
+            "rms_m": 167.71401519970505,
+            "mae_m": 120.96537138330373,
+            "median_abs_m": 69.52777474559844,
+            "p95_abs_m": 340.3543301112949
+          }
+        },
+        "WLS + learned residual calibration": {
+          "all": {
+            "count": 122,
+            "rms_m": 27.978036112264235,
+            "mae_m": 12.205173672818136,
+            "median_abs_m": 0.6293839234858751,
+            "p95_abs_m": 68.56058330256481
+          },
+          "train": {
+            "count": 85,
+            "rms_m": 2.877728321574349,
+            "mae_m": 1.285048851557076,
+            "median_abs_m": 0.488242014311254,
+            "p95_abs_m": 7.396744040213517
+          },
+          "validation": {
+            "count": 37,
+            "rms_m": 50.616226793607446,
+            "mae_m": 37.2919469108503,
+            "median_abs_m": 28.50025206245482,
+            "p95_abs_m": 112.55411447770891
+          }
+        }
+      }
+    }
+  ],
+  "pooled_estimators": {
+    "SGP4 prior": {
+      "fit": {
+        "count": 267,
+        "rms_m": 109.19555230178995,
+        "mae_m": 89.98084615082008,
+        "median_abs_m": 82.95187281165272,
+        "p95_abs_m": 207.68766788067296
+      },
+      "held_out": {
+        "count": 117,
+        "rms_m": 103.31550616190042,
+        "mae_m": 73.24872448147299,
+        "median_abs_m": 51.49718902632594,
+        "p95_abs_m": 245.18351520542043
+      }
+    },
+    "Range-only WLS fit": {
+      "fit": {
+        "count": 267,
+        "rms_m": 17.014475280924554,
+        "mae_m": 12.387234007158362,
+        "median_abs_m": 9.990932896733284,
+        "p95_abs_m": 29.25948902741074
+      },
+      "held_out": {
+        "count": 117,
+        "rms_m": 93.09465245390213,
+        "mae_m": 65.25951034889326,
+        "median_abs_m": 49.77162351552397,
+        "p95_abs_m": 205.29260845594095
+      }
+    },
+    "Learned residual (SGP4 prior)": {
+      "fit": {
+        "count": 267,
+        "rms_m": 6.084793723082763,
+        "mae_m": 4.2702894117439,
+        "median_abs_m": 2.701059273444116,
+        "p95_abs_m": 14.511296817567196
+      },
+      "held_out": {
+        "count": 117,
+        "rms_m": 207.48912181962194,
+        "mae_m": 167.57735744881262,
+        "median_abs_m": 166.27750195749104,
+        "p95_abs_m": 355.96327644977714
+      }
+    },
+    "WLS + learned residual calibration": {
+      "fit": {
+        "count": 267,
+        "rms_m": 1.939411597709938,
+        "mae_m": 0.852515874772371,
+        "median_abs_m": 0.3460531895980239,
+        "p95_abs_m": 3.262082697357979
+      },
+      "held_out": {
+        "count": 117,
+        "rms_m": 96.07963318033703,
+        "mae_m": 66.85908558031815,
+        "median_abs_m": 50.97495867032558,
+        "p95_abs_m": 179.04951673615707
+      }
+    }
+  },
+  "estimators_summary": [
+    {
+      "name": "SGP4 prior",
+      "kind": "classical",
+      "pooled_fit_rms_m": 109.19555230178995,
+      "pooled_held_out_rms_m": 103.31550616190042,
+      "pooled_held_out_mae_m": 73.24872448147299,
+      "pooled_held_out_p95_abs_m": 245.18351520542043,
+      "pooled_held_out_count": 117,
+      "arcs_best_of": 2
+    },
+    {
+      "name": "Range-only WLS fit",
+      "kind": "classical",
+      "pooled_fit_rms_m": 17.014475280924554,
+      "pooled_held_out_rms_m": 93.09465245390213,
+      "pooled_held_out_mae_m": 65.25951034889326,
+      "pooled_held_out_p95_abs_m": 205.29260845594095,
+      "pooled_held_out_count": 117,
+      "arcs_best_of": 2
+    },
+    {
+      "name": "Learned residual (SGP4 prior)",
+      "kind": "learned",
+      "pooled_fit_rms_m": 6.084793723082763,
+      "pooled_held_out_rms_m": 207.48912181962194,
+      "pooled_held_out_mae_m": 167.57735744881262,
+      "pooled_held_out_p95_abs_m": 355.96327644977714,
+      "pooled_held_out_count": 117,
+      "arcs_best_of": 0
+    },
+    {
+      "name": "WLS + learned residual calibration",
+      "kind": "hybrid",
+      "pooled_fit_rms_m": 1.939411597709938,
+      "pooled_held_out_rms_m": 96.07963318033703,
+      "pooled_held_out_mae_m": 66.85908558031815,
+      "pooled_held_out_p95_abs_m": 179.04951673615707,
+      "pooled_held_out_count": 117,
+      "arcs_best_of": 0
+    }
+  ],
+  "best_held_out_estimator": "Range-only WLS fit",
+  "held_out_improved_over_prior": true,
+  "learned_improved_over_prior": false,
+  "learned_beats_classical_wls": false,
+  "input_digests": [
+    {
+      "arc_id": "LAGEOS-1 20260517",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260517.np2",
+      "sha256": "17defdba310179b48e7ede9355ac662eb6bbfcffb90de4aed1e45030408d88ae",
+      "bytes": 45908,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260517.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260517",
+      "kind": "tle",
+      "archived_input_id": "lageos1_8820.tle",
+      "sha256": "817aa1fc26389e2541a8d2ee091c565ceec7b9192117272fcb3f04f40eb8e15c",
+      "bytes": 168,
+      "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=8820&FORMAT=TLE"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260518",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260518.np2",
+      "sha256": "c65d48f86841297037ab843fd49ee9abb23a078a521aa3d343a791f99bba00ef",
+      "bytes": 59861,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260518.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260518",
+      "kind": "tle",
+      "archived_input_id": "lageos1_8820.tle",
+      "sha256": "817aa1fc26389e2541a8d2ee091c565ceec7b9192117272fcb3f04f40eb8e15c",
+      "bytes": 168,
+      "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=8820&FORMAT=TLE"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260517",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260517.np2",
+      "sha256": "d6c894198226cd427235888243f7ebbdc98dd22fc6c399dcecd6295cff209d9a",
+      "bytes": 41063,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260517.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260517",
+      "kind": "tle",
+      "archived_input_id": "lageos2_22195.tle",
+      "sha256": "e2efb7b75fcdf9dc0b70c752827b7082fc06830f72abb021756925c97ded3d44",
+      "bytes": 168,
+      "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=22195&FORMAT=TLE"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260518",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260518.np2",
+      "sha256": "3a44d79e6231eb770fbea874e16c5e48abc7f8eec5062946443870f27bf96462",
+      "bytes": 56668,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260518.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260518",
+      "kind": "tle",
+      "archived_input_id": "lageos2_22195.tle",
+      "sha256": "e2efb7b75fcdf9dc0b70c752827b7082fc06830f72abb021756925c97ded3d44",
+      "bytes": 168,
+      "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=22195&FORMAT=TLE"
+    }
+  ],
+  "caveats": "Bounded real-measurement audit only. Approximate GMST-only station rotation (no polar motion/nutation; UT1~UTC), compact two-body+J2 dynamics with no precise SLR corrections (relativistic, tropospheric, centre-of-mass), TLE used only as a prior. A fixed four-station ILRS subset is used across every arc. Two geodetic satellites (LAGEOS-1, LAGEOS-2) are each scored on two consecutive UTC days; held-out range residuals are pooled across all arcs per estimator on deterministic earlier-fit / later-held-out time splits. The held-out score is a range residual (no truth state is available) and the learned correction is hard-bounded and deterministic. Not an operational OD validation and not a flight-readiness result."
+}

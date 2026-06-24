@@ -62,6 +62,15 @@ BOUNDARY_LANGUAGE = (
     "precise-reference validation, independent-machine reproduction, third-party "
     "validation, or a claim of universal learned orbit-determination performance."
 )
+SPLIT_BOUNDARY_LANGUAGE = (
+    "Internal compact-simulator development/holdout AdaptiveCandidateFusion portfolio "
+    "evidence. Policies are selected only from validation recomputations for "
+    "selection_run_dirs and are applied to saved compact-simulator eval rows from "
+    "eval_run_dirs. This run-directory split is an internal development check; it is "
+    "not independent-machine reproduction, operational precise-reference validation, "
+    "third-party validation, or a claim of universal learned orbit-determination "
+    "performance."
+)
 RESULT_DIR_RE = re.compile(r"seed(?P<seed>\d+)_split(?P<split>\d+)")
 
 
@@ -125,6 +134,46 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Aggregate summary JSON containing a top-level run_dirs list. May be repeated.",
     )
+    parser.add_argument(
+        "--selection-run-dir",
+        action="append",
+        type=Path,
+        default=None,
+        help=(
+            "Development run directory used only for validation-policy selection in "
+            "selection/eval split mode. May be repeated."
+        ),
+    )
+    parser.add_argument(
+        "--eval-run-dir",
+        action="append",
+        type=Path,
+        default=None,
+        help=(
+            "Holdout run directory used only for saved eval-row evaluation in "
+            "selection/eval split mode. May be repeated."
+        ),
+    )
+    parser.add_argument(
+        "--selection-summary-json",
+        action="append",
+        type=Path,
+        default=None,
+        help=(
+            "Summary JSON listing development selection run directories. Reads "
+            "selection_run_dirs when present, otherwise run_dirs. May be repeated."
+        ),
+    )
+    parser.add_argument(
+        "--eval-summary-json",
+        action="append",
+        type=Path,
+        default=None,
+        help=(
+            "Summary JSON listing holdout eval run directories. Reads eval_run_dirs "
+            "when present, otherwise run_dirs. May be repeated."
+        ),
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--scenarios", default=",".join(DEFAULT_SCENARIOS))
     parser.add_argument("--device", default="cuda")
@@ -184,18 +233,18 @@ def resolve_run_dirs(
     positional: Iterable[Path],
     repeated: Iterable[Path] | None,
     summary_json: Iterable[Path] | None,
+    default_run_dirs: Iterable[Path] | None = DEFAULT_RUN_DIRS,
+    summary_keys: tuple[str, ...] = ("run_dirs",),
 ) -> list[Path]:
     paths: list[Path] = [Path(path) for path in positional]
     if repeated:
         paths.extend(Path(path) for path in repeated)
     for summary_path in summary_json or []:
         data = json.loads(Path(summary_path).read_text(encoding="utf-8"))
-        run_dirs = data.get("run_dirs")
-        if not isinstance(run_dirs, list):
-            raise ValueError(f"{summary_path}: expected a top-level run_dirs list")
+        run_dirs = _summary_run_dirs(data, summary_path=Path(summary_path), summary_keys=summary_keys)
         paths.extend(Path(str(path)) for path in run_dirs)
-    if not paths:
-        paths = list(DEFAULT_RUN_DIRS)
+    if not paths and default_run_dirs is not None:
+        paths = list(default_run_dirs)
 
     unique: list[Path] = []
     seen: set[str] = set()
@@ -205,6 +254,25 @@ def resolve_run_dirs(
             unique.append(path)
             seen.add(key)
     return unique
+
+
+def _summary_run_dirs(
+    data: dict[str, Any],
+    *,
+    summary_path: Path,
+    summary_keys: tuple[str, ...],
+) -> list[Any]:
+    inputs = data.get("inputs")
+    input_data = inputs if isinstance(inputs, dict) else {}
+    for key in summary_keys:
+        run_dirs = data.get(key)
+        if run_dirs is None:
+            run_dirs = input_data.get(key)
+        if not isinstance(run_dirs, list):
+            continue
+        return run_dirs
+    keys = ", ".join(summary_keys)
+    raise ValueError(f"{summary_path}: expected one of [{keys}] as a top-level or inputs list")
 
 
 def observed_step_mask(visibility: np.ndarray) -> np.ndarray:
@@ -970,6 +1038,7 @@ def select_policy_family_scenario_policies(
     selection_metric: str,
     blend_grid_step: float,
     policy_families: Iterable[str] = POLICY_FAMILIES,
+    selection_source_prefix: str = "pooled_validation_global_scenario_policy_family",
 ) -> dict[str, dict[str, dict[str, Any]]]:
     return {
         family: select_global_scenario_policies(
@@ -977,7 +1046,7 @@ def select_policy_family_scenario_policies(
             scenarios,
             selection_metric=selection_metric,
             blend_grid_step=blend_grid_step,
-            selection_source=f"pooled_validation_global_scenario_policy_family_{family}",
+            selection_source=f"{selection_source_prefix}_{family}",
             policy_family=family,
         )
         for family in sorted((str(value) for value in policy_families), key=_policy_family_sort_key)
@@ -1023,9 +1092,62 @@ def evaluate_policy_family_diagnostics(
     return diagnostics
 
 
-def build_global_portfolio(
+def _run_context_summary(context: RunContext) -> dict[str, Any]:
+    return {
+        "run_name": context.run_name,
+        "run_dir": _display_path(context.run_dir),
+        "seed": context.seed,
+        "split": context.split,
+        "training_seed": context.training_seed,
+        "best_checkpoint": str(context.config.get("best_checkpoint")),
+        "lookback": context.lookback,
+        "lookahead": context.lookahead,
+        "candidate_methods": context.candidate_methods,
+        "candidate_residual_features": context.candidate_residual_features,
+    }
+
+
+def _unique_display_paths(paths: Iterable[Path]) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for path in paths:
+        display = _display_path(Path(path))
+        if display not in seen:
+            out.append(display)
+            seen.add(display)
+    return out
+
+
+def _split_metadata(
     *,
-    run_dirs: list[Path],
+    selection_run_dirs: list[Path],
+    eval_run_dirs: list[Path],
+) -> dict[str, Any]:
+    selection_paths = _unique_display_paths(selection_run_dirs)
+    eval_paths = _unique_display_paths(eval_run_dirs)
+    selection_set = set(selection_paths)
+    eval_set = set(eval_paths)
+    return {
+        "enabled": True,
+        "mode": "internal_compact_simulator_development_holdout",
+        "selection_source": "selection_run_dirs validation recomputations",
+        "eval_source": "eval_run_dirs saved compact-simulator eval rows",
+        "selection_run_dirs": selection_paths,
+        "eval_run_dirs": eval_paths,
+        "selection_only_run_dirs": [path for path in selection_paths if path not in eval_set],
+        "eval_only_run_dirs": [path for path in eval_paths if path not in selection_set],
+        "overlap_run_dirs": [path for path in selection_paths if path in eval_set],
+        "boundary_note": (
+            "Internal compact-simulator development/holdout evidence only; not "
+            "independent-machine or precise-reference validation."
+        ),
+    }
+
+
+def build_global_portfolio_split(
+    *,
+    selection_run_dirs: list[Path],
+    eval_run_dirs: list[Path],
     scenarios: list[str],
     device: Any,
     eval_batch_size: int,
@@ -1033,26 +1155,23 @@ def build_global_portfolio(
     selection_metric: str,
     bootstrap_samples: int = DEFAULT_BOOTSTRAP_SAMPLES,
     bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
+    split_mode: bool = True,
 ) -> dict[str, Any]:
+    selection_run_dirs = [Path(path) for path in selection_run_dirs]
+    eval_run_dirs = [Path(path) for path in eval_run_dirs]
+    if not selection_run_dirs:
+        raise ValueError("selection_run_dirs must contain at least one run directory")
+    if not eval_run_dirs:
+        raise ValueError("eval_run_dirs must contain at least one run directory")
+
     validation_records: list[PortfolioRecord] = []
     eval_records: list[PortfolioRecord] = []
-    run_contexts: list[dict[str, Any]] = []
-    for run_dir in run_dirs:
+    selection_run_contexts: list[dict[str, Any]] = []
+    selection_config_by_run_dir: dict[str, dict[str, Any]] = {}
+    for run_dir in selection_run_dirs:
         context = load_run_context(run_dir, device=device)
-        run_contexts.append(
-            {
-                "run_name": context.run_name,
-                "run_dir": _display_path(context.run_dir),
-                "seed": context.seed,
-                "split": context.split,
-                "training_seed": context.training_seed,
-                "best_checkpoint": str(context.config.get("best_checkpoint")),
-                "lookback": context.lookback,
-                "lookahead": context.lookahead,
-                "candidate_methods": context.candidate_methods,
-                "candidate_residual_features": context.candidate_residual_features,
-            }
-        )
+        selection_run_contexts.append(_run_context_summary(context))
+        selection_config_by_run_dir[str(Path(run_dir))] = context.config
         for scenario in scenarios:
             validation_records.append(
                 recompute_validation_record(
@@ -1061,30 +1180,49 @@ def build_global_portfolio(
                     eval_batch_size=eval_batch_size,
                 )
             )
-            eval_records.append(load_eval_record(context.run_dir, scenario, context.config))
         del context
+
+    for run_dir in eval_run_dirs:
+        config = selection_config_by_run_dir.get(str(Path(run_dir)))
+        for scenario in scenarios:
+            eval_records.append(load_eval_record(run_dir, scenario, config))
 
     candidate_methods = _candidate_methods_for_records(validation_records)
     full_policy_grid = policy_grid(candidate_methods, blend_grid_step)
+    scenario_selection_source = (
+        "pooled_selection_validation_global_scenario"
+        if split_mode
+        else "pooled_validation_global_scenario"
+    )
     scenario_policies = select_global_scenario_policies(
         validation_records,
         scenarios,
         selection_metric=selection_metric,
         blend_grid_step=blend_grid_step,
-        selection_source="pooled_validation_global_scenario",
+        selection_source=scenario_selection_source,
+    )
+    policy_family_source_prefix = (
+        "pooled_selection_validation_global_scenario_policy_family"
+        if split_mode
+        else "pooled_validation_global_scenario_policy_family"
     )
     policy_family_scenario_policies = select_policy_family_scenario_policies(
         validation_records,
         scenarios,
         selection_metric=selection_metric,
         blend_grid_step=blend_grid_step,
+        selection_source_prefix=policy_family_source_prefix,
     )
 
     global_all_scenarios_policy = select_global_policy(
         validation_records,
         selection_metric=selection_metric,
         blend_grid_step=blend_grid_step,
-        selection_source="pooled_validation_global_all_scenarios",
+        selection_source=(
+            "pooled_selection_validation_global_all_scenarios"
+            if split_mode
+            else "pooled_validation_global_all_scenarios"
+        ),
     )
 
     eval_rows = evaluate_rows_for_scenario_policies(eval_records, scenario_policies)
@@ -1108,13 +1246,15 @@ def build_global_portfolio(
     per_split: list[dict[str, Any]] = []
     eval_by_key = {(record.run_name, record.scenario): record for record in eval_records}
     for validation_record in validation_records:
+        eval_record = eval_by_key.get((validation_record.run_name, validation_record.scenario))
+        if eval_record is None:
+            continue
         policy = select_global_policy(
             [validation_record],
             selection_metric=selection_metric,
             blend_grid_step=blend_grid_step,
             selection_source="single_split_scenario_validation_diagnostic",
         )
-        eval_record = eval_by_key[(validation_record.run_name, validation_record.scenario)]
         diagnostic = evaluate_policy_on_record(
             eval_record,
             policy,
@@ -1124,20 +1264,27 @@ def build_global_portfolio(
         per_split.append(diagnostic)
     per_split.sort(key=_row_sort_key)
 
+    inputs = {
+        "run_dirs": _unique_display_paths(
+            [*selection_run_dirs, *eval_run_dirs] if split_mode else selection_run_dirs
+        ),
+        "scenarios": list(scenarios),
+        "selection_metric": selection_metric,
+        "blend_grid_step": float(blend_grid_step),
+        "eval_batch_size": int(eval_batch_size),
+        "bootstrap_samples": int(bootstrap_samples),
+        "bootstrap_seed": int(bootstrap_seed),
+        "device": str(device),
+    }
+    if split_mode:
+        inputs["selection_run_dirs"] = _unique_display_paths(selection_run_dirs)
+        inputs["eval_run_dirs"] = _unique_display_paths(eval_run_dirs)
+
     summary = {
         "schema_version": SCHEMA_VERSION,
-        "boundary_language": BOUNDARY_LANGUAGE,
-        "inputs": {
-            "run_dirs": [_display_path(path) for path in run_dirs],
-            "scenarios": list(scenarios),
-            "selection_metric": selection_metric,
-            "blend_grid_step": float(blend_grid_step),
-            "eval_batch_size": int(eval_batch_size),
-            "bootstrap_samples": int(bootstrap_samples),
-            "bootstrap_seed": int(bootstrap_seed),
-            "device": str(device),
-        },
-        "run_contexts": run_contexts,
+        "boundary_language": SPLIT_BOUNDARY_LANGUAGE if split_mode else BOUNDARY_LANGUAGE,
+        "inputs": inputs,
+        "run_contexts": selection_run_contexts,
         "validation": {
             "policy_space": {
                 "components": [
@@ -1155,6 +1302,9 @@ def build_global_portfolio(
             "global_all_scenarios_policy": global_all_scenarios_policy,
             "policy_family_scenario_policies": policy_family_scenario_policies,
             "per_split_scenario_policy_diagnostics": per_split,
+            "per_split_scenario_policy_diagnostic_scope": (
+                "overlapping_selection_eval_run_dirs_only" if split_mode else "run_dirs"
+            ),
         },
         "eval": {
             "global_scenario_policy_rows": eval_rows,
@@ -1176,7 +1326,38 @@ def build_global_portfolio(
             "policy_family_diagnostics": policy_family_diagnostics,
         },
     }
+    if split_mode:
+        summary["selection_eval_split"] = _split_metadata(
+            selection_run_dirs=selection_run_dirs,
+            eval_run_dirs=eval_run_dirs,
+        )
+        summary["selection_run_contexts"] = selection_run_contexts
     return summary
+
+
+def build_global_portfolio(
+    *,
+    run_dirs: list[Path],
+    scenarios: list[str],
+    device: Any,
+    eval_batch_size: int,
+    blend_grid_step: float,
+    selection_metric: str,
+    bootstrap_samples: int = DEFAULT_BOOTSTRAP_SAMPLES,
+    bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
+) -> dict[str, Any]:
+    return build_global_portfolio_split(
+        selection_run_dirs=run_dirs,
+        eval_run_dirs=run_dirs,
+        scenarios=scenarios,
+        device=device,
+        eval_batch_size=eval_batch_size,
+        blend_grid_step=blend_grid_step,
+        selection_metric=selection_metric,
+        bootstrap_samples=bootstrap_samples,
+        bootstrap_seed=bootstrap_seed,
+        split_mode=False,
+    )
 
 
 CSV_COLUMNS = [
@@ -1287,6 +1468,8 @@ def render_markdown(summary: dict[str, Any]) -> str:
     policies = summary["validation"]["global_scenario_policies"]
     policy_family_scenario_policies = summary["validation"].get("policy_family_scenario_policies", {})
     policy_family_diagnostics = summary["eval"].get("policy_family_diagnostics", {})
+    split_metadata = summary.get("selection_eval_split")
+    split_enabled = isinstance(split_metadata, dict) and bool(split_metadata.get("enabled"))
     lines = [
         "# AdaptiveCandidateFusion Global Scenario Portfolio",
         "",
@@ -1296,11 +1479,37 @@ def render_markdown(summary: dict[str, Any]) -> str:
         "",
         str(summary["boundary_language"]),
         "",
+    ]
+    if split_enabled:
+        lines.extend(
+            [
+                "## Selection/Eval Split",
+                "",
+                (
+                    "Policies are selected from development `selection_run_dirs` validation "
+                    "records and evaluated on holdout `eval_run_dirs` saved compact-simulator "
+                    "eval rows. This is internal compact-simulator development/holdout "
+                    "evidence, not independent-machine or precise-reference validation."
+                ),
+                "",
+                "Selection run directories:",
+                "",
+            ]
+        )
+        for path in split_metadata.get("selection_run_dirs", []):
+            lines.append(f"- `{path}`")
+        lines.extend(["", "Eval run directories:", ""])
+        for path in split_metadata.get("eval_run_dirs", []):
+            lines.append(f"- `{path}`")
+        lines.append("")
+    lines.extend(
+        [
         "## Selected Scenario Policies",
         "",
         "| Scenario | Policy | Validation RMSE m | Validation Steps | Eval Wins/Rows | Mean Gain % | Min Gain % |",
         "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
-    ]
+        ]
+    )
     for scenario, policy in policies.items():
         scenario_eval = scenario_summary[scenario]
         lines.append(
@@ -1442,8 +1651,16 @@ def render_markdown(summary: dict[str, Any]) -> str:
             f"{row['result_vs_best_input']} |"
         )
     lines.extend(["", "## Sources", ""])
-    for path in summary["inputs"]["run_dirs"]:
-        lines.append(f"- `{path}`")
+    if split_enabled:
+        lines.extend(["Selection run directories:", ""])
+        for path in split_metadata.get("selection_run_dirs", []):
+            lines.append(f"- `{path}`")
+        lines.extend(["", "Eval run directories:", ""])
+        for path in split_metadata.get("eval_run_dirs", []):
+            lines.append(f"- `{path}`")
+    else:
+        for path in summary["inputs"]["run_dirs"]:
+            lines.append(f"- `{path}`")
     lines.append("")
     return "\n".join(lines)
 
@@ -1470,11 +1687,45 @@ def write_artifacts(summary: dict[str, Any], *, output_dir: Path) -> dict[str, s
 
 def main() -> None:
     args = build_parser().parse_args()
+    split_requested = any(
+        value
+        for value in (
+            args.selection_run_dir,
+            args.eval_run_dir,
+            args.selection_summary_json,
+            args.eval_summary_json,
+        )
+    )
     run_dirs = resolve_run_dirs(
         positional=args.run_dirs,
         repeated=args.run_dir,
         summary_json=args.summary_json,
+        default_run_dirs=DEFAULT_RUN_DIRS if not split_requested else None,
     )
+    if split_requested:
+        selection_run_dirs = resolve_run_dirs(
+            positional=[],
+            repeated=args.selection_run_dir,
+            summary_json=args.selection_summary_json,
+            default_run_dirs=None,
+            summary_keys=("selection_run_dirs", "run_dirs"),
+        )
+        eval_run_dirs = resolve_run_dirs(
+            positional=[],
+            repeated=args.eval_run_dir,
+            summary_json=args.eval_summary_json,
+            default_run_dirs=None,
+            summary_keys=("eval_run_dirs", "run_dirs"),
+        )
+        if not selection_run_dirs:
+            selection_run_dirs = run_dirs
+        if not eval_run_dirs:
+            eval_run_dirs = run_dirs
+        if not selection_run_dirs or not eval_run_dirs:
+            raise SystemExit(
+                "selection/eval split mode requires selection and eval run directories; "
+                "provide --selection-run-dir/--eval-run-dir or common positional/--run-dir inputs."
+            )
     scenarios = parse_csv(args.scenarios)
     if not scenarios:
         raise SystemExit("--scenarios must name at least one scenario")
@@ -1487,16 +1738,30 @@ def main() -> None:
     except ValueError as exc:
         raise SystemExit(f"--blend-grid-step invalid: {exc}") from exc
     device = poc.resolve_device(str(args.device))
-    summary = build_global_portfolio(
-        run_dirs=run_dirs,
-        scenarios=scenarios,
-        device=device,
-        eval_batch_size=int(args.eval_batch_size),
-        blend_grid_step=float(args.blend_grid_step),
-        selection_metric=str(args.selection_metric),
-        bootstrap_samples=int(args.bootstrap_samples),
-        bootstrap_seed=int(args.bootstrap_seed),
-    )
+    if split_requested:
+        summary = build_global_portfolio_split(
+            selection_run_dirs=selection_run_dirs,
+            eval_run_dirs=eval_run_dirs,
+            scenarios=scenarios,
+            device=device,
+            eval_batch_size=int(args.eval_batch_size),
+            blend_grid_step=float(args.blend_grid_step),
+            selection_metric=str(args.selection_metric),
+            bootstrap_samples=int(args.bootstrap_samples),
+            bootstrap_seed=int(args.bootstrap_seed),
+            split_mode=True,
+        )
+    else:
+        summary = build_global_portfolio(
+            run_dirs=run_dirs,
+            scenarios=scenarios,
+            device=device,
+            eval_batch_size=int(args.eval_batch_size),
+            blend_grid_step=float(args.blend_grid_step),
+            selection_metric=str(args.selection_metric),
+            bootstrap_samples=int(args.bootstrap_samples),
+            bootstrap_seed=int(args.bootstrap_seed),
+        )
     paths = write_artifacts(summary, output_dir=Path(args.output_dir))
     overall = summary["eval"]["global_scenario_policy_summary"]
     print(

@@ -134,6 +134,7 @@ SCHEDULE_PROSPECTIVE_260530 = "prospective_260530"
 SCHEDULE_PROSPECTIVE_260606 = "prospective_260606"
 SCHEDULE_PROSPECTIVE_260613 = "prospective_260613"
 SCHEDULE_PROSPECTIVE_260620 = "prospective_260620"
+SCHEDULE_PROSPECTIVE_260627 = "prospective_260627"
 
 PROSPECTIVE_260516_WEEK: dict[str, tuple[str | None, tuple[str, ...]]] = {
     "260516": (
@@ -174,6 +175,13 @@ PROSPECTIVE_260620_WEEK: dict[str, tuple[str | None, tuple[str, ...]]] = {
     "260620": (
         None,
         ("20260615", "20260616", "20260617", "20260618", "20260619"),
+    )
+}
+
+PROSPECTIVE_260627_WEEK: dict[str, tuple[str | None, tuple[str, ...]]] = {
+    "260627": (
+        None,
+        ("20260622", "20260623", "20260624", "20260625", "20260626"),
     )
 }
 
@@ -242,6 +250,29 @@ PROSPECTIVE_SCHEDULE_SPECS = {
             "260606",
             "260613",
             "260620",
+        ),
+    },
+    SCHEDULE_PROSPECTIVE_260627: {
+        "validation_week": "260620",
+        "test_week": "260627",
+        "added_week_maps": (
+            PROSPECTIVE_260516_WEEK,
+            PROSPECTIVE_260523_WEEK,
+            PROSPECTIVE_260530_WEEK,
+            PROSPECTIVE_260606_WEEK,
+            PROSPECTIVE_260613_WEEK,
+            PROSPECTIVE_260620_WEEK,
+            PROSPECTIVE_260627_WEEK,
+        ),
+        "used_weeks": (
+            "260509",
+            "260516",
+            "260523",
+            "260530",
+            "260606",
+            "260613",
+            "260620",
+            "260627",
         ),
     },
 }
@@ -2080,6 +2111,7 @@ def build_parser() -> argparse.ArgumentParser:
             SCHEDULE_PROSPECTIVE_260606,
             SCHEDULE_PROSPECTIVE_260613,
             SCHEDULE_PROSPECTIVE_260620,
+            SCHEDULE_PROSPECTIVE_260627,
         ),
         default=SCHEDULE_FORMAL210_MINI_PRE260509,
     )

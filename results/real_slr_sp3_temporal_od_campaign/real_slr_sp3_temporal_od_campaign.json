@@ -1,0 +1,528 @@
+{
+  "schema_version": "real_slr_sp3_temporal_od_campaign_v1",
+  "generated_utc": "2026-05-22T03:33:39Z",
+  "status": "completed",
+  "source_artifacts": [
+    {
+      "artifact_id": "results/real_slr_sp3_hifi/real_slr_sp3_hifi_validation.json",
+      "sha256": "bba46d8c004e0cd1de9bcc007668fd11ef3075ddd8d3b6809c74f10dad533bcd"
+    }
+  ],
+  "public_corpus": {
+    "targets": [
+      "LAGEOS-1",
+      "LAGEOS-2"
+    ],
+    "num_sparse_slr_arcs": 40,
+    "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+    "split_weeks": {
+      "260418": "train",
+      "260425": "train",
+      "260502": "val",
+      "260509": "test"
+    },
+    "normal_point_source": "public ILRS CRD v2 normal points",
+    "state_reference": "independent ILRS analysis-centre SP3 precise orbit"
+  },
+  "predeclared": {
+    "range_std_m": 20.0,
+    "accel_psd": 1e-12,
+    "train_frac": 0.6,
+    "slr_max_step_s": 60.0,
+    "learned_candidate": "Learned calibrated higher-fidelity UKF",
+    "classical_candidate_pool": [
+      "UKF (compact)",
+      "UKF (higher-fidelity)",
+      "AUKF (higher-fidelity)"
+    ],
+    "learned_ridge_grid": [
+      "1e-06",
+      "1e-03",
+      "1e+00",
+      "1e+03",
+      "1e+06"
+    ],
+    "bootstrap_resamples": 5000,
+    "bootstrap_seed": 20260522,
+    "classical_pool_boundary": "Best available sparse-SLR higher-fidelity public-corpus classical pool: compact UKF, higher-fidelity UKF, and higher-fidelity AUKF. This artifact does not claim a newly exhaustive EKF/UKF/AUKF sweep."
+  },
+  "learned_calibrator_fit": {
+    "training_weeks": [
+      "260418",
+      "260425"
+    ],
+    "n_train_samples": 8056,
+    "feature_count": 16,
+    "residual_sample_step_s": 300.0,
+    "ridge_grid": [
+      "1e-06",
+      "1e-03",
+      "1e+00",
+      "1e+03",
+      "1e+06"
+    ],
+    "per_week_object_samples": [
+      {
+        "target": "LAGEOS-1",
+        "week": "260418",
+        "split": "train",
+        "n_samples": 2014
+      },
+      {
+        "target": "LAGEOS-2",
+        "week": "260418",
+        "split": "train",
+        "n_samples": 2014
+      },
+      {
+        "target": "LAGEOS-1",
+        "week": "260425",
+        "split": "train",
+        "n_samples": 2014
+      },
+      {
+        "target": "LAGEOS-2",
+        "week": "260425",
+        "split": "train",
+        "n_samples": 2014
+      }
+    ],
+    "sp3_used_for_fit_splits": [
+      "train"
+    ]
+  },
+  "selection_integrity": {
+    "calibrator_fit_uses_only_train_weeks": true,
+    "learned_ridge_selected_on_validation_only": true,
+    "candidate_selected_on_validation_only": true,
+    "test_set_information_used_for_selection": false,
+    "train_weeks": [
+      "260418",
+      "260425"
+    ],
+    "validation_week": "260502",
+    "test_week": "260509",
+    "selected_learned_ridge_lambda": "1e+06"
+  },
+  "validation": {
+    "n_arcs": 10,
+    "learned_ridge_mean_rms_m": {
+      "1e-06": 539.98,
+      "1e-03": 539.98,
+      "1e+00": 540.0,
+      "1e+03": 601.57,
+      "1e+06": 525.44
+    },
+    "learned_rows": [
+      {
+        "arc_id": "LAGEOS-1 20260427",
+        "target": "LAGEOS-1",
+        "date": "20260427",
+        "split": "val",
+        "num_observations": 56,
+        "num_fit": 33,
+        "num_held_out": 23,
+        "learned_ridge_rmse_m": {
+          "1e-06": 1576.41,
+          "1e-03": 1576.9,
+          "1e+00": 1576.75,
+          "1e+03": 1614.26,
+          "1e+06": 1251.83
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260428",
+        "target": "LAGEOS-1",
+        "date": "20260428",
+        "split": "val",
+        "num_observations": 123,
+        "num_fit": 73,
+        "num_held_out": 50,
+        "learned_ridge_rmse_m": {
+          "1e-06": 591.04,
+          "1e-03": 590.94,
+          "1e+00": 590.79,
+          "1e+03": 698.54,
+          "1e+06": 703.42
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260429",
+        "target": "LAGEOS-1",
+        "date": "20260429",
+        "split": "val",
+        "num_observations": 108,
+        "num_fit": 64,
+        "num_held_out": 44,
+        "learned_ridge_rmse_m": {
+          "1e-06": 1458.7,
+          "1e-03": 1458.65,
+          "1e+00": 1459.15,
+          "1e+03": 1606.39,
+          "1e+06": 1264.5
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260430",
+        "target": "LAGEOS-1",
+        "date": "20260430",
+        "split": "val",
+        "num_observations": 123,
+        "num_fit": 73,
+        "num_held_out": 50,
+        "learned_ridge_rmse_m": {
+          "1e-06": 124.67,
+          "1e-03": 124.69,
+          "1e+00": 124.69,
+          "1e+03": 181.79,
+          "1e+06": 238.33
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260501",
+        "target": "LAGEOS-1",
+        "date": "20260501",
+        "split": "val",
+        "num_observations": 139,
+        "num_fit": 83,
+        "num_held_out": 56,
+        "learned_ridge_rmse_m": {
+          "1e-06": 222.25,
+          "1e-03": 222.05,
+          "1e+00": 221.94,
+          "1e+03": 204.5,
+          "1e+06": 351.89
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260427",
+        "target": "LAGEOS-2",
+        "date": "20260427",
+        "split": "val",
+        "num_observations": 103,
+        "num_fit": 61,
+        "num_held_out": 42,
+        "learned_ridge_rmse_m": {
+          "1e-06": 517.79,
+          "1e-03": 517.6,
+          "1e+00": 517.7,
+          "1e+03": 503.72,
+          "1e+06": 661.82
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260428",
+        "target": "LAGEOS-2",
+        "date": "20260428",
+        "split": "val",
+        "num_observations": 56,
+        "num_fit": 33,
+        "num_held_out": 23,
+        "learned_ridge_rmse_m": {
+          "1e-06": 138.96,
+          "1e-03": 139.14,
+          "1e+00": 139.22,
+          "1e+03": 180.43,
+          "1e+06": 135.08
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260429",
+        "target": "LAGEOS-2",
+        "date": "20260429",
+        "split": "val",
+        "num_observations": 75,
+        "num_fit": 45,
+        "num_held_out": 30,
+        "learned_ridge_rmse_m": {
+          "1e-06": 177.17,
+          "1e-03": 177.1,
+          "1e+00": 177.12,
+          "1e+03": 187.86,
+          "1e+06": 137.3
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260430",
+        "target": "LAGEOS-2",
+        "date": "20260430",
+        "split": "val",
+        "num_observations": 76,
+        "num_fit": 45,
+        "num_held_out": 31,
+        "learned_ridge_rmse_m": {
+          "1e-06": 148.49,
+          "1e-03": 148.41,
+          "1e+00": 148.38,
+          "1e+03": 135.73,
+          "1e+06": 308.23
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260501",
+        "target": "LAGEOS-2",
+        "date": "20260501",
+        "split": "val",
+        "num_observations": 91,
+        "num_fit": 54,
+        "num_held_out": 37,
+        "learned_ridge_rmse_m": {
+          "1e-06": 444.28,
+          "1e-03": 444.27,
+          "1e+00": 444.26,
+          "1e+03": 702.47,
+          "1e+06": 202.01
+        }
+      }
+    ]
+  },
+  "selection": {
+    "selection_rule": "choose the lowest validation-week mean arc RMSE after selecting the learned ridge on validation only",
+    "validation_mean_rms_m": {
+      "UKF (compact)": 577.14,
+      "UKF (higher-fidelity)": 525.87,
+      "AUKF (higher-fidelity)": 550.23,
+      "Learned calibrated higher-fidelity UKF": 525.44
+    },
+    "selected_candidate": "Learned calibrated higher-fidelity UKF",
+    "selected_candidate_family": "learned",
+    "selected_validation_mean_rms_m": 525.44,
+    "best_classical_validation_candidate": "UKF (higher-fidelity)",
+    "best_classical_validation_mean_rms_m": 525.87,
+    "selected_learned_ridge_lambda": "1e+06"
+  },
+  "test_readout": {
+    "n_arcs": 10,
+    "test_mean_rms_m": {
+      "UKF (compact)": 368.64,
+      "UKF (higher-fidelity)": 395.77,
+      "AUKF (higher-fidelity)": 405.99,
+      "Learned calibrated higher-fidelity UKF": 411.51
+    },
+    "selected_candidate": "Learned calibrated higher-fidelity UKF",
+    "selected_test_mean_rms_m": 411.51,
+    "test_best_candidate": "UKF (compact)",
+    "test_best_mean_rms_m": 368.64,
+    "best_classical_test_candidate": "UKF (compact)",
+    "best_classical_test_mean_rms_m": 368.64,
+    "selected_vs_test_best_paired_gap": {
+      "n": 10,
+      "mean_gap_m": 42.87,
+      "median_gap_m": 35.94,
+      "n_a_lower_rmse": 0,
+      "fraction_a_lower_rmse": 0.0,
+      "bootstrap95_mean_gap_m": [
+        23.69,
+        63.38
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "selected_vs_best_classical_paired_gap": {
+      "n": 10,
+      "mean_gap_m": 42.87,
+      "median_gap_m": 35.94,
+      "n_a_lower_rmse": 0,
+      "fraction_a_lower_rmse": 0.0,
+      "bootstrap95_mean_gap_m": [
+        23.69,
+        63.38
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "learned_vs_best_classical_paired_gap": {
+      "n": 10,
+      "mean_gap_m": 42.87,
+      "median_gap_m": 35.94,
+      "n_a_lower_rmse": 0,
+      "fraction_a_lower_rmse": 0.0,
+      "bootstrap95_mean_gap_m": [
+        23.69,
+        63.38
+      ],
+      "gap_convention": "a_minus_b; positive means candidate a has larger held-out RMSE"
+    },
+    "arcs": [
+      {
+        "arc_id": "LAGEOS-1 20260504",
+        "target": "LAGEOS-1",
+        "date": "20260504",
+        "split": "test",
+        "num_observations": 32,
+        "num_fit": 19,
+        "num_held_out": 13,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 394.15,
+          "UKF (higher-fidelity)": 387.66,
+          "AUKF (higher-fidelity)": 415.01,
+          "Learned calibrated higher-fidelity UKF": 436.39
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260505",
+        "target": "LAGEOS-1",
+        "date": "20260505",
+        "split": "test",
+        "num_observations": 72,
+        "num_fit": 43,
+        "num_held_out": 29,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 165.05,
+          "UKF (higher-fidelity)": 163.74,
+          "AUKF (higher-fidelity)": 176.89,
+          "Learned calibrated higher-fidelity UKF": 171.06
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260506",
+        "target": "LAGEOS-1",
+        "date": "20260506",
+        "split": "test",
+        "num_observations": 109,
+        "num_fit": 65,
+        "num_held_out": 44,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 1012.94,
+          "UKF (higher-fidelity)": 1000.14,
+          "AUKF (higher-fidelity)": 931.31,
+          "Learned calibrated higher-fidelity UKF": 1035.01
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260507",
+        "target": "LAGEOS-1",
+        "date": "20260507",
+        "split": "test",
+        "num_observations": 55,
+        "num_fit": 33,
+        "num_held_out": 22,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 211.28,
+          "UKF (higher-fidelity)": 220.28,
+          "AUKF (higher-fidelity)": 382.39,
+          "Learned calibrated higher-fidelity UKF": 222.94
+        }
+      },
+      {
+        "arc_id": "LAGEOS-1 20260508",
+        "target": "LAGEOS-1",
+        "date": "20260508",
+        "split": "test",
+        "num_observations": 61,
+        "num_fit": 36,
+        "num_held_out": 25,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 179.15,
+          "UKF (higher-fidelity)": 223.72,
+          "AUKF (higher-fidelity)": 196.4,
+          "Learned calibrated higher-fidelity UKF": 241.99
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260504",
+        "target": "LAGEOS-2",
+        "date": "20260504",
+        "split": "test",
+        "num_observations": 78,
+        "num_fit": 46,
+        "num_held_out": 32,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 206.59,
+          "UKF (higher-fidelity)": 359.83,
+          "AUKF (higher-fidelity)": 353.78,
+          "Learned calibrated higher-fidelity UKF": 300.07
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260505",
+        "target": "LAGEOS-2",
+        "date": "20260505",
+        "split": "test",
+        "num_observations": 56,
+        "num_fit": 33,
+        "num_held_out": 23,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 104.28,
+          "UKF (higher-fidelity)": 185.34,
+          "AUKF (higher-fidelity)": 215.33,
+          "Learned calibrated higher-fidelity UKF": 202.64
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260506",
+        "target": "LAGEOS-2",
+        "date": "20260506",
+        "split": "test",
+        "num_observations": 112,
+        "num_fit": 67,
+        "num_held_out": 45,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 573.72,
+          "UKF (higher-fidelity)": 562.31,
+          "AUKF (higher-fidelity)": 544.03,
+          "Learned calibrated higher-fidelity UKF": 603.36
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260507",
+        "target": "LAGEOS-2",
+        "date": "20260507",
+        "split": "test",
+        "num_observations": 38,
+        "num_fit": 22,
+        "num_held_out": 16,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 128.86,
+          "UKF (higher-fidelity)": 173.27,
+          "AUKF (higher-fidelity)": 168.31,
+          "Learned calibrated higher-fidelity UKF": 185.88
+        }
+      },
+      {
+        "arc_id": "LAGEOS-2 20260508",
+        "target": "LAGEOS-2",
+        "date": "20260508",
+        "split": "test",
+        "num_observations": 64,
+        "num_fit": 38,
+        "num_held_out": 26,
+        "held_out_position_rmse_m": {
+          "UKF (compact)": 710.38,
+          "UKF (higher-fidelity)": 681.44,
+          "AUKF (higher-fidelity)": 676.44,
+          "Learned calibrated higher-fidelity UKF": 715.73
+        }
+      }
+    ]
+  },
+  "headline_readout": {
+    "selected_candidate": "Learned calibrated higher-fidelity UKF",
+    "selected_candidate_family": "learned",
+    "selected_test_mean_rms_m": 411.51,
+    "test_best_candidate": "UKF (compact)",
+    "test_best_mean_rms_m": 368.64,
+    "learned_test_mean_rms_m": 411.51,
+    "best_classical_test_mean_rms_m": 368.64,
+    "learned_minus_best_classical_mean_gap_m": 42.87,
+    "learned_positive_against_best_classical": false,
+    "paper_strength_class": "bounded_public_real_measurement_od_probe"
+  },
+  "claim_boundary": {
+    "defensible_status": "bounded_public_real_measurement_od_probe",
+    "scientifically_defensible_40_arc_temporal_campaign_feasible": true,
+    "central_external_validation_status": false,
+    "can_be_used_as_central_external_validation": false,
+    "can_be_used_as_bounded_public_real_measurement_od_probe": true,
+    "is_operational_validation": false,
+    "is_centimetre_slr_or_flight_validation": false,
+    "is_powered_confirmatory_campaign": false,
+    "does_not_relabel_provenance_as_validation": true,
+    "why_not_central_external_validation": [
+      "The corpus is small, LAGEOS-only, and uses one SP3 analysis-centre precise-orbit product.",
+      "The classical reference set is the best available sparse-SLR hifi pool in the existing public-corpus artifact, not a fresh exhaustive classical sweep.",
+      "The OD reduction remains bounded-fidelity rather than an operational precise-SLR reduction.",
+      "No independent prospective power calculation was used to size the endpoint before observing the corpus.",
+      "The learned candidate is a lightweight empirical residual correction, not a broad learned-OD system replication."
+    ],
+    "appropriate_use": "Use as a no-test-leakage public real-measurement OD probe scored against independent SP3 states, not as central operational validation."
+  }
+}

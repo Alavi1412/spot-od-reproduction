@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import inspect
+import json
 from pathlib import Path
 
 import numpy as np
@@ -17,16 +18,20 @@ def _record(
     scenario: str = "process_noise_shift_test",
     seed: int = 1,
     visibility: np.ndarray | None = None,
+    run_dir: Path | None = None,
+    role: str = "val",
 ) -> gp.PortfolioRecord:
     if visibility is None:
         visibility = np.ones(states.shape[:2] + (1,), dtype=np.float64)
+    if run_dir is None:
+        run_dir = Path(f"results/example_seed{seed}_split{seed}")
     return gp.PortfolioRecord(
-        run_dir=Path(f"results/example_seed{seed}_split{seed}"),
-        run_name=f"example_seed{seed}_split{seed}",
+        run_dir=run_dir,
+        run_name=run_dir.name,
         seed=seed,
         split=seed,
         scenario=scenario,
-        role="val",
+        role=role,
         states=states,
         visibility=visibility,
         eval_mask=np.ones(states.shape[:2], dtype=bool),
@@ -217,6 +222,57 @@ def test_parser_exposes_deterministic_bootstrap_defaults() -> None:
 
     assert args.bootstrap_samples == 20_000
     assert args.bootstrap_seed == 12_345
+    assert args.selection_run_dir is None
+    assert args.eval_run_dir is None
+    assert args.selection_summary_json is None
+    assert args.eval_summary_json is None
+
+
+def test_parser_accepts_selection_eval_split_run_dirs() -> None:
+    args = gp.build_parser().parse_args(
+        [
+            "--selection-run-dir",
+            "results/dev_seed7_split7",
+            "--eval-run-dir",
+            "results/holdout_seed11_split11",
+        ]
+    )
+
+    assert args.selection_run_dir == [Path("results/dev_seed7_split7")]
+    assert args.eval_run_dir == [Path("results/holdout_seed11_split11")]
+
+
+def test_resolve_run_dirs_reads_split_summary_keys(tmp_path: Path) -> None:
+    summary_path = tmp_path / "split_summary.json"
+    summary_path.write_text(
+        json.dumps(
+            {
+                "inputs": {
+                    "selection_run_dirs": ["results/dev_seed7_split7"],
+                    "eval_run_dirs": ["results/holdout_seed11_split11"],
+                }
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    selection_dirs = gp.resolve_run_dirs(
+        positional=[],
+        repeated=None,
+        summary_json=[summary_path],
+        default_run_dirs=None,
+        summary_keys=("selection_run_dirs", "run_dirs"),
+    )
+    eval_dirs = gp.resolve_run_dirs(
+        positional=[],
+        repeated=None,
+        summary_json=[summary_path],
+        default_run_dirs=None,
+        summary_keys=("eval_run_dirs", "run_dirs"),
+    )
+
+    assert selection_dirs == [Path("results/dev_seed7_split7")]
+    assert eval_dirs == [Path("results/holdout_seed11_split11")]
 
 
 def test_global_policy_selection_uses_pooled_validation_records() -> None:
@@ -258,6 +314,126 @@ def test_global_policy_selection_uses_pooled_validation_records() -> None:
     assert row["portfolio_observed_step_pos_rmse_m"] == 0.0
     assert row["gain_vs_best_input_observed_step_percent"] == 100.0
     assert row["result_vs_best_input"] == "win"
+
+
+def test_build_global_portfolio_split_selects_dev_and_evaluates_holdout(monkeypatch: pytest.MonkeyPatch) -> None:
+    scenario = "process_noise_shift_test"
+    selection_run_dir = Path("results/dev_seed7_split7")
+    eval_run_dir = Path("results/holdout_seed11_split11")
+    states = _constant_x_component(1.0)
+    selection_components = {
+        "learned": _constant_x_component(1.0),
+        "learned_hard": _constant_x_component(8.0),
+        "EKF": _constant_x_component(0.0),
+        "RFIS": _constant_x_component(2.0),
+    }
+    eval_components = {
+        "learned": _constant_x_component(1.0),
+        "learned_hard": _constant_x_component(8.0),
+        "EKF": _constant_x_component(0.0),
+        "RFIS": _constant_x_component(3.0),
+    }
+
+    def fake_load_run_context(run_dir: Path, *, device: object) -> gp.RunContext:
+        assert Path(run_dir) == selection_run_dir
+        return gp.RunContext(
+            run_dir=Path(run_dir),
+            run_name=Path(run_dir).name,
+            seed=7,
+            split=7,
+            training_seed=700,
+            config={"best_checkpoint": "checkpoint.pt"},
+            cfg={},
+            model=object(),
+            candidate_methods=["EKF", "RFIS"],
+            model_kwargs={},
+            lookback=0,
+            lookahead=0,
+            candidate_residual_features="none",
+        )
+
+    def fake_recompute_validation_record(
+        context: gp.RunContext,
+        scenario_name: str,
+        *,
+        eval_batch_size: int,
+    ) -> gp.PortfolioRecord:
+        assert context.run_dir == selection_run_dir
+        assert scenario_name == scenario
+        assert eval_batch_size == 8
+        return _record(
+            states=states,
+            components=selection_components,
+            candidate_methods=["EKF", "RFIS"],
+            scenario=scenario_name,
+            seed=7,
+            run_dir=selection_run_dir,
+            role="val",
+        )
+
+    def fake_load_eval_record(
+        run_dir: Path,
+        scenario_name: str,
+        config: dict[str, object] | None = None,
+    ) -> gp.PortfolioRecord:
+        assert Path(run_dir) == eval_run_dir
+        assert scenario_name == scenario
+        assert config is None
+        return _record(
+            states=states,
+            components=eval_components,
+            candidate_methods=["EKF", "RFIS"],
+            scenario=scenario_name,
+            seed=11,
+            run_dir=eval_run_dir,
+            role="eval",
+        )
+
+    monkeypatch.setattr(gp, "load_run_context", fake_load_run_context)
+    monkeypatch.setattr(gp, "recompute_validation_record", fake_recompute_validation_record)
+    monkeypatch.setattr(gp, "load_eval_record", fake_load_eval_record)
+
+    summary = gp.build_global_portfolio_split(
+        selection_run_dirs=[selection_run_dir],
+        eval_run_dirs=[eval_run_dir],
+        scenarios=[scenario],
+        device="cpu",
+        eval_batch_size=8,
+        blend_grid_step=0.5,
+        selection_metric="observed_step_pos_rmse_m",
+        bootstrap_samples=32,
+        bootstrap_seed=5,
+    )
+
+    split = summary["selection_eval_split"]
+    assert split["enabled"] is True
+    assert split["selection_run_dirs"] == ["results/dev_seed7_split7"]
+    assert split["eval_run_dirs"] == ["results/holdout_seed11_split11"]
+    assert "development/holdout" in summary["boundary_language"]
+    assert "not independent-machine reproduction" in summary["boundary_language"]
+    assert summary["inputs"]["selection_run_dirs"] == ["results/dev_seed7_split7"]
+    assert summary["inputs"]["eval_run_dirs"] == ["results/holdout_seed11_split11"]
+
+    policy = summary["validation"]["global_scenario_policies"][scenario]
+    assert policy["policy_id"] == "single:learned"
+    assert policy["selection_source"] == "pooled_selection_validation_global_scenario"
+    assert policy["validation_run_names"] == ["dev_seed7_split7"]
+
+    rows = summary["eval"]["global_scenario_policy_rows"]
+    assert len(rows) == 1
+    assert rows[0]["run_name"] == "holdout_seed11_split11"
+    assert rows[0]["run_dir"] == "results/holdout_seed11_split11"
+    assert rows[0]["policy_id"] == "single:learned"
+    assert rows[0]["result_vs_best_input"] == "win"
+    assert summary["validation"]["per_split_scenario_policy_diagnostics"] == []
+
+    markdown = gp.render_markdown(summary)
+    assert "## Selection/Eval Split" in markdown
+    assert "Selection run directories:" in markdown
+    assert "`results/dev_seed7_split7`" in markdown
+    assert "Eval run directories:" in markdown
+    assert "`results/holdout_seed11_split11`" in markdown
+    assert "not independent-machine or precise-reference validation" in markdown
 
 
 def test_script_has_no_checkpoint_mutating_or_writer_function_calls() -> None:

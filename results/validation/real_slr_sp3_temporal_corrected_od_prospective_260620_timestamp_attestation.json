@@ -1,0 +1,112 @@
+{
+  "artifact": "real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation",
+  "schema_version": "real_slr_sp3_260620_timestamp_attestation_v2",
+  "report_generated_utc": "2026-06-17T12:54:45.9236175Z",
+  "proof_upgrade": {
+    "upgraded_on_date": "2026-06-17",
+    "previous_ots_sha256": "0b3d9a3be919df03cbe9ec52a52ec4de5b2791aecbad85e023a2ab1d6f6f29cd",
+    "backup_created_during_upgrade_removed": true,
+    "interpretation": "The OpenTimestamps proof was upgraded to include Bitcoin block header attestations. This is timestamp evidence only and does not score or validate the 260620 prospective campaign."
+  },
+  "source": {
+    "path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+    "sha256": "76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca"
+  },
+  "existing_sha256_sidecar": {
+    "path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt",
+    "sha256": "76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca",
+    "matched_source_json": true
+  },
+  "opentimestamps": {
+    "path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots",
+    "byte_length": 3950,
+    "sha256": "b39558419976a16a8ae10ae53e0e2bbfbcf71d6391291f22226da85a37a40f83",
+    "client": "opentimestamps-client 0.7.2 via .\\.venv\\Scripts\\ots.exe",
+    "status": "upgraded_bitcoin_block_header_attested",
+    "info_matched_source_sha256": true,
+    "calendar_pending_markers_present_on_some_branches": true,
+    "bitcoin_block_header_attestations": [
+      {
+        "height": 953674,
+        "merkle_root": "5a8877ca1c7d9703b1628120c6207af4c3706244992887e9f72323a0e1841567",
+        "block_hash": "000000000000000000013935684f88b2a01774b01a9ab532fa0c0323d80ec0e5",
+        "timestamp": 1781464036
+      },
+      {
+        "height": 953697,
+        "merkle_root": "3997f7b71d481d65486de96c7e6b591bbf1b6e054c12aacbc220f62dd355970e",
+        "block_hash": "000000000000000000007d757abafccff42ee3f40ff19cfbd00e778b47be7a5a",
+        "timestamp": 1781473768
+      },
+      {
+        "height": 953699,
+        "merkle_root": "2875c7a1a4134cfcd55ddc444537ca9934d849f9b63d367d327afebb0798a38e",
+        "block_hash": "000000000000000000020ba82de662c661530143b459185fe6dff7f98a2dac77",
+        "timestamp": 1781474424
+      }
+    ]
+  },
+  "manual_block_header_cross_check": {
+    "performed_by_main_session_on_date": "2026-06-17",
+    "source": "Blockstream API",
+    "heights_checked": [
+      953674,
+      953697,
+      953699
+    ],
+    "all_merkle_roots_matched_opentimestamps_output": true
+  },
+  "commands": [
+    {
+      "purpose": "Verify the source JSON SHA-256 after the proof upgrade.",
+      "command": "Get-FileHash -Algorithm SHA256 -LiteralPath 'release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json'",
+      "exit_status": 0,
+      "result": "76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca"
+    },
+    {
+      "purpose": "Read the existing SHA-256 sidecar.",
+      "command": "Get-Content -LiteralPath 'release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt'",
+      "exit_status": 0,
+      "result": "76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca  real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json"
+    },
+    {
+      "purpose": "Hash the upgraded OpenTimestamps proof.",
+      "command": "Get-FileHash -Algorithm SHA256 -LiteralPath 'release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots'",
+      "exit_status": 0,
+      "result": "b39558419976a16a8ae10ae53e0e2bbfbcf71d6391291f22226da85a37a40f83"
+    },
+    {
+      "purpose": "Inspect the upgraded OpenTimestamps proof.",
+      "command": "$env:Path = 'C:\\Program Files\\Adobe\\Adobe Photoshop 2025;' + $env:Path; .\\.venv\\Scripts\\ots.exe info 'release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots'",
+      "exit_status": 0,
+      "result": "Proof reports file sha256 hash 76f784dbefe9d251e707bc524abf602eda659e21d18738ebfd728cbaf90d87ca and BitcoinBlockHeaderAttestation entries at heights 953674, 953697, and 953699."
+    },
+    {
+      "purpose": "Run OpenTimestamps verification with Bitcoin checking disabled.",
+      "command": "$env:Path = 'C:\\Program Files\\Adobe\\Adobe Photoshop 2025;' + $env:Path; .\\.venv\\Scripts\\ots.exe --no-bitcoin verify -f 'release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json' 'release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots'",
+      "exit_status": 1,
+      "result": "Bitcoin checking was disabled, so local Bitcoin-node verification was not performed. The command reported manual checks for blocks 953674, 953697, and 953699 with the same Merkle roots listed in the OpenTimestamps info output."
+    }
+  ],
+  "verification_status": {
+    "source_hash_verified_after_upgrade": true,
+    "sidecar_matched_source_json_after_upgrade": true,
+    "ots_file_upgraded": true,
+    "ots_info_matched_source_sha256": true,
+    "ots_sha256_matches_upgraded_proof": true,
+    "bitcoin_block_header_attestations_present": true,
+    "local_bitcoin_node_verification_performed": false,
+    "no_bitcoin_verify_exit_status": 1,
+    "no_bitcoin_verify_interpretation": "Bitcoin checking was explicitly disabled; the command emitted manual block/Merkle-root verification targets but did not perform local Bitcoin-node verification.",
+    "blockstream_merkle_root_cross_check_passed": true
+  },
+  "claim_boundary": [
+    "This artifact is a Bitcoin-block-header-attested OpenTimestamps proof for a future public-week rule.",
+    "This artifact is not scored validation.",
+    "This artifact is not DOI/public archive.",
+    "This artifact is not independent reproduction.",
+    "This artifact is not operational POD.",
+    "Local Bitcoin-node verification was not performed; the disabled-Bitcoin OpenTimestamps verification path only reported manual block/Merkle-root targets.",
+    "The 260620 dates 2026-06-15 through 2026-06-19 remain pending/not scored as of 2026-06-17 because public 260613/260620 SP3 products are still unavailable."
+  ]
+}

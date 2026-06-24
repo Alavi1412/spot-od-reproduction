@@ -221,3 +221,88 @@ class WindowedSatelliteDataset(Dataset):
         if self.arr.sample_weight is not None:
             sample["sample_weight"] = torch.tensor(float(self.arr.sample_weight[i]), dtype=torch.float32)
         return sample
+
+
+class CenteredWindowedSatelliteDataset(Dataset):
+    """Centered-window dataset for offline smoothing.
+
+    Each sample uses measurements from ``[t-lookback, ..., t, ..., t+lookahead]``
+    and supervises the state, priors, and prior-bank statistics at the center
+    time ``t``. Boundary steps without a complete centered window are excluded.
+    """
+
+    def __init__(
+        self,
+        arrays: DatasetArrays,
+        lookback: int,
+        lookahead: int,
+        require_prior: bool = False,
+    ) -> None:
+        self.arr = arrays
+        self.lookback = int(lookback)
+        self.lookahead = int(lookahead)
+        self.window_size = self.lookback + self.lookahead + 1
+        self.require_prior = require_prior
+        if self.lookback < 0 or self.lookahead < 0:
+            raise ValueError("lookback and lookahead must be non-negative.")
+        if self.window_size <= 0:
+            raise ValueError("centered window must contain at least one step.")
+        if require_prior and arrays.ekf_prior is None:
+            raise ValueError("EKF prior is required but not found in dataset.")
+
+        n_traj, t_steps = arrays.states.shape[0], arrays.states.shape[1]
+        if self.window_size > t_steps:
+            raise ValueError(
+                f"centered window size {self.window_size} exceeds trajectory length {t_steps}."
+            )
+        self.indices: list[tuple[int, int]] = []
+        for i in range(n_traj):
+            for t in range(self.lookback, t_steps - self.lookahead):
+                self.indices.append((i, t))
+
+        station_xyz = arrays.station_ecef.astype(np.float32) / 6_378_137.0
+        self.station_xyz = torch.from_numpy(station_xyz)
+
+    def __len__(self) -> int:
+        return len(self.indices)
+
+    def __getitem__(self, idx: int) -> dict[str, torch.Tensor]:
+        i, t = self.indices[idx]
+        t0 = t - self.lookback
+        t1 = t + self.lookahead + 1
+
+        meas = self.arr.measurements[i, t0:t1].astype(np.float32)
+        vis = self.arr.visibility[i, t0:t1].astype(np.float32)[..., None]
+        meas = scale_measurements(meas)
+
+        target = scale_state(self.arr.states[i, t].astype(np.float32))
+        sample = {
+            "measurements": torch.from_numpy(meas),
+            "visibility": torch.from_numpy(vis),
+            "station_xyz": self.station_xyz,
+            "target": torch.from_numpy(target),
+        }
+        if self.arr.ekf_prior is not None:
+            prior = scale_state(self.arr.ekf_prior[i, t].astype(np.float32))
+            sample["ekf_prior"] = torch.from_numpy(prior)
+        if self.arr.secondary_prior is not None:
+            secondary_prior = scale_state(self.arr.secondary_prior[i, t].astype(np.float32))
+            sample["secondary_prior"] = torch.from_numpy(secondary_prior)
+        if self.arr.innovation_features is not None:
+            innov = self.arr.innovation_features[i, t0:t1].astype(np.float32)
+            sample["innovation_features"] = torch.from_numpy(innov)
+        if self.arr.ekf_prior is not None and self.arr.ukf_prior is not None and self.arr.aukf_prior is not None:
+            prior_bank = np.stack(
+                [
+                    scale_state(self.arr.ekf_prior[i, t].astype(np.float32)),
+                    scale_state(self.arr.ukf_prior[i, t].astype(np.float32)),
+                    scale_state(self.arr.aukf_prior[i, t].astype(np.float32)),
+                ],
+                axis=0,
+            )
+            sample["prior_bank"] = torch.from_numpy(prior_bank)
+        if self.arr.prior_bank_stats is not None:
+            sample["prior_bank_stats"] = torch.from_numpy(self.arr.prior_bank_stats[i, t].astype(np.float32))
+        if self.arr.sample_weight is not None:
+            sample["sample_weight"] = torch.tensor(float(self.arr.sample_weight[i]), dtype=torch.float32)
+        return sample

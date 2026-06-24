@@ -1,0 +1,815 @@
+{
+  "train": {
+    "samples": 160,
+    "path": "results\\data\\train.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {},
+    "coverage": {
+      "mean_visible_stations_per_step": 0.22994791666666667,
+      "fraction_steps_zero_visibility": 0.7738020833333333,
+      "fraction_steps_one_visibility": 0.22244791666666666,
+      "fraction_steps_two_plus_visibility": 0.00375
+    }
+  },
+  "val": {
+    "samples": 32,
+    "path": "results\\data\\val.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {},
+    "coverage": {
+      "mean_visible_stations_per_step": 0.2552083333333333,
+      "fraction_steps_zero_visibility": 0.7484375,
+      "fraction_steps_one_visibility": 0.24791666666666667,
+      "fraction_steps_two_plus_visibility": 0.0036458333333333334
+    }
+  },
+  "test": {
+    "samples": 64,
+    "path": "results\\data\\test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {},
+    "coverage": {
+      "mean_visible_stations_per_step": 0.21432291666666667,
+      "fraction_steps_zero_visibility": 0.7899739583333333,
+      "fraction_steps_one_visibility": 0.20572916666666666,
+      "fraction_steps_two_plus_visibility": 0.004296875
+    }
+  },
+  "stress_train": {
+    "samples": 96,
+    "path": "results\\data\\stress_train.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.8,
+    "overrides": {
+      "measurement_noise": {
+        "range_std_m": 70.0,
+        "az_std_deg": 0.06,
+        "el_std_deg": 0.06,
+        "range_rate_std_mps": 0.22,
+        "outlier_prob": 0.04,
+        "outlier_scale": 10.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.2462673611111111,
+      "fraction_steps_zero_visibility": 0.75703125,
+      "fraction_steps_one_visibility": 0.23967013888888888,
+      "fraction_steps_two_plus_visibility": 0.003298611111111111
+    }
+  },
+  "stress_val": {
+    "samples": 24,
+    "path": "results\\data\\stress_val.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.8,
+    "overrides": {
+      "measurement_noise": {
+        "range_std_m": 70.0,
+        "az_std_deg": 0.06,
+        "el_std_deg": 0.06,
+        "range_rate_std_mps": 0.22,
+        "outlier_prob": 0.04,
+        "outlier_scale": 10.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.23472222222222222,
+      "fraction_steps_zero_visibility": 0.7652777777777777,
+      "fraction_steps_one_visibility": 0.23472222222222222,
+      "fraction_steps_two_plus_visibility": 0.0
+    }
+  },
+  "stress_test": {
+    "samples": 64,
+    "path": "results\\data\\stress_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "measurement_noise": {
+        "range_std_m": 70.0,
+        "az_std_deg": 0.06,
+        "el_std_deg": 0.06,
+        "range_rate_std_mps": 0.22,
+        "outlier_prob": 0.04,
+        "outlier_scale": 10.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.20325520833333333,
+      "fraction_steps_zero_visibility": 0.7993489583333333,
+      "fraction_steps_one_visibility": 0.198046875,
+      "fraction_steps_two_plus_visibility": 0.0026041666666666665
+    }
+  },
+  "high_drag_test": {
+    "samples": 48,
+    "path": "results\\data\\high_drag_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "dynamics": {
+        "ballistic_coeff_m2_per_kg": 0.028,
+        "process_noise_std": 0.1
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.23715277777777777,
+      "fraction_steps_zero_visibility": 0.7689236111111111,
+      "fraction_steps_one_visibility": 0.225,
+      "fraction_steps_two_plus_visibility": 0.006076388888888889
+    }
+  },
+  "process_noise_shift_test": {
+    "samples": 48,
+    "path": "results\\data\\process_noise_shift_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "dynamics": {
+        "process_noise_std": 0.35
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.2578125,
+      "fraction_steps_zero_visibility": 0.7435763888888889,
+      "fraction_steps_one_visibility": 0.25503472222222223,
+      "fraction_steps_two_plus_visibility": 0.001388888888888889
+    }
+  },
+  "maneuver_shift_test": {
+    "samples": 48,
+    "path": "results\\data\\maneuver_shift_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "dynamics": {
+        "process_noise_std": 0.5
+      },
+      "measurement_noise": {
+        "random_dropout_prob": 0.05,
+        "outlier_prob": 0.05
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.2015625,
+      "fraction_steps_zero_visibility": 0.7986111111111112,
+      "fraction_steps_one_visibility": 0.20121527777777778,
+      "fraction_steps_two_plus_visibility": 0.00017361111111111112
+    }
+  },
+  "low_inclination_test": {
+    "samples": 48,
+    "path": "results\\data\\low_inclination_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "orbit_sampling": {
+        "inclination_min_deg": 20.0,
+        "inclination_max_deg": 35.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.21284722222222222,
+      "fraction_steps_zero_visibility": 0.7878472222222223,
+      "fraction_steps_one_visibility": 0.21145833333333333,
+      "fraction_steps_two_plus_visibility": 0.0006944444444444445
+    }
+  },
+  "sunsync_like_test": {
+    "samples": 48,
+    "path": "results\\data\\sunsync_like_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "orbit_sampling": {
+        "inclination_min_deg": 95.0,
+        "inclination_max_deg": 99.0,
+        "altitude_min_km": 600.0,
+        "altitude_max_km": 850.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.1920138888888889,
+      "fraction_steps_zero_visibility": 0.8142361111111112,
+      "fraction_steps_one_visibility": 0.1795138888888889,
+      "fraction_steps_two_plus_visibility": 0.00625
+    }
+  },
+  "high_inclination_test": {
+    "samples": 48,
+    "path": "results\\data\\high_inclination_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "orbit_sampling": {
+        "inclination_min_deg": 70.0,
+        "inclination_max_deg": 98.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.16180555555555556,
+      "fraction_steps_zero_visibility": 0.8392361111111111,
+      "fraction_steps_one_visibility": 0.1597222222222222,
+      "fraction_steps_two_plus_visibility": 0.0010416666666666667
+    }
+  },
+  "force_model_mismatch_test": {
+    "samples": 48,
+    "path": "results\\data\\force_model_mismatch_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "dynamics": {
+        "ballistic_coeff_m2_per_kg": 0.045,
+        "process_noise_std": 0.45,
+        "drag_rho_ref": 7e-11,
+        "srp_area_to_mass_m2_per_kg": 0.06,
+        "srp_cr": 1.6
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.2170138888888889,
+      "fraction_steps_zero_visibility": 0.7852430555555555,
+      "fraction_steps_one_visibility": 0.2125,
+      "fraction_steps_two_plus_visibility": 0.0022569444444444442
+    },
+    "estimator_overrides": {},
+    "truth_estimator_model_mismatch": true
+  },
+  "force_component_omission_test": {
+    "samples": 48,
+    "path": "results\\data\\force_component_omission_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "dynamics": {
+        "enable_third_body": true,
+        "enable_srp": true,
+        "srp_area_to_mass_m2_per_kg": 0.045,
+        "srp_cr": 1.5,
+        "ballistic_coeff_m2_per_kg": 0.026,
+        "drag_rho_ref": 5.5e-11,
+        "process_noise_std": 0.2
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.23142361111111112,
+      "fraction_steps_zero_visibility": 0.7736111111111111,
+      "fraction_steps_one_visibility": 0.22135416666666666,
+      "fraction_steps_two_plus_visibility": 0.0050347222222222225
+    },
+    "estimator_overrides": {
+      "dynamics": {
+        "enable_third_body": false,
+        "enable_srp": false,
+        "ballistic_coeff_m2_per_kg": 0.018,
+        "drag_rho_ref": 4e-11,
+        "process_noise_std": 0.0,
+        "srp_area_to_mass_m2_per_kg": 0.02,
+        "srp_cr": 1.35
+      }
+    },
+    "truth_estimator_model_mismatch": true
+  },
+  "dense_visibility_test": {
+    "samples": 48,
+    "path": "results\\data\\dense_visibility_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "stations": [
+        {
+          "name": "California",
+          "lat_deg": 34.74,
+          "lon_deg": -120.57,
+          "alt_m": 120.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Florida",
+          "lat_deg": 28.52,
+          "lon_deg": -80.65,
+          "alt_m": 5.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Texas",
+          "lat_deg": 30.6,
+          "lon_deg": -97.67,
+          "alt_m": 150.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Hawaii",
+          "lat_deg": 19.7,
+          "lon_deg": -155.08,
+          "alt_m": 10.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Chile",
+          "lat_deg": -33.15,
+          "lon_deg": -70.67,
+          "alt_m": 570.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Brasilia",
+          "lat_deg": -15.79,
+          "lon_deg": -47.88,
+          "alt_m": 1170.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Argentina",
+          "lat_deg": -34.6,
+          "lon_deg": -58.38,
+          "alt_m": 25.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Peru",
+          "lat_deg": -12.04,
+          "lon_deg": -77.03,
+          "alt_m": 150.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Spain",
+          "lat_deg": 40.43,
+          "lon_deg": -4.25,
+          "alt_m": 700.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Germany",
+          "lat_deg": 50.0,
+          "lon_deg": 8.5,
+          "alt_m": 110.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "UK",
+          "lat_deg": 51.48,
+          "lon_deg": -0.1,
+          "alt_m": 25.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Azores",
+          "lat_deg": 37.74,
+          "lon_deg": -25.66,
+          "alt_m": 100.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "SouthAfrica",
+          "lat_deg": -25.89,
+          "lon_deg": 27.69,
+          "alt_m": 1400.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Kenya",
+          "lat_deg": -1.29,
+          "lon_deg": 36.82,
+          "alt_m": 1660.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "India",
+          "lat_deg": 17.41,
+          "lon_deg": 78.55,
+          "alt_m": 540.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Japan",
+          "lat_deg": 36.0,
+          "lon_deg": 140.0,
+          "alt_m": 30.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Singapore",
+          "lat_deg": 1.35,
+          "lon_deg": 103.82,
+          "alt_m": 15.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Australia",
+          "lat_deg": -31.8,
+          "lon_deg": 115.89,
+          "alt_m": 40.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "NewZealand",
+          "lat_deg": -43.52,
+          "lon_deg": 172.62,
+          "alt_m": 10.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Alaska",
+          "lat_deg": 64.84,
+          "lon_deg": -147.72,
+          "alt_m": 140.0,
+          "min_elevation_deg": 8.0
+        }
+      ]
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.43993055555555555,
+      "fraction_steps_zero_visibility": 0.6472222222222223,
+      "fraction_steps_one_visibility": 0.284375,
+      "fraction_steps_two_plus_visibility": 0.06840277777777778
+    },
+    "estimator_overrides": {},
+    "truth_estimator_model_mismatch": true
+  },
+  "credible_dense_od_test": {
+    "samples": 48,
+    "path": "results\\data\\credible_dense_od_test.npz",
+    "kind": "synthetic",
+    "sample_weight": 1.0,
+    "overrides": {
+      "stations": [
+        {
+          "name": "California",
+          "lat_deg": 34.74,
+          "lon_deg": -120.57,
+          "alt_m": 120.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Florida",
+          "lat_deg": 28.52,
+          "lon_deg": -80.65,
+          "alt_m": 5.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Texas",
+          "lat_deg": 30.6,
+          "lon_deg": -97.67,
+          "alt_m": 150.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Hawaii",
+          "lat_deg": 19.7,
+          "lon_deg": -155.08,
+          "alt_m": 10.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Chile",
+          "lat_deg": -33.15,
+          "lon_deg": -70.67,
+          "alt_m": 570.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Brasilia",
+          "lat_deg": -15.79,
+          "lon_deg": -47.88,
+          "alt_m": 1170.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Argentina",
+          "lat_deg": -34.6,
+          "lon_deg": -58.38,
+          "alt_m": 25.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Peru",
+          "lat_deg": -12.04,
+          "lon_deg": -77.03,
+          "alt_m": 150.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Spain",
+          "lat_deg": 40.43,
+          "lon_deg": -4.25,
+          "alt_m": 700.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Germany",
+          "lat_deg": 50.0,
+          "lon_deg": 8.5,
+          "alt_m": 110.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "UK",
+          "lat_deg": 51.48,
+          "lon_deg": -0.1,
+          "alt_m": 25.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Azores",
+          "lat_deg": 37.74,
+          "lon_deg": -25.66,
+          "alt_m": 100.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "SouthAfrica",
+          "lat_deg": -25.89,
+          "lon_deg": 27.69,
+          "alt_m": 1400.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Kenya",
+          "lat_deg": -1.29,
+          "lon_deg": 36.82,
+          "alt_m": 1660.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "India",
+          "lat_deg": 17.41,
+          "lon_deg": 78.55,
+          "alt_m": 540.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Japan",
+          "lat_deg": 36.0,
+          "lon_deg": 140.0,
+          "alt_m": 30.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Singapore",
+          "lat_deg": 1.35,
+          "lon_deg": 103.82,
+          "alt_m": 15.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Australia",
+          "lat_deg": -31.8,
+          "lon_deg": 115.89,
+          "alt_m": 40.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "NewZealand",
+          "lat_deg": -43.52,
+          "lon_deg": 172.62,
+          "alt_m": 10.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Alaska",
+          "lat_deg": 64.84,
+          "lon_deg": -147.72,
+          "alt_m": 140.0,
+          "min_elevation_deg": 8.0
+        }
+      ]
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.49583333333333335,
+      "fraction_steps_zero_visibility": 0.6157986111111111,
+      "fraction_steps_one_visibility": 0.29791666666666666,
+      "fraction_steps_two_plus_visibility": 0.08628472222222222
+    }
+  },
+  "semi_real_replay_test": {
+    "samples": 48,
+    "path": "results\\data\\semi_real_replay_test.npz",
+    "kind": "semi_real_replay",
+    "sample_weight": 1.0,
+    "overrides": {},
+    "coverage": {
+      "mean_visible_stations_per_step": 0.21909722222222222,
+      "fraction_steps_zero_visibility": 0.7809027777777777,
+      "fraction_steps_one_visibility": 0.21909722222222222,
+      "fraction_steps_two_plus_visibility": 0.0
+    },
+    "source_type": "semi_real_replay",
+    "distinct_source_satellites": 5,
+    "distinct_station_bank_members": 8
+  },
+  "public_catalog_replay_test": {
+    "samples": 48,
+    "path": "results\\data\\public_catalog_replay_test.npz",
+    "kind": "public_catalog_replay",
+    "sample_weight": 1.0,
+    "overrides": {},
+    "coverage": {
+      "mean_visible_stations_per_step": 0.30572916666666666,
+      "fraction_steps_zero_visibility": 0.7598958333333333,
+      "fraction_steps_one_visibility": 0.17447916666666666,
+      "fraction_steps_two_plus_visibility": 0.065625
+    },
+    "public_station_selection": {
+      "station_snapshot_path": "configs/public_satnogs_stations_snapshot.json",
+      "selected_station_names": [
+        "SA2KNG Omni UHF/VHF",
+        "LW2DYB",
+        "VK6SAT - UHF",
+        "Jim UHF",
+        "JH4XSY-pi",
+        "WH6GVF UHF",
+        "EU1AEM",
+        "ZS6ETA"
+      ],
+      "selected_station_count": 8
+    },
+    "source_type": "public_catalog_replay",
+    "distinct_source_satellites": 48,
+    "distinct_station_bank_members": 8,
+    "source_bucket_counts": {
+      "high_inclination": 12,
+      "low_inclination": 12,
+      "mid_inclination": 12,
+      "sunsync_like": 12
+    }
+  },
+  "satnogs_observation_replay_val": {
+    "samples": 16,
+    "path": "results\\data\\satnogs_observation_replay_val.npz",
+    "kind": "public_observation_replay",
+    "sample_weight": 2.5,
+    "overrides": {
+      "measurement_noise": {
+        "random_dropout_prob": 0.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.175,
+      "fraction_steps_zero_visibility": 0.8541666666666666,
+      "fraction_steps_one_visibility": 0.11666666666666667,
+      "fraction_steps_two_plus_visibility": 0.029166666666666667
+    },
+    "observation_station_bank": {
+      "observation_snapshot_path": "configs/public_satnogs_recent_good_observations.json",
+      "selected_station_names": [
+        "LW2DYB",
+        "I LOVE BALI",
+        "PE0SAT-21",
+        "PE0SAT-11",
+        "I LOVE BALI YES",
+        "SA2KNG Omni UHF/VHF",
+        "EU1AEM",
+        "Babimost UHF-1",
+        "Drachten"
+      ],
+      "selected_station_count": 9,
+      "selected_observation_count": 80,
+      "slice_observation_count": 16,
+      "source_pool_count": 80,
+      "slice_offset": 0,
+      "slice_limit": 16,
+      "slice_count": 16
+    },
+    "source_type": "satnogs_observation_replay",
+    "distinct_source_satellites": 15,
+    "distinct_anchor_stations": 9,
+    "distinct_station_bank_members": 9,
+    "source_bucket_counts": {
+      "mid_inclination": 1,
+      "sunsync_like": 15
+    },
+    "distinct_source_observations": 16,
+    "pass_duration_sec": {
+      "mean": 340.125,
+      "median": 361.0,
+      "min": 180.0,
+      "max": 556.0
+    }
+  },
+  "satnogs_observation_replay_test": {
+    "samples": 48,
+    "path": "results\\data\\satnogs_observation_replay_test.npz",
+    "kind": "public_observation_replay",
+    "sample_weight": 1.0,
+    "overrides": {
+      "measurement_noise": {
+        "random_dropout_prob": 0.0
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.23194444444444445,
+      "fraction_steps_zero_visibility": 0.828125,
+      "fraction_steps_one_visibility": 0.12222222222222222,
+      "fraction_steps_two_plus_visibility": 0.049652777777777775
+    },
+    "observation_station_bank": {
+      "observation_snapshot_path": "configs/public_satnogs_recent_good_observations.json",
+      "selected_station_names": [
+        "PE0SAT-11",
+        "PE0SAT-21",
+        "JH4XSY-pi",
+        "LW2DYB",
+        "HS0ZQS_VHF",
+        "Plyachka",
+        "M0EYT / 2E0NOG",
+        "DEX-X",
+        "EA4TA",
+        "Drachten",
+        "Sofia SAT Club - Bay Ivan",
+        "SA2KNG Omni UHF/VHF",
+        "I LOVE BALI",
+        "EU1AEM",
+        "I LOVE BALI YES"
+      ],
+      "selected_station_count": 15,
+      "selected_observation_count": 80,
+      "slice_observation_count": 48,
+      "source_pool_count": 80,
+      "slice_offset": 16,
+      "slice_limit": 48,
+      "slice_count": 48
+    },
+    "source_type": "satnogs_observation_replay",
+    "distinct_source_satellites": 37,
+    "distinct_anchor_stations": 15,
+    "distinct_station_bank_members": 15,
+    "source_bucket_counts": {
+      "low_inclination": 4,
+      "mid_inclination": 4,
+      "sunsync_like": 40
+    },
+    "distinct_source_observations": 48,
+    "pass_duration_sec": {
+      "mean": 388.0833333333333,
+      "median": 372.5,
+      "min": 180.0,
+      "max": 646.0
+    }
+  },
+  "satnogs_observation_replay_stress_test": {
+    "samples": 16,
+    "path": "results\\data\\satnogs_observation_replay_stress_test.npz",
+    "kind": "public_observation_replay",
+    "sample_weight": 1.0,
+    "overrides": {
+      "measurement_noise": {
+        "range_std_m": 45.0,
+        "az_std_deg": 0.04,
+        "el_std_deg": 0.04,
+        "range_rate_std_mps": 0.12,
+        "outlier_prob": 0.03,
+        "outlier_scale": 8.0,
+        "random_dropout_prob": 0.02
+      }
+    },
+    "coverage": {
+      "mean_visible_stations_per_step": 0.21041666666666667,
+      "fraction_steps_zero_visibility": 0.8328125,
+      "fraction_steps_one_visibility": 0.12395833333333334,
+      "fraction_steps_two_plus_visibility": 0.043229166666666666
+    },
+    "observation_station_bank": {
+      "observation_snapshot_path": "configs/public_satnogs_recent_good_observations.json",
+      "selected_station_names": [
+        "Babimost UHF-1",
+        "DEX-X",
+        "M0EYT / 2E0NOG",
+        "Drachten",
+        "PE0SAT-21",
+        "I LOVE BALI YES",
+        "HS0ZQS_VHF",
+        "Sofia SAT Club - Bay Ivan",
+        "SA2KNG Omni UHF/VHF"
+      ],
+      "selected_station_count": 9,
+      "selected_observation_count": 80,
+      "slice_observation_count": 16,
+      "source_pool_count": 80,
+      "slice_offset": 64,
+      "slice_limit": 16,
+      "slice_count": 16
+    },
+    "source_type": "satnogs_observation_replay",
+    "distinct_source_satellites": 13,
+    "distinct_anchor_stations": 9,
+    "distinct_station_bank_members": 9,
+    "source_bucket_counts": {
+      "mid_inclination": 3,
+      "sunsync_like": 13
+    },
+    "distinct_source_observations": 16,
+    "pass_duration_sec": {
+      "mean": 349.125,
+      "median": 343.5,
+      "min": 180.0,
+      "max": 630.0
+    }
+  }
+}

@@ -1,0 +1,1033 @@
+{
+  "artifact_type": "full_rerun_divergence_audit",
+  "claim_boundary": "Diagnostic audit only; not a canonical table replacement, not operational validation, not independent reproduction, and not a rerun success upgrade.",
+  "decision_boundary": {
+    "boundary_text": "No learned-positive claim should be inferred from raw tiny wins or failure-conditioned rows. The full-rerun scorecard already treats candidate divergence as failing the practical/headline decision logic.",
+    "failure_conditioned_summaries_are_diagnostic_only": true,
+    "full_rerun_scorecard_candidate_divergence_fails_practical_headline_logic": true,
+    "no_learned_positive_from_raw_tiny_wins_or_failure_conditioned_rows": true
+  },
+  "divergence_cases": [
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 8,
+        "num_mask_flagged_trajectories": 8,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 40,
+          "max": 1.1706447288756237e+20,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 1972525.878984958,
+          "median": 22654.281254936526,
+          "nonfinite_count": 0,
+          "p90": 4618359524139.912,
+          "p95": 3.620175183716796e+19,
+          "top_values_desc": [
+            1.1706447288756237e+20,
+            6.5540740298898055e+19,
+            5.1704846945621156e+19,
+            7.410289492897919e+18,
+            4938462146935.83
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 40,
+          "max": 3.2553533074553286e+17,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1501.8486210191547,
+          "median": 25.412893701948104,
+          "nonfinite_count": 0,
+          "p90": 212500431.7691186,
+          "p95": 1337983750170355.8,
+          "top_values_desc": [
+            3.2553533074553286e+17,
+            2.883456678959559e+17,
+            2058435465434639.5,
+            1993250980.2358584,
+            260891312.9469241
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 5167432661852965.0,
+      "max_to_median_traj_vel_rmse_ratio": 1.28098489909702e+16,
+      "max_traj_pos_rmse_m": 1.1706447288756237e+20,
+      "max_traj_vel_rmse_mps": 3.2553533074553286e+17,
+      "median_traj_pos_rmse_m": 22654.281254936526,
+      "median_traj_vel_rmse_mps": 25.412893701948104,
+      "method": "UKF",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 8,
+      "num_mask_flagged_trajectories": 8,
+      "num_trajectories": 48,
+      "pos_rmse_m": 2.078059142535868e+19,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": null,
+      "vel_rmse_mps": 6.276953761488226e+16
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 4,
+        "num_mask_flagged_trajectories": 4,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 44,
+          "max": 879703844565839.2,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 3179621.9292136077,
+          "median": 22654.281254936526,
+          "nonfinite_count": 0,
+          "p90": 28555296.337483354,
+          "p95": 5770550291.167041,
+          "top_values_desc": [
+            879703844565839.2,
+            757541489465770.8,
+            7267464340.790429,
+            2990567056.152196,
+            79529392.43765092
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 44,
+          "max": 884723006164.1531,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1847.9697035638173,
+          "median": 25.412893701948104,
+          "nonfinite_count": 0,
+          "p90": 10513.256401068069,
+          "p95": 8783794.996043667,
+          "top_values_desc": [
+            884723006164.1531,
+            687905103031.6129,
+            10115657.582532909,
+            6310335.906849375,
+            14384.606030293624
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 38831681953.014755,
+      "max_to_median_traj_vel_rmse_ratio": 34813941951.6925,
+      "max_traj_pos_rmse_m": 879703844565839.2,
+      "max_traj_vel_rmse_mps": 884723006164.1531,
+      "median_traj_pos_rmse_m": 22654.281254936526,
+      "median_traj_vel_rmse_mps": 25.412893701948104,
+      "method": "AUKF",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 4,
+      "num_mask_flagged_trajectories": 4,
+      "num_trajectories": 48,
+      "pos_rmse_m": 167565159121490.62,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 161757806905.57217
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 3,
+        "num_mask_flagged_trajectories": 3,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 45,
+          "max": 6342258.703879856,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 1538104.8042550227,
+          "median": 22654.74259216378,
+          "nonfinite_count": 0,
+          "p90": 5323572.496404865,
+          "p95": 5975080.608057599,
+          "top_values_desc": [
+            6342258.703879856,
+            6152488.483991279,
+            6010485.858322514,
+            5909328.000422755,
+            5628190.629273203
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 45,
+          "max": 7154696.540644188,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1729.6235302859209,
+          "median": 25.39826343460314,
+          "nonfinite_count": 0,
+          "p90": 7347.765202326864,
+          "p95": 1595833.9582339865,
+          "top_values_desc": [
+            7154696.540644188,
+            4467081.713091927,
+            2450510.0514385416,
+            8578.356568394322,
+            7478.149057204879
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 279.9528036162118,
+      "max_to_median_traj_vel_rmse_ratio": 281700.2256499346,
+      "max_traj_pos_rmse_m": 6342258.703879856,
+      "max_traj_vel_rmse_mps": 7154696.540644188,
+      "median_traj_pos_rmse_m": 22654.74259216378,
+      "median_traj_vel_rmse_mps": 25.39826343460314,
+      "method": "NoGraphResidual",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 3,
+      "num_mask_flagged_trajectories": 3,
+      "num_trajectories": 48,
+      "pos_rmse_m": 2771710.572569806,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 1267789.545159346
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 8,
+        "num_mask_flagged_trajectories": 8,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 40,
+          "max": 4.516761727139518e+19,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 1977449.1433323943,
+          "median": 22654.041371628013,
+          "nonfinite_count": 0,
+          "p90": 1062474466584.9849,
+          "p95": 7.167710367551904e+18,
+          "top_values_desc": [
+            4.516761727139518e+19,
+            3.591101072553399e+19,
+            1.102724432555371e+19,
+            4445548597258.582,
+            3534603602942.9663
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 40,
+          "max": 2.6237480584857876e+16,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1142.11057492533,
+          "median": 25.604614364386734,
+          "nonfinite_count": 0,
+          "p90": 86060176.76683743,
+          "p95": 1303873694327385.2,
+          "top_values_desc": [
+            2.6237480584857876e+16,
+            1.8356442428397492e+16,
+            2005959025445372.8,
+            936536844.7453402,
+            89690612.6582866
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 1993799540242883.0,
+      "max_to_median_traj_vel_rmse_ratio": 1024716881553638.6,
+      "max_traj_pos_rmse_m": 4.516761727139518e+19,
+      "max_traj_vel_rmse_mps": 2.6237480584857876e+16,
+      "median_traj_pos_rmse_m": 22654.041371628013,
+      "median_traj_vel_rmse_mps": 25.604614364386734,
+      "method": "LearnedNoiseAdaptive",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 8,
+      "num_mask_flagged_trajectories": 8,
+      "num_trajectories": 48,
+      "pos_rmse_m": 8.479527378142584e+18,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 4630938164669481.0
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 7,
+        "num_mask_flagged_trajectories": 7,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 41,
+          "max": 6.759570172383335e+19,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 2418485.6195542505,
+          "median": 22655.54084687261,
+          "nonfinite_count": 0,
+          "p90": 310301008.0576389,
+          "p95": 1.4062902568098068e+18,
+          "top_values_desc": [
+            6.759570172383335e+19,
+            3.1827987846630543e+19,
+            2.1635216055573128e+18,
+            3466278733328.8804,
+            719293243.517613
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 41,
+          "max": 1.7321634232252108e+16,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1392.9891589686367,
+          "median": 25.411581936317198,
+          "nonfinite_count": 0,
+          "p90": 54176332.2797667,
+          "p95": 447641211385.1913,
+          "top_values_desc": [
+            1.7321634232252108e+16,
+            1949147593766088.2,
+            687905130175.0045,
+            1436790775.5408924,
+            180561698.0404186
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 2983627810110934.5,
+      "max_to_median_traj_vel_rmse_ratio": 681643286736774.8,
+      "max_traj_pos_rmse_m": 6.759570172383335e+19,
+      "max_traj_vel_rmse_mps": 1.7321634232252108e+16,
+      "median_traj_pos_rmse_m": 22655.54084687261,
+      "median_traj_vel_rmse_mps": 25.411581936317198,
+      "method": "HybridGNN",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 7,
+      "num_mask_flagged_trajectories": 7,
+      "num_trajectories": 48,
+      "pos_rmse_m": 1.0788574712437336e+19,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 2515941628278515.0
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 7,
+        "num_mask_flagged_trajectories": 7,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 41,
+          "max": 4.589022550089594e+19,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 1678168.367211203,
+          "median": 22643.771845956042,
+          "nonfinite_count": 0,
+          "p90": 1060479065645.3162,
+          "p95": 1.2005085205563896e+19,
+          "top_values_desc": [
+            4.589022550089594e+19,
+            3.5911010725534777e+19,
+            1.5776823871801645e+19,
+            5.000427682550975e+18,
+            3534603657020.743
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 41,
+          "max": 2.709415871209465e+16,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1284.9619135166995,
+          "median": 25.403514568307386,
+          "nonfinite_count": 0,
+          "p90": 2555478.205762707,
+          "p95": 20257235.84552354,
+          "top_values_desc": [
+            2.709415871209465e+16,
+            9482043168.040964,
+            25981755.31515001,
+            9625985.401931588,
+            4467082.391757803
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 2026615787028939.0,
+      "max_to_median_traj_vel_rmse_ratio": 1066551584397556.4,
+      "max_traj_pos_rmse_m": 4.589022550089594e+19,
+      "max_traj_vel_rmse_mps": 2.709415871209465e+16,
+      "median_traj_pos_rmse_m": 22643.771845956042,
+      "median_traj_vel_rmse_mps": 25.403514568307386,
+      "method": "MatchedNoGraphRGR",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 7,
+      "num_mask_flagged_trajectories": 7,
+      "num_trajectories": 48,
+      "pos_rmse_m": 8.743361691809915e+18,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 3910704956473812.0
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 6,
+        "num_mask_flagged_trajectories": 6,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 42,
+          "max": 3453395833565.478,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 1757995.4028362448,
+          "median": 22523.280936518957,
+          "nonfinite_count": 0,
+          "p90": 22917702.76786701,
+          "p95": 4295726463.423625,
+          "top_values_desc": [
+            3453395833565.478,
+            3146405016166.8594,
+            6550357341.31958,
+            108554833.04544948,
+            26083627.254659824
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 42,
+          "max": 2.7094158712094664e+16,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1557.310253953549,
+          "median": 25.777223019264227,
+          "nonfinite_count": 0,
+          "p90": 13302527.139764192,
+          "p95": 6666292087.244873,
+          "top_values_desc": [
+            2.7094158712094664e+16,
+            687905130175.0052,
+            9482177408.791798,
+            1436790775.8006172,
+            33941914.78915088
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 153325611.98782486,
+      "max_to_median_traj_vel_rmse_ratio": 1051089122045700.8,
+      "max_traj_pos_rmse_m": 3453395833565.478,
+      "max_traj_vel_rmse_mps": 2.7094158712094664e+16,
+      "median_traj_pos_rmse_m": 22523.280936518957,
+      "median_traj_vel_rmse_mps": 25.777223019264227,
+      "method": "CapacityMatchedNoGraphRGR",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 6,
+      "num_mask_flagged_trajectories": 6,
+      "num_trajectories": 48,
+      "pos_rmse_m": 674318332179.5266,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 3910704957734284.5
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 7,
+        "num_mask_flagged_trajectories": 7,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 41,
+          "max": 6.466617867972713e+18,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 3842440.2498494014,
+          "median": 22653.91407707327,
+          "nonfinite_count": 0,
+          "p90": 261250005308.63168,
+          "p95": 5.0806255952751686e+17,
+          "top_values_desc": [
+            6.466617867972713e+18,
+            5.83198104361751e+18,
+            7.812268000206976e+17,
+            757541468755706.1,
+            729289940925.7838
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 41,
+          "max": 2.6237480584857884e+16,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1945.456358920035,
+          "median": 25.616684750187215,
+          "nonfinite_count": 0,
+          "p90": 5329639.603621143,
+          "p95": 2430592436.386193,
+          "top_values_desc": [
+            2.6237480584857884e+16,
+            884722983098.8352,
+            3719587961.77993,
+            36743603.51212343,
+            7342272.434311898
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 285452564443034.06,
+      "max_to_median_traj_vel_rmse_ratio": 1024234042801582.0,
+      "max_traj_pos_rmse_m": 6.466617867972713e+18,
+      "max_traj_vel_rmse_mps": 2.6237480584857884e+16,
+      "median_traj_pos_rmse_m": 22653.91407707327,
+      "median_traj_vel_rmse_mps": 25.616684750187215,
+      "method": "InnovationHybridGNN",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 7,
+      "num_mask_flagged_trajectories": 7,
+      "num_trajectories": 48,
+      "pos_rmse_m": 1.261938533817764e+18,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 3787054121784347.5
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 8,
+        "num_mask_flagged_trajectories": 8,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 40,
+          "max": 6.667433046608095e+19,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 1658358.3803055764,
+          "median": 22641.720084550478,
+          "nonfinite_count": 0,
+          "p90": 825428806346.9412,
+          "p95": 4084741706299.0093,
+          "top_values_desc": [
+            6.667433046608095e+19,
+            4.516761727139514e+19,
+            4660933266622.042,
+            3014671665699.098,
+            2695735276036.818
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 40,
+          "max": 4.104991586901525e+16,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 1139.137863410728,
+          "median": 25.47596461535762,
+          "nonfinite_count": 0,
+          "p90": 45094412.02686269,
+          "p95": 837258098.127061,
+          "top_values_desc": [
+            4.104991586901525e+16,
+            461827843400202.1,
+            948565069.325819,
+            630545151.6150831,
+            89690611.09467447
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 2944755531695492.5,
+      "max_to_median_traj_vel_rmse_ratio": 1611319394134706.0,
+      "max_traj_pos_rmse_m": 6.667433046608095e+19,
+      "max_traj_vel_rmse_mps": 4.104991586901525e+16,
+      "median_traj_pos_rmse_m": 22641.720084550478,
+      "median_traj_vel_rmse_mps": 25.47596461535762,
+      "method": "ObservabilityContextHybridGNN",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 8,
+      "num_mask_flagged_trajectories": 8,
+      "num_trajectories": 48,
+      "pos_rmse_m": 1.1623951559419814e+19,
+      "scenario": "dense_visibility_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 5925419953137941.0
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 1,
+        "num_mask_flagged_trajectories": 1,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 8.506803697250816e+18,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 40646.02763351716,
+          "median": 5479.6680142937485,
+          "nonfinite_count": 0,
+          "p90": 118522.98885817768,
+          "p95": 400570.203494767,
+          "top_values_desc": [
+            8.506803697250816e+18,
+            526600.6704002804,
+            441366.6426938393,
+            324805.3878393475,
+            127697.58648956617
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 2046719885895874.0,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 95.41453425680501,
+          "median": 8.574256758878736,
+          "nonfinite_count": 0,
+          "p90": 368.90052240549824,
+          "p95": 827.1851951942459,
+          "top_values_desc": [
+            2046719885895874.0,
+            1316.1113768349585,
+            838.1744738767924,
+            806.7765347838027,
+            449.30569747924403
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 1552430489413001.8,
+      "max_to_median_traj_vel_rmse_ratio": 238705224657107.84,
+      "max_traj_pos_rmse_m": 8.506803697250816e+18,
+      "max_traj_vel_rmse_mps": 2046719885895874.0,
+      "median_traj_pos_rmse_m": 5479.6680142937485,
+      "median_traj_vel_rmse_mps": 8.574256758878736,
+      "method": "UKF",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 1,
+      "num_mask_flagged_trajectories": 1,
+      "num_trajectories": 48,
+      "pos_rmse_m": 1.2278513511377654e+18,
+      "scenario": "satnogs_observation_replay_test",
+      "scorecard_candidate_diverged": null,
+      "vel_rmse_mps": 295418569269435.75
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 1,
+        "num_mask_flagged_trajectories": 1,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 6.071096899603981e+18,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 16157.330370436297,
+          "median": 3391.285991042626,
+          "nonfinite_count": 0,
+          "p90": 40584.88286138313,
+          "p95": 96326.76947900286,
+          "top_values_desc": [
+            6.071096899603981e+18,
+            313075.4735391149,
+            114136.88619644656,
+            63250.83843232191,
+            56927.410894830755
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 242294835752.99802,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 19.376741709834032,
+          "median": 5.50796973745193,
+          "nonfinite_count": 0,
+          "p90": 55.53781492208718,
+          "p95": 119.96366567517019,
+          "top_values_desc": [
+            242294835752.99802,
+            269.55571851879733,
+            141.6725280567039,
+            79.64720696660785,
+            70.70419333062009
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 1790204929822939.2,
+      "max_to_median_traj_vel_rmse_ratio": 43989863289.46086,
+      "max_traj_pos_rmse_m": 6.071096899603981e+18,
+      "max_traj_vel_rmse_mps": 242294835752.99802,
+      "median_traj_pos_rmse_m": 3391.285991042626,
+      "median_traj_vel_rmse_mps": 5.50796973745193,
+      "method": "LearnedNoiseAdaptive",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 1,
+      "num_mask_flagged_trajectories": 1,
+      "num_trajectories": 48,
+      "pos_rmse_m": 8.762873573156653e+17,
+      "scenario": "satnogs_observation_replay_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 34972247161.31239
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 1,
+        "num_mask_flagged_trajectories": 1,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 3757987.2050616406,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 13125.075652308458,
+          "median": 3229.088601269259,
+          "nonfinite_count": 0,
+          "p90": 32684.75160531755,
+          "p95": 61817.05199240969,
+          "top_values_desc": [
+            3757987.2050616406,
+            252480.06115641654,
+            64793.04714434422,
+            56290.203853102736,
+            51975.47670969092
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 2046719875935133.2,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 24.156098820930353,
+          "median": 5.014683884686539,
+          "nonfinite_count": 0,
+          "p90": 39.21489429458202,
+          "p95": 108.19566984156148,
+          "top_values_desc": [
+            2046719875935133.2,
+            570.7335374157736,
+            114.91646589058408,
+            95.71419146480528,
+            42.55135918286686
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 1163.7919144072068,
+      "max_to_median_traj_vel_rmse_ratio": 408145343355590.4,
+      "max_traj_pos_rmse_m": 3757987.2050616406,
+      "max_traj_vel_rmse_mps": 2046719875935133.2,
+      "median_traj_pos_rmse_m": 3229.088601269259,
+      "median_traj_vel_rmse_mps": 5.014683884686539,
+      "method": "HybridGNN",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 1,
+      "num_mask_flagged_trajectories": 1,
+      "num_trajectories": 48,
+      "pos_rmse_m": 543870.7835877022,
+      "scenario": "satnogs_observation_replay_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 295418567831726.6
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 1,
+        "num_mask_flagged_trajectories": 1,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 3350947061661.7324,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 8489.129967379427,
+          "median": 3004.7868686529205,
+          "nonfinite_count": 0,
+          "p90": 18893.638727397436,
+          "p95": 31353.637999128525,
+          "top_values_desc": [
+            3350947061661.7324,
+            149344.11436565904,
+            32044.372494876057,
+            30070.845364168825,
+            21381.666972804687
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 157182897521.1398,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 18.619467974433213,
+          "median": 4.94326988895129,
+          "nonfinite_count": 0,
+          "p90": 26.78550522395399,
+          "p95": 86.90619183917504,
+          "top_values_desc": [
+            157182897521.1398,
+            410.4638711503945,
+            99.45643550940127,
+            63.598596451612174,
+            31.694671003134754
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 1115202910.6024413,
+      "max_to_median_traj_vel_rmse_ratio": 31797352977.319633,
+      "max_traj_pos_rmse_m": 3350947061661.7324,
+      "max_traj_vel_rmse_mps": 157182897521.1398,
+      "median_traj_pos_rmse_m": 3004.7868686529205,
+      "median_traj_vel_rmse_mps": 4.94326988895129,
+      "method": "MatchedNoGraphRGR",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 1,
+      "num_mask_flagged_trajectories": 1,
+      "num_trajectories": 48,
+      "pos_rmse_m": 483667547022.64734,
+      "scenario": "satnogs_observation_replay_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 22687397048.958855
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,position_rmse_outlier_ratio,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 1,
+        "num_mask_flagged_trajectories": 1,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 5.958816863292647e+18,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 19464.001310701773,
+          "median": 2883.9571833950185,
+          "nonfinite_count": 0,
+          "p90": 29722.75782001743,
+          "p95": 72635.66319634259,
+          "top_values_desc": [
+            5.958816863292647e+18,
+            571976.6066441664,
+            79778.36983194946,
+            59370.636587358495,
+            39213.8346063286
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 242299794677.01422,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 30.425465641518688,
+          "median": 5.068406633586248,
+          "nonfinite_count": 0,
+          "p90": 48.910159060236964,
+          "p95": 140.2133568874973,
+          "top_values_desc": [
+            242299794677.01422,
+            791.2953417719383,
+            151.72519152845916,
+            118.83423541142545,
+            59.10050018553071
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 2066194636176213.5,
+      "max_to_median_traj_vel_rmse_ratio": 47805910652.74697,
+      "max_traj_pos_rmse_m": 5.958816863292647e+18,
+      "max_traj_vel_rmse_mps": 242299794677.01422,
+      "median_traj_pos_rmse_m": 2883.9571833950185,
+      "median_traj_vel_rmse_mps": 5.068406633586248,
+      "method": "InnovationHybridGNN",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 1,
+      "num_mask_flagged_trajectories": 1,
+      "num_trajectories": 48,
+      "pos_rmse_m": 8.600811300184229e+17,
+      "scenario": "satnogs_observation_replay_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 34972962920.3413
+    },
+    {
+      "canonical_manuscript_table_membership": null,
+      "canonical_manuscript_table_membership_basis": "Not determined from audit inputs. This audit reads only the full-rerun metrics, scorecard, and trajectory-error files; it does not infer current manuscript table inclusion.",
+      "divergence_reason": "extreme_trajectory_rmse,velocity_rmse_outlier_ratio",
+      "failure_conditioned_summary": {
+        "boundary": "Failure-conditioned summaries are diagnostic only. They are not replacement metrics, do not redefine performance, and do not rescue any method.",
+        "mask_definition": "A paired trajectory row is mask-flagged when position or velocity RMSE is nonfinite, position RMSE > 1e+08 m, or velocity RMSE > 1e+05 m/s.",
+        "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+        "num_diverged_trajectories_from_metrics": 1,
+        "num_mask_flagged_trajectories": 1,
+        "pos_rmse_m": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 7064912.194096312,
+          "mean_pos_rmse_excluding_mask_flagged_trajectories_m": 14860.922592833407,
+          "median": 3418.6735677902752,
+          "nonfinite_count": 0,
+          "p90": 33405.86851634377,
+          "p95": 99279.40186308022,
+          "top_values_desc": [
+            7064912.194096312,
+            257056.95299290185,
+            114318.65497309234,
+            71349.36037305789,
+            44962.466653135896
+          ],
+          "trajectory_row_count": 48
+        },
+        "vel_rmse_mps": {
+          "count": 48,
+          "count_excluding_mask_flagged_trajectories": 47,
+          "max": 2046719875935133.2,
+          "mean_vel_rmse_excluding_mask_flagged_trajectories_mps": 28.62860306575543,
+          "median": 5.076113310283581,
+          "nonfinite_count": 0,
+          "p90": 52.17342351593405,
+          "p95": 125.13053189755578,
+          "top_values_desc": [
+            2046719875935133.2,
+            682.9606697329884,
+            131.216480864173,
+            113.82805524526675,
+            66.4765032951763
+          ],
+          "trajectory_row_count": 48
+        }
+      },
+      "mask_vs_metrics_diverged_trajectory_count_note": "Evaluator-style paired trajectory mask count matches metrics num_diverged_trajectories. This remains diagnostic only and does not redefine the decision rule.",
+      "max_to_median_traj_pos_rmse_ratio": 2066.5653078608652,
+      "max_to_median_traj_vel_rmse_ratio": 403206104912735.2,
+      "max_traj_pos_rmse_m": 7064912.194096312,
+      "max_traj_vel_rmse_mps": 2046719875935133.2,
+      "median_traj_pos_rmse_m": 3418.6735677902752,
+      "median_traj_vel_rmse_mps": 5.076113310283581,
+      "method": "ObservabilityContextHybridGNN",
+      "metrics_diverged": true,
+      "num_diverged_trajectories": 1,
+      "num_mask_flagged_trajectories": 1,
+      "num_trajectories": 48,
+      "pos_rmse_m": 1020638.4465138899,
+      "scenario": "satnogs_observation_replay_test",
+      "scorecard_candidate_diverged": true,
+      "vel_rmse_mps": 295418567831726.6
+    }
+  ],
+  "generated_utc": "2026-06-17T14:10:44Z",
+  "input_paths": {
+    "metrics_summary": "results/full_rerun_20260616/metrics_summary.json",
+    "scorecard_summary": "results/full_rerun_20260616/scorecard_summary.json",
+    "trajectory_errors": "results/full_rerun_20260616/trajectory_errors.csv"
+  },
+  "input_sha256": {
+    "metrics_summary": "ad14c74abb4b3cbcb74b4cafc7181d26ed188ff3aabc4c36008bd4fe07d69e6b",
+    "scorecard_summary": "dd3169a9e654c2d5e3e0966cc29864b7cdfee4d53829d17d9332e3e23b228fc0",
+    "trajectory_errors": "51a682b28dbe4785c5a64ad4a4b1ecf86b4ef020f0976ada3da582fd4db59111"
+  },
+  "overall_counts": {
+    "canonical_manuscript_table_membership_basis": "Conservative: not inferred from these audit inputs. The full rerun is diagnostic/internal evidence and this audit is not a canonical manuscript-table replacement.",
+    "methods_with_divergence_by_scenario": {
+      "dense_visibility_test": [
+        "AUKF",
+        "CapacityMatchedNoGraphRGR",
+        "HybridGNN",
+        "InnovationHybridGNN",
+        "LearnedNoiseAdaptive",
+        "MatchedNoGraphRGR",
+        "NoGraphResidual",
+        "ObservabilityContextHybridGNN",
+        "UKF"
+      ],
+      "satnogs_observation_replay_test": [
+        "HybridGNN",
+        "InnovationHybridGNN",
+        "LearnedNoiseAdaptive",
+        "MatchedNoGraphRGR",
+        "ObservabilityContextHybridGNN",
+        "UKF"
+      ]
+    },
+    "num_scenarios_with_any_divergence": 2,
+    "scenarios_with_any_divergence": [
+      "dense_visibility_test",
+      "satnogs_observation_replay_test"
+    ],
+    "scorecard_candidate_divergence_by_scenario": {
+      "dense_visibility_test": [
+        "AUKF",
+        "NoGraphResidual",
+        "LearnedNoiseAdaptive",
+        "HybridGNN",
+        "MatchedNoGraphRGR",
+        "CapacityMatchedNoGraphRGR",
+        "InnovationHybridGNN",
+        "ObservabilityContextHybridGNN"
+      ],
+      "satnogs_observation_replay_test": [
+        "LearnedNoiseAdaptive",
+        "HybridGNN",
+        "MatchedNoGraphRGR",
+        "InnovationHybridGNN",
+        "ObservabilityContextHybridGNN"
+      ]
+    },
+    "total_scenarios": 17
+  },
+  "schema_version": "full_rerun_divergence_audit_v2"
+}

@@ -1,0 +1,5 @@
+AUKF inflates effective R (mean 3.32) under compact force-model mismatch
+Drag-scale cascade isolates EKF, observability, and candidate-prior failure modes
+No tested learned construction beats best classical reference on primary endpoint
+Seven-ingredient audit discipline instantiated for compact sparse-visibility OD
+Confidential evidence package supports internal consistency checks

@@ -1,10 +1,13 @@
 # SPOT-OD Supplementary Evidence Package
 
-Version: `1.2.2-acf-audit` (`SPOT-OD v1.2.2 ACF audit release`).
-The target GitHub release URL is
-<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit>.
-The v1.2.2 Zenodo DOI is pending and must be filled only after Zenodo mints
-it. The prior public v1.2.1 DOI is `10.5281/zenodo.20811701`.
+Version: `1.2.3-acf-holdout-audit` (`SPOT-OD v1.2.3 ACF holdout audit release`).
+The GitHub release URL is
+<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>.
+The v1.2.3 Zenodo DOI and record are pending/expected after Zenodo imports the
+new GitHub release. The prior public v1.2.2 DOI `10.5281/zenodo.20822968`
+remains the historical ACF audit package reference before this public-boundary
+repair. The prior public v1.2.1 DOI `10.5281/zenodo.20811701` remains the
+historical GraphAnchorPairGate package reference.
 
 This versioned package accompanies the simulator-bound SPOT-OD self-audit
 record submission and supports inspection of the displayed evidence. It is provided so
@@ -102,8 +105,8 @@ materialized artifacts, and selectively replayed at the documented tiers.
     does not rerun training/evaluation. The audit records 0/10 observed-step
     row wins and 0/5 paired seeds winning both scenarios, so the all-step graph
     benefit does NOT transfer to observed-step primary endpoint superiority.
-    This local audit is not part of the published v1.2.1 Zenodo/GitHub release
-    unless a later release includes it, and it is not operational
+    This historical local GraphAnchorPairGate audit is not part of the
+    published v1.2.1 Zenodo/GitHub release, and it is not operational
     precise-reference validation, not independent-machine reproduction, not
     third-party validation, and not a universal learned-method claim.
 13. AdaptiveCandidateFusion audit release tier: inspect the fixed-soft
@@ -147,7 +150,8 @@ materialized artifacts, and selectively replayed at the documented tiers.
     an observed-mask failure mode, not broad learned-superiority. The compact
     manuscript table is `paper/tables/adaptive_candidate_fusion_full_training_poc.tex`,
     and the supplementary manifest indexes both source artifact sets. In
-    v1.2.2, these artifacts are included as the ACF audit/table tier. They
+    v1.2.3, these artifacts and the development/holdout split summaries are
+    included as the ACF audit/table tier. They
     remain validation-selected compact-simulator PoC evidence, not
     independent-machine reproduction, not operational precise-reference
     validation, not third-party validation, not a full raw/training/all-filter
@@ -159,9 +163,9 @@ materialized artifacts, and selectively replayed at the documented tiers.
     `v1.2.1-graph-anchor-gate-poc`, detached HEAD commit
     `2dcd542dcb72f1622dfaf1cf8981a550862312bf`, clean git status before
     verifier output files, and passing public graph/archive verifiers. This
-    post-release local record is available in the current workspace/submission
-    packet once included; it is not part of the published v1.2.1 Zenodo/GitHub
-    release unless a later release includes it. It strengthens inspectability
+    post-release local record is historical maintainer evidence available in
+    the current workspace/submission packet once included; it is not part of
+    the published v1.2.1 Zenodo/GitHub release. It strengthens inspectability
     and public-clone reproducibility only; it is not independent third-party
     validation or independent-machine confirmation by an external operator.
 15. Independent-machine reproduction handoff: inspect
@@ -217,10 +221,10 @@ recomputation from archived public inputs only; this does not rerun full
 raw-data generation, model retraining, all recursive filters or tables, live
 public-data retrieval, operational POD validation, or independent
 machine reproduction. Its nested active-regeneration count is tied to the
-public v1.2.1 extracted archive. Version 1.2.2 includes the ACF audit artifacts
-as the release-facing audit/table tier, but the older v1.2.1 archive-extracted
-report remains an older release-boundary record unless a v1.2.2 archive tier is
-regenerated.
+public v1.2.1 extracted archive. Version 1.2.3 includes the ACF audit artifacts
+and development/holdout split summaries as the release-facing audit/table tier,
+but the older v1.2.1 archive-extracted report remains an older release-boundary
+record unless a v1.2.3 archive tier is regenerated.
 
 ### Public Precise-Reference OD Slice Rerun
 
@@ -272,33 +276,45 @@ is generated from retained full-rerun outputs and does not rerun models.
 
 ## Public Archival Release
 
-Release-facing metadata is prepared for the next Zenodo/GitHub archival
-release:
+Release-facing metadata for the Zenodo/GitHub archival release:
 
-- Short title: `SPOT-OD v1.2.2 ACF audit release`
-- Zenodo record: `pending`
-- DOI: `pending; fill after Zenodo mints the v1.2.2 DOI`
-- DOI URL: `pending`
-- Zenodo status: `pending publication`
-- Version: `1.2.2-acf-audit`
-- Resource type: Dataset
+- Short title: `SPOT-OD v1.2.3 ACF holdout audit release`
+- Zenodo record: pending after Zenodo imports the new GitHub release
+- DOI: pending after Zenodo imports the new GitHub release
+- DOI URL: pending after Zenodo imports the new GitHub release
+- Zenodo status: `pending_zenodo_import`
+- Version: `1.2.3-acf-holdout-audit`
+- Resource type: Software
 - License: `CC-BY-4.0`
 - GitHub repository: <https://github.com/Alavi1412/spot-od-reproduction>
-- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit>
-- Release tag: `v1.2.2-acf-audit`
-- Release commit: `pending until the release tag is created`
-- Zenodo archived file: `pending`
-- Zenodo archived file bytes: `pending`
-- Zenodo archived file MD5: `pending`
-- GitHub release asset: `pending`
-- GitHub release asset bytes: `pending`
-- GitHub release asset SHA-256: `pending`
-
-Do not fill the v1.2.2 DOI, archived-file MD5, asset byte count, or asset
-SHA-256 until Zenodo/GitHub have minted or published those concrete records.
+- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>
+- Release tag: `v1.2.3-acf-holdout-audit`
+- Release commit: pending until tag publication
+- Zenodo archived file: pending after Zenodo import
+- Zenodo archived file bytes: pending
+- Zenodo archived file MD5: pending
+- GitHub release asset: `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
+- GitHub release asset bytes and SHA-256: recorded in the regenerated
+  `SUPPLEMENTARY_MANIFEST.json` under `review_archive`.
 
 Prior public release history is retained:
 
+- v1.2.2 Zenodo record: <https://zenodo.org/records/20822968>
+- v1.2.2 DOI: `10.5281/zenodo.20822968`
+- v1.2.2 DOI URL: <https://doi.org/10.5281/zenodo.20822968>
+- v1.2.2 Zenodo status: `published`
+- v1.2.2 GitHub release:
+  <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.2-acf-audit>
+- v1.2.2 release tag: `v1.2.2-acf-audit`
+- v1.2.2 release commit: `6fbc88745b6d96939736d59731089e99786c1f8c`
+- v1.2.2 Zenodo archived file:
+  `Alavi1412/spot-od-reproduction-v1.2.2-acf-audit.zip`
+- v1.2.2 Zenodo archived file bytes: `72,607,548`
+- v1.2.2 Zenodo archived file MD5: `533b8363954cb6531f17bf4d405a5092`
+- v1.2.2 GitHub release asset: `spot_od_v1_2_2_acf_audit_review_archive.zip`
+- v1.2.2 GitHub release asset bytes: `59,127,034`
+- v1.2.2 GitHub release asset SHA-256:
+  `e6b6139bb0fb5463f5091bdde05e14b82a8191d1419466cdd21c8aafa533b240`
 - v1.2.1 Zenodo record: <https://zenodo.org/records/20811701>
 - v1.2.1 DOI: `10.5281/zenodo.20811701`
 - v1.2.1 DOI URL: <https://doi.org/10.5281/zenodo.20811701>
@@ -340,18 +356,21 @@ is available in the current workspace/submission packet once included; it is
 not part of the published v1.2.1 Zenodo/GitHub release unless a later release
 includes it.
 
-Version 1.2.2 supersedes v1.2.1 only by adding the ACF audit/table tier and
-manuscript claim-boundary wording. Version 1.2.1 superseded v1.2.0 only by
-correcting embedded manuscript/table/provenance text. Scientific metrics are
-as recorded, not upgraded to operational validation.
+Version 1.2.3 supersedes v1.2.2 only by repairing the public release boundary
+for the ACF audit/table tier and packaging the development/holdout split
+summaries in the new release. Version 1.2.2 remains historical ACF audit package
+history, and version 1.2.1 remains historical GraphAnchorPairGate package
+history. Scientific metrics are as recorded, not upgraded to operational
+validation.
 
-The v1.2.2 release is bounded reproduction-support evidence for archive
+The v1.2.3 release target is bounded reproduction-support evidence for archive
 extraction, manifest hashes, active manuscript artifact regeneration, one
-archived-input public OD slice rerun, and public packaging of the
-GraphAnchorPairGate PoC plus the ACF audit/table tier. It is not full
-raw/training/all-filter reproduction, live public-data retrieval, operational
-POD validation, independent-machine confirmation, third-party independent
-validation, or full scientific reproduction.
+archived-input public OD slice rerun, public packaging of the GraphAnchorPairGate
+PoC, and public packaging of the ACF audit/table tier including the
+development/holdout split summaries. It is not full raw/training/all-filter
+reproduction, live public-data retrieval, operational POD validation,
+independent-machine confirmation, third-party independent validation, full
+scientific reproduction, or confirmatory learned superiority.
 
 The public `1.2.1-graph-anchor-gate-poc` package includes the
 post-manuscript GraphAnchorPairGate proof-of-concept artifact under
@@ -366,28 +385,31 @@ center-window RMSE, held-out eval trajectories within the two shift scenarios,
 five paired seeds, one seed-19 process-shift failure, and no replacement of the
 frozen observed-step endpoint hierarchy.
 
-A local post-release retained-output observed-step audit of the same
-GraphAnchorPairGate sweep is generated in the current workspace at
+A historical local post-release retained-output observed-step audit of the
+same GraphAnchorPairGate sweep is generated in the current workspace at
 `results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_observed_step_audit.csv`,
 `.json`, and `.md` by
 `scripts/build_graph_anchor_pair_gate_observed_step_audit.py`. It records 0/10
 observed-step row wins and 0/5 paired both-scenario wins, confirming that the
 all-step graph benefit does NOT transfer to observed-step primary endpoint
-superiority. This audit is local/current-workspace evidence only unless a later
-public release includes it; it is not operational precise-reference validation,
-not independent-machine reproduction, not third-party validation, and not a
-universal learned-method claim.
+superiority. This audit is local/current-workspace historical GraphAnchorPairGate
+evidence only; it is not part of the published v1.2.1 Zenodo/GitHub release,
+not operational precise-reference validation, not independent-machine
+reproduction, not third-party validation, and not a universal learned-method
+claim.
 
 ## Contents
 
 - `CITATION.cff` - local citation metadata for the package.
-- `ZENODO_METADATA.json` - Zenodo deposit metadata for v1.2.2, with the DOI
-  pending until Zenodo mints it and the v1.2.1 DOI retained as prior-version
-  history.
+- `ZENODO_METADATA.json` - Zenodo deposit metadata for v1.2.3, with the
+  v1.2.3 DOI/record pending and the v1.2.2/v1.2.1 DOIs retained as historical
+  release references.
 - `REVIEWER_START_HERE.md` - reviewer-facing map from headline claims to
   manifest entries and regeneration tiers.
-- `RELEASE_NOTES_v1.2.2-acf-audit.md` - concise release note for the v1.2.2
-  ACF audit release, including pending DOI and asset-hash fields.
+- `RELEASE_NOTES_v1.2.3-acf-holdout-audit.md` - concise release note for the
+  v1.2.3 ACF holdout audit release and pending Zenodo fields.
+- `RELEASE_NOTES_v1.2.2-acf-audit.md` - historical release note for the v1.2.2
+  ACF audit release.
 - `INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md` - clean-machine operator
   instructions and report template; this is not a completed independent
   reproduction.
@@ -455,7 +477,7 @@ universal learned-method claim.
   confirmation by an external operator, not operational precise-reference
   validation, and not a full raw-data/training rerun. It is available in the
   current workspace/submission packet once included; it is not part of the
-  published v1.2.1 Zenodo/GitHub release unless a later release includes it.
+  published v1.2.1 Zenodo/GitHub release.
 - `results/validation/full_rerun_divergence_audit_20260617.json` and `.md` -
   bounded generated audit of the full-rerun divergence flags; diagnostic only,
   not a canonical table replacement, not operational validation, not
@@ -469,7 +491,7 @@ universal learned-method claim.
   and `paper/tables/public_sp3_multi_target_breadth_probe.tex` - public
   multi-target SP3/CRD breadth probe records, including fixed-start and
   target-week clustered finite-probe sensitivity summaries.
-- `spot_od_v1_1_0_supplement_review_archive.zip` - reviewer-access transport
+- `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip` - reviewer-access transport
   archive generated from the indexed artifacts. Its SHA-256 digest is
   recorded separately in `SUPPLEMENTARY_MANIFEST.json`; the archive itself is
   not counted as an indexed artifact.
@@ -484,9 +506,9 @@ manifest keys and regeneration tiers.
 |---|---|
 | Audited learned family bounded negative on observed-step RMSE | Manifest entry `audited_learned_family_bounded_negative`; primary records include the observed-step seed summaries, endpoint-fixation support, larger endpoint replication, and their generated tables. |
 | Public GraphAnchorPairGate PoC package | Public `1.2.1-graph-anchor-gate-poc` provenance: Zenodo record <https://zenodo.org/records/20811701>, DOI `10.5281/zenodo.20811701`, GitHub release <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.1-graph-anchor-gate-poc>, commit `2dcd542dcb72f1622dfaf1cf8981a550862312bf`, and successful release run <https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28018952357>. Primary records are `results/graph_anchor_pair_gate_seed_sweep_20260623/EVIDENCE_NOTE.md`, `graph_anchor_pair_gate_seed_sweep_summary.csv`, `graph_anchor_pair_gate_seed_sweep_by_scenario.csv`, `graph_anchor_pair_gate_seed_sweep_paired_seed_gains.csv`, `graph_anchor_pair_gate_seed_sweep_uncertainty_summary.csv`, `graph_anchor_pair_gate_seed_sweep_statistical_summary.md`, `graph_anchor_pair_gate_seed_sweep_aggregate.png`, `seed_7_split_7/graph_anchor_pair_gate_candidate_comparison.png`, and `results/graph_anchor_pair_gate_rfis_va_gpu_holdout_shift_all_candidates_seed7/graph_anchor_pair_gate_summary.csv`. The artifact records a GNN-based station-time graph message-passing plus GRU gate over `RFIS:VA_RFIS` using no-truth anchor features; all-step center-window RMSE on held-out eval trajectories within the two shift scenarios; 9/10 scenario-seed row wins with Wilson 95% CI [0.596, 0.982]; 4/5 paired seeds winning both scenarios with CI [0.376, 0.964]; and the seed-19 process-shift failure at -2.0925251807980216%. It remains outside the primary observed-step endpoint hierarchy, not operational precise-reference validation, not independent-machine reproduction, not third-party reproduction, not a full raw/training/all-filter rerun, and not a universal claim. |
-| Local GraphAnchorPairGate retained-output observed-step audit | Local current-workspace records; not a manifest entry and not part of the published v1.2.1 Zenodo/GitHub release unless a later release includes them. Primary records are `results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_observed_step_audit.csv`, `.json`, and `.md`, generated by `scripts/build_graph_anchor_pair_gate_observed_step_audit.py` from retained per-scenario JSONs. The audit records 0/10 observed-step row wins and 0/5 paired both-scenario wins; mean gain is -5.568334199477706%, min -12.482167132357489%, max -0.8712975503737664%. Boundary: retained-output audit only, does not rerun training/evaluation, confirms the GraphAnchorPairGate all-step benefit does NOT transfer to observed-step primary endpoint superiority, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, and not a universal learned-method claim. |
-| AdaptiveCandidateFusion audit/table tier | Included in v1.2.2 as manifest-indexed compact-simulator PoC records. Fixed-soft records are `results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv`, `.json`, and `.md`, generated by `scripts/build_adaptive_candidate_fusion_fixed_soft_training_campaign_artifacts.py`; the 15-seed validation-selected global portfolio records are `results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json`, `.md`, and `.csv`, generated by `scripts/analyze_adaptive_candidate_fusion_global_portfolio.py`; the compact manuscript table is `paper/tables/adaptive_candidate_fusion_full_training_poc.tex`; generator/test support includes `scripts/build_paper_assets.py` and the focused ACF tests. The fixed-soft builder validates rows, campaign metadata, training histories, and checkpoints. Centered training reproduces the observed-step pocket: 8/10 row wins, 3/5 paired wins, mean +2.5944434632433686%; observed-mask full retraining is a bounded negative/failure mode: 12/20 observed-step row wins, 3/10 paired, mean -6.1915386036276825%. The global scenario portfolio selects `0.65*learned + 0.35*RFIS` for process and `0.55*learned + 0.45*EKF` for maneuver from validation splits and records 25/30 observed-step row wins, 13/15 paired-seed wins, mean +3.793410580996871%, min -10.11448514448152%, and max +12.384536098768079%; the nonlearned-only validation-selected blend baseline is weaker at 19/30 wins and +0.7140145823400381% mean. Boundary: validation-selected compact-simulator PoC only, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full raw/training/all-filter reproduction, and not a universal learned-OD claim. |
-| Local post-release public-clean-clone maintainer evidence | Primary records are `results/validation/public_clean_clone_v121_reproduction_20260623.json` and `.md`. This records a clean public clone from GitHub tag `v1.2.1-graph-anchor-gate-poc`, detached HEAD commit `2dcd542dcb72f1622dfaf1cf8981a550862312bf`, clean status before verifier outputs, Python path `C:\Users\alavi\AppData\Local\Microsoft\WindowsApps\python.exe`, and exit-code-0 runs of the public GraphAnchorPairGate PoC verifier and archive-extracted verifier. It was created after v1.2.1 publication and is available in the current workspace/submission packet once included; it is not part of the published v1.2.1 Zenodo/GitHub release unless a later release includes it. Boundary: public-clean-clone maintainer reproduction on the current host only; not independent third-party validation, not independent-machine confirmation by an external operator, not operational precise-reference validation, and not a full raw-data/training rerun. |
+| Local GraphAnchorPairGate retained-output observed-step audit | Historical local current-workspace records; not a manifest entry and not part of the published v1.2.1 Zenodo/GitHub release. Primary records are `results/graph_anchor_pair_gate_seed_sweep_20260623/graph_anchor_pair_gate_observed_step_audit.csv`, `.json`, and `.md`, generated by `scripts/build_graph_anchor_pair_gate_observed_step_audit.py` from retained per-scenario JSONs. The audit records 0/10 observed-step row wins and 0/5 paired both-scenario wins; mean gain is -5.568334199477706%, min -12.482167132357489%, max -0.8712975503737664%. Boundary: retained-output audit only, does not rerun training/evaluation, confirms the GraphAnchorPairGate all-step benefit does NOT transfer to observed-step primary endpoint superiority, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, and not a universal learned-method claim. |
+| AdaptiveCandidateFusion audit/table tier | Included in v1.2.3 as manifest-indexed compact-simulator PoC records. Fixed-soft records are `results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv`, `.json`, and `.md`, generated by `scripts/build_adaptive_candidate_fusion_fixed_soft_training_campaign_artifacts.py`; the 15-seed validation-selected global portfolio records are `results/adaptive_candidate_fusion_global_scenario_portfolio_15seed_20260624/summary.json`, `.md`, and `.csv`, generated by `scripts/analyze_adaptive_candidate_fusion_global_portfolio.py`; the development/holdout split summaries are `results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.json`, `.md`, and `.csv`; the compact manuscript table is `paper/tables/adaptive_candidate_fusion_full_training_poc.tex`; generator/test support includes `scripts/build_paper_assets.py` and the focused ACF tests. The fixed-soft builder validates rows, campaign metadata, training histories, and checkpoints. Centered training reproduces the observed-step pocket: 8/10 row wins, 3/5 paired wins, mean +2.5944434632433686%; observed-mask full retraining is a bounded negative/failure mode: 12/20 observed-step row wins, 3/10 paired, mean -6.1915386036276825%. The global scenario portfolio selects `0.65*learned + 0.35*RFIS` for process and `0.55*learned + 0.45*EKF` for maneuver from validation splits and records 25/30 observed-step row wins, 13/15 paired-seed wins, mean +3.793410580996871%, min -10.11448514448152%, and max +12.384536098768079%; the nonlearned-only validation-selected blend baseline is weaker at 19/30 wins and +0.7140145823400381% mean. The development/holdout split gives weak/mixed internal evidence only: 7/10 row wins, mean +1.45%, row CI [-2.22,+4.96], and 3/5 seed-paired wins. Boundary: validation-selected compact-simulator PoC only, not operational precise-reference validation, not independent-machine reproduction, not third-party validation, not a full raw/training/all-filter reproduction, not confirmatory learned superiority, and not a universal learned-OD claim. |
+| Local post-release public-clean-clone maintainer evidence | Primary records are `results/validation/public_clean_clone_v121_reproduction_20260623.json` and `.md`. This records a clean public clone from GitHub tag `v1.2.1-graph-anchor-gate-poc`, detached HEAD commit `2dcd542dcb72f1622dfaf1cf8981a550862312bf`, clean status before verifier outputs, Python path `C:\Users\alavi\AppData\Local\Microsoft\WindowsApps\python.exe`, and exit-code-0 runs of the public GraphAnchorPairGate PoC verifier and archive-extracted verifier. It is historical maintainer evidence created after v1.2.1 publication and available in the current workspace/submission packet once included; it is not part of the published v1.2.1 Zenodo/GitHub release. Boundary: public-clean-clone maintainer reproduction on the current host only; not independent third-party validation, not independent-machine confirmation by an external operator, not operational precise-reference validation, and not a full raw-data/training rerun. |
 | Larger simulator-bound endpoint replication under a frozen K=32 decision rule and established observed-step hierarchy | Manifest entry `larger_simulator_bound_endpoint_replication`; primary records include the larger endpoint replication JSON and generated table. |
 | Stress-only floor-power-scale observed-step replication | Manifest entry `powered_stress_floor_scale_replication`; primary records include the stress-only K=96 replication JSON, its generated table, and the frozen rule record; timestamp-only internal evidence records the rule fixed at 2026-05-25T13:06:32Z before the archived K=96 evaluation-start timestamp at 2026-05-25T13:12:43.6581323Z. |
 | All-scenario K=96 internal observed-step replication | Manifest entry `all_scenario_k96_internal_replication`; primary records include `results/observed_step_internal_prospective_replication_loop163_k96/observed_step_internal_prospective_replication_loop163_k96.json`, `results/observed_step_internal_prospective_replication_loop163_k96/preregistration.json`, and `paper/tables/observed_step_internal_prospective_replication_k96_allscenario.tex`; this is internal simulator-bound evidence, not external validation. |
@@ -507,10 +529,10 @@ manifest keys and regeneration tiers.
 | Pending prospective 260620 public-week full-correction readout | Manifest entry `pending_public_real_measurement_temporal_od_prospective_260620`; primary records are `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots`, `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_availability_20260613.json`, `results/validation/public_precise_reference_status_20260617.json`, `results/validation/public_precise_reference_status_20260617.md`, `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.json`, and `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.md`; created 2026-06-12 for test dates 2026-06-15..2026-06-19 and pending/not scored as of 2026-06-17; the OTS material is a Bitcoin-block-header-attested OpenTimestamps proof with Merkle roots cross-checked against the Blockstream API, but local Bitcoin-node verification was not performed and it is not scored validation, not DOI/public archive, not independent reproduction, and not operational POD; the retained 2026-06-13 availability audit is superseded for current availability by the 2026-06-17 status, which records parent listings with no 260613/260620 directories and direct 260613/260620 NSGF URLs returning HTTP 200 text/html; charset=utf-8 responses of length 825, not valid .sp3.gz products; cannot be used yet as validation and must not be represented as scored validation. |
 | Pending prospective 260627 public-week full-correction readiness record | Manifest entry `pending_public_real_measurement_temporal_od_prospective_260627`; primary records are `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.sha256.txt`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json.ots`, `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.json`, and `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.md`; created 2026-06-17 before test dates 2026-06-22..2026-06-26 with validation week 260620 and test week 260627; pending/not scored, with no campaign run; the status record cites `results/validation/public_precise_reference_status_20260617.json` and `.md` as the current availability basis; the OTS proof is calendar-pending and not Bitcoin-block-header-attested, not scored validation, not DOI/public archive, not independent reproduction, and not operational POD; 260627 cannot be used as validation until validation/test public SP3 products become valid gzip/SP3 products and the frozen rule is scored once. |
 | Official ILRS precise-reference availability gate | Manifest entry `official_ilrs_precise_reference_availability_probe`; primary records are `scripts/probe_ilrs_precise_reference_availability.py`, `tests/test_probe_ilrs_precise_reference_availability.py`, `results/validation/ilrs_precise_reference_availability_20260617.json`, and `results/validation/ilrs_precise_reference_availability_20260617.md`; this is an availability probe only, not scored validation. Cached `.sp3.gz` files that are 825-byte HTML placeholders remain unavailable/non-usable and must not be relabelled as valid SP3. |
-| Reproducibility and review-stage archive integrity | `REVIEWER_START_HERE.md`, `SUPPLEMENTARY_MANIFEST.json`, `spot_od_v1_1_0_supplement_review_archive.zip`, `results/validation/minimum_tier_reproduction_check.json`, `results/validation/submission_validation.json`, `results/release_packet.json` |
+| Reproducibility and review-stage archive integrity | `REVIEWER_START_HERE.md`, `SUPPLEMENTARY_MANIFEST.json`, `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, `results/validation/minimum_tier_reproduction_check.json`, `results/validation/submission_validation.json`, `results/release_packet.json` |
 | Independent-machine reproduction request/template | Manifest entry `independent_machine_reproduction_request`; primary record is `release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md`; this gives an external operator exact clean-machine verification steps and a report template but is not a completed independent reproduction and is not an already completed independent reproduction record. |
 | Active main-manuscript table regeneration | `results/validation/active_manuscript_regeneration.json`, `results/validation/active_manuscript_regeneration.md`, `results/validation/command_manifest.json`, active `paper/tables/*.tex` files included by `paper/main.tex`; current workspace parses 11 table inputs plus 2 figure includes, 13/13 passing |
-| Archive-extracted reproduction tier | `results/validation/archive_extracted_reproduction.json`, `results/validation/archive_extracted_reproduction.md`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.json`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.md`, `scripts/verify_archive_extracted_reproduction.py`, `scripts/regenerate_active_manuscript.py`, `scripts/run_real_slr_sp3_od_validation.py`, `scripts/build_paper_assets.py`, `spot_od_v1_1_0_supplement_review_archive.zip`, `SUPPLEMENTARY_MANIFEST.json` |
+| Archive-extracted reproduction tier | `results/validation/archive_extracted_reproduction.json`, `results/validation/archive_extracted_reproduction.md`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.json`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.md`, `scripts/verify_archive_extracted_reproduction.py`, `scripts/regenerate_active_manuscript.py`, `scripts/run_real_slr_sp3_od_validation.py`, `scripts/build_paper_assets.py`, `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, `SUPPLEMENTARY_MANIFEST.json` |
 | Codex-agent clean archive attestation | Manifest entry `codex_clean_archive_attestation`; primary records are `results/validation/codex_clean_archive_attestation_20260614.json` and `results/validation/codex_clean_archive_attestation_20260614.md`; boundary: same-workspace separate-agent clean extracted archive attestation only, not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, and not independent external reproduction. |
 | Containerized minimum-tier attestation | Manifest entry `containerized_minimum_tier_attestation`; primary records are `results/validation/containerized_minimum_tier_attestation_20260614.json` and `results/validation/containerized_minimum_tier_attestation_20260614.md`; boundary: local Docker Desktop clean-container staged minimum-tier integrity attestation only, same-host and staged from the current workspace/review archive, not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, not independent external reproduction, and not a full scientific rerun. |
 | Targeted retraining replay | Manifest entry `targeted_retraining_replay`; primary records include the validation report, replay script, regression test, and indexed replay artifacts. |

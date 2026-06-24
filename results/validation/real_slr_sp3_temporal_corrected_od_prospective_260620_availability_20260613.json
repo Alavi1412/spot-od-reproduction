@@ -1,0 +1,84 @@
+{
+  "schema_version": "real_slr_sp3_pending_prospective_availability_audit_v1",
+  "artifact_role": "static_public_sp3_availability_boundary",
+  "audit_date": "2026-06-13",
+  "audit_basis": "Recorded EDC live HEAD observations for the public SLR/SP3 prospective-validation bottleneck; this artifact is static and tests perform no live network calls.",
+  "predeclaration": {
+    "json_path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json",
+    "checksum_path": "release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt",
+    "created_date": "2026-06-12",
+    "schedule_name": "prospective_260620",
+    "status": "pending_not_scored",
+    "rule": "predeclared public temporal holdout",
+    "test_dates": [
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19"
+    ],
+    "test_week": "260620",
+    "targets": [
+      "LAGEOS-1",
+      "LAGEOS-2"
+    ]
+  },
+  "edc_live_head_observations": [
+    {
+      "sp3_week": "260530",
+      "targets": [
+        "LAGEOS-1",
+        "LAGEOS-2"
+      ],
+      "http_status": 200,
+      "byte_count": "about 219k",
+      "content_type": "text/plain",
+      "edc_interpretation": "valid_product",
+      "valid_sp3_product": true
+    },
+    {
+      "sp3_week": "260606",
+      "targets": [
+        "LAGEOS-1",
+        "LAGEOS-2"
+      ],
+      "http_status": 200,
+      "byte_count": 825,
+      "content_type": "text/html",
+      "edc_interpretation": "missing_file_placeholder",
+      "valid_sp3_product": false
+    },
+    {
+      "sp3_week": "260613",
+      "targets": [
+        "LAGEOS-1",
+        "LAGEOS-2"
+      ],
+      "http_status": 200,
+      "byte_count": 825,
+      "content_type": "text/html",
+      "edc_interpretation": "missing_file_placeholder",
+      "valid_sp3_product": false
+    },
+    {
+      "sp3_week": "260620",
+      "targets": [
+        "LAGEOS-1",
+        "LAGEOS-2"
+      ],
+      "http_status": 200,
+      "byte_count": 825,
+      "content_type": "text/html",
+      "edc_interpretation": "missing_file_placeholder",
+      "valid_sp3_product": false
+    }
+  ],
+  "boundary": {
+    "as_of_audit_date": "2026-06-13",
+    "test_dates_future_or_unavailable": true,
+    "can_be_used_as_scored_validation_as_of_audit_date": false,
+    "can_be_reported_as_completed_validation": false,
+    "should_be_reported_as": "pending_not_scored_predeclaration",
+    "availability_conclusion": "The 260620 prospective rule is a pending predeclared public temporal holdout. As of 2026-06-13, the 2026-06-15..2026-06-19 test dates/data availability are future/unavailable; 825-byte text/html EDC missing-file placeholders are unavailable SP3 products, not valid .sp3.gz products."
+  }
+}

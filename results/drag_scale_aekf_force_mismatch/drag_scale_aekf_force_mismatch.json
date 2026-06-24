@@ -1,0 +1,152 @@
+{
+  "scenario": "drag_scale_aekf_force_mismatch",
+  "schema_version": "drag_scale_aekf_force_mismatch_v1",
+  "scope": "Drag-Scale Adaptive EKF on the higher-fidelity force-mismatch slice: truth uses two-body + J2..J6 zonal geopotential + luni-solar third-body acceleration + exponential drag with a one-sided diurnal-bulge density modulation (alpha=0.30); EKF/UKF/AUKF/PUKF/DMC-EKF/DSA-EKF all use the compact two-body+J2+drag deterministic flow, with DSA-EKF scaling the drag acceleration by an online-estimated multiplicative factor with steady-state sigma=0.30 and decorrelation tau=600 s; the selected hyperparameters were frozen on a disjoint validation seed.",
+  "n_trajectories": 48,
+  "steps": 120,
+  "dt_s": 20.0,
+  "eval_start_step": 11,
+  "epoch_unix": 1736640000.0,
+  "rng_seed": 20260645,
+  "diurnal_alpha": 0.3,
+  "bootstrap_samples": 5000,
+  "predeclared_rule_path": "release/predeclarations/drag_scale_aekf_rule_loop45.json",
+  "predeclared_rule_digest_sha256": "944ba41e46831ec18be79b1c45be2d089ef7657e674e915f165f5662ab815c5a",
+  "selection_artifact_path": "results/drag_scale_aekf_validation/drag_scale_aekf_validation.json",
+  "selection_artifact_sha256": "963257132df7f8086917f35081e8b3a25ae9401e853ac1b6f3c5fca85f345ea6",
+  "selected_grid_point_label": "G1",
+  "selected_init_drag_scale_std": 0.3,
+  "selected_drag_scale_sigma_ss": 0.3,
+  "selected_drag_scale_tau_s": 600.0,
+  "truth_acceleration": "accel_hifi_extended(r, epoch_unix) (J2..J6 + luni-solar) + exponential drag with diurnal-bulge density modulation",
+  "estimator_acceleration": "compact two-body + J2 + time-invariant exponential drag, with the drag acceleration scaled by beta(t) for DSA-EKF",
+  "observed_step_rmse_mean_m": {
+    "EKF": 354.69458269007345,
+    "UKF": 404.01374485612024,
+    "AUKF": 401.1844855305318,
+    "PUKF": 459.95026474113655,
+    "DMC_EKF": 354.6946936437045,
+    "DSA_EKF": 347.6664230613631
+  },
+  "paired": {
+    "DSA_EKF_minus_EKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "EKF",
+      "mean_diff_m": -7.028159628710306,
+      "ci_lo_m": -9.709084330566156,
+      "ci_hi_m": -4.848013275604167,
+      "wilcoxon_p_one_sided_candidate_better": 1.8189894035458565e-11,
+      "n_paired": 38,
+      "candidate_better_count": 37
+    },
+    "DSA_EKF_minus_UKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "UKF",
+      "mean_diff_m": -56.34732179475712,
+      "ci_lo_m": -111.35378013110608,
+      "ci_hi_m": -10.19555119586463,
+      "wilcoxon_p_one_sided_candidate_better": 0.039602278753591236,
+      "n_paired": 38,
+      "candidate_better_count": 22
+    },
+    "DSA_EKF_minus_AUKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": -53.51806246916859,
+      "ci_lo_m": -119.19483072924882,
+      "ci_hi_m": -5.808771502971339,
+      "wilcoxon_p_one_sided_candidate_better": 0.05085319001591415,
+      "n_paired": 38,
+      "candidate_better_count": 23
+    },
+    "DSA_EKF_minus_PUKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "PUKF",
+      "mean_diff_m": -112.28384167977332,
+      "ci_lo_m": -215.86579888128432,
+      "ci_hi_m": -43.78099573563373,
+      "wilcoxon_p_one_sided_candidate_better": 1.4510806067846715e-07,
+      "n_paired": 38,
+      "candidate_better_count": 33
+    },
+    "DSA_EKF_minus_DMC_EKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "DMC_EKF",
+      "mean_diff_m": -7.028270582341332,
+      "ci_lo_m": -9.777999705480992,
+      "ci_hi_m": -4.857513092680874,
+      "wilcoxon_p_one_sided_candidate_better": 1.8189894035458565e-11,
+      "n_paired": 38,
+      "candidate_better_count": 37
+    },
+    "EKF_minus_AUKF": {
+      "candidate": "EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": -46.48990284045829,
+      "ci_lo_m": -110.70161820718326,
+      "ci_hi_m": 0.1961096100878577,
+      "wilcoxon_p_one_sided_candidate_better": 0.18637603569004568,
+      "n_paired": 38,
+      "candidate_better_count": 19
+    }
+  },
+  "decision": {
+    "best_non_dsa_estimator": "EKF",
+    "best_non_dsa_mean_m": 354.69458269007345,
+    "practical_significance_floor_fraction": 0.03,
+    "practical_significance_floor_abs_m": 10.640837480702203,
+    "dsa_minus_best_non_dsa_mean_m": -7.028159628710306,
+    "dsa_minus_best_non_dsa_ci_lo_m": -9.685380158104275,
+    "dsa_minus_best_non_dsa_ci_hi_m": -4.80167613294038,
+    "dsa_is_strictly_lowest_mean": true,
+    "ci_strictly_negative_for_dsa": true,
+    "floor_exceeded": false,
+    "predeclared_positive_criterion_met": false
+  },
+  "dsa_diagnostics": {
+    "median_max_abs_beta_deviation": 1.6230525268223772e-07,
+    "median_mean_beta": 0.9999999985669633
+  },
+  "cross_filter_r_only_nis": {
+    "EKF": {
+      "median": 1.4110159754312865,
+      "mean": 3.190079457151444,
+      "p90": 4.409893843890536,
+      "n": 1262
+    },
+    "UKF": {
+      "median": 1.5677192524647428,
+      "mean": 2.9201471700395305,
+      "p90": 5.154088007458085,
+      "n": 1262
+    },
+    "AUKF": {
+      "median": 1.6869848011476973,
+      "mean": 8.97673596751031,
+      "p90": 6.255246696965154,
+      "n": 1262
+    },
+    "PUKF": {
+      "median": 1.1870979846086365,
+      "mean": 2.8393139311385367,
+      "p90": 4.615870949405735,
+      "n": 1262
+    },
+    "DMC_EKF": {
+      "median": 1.411016457616003,
+      "mean": 3.1900795778149735,
+      "p90": 4.409894964784079,
+      "n": 1262
+    },
+    "DSA_EKF": {
+      "median": 1.4651522503330225,
+      "mean": 3.2846403964935846,
+      "p90": 4.486005049664308,
+      "n": 1262
+    }
+  },
+  "elapsed_seconds": {
+    "truth_generation": 12.053043499938212,
+    "filters": 464.85872290004045
+  }
+}

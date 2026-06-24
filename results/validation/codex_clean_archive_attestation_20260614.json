@@ -1,0 +1,127 @@
+{
+  "artifact": "codex_clean_archive_attestation",
+  "attestation_date": "2026-06-14",
+  "attestation_scope": "same-workspace separate-agent clean extracted archive attestation",
+  "archive_observed_from_manifest": {
+    "manifest_path": "release/SUPPLEMENTARY_MANIFEST.json",
+    "archive_path": "release/spot_od_v1_1_0_supplement_review_archive.zip",
+    "archive_sha256_observed_before_this_attestation_was_indexed": "e856f70f4d7d8c8f79a42fda7e73481d8d23652a3f645f904d8c4cd92c6b2ca3",
+    "archive_bytes_observed_before_this_attestation_was_indexed": 58056994,
+    "artifact_digest_coverage_count_observed_before_this_attestation_was_indexed": 964,
+    "artifacts_included_observed_before_this_attestation_was_indexed": 964,
+    "self_reference_note": "The regenerated release/SUPPLEMENTARY_MANIFEST.json remains authoritative for the current review archive SHA-256. This attestation is itself indexed and archived, so the pre-indexing archive digest is recorded as the observed paired-manifest digest at attestation time rather than as a self-referential fixed-point claim."
+  },
+  "verifier_commands_run": [
+    {
+      "command": "python scripts/validate_submission.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": {
+        "json": "results/validation/submission_validation.json",
+        "markdown": "results/validation/submission_validation.md",
+        "overall_passed": true,
+        "page_count": 34,
+        "citation_status": "pass",
+        "latex_warning_count": 0,
+        "supplement_latex_warning_count": 0
+      }
+    },
+    {
+      "command": "python scripts/verify_minimum_tier_reproduction.py",
+      "exit_code": 1,
+      "status": "fail",
+      "summary": {
+        "json": "results/validation/minimum_tier_reproduction_check.json",
+        "markdown": "results/validation/minimum_tier_reproduction_check.md",
+        "artifact_check": "fail",
+        "claim_map_check": "pass",
+        "manifest_summary_check": "pass",
+        "review_archive_check": "pass",
+        "review_archive_member_sha256_failure_count": 0,
+        "artifact_failure_count": 1,
+        "artifact_failures": [
+          {
+            "path": "results/validation/supplement_layout_warnings.md",
+            "problem": "sha256_mismatch",
+            "expected_sha256": "a0ab1924c006d8d2561bf921584ca85680f632ddf3e8b863d5501493d6045296",
+            "actual_sha256": "a2fa33f52621398f64791deaa132fc60717ffe8acb3d6347657565aabc390a62",
+            "resolved_from": "workspace_file"
+          }
+        ],
+        "interpretation": "The pre-indexing minimum-tier command observed one workspace-file digest mismatch after validation report refresh; the review archive member check passed. Regenerating the supplementary manifest/archive is required after adding this attestation."
+      }
+    },
+    {
+      "command": "python scripts/verify_archive_extracted_reproduction.py",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": {
+        "json": "results/validation/archive_extracted_reproduction.json",
+        "markdown": "results/validation/archive_extracted_reproduction.md",
+        "extracted_artifacts": "pass",
+        "claim_map": "pass",
+        "regeneration_tiers": "pass",
+        "active_table_regeneration_from_extracted_tree": {
+          "status": "pass",
+          "nested_report": {
+            "path": "results/validation/archive_extracted_active_manuscript_regeneration.json",
+            "status": "pass",
+            "artifact_count": 10,
+            "pass_count": 10,
+            "mismatch_count": 0,
+            "documented_blocker_count": 0
+          }
+        },
+        "archive_extracted_public_od_slice_rerun": {
+          "status": "pass",
+          "completed_arcs": 10,
+          "dbar_correct": 6,
+          "dbar_scored": 10,
+          "public_claim_mismatch_count": 0,
+          "table_text_matched": true,
+          "pooled_held_out_position_rmse_m": {
+            "AUKF (adaptive)": {
+              "mean_arc_rms_m": 341.33,
+              "median_arc_rms_m": 296.13,
+              "arcs_best_of": 3,
+              "n_arcs": 10
+            },
+            "EKF": {
+              "mean_arc_rms_m": 367.98,
+              "median_arc_rms_m": 248.67,
+              "arcs_best_of": 1,
+              "n_arcs": 10
+            },
+            "SP3-IC propagation": {
+              "mean_arc_rms_m": 402.92,
+              "median_arc_rms_m": 260.68,
+              "arcs_best_of": 5,
+              "n_arcs": 10
+            },
+            "UKF (fixed-noise)": {
+              "mean_arc_rms_m": 334.72,
+              "median_arc_rms_m": 234.04,
+              "arcs_best_of": 1,
+              "n_arcs": 10
+            }
+          }
+        }
+      }
+    },
+    {
+      "command": "python scripts/verify_minimum_tier_reproduction.py --check-only",
+      "exit_code": 0,
+      "status": "pass",
+      "summary": {
+        "artifact_check": "pass",
+        "claim_map_check": "pass",
+        "manifest_summary_check": "pass",
+        "review_archive_check": "pass",
+        "requires_retraining": false,
+        "interpretation": "Final post-regeneration no-write check after indexing the attestation and rebuilding release/SUPPLEMENTARY_MANIFEST.json plus the review archive."
+      }
+    }
+  ],
+  "skipped_commands": [],
+  "claim_boundary": "This is a same-workspace separate-agent clean extracted archive attestation only. It records commands run by a Codex implementation worker in the current workspace/machine against the current review archive and materialized artifacts. It is not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, and not independent external reproduction."
+}

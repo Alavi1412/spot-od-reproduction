@@ -1,0 +1,31 @@
+<html>
+	<head>
+	</head>
+<script>
+	function go_edc() {
+		location.href = '/';
+	}
+	function go_url(url) {
+		location.href = url;
+	}
+	
+</script>
+<body style="background-color: #efefef">
+	<p style='font-family: monospace;'><a style='color:#0000ff; cursor: pointer;' onclick=go_edc()>Back to EDC-Website</a></p>
+	
+	<p style='font-family: monospace;'>
+	<script>
+		var dirs = "/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260618.np2".split("/")		
+		for (var i = 0; i < dirs.length; i++) {
+			var url = dirs.slice(0, i+1).join('/')
+			document.write("<a style='color:#0000ff; cursor: pointer;'  onclick=go_url('"+url+"')>"+dirs[i]+"/</a>");
+		}
+		var url_up = dirs.slice(0, -1).join('/')		
+	</script>
+	</p>
+	
+		<p style='font-family: monospace;color:#990000;'><i>File or directory not found!</i></p>
+	
+	
+		
+</body>

@@ -30,7 +30,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_REL = "release/SUPPLEMENTARY_MANIFEST.json"
-DEFAULT_ARCHIVE_REL = "release/spot_od_v1_1_0_supplement_review_archive.zip"
+DEFAULT_ARCHIVE_REL = "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip"
 DEFAULT_JSON_OUT = "results/validation/archive_extracted_reproduction.json"
 DEFAULT_MD_OUT = "results/validation/archive_extracted_reproduction.md"
 ACTIVE_REGEN_SCRIPT_REL = "scripts/regenerate_active_manuscript.py"

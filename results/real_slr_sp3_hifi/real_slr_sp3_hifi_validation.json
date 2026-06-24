@@ -1,0 +1,2380 @@
+{
+  "schema_version": "real_slr_sp3_hifi_v1",
+  "generated_utc": "2026-05-19T09:29:35Z",
+  "status": "completed",
+  "targets": [
+    "LAGEOS-1",
+    "LAGEOS-2"
+  ],
+  "num_arcs": 40,
+  "num_arcs_completed": 40,
+  "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+  "split_weeks": {
+    "260418": "train",
+    "260425": "train",
+    "260502": "val",
+    "260509": "test"
+  },
+  "fixed_station_subset": [
+    "HERL",
+    "MATM",
+    "WETL",
+    "YARL"
+  ],
+  "predeclared": {
+    "range_std_m": 20.0,
+    "accel_psd": 1e-12,
+    "train_frac": 0.6,
+    "max_step_s": 30.0,
+    "pd_horizon_s": 21600.0,
+    "pd_grid_s": 600.0,
+    "pd_n_starts_per_week_object": 6,
+    "bootstrap_resamples": 3000,
+    "bootstrap_seed": 2026
+  },
+  "arcs": [
+    {
+      "arc_id": "LAGEOS-1 20260413",
+      "target": "LAGEOS-1",
+      "date": "20260413",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260413.np2",
+        "archived_input_id": "lageos1_20260413.np2",
+        "input_source": "archived_input",
+        "sha256": "93ba09edf15b2601b186a6a7c13dc01dfb5a1e723c5486a611582b6d3b99ea13",
+        "bytes": 60212
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 82,
+      "num_fit": 49,
+      "num_held_out": 33,
+      "distinct_stations": 2,
+      "arc_span_hours": 23.179722221361267,
+      "held_out_span_hours": 5.386821128196186,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1267.18,
+        "UKF (higher-fidelity)": 1232.24,
+        "AUKF (higher-fidelity)": 1254.14
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260414",
+      "target": "LAGEOS-1",
+      "date": "20260414",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260414.np2",
+        "archived_input_id": "lageos1_20260414.np2",
+        "input_source": "archived_input",
+        "sha256": "e5477912261fd2579a638ef39b402a9cbf5301253d309acb44ea137fcdbd4911",
+        "bytes": 25003
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 31,
+      "num_fit": 18,
+      "num_held_out": 13,
+      "distinct_stations": 2,
+      "arc_span_hours": 19.552944443557,
+      "held_out_span_hours": 12.727818007204268,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 740.72,
+        "UKF (higher-fidelity)": 895.86,
+        "AUKF (higher-fidelity)": 895.86
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260415",
+      "target": "LAGEOS-1",
+      "date": "20260415",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260415.np2",
+        "archived_input_id": "lageos1_20260415.np2",
+        "input_source": "archived_input",
+        "sha256": "6bc5f86ecef49af5c20f8ad1d9e8d396d37debcd447a867e848b237296062bcf",
+        "bytes": 40753
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 76,
+      "num_fit": 45,
+      "num_held_out": 31,
+      "distinct_stations": 2,
+      "arc_span_hours": 23.0150555555688,
+      "held_out_span_hours": 5.337906104856067,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1158.0,
+        "UKF (higher-fidelity)": 1041.13,
+        "AUKF (higher-fidelity)": 1276.38
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260416",
+      "target": "LAGEOS-1",
+      "date": "20260416",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260416.np2",
+        "archived_input_id": "lageos1_20260416.np2",
+        "input_source": "archived_input",
+        "sha256": "388413596114dffda4f5c8801e6f85d0f189ba0947d777a1b72084c3007e5cda",
+        "bytes": 44715
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 31,
+      "num_fit": 18,
+      "num_held_out": 13,
+      "distinct_stations": 2,
+      "arc_span_hours": 13.740953896707959,
+      "held_out_span_hours": 1.2873705628845427,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1776.12,
+        "UKF (higher-fidelity)": 1719.05,
+        "AUKF (higher-fidelity)": 1615.69
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260417",
+      "target": "LAGEOS-1",
+      "date": "20260417",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260417.np2",
+        "archived_input_id": "lageos1_20260417.np2",
+        "input_source": "archived_input",
+        "sha256": "49acc0a31fcf08b612580d899d0006533a49b4fd8ae3eba2f6d4b5d494212146",
+        "bytes": 60988
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+        "bytes": 219491,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 73,
+      "num_fit": 43,
+      "num_held_out": 30,
+      "distinct_stations": 4,
+      "arc_span_hours": 12.711017684737842,
+      "held_out_span_hours": 5.375106230841743,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 2381.03,
+        "UKF (higher-fidelity)": 2261.5,
+        "AUKF (higher-fidelity)": 2060.57
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260413",
+      "target": "LAGEOS-2",
+      "date": "20260413",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260413.np2",
+        "archived_input_id": "lageos2_20260413.np2",
+        "input_source": "archived_input",
+        "sha256": "ef3cea77ce9026d38ddd0f1a595d9c559d6993d08cd2c3d2389b15dc62bccf4d",
+        "bytes": 24464
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 54,
+      "num_fit": 32,
+      "num_held_out": 22,
+      "distinct_stations": 2,
+      "arc_span_hours": 7.1706180509593755,
+      "held_out_span_hours": 2.8351180513699847,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 310.36,
+        "UKF (higher-fidelity)": 315.74,
+        "AUKF (higher-fidelity)": 319.72
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260414",
+      "target": "LAGEOS-2",
+      "date": "20260414",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260414.np2",
+        "archived_input_id": "lageos2_20260414.np2",
+        "input_source": "archived_input",
+        "sha256": "142a7bda46ed1703a84207c0d771dc3a8333eed41f6c5d9a88e3de48aa7ac15b",
+        "bytes": 21984
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 37,
+      "num_fit": 22,
+      "num_held_out": 15,
+      "distinct_stations": 2,
+      "arc_span_hours": 22.579000000490083,
+      "held_out_span_hours": 4.6379999998543,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 4067.94,
+        "UKF (higher-fidelity)": 3093.65,
+        "AUKF (higher-fidelity)": 2683.55
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260415",
+      "target": "LAGEOS-2",
+      "date": "20260415",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260415.np2",
+        "archived_input_id": "lageos2_20260415.np2",
+        "input_source": "archived_input",
+        "sha256": "404aefae3ebc510ac7c2d4b23a010f7cb9e9baaada82cdd01643c7f49ff4a9c1",
+        "bytes": 21815
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 29,
+      "num_fit": 17,
+      "num_held_out": 12,
+      "distinct_stations": 1,
+      "arc_span_hours": 4.6940555551317,
+      "held_out_span_hours": 0.5569444440470801,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 84.54,
+        "UKF (higher-fidelity)": 80.5,
+        "AUKF (higher-fidelity)": 69.39
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260416",
+      "target": "LAGEOS-2",
+      "date": "20260416",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260416.np2",
+        "archived_input_id": "lageos2_20260416.np2",
+        "input_source": "archived_input",
+        "sha256": "4b4af958e2c8d3fb158d4962fa7ee86d48c8d016e86a2213bb5ecd6705df3878",
+        "bytes": 41829
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 33,
+      "num_fit": 19,
+      "num_held_out": 14,
+      "distinct_stations": 2,
+      "arc_span_hours": 4.212305556535721,
+      "held_out_span_hours": 1.5053720711337195,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 231.68,
+        "UKF (higher-fidelity)": 224.88,
+        "AUKF (higher-fidelity)": 228.39
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260417",
+      "target": "LAGEOS-2",
+      "date": "20260417",
+      "sp3_week": "260418",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260417.np2",
+        "archived_input_id": "lageos2_20260417.np2",
+        "input_source": "archived_input",
+        "sha256": "b1cf4afb1b1ecaee584f19edbdf3510c1d1ed6336f0b6d4a40d1b8243b002cc1",
+        "bytes": 31142
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+        "bytes": 219100,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 51,
+      "num_fit": 30,
+      "num_held_out": 21,
+      "distinct_stations": 3,
+      "arc_span_hours": 14.472714212801721,
+      "held_out_span_hours": 6.202156119545301,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 640.68,
+        "UKF (higher-fidelity)": 469.32,
+        "AUKF (higher-fidelity)": 562.95
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260420",
+      "target": "LAGEOS-1",
+      "date": "20260420",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260420.np2",
+        "archived_input_id": "lageos1_20260420.np2",
+        "input_source": "archived_input",
+        "sha256": "9f7c450d13d03d88cfda8a1f073a9df4d163e4c8f1ad151a36fed248c328b919",
+        "bytes": 42274
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 85,
+      "num_fit": 51,
+      "num_held_out": 34,
+      "distinct_stations": 4,
+      "arc_span_hours": 23.075638889537917,
+      "held_out_span_hours": 5.746626247631179,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1531.26,
+        "UKF (higher-fidelity)": 1374.31,
+        "AUKF (higher-fidelity)": 794.44
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260421",
+      "target": "LAGEOS-1",
+      "date": "20260421",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260421.np2",
+        "archived_input_id": "lageos1_20260421.np2",
+        "input_source": "archived_input",
+        "sha256": "349015670ed546918ea6d13bf4996c434a29d36a19a748fe1c5815bb25483a44",
+        "bytes": 57651
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 67,
+      "num_fit": 40,
+      "num_held_out": 27,
+      "distinct_stations": 3,
+      "arc_span_hours": 10.457611116170883,
+      "held_out_span_hours": 5.559563741882642,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 471.81,
+        "UKF (higher-fidelity)": 439.61,
+        "AUKF (higher-fidelity)": 445.37
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260422",
+      "target": "LAGEOS-1",
+      "date": "20260422",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260422.np2",
+        "archived_input_id": "lageos1_20260422.np2",
+        "input_source": "archived_input",
+        "sha256": "45b7c4cbc0ecb8c79681b65987878e14d5dd8e69bba5d5b01d91071aaef5c0b1",
+        "bytes": 75339
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 114,
+      "num_fit": 68,
+      "num_held_out": 46,
+      "distinct_stations": 3,
+      "arc_span_hours": 14.658285653326246,
+      "held_out_span_hours": 5.273156857358085,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 276.92,
+        "UKF (higher-fidelity)": 237.05,
+        "AUKF (higher-fidelity)": 239.46
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260423",
+      "target": "LAGEOS-1",
+      "date": "20260423",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260423.np2",
+        "archived_input_id": "lageos1_20260423.np2",
+        "input_source": "archived_input",
+        "sha256": "305681c2d6508a61179adaa253924b32a581f0843a2e4e25f95a17278c23d88a",
+        "bytes": 99511
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 132,
+      "num_fit": 79,
+      "num_held_out": 53,
+      "distinct_stations": 3,
+      "arc_span_hours": 23.182194444470934,
+      "held_out_span_hours": 9.252854532930586,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1187.1,
+        "UKF (higher-fidelity)": 1138.85,
+        "AUKF (higher-fidelity)": 1142.99
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260424",
+      "target": "LAGEOS-1",
+      "date": "20260424",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260424.np2",
+        "archived_input_id": "lageos1_20260424.np2",
+        "input_source": "archived_input",
+        "sha256": "ebf0503cbec534db755e74b60977a43d09386391d3934b6142dfdfe534a17112",
+        "bytes": 77334
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+        "bytes": 219210,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 102,
+      "num_fit": 61,
+      "num_held_out": 41,
+      "distinct_stations": 3,
+      "arc_span_hours": 20.788043716483646,
+      "held_out_span_hours": 7.123749657273293,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 162.56,
+        "UKF (higher-fidelity)": 176.85,
+        "AUKF (higher-fidelity)": 190.39
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260420",
+      "target": "LAGEOS-2",
+      "date": "20260420",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260420.np2",
+        "archived_input_id": "lageos2_20260420.np2",
+        "input_source": "archived_input",
+        "sha256": "f7eb1cff09daac3045753d001d47ac7f1d30e3cf6b5f49fa68fd01c74de9ca9e",
+        "bytes": 21216
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 51,
+      "num_fit": 30,
+      "num_held_out": 21,
+      "distinct_stations": 3,
+      "arc_span_hours": 18.111257909735045,
+      "held_out_span_hours": 6.241763530572255,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 473.96,
+        "UKF (higher-fidelity)": 400.03,
+        "AUKF (higher-fidelity)": 333.45
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260421",
+      "target": "LAGEOS-2",
+      "date": "20260421",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260421.np2",
+        "archived_input_id": "lageos2_20260421.np2",
+        "input_source": "archived_input",
+        "sha256": "9b2c1bf7780bd78cc4282f48beb97fbc0b205bcff4202d70f8b0c9d097e8182f",
+        "bytes": 38208
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 56,
+      "num_fit": 33,
+      "num_held_out": 23,
+      "distinct_stations": 2,
+      "arc_span_hours": 12.886500004596181,
+      "held_out_span_hours": 6.405806436671151,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 303.39,
+        "UKF (higher-fidelity)": 302.21,
+        "AUKF (higher-fidelity)": 297.64
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260422",
+      "target": "LAGEOS-2",
+      "date": "20260422",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260422.np2",
+        "archived_input_id": "lageos2_20260422.np2",
+        "input_source": "archived_input",
+        "sha256": "18c05a533da2c0265c681d52f122b711210b7ce5e109bdb0cdae55c4b322081c",
+        "bytes": 47943
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 106,
+      "num_fit": 63,
+      "num_held_out": 43,
+      "distinct_stations": 3,
+      "arc_span_hours": 18.314754838612345,
+      "held_out_span_hours": 9.95177822695838,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 515.25,
+        "UKF (higher-fidelity)": 443.52,
+        "AUKF (higher-fidelity)": 456.72
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260423",
+      "target": "LAGEOS-2",
+      "date": "20260423",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260423.np2",
+        "archived_input_id": "lageos2_20260423.np2",
+        "input_source": "archived_input",
+        "sha256": "b532598c3c6ff945c0edcfa4b45bcfc5539d421ee74148e70ea97fd8850ae72b",
+        "bytes": 74659
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 118,
+      "num_fit": 70,
+      "num_held_out": 48,
+      "distinct_stations": 3,
+      "arc_span_hours": 18.203093538747893,
+      "held_out_span_hours": 8.58708333492279,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 338.27,
+        "UKF (higher-fidelity)": 340.24,
+        "AUKF (higher-fidelity)": 335.97
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260424",
+      "target": "LAGEOS-2",
+      "date": "20260424",
+      "sp3_week": "260425",
+      "split": "train",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260424.np2",
+        "archived_input_id": "lageos2_20260424.np2",
+        "input_source": "archived_input",
+        "sha256": "8f367c4cb8b844cbe25a918c57a63c491b05aaa46e2cc4f2b328d38901c69066",
+        "bytes": 73199
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+        "bytes": 219082,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 115,
+      "num_fit": 69,
+      "num_held_out": 46,
+      "distinct_stations": 3,
+      "arc_span_hours": 12.277712925076484,
+      "held_out_span_hours": 4.1038368439674375,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 197.73,
+        "UKF (higher-fidelity)": 187.92,
+        "AUKF (higher-fidelity)": 183.63
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260427",
+      "target": "LAGEOS-1",
+      "date": "20260427",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260427.np2",
+        "archived_input_id": "lageos1_20260427.np2",
+        "input_source": "archived_input",
+        "sha256": "cdacde5f2b52cf8f2dd7494e6bf4abbb668059519e68e2e75c51cde31030e4b9",
+        "bytes": 44782
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 56,
+      "num_fit": 33,
+      "num_held_out": 23,
+      "distinct_stations": 3,
+      "arc_span_hours": 10.381535791423586,
+      "held_out_span_hours": 6.603798102537791,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1276.71,
+        "UKF (higher-fidelity)": 1236.16,
+        "AUKF (higher-fidelity)": 1450.76
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260428",
+      "target": "LAGEOS-1",
+      "date": "20260428",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260428.np2",
+        "archived_input_id": "lageos1_20260428.np2",
+        "input_source": "archived_input",
+        "sha256": "7446f4f5ad11d09d3d737ea5ced0ec11ac1b9034b829a6afe2290cd0e79ba84b",
+        "bytes": 70268
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 123,
+      "num_fit": 73,
+      "num_held_out": 50,
+      "distinct_stations": 4,
+      "arc_span_hours": 16.55986612863011,
+      "held_out_span_hours": 7.172611110276646,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 848.22,
+        "UKF (higher-fidelity)": 692.54,
+        "AUKF (higher-fidelity)": 728.49
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260429",
+      "target": "LAGEOS-1",
+      "date": "20260429",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260429.np2",
+        "archived_input_id": "lageos1_20260429.np2",
+        "input_source": "archived_input",
+        "sha256": "3e44d39a9336033c93f96428e2a1678a462b19a7ae26b1325838e2f6bd7a4183",
+        "bytes": 63567
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 108,
+      "num_fit": 64,
+      "num_held_out": 44,
+      "distinct_stations": 3,
+      "arc_span_hours": 14.5443712572919,
+      "held_out_span_hours": 7.632598964108361,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1371.53,
+        "UKF (higher-fidelity)": 1237.52,
+        "AUKF (higher-fidelity)": 1225.62
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260430",
+      "target": "LAGEOS-1",
+      "date": "20260430",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260430.np2",
+        "archived_input_id": "lageos1_20260430.np2",
+        "input_source": "archived_input",
+        "sha256": "8722ba97984bf7d7673cd9de6b1751160d88091b4ed534123d03747f33779c61",
+        "bytes": 63059
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 123,
+      "num_fit": 73,
+      "num_held_out": 50,
+      "distinct_stations": 3,
+      "arc_span_hours": 17.636878151562478,
+      "held_out_span_hours": 7.256712939871682,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 259.11,
+        "UKF (higher-fidelity)": 252.11,
+        "AUKF (higher-fidelity)": 252.23
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260501",
+      "target": "LAGEOS-1",
+      "date": "20260501",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260501.np2",
+        "archived_input_id": "lageos1_20260501.np2",
+        "input_source": "archived_input",
+        "sha256": "4f7c52af607d497dd92134676010bf57aca3cf264dd4afa4c0dc0287e4bf3875",
+        "bytes": 98163
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+        "bytes": 219280,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 139,
+      "num_fit": 83,
+      "num_held_out": 56,
+      "distinct_stations": 4,
+      "arc_span_hours": 21.057782772050963,
+      "held_out_span_hours": 8.391866102483537,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 424.76,
+        "UKF (higher-fidelity)": 363.68,
+        "AUKF (higher-fidelity)": 363.58
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260427",
+      "target": "LAGEOS-2",
+      "date": "20260427",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260427.np2",
+        "archived_input_id": "lageos2_20260427.np2",
+        "input_source": "archived_input",
+        "sha256": "df436a24116efa72cc9cb315cd6ade41b7a6e6b8bdc79c5518ca1157dcef6418",
+        "bytes": 63175
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 103,
+      "num_fit": 61,
+      "num_held_out": 42,
+      "distinct_stations": 4,
+      "arc_span_hours": 14.353676470385658,
+      "held_out_span_hours": 6.106252847181426,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 726.05,
+        "UKF (higher-fidelity)": 668.65,
+        "AUKF (higher-fidelity)": 668.65
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260428",
+      "target": "LAGEOS-2",
+      "date": "20260428",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260428.np2",
+        "archived_input_id": "lageos2_20260428.np2",
+        "input_source": "archived_input",
+        "sha256": "d67d64330812778fbee7a4b4cef9674fc9addef3af4538756b08623a5c393d42",
+        "bytes": 38658
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 56,
+      "num_fit": 33,
+      "num_held_out": 23,
+      "distinct_stations": 3,
+      "arc_span_hours": 13.925332384970453,
+      "held_out_span_hours": 4.443805553648207,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 165.2,
+        "UKF (higher-fidelity)": 137.76,
+        "AUKF (higher-fidelity)": 147.28
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260429",
+      "target": "LAGEOS-2",
+      "date": "20260429",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260429.np2",
+        "archived_input_id": "lageos2_20260429.np2",
+        "input_source": "archived_input",
+        "sha256": "0086796fa76b2fb2048639d09434f4facf9ef214bcfa9164778f795c4c4f4aa2",
+        "bytes": 30934
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 75,
+      "num_fit": 45,
+      "num_held_out": 30,
+      "distinct_stations": 3,
+      "arc_span_hours": 12.445886275503371,
+      "held_out_span_hours": 4.219592043823666,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 205.29,
+        "UKF (higher-fidelity)": 137.83,
+        "AUKF (higher-fidelity)": 133.3
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260430",
+      "target": "LAGEOS-2",
+      "date": "20260430",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260430.np2",
+        "archived_input_id": "lageos2_20260430.np2",
+        "input_source": "archived_input",
+        "sha256": "24c943641ef3c6ad54d51bd1d0ff108e798d450d34bae3bfa09c319aa09d0e70",
+        "bytes": 53312
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 76,
+      "num_fit": 45,
+      "num_held_out": 31,
+      "distinct_stations": 3,
+      "arc_span_hours": 9.94736071407795,
+      "held_out_span_hours": 4.317638889286253,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 274.18,
+        "UKF (higher-fidelity)": 316.74,
+        "AUKF (higher-fidelity)": 326.43
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260501",
+      "target": "LAGEOS-2",
+      "date": "20260501",
+      "sp3_week": "260502",
+      "split": "val",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260501.np2",
+        "archived_input_id": "lageos2_20260501.np2",
+        "input_source": "archived_input",
+        "sha256": "dfce582f68a08662453e160602ec9e8e8e3be4f8152fc01e08604dbfe9d94ca7",
+        "bytes": 46913
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+        "bytes": 218908,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 91,
+      "num_fit": 54,
+      "num_held_out": 37,
+      "distinct_stations": 4,
+      "arc_span_hours": 13.921852729916573,
+      "held_out_span_hours": 9.36679064532121,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 220.34,
+        "UKF (higher-fidelity)": 215.72,
+        "AUKF (higher-fidelity)": 205.97
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260504",
+      "target": "LAGEOS-1",
+      "date": "20260504",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260504.np2",
+        "archived_input_id": "lageos1_20260504.np2",
+        "input_source": "archived_input",
+        "sha256": "dc014c72baf4153b05d11df91b758345c7d7669a2037f32ee55bfea69d8eebfb",
+        "bytes": 32132
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 32,
+      "num_fit": 19,
+      "num_held_out": 13,
+      "distinct_stations": 1,
+      "arc_span_hours": 10.758722223242124,
+      "held_out_span_hours": 10.092222222950724,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 394.15,
+        "UKF (higher-fidelity)": 387.66,
+        "AUKF (higher-fidelity)": 415.01
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "target": "LAGEOS-1",
+      "date": "20260505",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260505.np2",
+        "archived_input_id": "lageos1_20260505.np2",
+        "input_source": "archived_input",
+        "sha256": "1c10297d95d31922c2bcdb2946da0e43015264d33dcae268f96501abab136779",
+        "bytes": 63465
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 72,
+      "num_fit": 43,
+      "num_held_out": 29,
+      "distinct_stations": 4,
+      "arc_span_hours": 16.022055556376774,
+      "held_out_span_hours": 3.666111111442248,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 165.05,
+        "UKF (higher-fidelity)": 163.74,
+        "AUKF (higher-fidelity)": 176.89
+      },
+      "best_held_out_estimator": "UKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "target": "LAGEOS-1",
+      "date": "20260506",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260506.np2",
+        "archived_input_id": "lageos1_20260506.np2",
+        "input_source": "archived_input",
+        "sha256": "efad86119dc466074ca9856162528d5fff17ac6acf2ddf4cb887f03945960971",
+        "bytes": 67694
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 109,
+      "num_fit": 65,
+      "num_held_out": 44,
+      "distinct_stations": 2,
+      "arc_span_hours": 23.05188888993528,
+      "held_out_span_hours": 9.269377453923225,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 1012.94,
+        "UKF (higher-fidelity)": 1000.14,
+        "AUKF (higher-fidelity)": 931.31
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "target": "LAGEOS-1",
+      "date": "20260507",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260507.np2",
+        "archived_input_id": "lageos1_20260507.np2",
+        "input_source": "archived_input",
+        "sha256": "b2cd99838e78394c595a366cb815c712f14203b0a45566637114aeb84cca5362",
+        "bytes": 35483
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 55,
+      "num_fit": 33,
+      "num_held_out": 22,
+      "distinct_stations": 2,
+      "arc_span_hours": 8.915213940872086,
+      "held_out_span_hours": 4.104625457061662,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 211.28,
+        "UKF (higher-fidelity)": 220.28,
+        "AUKF (higher-fidelity)": 382.39
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "target": "LAGEOS-1",
+      "date": "20260508",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260508.np2",
+        "archived_input_id": "lageos1_20260508.np2",
+        "input_source": "public_archive_download",
+        "sha256": "a7612b9ac41b955290a34fe47fe2a2ac921490ffde0aaff222f4b1cbee7c6efb",
+        "bytes": 51171
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+        "bytes": 219293,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 61,
+      "num_fit": 36,
+      "num_held_out": 25,
+      "distinct_stations": 3,
+      "arc_span_hours": 10.670097714066506,
+      "held_out_span_hours": 4.007901297277875,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 179.15,
+        "UKF (higher-fidelity)": 223.72,
+        "AUKF (higher-fidelity)": 196.4
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260504",
+      "target": "LAGEOS-2",
+      "date": "20260504",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260504.np2",
+        "archived_input_id": "lageos2_20260504.np2",
+        "input_source": "public_archive_download",
+        "sha256": "2cfc3f23fb7c815b383d359b4126eecbba4741618133ed40d5f9881aba48b164",
+        "bytes": 33506
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "input_source": "public_archive_download",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 78,
+      "num_fit": 46,
+      "num_held_out": 32,
+      "distinct_stations": 2,
+      "arc_span_hours": 14.48497127181954,
+      "held_out_span_hours": 4.637972222632832,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 206.59,
+        "UKF (higher-fidelity)": 359.83,
+        "AUKF (higher-fidelity)": 353.78
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "target": "LAGEOS-2",
+      "date": "20260505",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260505.np2",
+        "archived_input_id": "lageos2_20260505.np2",
+        "input_source": "public_archive_download",
+        "sha256": "1a253c94565dff5cf057e6681e4b158c44637f249a14ab2d5bdc65323b314c32",
+        "bytes": 38639
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 56,
+      "num_fit": 33,
+      "num_held_out": 23,
+      "distinct_stations": 3,
+      "arc_span_hours": 6.342295154796706,
+      "held_out_span_hours": 4.3830555568801035,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 104.28,
+        "UKF (higher-fidelity)": 185.34,
+        "AUKF (higher-fidelity)": 215.33
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "target": "LAGEOS-2",
+      "date": "20260506",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260506.np2",
+        "archived_input_id": "lageos2_20260506.np2",
+        "input_source": "public_archive_download",
+        "sha256": "9da911a7cff6bae43938b34651833a1ad181f74a2c01df83a540cefdd986ecd1",
+        "bytes": 47864
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 112,
+      "num_fit": 67,
+      "num_held_out": 45,
+      "distinct_stations": 2,
+      "arc_span_hours": 14.678892936838997,
+      "held_out_span_hours": 4.85983333422078,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 573.72,
+        "UKF (higher-fidelity)": 562.31,
+        "AUKF (higher-fidelity)": 544.03
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "target": "LAGEOS-2",
+      "date": "20260507",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260507.np2",
+        "archived_input_id": "lageos2_20260507.np2",
+        "input_source": "public_archive_download",
+        "sha256": "4a08297d891480e0cb5001513c854f1ae2ab49eeb1aa1ee6b986a5744f80cc9b",
+        "bytes": 25182
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 38,
+      "num_fit": 22,
+      "num_held_out": 16,
+      "distinct_stations": 1,
+      "arc_span_hours": 8.616722223096424,
+      "held_out_span_hours": 0.6782777771022585,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 128.86,
+        "UKF (higher-fidelity)": 173.27,
+        "AUKF (higher-fidelity)": 168.31
+      },
+      "best_held_out_estimator": "UKF (compact)"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "target": "LAGEOS-2",
+      "date": "20260508",
+      "sp3_week": "260509",
+      "split": "test",
+      "sp3_analysis_center": "NSGF (Space Geodesy Facility, ILRS analysis centre)",
+      "crd": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260508.np2",
+        "archived_input_id": "lageos2_20260508.np2",
+        "input_source": "public_archive_download",
+        "sha256": "cb99de9674b94f4d6950619a920d8a77990846f57183452a774fb89c2c5b7786",
+        "bytes": 56509
+      },
+      "sp3": {
+        "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+        "input_source": "archived_input",
+        "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+        "bytes": 219040,
+        "n_epochs": 5043
+      },
+      "status": "completed",
+      "num_observations": 64,
+      "num_fit": 38,
+      "num_held_out": 26,
+      "distinct_stations": 2,
+      "arc_span_hours": 10.462530451681879,
+      "held_out_span_hours": 4.463222223520279,
+      "held_out_position_rmse_m": {
+        "UKF (compact)": 710.38,
+        "UKF (higher-fidelity)": 681.44,
+        "AUKF (higher-fidelity)": 676.44
+      },
+      "best_held_out_estimator": "AUKF (higher-fidelity)"
+    }
+  ],
+  "controlled_pure_dynamics": {
+    "horizon_s": 21600.0,
+    "grid_s": 600.0,
+    "n_starts_per_week_object": 6,
+    "all": {
+      "n": 48,
+      "compact_mean_rms_m": 253.6,
+      "hifi_mean_rms_m": 249.34,
+      "hifi_vs_compact": {
+        "n": 48,
+        "a_mean_rms_m": 249.34,
+        "b_mean_rms_m": 253.6,
+        "mean_improvement_m": 4.26,
+        "median_improvement_m": 2.43,
+        "n_a_better": 27,
+        "fraction_a_better": 0.562,
+        "bootstrap95_mean_improvement_m": [
+          -6.93,
+          15.04
+        ]
+      }
+    },
+    "train": {
+      "n": 24,
+      "compact_mean_rms_m": 266.56,
+      "hifi_mean_rms_m": 260.67,
+      "hifi_vs_compact": {
+        "n": 24,
+        "a_mean_rms_m": 260.67,
+        "b_mean_rms_m": 266.56,
+        "mean_improvement_m": 5.89,
+        "median_improvement_m": 8.56,
+        "n_a_better": 15,
+        "fraction_a_better": 0.625,
+        "bootstrap95_mean_improvement_m": [
+          -9.85,
+          20.51
+        ]
+      }
+    },
+    "val": {
+      "n": 12,
+      "compact_mean_rms_m": 219.69,
+      "hifi_mean_rms_m": 226.01,
+      "hifi_vs_compact": {
+        "n": 12,
+        "a_mean_rms_m": 226.01,
+        "b_mean_rms_m": 219.69,
+        "mean_improvement_m": -6.32,
+        "median_improvement_m": -3.69,
+        "n_a_better": 5,
+        "fraction_a_better": 0.417,
+        "bootstrap95_mean_improvement_m": [
+          -32.63,
+          18.34
+        ]
+      }
+    },
+    "test": {
+      "n": 12,
+      "compact_mean_rms_m": 261.59,
+      "hifi_mean_rms_m": 250.02,
+      "hifi_vs_compact": {
+        "n": 12,
+        "a_mean_rms_m": 250.02,
+        "b_mean_rms_m": 261.59,
+        "mean_improvement_m": 11.57,
+        "median_improvement_m": 4.84,
+        "n_a_better": 7,
+        "fraction_a_better": 0.583,
+        "bootstrap95_mean_improvement_m": [
+          -4.51,
+          29.79
+        ]
+      }
+    }
+  },
+  "sparse_slr_operational_realism": {
+    "all": {
+      "UKF (compact)": {
+        "n_arcs": 40,
+        "mean_arc_rms_m": 689.36,
+        "median_arc_rms_m": 409.45
+      },
+      "UKF (higher-fidelity)": {
+        "n_arcs": 40,
+        "mean_arc_rms_m": 639.77,
+        "median_arc_rms_m": 375.67
+      },
+      "AUKF (higher-fidelity)": {
+        "n_arcs": 40,
+        "mean_arc_rms_m": 623.72,
+        "median_arc_rms_m": 372.99
+      }
+    },
+    "train": {
+      "UKF (compact)": {
+        "n_arcs": 20,
+        "mean_arc_rms_m": 905.83,
+        "median_arc_rms_m": 494.61
+      },
+      "UKF (higher-fidelity)": {
+        "n_arcs": 20,
+        "mean_arc_rms_m": 818.72,
+        "median_arc_rms_m": 441.56
+      },
+      "AUKF (higher-fidelity)": {
+        "n_arcs": 20,
+        "mean_arc_rms_m": 769.33,
+        "median_arc_rms_m": 451.05
+      }
+    },
+    "val": {
+      "UKF (compact)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 577.14,
+        "median_arc_rms_m": 349.47
+      },
+      "UKF (higher-fidelity)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 525.87,
+        "median_arc_rms_m": 340.21
+      },
+      "AUKF (higher-fidelity)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 550.23,
+        "median_arc_rms_m": 345.0
+      }
+    },
+    "test": {
+      "UKF (compact)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 368.64,
+        "median_arc_rms_m": 208.94
+      },
+      "UKF (higher-fidelity)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 395.77,
+        "median_arc_rms_m": 291.77
+      },
+      "AUKF (higher-fidelity)": {
+        "n_arcs": 10,
+        "mean_arc_rms_m": 405.99,
+        "median_arc_rms_m": 368.08
+      }
+    }
+  },
+  "learned_calibrator": {
+    "status": "completed",
+    "model": "ridge RSW residual acceleration on a predeclared (argument-of-latitude Fourier) x (Earth-rotation phase) + secular basis",
+    "no_leakage_protocol": "Calibrator fitted only on training-week arcs of both objects; ridge strength selected only on the disjoint validation week; the frozen rule is then evaluated on the strictly later test week and, more stringently, on the held-out object (trained on one LAGEOS, scored on the other). Held-out SP3 never enters any fit.",
+    "validation_ridge_grid_calibrated_mean_rms_m": {
+      "1e-06": 1003.42,
+      "1e-03": 1003.42,
+      "1e+00": 1003.84,
+      "1e+03": 1256.95,
+      "1e+06": 260.85
+    },
+    "selected_ridge_lambda": 1000000.0,
+    "test_controlled_pd": {
+      "n": 12,
+      "compact_mean_rms_m": 261.59,
+      "hifi_mean_rms_m": 250.02,
+      "hifi_vs_compact": {
+        "n": 12,
+        "a_mean_rms_m": 250.02,
+        "b_mean_rms_m": 261.59,
+        "mean_improvement_m": 11.57,
+        "median_improvement_m": 4.84,
+        "n_a_better": 7,
+        "fraction_a_better": 0.583,
+        "bootstrap95_mean_improvement_m": [
+          -4.51,
+          29.79
+        ]
+      },
+      "calibrated_hifi_mean_rms_m": 256.48,
+      "calibrated_vs_hifi": {
+        "n": 12,
+        "a_mean_rms_m": 256.48,
+        "b_mean_rms_m": 250.02,
+        "mean_improvement_m": -6.47,
+        "median_improvement_m": -10.03,
+        "n_a_better": 6,
+        "fraction_a_better": 0.5,
+        "bootstrap95_mean_improvement_m": [
+          -46.8,
+          32.81
+        ]
+      }
+    },
+    "held_out_object_controlled_pd": {
+      "train_LAGEOS-1_test_LAGEOS-2": {
+        "n": 6,
+        "compact_mean_rms_m": 279.56,
+        "hifi_mean_rms_m": 269.87,
+        "hifi_vs_compact": {
+          "n": 6,
+          "a_mean_rms_m": 269.87,
+          "b_mean_rms_m": 279.56,
+          "mean_improvement_m": 9.69,
+          "median_improvement_m": 2.65,
+          "n_a_better": 3,
+          "fraction_a_better": 0.5,
+          "bootstrap95_mean_improvement_m": [
+            -19.57,
+            42.02
+          ]
+        },
+        "calibrated_hifi_mean_rms_m": 267.96,
+        "calibrated_vs_hifi": {
+          "n": 6,
+          "a_mean_rms_m": 267.96,
+          "b_mean_rms_m": 269.87,
+          "mean_improvement_m": 1.9,
+          "median_improvement_m": -0.16,
+          "n_a_better": 3,
+          "fraction_a_better": 0.5,
+          "bootstrap95_mean_improvement_m": [
+            -23.58,
+            28.0
+          ]
+        }
+      },
+      "train_LAGEOS-2_test_LAGEOS-1": {
+        "n": 6,
+        "compact_mean_rms_m": 243.62,
+        "hifi_mean_rms_m": 230.17,
+        "hifi_vs_compact": {
+          "n": 6,
+          "a_mean_rms_m": 230.17,
+          "b_mean_rms_m": 243.62,
+          "mean_improvement_m": 13.45,
+          "median_improvement_m": 7.3,
+          "n_a_better": 4,
+          "fraction_a_better": 0.667,
+          "bootstrap95_mean_improvement_m": [
+            -1.35,
+            29.86
+          ]
+        },
+        "calibrated_hifi_mean_rms_m": 235.82,
+        "calibrated_vs_hifi": {
+          "n": 6,
+          "a_mean_rms_m": 235.82,
+          "b_mean_rms_m": 230.17,
+          "mean_improvement_m": -5.65,
+          "median_improvement_m": -7.4,
+          "n_a_better": 3,
+          "fraction_a_better": 0.5,
+          "bootstrap95_mean_improvement_m": [
+            -33.61,
+            22.38
+          ]
+        }
+      }
+    },
+    "beats_higher_fidelity_on_test": false,
+    "verdict": "honest negative: the strictly held-out learned calibrator does not beat the higher-fidelity classical reference on the strictly future test week with a CI excluding zero"
+  },
+  "input_digests": [
+    {
+      "arc_id": "LAGEOS-1 20260413",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260413.np2",
+      "sha256": "93ba09edf15b2601b186a6a7c13dc01dfb5a1e723c5486a611582b6d3b99ea13",
+      "bytes": 60212,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260413.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260413",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260414",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260414.np2",
+      "sha256": "e5477912261fd2579a638ef39b402a9cbf5301253d309acb44ea137fcdbd4911",
+      "bytes": 25003,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260414.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260414",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260415",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260415.np2",
+      "sha256": "6bc5f86ecef49af5c20f8ad1d9e8d396d37debcd447a867e848b237296062bcf",
+      "bytes": 40753,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260415.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260415",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260416",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260416.np2",
+      "sha256": "388413596114dffda4f5c8801e6f85d0f189ba0947d777a1b72084c3007e5cda",
+      "bytes": 44715,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260416.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260416",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260417",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260417.np2",
+      "sha256": "49acc0a31fcf08b612580d899d0006533a49b4fd8ae3eba2f6d4b5d494212146",
+      "bytes": 60988,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260417.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260417",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260418.v80.sp3.gz",
+      "sha256": "255e8b886d5a85b43dd7c6485fa3b66ee20c68d84c93049333110fffd3cafa61",
+      "bytes": 219491,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260418/nsgf.orb.lageos1.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260413",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260413.np2",
+      "sha256": "ef3cea77ce9026d38ddd0f1a595d9c559d6993d08cd2c3d2389b15dc62bccf4d",
+      "bytes": 24464,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260413.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260413",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260414",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260414.np2",
+      "sha256": "142a7bda46ed1703a84207c0d771dc3a8333eed41f6c5d9a88e3de48aa7ac15b",
+      "bytes": 21984,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260414.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260414",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260415",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260415.np2",
+      "sha256": "404aefae3ebc510ac7c2d4b23a010f7cb9e9baaada82cdd01643c7f49ff4a9c1",
+      "bytes": 21815,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260415.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260415",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260416",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260416.np2",
+      "sha256": "4b4af958e2c8d3fb158d4962fa7ee86d48c8d016e86a2213bb5ecd6705df3878",
+      "bytes": 41829,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260416.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260416",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260417",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260417.np2",
+      "sha256": "b1cf4afb1b1ecaee584f19edbdf3510c1d1ed6336f0b6d4a40d1b8243b002cc1",
+      "bytes": 31142,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260417.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260417",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260418.v80.sp3.gz",
+      "sha256": "1293babbbc32a1446eb1fdd6fdc08646195c51be590cc3f6b7d06978e481c8d8",
+      "bytes": 219100,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260418/nsgf.orb.lageos2.260418.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260420",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260420.np2",
+      "sha256": "9f7c450d13d03d88cfda8a1f073a9df4d163e4c8f1ad151a36fed248c328b919",
+      "bytes": 42274,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260420.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260420",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260421",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260421.np2",
+      "sha256": "349015670ed546918ea6d13bf4996c434a29d36a19a748fe1c5815bb25483a44",
+      "bytes": 57651,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260421.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260421",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260422",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260422.np2",
+      "sha256": "45b7c4cbc0ecb8c79681b65987878e14d5dd8e69bba5d5b01d91071aaef5c0b1",
+      "bytes": 75339,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260422.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260422",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260423",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260423.np2",
+      "sha256": "305681c2d6508a61179adaa253924b32a581f0843a2e4e25f95a17278c23d88a",
+      "bytes": 99511,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260423.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260423",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260424",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260424.np2",
+      "sha256": "ebf0503cbec534db755e74b60977a43d09386391d3934b6142dfdfe534a17112",
+      "bytes": 77334,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260424.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260424",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260425.v80.sp3.gz",
+      "sha256": "3f0cb6876e71b05c68f815d87c1d1d2953c571626d4c0963e8c4b212c0b092bb",
+      "bytes": 219210,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260425/nsgf.orb.lageos1.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260420",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260420.np2",
+      "sha256": "f7eb1cff09daac3045753d001d47ac7f1d30e3cf6b5f49fa68fd01c74de9ca9e",
+      "bytes": 21216,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260420.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260420",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260421",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260421.np2",
+      "sha256": "9b2c1bf7780bd78cc4282f48beb97fbc0b205bcff4202d70f8b0c9d097e8182f",
+      "bytes": 38208,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260421.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260421",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260422",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260422.np2",
+      "sha256": "18c05a533da2c0265c681d52f122b711210b7ce5e109bdb0cdae55c4b322081c",
+      "bytes": 47943,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260422.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260422",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260423",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260423.np2",
+      "sha256": "b532598c3c6ff945c0edcfa4b45bcfc5539d421ee74148e70ea97fd8850ae72b",
+      "bytes": 74659,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260423.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260423",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260424",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260424.np2",
+      "sha256": "8f367c4cb8b844cbe25a918c57a63c491b05aaa46e2cc4f2b328d38901c69066",
+      "bytes": 73199,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260424.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260424",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260425.v80.sp3.gz",
+      "sha256": "9132bee6b7c49862a27346cff002b096a14a00d231c35c7a79dc1e9d6c19487a",
+      "bytes": 219082,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260425/nsgf.orb.lageos2.260425.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260427",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260427.np2",
+      "sha256": "cdacde5f2b52cf8f2dd7494e6bf4abbb668059519e68e2e75c51cde31030e4b9",
+      "bytes": 44782,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260427.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260427",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260428",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260428.np2",
+      "sha256": "7446f4f5ad11d09d3d737ea5ced0ec11ac1b9034b829a6afe2290cd0e79ba84b",
+      "bytes": 70268,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260428.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260428",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260429",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260429.np2",
+      "sha256": "3e44d39a9336033c93f96428e2a1678a462b19a7ae26b1325838e2f6bd7a4183",
+      "bytes": 63567,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260429.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260429",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260430",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260430.np2",
+      "sha256": "8722ba97984bf7d7673cd9de6b1751160d88091b4ed534123d03747f33779c61",
+      "bytes": 63059,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260430.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260430",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260501",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260501.np2",
+      "sha256": "4f7c52af607d497dd92134676010bf57aca3cf264dd4afa4c0dc0287e4bf3875",
+      "bytes": 98163,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260501.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260501",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260502.v80.sp3.gz",
+      "sha256": "ac513786d68790271a4a303a03d5b4a3d3c488f55f9492fe42b78d1063083728",
+      "bytes": 219280,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260502/nsgf.orb.lageos1.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260427",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260427.np2",
+      "sha256": "df436a24116efa72cc9cb315cd6ade41b7a6e6b8bdc79c5518ca1157dcef6418",
+      "bytes": 63175,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260427.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260427",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260428",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260428.np2",
+      "sha256": "d67d64330812778fbee7a4b4cef9674fc9addef3af4538756b08623a5c393d42",
+      "bytes": 38658,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260428.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260428",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260429",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260429.np2",
+      "sha256": "0086796fa76b2fb2048639d09434f4facf9ef214bcfa9164778f795c4c4f4aa2",
+      "bytes": 30934,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260429.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260429",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260430",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260430.np2",
+      "sha256": "24c943641ef3c6ad54d51bd1d0ff108e798d450d34bae3bfa09c319aa09d0e70",
+      "bytes": 53312,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260430.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260430",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260501",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260501.np2",
+      "sha256": "dfce582f68a08662453e160602ec9e8e8e3be4f8152fc01e08604dbfe9d94ca7",
+      "bytes": 46913,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260501.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260501",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260502.v80.sp3.gz",
+      "sha256": "827adf93ccb47e0b6913869b8b57e1f4b8b2652322e0e86b7af150c49eee9b7b",
+      "bytes": 218908,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260502/nsgf.orb.lageos2.260502.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260504",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260504.np2",
+      "sha256": "dc014c72baf4153b05d11df91b758345c7d7669a2037f32ee55bfea69d8eebfb",
+      "bytes": 32132,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260504.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260504",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260505.np2",
+      "sha256": "1c10297d95d31922c2bcdb2946da0e43015264d33dcae268f96501abab136779",
+      "bytes": 63465,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260505.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260505",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260506.np2",
+      "sha256": "efad86119dc466074ca9856162528d5fff17ac6acf2ddf4cb887f03945960971",
+      "bytes": 67694,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260506.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260506",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260507.np2",
+      "sha256": "b2cd99838e78394c595a366cb815c712f14203b0a45566637114aeb84cca5362",
+      "bytes": 35483,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260507.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260507",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "kind": "crd",
+      "archived_input_id": "lageos1_20260508.np2",
+      "sha256": "a7612b9ac41b955290a34fe47fe2a2ac921490ffde0aaff222f4b1cbee7c6efb",
+      "bytes": 51171,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos1/2026/lageos1_20260508.np2"
+    },
+    {
+      "arc_id": "LAGEOS-1 20260508",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos1.260509.v80.sp3.gz",
+      "sha256": "14a0263bf8cad4dda5cddf7295af63419a520652126fffb680ef8cdb924210a1",
+      "bytes": 219293,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos1/260509/nsgf.orb.lageos1.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260504",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260504.np2",
+      "sha256": "2cfc3f23fb7c815b383d359b4126eecbba4741618133ed40d5f9881aba48b164",
+      "bytes": 33506,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260504.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260504",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260505.np2",
+      "sha256": "1a253c94565dff5cf057e6681e4b158c44637f249a14ab2d5bdc65323b314c32",
+      "bytes": 38639,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260505.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260505",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260506.np2",
+      "sha256": "9da911a7cff6bae43938b34651833a1ad181f74a2c01df83a540cefdd986ecd1",
+      "bytes": 47864,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260506.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260506",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260507.np2",
+      "sha256": "4a08297d891480e0cb5001513c854f1ae2ab49eeb1aa1ee6b986a5744f80cc9b",
+      "bytes": 25182,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260507.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260507",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "kind": "crd",
+      "archived_input_id": "lageos2_20260508.np2",
+      "sha256": "cb99de9674b94f4d6950619a920d8a77990846f57183452a774fb89c2c5b7786",
+      "bytes": 56509,
+      "url": "https://edc.dgfi.tum.de/pub/slr/data/npt_crd_v2/lageos2/2026/lageos2_20260508.np2"
+    },
+    {
+      "arc_id": "LAGEOS-2 20260508",
+      "kind": "sp3",
+      "archived_input_id": "nsgf.orb.lageos2.260509.v80.sp3.gz",
+      "sha256": "be794c46b517cdc8de73e7140b2e86b3ffb8362ee0ba19acbef3efd1bcefec90",
+      "bytes": 219040,
+      "url": "https://edc.dgfi.tum.de/pub/slr/products/orbits/lageos2/260509/nsgf.orb.lageos2.260509.v80.sp3.gz"
+    }
+  ],
+  "caveats": "Higher-fidelity precise-reference real-data validation slice. Held-out error is a state error against an independent ILRS analysis-centre SP3-c precise orbit product. Earth orientation uses an analytic IAU-76/80 precession + IAU-1980 nutation + apparent sidereal-time reduction; polar motion and the sub-second UT1-UTC offset are not applied (no IERS Earth-orientation parameters), and no precise SLR reduction (relativistic, tropospheric, centre-of-mass, solid-Earth-tide) is applied, so absolute magnitudes are a bounded tens-to-hundreds-of-metres residual rather than centimetre operational SLR orbit determination or flight readiness. The reported contribution is the measured, externally validated relative fidelity gain of the higher-fidelity force model and proper inertial frame over the compact two-body+J2 / GMST-only model on real public data under a strict temporal and held-out object split; the sparse-SLR companion is an honest estimation-noise-dominated operational-realism check."
+}

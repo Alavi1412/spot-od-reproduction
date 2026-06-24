@@ -8,7 +8,7 @@
       "status": "pass"
     },
     "claim_map": {
-      "claim_count": 20,
+      "claim_count": 28,
       "failure_count": 0,
       "failures": [],
       "status": "pass"
@@ -29,5 +29,5 @@
   "requires_retraining": false,
   "scope": "minimum_integrity_check",
   "status": "pass",
-  "version": "1.1.0-supplement"
+  "version": "1.2.3-acf-holdout-audit"
 }

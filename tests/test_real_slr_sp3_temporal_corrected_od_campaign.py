@@ -23,6 +23,7 @@ from scripts.run_real_slr_sp3_temporal_corrected_od_campaign import (
     SCHEDULE_PROSPECTIVE_260606,
     SCHEDULE_PROSPECTIVE_260613,
     SCHEDULE_PROSPECTIVE_260620,
+    SCHEDULE_PROSPECTIVE_260627,
     arc_cache_digest,
     arc_cache_key,
     build_arc_specs,
@@ -971,6 +972,12 @@ def test_prospective_260523_arc_specs() -> None:
             "260620",
             ["20260615", "20260616", "20260617", "20260618", "20260619"],
         ),
+        (
+            SCHEDULE_PROSPECTIVE_260627,
+            "260620",
+            "260627",
+            ["20260622", "20260623", "20260624", "20260625", "20260626"],
+        ),
     ],
 )
 def test_future_prospective_schedule_metadata_and_arc_specs(
@@ -1034,6 +1041,7 @@ def test_future_prospective_schedule_metadata_and_arc_specs(
         (SCHEDULE_PROSPECTIVE_260606, "260530", "260606"),
         (SCHEDULE_PROSPECTIVE_260613, "260606", "260613"),
         (SCHEDULE_PROSPECTIVE_260620, "260613", "260620"),
+        (SCHEDULE_PROSPECTIVE_260627, "260620", "260627"),
     ],
 )
 def test_future_prospective_predeclaration_and_cli_path_safety(

@@ -1,0 +1,138 @@
+{
+  "status": "completed",
+  "schema_version": "credible_dense_od_probe_v1",
+  "regime": "perfect shared dynamics (two-body + J2 + drag with third-body and SRP perturbations enabled) and an identical measurement model on both sides (no force-model or measurement mismatch), a 20-station global ground network at an 8-degree elevation mask, with the standard capped 1/cos^2(elevation) topocentric-azimuth de-weighting applied identically to every estimator",
+  "pre_registered": true,
+  "predeclared_primary_metric": "pooled all-step trajectory position RMSE over non-divergent trajectories (lower is better); fixed before running, observed-step reported symmetrically as the secondary metric",
+  "secondary_metric": "pooled observed-step trajectory position RMSE over non-divergent trajectories, reported symmetrically with the primary metric",
+  "shared_dynamics_no_mismatch": true,
+  "third_body_enabled": true,
+  "srp_enabled": true,
+  "azimuth_deweight_elevation_cap_deg": 80.0,
+  "learned_evaluation_mode": "fixed-model inference of the previously trained RGR-GF estimator; no training or per-realization refitting was performed",
+  "num_realizations": 6,
+  "trajectories_per_realization": 20,
+  "n_trajectories_total": 120,
+  "n_stations": 20,
+  "eval_start_step": 11,
+  "divergence_guard_pos_rmse_m": 100000000.0,
+  "engineering_adequate_pos_rmse_m": 100000.0,
+  "visibility": {
+    "zero_visible_fraction_mean": 0.597,
+    "one_visible_fraction_mean": 0.32,
+    "two_plus_visible_fraction_mean": 0.083,
+    "measurement_informed_fraction_mean": 0.403,
+    "main_split_zero_visible_fraction_reference": 0.79
+  },
+  "divergence_avoidance_fraction": {
+    "EKF": 1.0,
+    "UKF": 0.9917,
+    "AUKF": 1.0,
+    "RGR-GF": 0.9917
+  },
+  "gross_failure_rate": {
+    "EKF": 0.0,
+    "UKF": 0.0667,
+    "AUKF": 0.0333,
+    "RGR-GF": 0.05
+  },
+  "primary_all_step_pooled_rmse_m": {
+    "EKF": 6507.44,
+    "UKF": 7137699.56,
+    "AUKF": 85819.69,
+    "RGR-GF": 769320.35
+  },
+  "secondary_observed_step_pooled_rmse_m": {
+    "EKF": 396.48,
+    "UKF": 6197320.24,
+    "AUKF": 77967.4,
+    "RGR-GF": 597804.38
+  },
+  "common_survivor_pooled_rmse_m": {
+    "n_common_trajectories": 119,
+    "all_step": {
+      "EKF": 6534.64,
+      "UKF": 7137699.56,
+      "AUKF": 86179.52,
+      "RGR-GF": 769320.35
+    },
+    "observed_step": {
+      "EKF": 398.1,
+      "UKF": 6197320.24,
+      "AUKF": 78311.63,
+      "RGR-GF": 597804.38
+    }
+  },
+  "median_trajectory_position_rmse_m": {
+    "all_step": {
+      "EKF": 1013.55,
+      "UKF": 1340.54,
+      "AUKF": 1474.81,
+      "RGR-GF": 1346.25
+    },
+    "observed_step": {
+      "EKF": 248.01,
+      "UKF": 320.49,
+      "AUKF": 302.84,
+      "RGR-GF": 307.61
+    }
+  },
+  "best_method_primary_all_step": "EKF",
+  "best_method_secondary_observed_step": "EKF",
+  "best_classical_primary_all_step": "EKF",
+  "paired_learned_vs_best_classical": {
+    "comparison": "RGR-GF minus EKF (predeclared all-step)",
+    "n_paired": 119,
+    "point_estimate_m": 762785.71,
+    "ci95_low_m": 14257.82,
+    "ci95_high_m": 1324527.9,
+    "ci_excludes_zero": true,
+    "rgr_gf_better": false,
+    "bootstrap_resamples": 3000
+  },
+  "od_is_astrodynamically_credible": true,
+  "learned_positive_established": false,
+  "divergence_diagnosis": {
+    "mechanism": "The uncorrected densified-visibility control's catastrophe is dominated by an estimator/truth observation-network inconsistency: in that configuration the recursive filters resolve a different (smaller) station bank than the truth was synthesised against, so ranges and angles are differenced against the wrong station coordinates and most trajectories diverge (see station_bank_consistency). A secondary, well-known contributor is the near-zenith topocentric-azimuth conditioning weakness (the azimuth is geometrically singular at the station zenith); under an 8-degree elevation mask genuine near-zenith passes are rare, so the controlled azimuth-deweight fix-on/fix-off comparison below shows only a minor effect. Both are shared model/configuration defects, not estimator skill or intrinsic regime difficulty.",
+    "uncorrected_divergence_avoidance_fraction": {
+      "EKF": 1.0,
+      "UKF": 1.0,
+      "AUKF": 1.0
+    },
+    "uncorrected_gross_failure_rate": {
+      "EKF": 0.0,
+      "UKF": 0.0833,
+      "AUKF": 0.0333
+    },
+    "uncorrected_median_all_step_m": {
+      "EKF": 976.54,
+      "UKF": 1477.41,
+      "AUKF": 1389.05
+    },
+    "corrected_gross_failure_rate": {
+      "EKF": 0.0,
+      "UKF": 0.0667,
+      "AUKF": 0.0333
+    },
+    "corrected_median_all_step_m": {
+      "EKF": 1013.55,
+      "UKF": 1340.54,
+      "AUKF": 1474.81
+    },
+    "high_elevation_update_fraction_ge_80deg": 0.0025,
+    "high_elevation_update_fraction_ge_85deg": 0.0006,
+    "uncorrected_ekf_gross_failure_rate_if_zenith_pass": 0.0,
+    "uncorrected_ekf_gross_failure_rate_if_no_zenith_pass": 0.0,
+    "station_bank_consistency": {
+      "uncorrected_control_scenario": "dense_visibility_test",
+      "uncorrected_estimator_n_stations": 8,
+      "uncorrected_truth_n_stations": 20,
+      "uncorrected_estimator_equals_truth": false,
+      "corrected_estimator_n_stations": 20,
+      "corrected_truth_n_stations": 20,
+      "corrected_estimator_equals_truth": true
+    },
+    "azimuth_deweight_note": "uncorrected vs corrected here toggles ONLY the azimuth de-weighting on the same network-consistent trajectories; the network inconsistency is absent from this probe by construction, so this isolates the azimuth effect alone",
+    "azimuth_deweight_is_minor_here": true
+  }
+}

@@ -18,7 +18,9 @@ from scripts.build_supplementary_manifest import (
     ROOT,
     SUPPLEMENTARY_MANIFEST_REL,
     V121_HISTORICAL_DOI,
-    V122_DOI_STATUS,
+    V122_HISTORICAL_DOI,
+    V123_DOI_STATUS,
+    V123_GITHUB_RELEASE_ASSET_KEY,
 )
 from scripts.verify_archive_extracted_reproduction import load_manifest_for_archive
 
@@ -27,14 +29,14 @@ WORKFLOW_PATH = ROOT / ".github" / "workflows" / "archive-extracted-reproduction
 REMOVED_CI_PATH = ROOT / (".git" + "lab-ci.yml")
 REQUEST_DOC = ROOT / "release" / "INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md"
 MANIFEST_PATH = ROOT / "release" / "SUPPLEMENTARY_MANIFEST.json"
-ARCHIVE_PATH = ROOT / "release" / "spot_od_v1_1_0_supplement_review_archive.zip"
+ARCHIVE_PATH = ROOT / "release" / "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip"
 EXPECTED_PATHS = [
     "release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
     ".github/workflows/archive-extracted-reproduction.yml",
 ]
 VERIFIER_COMMAND = (
     "python scripts/verify_archive_extracted_reproduction.py --archive "
-    "release/spot_od_v1_1_0_supplement_review_archive.zip --json-out "
+    "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip --json-out "
     "results/validation/github_actions_archive_extracted_reproduction.json "
     "--md-out results/validation/github_actions_archive_extracted_reproduction.md"
 )
@@ -65,17 +67,18 @@ def _assert_no_removed_route_terms(text: str) -> None:
         assert term.lower() not in lowered
 
 
-def test_manifest_uses_v122_acf_audit_public_release_metadata() -> None:
+def test_manifest_uses_v123_acf_holdout_audit_public_release_metadata() -> None:
     manifest = _load_manifest()
 
-    assert PACKAGE_VERSION == "1.2.2-acf-audit"
+    assert PACKAGE_VERSION == "1.2.3-acf-holdout-audit"
     assert manifest["version"] == PACKAGE_VERSION
     assert manifest["title"] == RELEASE_TITLE
     assert "SPOT-OD sparse-visibility orbit-determination self-audit" in (
         manifest["description"]
     )
     assert PUBLIC_GITHUB_RELEASE in manifest["description"]
-    assert V122_DOI_STATUS in manifest["description"]
+    assert "pending/expected" in manifest["description"]
+    assert V122_HISTORICAL_DOI in manifest["description"]
     assert V121_HISTORICAL_DOI in manifest["description"]
     assert ACF_AUDIT_SCOPE_BOUNDARY in manifest["description"]
     assert manifest["public_identifier"] == PUBLIC_GITHUB_RELEASE
@@ -86,18 +89,24 @@ def test_manifest_uses_v122_acf_audit_public_release_metadata() -> None:
     assert release["github_repository"] == PUBLIC_GITHUB_REPOSITORY
     assert release["github_release_target"] == PUBLIC_GITHUB_RELEASE
     assert release["release_tag"] == PUBLIC_RELEASE_TAG
-    assert release["doi_status"] == V122_DOI_STATUS
+    assert release["doi_status"] == V123_DOI_STATUS
     assert release["zenodo_record"] is None
     assert release["doi"] is None
     assert release["doi_url"] is None
-    assert "No completed v1.2.2 publication status is asserted" in (
+    assert "pending/expected after Zenodo imports" in (
         release["publication_status_note"]
     )
-    assert "v1.2.2 Zenodo DOI" in release["pending_fields"]
-    assert "v1.2.2 GitHub release asset SHA-256" in release["pending_fields"]
-    assert release["prior_release"]["doi"] == V121_HISTORICAL_DOI
-    assert release["prior_release"]["status"] == "historical_only"
+    assert "v1.2.3 Zenodo DOI" in release["pending_fields"]
+    assert "v1.2.3 GitHub release commit" in release["pending_fields"]
+    assert release["github_release_asset"]["key"] == V123_GITHUB_RELEASE_ASSET_KEY
+    assert release["prior_release"]["doi"] == V122_HISTORICAL_DOI
+    assert release["prior_release"]["status"] == (
+        "historical_acf_audit_before_public_boundary_repair"
+    )
     assert release["prior_release"]["not_current_release_identifier"] is True
+    assert release["historical_releases"]["v1.2.1_graph_anchor_gate_poc"]["doi"] == (
+        V121_HISTORICAL_DOI
+    )
     assert release["scope_boundary"] == ACF_AUDIT_SCOPE_BOUNDARY
 
     public_metadata = json.dumps(
@@ -116,9 +125,10 @@ def test_manifest_uses_v122_acf_audit_public_release_metadata() -> None:
     assert PUBLIC_GITHUB_REPOSITORY in public_metadata
     assert PUBLIC_GITHUB_RELEASE in public_metadata
     assert PUBLIC_RELEASE_TAG in public_metadata
-    assert V122_DOI_STATUS in public_metadata
+    assert V123_DOI_STATUS in public_metadata
+    assert V122_HISTORICAL_DOI in public_metadata
     assert V121_HISTORICAL_DOI in public_metadata
-    assert "prior-version history" in public_metadata
+    assert "historical references only" in public_metadata
     assert "No external public " + "repository" not in public_metadata
     assert "deferred until explicit author " + "approval" not in public_metadata
     assert "1.1.0-" + "supplement" not in public_metadata

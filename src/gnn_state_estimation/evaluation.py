@@ -326,6 +326,117 @@ def run_model_inference_batched(
     return preds
 
 
+@torch.no_grad()
+def run_centered_model_inference_batched(
+    model: TemporalGraphEstimator,
+    states: np.ndarray,
+    measurements: np.ndarray,
+    visibility: np.ndarray,
+    station_ecef: np.ndarray,
+    lookback: int,
+    lookahead: int,
+    ekf_prior: np.ndarray | None = None,
+    ukf_prior: np.ndarray | None = None,
+    aukf_prior: np.ndarray | None = None,
+    secondary_prior: np.ndarray | None = None,
+    innovation_features: np.ndarray | None = None,
+    prior_bank_stats: np.ndarray | None = None,
+    return_logvar: bool = False,
+    batch_size: int = 64,
+) -> np.ndarray | tuple[np.ndarray, np.ndarray]:
+    """Run offline centered-window inference.
+
+    Predictions are written only for center steps with a complete
+    ``[t-lookback, ..., t+lookahead]`` window; boundary steps are left as NaN.
+    Priors and prior-bank statistics are always taken from the center time.
+    """
+    lookback = int(lookback)
+    lookahead = int(lookahead)
+    if lookback < 0 or lookahead < 0:
+        raise ValueError("lookback and lookahead must be non-negative.")
+
+    device = next(model.parameters()).device
+    model.eval()
+    n_traj, t_steps = states.shape[:2]
+    window_size = lookback + lookahead + 1
+    if window_size > t_steps:
+        raise ValueError(f"centered window size {window_size} exceeds trajectory length {t_steps}.")
+
+    preds = np.full_like(states, np.nan, dtype=np.float64)
+    logvars = np.full_like(states, np.nan, dtype=np.float64)
+
+    station = (station_ecef / 6_378_137.0).astype(np.float32)
+    station_tensor = torch.from_numpy(station).to(device)
+    log_scale = np.log(STATE_SCALE.astype(np.float64))
+
+    for t in range(lookback, t_steps - lookahead):
+        t0 = t - lookback
+        t1 = t + lookahead + 1
+        for start in range(0, n_traj, batch_size):
+            stop = min(start + batch_size, n_traj)
+            sl = slice(start, stop)
+            meas = scale_measurements(measurements[sl, t0:t1].astype(np.float32))
+            vis = visibility[sl, t0:t1].astype(np.float32)[..., None]
+            meas_t = torch.from_numpy(meas).to(device)
+            vis_t = torch.from_numpy(vis).to(device)
+
+            prior_t = None
+            if model.use_ekf_prior:
+                if ekf_prior is None:
+                    raise ValueError("Model requires EKF prior but none provided.")
+                prior_t = torch.from_numpy(scale_state(ekf_prior[sl, t].astype(np.float32))).to(device)
+
+            secondary_prior_t = None
+            if model.use_dual_prior_fusion:
+                if secondary_prior is None:
+                    raise ValueError("Model requires secondary prior but none was provided.")
+                secondary_prior_t = torch.from_numpy(scale_state(secondary_prior[sl, t].astype(np.float32))).to(device)
+
+            innov_t = None
+            if model.use_innovation_features:
+                if innovation_features is None:
+                    raise ValueError("Model requires innovation features but none were provided.")
+                innov_t = torch.from_numpy(innovation_features[sl, t0:t1].astype(np.float32)).to(device)
+
+            prior_bank_t = None
+            prior_stats_t = None
+            if getattr(model, "use_prior_bank_fusion", False):
+                if ekf_prior is None or ukf_prior is None or aukf_prior is None:
+                    raise ValueError("Prior-bank fusion requires EKF, UKF, and AUKF priors.")
+                prior_bank_scaled = np.stack(
+                    [
+                        scale_state(ekf_prior[sl, t].astype(np.float32)),
+                        scale_state(ukf_prior[sl, t].astype(np.float32)),
+                        scale_state(aukf_prior[sl, t].astype(np.float32)),
+                    ],
+                    axis=1,
+                )
+                prior_bank_t = torch.from_numpy(prior_bank_scaled).to(device)
+                if getattr(model, "prior_stats_dim", 0) > 0:
+                    if prior_bank_stats is None:
+                        raise ValueError("prior_bank_stats are required for prior-bank fusion.")
+                    prior_stats_t = torch.from_numpy(prior_bank_stats[sl, t].astype(np.float32)).to(device)
+
+            out = model(
+                measurements=meas_t,
+                visibility=vis_t,
+                station_xyz=station_tensor,
+                ekf_prior=prior_t,
+                secondary_prior=secondary_prior_t,
+                innovation_features=innov_t,
+                prior_bank=prior_bank_t,
+                prior_bank_stats=prior_stats_t,
+            )
+            preds[sl, t] = unscale_state(out["state"].detach().cpu().numpy())
+            if return_logvar:
+                logvar_scaled = out["logvar"].detach().cpu().numpy().astype(np.float64)
+                logvars[sl, t] = logvar_scaled + 2.0 * log_scale
+
+    if return_logvar:
+        return preds, logvars
+    return preds
+
+
 def score_predictions(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
     result = {}
     result.update(position_velocity_rmse(y_true, y_pred))

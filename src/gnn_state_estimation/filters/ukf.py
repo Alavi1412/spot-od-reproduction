@@ -21,6 +21,18 @@ from .ekf import (
 AUKF_MEAS_CHANNELS: tuple[str, ...] = ("range", "azimuth", "elevation", "range_rate")
 
 
+def _r_only_nis_from_residual(
+    residual: np.ndarray,
+    meas_std_vector: np.ndarray,
+) -> tuple[float, float]:
+    """R-only NIS using the nominal measurement-noise diagonal only."""
+    std = np.asarray(meas_std_vector, dtype=np.float64).reshape(4)
+    inv_std = 1.0 / np.clip(std, 1e-12, None)
+    whitened = np.asarray(residual, dtype=np.float64) * inv_std
+    nis_r = float(np.dot(whitened, whitened))
+    return nis_r, float(np.sqrt(max(nis_r, 0.0)))
+
+
 def _stabilize_cov(p: np.ndarray, min_eig: float = 1e-8) -> np.ndarray:
     p_sym = 0.5 * (p + p.T)
     eigvals, eigvecs = np.linalg.eigh(p_sym)
@@ -295,6 +307,138 @@ def run_ukf(
     return x_hist, p_hist
 
 
+def run_ukf_instrumented(
+    measurements: np.ndarray,
+    visibility: np.ndarray,
+    times_s: np.ndarray,
+    stations: tuple[StationGeometry, ...],
+    ballistic_coeff_m2_per_kg: float,
+    meas_std_vector: np.ndarray,
+    x0_est: np.ndarray,
+    cfg: UKFConfig,
+    drag_rho_ref: float = 4.0e-11,
+    drag_h_ref_m: float = 400e3,
+    drag_scale_height_m: float = 60e3,
+    enable_third_body: bool = False,
+    enable_srp: bool = False,
+    srp_area_to_mass_m2_per_kg: float = 0.02,
+    srp_cr: float = 1.3,
+    sun_initial_phase_rad: float = 0.0,
+    moon_initial_phase_rad: float = 0.0,
+) -> tuple[np.ndarray, np.ndarray, list[dict[str, Any]]]:
+    """Instrumented twin of :func:`run_ukf`.
+
+    The recursion is intentionally the same as :func:`run_ukf`; the only
+    addition is one record per visible station update with
+    ``pre_update_r_only_nis`` computed from the measurement residual available
+    immediately before that station's Kalman update. The diagnostic uses the
+    nominal measurement-noise diagonal only, excluding the predicted-state
+    covariance term in ``S`` and excluding any post-update filtered history.
+    """
+    t_len = measurements.shape[0]
+    n = 6
+    x_hist = np.zeros((t_len, n), dtype=np.float64)
+    p_hist = np.zeros((t_len, n, n), dtype=np.float64)
+    records: list[dict[str, Any]] = []
+
+    x = np.asarray(x0_est, dtype=np.float64).copy()
+    ekf_cfg_like = type("cfg", (), {"init_pos_std_m": cfg.init_pos_std_m, "init_vel_std_mps": cfg.init_vel_std_mps})
+    p = _stabilize_cov(build_init_covariance(ekf_cfg_like))  # type: ignore[arg-type]
+    w_m, w_c, lam = _ukf_weights(n=n, alpha=cfg.alpha, beta=cfg.beta, kappa=cfg.kappa)
+    r_meas = np.diag(np.asarray(meas_std_vector, dtype=np.float64) ** 2)
+
+    x_hist[0] = x
+    p_hist[0] = p
+
+    q_cfg_like = type("cfg", (), {"q_pos_m": cfg.q_pos_m, "q_vel_mps": cfg.q_vel_mps})
+
+    for k in range(1, t_len):
+        dt = float(times_s[k] - times_s[k - 1])
+        q = build_process_covariance(q_cfg_like, dt)  # type: ignore[arg-type]
+
+        sig = _sigma_points(x, p, lam)
+        sig_pred = np.zeros_like(sig)
+        for i in range(sig.shape[0]):
+            sig_pred[i] = _safe_sigma_propagation(
+                sig[i],
+                dt=dt,
+                ballistic_coeff_m2_per_kg=ballistic_coeff_m2_per_kg,
+                t_s=float(times_s[k - 1]),
+                drag_rho_ref=drag_rho_ref,
+                drag_h_ref_m=drag_h_ref_m,
+                drag_scale_height_m=drag_scale_height_m,
+                enable_third_body=enable_third_body,
+                enable_srp=enable_srp,
+                srp_area_to_mass_m2_per_kg=srp_area_to_mass_m2_per_kg,
+                srp_cr=srp_cr,
+                sun_initial_phase_rad=sun_initial_phase_rad,
+                moon_initial_phase_rad=moon_initial_phase_rad,
+            )
+
+        x = np.sum(sig_pred * w_m[:, None], axis=0)
+        p = q.copy()
+        for i in range(sig_pred.shape[0]):
+            d = sig_pred[i] - x
+            p += w_c[i] * np.outer(d, d)
+        p = _stabilize_cov(p)
+
+        for s_idx, station in enumerate(stations):
+            if visibility[k, s_idx] < 0.5:
+                continue
+
+            z = measurements[k, s_idx]
+            z_sig = np.zeros((sig_pred.shape[0], 4), dtype=np.float64)
+            for i in range(sig_pred.shape[0]):
+                z_i, _ = line_of_sight_measurement(sig_pred[i], station, times_s[k])
+                z_sig[i] = z_i
+
+            z_mean = _mean_with_angle(z_sig, w_m, angle_idx=1)
+            s_mat = r_meas.copy()
+            if cfg.angle_deweight_elev_cap_deg is not None:
+                s_mat[1, 1] *= azimuth_deweight_factor(
+                    float(z_mean[2]), cfg.angle_deweight_elev_cap_deg
+                )
+            p_xz = np.zeros((n, 4), dtype=np.float64)
+            for i in range(sig_pred.shape[0]):
+                dz = z_sig[i] - z_mean
+                dz[1] = wrap_angle_pi(float(dz[1]))
+                dx = sig_pred[i] - x
+                s_mat += w_c[i] * np.outer(dz, dz)
+                p_xz += w_c[i] * np.outer(dx, dz)
+
+            try:
+                s_inv = np.linalg.inv(s_mat)
+            except np.linalg.LinAlgError:
+                s_inv = np.linalg.pinv(s_mat)
+            k_gain = p_xz @ s_inv
+            y = z - z_mean
+            y[1] = wrap_angle_pi(float(y[1]))
+            nis_r, whitened_norm = _r_only_nis_from_residual(y, meas_std_vector)
+            state_update = k_gain @ y
+            x = x + state_update
+            p = p - k_gain @ s_mat @ k_gain.T
+            p = _stabilize_cov(p)
+
+            records.append(
+                {
+                    "time_step": int(k),
+                    "dt_s": float(dt),
+                    "station_index": int(s_idx),
+                    "station_name": str(getattr(station, "name", s_idx)),
+                    "pre_update_r_only_nis": float(nis_r),
+                    "pre_update_r_only_whitened_norm": float(whitened_norm),
+                    "state_update_norm": float(np.linalg.norm(state_update)),
+                    "state_update_pos_norm_m": float(np.linalg.norm(state_update[:3])),
+                    "state_update_vel_norm_mps": float(np.linalg.norm(state_update[3:])),
+                }
+            )
+
+        x_hist[k] = x
+        p_hist[k] = p
+
+    return x_hist, p_hist, records
+
+
 def run_adaptive_ukf(
     measurements: np.ndarray,
     visibility: np.ndarray,
@@ -553,6 +697,7 @@ def run_adaptive_ukf_instrumented(
 
             y = z - z_mean
             y[1] = wrap_angle_pi(float(y[1]))
+            nis_r, whitened_norm = _r_only_nis_from_residual(y, meas_std_vector)
             nis = float(y.T @ s_inv @ y)
             robust_scale = 1.0
             if nis > cfg.nis_soft_gate:
@@ -591,6 +736,8 @@ def run_adaptive_ukf_instrumented(
                 "dt_s": float(dt),
                 "station_index": int(s_idx),
                 "station_name": str(getattr(station, "name", s_idx)),
+                "pre_update_r_only_nis": float(nis_r),
+                "pre_update_r_only_whitened_norm": float(whitened_norm),
                 "pre_adapt_nis": float(nis),
                 "nis_soft_gate": float(cfg.nis_soft_gate),
                 "nis_exceeds_soft_gate": bool(nis > cfg.nis_soft_gate),
@@ -641,8 +788,6 @@ def predicted_innovation_nis(
     meas = np.asarray(measurements, dtype=np.float64)
     vis = np.asarray(visibility, dtype=np.float64)
     times = np.asarray(times_s, dtype=np.float64)
-    std = np.asarray(meas_std_vector, dtype=np.float64).reshape(4)
-    inv_std = 1.0 / np.clip(std, 1e-12, None)
 
     t_len = meas.shape[0]
     out: list[dict[str, Any]] = []
@@ -654,15 +799,14 @@ def predicted_innovation_nis(
             resid = np.asarray(meas[t, s_idx], dtype=np.float64) - z_pred
             resid[1] = wrap_angle_pi(float(resid[1]))
             resid[2] = wrap_angle_pi(float(resid[2]))
-            whitened = resid * inv_std
-            nis_r = float(np.dot(whitened, whitened))
+            nis_r, whitened_norm = _r_only_nis_from_residual(resid, meas_std_vector)
             out.append(
                 {
                     "time_step": int(t),
                     "station_index": int(s_idx),
                     "station_name": str(getattr(station, "name", s_idx)),
                     "nis_r": nis_r,
-                    "whitened_norm": float(np.sqrt(max(nis_r, 0.0))),
+                    "whitened_norm": float(whitened_norm),
                 }
             )
     return out

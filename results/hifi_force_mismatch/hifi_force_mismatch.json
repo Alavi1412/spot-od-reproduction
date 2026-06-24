@@ -1,0 +1,118 @@
+{
+  "scenario": "hifi_force_mismatch",
+  "scope": "Higher-fidelity force-model mismatch: truth uses two-body + J2/J3/J4 zonal geopotential + luni-solar third-body acceleration + the same exponential-atmosphere drag; estimators use the nominal compact two-body+J2+drag model. The missing-physics gap is conservative, not parameter-inflated.",
+  "n_trajectories": 48,
+  "steps": 120,
+  "dt_s": 20.0,
+  "eval_start_step": 11,
+  "epoch_unix": 1736640000.0,
+  "rng_seed": 20260520,
+  "bootstrap_samples": 5000,
+  "predeclared_rule_path": "release/predeclarations/pukf_q_adaptive_rule_loop41.json",
+  "predeclared_rule_digest_sha256": "7da14bb021b1850b3703211a2665eba36ab509316c89f6768f4a37b3828e0b40",
+  "truth_acceleration": "accel_hifi(r, epoch_unix) + exponential-atmosphere drag",
+  "estimator_acceleration": "compact two-body + J2 + exponential-atmosphere drag",
+  "observed_step_rmse_mean_m": {
+    "EKF": 420.9047277313871,
+    "UKF": 639.1505026106245,
+    "AUKF": 393.2572072775548,
+    "PUKF": 519.6355845373012
+  },
+  "paired": {
+    "EKF_minus_AUKF": {
+      "candidate": "EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 27.647520453832314,
+      "ci_lo_m": -152.474125996685,
+      "ci_hi_m": 243.78863102879845,
+      "wilcoxon_p_one_sided_candidate_better": 0.6559902194785536,
+      "n_paired": 38,
+      "candidate_better_count": 15
+    },
+    "EKF_minus_UKF": {
+      "candidate": "EKF",
+      "baseline": "UKF",
+      "mean_diff_m": -218.24577487923733,
+      "ci_lo_m": -899.5134450805365,
+      "ci_hi_m": 231.93874319761332,
+      "wilcoxon_p_one_sided_candidate_better": 0.9336824804340722,
+      "n_paired": 38,
+      "candidate_better_count": 10
+    },
+    "UKF_minus_AUKF": {
+      "candidate": "UKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 245.89329533306983,
+      "ci_lo_m": -21.739399981496636,
+      "ci_hi_m": 745.9089440333729,
+      "wilcoxon_p_one_sided_candidate_better": 0.7852860542698181,
+      "n_paired": 38,
+      "candidate_better_count": 15
+    },
+    "PUKF_minus_EKF": {
+      "candidate": "PUKF",
+      "baseline": "EKF",
+      "mean_diff_m": 98.73085680591406,
+      "ci_lo_m": -186.56340587768221,
+      "ci_hi_m": 429.0597525355948,
+      "wilcoxon_p_one_sided_candidate_better": 0.9999685548173147,
+      "n_paired": 38,
+      "candidate_better_count": 7
+    },
+    "PUKF_minus_UKF": {
+      "candidate": "PUKF",
+      "baseline": "UKF",
+      "mean_diff_m": -119.51491807332329,
+      "ci_lo_m": -462.2157269920562,
+      "ci_hi_m": 62.649957726425214,
+      "wilcoxon_p_one_sided_candidate_better": 0.9999994980062183,
+      "n_paired": 38,
+      "candidate_better_count": 5
+    },
+    "PUKF_minus_AUKF": {
+      "candidate": "PUKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 126.3783772597464,
+      "ci_lo_m": 14.867322731415063,
+      "ci_hi_m": 296.2998154243696,
+      "wilcoxon_p_one_sided_candidate_better": 0.9979784020943043,
+      "n_paired": 38,
+      "candidate_better_count": 8
+    }
+  },
+  "pukf_diagnostics": {
+    "mean_q_scale": 4.480031714312078,
+    "median_q_scale": 1.1094124575789954,
+    "max_q_scale": 9.999999999999996
+  },
+  "cross_filter_r_only_nis": {
+    "EKF": {
+      "median": 1.372691797021873,
+      "mean": 19.543692116579596,
+      "p90": 4.392893823255117,
+      "n": 1035
+    },
+    "UKF": {
+      "median": 1.4745830363687706,
+      "mean": 35.42017434040033,
+      "p90": 5.103707271341725,
+      "n": 1035
+    },
+    "AUKF": {
+      "median": 1.5329760334773985,
+      "mean": 9.570243654681661,
+      "p90": 5.696821797456782,
+      "n": 1035
+    },
+    "PUKF": {
+      "median": 1.0828983669341197,
+      "mean": 9.789047945706113,
+      "p90": 3.901131261934509,
+      "n": 1035
+    }
+  },
+  "elapsed_seconds": {
+    "truth_generation": 8.718384300009347,
+    "filters": 205.84478120005224
+  }
+}

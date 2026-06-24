@@ -1,0 +1,258 @@
+{
+  "scenario": "kalmannet_spot_od_transposition",
+  "vendor_commit": "828a2cf529bc84f43b37d543d916fe5858054457",
+  "vendor_path": "external\\third_party\\KalmanNet_TSP",
+  "scope": "Faithful transposition of the official KalmanNet (upstream commit 828a2cf529bc84f43b37d543d916fe5858054457) to the SPOT-OD measurement setting: m=6, n=8*4=32, nonlinear orbital dynamics (compact two-body+J2+drag), sparse-visibility mask via zeroing of invisible station blocks in both measurement and predicted observation.",
+  "device": "cpu",
+  "n_params_kalmannet": 12717676,
+  "config": {
+    "n_train": 80,
+    "n_cv": 16,
+    "n_test": 32,
+    "n_steps": 40,
+    "n_batch": 16,
+    "lr": 0.0001,
+    "wd": 0.0001,
+    "in_mult": 5,
+    "out_mult": 4,
+    "train_seed": 20260601,
+    "test_seed": 20260701,
+    "T": 120,
+    "m": 6,
+    "n": 32,
+    "eval_start_step": 11
+  },
+  "elapsed_seconds": {
+    "data_generation": 17.453170499997213,
+    "training": 287.78855009994004
+  },
+  "training_history": [
+    {
+      "step": 0,
+      "train_mse": 0.004886691924184561,
+      "cv_mse": 0.005774419754743576
+    },
+    {
+      "step": 1,
+      "train_mse": 0.005400592926889658,
+      "cv_mse": 0.0015184244839474559
+    },
+    {
+      "step": 2,
+      "train_mse": 0.0009133177809417248,
+      "cv_mse": 0.00099270383361727
+    },
+    {
+      "step": 3,
+      "train_mse": 0.024051815271377563,
+      "cv_mse": 0.0010103423846885562
+    },
+    {
+      "step": 4,
+      "train_mse": 0.0010364570189267397,
+      "cv_mse": 0.0008164729806594551
+    },
+    {
+      "step": 5,
+      "train_mse": 0.011444170027971268,
+      "cv_mse": 0.0007055534515529871
+    },
+    {
+      "step": 6,
+      "train_mse": 0.000418180541601032,
+      "cv_mse": 0.000666281150188297
+    },
+    {
+      "step": 7,
+      "train_mse": 0.0009617918403819203,
+      "cv_mse": 0.0006157259340398014
+    },
+    {
+      "step": 8,
+      "train_mse": 0.0006603737128898501,
+      "cv_mse": 0.0005600185832008719
+    },
+    {
+      "step": 9,
+      "train_mse": 0.0011965184239670634,
+      "cv_mse": 0.0005826355190947652
+    },
+    {
+      "step": 10,
+      "train_mse": 0.0005307585815899074,
+      "cv_mse": 0.0004489935818128288
+    },
+    {
+      "step": 11,
+      "train_mse": 0.00039032945642247796,
+      "cv_mse": 0.0003752931079361588
+    },
+    {
+      "step": 12,
+      "train_mse": 0.00023667432833462954,
+      "cv_mse": 0.0003495618875604123
+    },
+    {
+      "step": 13,
+      "train_mse": 0.0002496933448128402,
+      "cv_mse": 0.00032670333166606724
+    },
+    {
+      "step": 14,
+      "train_mse": 0.0005818537320010364,
+      "cv_mse": 0.00034342153230682015
+    },
+    {
+      "step": 15,
+      "train_mse": 0.00031368553754873574,
+      "cv_mse": 0.0004484777746256441
+    },
+    {
+      "step": 16,
+      "train_mse": 0.00047431522398255765,
+      "cv_mse": 0.000592090655118227
+    },
+    {
+      "step": 17,
+      "train_mse": 0.0002530493657104671,
+      "cv_mse": 0.0005633090040646493
+    },
+    {
+      "step": 18,
+      "train_mse": 0.00039526415639556944,
+      "cv_mse": 0.0005376646295189857
+    },
+    {
+      "step": 19,
+      "train_mse": 0.0001748745999066159,
+      "cv_mse": 0.0005360785871744156
+    },
+    {
+      "step": 20,
+      "train_mse": 0.00041706496267579496,
+      "cv_mse": 0.0005268362001515925
+    },
+    {
+      "step": 21,
+      "train_mse": 0.00033179810270667076,
+      "cv_mse": 0.0004928950220346451
+    },
+    {
+      "step": 22,
+      "train_mse": 0.00015538561274297535,
+      "cv_mse": 0.0004815037827938795
+    },
+    {
+      "step": 23,
+      "train_mse": 0.000178396119736135,
+      "cv_mse": 0.0004694309609476477
+    },
+    {
+      "step": 24,
+      "train_mse": 0.00014641194138675928,
+      "cv_mse": 0.00046022277092561126
+    },
+    {
+      "step": 25,
+      "train_mse": 0.0005358218331821263,
+      "cv_mse": 0.00044294854160398245
+    },
+    {
+      "step": 26,
+      "train_mse": 0.0001243218721356243,
+      "cv_mse": 0.00043009172077290714
+    },
+    {
+      "step": 27,
+      "train_mse": 0.00010764253966044635,
+      "cv_mse": 0.0004192442575003952
+    },
+    {
+      "step": 28,
+      "train_mse": 0.00018689535500016063,
+      "cv_mse": 0.0003146697417832911
+    },
+    {
+      "step": 29,
+      "train_mse": 0.00011135801469208673,
+      "cv_mse": 0.00030202270136214793
+    },
+    {
+      "step": 30,
+      "train_mse": 0.00010507072875043377,
+      "cv_mse": 0.0002942463615909219
+    },
+    {
+      "step": 31,
+      "train_mse": 0.0002342070365557447,
+      "cv_mse": 0.0002832456666510552
+    },
+    {
+      "step": 32,
+      "train_mse": 0.00014781710342504084,
+      "cv_mse": 0.0002716435701586306
+    },
+    {
+      "step": 33,
+      "train_mse": 0.00022333160450216383,
+      "cv_mse": 0.0002634363481774926
+    },
+    {
+      "step": 34,
+      "train_mse": 0.00012246730329934508,
+      "cv_mse": 0.00022200467356014997
+    },
+    {
+      "step": 35,
+      "train_mse": 0.00017077084339689463,
+      "cv_mse": 0.00019702727149706334
+    },
+    {
+      "step": 36,
+      "train_mse": 0.00014785653911530972,
+      "cv_mse": 0.0001819395401980728
+    },
+    {
+      "step": 37,
+      "train_mse": 9.254155156668276e-05,
+      "cv_mse": 0.000169179736985825
+    },
+    {
+      "step": 38,
+      "train_mse": 0.00022481108317151666,
+      "cv_mse": 0.00016647626762278378
+    },
+    {
+      "step": 39,
+      "train_mse": 0.00017306704830843955,
+      "cv_mse": 0.00016336486442014575
+    }
+  ],
+  "best_cv_mse": 0.00016336486442014575,
+  "observed_step_rmse_mean_m": {
+    "KalmanNet-SPOT-OD": 248888.71484656257,
+    "EKF": 374.86042936343057,
+    "UKF": 399.4126036080238,
+    "AUKF": 357.6991283680186,
+    "PUKF": 429.651624567149
+  },
+  "paired_vs_best_classical": {
+    "best_classical": "AUKF",
+    "mean_knet_minus_best_m": 248531.01571819454,
+    "ci_lo_m": 169329.8013202717,
+    "ci_hi_m": 375824.1664958766,
+    "n_paired": 24,
+    "knet_better_count": 0,
+    "knet_better_rate_percent": 0.0
+  },
+  "predeclared_rule_path": "release/predeclarations/pukf_q_adaptive_rule_loop41.json",
+  "predeclared_rule_digest_sha256": "7da14bb021b1850b3703211a2665eba36ab509316c89f6768f4a37b3828e0b40",
+  "adaptations_from_upstream": [
+    "state dim m=2 -> m=6 (ECI position+velocity)",
+    "obs dim n=2 -> n=32 (8 stations x 4 channels)",
+    "linear f, h -> SPOT-OD nonlinear orbital RK4 propagator and station observation",
+    "step-counter held on a wrapper so f/h see the correct absolute time",
+    "invisible station blocks are zeroed identically in observation and h(x)",
+    "training loss restricted to observed-step window (eval_start onward), same as classical scoring"
+  ]
+}

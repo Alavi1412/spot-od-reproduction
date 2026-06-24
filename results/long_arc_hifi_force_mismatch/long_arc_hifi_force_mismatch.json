@@ -1,0 +1,157 @@
+{
+  "scenario": "long_arc_hifi_force_mismatch",
+  "schema_version": "long_arc_hifi_force_mismatch_v1",
+  "scope": "Long-arc higher-fidelity force-and-density mismatch slice (Loop 47). Truth uses two-body + J2..J6 zonal + dominant sectoral C(2,2)/S(2,2) spherical-harmonic terms (Earth-fixed, rotated to GMST-only pseudo-inertial frame) + luni-solar third-body acceleration + exponential drag with a one-sided diurnal-bulge density modulation (alpha_diurnal=0.30) and a longitudinal/semidiurnal density modulation (alpha_long=0.10); EKF/UKF/AUKF/PUKF/DMC-EKF/DSA-EKF all use the compact two-body+J2+exponential-density-drag deterministic flow. Arc length 3 hours (540 steps at 20 s). DSA-EKF hyperparameters were selected on a disjoint validation seed; the held-out test seed is disjoint from every training, validation, and prior test seed used in the manuscript.",
+  "n_trajectories": 36,
+  "steps": 540,
+  "dt_s": 20.0,
+  "arc_length_s": 10800.0,
+  "eval_start_step": 11,
+  "epoch_unix": 1736640000.0,
+  "rng_seed": 20260847,
+  "diurnal_alpha": 0.3,
+  "longitudinal_alpha": 0.1,
+  "longitudinal_wavenumber": 2.0,
+  "bootstrap_samples": 5000,
+  "predeclared_rule_path": "release/predeclarations/long_arc_hifi_rule_loop47.json",
+  "predeclared_rule_digest_sha256": "1bab353a79122cec1bc531d66c9dd9c89357fffc13c71136c4ee284b073a9652",
+  "astrodynamics_floor_artifact_path": "release/predeclarations/astrodynamics_floor_loop47.json",
+  "astrodynamics_floor_digest_sha256": "dfd1ce3ec93d2f5f86566ea37ce35ae1aa3184ef7ae10d33de90c0f9ede3a825",
+  "selection_artifact_path": "results/long_arc_hifi_validation/long_arc_hifi_validation.json",
+  "selection_artifact_sha256": "6bf627d087d8f3255f6892935a693857b8747986f816204da85ff98d033adf1d",
+  "selected_grid_point_label": "L4",
+  "selected_init_drag_scale_std": 1.0,
+  "selected_drag_scale_sigma_ss": 1.0,
+  "selected_drag_scale_tau_s": 3600.0,
+  "truth_acceleration": "accel_hifi_long_arc(r, epoch_unix) (two-body + J2..J6 zonal + sectoral C22/S22 + luni-solar) + exponential drag with diurnal-bulge and longitudinal/semidiurnal density modulations",
+  "estimator_acceleration": "compact two-body + J2 + time-invariant exponential drag, with the drag acceleration scaled by beta(t) for DSA-EKF",
+  "observed_step_rmse_mean_m": {
+    "EKF": 565.8304070943401,
+    "UKF": 352.1007481203184,
+    "AUKF": 311.59019140572616,
+    "PUKF": 408.8281177841351,
+    "DMC_EKF": 565.8309796176794,
+    "DSA_EKF": 584.3165350467108
+  },
+  "paired": {
+    "DSA_EKF_minus_EKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "EKF",
+      "mean_diff_m": 18.48612795237055,
+      "ci_lo_m": -12.600901298040553,
+      "ci_hi_m": 77.7187941313465,
+      "wilcoxon_p_one_sided_candidate_better": 6.640242645516992e-06,
+      "n_paired": 36,
+      "candidate_better_count": 33
+    },
+    "DSA_EKF_minus_UKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "UKF",
+      "mean_diff_m": 232.2157869263924,
+      "ci_lo_m": -56.48006557142329,
+      "ci_hi_m": 775.7373933977959,
+      "wilcoxon_p_one_sided_candidate_better": 0.009170009841909632,
+      "n_paired": 36,
+      "candidate_better_count": 26
+    },
+    "DSA_EKF_minus_AUKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 272.7263436409845,
+      "ci_lo_m": 0.20100069274524926,
+      "ci_hi_m": 802.2434735858769,
+      "wilcoxon_p_one_sided_candidate_better": 0.8641857263137354,
+      "n_paired": 36,
+      "candidate_better_count": 16
+    },
+    "DSA_EKF_minus_PUKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "PUKF",
+      "mean_diff_m": 175.4884172625757,
+      "ci_lo_m": -110.08107041347976,
+      "ci_hi_m": 716.9779966740155,
+      "wilcoxon_p_one_sided_candidate_better": 1.9859595340676606e-05,
+      "n_paired": 36,
+      "candidate_better_count": 33
+    },
+    "DSA_EKF_minus_DMC_EKF": {
+      "candidate": "DSA_EKF",
+      "baseline": "DMC_EKF",
+      "mean_diff_m": 18.485555429031415,
+      "ci_lo_m": -12.711717432954417,
+      "ci_hi_m": 77.77394814256328,
+      "wilcoxon_p_one_sided_candidate_better": 6.640242645516992e-06,
+      "n_paired": 36,
+      "candidate_better_count": 33
+    },
+    "EKF_minus_AUKF": {
+      "candidate": "EKF",
+      "baseline": "AUKF",
+      "mean_diff_m": 254.24021568861397,
+      "ci_lo_m": 10.823521276855972,
+      "ci_hi_m": 726.8276519120758,
+      "wilcoxon_p_one_sided_candidate_better": 0.9992769347736612,
+      "n_paired": 36,
+      "candidate_better_count": 7
+    }
+  },
+  "decision": {
+    "best_non_dsa_estimator": "AUKF",
+    "best_non_dsa_mean_m": 311.59019140572616,
+    "practical_significance_floor_m_absolute": 105.95855692321193,
+    "floor_basis": "astrodynamics-grounded Cramer-Rao lower bound on the arc-accumulated 3D position-RMSE; derived in release/predeclarations/astrodynamics_floor_loop47.json",
+    "dsa_minus_best_non_dsa_mean_m": 272.7263436409845,
+    "dsa_minus_best_non_dsa_ci_lo_m": 0.2615549331212065,
+    "dsa_minus_best_non_dsa_ci_hi_m": 801.4982151846066,
+    "dsa_is_strictly_lowest_mean": false,
+    "ci_strictly_negative_for_dsa": false,
+    "floor_exceeded": false,
+    "predeclared_positive_criterion_met": false
+  },
+  "dsa_diagnostics": {
+    "median_max_abs_beta_deviation": 0.00014596345077977357,
+    "median_mean_beta": 1.0000006079876247
+  },
+  "cross_filter_r_only_nis": {
+    "EKF": {
+      "median": 1.4534994353003265,
+      "mean": 38.98561260963008,
+      "p90": 4.509725892017777,
+      "n": 3861
+    },
+    "UKF": {
+      "median": 1.5679412574130989,
+      "mean": 4.389313243059458,
+      "p90": 4.727499117018449,
+      "n": 3861
+    },
+    "AUKF": {
+      "median": 1.6196452258506207,
+      "mean": 4.967904383203675,
+      "p90": 5.083208630354807,
+      "n": 3861
+    },
+    "PUKF": {
+      "median": 1.1399109796654963,
+      "mean": 10.862871595713825,
+      "p90": 3.8736416312473754,
+      "n": 3861
+    },
+    "DMC_EKF": {
+      "median": 1.4534994367663086,
+      "mean": 38.985609741742905,
+      "p90": 4.5097117756831535,
+      "n": 3861
+    },
+    "DSA_EKF": {
+      "median": 1.5257848018173648,
+      "mean": 41.557935914832576,
+      "p90": 4.649520560522029,
+      "n": 3861
+    }
+  },
+  "elapsed_seconds": {
+    "truth_generation": 34.005306000006385,
+    "filters": 1143.6916843999643
+  }
+}
