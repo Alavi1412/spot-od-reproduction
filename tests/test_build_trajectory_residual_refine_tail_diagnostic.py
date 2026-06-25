@@ -8,7 +8,11 @@ from pathlib import Path
 import pytest
 
 from scripts.build_trajectory_residual_refine_tail_diagnostic import (
+    ATTENTION_ROWS,
     BOUNDARY,
+    LOCAL_ROWS,
+    MEAN_ROWS,
+    OUTPUT_DIR,
     build_diagnostic,
     write_outputs,
 )
@@ -35,6 +39,29 @@ FIELDNAMES = [
     "best_single_trajectory_observed_step_sse",
     "best_single_trajectory_observed_steps",
 ]
+
+VAL53_ATTENTION_ROWS = Path(
+    "results/"
+    "trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625/rows.csv"
+)
+VAL53_LOCAL_ROWS = Path(
+    "results/"
+    "trajectory_candidate_local_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625/rows.csv"
+)
+VAL53_MEAN_ROWS = Path(
+    "results/"
+    "trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625/rows.csv"
+)
+
+
+def test_default_release_paths_target_validation_selected_val53_artifacts() -> None:
+    assert ATTENTION_ROWS == VAL53_ATTENTION_ROWS
+    assert LOCAL_ROWS == VAL53_LOCAL_ROWS
+    assert MEAN_ROWS == VAL53_MEAN_ROWS
+    assert OUTPUT_DIR == Path("results/trajectory_candidate_edge_only_local_tail_diagnostic_val53_20260625")
 
 
 def _row(

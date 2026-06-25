@@ -21,20 +21,20 @@ BOUNDARY = (
 
 ATTENTION_ROWS = Path(
     "results/"
-    "trajectory_candidate_graph_attention_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625/rows.csv"
 )
 LOCAL_ROWS = Path(
     "results/"
-    "trajectory_candidate_local_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_local_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625/rows.csv"
 )
 MEAN_ROWS = Path(
     "results/"
-    "trajectory_candidate_mean_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625/rows.csv"
 )
-OUTPUT_DIR = Path("results/trajectory_candidate_edge_only_local_tail_diagnostic_20260625")
+OUTPUT_DIR = Path("results/trajectory_candidate_edge_only_local_tail_diagnostic_val53_20260625")
 
 DEFAULT_TIERS = ("all_eval_non_development", "fresh_extra")
 ROW_KEY_FIELDS = ("source_name", "scenario", "trajectory_row")

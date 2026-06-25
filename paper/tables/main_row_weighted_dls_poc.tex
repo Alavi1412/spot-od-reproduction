@@ -1,0 +1,28 @@
+\begin{table*}[t]
+\centering
+\caption{Post-freeze row-weighted damped least-squares (row-WDLS) compact-simulator proof of concept on \texttt{credible\_dense\_od\_test}. Positive gains mean lower observed-step position RMSE than the reference. The graph row-WDLS and no-message control both learn per-measurement-row weights inside the validation-selected DLS normal equations; their near-equivalence and below-floor gains make this a compact diagnostic side branch, not public precise-reference validation, learned-superiority validation, or an isolated graph/message-passing causal claim.}
+\label{tab:main_row_weighted_dls_poc}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrr}
+\toprule
+Seed & Variant & Learned RMSE (m) & Fixed DLS (m) & Best raw (m) & Gain vs fixed (\%) & Gain vs raw (\%) & Best epoch \\
+\midrule
+7 & Graph row-WDLS & 295.694 & 295.758 & 297.503 & 0.0216 & 0.608 & 1 \\
+7 & No-message control & 295.685 & 295.758 & 297.503 & 0.0250 & 0.611 & 1 \\
+11 & Graph row-WDLS & 291.429 & 291.512 & 292.713 & 0.0286 & 0.439 & 1 \\
+11 & No-message control & 291.446 & 291.512 & 292.713 & 0.0227 & 0.433 & 1 \\
+13 & Graph row-WDLS & 307.779 & 307.829 & 309.510 & 0.0163 & 0.559 & 6 \\
+13 & No-message control & 307.771 & 307.829 & 309.510 & 0.0191 & 0.562 & 5 \\
+17 & Graph row-WDLS & 264.922 & 264.954 & 267.113 & 0.0122 & 0.820 & 1 \\
+17 & No-message control & 264.930 & 264.954 & 267.113 & 0.0094 & 0.817 & 1 \\
+19 & Graph row-WDLS & 257.179 & 257.223 & 258.441 & 0.0172 & 0.488 & 1 \\
+19 & No-message control & 257.187 & 257.223 & 258.441 & 0.0142 & 0.485 & 1 \\
+\addlinespace
+\multicolumn{8}{p{0.92\textwidth}}{Graph row-WDLS aggregate: 5/5 wins vs.\ fixed DLS; mean fixed-minus-learned RMSE delta 0.054797 m; mean, median, and minimum gains vs.\ fixed DLS 0.019178\%, 0.017163\%, and 0.012174\%; mean gain vs.\ best raw 0.582936\%.} \\
+\multicolumn{8}{p{0.92\textwidth}}{No-message aggregate: 5/5 wins vs.\ fixed DLS; mean fixed-minus-learned RMSE delta 0.052074 m; mean, median, and minimum gains vs.\ fixed DLS 0.018082\%, 0.019116\%, and 0.009404\%; mean gain vs.\ best raw 0.581845\%. Graph beats no-message on 3/5 seeds, with only about 0.0027 m mean graph-vs-no-message advantage.} \\
+\bottomrule
+\end{tabular}%
+}
+\\[2pt]{\footnotesize The absolute gains over fixed DLS are centimetre-scale on a 257--308 m observed-step RMSE slice and well below the study's 3\% practical floor; the graph-vs-no-message comparison does not isolate message passing.}
+\end{table*}

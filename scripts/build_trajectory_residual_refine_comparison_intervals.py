@@ -21,24 +21,20 @@ BOOTSTRAP_METHOD = (
 
 EDGE_ATTENTION_DIR = Path(
     "results/"
-    "trajectory_candidate_graph_attention_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
 EDGE_MEAN_DIR = Path(
     "results/"
-    "trajectory_candidate_mean_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
 EDGE_LOCAL_DIR = Path(
     "results/"
-    "trajectory_candidate_local_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_local_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
-ORIGINAL_ATTENTION_DIR = Path(
-    "results/"
-    "trajectory_candidate_graph_residual_refine_ensemble3_2111_2117_2129_"
-    "newfresh151157163167_20260625"
-)
+ORIGINAL_ATTENTION_DIR: Path | None = None
 
 DEFAULT_TIERS = (
     "all_eval_non_development",

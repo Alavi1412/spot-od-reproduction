@@ -8,6 +8,10 @@ from pathlib import Path
 import pytest
 
 from scripts.build_trajectory_residual_refine_comparison_intervals import (
+    EDGE_ATTENTION_DIR,
+    EDGE_LOCAL_DIR,
+    EDGE_MEAN_DIR,
+    ORIGINAL_ATTENTION_DIR,
     build_intervals,
     write_outputs,
 )
@@ -28,6 +32,35 @@ FIELDNAMES = [
     "best_single_trajectory_observed_step_sse",
     "best_single_trajectory_observed_steps",
 ]
+
+VAL53_ATTENTION_DIR = Path(
+    "results/"
+    "trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625"
+)
+VAL53_LOCAL_DIR = Path(
+    "results/"
+    "trajectory_candidate_local_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625"
+)
+VAL53_MEAN_DIR = Path(
+    "results/"
+    "trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625"
+)
+
+
+def test_default_release_paths_target_validation_selected_val53_artifacts() -> None:
+    assert EDGE_ATTENTION_DIR == VAL53_ATTENTION_DIR
+    assert EDGE_LOCAL_DIR == VAL53_LOCAL_DIR
+    assert EDGE_MEAN_DIR == VAL53_MEAN_DIR
+    assert EDGE_ATTENTION_DIR / "comparison_intervals.json" == (
+        VAL53_ATTENTION_DIR / "comparison_intervals.json"
+    )
+    assert EDGE_ATTENTION_DIR / "comparison_intervals.md" == (
+        VAL53_ATTENTION_DIR / "comparison_intervals.md"
+    )
+    assert ORIGINAL_ATTENTION_DIR is None
 
 
 def _row(

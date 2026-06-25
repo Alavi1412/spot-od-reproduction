@@ -1,0 +1,294 @@
+{
+  "bootstrap_samples": 20000,
+  "bootstrap_seed": 20260625,
+  "candidate_label": "edge_only_attention_residual_refine",
+  "candidate_run": "results\\trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_newfresh151157163167_20260625",
+  "comparisons": {
+    "all_eval_non_development": {
+      "best_single_retained": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 390.31678478219925,
+        "delta_m": 69.27398167467305,
+        "gain_percent": 15.072970723221367,
+        "observed_steps": 6831,
+        "reference_rmse_m": 459.5907664568723,
+        "row_bootstrap_gain_percent_95ci": [
+          11.45062980513122,
+          18.575159123708463
+        ],
+        "row_losses": 76,
+        "row_ties": 0,
+        "row_wins": 154,
+        "rows": 230,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          11.738646523152969,
+          18.307200591453412
+        ],
+        "source_scenarios": 38
+      },
+      "edge_only_local_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 390.31678478219925,
+        "delta_m": 128.96537102369524,
+        "gain_percent": 24.835317289797644,
+        "observed_steps": 6831,
+        "reference_rmse_m": 519.2821558058945,
+        "row_bootstrap_gain_percent_95ci": [
+          11.171530768239554,
+          36.09663476628989
+        ],
+        "row_losses": 80,
+        "row_ties": 0,
+        "row_wins": 150,
+        "rows": 230,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          12.107594550967333,
+          35.63006424057112
+        ],
+        "source_scenarios": 38
+      },
+      "edge_only_mean_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 390.31678478219925,
+        "delta_m": 16.192352846068218,
+        "gain_percent": 3.9832690946483287,
+        "observed_steps": 6831,
+        "reference_rmse_m": 406.50913762826747,
+        "row_bootstrap_gain_percent_95ci": [
+          1.5218665519694803,
+          6.653954455333511
+        ],
+        "row_losses": 106,
+        "row_ties": 0,
+        "row_wins": 124,
+        "rows": 230,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          1.56293762346954,
+          6.384572557831778
+        ],
+        "source_scenarios": 38
+      }
+    },
+    "fresh_extra": {
+      "best_single_retained": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 386.37323366223956,
+        "delta_m": 59.57007372098968,
+        "gain_percent": 13.358216781084483,
+        "observed_steps": 1426,
+        "reference_rmse_m": 445.94330738322924,
+        "row_bootstrap_gain_percent_95ci": [
+          5.394507848224321,
+          20.688404714449202
+        ],
+        "row_losses": 18,
+        "row_ties": 0,
+        "row_wins": 29,
+        "rows": 47,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          6.347390655467646,
+          18.328218981991828
+        ],
+        "source_scenarios": 8
+      },
+      "edge_only_local_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 386.37323366223956,
+        "delta_m": 320.35671028247276,
+        "gain_percent": 45.32943778982349,
+        "observed_steps": 1426,
+        "reference_rmse_m": 706.7299439447123,
+        "row_bootstrap_gain_percent_95ci": [
+          6.233036373684814,
+          61.13665190694485
+        ],
+        "row_losses": 16,
+        "row_ties": 0,
+        "row_wins": 31,
+        "rows": 47,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          23.02993775812479,
+          59.307933770658224
+        ],
+        "source_scenarios": 8
+      },
+      "edge_only_mean_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 386.37323366223956,
+        "delta_m": 22.69346481252768,
+        "gain_percent": 5.547619715108024,
+        "observed_steps": 1426,
+        "reference_rmse_m": 409.06669847476724,
+        "row_bootstrap_gain_percent_95ci": [
+          0.4408259053140568,
+          11.744311931169928
+        ],
+        "row_losses": 20,
+        "row_ties": 0,
+        "row_wins": 27,
+        "rows": 47,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          0.7740181059425,
+          11.825229212075417
+        ],
+        "source_scenarios": 8
+      }
+    },
+    "holdout_seed_ge_67": {
+      "best_single_retained": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 391.3505860073401,
+        "delta_m": 71.77374312517526,
+        "gain_percent": 15.497726768018355,
+        "observed_steps": 5405,
+        "reference_rmse_m": 463.12432913251536,
+        "row_bootstrap_gain_percent_95ci": [
+          11.449386516575798,
+          19.397248758539867
+        ],
+        "row_losses": 58,
+        "row_ties": 0,
+        "row_wins": 125,
+        "rows": 183,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          11.72238378412064,
+          19.240810221282615
+        ],
+        "source_scenarios": 30
+      },
+      "edge_only_local_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 391.3505860073401,
+        "delta_m": 65.83906262591097,
+        "gain_percent": 14.400820933442837,
+        "observed_steps": 5405,
+        "reference_rmse_m": 457.18964863325107,
+        "row_bootstrap_gain_percent_95ci": [
+          5.158739865962631,
+          26.122808926393912
+        ],
+        "row_losses": 64,
+        "row_ties": 0,
+        "row_wins": 119,
+        "rows": 183,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          5.852643694992112,
+          25.572537740508817
+        ],
+        "source_scenarios": 30
+      },
+      "edge_only_mean_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 391.3505860073401,
+        "delta_m": 14.481103767497984,
+        "gain_percent": 3.5682535721969697,
+        "observed_steps": 5405,
+        "reference_rmse_m": 405.8316897748381,
+        "row_bootstrap_gain_percent_95ci": [
+          0.916276630461268,
+          6.5054450866404006
+        ],
+        "row_losses": 86,
+        "row_ties": 0,
+        "row_wins": 97,
+        "rows": 183,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          0.8052892944458115,
+          6.196689044617298
+        ],
+        "source_scenarios": 30
+      }
+    },
+    "future_seed_ge_109": {
+      "best_single_retained": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 405.44332506447114,
+        "delta_m": 72.2497553326047,
+        "gain_percent": 15.124723027712289,
+        "observed_steps": 1800,
+        "reference_rmse_m": 477.69308039707585,
+        "row_bootstrap_gain_percent_95ci": [
+          7.771865012312161,
+          22.094397817897963
+        ],
+        "row_losses": 17,
+        "row_ties": 0,
+        "row_wins": 43,
+        "rows": 60,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          7.656681046594179,
+          21.840989054030803
+        ],
+        "source_scenarios": 10
+      },
+      "edge_only_local_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 405.44332506447114,
+        "delta_m": 116.39211359168661,
+        "gain_percent": 22.304371257617568,
+        "observed_steps": 1800,
+        "reference_rmse_m": 521.8354386561577,
+        "row_bootstrap_gain_percent_95ci": [
+          1.0892757229018752,
+          42.42332961875729
+        ],
+        "row_losses": 21,
+        "row_ties": 0,
+        "row_wins": 39,
+        "rows": 60,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          3.37164208097189,
+          41.32066102199826
+        ],
+        "source_scenarios": 10
+      },
+      "edge_only_mean_residual_refine": {
+        "bootstrap_method": "paired percentile resampling of rows or source-scenario clusters with SSE/count recomputation",
+        "bootstrap_samples": 20000,
+        "bootstrap_seed": 20260625,
+        "candidate_rmse_m": 405.44332506447114,
+        "delta_m": 14.630416989585456,
+        "gain_percent": 3.482821115656108,
+        "observed_steps": 1800,
+        "reference_rmse_m": 420.0737420540566,
+        "row_bootstrap_gain_percent_95ci": [
+          -0.2960990582242167,
+          8.589577082091802
+        ],
+        "row_losses": 27,
+        "row_ties": 0,
+        "row_wins": 33,
+        "rows": 60,
+        "source_scenario_bootstrap_gain_percent_95ci": [
+          -0.0970429647648141,
+          7.4749046429852894
+        ],
+        "source_scenarios": 10
+      }
+    }
+  },
+  "node_disagreement_features": "omit",
+  "schema_version": "trajectory_candidate_residual_refine_comparison_intervals.v2"
+}

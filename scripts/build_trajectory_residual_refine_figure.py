@@ -20,20 +20,20 @@ import numpy as np
 
 GRAPH_DIR = Path(
     "results/"
-    "trajectory_candidate_graph_attention_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
 MEAN_DIR = Path(
     "results/"
-    "trajectory_candidate_mean_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
 LOCAL_DIR = Path(
     "results/"
-    "trajectory_candidate_local_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_local_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
-OUTPUT_PATH = Path("paper/figures/trajectory_residual_refine_gain_distribution.png")
+OUTPUT_PATH = Path("paper/figures/trajectory_residual_refine_gain_distribution_val53.png")
 
 TIERS = (
     ("all_eval_non_development", "All non-dev"),

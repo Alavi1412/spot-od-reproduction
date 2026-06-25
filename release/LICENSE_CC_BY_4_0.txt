@@ -1,0 +1,7 @@
+SPOT-OD v1.3.1 validation-selected release package license notice
+
+Unless a file states a different license, this release package is distributed under the Creative Commons Attribution 4.0 International license, matching the Zenodo metadata field `cc-by-4.0`.
+
+License text: https://creativecommons.org/licenses/by/4.0/
+
+When reusing the package, cite the GitHub release tag and the Zenodo DOI assigned to this version after import. Before the v1.3.1 DOI is minted, cite the concept DOI `10.5281/zenodo.20768672` and the GitHub release tag `v1.3.1-validation-selected-residual-refine`.
