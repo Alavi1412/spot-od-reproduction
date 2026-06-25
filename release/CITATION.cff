@@ -1,6 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this SPOT-OD validation-selected residual-refinement evidence package, cite the v1.3.1 GitHub release and the Zenodo version DOI assigned after import. Before import, cite the concept DOI 10.5281/zenodo.20768672."
+message: "If you use this SPOT-OD validation-selected residual-refinement evidence package, cite the v1.3.1 GitHub release and Zenodo version DOI 10.5281/zenodo.20844596."
 title: "SPOT-OD v1.3.1 validation-selected edge-only residual-refinement ablation"
+doi: "10.5281/zenodo.20844596"
 abstract: >-
   Bounded reproduction-support evidence package for a validation-selected edge-only
   retained-candidate attention graph residual-refinement proof of concept in a
@@ -17,6 +18,13 @@ version: "v1.3.1-validation-selected-residual-refine"
 date-released: "2026-06-25"
 url: "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine"
 repository-code: "https://github.com/Alavi1412/spot-od-reproduction"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20844596"
+    description: "Zenodo version DOI"
+  - type: doi
+    value: "10.5281/zenodo.20768672"
+    description: "Zenodo concept DOI"
 license: "CC-BY-4.0"
 keywords:
   - orbit determination

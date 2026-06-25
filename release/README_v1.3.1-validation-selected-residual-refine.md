@@ -2,6 +2,20 @@
 
 This package is an inspection and downstream-replay archive for the validation-selected edge-only retained-candidate attention graph residual-refinement proof of concept.
 
+## Release identifiers
+
+- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>
+- Release tag: `v1.3.1-validation-selected-residual-refine`
+- Tag commit: `c4882f1b367426c0966e906b9332f64d44d2279f`
+- GitHub release asset: `spot_od_v1_3_1_validation_selected_residual_refine.zip`
+- GitHub release asset integrity: corrective replacement asset byte size and SHA-256 are reported externally after archive construction, not embedded in this packaged README.
+- Zenodo record: <https://zenodo.org/records/20844596>
+- Zenodo version DOI: `10.5281/zenodo.20844596`
+- Zenodo concept DOI: `10.5281/zenodo.20768672`
+- Zenodo archived source file: `Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip`
+- Zenodo archived source file bytes: `212,947,668`
+- Zenodo archived source file MD5: `863e5077d4d29a827c6fcfd1181dce34`
+
 ## What is included
 
 - Manuscript source/PDF, validation-selected table, and validation-selected figure.

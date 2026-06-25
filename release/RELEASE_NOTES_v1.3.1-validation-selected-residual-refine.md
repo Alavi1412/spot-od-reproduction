@@ -54,9 +54,19 @@ The figure was regenerated with:
 .\.venv\Scripts\python.exe scripts\build_trajectory_residual_refine_figure.py --graph-dir results\trajectory_candidate_graph_attention_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_newfresh151157163167_20260625 --local-dir results\trajectory_candidate_local_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_newfresh151157163167_20260625 --mean-dir results\trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_newfresh151157163167_20260625 --output paper\figures\trajectory_residual_refine_gain_distribution_val53.png
 ```
 
-## DOI status
+## DOI and archive status
 
-Zenodo is connected to the GitHub repository. The v1.3.1 DOI is pending GitHub release import by Zenodo. The concept DOI is `10.5281/zenodo.20768672`. The prior v1.3.0 DOI is `10.5281/zenodo.20842573`.
+- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>
+- Tag commit: `c4882f1b367426c0966e906b9332f64d44d2279f`
+- GitHub release asset: `spot_od_v1_3_1_validation_selected_residual_refine.zip`
+- GitHub release asset integrity: corrective replacement asset byte size and SHA-256 are reported externally after archive construction, not embedded in these packaged notes.
+- Zenodo record: <https://zenodo.org/records/20844596>
+- Zenodo version DOI: `10.5281/zenodo.20844596`
+- Zenodo concept DOI: `10.5281/zenodo.20768672`
+- Zenodo archived source file: `Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip`
+- Zenodo archived source file bytes: `212,947,668`
+- Zenodo archived source file MD5: `863e5077d4d29a827c6fcfd1181dce34`
+- Prior v1.3.0 DOI: `10.5281/zenodo.20842573`
 
 ## Scope limits
 

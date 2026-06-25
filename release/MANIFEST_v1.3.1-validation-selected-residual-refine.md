@@ -1,20 +1,31 @@
 # SPOT-OD v1.3.1 validation-selected package manifest
 
 Release tag: `v1.3.1-validation-selected-residual-refine`
+Release URL: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>
+Tag commit: `c4882f1b367426c0966e906b9332f64d44d2279f`
+GitHub release asset: `spot_od_v1_3_1_validation_selected_residual_refine.zip`
+GitHub release asset integrity: corrective replacement asset byte size and SHA-256 are reported externally after archive construction, not embedded in this packaged manifest.
+Zenodo record: <https://zenodo.org/records/20844596>
+Version DOI: `10.5281/zenodo.20844596`
 Concept DOI: `10.5281/zenodo.20768672`
-Version DOI: pending Zenodo import after GitHub release creation
+Zenodo archived source file: `Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip`
+Zenodo archived source file bytes: `212,947,668`
+Zenodo archived source file MD5: `863e5077d4d29a827c6fcfd1181dce34`
 
 ## Core files
 
 - `.zenodo.json`
 - `release/ZENODO_METADATA.json`
 - `release/RELEASE_NOTES_v1.3.1-validation-selected-residual-refine.md`
+- `release/README.md`
 - `release/README_v1.3.1-validation-selected-residual-refine.md`
 - `release/MANIFEST_v1.3.1-validation-selected-residual-refine.md`
 - `release/CITATION.cff`
 - `release/LICENSE_CC_BY_4_0.txt`
 - `paper/main.tex`
 - `paper/main.pdf`
+- `paper/tables/main_findings_summary.tex`
+- `paper/tables/main_revision_delta_and_public_repro.tex`
 - `paper/tables/main_trajectory_graph_selector_ensemble_poc.tex`
 - `paper/tables/main_row_weighted_dls_poc.tex`
 - `paper/figures/trajectory_residual_refine_gain_distribution_val53.png`

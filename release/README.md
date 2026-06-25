@@ -1,7 +1,30 @@
-# SPOT-OD Supplementary Evidence Package
+# SPOT-OD v1.3.1 Validation-Selected Residual-Refinement Release
 
-Version: `1.2.3-acf-holdout-audit` (`SPOT-OD v1.2.3 ACF holdout audit release`).
+Current release: `v1.3.1-validation-selected-residual-refine`.
 The GitHub release URL is
+<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>.
+The tag commit is `c4882f1b367426c0966e906b9332f64d44d2279f`.
+The GitHub release asset is
+`spot_od_v1_3_1_validation_selected_residual_refine.zip`. Corrective
+replacement asset byte size and SHA-256 are reported externally after archive
+construction, not embedded in this packaged README.
+The Zenodo record is <https://zenodo.org/records/20844596>, with version DOI
+`10.5281/zenodo.20844596` and concept DOI `10.5281/zenodo.20768672`.
+The Zenodo archived source file is
+`Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip`,
+212,947,668 bytes, MD5 `863e5077d4d29a827c6fcfd1181dce34`.
+
+Current evidence boundary: validation-selected edge-only attention residual
+refinement reports 15.073% all-non-development and 13.358% fresh gains versus
+the best retained candidate; 24.835% all-non-development and 45.329% fresh
+advantages versus the matched edge-only local/no-message control; and 3.983%
+all-non-development and 5.548% fresh advantages versus the edge-only mean
+graph. The future-only attention-vs-mean check remains weak/mixed.
+
+## Historical v1.2.3 Package Notes
+
+Historical package: `1.2.3-acf-holdout-audit` (`SPOT-OD v1.2.3 ACF holdout audit release`).
+The historical GitHub release URL is
 <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>.
 The v1.2.3 Zenodo DOI is `10.5281/zenodo.20825138`, record
 <https://zenodo.org/records/20825138>. The prior public v1.2.2 DOI
