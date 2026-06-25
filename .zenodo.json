@@ -1,7 +1,7 @@
 {
-  "title": "SPOT-OD v1.2.5 Zenodo metadata repair release",
+  "title": "SPOT-OD v1.2.8 residual-refine figure/archive metadata fix",
   "upload_type": "software",
-  "description": "Metadata-only repair release for SPOT-OD v1.2.5-zenodo-metadata-repair. This release repairs GitHub-to-Zenodo import metadata after the Zenodo record for v1.2.4-acf-prospective-guard, DOI 10.5281/zenodo.20836876, inherited stale GraphAnchorPairGate/v1.2.1 title, version, and description text even though the GitHub release, link, and file were for v1.2.4. This release adds no new scientific result and does not upgrade the evidence to operational precise-reference validation, independent-machine reproduction, full raw/training/all-filter rerun, learned-superiority evidence, third-party validation, or confirmatory operational readiness.",
+  "description": "Archive and metadata repair release for SPOT-OD v1.2.8-residual-refine-figure-archive-fix. This release supersedes the metadata-inconsistent v1.2.7 Zenodo import, where the latest DOI 10.5281/zenodo.20839901 visibly retained stale v1.2.5 title/version metadata while the archived file was v1.2.7. The release preserves the bounded evidence scope: v1.2.7 residual-refinement is a retained-candidate learned-output proof of concept with a main-text figure and package clarification, not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not isolated message-passing evidence, and not broad learned-OD validation.",
   "creators": [
     {
       "name": "Leo Alavi"
@@ -12,12 +12,12 @@
     "orbit determination",
     "satellite state estimation",
     "sparse visibility",
-    "AdaptiveCandidateFusion",
-    "Zenodo metadata repair",
+    "retained-candidate residual refinement",
     "reproducibility",
+    "Zenodo metadata repair",
     "negative results"
   ],
-  "version": "v1.2.5-zenodo-metadata-repair",
+  "version": "v1.2.8-residual-refine-figure-archive-fix",
   "language": "eng",
   "access_right": "open",
   "license": "cc-by-4.0",
@@ -28,8 +28,13 @@
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.5-zenodo-metadata-repair",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix",
       "relation": "isSupplementedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.7-residual-refine-poc",
+      "relation": "cites",
       "scheme": "url"
     },
     {
@@ -38,15 +43,10 @@
       "scheme": "doi"
     },
     {
-      "identifier": "10.5281/zenodo.20825138",
-      "relation": "cites",
-      "scheme": "doi"
-    },
-    {
-      "identifier": "10.5281/zenodo.20836876",
+      "identifier": "10.5281/zenodo.20839901",
       "relation": "isNewVersionOf",
       "scheme": "doi"
     }
   ],
-  "notes": "The v1.2.4 DOI 10.5281/zenodo.20836876 is treated here as the previous Zenodo record affected by a metadata import mismatch: its archived GitHub release link and file targeted v1.2.4-acf-prospective-guard, but its imported title/version/description text remained stale GraphAnchorPairGate/v1.2.1 metadata. The clean public access and integrity boundary remains v1.2.3-acf-holdout-audit, DOI 10.5281/zenodo.20825138, until a corrected v1.2.5 Zenodo DOI is verified. This release is metadata repair only and adds no new scientific result."
+  "notes": "This planned v1.2.8 metadata repair treats DOI 10.5281/zenodo.20839901 as the metadata-inconsistent record being superseded/repaired: visible metadata reports stale v1.2.5 text while the file is v1.2.7. The coherent public GitHub evidence release for the residual-refinement PoC remains v1.2.7-residual-refine-poc until v1.2.8 is published. No v1.2.8 DOI, release commit, archived-file hash, or asset hash is asserted by this metadata file before the release exists. The evidence remains a compact-simulator retained-candidate residual-refinement PoC only, with no upgrade to operational POD, public precise-reference validation, independent-machine reproduction, full raw/training/all-filter rerun, standalone learned recursive filtering, isolated message-passing evidence, or broad learned-OD validation."
 }

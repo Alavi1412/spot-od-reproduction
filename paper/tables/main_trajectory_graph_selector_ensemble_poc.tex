@@ -8,18 +8,18 @@
 \toprule
 Slice & Comparison & Rows & Obs. steps & Model RMSE (m) & Reference RMSE (m) & Gain/adv. (\%) & W/T/L & Interpretation \\
 \midrule
-All non-development & Attention residual-refine vs best-single & 230 & 6831 & 380.074 & 459.591 & 17.302 & 192/0/38 & Positive row/source-scenario gain CIs [12.967,21.274]/[13.229,21.340]\%; strongest retained-candidate learned-output aggregate. \\
+All non-development & Attention residual-refine vs best-single & 230 & 6831 & 380.074 & 459.591 & 17.302 & 192/0/38 & Positive row/source-scenario gain CIs [13.033,21.474]/[13.162,21.433]\%; strongest retained-candidate learned-output aggregate. \\
 All non-development & Local residual-refine vs best-single & 230 & 6831 & 386.776 & 459.591 & 15.843 & 163/0/67 & Strong local residual control; most of the gain does not require graph messages. \\
-All non-development & Attention residual-refine vs local residual & 230 & 6831 & 380.074 & 386.776 & 1.733 & 130/0/100 & Positive point margin, but row/source-scenario CIs [-0.713,4.202]/[-0.999,4.614]\% cross zero. \\
+All non-development & Attention residual-refine vs local residual & 230 & 6831 & 380.074 & 386.776 & 1.733 & 130/0/100 & Positive point margin, but row/source-scenario CIs [-0.822,4.126]/[-1.120,4.469]\% cross zero. \\
 All non-development & Attention residual-refine vs released attention selector & 230 & 6831 & 380.074 & 396.670 & 4.184 & 157/0/73 & Residual-refinement improves over the released pure selector; all-nondevelopment interval is positive. \\
 All non-development & Released attention selector vs best-single & 230 & 6831 & 396.670 & 459.591 & 13.691 & 125/101/4 & Superseded pure-selector result, limited to choosing one retained candidate trajectory. \\
 All non-development & Released mean selector vs best-single & 230 & 6831 & 403.771 & 459.591 & 12.146 & 117/99/14 & Existing mean-graph selector control. \\
 All non-development & Released local selector vs best-single & 230 & 6831 & 401.728 & 459.591 & 12.590 & 110/104/16 & Existing local/no-message selector control. \\
 All non-development & Released attention selector vs local selector & 230 & 6831 & 396.670 & 401.728 & 1.259 & 26/202/2 & Pure-selector graph/local margin is descriptive only. \\
 \addlinespace
-Fresh extra seeds 151/157/163/167 & Attention residual-refine vs best-single & 47 & 1426 & 374.438 & 445.943 & 16.035 & 39/0/8 & Positive row/source-scenario gain CIs [5.134,26.019]/[5.322,24.329]\% on unseen source-generation seeds. \\
+Fresh extra seeds 151/157/163/167 & Attention residual-refine vs best-single & 47 & 1426 & 374.438 & 445.943 & 16.035 & 39/0/8 & Positive row/source-scenario gain CIs [4.682,25.842]/[5.010,24.347]\% on unseen source-generation seeds. \\
 Fresh extra seeds 151/157/163/167 & Local residual-refine vs best-single & 47 & 1426 & 379.173 & 445.943 & 14.973 & 29/0/18 & Strong fresh local residual control. \\
-Fresh extra seeds 151/157/163/167 & Attention residual-refine vs local residual & 47 & 1426 & 374.438 & 379.173 & 1.249 & 25/0/22 & Positive point margin, but row/source-scenario CIs [-4.056,5.579]/[-5.180,5.157]\% cross zero. \\
+Fresh extra seeds 151/157/163/167 & Attention residual-refine vs local residual & 47 & 1426 & 374.438 & 379.173 & 1.249 & 25/0/22 & Positive point margin, but row/source-scenario CIs [-3.948,5.541]/[-4.874,5.188]\% cross zero. \\
 Fresh extra seeds 151/157/163/167 & Attention residual-refine vs released attention selector & 47 & 1426 & 374.438 & 387.159 & 3.286 & 33/0/14 & Residual-refinement point margin over the released selector; fresh interval crosses zero. \\
 Fresh extra seeds 151/157/163/167 & Released attention selector vs best-single & 47 & 1426 & 387.159 & 445.943 & 13.182 & 25/22/0 & Superseded pure-selector result remains positive versus best-single. \\
 Fresh extra seeds 151/157/163/167 & Released mean selector vs best-single & 47 & 1426 & 403.648 & 445.943 & 9.484 & 21/23/3 & Existing mean-graph selector control. \\
