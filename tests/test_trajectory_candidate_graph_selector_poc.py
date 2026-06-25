@@ -140,6 +140,7 @@ def test_graph_selector_forward_shape_and_candidate_masking() -> None:
 
     assert output["logits"].shape == torch.Size([2, 3])
     assert output["probabilities"].shape == torch.Size([2, 3])
+    assert "position_offsets" not in output
     assert output["probabilities"][0, 1].item() == pytest.approx(0.0)
     assert output["probabilities"][1, 0].item() == pytest.approx(0.0)
     torch.testing.assert_close(output["probabilities"].sum(dim=-1), torch.ones(2))
@@ -206,11 +207,44 @@ def test_graph_layer_type_defaults_to_mean_in_parser() -> None:
     args = selector.build_parser().parse_args([])
 
     assert args.graph_layer_type == "mean"
+    assert args.prediction_mode == "selector"
+    assert args.residual_loss_weight == pytest.approx(1.0)
+    assert args.development_validation_seed_min is None
 
 
 def test_graph_layer_type_rejects_invalid_cli_value() -> None:
     with pytest.raises(SystemExit):
         selector.build_parser().parse_args(["--graph-layer-type", "invalid"])
+
+
+def test_prediction_mode_rejects_invalid_cli_value() -> None:
+    with pytest.raises(SystemExit):
+        selector.build_parser().parse_args(["--prediction-mode", "invalid"])
+
+
+@pytest.mark.parametrize("raw_weight", ["-0.1", "nan", "inf"])
+def test_residual_loss_weight_rejects_invalid_values(raw_weight: str) -> None:
+    args = selector.build_parser().parse_args(["--residual-loss-weight", raw_weight])
+
+    with pytest.raises(SystemExit, match="residual-loss-weight"):
+        selector.validate_args(args)
+
+
+@pytest.mark.parametrize("validation_seed_min", ["67", "68"])
+def test_development_validation_seed_min_must_be_below_development_max(
+    validation_seed_min: str,
+) -> None:
+    args = selector.build_parser().parse_args(
+        [
+            "--development-seed-max-exclusive",
+            "67",
+            "--development-validation-seed-min",
+            validation_seed_min,
+        ]
+    )
+
+    with pytest.raises(SystemExit, match="development-validation-seed-min"):
+        selector.validate_args(args)
 
 
 def test_graph_selector_rejects_invalid_graph_layer_type() -> None:
@@ -223,6 +257,29 @@ def test_graph_selector_rejects_invalid_graph_layer_type() -> None:
             graph_layers=1,
             graph_layer_type="invalid",
         )
+
+
+def test_residual_refine_forward_returns_offsets_and_masks_invalid_candidates() -> None:
+    model = selector.TrajectoryCandidateGraphSelector(
+        node_feature_dim=5,
+        edge_feature_dim=3,
+        hidden_dim=8,
+        dropout=0.0,
+        graph_layers=1,
+        prediction_mode="residual_refine",
+    )
+
+    output = model(
+        node_features=torch.randn(2, 3, 5),
+        edge_features=torch.randn(2, 3, 3, 3),
+        candidate_mask=torch.tensor([[True, False, True], [False, True, True]]),
+    )
+
+    assert output["logits"].shape == torch.Size([2, 3])
+    assert output["probabilities"].shape == torch.Size([2, 3])
+    assert output["position_offsets"].shape == torch.Size([2, 3, 3])
+    torch.testing.assert_close(output["position_offsets"][0, 1], torch.zeros(3))
+    torch.testing.assert_close(output["position_offsets"][1, 0], torch.zeros(3))
 
 
 def _candidate_with_position_error(states: np.ndarray, error: float) -> np.ndarray:
@@ -258,6 +315,215 @@ def _write_tiny_prediction_dir(
         scenario_dir / selector.PREDICTION_FILENAME,
         **payload,
     )
+
+
+def test_development_validation_seed_min_splits_development_samples(tmp_path: Path) -> None:
+    train_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed5_split5_20260623"
+    validation_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed23_split23_20260623"
+    holdout_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed67_split67_20260623"
+    scenario = "process_noise_shift_test"
+    for source_dir in (train_dir, validation_dir, holdout_dir):
+        _write_tiny_prediction_dir(source_dir, scenario=scenario, ekf_error=1.0, ukf_error=2.0)
+    samples = selector.load_samples(
+        source_runs=[
+            selector.SourceRun(path=train_dir, seed=5, split=5),
+            selector.SourceRun(path=validation_dir, seed=23, split=23),
+            selector.SourceRun(path=holdout_dir, seed=67, split=67),
+        ],
+        scenarios=[scenario],
+        candidate_methods=["EKF", "UKF"],
+        baseline_candidate_methods=["EKF", "UKF"],
+    )
+
+    default_split = selector.split_development_samples(
+        samples,
+        development_seed_max_exclusive=67,
+    )
+    assert default_split.validation_enabled is False
+    assert len(default_split.development_samples) == 4
+    assert len(default_split.train_samples) == 4
+    assert default_split.validation_samples == []
+
+    validation_split = selector.split_development_samples(
+        samples,
+        development_seed_max_exclusive=67,
+        development_validation_seed_min=23,
+    )
+    selector.validate_development_sample_split(validation_split)
+    assert validation_split.validation_enabled is True
+    assert {sample.seed for sample in validation_split.train_samples} == {5}
+    assert {sample.seed for sample in validation_split.validation_samples} == {23}
+    assert len(validation_split.train_samples) == 2
+    assert len(validation_split.validation_samples) == 2
+
+    empty_train_split = selector.split_development_samples(
+        samples,
+        development_seed_max_exclusive=67,
+        development_validation_seed_min=5,
+    )
+    with pytest.raises(SystemExit, match="training samples"):
+        selector.validate_development_sample_split(empty_train_split)
+
+    empty_validation_split = selector.split_development_samples(
+        samples,
+        development_seed_max_exclusive=67,
+        development_validation_seed_min=66,
+    )
+    with pytest.raises(SystemExit, match="validation samples"):
+        selector.validate_development_sample_split(empty_validation_split)
+
+
+def test_train_selector_model_records_validation_checkpoint_metadata(tmp_path: Path) -> None:
+    train_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed5_split5_20260623"
+    validation_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed23_split23_20260623"
+    scenario = "process_noise_shift_test"
+    _write_tiny_prediction_dir(train_dir, scenario=scenario, ekf_error=0.0, ukf_error=3.0)
+    _write_tiny_prediction_dir(validation_dir, scenario=scenario, ekf_error=3.0, ukf_error=0.0)
+    samples = selector.load_samples(
+        source_runs=[
+            selector.SourceRun(path=train_dir, seed=5, split=5),
+            selector.SourceRun(path=validation_dir, seed=23, split=23),
+        ],
+        scenarios=[scenario],
+        candidate_methods=["EKF", "UKF"],
+        baseline_candidate_methods=["EKF", "UKF"],
+    )
+    development_split = selector.split_development_samples(
+        samples,
+        development_seed_max_exclusive=67,
+        development_validation_seed_min=23,
+    )
+    selector.validate_development_sample_split(development_split)
+    model_kwargs = {
+        "node_feature_dim": int(development_split.train_samples[0].node_features.shape[-1]),
+        "edge_feature_dim": int(development_split.train_samples[0].edge_features.shape[-1]),
+        "hidden_dim": 8,
+        "dropout": 0.0,
+        "graph_layers": 0,
+        "graph_layer_type": "mean",
+        "prediction_mode": "residual_refine",
+        "residual_offset_dim": selector.RESIDUAL_POSITION_DIM,
+    }
+    model = selector.TrajectoryCandidateGraphSelector(**model_kwargs)
+    training = selector.train_selector_model(
+        train_samples=development_split.train_samples,
+        validation_samples=development_split.validation_samples,
+        model=model,
+        output_dir=tmp_path / "out",
+        device=torch.device("cpu"),
+        epochs=1,
+        batch_size=4,
+        learning_rate=0.001,
+        weight_decay=0.0,
+        seed=123,
+        model_kwargs=model_kwargs,
+        candidate_methods=["EKF", "UKF"],
+        feature_names=selector.build_feature_names([scenario], ["EKF", "UKF"]),
+        edge_feature_names=selector.build_edge_feature_names(),
+        config={
+            "prediction_mode": "residual_refine",
+            "residual_loss_weight": 0.5,
+            "residual_offset_dim": selector.RESIDUAL_POSITION_DIM,
+            "residual_offset_application": selector.RESIDUAL_OFFSET_APPLICATION,
+        },
+        prediction_mode="residual_refine",
+        residual_loss_weight=0.5,
+    )
+
+    assert training["fit_sample_count"] == 2
+    assert training["train_sample_count"] == 2
+    assert training["validation_sample_count"] == 2
+    assert training["checkpoint_selection_metric"] == "validation_loss"
+    assert training["best_train_loss"] == pytest.approx(training["history"]["train_loss"][0])
+    assert training["best_validation_loss"] == pytest.approx(training["history"]["validation_loss"][0])
+    assert len(training["history"]["validation_loss"]) == 1
+    assert len(training["history"]["validation_ce_loss"]) == 1
+    assert len(training["history"]["validation_residual_mse"]) == 1
+
+    checkpoint = torch.load(training["best_checkpoint"], map_location="cpu", weights_only=False)
+    assert checkpoint["history"]["validation_loss"] == training["history"]["validation_loss"]
+    assert checkpoint["config"]["fit_sample_count"] == 2
+    assert checkpoint["config"]["validation_sample_count"] == 2
+    assert checkpoint["config"]["checkpoint_selection_metric"] == "validation_loss"
+    assert checkpoint["config"]["best_validation_loss"] == pytest.approx(training["best_validation_loss"])
+
+
+def test_train_selector_model_restores_in_memory_model_to_best_checkpoint(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    train_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed5_split5_20260623"
+    validation_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed23_split23_20260623"
+    scenario = "process_noise_shift_test"
+    _write_tiny_prediction_dir(train_dir, scenario=scenario, ekf_error=0.0, ukf_error=3.0)
+    _write_tiny_prediction_dir(validation_dir, scenario=scenario, ekf_error=3.0, ukf_error=0.0)
+    samples = selector.load_samples(
+        source_runs=[
+            selector.SourceRun(path=train_dir, seed=5, split=5),
+            selector.SourceRun(path=validation_dir, seed=23, split=23),
+        ],
+        scenarios=[scenario],
+        candidate_methods=["EKF", "UKF"],
+        baseline_candidate_methods=["EKF", "UKF"],
+    )
+    development_split = selector.split_development_samples(
+        samples,
+        development_seed_max_exclusive=67,
+        development_validation_seed_min=23,
+    )
+    selector.validate_development_sample_split(development_split)
+    model_kwargs = {
+        "node_feature_dim": int(development_split.train_samples[0].node_features.shape[-1]),
+        "edge_feature_dim": int(development_split.train_samples[0].edge_features.shape[-1]),
+        "hidden_dim": 8,
+        "dropout": 0.0,
+        "graph_layers": 0,
+        "graph_layer_type": "mean",
+        "prediction_mode": "selector",
+        "residual_offset_dim": selector.RESIDUAL_POSITION_DIM,
+    }
+    model = selector.TrajectoryCandidateGraphSelector(**model_kwargs)
+    validation_losses = iter([0.0, 1.0])
+
+    def fake_evaluate_selector_loss(**_: object) -> dict[str, float]:
+        loss = next(validation_losses)
+        return {"loss": loss, "ce_loss": loss, "residual_mse": 0.0}
+
+    monkeypatch.setattr(selector, "evaluate_selector_loss", fake_evaluate_selector_loss)
+    training = selector.train_selector_model(
+        train_samples=development_split.train_samples,
+        validation_samples=development_split.validation_samples,
+        model=model,
+        output_dir=tmp_path / "out",
+        device=torch.device("cpu"),
+        epochs=2,
+        batch_size=4,
+        learning_rate=0.05,
+        weight_decay=0.0,
+        seed=123,
+        model_kwargs=model_kwargs,
+        candidate_methods=["EKF", "UKF"],
+        feature_names=selector.build_feature_names([scenario], ["EKF", "UKF"]),
+        edge_feature_names=selector.build_edge_feature_names(),
+        config={
+            "prediction_mode": "selector",
+            "residual_loss_weight": 1.0,
+            "residual_offset_dim": selector.RESIDUAL_POSITION_DIM,
+            "residual_offset_application": selector.RESIDUAL_OFFSET_APPLICATION,
+        },
+        prediction_mode="selector",
+        residual_loss_weight=1.0,
+    )
+
+    best_checkpoint = torch.load(training["best_checkpoint"], map_location="cpu", weights_only=False)
+    last_checkpoint = torch.load(training["last_checkpoint"], map_location="cpu", weights_only=False)
+    assert training["history"]["validation_loss"] == [0.0, 1.0]
+    assert any(
+        not torch.equal(best_checkpoint["model_state_dict"][name], last_checkpoint["model_state_dict"][name])
+        for name in best_checkpoint["model_state_dict"]
+    )
+    for name, best_value in best_checkpoint["model_state_dict"].items():
+        torch.testing.assert_close(model.state_dict()[name], best_value)
 
 
 def test_load_samples_keeps_model_visible_mask_truth_free_when_label_rmse_is_nonfinite(
@@ -323,6 +589,87 @@ def test_evaluate_samples_masks_probability_selection_with_model_visible_mask(tm
     )
 
     assert {row["selected_candidate_method"] for row in rows} == {"UKF"}
+
+
+def test_residual_refine_evaluation_scores_probability_weighted_offsets(tmp_path: Path) -> None:
+    source_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed67_split67_20260623"
+    scenario = "process_noise_shift_test"
+    _write_tiny_prediction_dir(source_dir, scenario=scenario, ekf_error=2.0, ukf_error=2.0)
+    samples = selector.load_samples(
+        source_runs=[selector.SourceRun(path=source_dir, seed=67, split=67)],
+        scenarios=[scenario],
+        candidate_methods=["EKF", "UKF"],
+        baseline_candidate_methods=["EKF", "UKF"],
+    )
+    probabilities = np.tile(np.asarray([[0.25, 0.75]], dtype=np.float32), (len(samples), 1))
+    position_offsets = np.zeros((len(samples), 2, 3), dtype=np.float32)
+    position_offsets[:, :, 0] = -2.0
+
+    rows = selector.evaluate_samples_from_probabilities(
+        probabilities=probabilities,
+        position_offsets=position_offsets,
+        samples=samples,
+        candidate_methods=["EKF", "UKF"],
+        baseline_candidate_methods=["EKF", "UKF"],
+        development_seed_max_exclusive=67,
+        holdout_seed_min=67,
+        future_seed_min=109,
+        prediction_mode="residual_refine",
+    )
+
+    assert {row["prediction_mode"] for row in rows} == {"residual_refine"}
+    assert {row["selected_candidate_method"] for row in rows} == {"UKF"}
+    assert {row["selected_prediction_source"] for row in rows} == {
+        "probability_weighted_candidate_plus_offset"
+    }
+    assert {row["residual_offset_application"] for row in rows} == {
+        selector.RESIDUAL_OFFSET_APPLICATION
+    }
+    for row in rows:
+        assert row["selected_observed_step_rmse_m"] == pytest.approx(0.0)
+        assert row["best_single_trajectory_observed_step_rmse_m"] == pytest.approx(2.0)
+
+
+def test_predict_ensemble_outputs_returns_averaged_residual_offsets(tmp_path: Path) -> None:
+    source_dir = tmp_path / "adaptive_candidate_fusion_observed_fixed_soft_seed67_split67_20260623"
+    scenario = "process_noise_shift_test"
+    _write_tiny_prediction_dir(source_dir, scenario=scenario, ekf_error=1.0, ukf_error=2.0)
+    samples = selector.load_samples(
+        source_runs=[selector.SourceRun(path=source_dir, seed=67, split=67)],
+        scenarios=[scenario],
+        candidate_methods=["EKF", "UKF"],
+        baseline_candidate_methods=["EKF", "UKF"],
+    )
+    models = [
+        selector.TrajectoryCandidateGraphSelector(
+            node_feature_dim=samples[0].node_features.shape[-1],
+            edge_feature_dim=samples[0].edge_features.shape[-1],
+            hidden_dim=8,
+            dropout=0.0,
+            graph_layers=0,
+            prediction_mode="residual_refine",
+        )
+        for _ in range(2)
+    ]
+    for model, x_bias in zip(models, (1.0, 3.0), strict=True):
+        with torch.no_grad():
+            for param in model.parameters():
+                param.zero_()
+            assert model.residual_head is not None
+            model.residual_head[-1].bias.copy_(torch.tensor([x_bias, 0.0, 0.0]))
+
+    outputs = selector.predict_ensemble_outputs(
+        models=models,
+        samples=samples,
+        device=torch.device("cpu"),
+        batch_size=4,
+        include_position_offsets=True,
+    )
+
+    assert outputs["probabilities"].shape == (len(samples), 2)
+    assert outputs["position_offsets"].shape == (len(samples), 2, 3)
+    np.testing.assert_allclose(outputs["position_offsets"][:, :, 0], 2.0, atol=1.0e-6)
+    np.testing.assert_allclose(outputs["position_offsets"][:, :, 1:], 0.0, atol=1.0e-6)
 
 
 def test_restricted_selector_scores_against_full_baseline_denominator(tmp_path: Path) -> None:
@@ -443,22 +790,48 @@ def test_smoke_cli_writes_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
     assert summary["schema_version"] == selector.SCHEMA_VERSION
     assert selector.BOUNDARY_STATEMENT in summary["boundary_statement"]
     assert summary["train_sample_count"] == 2
+    assert summary["development_validation_seed_min"] is None
+    assert summary["development_validation_enabled"] is False
+    assert summary["development_sample_count"] == 2
+    assert summary["fit_sample_count"] == 2
+    assert summary["validation_sample_count"] == 0
+    assert summary["checkpoint_selection_metric"] == "train_loss"
+    assert summary["training"]["validation_sample_count"] == 0
+    assert summary["training"]["checkpoint_selection_metric"] == "train_loss"
     assert summary["aggregate_tiers"]["fresh_extra"]["rows"] == 2
     assert summary["aggregate_tiers"]["all_eval_non_development"]["rows"] == 4
     assert summary["graph_layers"] == 0
     assert summary["graph_layer_type"] == "mean"
+    assert summary["prediction_mode"] == "selector"
+    assert summary["residual_loss_weight"] == pytest.approx(1.0)
+    assert summary["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
+    assert summary["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
     assert summary["message_passing_enabled"] is False
     assert summary["model_kwargs"]["graph_layers"] == 0
     assert summary["model_kwargs"]["graph_layer_type"] == "mean"
+    assert summary["model_kwargs"]["prediction_mode"] == "selector"
+    assert summary["model_kwargs"]["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
     checkpoint = torch.load(output_dir / "checkpoints" / "best_selector.pt", map_location="cpu", weights_only=False)
     assert checkpoint["model_kwargs"]["graph_layers"] == 0
     assert checkpoint["model_kwargs"]["graph_layer_type"] == "mean"
+    assert checkpoint["model_kwargs"]["prediction_mode"] == "selector"
+    assert checkpoint["model_kwargs"]["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
     assert checkpoint["graph_layers"] == 0
     assert checkpoint["graph_layer_type"] == "mean"
+    assert checkpoint["prediction_mode"] == "selector"
+    assert checkpoint["residual_loss_weight"] == pytest.approx(1.0)
+    assert checkpoint["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
+    assert checkpoint["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
     assert checkpoint["message_passing_enabled"] is False
     assert checkpoint["config"]["graph_layers"] == 0
     assert checkpoint["config"]["graph_layer_type"] == "mean"
+    assert checkpoint["config"]["prediction_mode"] == "selector"
+    assert checkpoint["config"]["residual_loss_weight"] == pytest.approx(1.0)
+    assert checkpoint["config"]["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
+    assert checkpoint["config"]["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
     assert checkpoint["config"]["message_passing_enabled"] is False
+    assert checkpoint["config"]["validation_sample_count"] == 0
+    assert checkpoint["config"]["checkpoint_selection_metric"] == "train_loss"
 
 
 def test_smoke_cli_writes_ensemble_member_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
@@ -508,6 +881,9 @@ def test_smoke_cli_writes_ensemble_member_artifacts_with_cpu_opt_in(tmp_path: Pa
     assert summary["ensemble_member_seeds"] == [101, 103]
     assert summary["graph_layers"] == 2
     assert summary["graph_layer_type"] == "mean"
+    assert summary["prediction_mode"] == "selector"
+    assert summary["residual_loss_weight"] == pytest.approx(1.0)
+    assert summary["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
     assert summary["message_passing_enabled"] is True
     assert summary["evaluation_used_averaged_probabilities"] is True
     assert summary["ensemble"]["probability_aggregation"] == "arithmetic_mean"

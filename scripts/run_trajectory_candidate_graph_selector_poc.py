@@ -43,6 +43,9 @@ DEFAULT_CANDIDATE_METHODS = "EKF,UKF,AUKF,BatchWLS,RFIS,VA_RFIS"
 DEFAULT_BASELINE_CANDIDATE_METHODS = DEFAULT_CANDIDATE_METHODS
 SUPPORTED_CANDIDATE_METHODS = ("EKF", "UKF", "AUKF", "BatchWLS", "RFIS", "VA_RFIS")
 SUPPORTED_GRAPH_LAYER_TYPES = ("mean", "attention")
+SUPPORTED_PREDICTION_MODES = ("selector", "residual_refine")
+RESIDUAL_POSITION_DIM = 3
+RESIDUAL_OFFSET_APPLICATION = "per_candidate_constant_position_offset"
 TIER_NAMES = (
     "development_seed_lt_67",
     "holdout_seed_ge_67",
@@ -96,6 +99,14 @@ class TrajectorySample:
     baseline: BaselineResult | None = None
 
 
+@dataclass(frozen=True)
+class DevelopmentSampleSplit:
+    development_samples: list[TrajectorySample]
+    train_samples: list[TrajectorySample]
+    validation_samples: list[TrajectorySample]
+    validation_enabled: bool
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-glob", type=str, default=DEFAULT_SOURCE_GLOB)
@@ -105,12 +116,15 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--candidate-methods", type=str, default=DEFAULT_CANDIDATE_METHODS)
     parser.add_argument("--baseline-candidate-methods", type=str, default=DEFAULT_BASELINE_CANDIDATE_METHODS)
     parser.add_argument("--development-seed-max-exclusive", type=int, default=67)
+    parser.add_argument("--development-validation-seed-min", type=int, default=None)
     parser.add_argument("--holdout-seed-min", type=int, default=67)
     parser.add_argument("--future-seed-min", type=int, default=109)
     parser.add_argument("--epochs", type=int, default=500)
     parser.add_argument("--hidden-dim", type=int, default=64)
     parser.add_argument("--graph-layers", type=int, default=2)
     parser.add_argument("--graph-layer-type", choices=SUPPORTED_GRAPH_LAYER_TYPES, default="mean")
+    parser.add_argument("--prediction-mode", choices=SUPPORTED_PREDICTION_MODES, default="selector")
+    parser.add_argument("--residual-loss-weight", type=float, default=1.0)
     parser.add_argument("--learning-rate", type=float, default=0.002)
     parser.add_argument("--weight-decay", type=float, default=0.002)
     parser.add_argument("--dropout", type=float, default=0.2)
@@ -125,6 +139,20 @@ def build_parser() -> argparse.ArgumentParser:
 
 def parse_csv(raw: str) -> list[str]:
     return [part.strip() for part in str(raw).split(",") if part.strip()]
+
+
+def validate_prediction_mode(prediction_mode: str) -> str:
+    mode = str(prediction_mode)
+    if mode not in SUPPORTED_PREDICTION_MODES:
+        raise ValueError(f"prediction_mode must be one of {SUPPORTED_PREDICTION_MODES}.")
+    return mode
+
+
+def validate_residual_loss_weight(value: float) -> float:
+    weight = float(value)
+    if not math.isfinite(weight) or weight < 0.0:
+        raise ValueError("--residual-loss-weight must be finite and non-negative.")
+    return weight
 
 
 def resolve_ensemble_member_seeds(
@@ -484,6 +512,99 @@ def rmse_from_sse_count(sse: float, count: int) -> float:
     return float(math.sqrt(max(float(sse), 0.0) / float(count)))
 
 
+def probability_weighted_refined_positions_tensor(
+    *,
+    candidate_positions: torch.Tensor,
+    probabilities: torch.Tensor,
+    position_offsets: torch.Tensor,
+    candidate_mask: torch.Tensor,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    positions = torch.nan_to_num(candidate_positions, nan=0.0, posinf=0.0, neginf=0.0)
+    offsets = torch.nan_to_num(position_offsets, nan=0.0, posinf=0.0, neginf=0.0)
+    finite_candidate_steps = torch.isfinite(candidate_positions).all(dim=-1)
+    available_steps = finite_candidate_steps & candidate_mask.to(dtype=torch.bool).unsqueeze(1)
+    weights = probabilities.unsqueeze(1) * available_steps.to(dtype=probabilities.dtype)
+    denom = weights.sum(dim=2, keepdim=True)
+    valid_steps = denom.squeeze(-1) > torch.finfo(weights.dtype).eps
+    normalized = weights / denom.clamp_min(torch.finfo(weights.dtype).eps)
+    refined_candidates = positions + offsets.unsqueeze(1)
+    refined_positions = (refined_candidates * normalized.unsqueeze(-1)).sum(dim=2)
+    return refined_positions, valid_steps
+
+
+def residual_refine_mse_loss(
+    *,
+    candidate_positions: torch.Tensor,
+    state_positions: torch.Tensor,
+    observed_mask: torch.Tensor,
+    probabilities: torch.Tensor,
+    position_offsets: torch.Tensor,
+    candidate_mask: torch.Tensor,
+) -> torch.Tensor:
+    refined_positions, valid_steps = probability_weighted_refined_positions_tensor(
+        candidate_positions=candidate_positions,
+        probabilities=probabilities,
+        position_offsets=position_offsets,
+        candidate_mask=candidate_mask,
+    )
+    finite_truth = torch.isfinite(state_positions).all(dim=-1)
+    valid = observed_mask.to(dtype=torch.bool) & finite_truth & valid_steps
+    if not torch.any(valid):
+        return probabilities.sum() * 0.0 + position_offsets.sum() * 0.0
+    truth = torch.nan_to_num(state_positions, nan=0.0, posinf=0.0, neginf=0.0)
+    return F.mse_loss(refined_positions[valid], truth[valid])
+
+
+def _normalized_candidate_weights(probabilities: np.ndarray, available: np.ndarray) -> np.ndarray:
+    probs = np.asarray(probabilities, dtype=np.float64)
+    available_arr = np.asarray(available, dtype=bool)
+    if probs.shape != available_arr.shape:
+        raise ValueError("probabilities and candidate availability must have matching shape.")
+    weights = np.where(available_arr & np.isfinite(probs) & (probs > 0.0), probs, 0.0)
+    total = float(weights.sum())
+    if total > 0.0:
+        return weights / total
+    available_count = int(available_arr.sum())
+    if available_count <= 0:
+        raise ValueError("sample has no model-visible candidates.")
+    return available_arr.astype(np.float64) / float(available_count)
+
+
+def probability_weighted_refined_positions_numpy(
+    *,
+    candidate_bank: np.ndarray,
+    probabilities: np.ndarray,
+    position_offsets: np.ndarray,
+    candidate_mask: np.ndarray,
+) -> np.ndarray:
+    bank_pos = np.asarray(candidate_bank, dtype=np.float64)[..., :RESIDUAL_POSITION_DIM]
+    offsets = np.nan_to_num(
+        np.asarray(position_offsets, dtype=np.float64),
+        nan=0.0,
+        posinf=0.0,
+        neginf=0.0,
+    )
+    available = np.asarray(candidate_mask, dtype=bool)
+    if bank_pos.ndim != 3:
+        raise ValueError("candidate_bank must have shape [time, candidate_count, state_dim].")
+    if offsets.shape != (bank_pos.shape[1], RESIDUAL_POSITION_DIM):
+        raise ValueError("position_offsets must have shape [candidate_count, 3].")
+    weights = _normalized_candidate_weights(probabilities, available)
+    finite_steps = np.all(np.isfinite(bank_pos), axis=-1) & available.reshape(1, -1)
+    step_weights = np.where(finite_steps, weights.reshape(1, -1), 0.0)
+    denom = step_weights.sum(axis=1)
+    refined_positions = np.full((bank_pos.shape[0], RESIDUAL_POSITION_DIM), np.nan, dtype=np.float64)
+    valid_steps = denom > 0.0
+    if np.any(valid_steps):
+        refined_candidates = bank_pos + offsets.reshape(1, offsets.shape[0], offsets.shape[1])
+        weighted = (
+            np.nan_to_num(refined_candidates[valid_steps], nan=0.0, posinf=0.0, neginf=0.0)
+            * step_weights[valid_steps, :, None]
+        )
+        refined_positions[valid_steps] = weighted.sum(axis=1) / denom[valid_steps, None]
+    return refined_positions
+
+
 def observed_step_rmse_by_candidate(
     states: np.ndarray,
     candidate_bank: np.ndarray,
@@ -701,21 +822,81 @@ def load_samples(
     return samples
 
 
+def split_development_samples(
+    samples: list[TrajectorySample],
+    *,
+    development_seed_max_exclusive: int,
+    development_validation_seed_min: int | None = None,
+) -> DevelopmentSampleSplit:
+    development_samples = [
+        sample
+        for sample in samples
+        if (not sample.source_is_extra) and sample.seed < int(development_seed_max_exclusive)
+    ]
+    if development_validation_seed_min is None:
+        return DevelopmentSampleSplit(
+            development_samples=development_samples,
+            train_samples=development_samples,
+            validation_samples=[],
+            validation_enabled=False,
+        )
+
+    validation_seed_min = int(development_validation_seed_min)
+    train_samples = [sample for sample in development_samples if sample.seed < validation_seed_min]
+    validation_samples = [
+        sample
+        for sample in development_samples
+        if validation_seed_min <= sample.seed < int(development_seed_max_exclusive)
+    ]
+    return DevelopmentSampleSplit(
+        development_samples=development_samples,
+        train_samples=train_samples,
+        validation_samples=validation_samples,
+        validation_enabled=True,
+    )
+
+
+def validate_development_sample_split(split: DevelopmentSampleSplit) -> None:
+    if not split.train_samples:
+        if split.validation_enabled:
+            raise SystemExit("no development training samples found with seed < --development-validation-seed-min.")
+        raise SystemExit("no development training samples found with seed < --development-seed-max-exclusive.")
+    if split.validation_enabled and not split.validation_samples:
+        raise SystemExit(
+            "no development validation samples found with "
+            "--development-validation-seed-min <= seed < --development-seed-max-exclusive."
+        )
+
+
 class TrajectorySelectorDataset(Dataset):
-    def __init__(self, samples: list[TrajectorySample]) -> None:
+    def __init__(self, samples: list[TrajectorySample], *, include_residual_targets: bool = False) -> None:
         self.samples = list(samples)
+        self.include_residual_targets = bool(include_residual_targets)
 
     def __len__(self) -> int:
         return len(self.samples)
 
     def __getitem__(self, index: int) -> dict[str, torch.Tensor]:
         sample = self.samples[index]
-        return {
+        item = {
             "node_features": torch.from_numpy(sample.node_features.astype(np.float32, copy=False)),
             "edge_features": torch.from_numpy(sample.edge_features.astype(np.float32, copy=False)),
             "candidate_mask": torch.from_numpy(sample.candidate_mask.astype(bool, copy=False)),
             "label": torch.tensor(sample.label, dtype=torch.long),
         }
+        if self.include_residual_targets:
+            item.update(
+                {
+                    "candidate_positions": torch.from_numpy(
+                        sample.candidate_bank[:, :, :RESIDUAL_POSITION_DIM].astype(np.float32, copy=False)
+                    ),
+                    "state_positions": torch.from_numpy(
+                        sample.states[:, :RESIDUAL_POSITION_DIM].astype(np.float32, copy=False)
+                    ),
+                    "observed_mask": torch.from_numpy(sample.observed_mask.astype(bool, copy=False)),
+                }
+            )
+        return item
 
 
 class CandidateEdgeGraphLayer(nn.Module):
@@ -812,6 +993,8 @@ class TrajectoryCandidateGraphSelector(nn.Module):
         dropout: float = 0.2,
         graph_layers: int = 2,
         graph_layer_type: str = "mean",
+        prediction_mode: str = "selector",
+        residual_offset_dim: int = RESIDUAL_POSITION_DIM,
     ) -> None:
         super().__init__()
         if node_feature_dim <= 0 or edge_feature_dim <= 0:
@@ -822,7 +1005,12 @@ class TrajectoryCandidateGraphSelector(nn.Module):
             raise ValueError("graph_layers must be non-negative.")
         if graph_layer_type not in SUPPORTED_GRAPH_LAYER_TYPES:
             raise ValueError(f"graph_layer_type must be one of {SUPPORTED_GRAPH_LAYER_TYPES}.")
+        mode = validate_prediction_mode(prediction_mode)
+        if int(residual_offset_dim) != RESIDUAL_POSITION_DIM:
+            raise ValueError(f"residual_offset_dim must be {RESIDUAL_POSITION_DIM}.")
         self.graph_layer_type = graph_layer_type
+        self.prediction_mode = mode
+        self.residual_offset_dim = int(residual_offset_dim)
         self.message_passing_enabled = bool(graph_layers > 0)
         graph_layer_cls = (
             CandidateEdgeGraphLayer if graph_layer_type == "mean" else CandidateEdgeAttentionGraphLayer
@@ -841,6 +1029,16 @@ class TrajectoryCandidateGraphSelector(nn.Module):
             nn.Dropout(dropout),
             nn.Linear(hidden_dim, 1),
         )
+        self.residual_head = (
+            nn.Sequential(
+                nn.Linear(hidden_dim, hidden_dim),
+                nn.GELU(),
+                nn.Dropout(dropout),
+                nn.Linear(hidden_dim, self.residual_offset_dim),
+            )
+            if self.prediction_mode == "residual_refine"
+            else None
+        )
 
     def forward(
         self,
@@ -858,7 +1056,13 @@ class TrajectoryCandidateGraphSelector(nn.Module):
         probabilities = torch.where(mask, probabilities, torch.zeros_like(probabilities))
         norm = probabilities.sum(dim=-1, keepdim=True).clamp_min(torch.finfo(probabilities.dtype).eps)
         probabilities = probabilities / norm
-        return {"logits": logits, "probabilities": probabilities}
+        output = {"logits": logits, "probabilities": probabilities}
+        if self.residual_head is not None:
+            position_offsets = self.residual_head(h)
+            position_offsets = torch.nan_to_num(position_offsets, nan=0.0, posinf=0.0, neginf=0.0)
+            position_offsets = torch.where(mask.unsqueeze(-1), position_offsets, torch.zeros_like(position_offsets))
+            output["position_offsets"] = position_offsets
+        return output
 
 
 def _save_checkpoint(
@@ -881,6 +1085,12 @@ def _save_checkpoint(
             "model_kwargs": model_kwargs,
             "graph_layers": int(model_kwargs.get("graph_layers", 0)),
             "graph_layer_type": str(model_kwargs.get("graph_layer_type", "mean")),
+            "prediction_mode": str(model_kwargs.get("prediction_mode", "selector")),
+            "residual_offset_dim": int(model_kwargs.get("residual_offset_dim", RESIDUAL_POSITION_DIM)),
+            "residual_offset_application": str(
+                config.get("residual_offset_application", RESIDUAL_OFFSET_APPLICATION)
+            ),
+            "residual_loss_weight": float(config.get("residual_loss_weight", 1.0)),
             "message_passing_enabled": bool(int(model_kwargs.get("graph_layers", 0)) > 0),
             "candidate_methods": candidate_methods,
             "feature_names": feature_names,
@@ -892,9 +1102,108 @@ def _save_checkpoint(
     )
 
 
+def _selector_batch_losses(
+    *,
+    model: TrajectoryCandidateGraphSelector,
+    batch: dict[str, torch.Tensor],
+    device: torch.device,
+    prediction_mode: str,
+    residual_loss_weight: float,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    node_features = batch["node_features"].to(device)
+    edge_features = batch["edge_features"].to(device)
+    candidate_mask = batch["candidate_mask"].to(device)
+    labels = batch["label"].to(device)
+    output = model(node_features, edge_features, candidate_mask)
+    ce_loss = F.cross_entropy(output["logits"], labels)
+    if prediction_mode == "residual_refine":
+        if "position_offsets" not in output:
+            raise RuntimeError("residual_refine mode requires model position_offsets output.")
+        residual_mse = residual_refine_mse_loss(
+            candidate_positions=batch["candidate_positions"].to(device),
+            state_positions=batch["state_positions"].to(device),
+            observed_mask=batch["observed_mask"].to(device),
+            probabilities=output["probabilities"],
+            position_offsets=output["position_offsets"],
+            candidate_mask=candidate_mask,
+        )
+        loss = ce_loss + float(residual_loss_weight) * residual_mse
+    else:
+        residual_mse = ce_loss.detach() * 0.0
+        loss = ce_loss
+    return loss, ce_loss, residual_mse
+
+
+def _empty_loss_totals() -> dict[str, float | int]:
+    return {"loss": 0.0, "ce_loss": 0.0, "residual_mse": 0.0, "count": 0}
+
+
+def _add_batch_loss_totals(
+    totals: dict[str, float | int],
+    *,
+    loss: torch.Tensor,
+    ce_loss: torch.Tensor,
+    residual_mse: torch.Tensor,
+    batch_count: int,
+) -> None:
+    totals["loss"] = float(totals["loss"]) + float(loss.detach().cpu()) * int(batch_count)
+    totals["ce_loss"] = float(totals["ce_loss"]) + float(ce_loss.detach().cpu()) * int(batch_count)
+    totals["residual_mse"] = float(totals["residual_mse"]) + float(residual_mse.detach().cpu()) * int(batch_count)
+    totals["count"] = int(totals["count"]) + int(batch_count)
+
+
+def _averaged_loss_totals(totals: dict[str, float | int]) -> dict[str, float]:
+    count = float(max(int(totals["count"]), 1))
+    return {
+        "loss": float(totals["loss"]) / count,
+        "ce_loss": float(totals["ce_loss"]) / count,
+        "residual_mse": float(totals["residual_mse"]) / count,
+    }
+
+
+def evaluate_selector_loss(
+    *,
+    model: TrajectoryCandidateGraphSelector,
+    samples: list[TrajectorySample],
+    device: torch.device,
+    batch_size: int,
+    prediction_mode: str,
+    residual_loss_weight: float,
+) -> dict[str, float]:
+    if not samples:
+        raise ValueError("no validation samples were available.")
+    mode = validate_prediction_mode(prediction_mode)
+    residual_weight = validate_residual_loss_weight(residual_loss_weight)
+    dataset = TrajectorySelectorDataset(
+        samples,
+        include_residual_targets=mode == "residual_refine",
+    )
+    loader = DataLoader(dataset, batch_size=int(batch_size), shuffle=False, num_workers=0)
+    totals = _empty_loss_totals()
+    model.eval()
+    with torch.no_grad():
+        for batch in loader:
+            loss, ce_loss, residual_mse = _selector_batch_losses(
+                model=model,
+                batch=batch,
+                device=device,
+                prediction_mode=mode,
+                residual_loss_weight=residual_weight,
+            )
+            _add_batch_loss_totals(
+                totals,
+                loss=loss,
+                ce_loss=ce_loss,
+                residual_mse=residual_mse,
+                batch_count=int(batch["label"].shape[0]),
+            )
+    return _averaged_loss_totals(totals)
+
+
 def train_selector_model(
     *,
     train_samples: list[TrajectorySample],
+    validation_samples: list[TrajectorySample] | None = None,
     model: TrajectoryCandidateGraphSelector,
     output_dir: Path,
     device: torch.device,
@@ -909,10 +1218,16 @@ def train_selector_model(
     edge_feature_names: list[str],
     config: dict[str, Any],
     checkpoint_dir: Path | None = None,
+    prediction_mode: str = "selector",
+    residual_loss_weight: float = 1.0,
 ) -> dict[str, Any]:
     if not train_samples:
         raise ValueError("no development training samples were available.")
-    dataset = TrajectorySelectorDataset(train_samples)
+    mode = validate_prediction_mode(prediction_mode)
+    residual_weight = validate_residual_loss_weight(residual_loss_weight)
+    validation_samples = list(validation_samples or [])
+    checkpoint_selection_metric = "validation_loss" if validation_samples else "train_loss"
+    dataset = TrajectorySelectorDataset(train_samples, include_residual_targets=mode == "residual_refine")
     generator = torch.Generator()
     generator.manual_seed(int(seed))
     loader = DataLoader(
@@ -925,31 +1240,81 @@ def train_selector_model(
     model.to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=float(learning_rate), weight_decay=float(weight_decay))
     history: dict[str, list[float]] = {"train_loss": []}
-    best_loss = float("inf")
+    if validation_samples:
+        history["validation_loss"] = []
+    if mode == "residual_refine":
+        history["train_ce_loss"] = []
+        history["train_residual_mse"] = []
+        if validation_samples:
+            history["validation_ce_loss"] = []
+            history["validation_residual_mse"] = []
+    checkpoint_config = {
+        **config,
+        "fit_sample_count": len(train_samples),
+        "train_sample_count": len(train_samples),
+        "validation_sample_count": len(validation_samples),
+        "checkpoint_selection_metric": checkpoint_selection_metric,
+    }
+    best_checkpoint_loss = float("inf")
+    best_train_loss = float("inf")
+    best_validation_loss: float | None = None
     ckpt_dir = output_dir / "checkpoints" if checkpoint_dir is None else Path(checkpoint_dir)
     best_path = ckpt_dir / "best_selector.pt"
     last_path = ckpt_dir / "last_selector.pt"
     for epoch in range(1, int(epochs) + 1):
         model.train()
-        total_loss = 0.0
-        total_count = 0
+        train_totals = _empty_loss_totals()
         for batch in loader:
-            node_features = batch["node_features"].to(device)
-            edge_features = batch["edge_features"].to(device)
-            candidate_mask = batch["candidate_mask"].to(device)
-            labels = batch["label"].to(device)
             optimizer.zero_grad(set_to_none=True)
-            output = model(node_features, edge_features, candidate_mask)
-            loss = F.cross_entropy(output["logits"], labels)
+            loss, ce_loss, residual_mse = _selector_batch_losses(
+                model=model,
+                batch=batch,
+                device=device,
+                prediction_mode=mode,
+                residual_loss_weight=residual_weight,
+            )
             loss.backward()
             optimizer.step()
-            batch_count = int(labels.shape[0])
-            total_loss += float(loss.detach().cpu()) * batch_count
-            total_count += batch_count
-        epoch_loss = total_loss / float(max(total_count, 1))
+            _add_batch_loss_totals(
+                train_totals,
+                loss=loss,
+                ce_loss=ce_loss,
+                residual_mse=residual_mse,
+                batch_count=int(batch["label"].shape[0]),
+            )
+        train_losses = _averaged_loss_totals(train_totals)
+        epoch_loss = train_losses["loss"]
         history["train_loss"].append(epoch_loss)
-        if epoch_loss < best_loss:
-            best_loss = epoch_loss
+        best_train_loss = min(best_train_loss, epoch_loss)
+        if mode == "residual_refine":
+            history["train_ce_loss"].append(train_losses["ce_loss"])
+            history["train_residual_mse"].append(train_losses["residual_mse"])
+        validation_loss = None
+        if validation_samples:
+            validation_losses = evaluate_selector_loss(
+                model=model,
+                samples=validation_samples,
+                device=device,
+                batch_size=int(batch_size),
+                prediction_mode=mode,
+                residual_loss_weight=residual_weight,
+            )
+            validation_loss = validation_losses["loss"]
+            best_validation_loss = (
+                validation_loss
+                if best_validation_loss is None
+                else min(best_validation_loss, validation_loss)
+            )
+            history["validation_loss"].append(validation_loss)
+            if mode == "residual_refine":
+                history["validation_ce_loss"].append(validation_losses["ce_loss"])
+                history["validation_residual_mse"].append(validation_losses["residual_mse"])
+        checkpoint_config["best_train_loss"] = best_train_loss
+        if best_validation_loss is not None:
+            checkpoint_config["best_validation_loss"] = best_validation_loss
+        selection_loss = validation_loss if validation_loss is not None else epoch_loss
+        if selection_loss < best_checkpoint_loss:
+            best_checkpoint_loss = selection_loss
             _save_checkpoint(
                 best_path,
                 model=model,
@@ -958,7 +1323,7 @@ def train_selector_model(
                 feature_names=feature_names,
                 edge_feature_names=edge_feature_names,
                 history=history,
-                config=config,
+                config=checkpoint_config,
             )
     _save_checkpoint(
         last_path,
@@ -968,14 +1333,60 @@ def train_selector_model(
         feature_names=feature_names,
         edge_feature_names=edge_feature_names,
         history=history,
-        config=config,
+        config=checkpoint_config,
     )
-    return {
+    best_checkpoint = torch.load(best_path, map_location=device, weights_only=False)
+    model.load_state_dict(best_checkpoint["model_state_dict"])
+    model.to(device)
+    result = {
         "history": history,
-        "best_train_loss": best_loss,
+        "fit_sample_count": len(train_samples),
+        "train_sample_count": len(train_samples),
+        "validation_sample_count": len(validation_samples),
+        "checkpoint_selection_metric": checkpoint_selection_metric,
+        "best_train_loss": best_train_loss,
         "best_checkpoint": str(best_path),
         "last_checkpoint": str(last_path),
     }
+    if best_validation_loss is not None:
+        result["best_validation_loss"] = best_validation_loss
+    return result
+
+
+def predict_model_outputs(
+    *,
+    model: TrajectoryCandidateGraphSelector,
+    samples: list[TrajectorySample],
+    device: torch.device,
+    batch_size: int,
+    include_position_offsets: bool = False,
+) -> dict[str, np.ndarray]:
+    dataset = TrajectorySelectorDataset(samples)
+    loader = DataLoader(dataset, batch_size=int(batch_size), shuffle=False, num_workers=0)
+    model.eval()
+    probability_chunks: list[np.ndarray] = []
+    offset_chunks: list[np.ndarray] = []
+    with torch.no_grad():
+        for batch in loader:
+            output = model(
+                batch["node_features"].to(device),
+                batch["edge_features"].to(device),
+                batch["candidate_mask"].to(device),
+            )
+            probability_chunks.append(output["probabilities"].detach().cpu().numpy())
+            if include_position_offsets:
+                if "position_offsets" not in output:
+                    raise RuntimeError("residual_refine prediction requires model position_offsets output.")
+                offset_chunks.append(output["position_offsets"].detach().cpu().numpy())
+    if not probability_chunks:
+        empty: dict[str, np.ndarray] = {"probabilities": np.zeros((0, 0), dtype=np.float32)}
+        if include_position_offsets:
+            empty["position_offsets"] = np.zeros((0, 0, RESIDUAL_POSITION_DIM), dtype=np.float32)
+        return empty
+    result = {"probabilities": np.concatenate(probability_chunks, axis=0)}
+    if include_position_offsets:
+        result["position_offsets"] = np.concatenate(offset_chunks, axis=0)
+    return result
 
 
 def predict_probabilities(
@@ -985,21 +1396,12 @@ def predict_probabilities(
     device: torch.device,
     batch_size: int,
 ) -> np.ndarray:
-    dataset = TrajectorySelectorDataset(samples)
-    loader = DataLoader(dataset, batch_size=int(batch_size), shuffle=False, num_workers=0)
-    model.eval()
-    chunks: list[np.ndarray] = []
-    with torch.no_grad():
-        for batch in loader:
-            output = model(
-                batch["node_features"].to(device),
-                batch["edge_features"].to(device),
-                batch["candidate_mask"].to(device),
-            )
-            chunks.append(output["probabilities"].detach().cpu().numpy())
-    if not chunks:
-        return np.zeros((0, 0), dtype=np.float32)
-    return np.concatenate(chunks, axis=0)
+    return predict_model_outputs(
+        model=model,
+        samples=samples,
+        device=device,
+        batch_size=batch_size,
+    )["probabilities"]
 
 
 def predict_ensemble_probabilities(
@@ -1019,6 +1421,46 @@ def predict_ensemble_probabilities(
     if any(probs.shape != first_shape for probs in member_probabilities):
         raise ValueError("ensemble member probability shapes did not match.")
     return np.mean(np.stack(member_probabilities, axis=0), axis=0).astype(np.float32, copy=False)
+
+
+def predict_ensemble_outputs(
+    *,
+    models: list[TrajectoryCandidateGraphSelector],
+    samples: list[TrajectorySample],
+    device: torch.device,
+    batch_size: int,
+    include_position_offsets: bool = False,
+) -> dict[str, np.ndarray]:
+    if not models:
+        raise ValueError("at least one selector model is required for prediction.")
+    member_outputs = [
+        predict_model_outputs(
+            model=model,
+            samples=samples,
+            device=device,
+            batch_size=batch_size,
+            include_position_offsets=include_position_offsets,
+        )
+        for model in models
+    ]
+    probability_shapes = [item["probabilities"].shape for item in member_outputs]
+    if any(shape != probability_shapes[0] for shape in probability_shapes):
+        raise ValueError("ensemble member probability shapes did not match.")
+    result = {
+        "probabilities": np.mean(
+            np.stack([item["probabilities"] for item in member_outputs], axis=0),
+            axis=0,
+        ).astype(np.float32, copy=False)
+    }
+    if include_position_offsets:
+        offset_shapes = [item["position_offsets"].shape for item in member_outputs]
+        if any(shape != offset_shapes[0] for shape in offset_shapes):
+            raise ValueError("ensemble member position offset shapes did not match.")
+        result["position_offsets"] = np.mean(
+            np.stack([item["position_offsets"] for item in member_outputs], axis=0),
+            axis=0,
+        ).astype(np.float32, copy=False)
+    return result
 
 
 def relative_gain_percent(reference_rmse: float, candidate_rmse: float) -> float | None:
@@ -1053,12 +1495,24 @@ def evaluate_samples_from_probabilities(
     development_seed_max_exclusive: int,
     holdout_seed_min: int,
     future_seed_min: int,
+    prediction_mode: str = "selector",
+    position_offsets: np.ndarray | None = None,
 ) -> list[dict[str, Any]]:
+    mode = validate_prediction_mode(prediction_mode)
     probabilities = np.asarray(probabilities, dtype=np.float32)
     if len(samples) and probabilities.ndim != 2:
         raise ValueError("probabilities must have shape [sample_count, candidate_count].")
     if len(samples) and probabilities.shape[0] != len(samples):
         raise ValueError("probability row count does not match sample count.")
+    offsets: np.ndarray | None = None
+    if mode == "residual_refine":
+        if position_offsets is None:
+            raise ValueError("residual_refine evaluation requires position_offsets.")
+        offsets = np.asarray(position_offsets, dtype=np.float32)
+        if len(samples) and offsets.ndim != 3:
+            raise ValueError("position_offsets must have shape [sample_count, candidate_count, 3].")
+        if len(samples) and offsets.shape[0] != len(samples):
+            raise ValueError("position offset row count does not match sample count.")
     rows: list[dict[str, Any]] = []
     for sample_index, sample in enumerate(samples):
         if sample.baseline is None:
@@ -1072,6 +1526,10 @@ def evaluate_samples_from_probabilities(
         available_indices = np.flatnonzero(available)
         if available_indices.size == 0:
             raise ValueError("sample has no model-visible candidates.")
+        if mode == "residual_refine":
+            assert offsets is not None
+            if offsets[sample_index].shape != (probs.shape[0], RESIDUAL_POSITION_DIM):
+                raise ValueError("position_offsets must have shape [sample_count, candidate_count, 3].")
         available_scores = np.nan_to_num(
             probs[available_indices],
             nan=-np.inf,
@@ -1080,7 +1538,15 @@ def evaluate_samples_from_probabilities(
         )
         selected_index = int(available_indices[int(np.argmax(available_scores))])
         selected_method = candidate_methods[selected_index]
-        selected_prediction = sample.candidate_bank[:, selected_index]
+        if mode == "residual_refine":
+            selected_prediction = probability_weighted_refined_positions_numpy(
+                candidate_bank=sample.candidate_bank,
+                probabilities=probs,
+                position_offsets=offsets[sample_index],
+                candidate_mask=available,
+            )
+        else:
+            selected_prediction = sample.candidate_bank[:, selected_index]
         selected_sse, selected_count = position_sse_count(sample.states, selected_prediction, sample.observed_mask)
         baseline_prediction = sample.baseline_candidate_bank[:, sample.baseline.index]
         baseline_sse, baseline_count = position_sse_count(sample.states, baseline_prediction, sample.observed_mask)
@@ -1119,6 +1585,14 @@ def evaluate_samples_from_probabilities(
             "best_single_trajectory_observed_steps": baseline_count,
             "gain_vs_best_single_trajectory_percent": relative_gain_percent(baseline_rmse, selected_rmse),
         }
+        if mode == "residual_refine":
+            row.update(
+                {
+                    "prediction_mode": mode,
+                    "selected_prediction_source": "probability_weighted_candidate_plus_offset",
+                    "residual_offset_application": RESIDUAL_OFFSET_APPLICATION,
+                }
+            )
         for idx, method in enumerate(candidate_methods):
             key = method.lower()
             value = sample.candidate_observed_rmse[idx]
@@ -1138,16 +1612,26 @@ def evaluate_samples(
     development_seed_max_exclusive: int,
     holdout_seed_min: int,
     future_seed_min: int,
+    prediction_mode: str = "selector",
 ) -> list[dict[str, Any]]:
-    probabilities = predict_probabilities(model=model, samples=samples, device=device, batch_size=batch_size)
+    mode = validate_prediction_mode(prediction_mode)
+    outputs = predict_model_outputs(
+        model=model,
+        samples=samples,
+        device=device,
+        batch_size=batch_size,
+        include_position_offsets=mode == "residual_refine",
+    )
     return evaluate_samples_from_probabilities(
-        probabilities=probabilities,
+        probabilities=outputs["probabilities"],
         samples=samples,
         candidate_methods=candidate_methods,
         baseline_candidate_methods=baseline_candidate_methods,
         development_seed_max_exclusive=development_seed_max_exclusive,
         holdout_seed_min=holdout_seed_min,
         future_seed_min=future_seed_min,
+        prediction_mode=mode,
+        position_offsets=outputs.get("position_offsets"),
     )
 
 
@@ -1257,6 +1741,20 @@ def _format_metric(value: Any) -> str:
 
 def write_summary_md(summary: dict[str, Any], path: Path) -> None:
     aggregates = summary["aggregate_tiers"]
+    prediction_mode = str(summary.get("prediction_mode", "selector"))
+    method_label = "Selector RMSE m" if prediction_mode == "selector" else "Refined RMSE m"
+    if prediction_mode == "residual_refine":
+        decision_note = (
+            "Residual refinement uses retained truth-free candidate, visibility, eval-mask, scenario, "
+            "and candidate-disagreement features, then applies learned probability-weighted constant "
+            "3D candidate offsets. Eval truth is used for scoring rows and baselines, not for decisions."
+        )
+    else:
+        decision_note = (
+            "Selection uses retained truth-free candidate, visibility, eval-mask, scenario, "
+            "and candidate-disagreement features only. Eval truth is used for scoring rows and baselines, "
+            "not for selector decisions."
+        )
     lines = [
         "# Trajectory Candidate Graph Selector PoC",
         "",
@@ -1266,10 +1764,17 @@ def write_summary_md(summary: dict[str, Any], path: Path) -> None:
         f"Best-single baseline candidate methods: {', '.join(summary.get('baseline_candidate_methods', []))}",
         f"Graph layer type: {summary.get('graph_layer_type', 'mean')}",
         f"Graph layers: {summary.get('graph_layers', 0)}",
+        f"Prediction mode: {prediction_mode}",
+        f"Residual loss weight: {_format_metric(summary.get('residual_loss_weight', 1.0))}",
+        f"Residual offset application: {summary.get('residual_offset_application', RESIDUAL_OFFSET_APPLICATION)}",
+        f"Development samples: {summary.get('development_sample_count', summary.get('train_sample_count', 0))}",
+        f"Fit/training samples: {summary.get('fit_sample_count', summary.get('train_sample_count', 0))}",
+        f"Validation samples: {summary.get('validation_sample_count', 0)}",
+        f"Checkpoint selection metric: {summary.get('checkpoint_selection_metric', 'train_loss')}",
         "",
-        "Selection uses retained truth-free candidate, visibility, eval-mask, scenario, and candidate-disagreement features only. Eval truth is used for scoring rows and baselines, not for selector decisions.",
+        decision_note,
         "",
-        "| Tier | Rows | Observed steps | Selector RMSE m | Best single RMSE m | Gain % |",
+        f"| Tier | Rows | Observed steps | {method_label} | Best single RMSE m | Gain % |",
         "| --- | ---: | ---: | ---: | ---: | ---: |",
     ]
     for tier in TIER_NAMES:
@@ -1315,8 +1820,17 @@ def validate_args(args: argparse.Namespace) -> None:
         raise SystemExit("--weight-decay must be non-negative.")
     if not (0.0 <= float(args.dropout) < 1.0):
         raise SystemExit("--dropout must be in [0, 1).")
+    try:
+        validate_prediction_mode(args.prediction_mode)
+        validate_residual_loss_weight(args.residual_loss_weight)
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from exc
     if int(args.development_seed_max_exclusive) > int(args.holdout_seed_min):
         raise SystemExit("--development-seed-max-exclusive must be <= --holdout-seed-min.")
+    if args.development_validation_seed_min is not None:
+        validation_seed_min = int(args.development_validation_seed_min)
+        if validation_seed_min >= int(args.development_seed_max_exclusive):
+            raise SystemExit("--development-validation-seed-min must be < --development-seed-max-exclusive.")
     try:
         resolve_ensemble_member_seeds(
             base_seed=int(args.seed),
@@ -1358,20 +1872,27 @@ def main() -> None:
         candidate_methods=candidate_methods,
         baseline_candidate_methods=baseline_candidate_methods,
     )
-    train_samples = [
-        sample
-        for sample in samples
-        if (not sample.source_is_extra) and sample.seed < int(args.development_seed_max_exclusive)
-    ]
-    if not train_samples:
-        raise SystemExit("no development training samples found with seed < --development-seed-max-exclusive.")
+    validation_seed_min = (
+        None if args.development_validation_seed_min is None else int(args.development_validation_seed_min)
+    )
+    development_split = split_development_samples(
+        samples,
+        development_seed_max_exclusive=int(args.development_seed_max_exclusive),
+        development_validation_seed_min=validation_seed_min,
+    )
+    validate_development_sample_split(development_split)
+    train_samples = development_split.train_samples
+    validation_samples = development_split.validation_samples
     node_feature_dim = int(train_samples[0].node_features.shape[-1])
     edge_feature_dim = int(train_samples[0].edge_features.shape[-1])
     feature_names = build_feature_names(scenarios, candidate_methods)
     edge_feature_names = build_edge_feature_names()
     graph_layers = int(args.graph_layers)
     graph_layer_type = str(args.graph_layer_type)
+    prediction_mode = validate_prediction_mode(args.prediction_mode)
+    residual_loss_weight = validate_residual_loss_weight(args.residual_loss_weight)
     message_passing_enabled = bool(graph_layers > 0)
+    checkpoint_selection_metric = "validation_loss" if development_split.validation_enabled else "train_loss"
     model_kwargs = {
         "node_feature_dim": node_feature_dim,
         "edge_feature_dim": edge_feature_dim,
@@ -1379,6 +1900,8 @@ def main() -> None:
         "dropout": float(args.dropout),
         "graph_layers": graph_layers,
         "graph_layer_type": graph_layer_type,
+        "prediction_mode": prediction_mode,
+        "residual_offset_dim": RESIDUAL_POSITION_DIM,
     }
     evaluation_probability_aggregation = "arithmetic_mean" if ensemble_size > 1 else "single_member"
     run_config = {
@@ -1391,12 +1914,23 @@ def main() -> None:
         "candidate_methods": candidate_methods,
         "baseline_candidate_methods": baseline_candidate_methods,
         "development_seed_max_exclusive": int(args.development_seed_max_exclusive),
+        "development_validation_seed_min": validation_seed_min,
+        "development_validation_enabled": development_split.validation_enabled,
+        "development_sample_count": len(development_split.development_samples),
+        "fit_sample_count": len(train_samples),
+        "train_sample_count": len(train_samples),
+        "validation_sample_count": len(validation_samples),
+        "checkpoint_selection_metric": checkpoint_selection_metric,
         "holdout_seed_min": int(args.holdout_seed_min),
         "future_seed_min": int(args.future_seed_min),
         "epochs": int(args.epochs),
         "hidden_dim": int(args.hidden_dim),
         "graph_layers": graph_layers,
         "graph_layer_type": graph_layer_type,
+        "prediction_mode": prediction_mode,
+        "residual_loss_weight": residual_loss_weight,
+        "residual_offset_dim": RESIDUAL_POSITION_DIM,
+        "residual_offset_application": RESIDUAL_OFFSET_APPLICATION,
         "message_passing_enabled": message_passing_enabled,
         "learning_rate": float(args.learning_rate),
         "weight_decay": float(args.weight_decay),
@@ -1432,6 +1966,7 @@ def main() -> None:
         }
         training = train_selector_model(
             train_samples=train_samples,
+            validation_samples=validation_samples,
             model=model,
             output_dir=output_dir,
             device=device,
@@ -1446,6 +1981,8 @@ def main() -> None:
             edge_feature_names=edge_feature_names,
             config=member_config,
             checkpoint_dir=checkpoint_dir,
+            prediction_mode=prediction_mode,
+            residual_loss_weight=residual_loss_weight,
         )
         member_training_summaries.append(
             {
@@ -1456,20 +1993,23 @@ def main() -> None:
         )
         models.append(model)
 
-    probabilities = predict_ensemble_probabilities(
+    prediction_outputs = predict_ensemble_outputs(
         models=models,
         samples=samples,
         device=device,
         batch_size=int(args.batch_size),
+        include_position_offsets=prediction_mode == "residual_refine",
     )
     rows = evaluate_samples_from_probabilities(
-        probabilities=probabilities,
+        probabilities=prediction_outputs["probabilities"],
         samples=samples,
         candidate_methods=candidate_methods,
         baseline_candidate_methods=baseline_candidate_methods,
         development_seed_max_exclusive=int(args.development_seed_max_exclusive),
         holdout_seed_min=int(args.holdout_seed_min),
         future_seed_min=int(args.future_seed_min),
+        prediction_mode=prediction_mode,
+        position_offsets=prediction_outputs.get("position_offsets"),
     )
     ensemble_metadata = {
         "size": ensemble_size,
