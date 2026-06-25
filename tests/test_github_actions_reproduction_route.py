@@ -48,9 +48,26 @@ VERIFIER_COMMAND = (
     "results/validation/github_actions_archive_extracted_reproduction.json "
     "--md-out results/validation/github_actions_archive_extracted_reproduction.md"
 )
+V131_VERIFIER_COMMAND = (
+    "python scripts/verify_v131_release_package.py --archive "
+    "release/spot_od_v1_3_1_validation_selected_residual_refine.zip --json-out "
+    "results/validation/v131_release_package_verification.json "
+    "--md-out results/validation/v131_release_package_verification.md"
+)
+FOCUSED_V131_PYTEST_COMMAND = (
+    "python -m pytest "
+    "tests/test_build_trajectory_residual_refine_comparison_intervals.py "
+    "tests/test_build_trajectory_residual_refine_tail_diagnostic.py "
+    "tests/test_build_trajectory_residual_refine_figure.py "
+    "tests/test_trajectory_candidate_graph_architecture_ensemble.py -q"
+)
 VERIFIER_OUTPUTS = [
     "results/validation/github_actions_archive_extracted_reproduction.json",
     "results/validation/github_actions_archive_extracted_reproduction.md",
+]
+V131_VERIFIER_OUTPUTS = [
+    "results/validation/v131_release_package_verification.json",
+    "results/validation/v131_release_package_verification.md",
 ]
 FORBIDDEN_ROUTE_TERMS = (
     "Git" + "Lab",
@@ -195,6 +212,8 @@ def test_github_actions_archive_extracted_job_uses_minimal_dependency_route() ->
     assert "MPLBACKEND: Agg" in text
     assert "archive-extracted-reproduction:" in text
     assert VERIFIER_COMMAND in compact
+    assert V131_VERIFIER_COMMAND in compact
+    assert FOCUSED_V131_PYTEST_COMMAND in compact
     assert "actions/upload-artifact@v4" in text
     assert "if: always()" in text
     assert "if-no-files-found: warn" in text
@@ -211,11 +230,12 @@ def test_github_actions_archive_extracted_job_uses_minimal_dependency_route() ->
         "pytest",
     ):
         assert package in text
-    assert "torch" not in text.lower()
+    assert "download.pytorch.org/whl/cpu" in text
+    assert "cuda" not in text.lower()
     assert "optuna" not in text.lower()
     assert "verify_minimum_tier_reproduction.py" not in text
 
-    for artifact in VERIFIER_OUTPUTS:
+    for artifact in VERIFIER_OUTPUTS + V131_VERIFIER_OUTPUTS:
         assert artifact in text
     _assert_no_removed_route_terms(text)
 

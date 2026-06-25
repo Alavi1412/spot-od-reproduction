@@ -27,10 +27,23 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install --no-input numpy scipy pandas matplotlib seaborn pyyaml tqdm sgp4 pytest
 
+      - name: Install CPU torch for focused graph tests
+        run: |
+          python -m pip install --no-input --index-url https://download.pytorch.org/whl/cpu torch
+
       - name: Run archive-extracted verifier
         run: |
           mkdir -p results/validation
           python scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip --json-out results/validation/github_actions_archive_extracted_reproduction.json --md-out results/validation/github_actions_archive_extracted_reproduction.md
+
+      - name: Run v1.3.1 release package verifier
+        run: |
+          mkdir -p results/validation
+          python scripts/verify_v131_release_package.py --archive release/spot_od_v1_3_1_validation_selected_residual_refine.zip --json-out results/validation/v131_release_package_verification.json --md-out results/validation/v131_release_package_verification.md
+
+      - name: Run focused v1.3.1 release tests
+        run: |
+          python -m pytest tests/test_build_trajectory_residual_refine_comparison_intervals.py tests/test_build_trajectory_residual_refine_tail_diagnostic.py tests/test_build_trajectory_residual_refine_figure.py tests/test_trajectory_candidate_graph_architecture_ensemble.py -q
 
       - name: Upload verifier outputs
         if: always()
@@ -41,3 +54,5 @@ jobs:
           path: |
             results/validation/github_actions_archive_extracted_reproduction.json
             results/validation/github_actions_archive_extracted_reproduction.md
+            results/validation/v131_release_package_verification.json
+            results/validation/v131_release_package_verification.md
