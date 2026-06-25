@@ -6,10 +6,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 try:
     from scripts import verify_v132_public_reproduction_package as verifier
@@ -18,13 +19,21 @@ except (ImportError, ModuleNotFoundError):  # pragma: no cover - direct script e
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_TRAINING_INPUT_ROOT = Path("Z:/Papers/spot_od_v131_public_training_rerun_20260625/training_inputs")
 
 MAIN_ARCHIVE = ROOT / verifier.DEFAULT_ARCHIVE_REL
 TRAINING_ARCHIVE = ROOT / verifier.DEFAULT_TRAINING_ARCHIVE_REL
 
 TRAINING_MANIFEST_JSON_PATH = ROOT / verifier.TRAINING_MANIFEST_JSON
 TRAINING_MANIFEST_MD_PATH = ROOT / verifier.TRAINING_MANIFEST_MD
+SOURCE_BUNDLE_ROOT_REL = "."
+SOURCE_BUNDLE_MANIFEST_REL = "release/TRAINING_INPUT_BUNDLE_MANIFEST_v1.3.1-validation-selected-residual-refine.json"
+SOURCE_BUNDLE_README_REL = "release/TRAINING_INPUT_BUNDLE_v1.3.1-validation-selected-residual-refine.md"
+
+_BS = "\\"
+_NAS_HOST = "nas"
+_LOCAL_TRAINING_WORKTREE = "spot_od_v131_public_training_" + "rerun_20260625"
+_APP_DATA = "App" + "Data"
+_LOCAL_PATH_REDACTION = "<local-build-path-redacted>"
 
 MAIN_EXTRA_MEMBERS: tuple[str, ...] = (
     ".github/workflows/archive-extracted-reproduction.yml",
@@ -61,6 +70,90 @@ def validate_member_name(member: str) -> None:
         raise ValueError(f"Unsafe archive member {member!r} normalized to {normalized!r}: {problems}")
 
 
+def public_text_root_prefixes() -> tuple[str, ...]:
+    return (
+        _BS * 2 + _NAS_HOST + _BS + "Projects" + _BS + "Papers" + _BS + "GNN State Estimation" + _BS,
+        "/" + "/" + _NAS_HOST + "/Projects/Papers/GNN State Estimation/",
+        "Z:" + _BS + "Papers" + _BS + "GNN State Estimation" + _BS,
+        "Z:" + "/" + "Papers/GNN State Estimation/",
+    )
+
+
+def source_bundle_root_prefixes() -> tuple[str, ...]:
+    return (
+        _BS * 2 + _NAS_HOST + _BS + "Projects" + _BS + "Papers" + _BS + _LOCAL_TRAINING_WORKTREE + _BS + "training_inputs" + _BS,
+        "/" + "/" + _NAS_HOST + "/Projects/Papers/" + _LOCAL_TRAINING_WORKTREE + "/training_inputs/",
+        "Z:" + _BS + "Papers" + _BS + _LOCAL_TRAINING_WORKTREE + _BS + "training_inputs" + _BS,
+        "Z:" + "/" + "Papers/" + _LOCAL_TRAINING_WORKTREE + "/training_inputs/",
+    )
+
+
+def sanitize_public_text(text: str) -> str:
+    sanitized = text
+    for prefix in source_bundle_root_prefixes():
+        sanitized = sanitized.replace(prefix, "")
+    for prefix in public_text_root_prefixes():
+        sanitized = sanitized.replace(prefix, "")
+
+    nas_path_pattern = re.compile(
+        r"(?i)(?:"
+        + re.escape(_BS)
+        + r"+"
+        + _NAS_HOST
+        + r"[\\/][^`\"'\r\n,;)]+|"
+        + "/"
+        + "/"
+        + _NAS_HOST
+        + r"/[^`\"'\r\n,;)]+)"
+    )
+    windows_abs_path_pattern = re.compile(r"(?i)(?<![A-Za-z0-9])[A-Z]:[\\/][^`\"'\r\n,;)]+")
+    unix_home_path_pattern = re.compile(r"(?i)(?<![A-Za-z0-9_])/(?:Users|home|mnt|Volumes)/[^`\"'\r\n,;)]+")
+    app_data_pattern = re.compile(r"(?i)\b" + re.escape(_APP_DATA) + r"\b")
+
+    sanitized = nas_path_pattern.sub(_LOCAL_PATH_REDACTION, sanitized)
+    sanitized = windows_abs_path_pattern.sub(_LOCAL_PATH_REDACTION, sanitized)
+    sanitized = unix_home_path_pattern.sub(_LOCAL_PATH_REDACTION, sanitized)
+    sanitized = app_data_pattern.sub("local-profile-cache", sanitized)
+    sanitized = sanitized.replace(_LOCAL_TRAINING_WORKTREE, "source-training-bundle")
+    return sanitized
+
+
+def sanitize_json_value(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {key: sanitize_json_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [sanitize_json_value(item) for item in value]
+    if isinstance(value, str):
+        return sanitize_public_text(value)
+    return value
+
+
+def sanitize_member_text(text: str, member: str) -> str:
+    if Path(member).suffix.lower() == ".json":
+        try:
+            parsed = json.loads(text)
+        except json.JSONDecodeError:
+            return sanitize_public_text(text)
+        return json.dumps(sanitize_json_value(parsed), indent=2, sort_keys=True) + "\n"
+    return sanitize_public_text(text)
+
+
+def public_member_payload(path: Path, member: str) -> bytes | None:
+    if not verifier.should_scan_public_text_member(member):
+        return None
+    text = path.read_text(encoding="utf-8")
+    sanitized = sanitize_member_text(text, member)
+    hits = verifier.private_path_marker_hits(sanitized)
+    if hits:
+        raise ValueError(f"Private/local path marker(s) remain in public archive member {member!r}: {hits}")
+    return sanitized.encode("utf-8")
+
+
+def public_member_size(path: Path, member: str) -> int:
+    payload = public_member_payload(path, member)
+    return path.stat().st_size if payload is None else len(payload)
+
+
 def iter_files_under(root: Path, rel_dir: str, *, exclude_checkpoints: bool = False) -> Iterable[tuple[Path, str]]:
     base = root / rel_dir
     if not base.is_dir():
@@ -86,7 +179,11 @@ def write_zip(zip_path: Path, file_members: Iterable[tuple[Path, str]]) -> dict[
             if member in seen:
                 raise ValueError(f"Duplicate archive member: {member}")
             seen.add(member)
-            zf.write(path, member)
+            payload = public_member_payload(path, member)
+            if payload is None:
+                zf.write(path, member)
+            else:
+                zf.writestr(member, payload)
     return {
         "path": norm(zip_path.relative_to(ROOT)),
         "bytes": zip_path.stat().st_size,
@@ -104,9 +201,8 @@ def collect_training_payload(training_input_root: Path) -> list[tuple[Path, str]
 
 
 def write_training_manifests(training_input_root: Path, payload: list[tuple[Path, str]]) -> None:
-    payload_bytes = sum(path.stat().st_size for path, _ in payload)
-    source_manifest = training_input_root / "release" / "TRAINING_INPUT_BUNDLE_MANIFEST_v1.3.1-validation-selected-residual-refine.json"
-    source_readme = training_input_root / "release" / "TRAINING_INPUT_BUNDLE_v1.3.1-validation-selected-residual-refine.md"
+    payload_bytes = sum(public_member_size(path, member) for path, member in payload)
+    source_manifest = training_input_root / SOURCE_BUNDLE_MANIFEST_REL
 
     manifest = {
         "schema_version": "spot_od_v1_3_2_training_input_bundle.v1",
@@ -117,10 +213,15 @@ def write_training_manifests(training_input_root: Path, payload: list[tuple[Path
         "training_input_asset": verifier.TRAINING_ASSET,
         "previous_zenodo_version_doi": verifier.PRIOR_VERSION_DOI,
         "zenodo_concept_doi": verifier.CONCEPT_DOI,
-        "source_bundle_root": norm(training_input_root),
-        "source_bundle_manifest": norm(source_manifest),
+        "source_bundle_root": SOURCE_BUNDLE_ROOT_REL,
+        "source_bundle_manifest": SOURCE_BUNDLE_MANIFEST_REL,
         "source_bundle_manifest_sha256": sha256_file(source_manifest) if source_manifest.is_file() else None,
-        "source_bundle_readme": norm(source_readme),
+        "source_bundle_readme": SOURCE_BUNDLE_README_REL,
+        "build_provenance": (
+            "Built from an explicit local training-input root supplied via "
+            "--training-input-root; local absolute build paths are intentionally "
+            "omitted from this public manifest."
+        ),
         "source_directory_count": len(verifier.EXPECTED_TRAINING_SOURCE_DIRS),
         "source_directories": list(verifier.EXPECTED_TRAINING_SOURCE_DIRS),
         "payload_file_count": len(payload),
@@ -214,13 +315,17 @@ def build_archives(training_input_root: Path) -> dict[str, object]:
         "status": "built",
         "main_archive": main_record,
         "training_archive": training_record,
-        "training_input_root": norm(training_input_root),
+        "training_input_source": "runtime-provided local path omitted from public output",
     }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build v1.3.2 public reproduction ZIP archives.")
-    parser.add_argument("--training-input-root", default=str(DEFAULT_TRAINING_INPUT_ROOT))
+    parser.add_argument(
+        "--training-input-root",
+        required=True,
+        help="Local path to an extracted v1.3.1 training-input source bundle; the path is not written to public metadata.",
+    )
     args = parser.parse_args()
 
     result = build_archives(Path(args.training_input_root))

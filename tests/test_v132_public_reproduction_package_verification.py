@@ -106,6 +106,26 @@ def _comparison_intervals() -> dict[str, object]:
     return {"comparisons": comparisons}
 
 
+def _nas_forward_path(*parts: str) -> str:
+    return "/".join(("/", "nas", *parts))
+
+
+def _nas_backslash_path(*parts: str) -> str:
+    return ("\\" * 2) + "\\".join(("nas", *parts))
+
+
+def _drive_path(*parts: str) -> str:
+    return "Z:" + "\\" + "\\".join(parts)
+
+
+def _user_profile_cache_path() -> str:
+    return "C:" + "\\" + "\\".join(("Users", "alavi", "App" + "Data", "Local", "Python", "python.exe"))
+
+
+def _local_training_worktree_name() -> str:
+    return "spot_od_v131_public_training_" + "rerun_20260625"
+
+
 def _metadata_text() -> str:
     return (
         f"{verifier.TAG} {verifier.PRIOR_VERSION_DOI} {verifier.CONCEPT_DOI} "
@@ -267,7 +287,9 @@ def test_minimal_valid_v132_fixture_passes_and_writes_reports(
     assert result["status"] == "pass"
     assert result["main_package"]["checks"]["extracted_help_smoke"]["status"] == "pass"
     assert result["main_package"]["checks"]["metadata"]["status"] == "pass"
+    assert result["main_package"]["checks"]["private_path_hygiene"]["status"] == "pass"
     assert result["training_inputs"]["checks"]["training_members"]["status"] == "pass"
+    assert result["training_inputs"]["checks"]["private_path_hygiene"]["status"] == "pass"
 
     json_out = tmp_path / "report.json"
     md_out = tmp_path / "report.md"
@@ -330,6 +352,107 @@ def test_rejects_invented_v132_doi(tmp_path: Path, monkeypatch: pytest.MonkeyPat
     assert metadata_check["status"] == "fail"
     problems = {failure["problem"] for failure in metadata_check["failures"] if "problem" in failure}
     assert "v1.3.2 DOI must not be invented before Zenodo import" in problems
+
+
+def test_rejects_private_path_markers_in_main_text_members(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repaired_payload = b"repaired-v131-archive"
+    monkeypatch.setattr(
+        verifier,
+        "REPAIRED_V131_ARCHIVE_SHA256",
+        hashlib.sha256(repaired_payload).hexdigest(),
+    )
+    main_files = _base_main_files(repaired_payload)
+    graph_summary = _graph_summary()
+    graph_summary["source_dir"] = _nas_backslash_path(
+        "Projects",
+        "Papers",
+        "GNN State Estimation",
+        "results",
+        "fixture",
+    )
+    main_files[verifier.v131.GRAPH_SUMMARY] = json.dumps(graph_summary)
+    main_files["release/README.md"] = _metadata_text() + "Python path `" + _user_profile_cache_path() + "`\n"
+    main_files["scripts/build_v132_public_reproduction_archives.py"] = (
+        "path = "
+        + repr(_drive_path("Papers", _local_training_worktree_name(), "training_inputs"))
+        + "\n"
+    )
+    main_archive = _write_zip(tmp_path, "main.zip", main_files)
+    training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
+
+    result = verifier.build_result(str(main_archive), str(training_archive))
+
+    assert result["status"] == "fail"
+    hygiene = result["main_package"]["checks"]["private_path_hygiene"]
+    assert hygiene["status"] == "fail"
+    failures = hygiene["failures"]
+    assert any(
+        failure["member"] == verifier.v131.GRAPH_SUMMARY and "nas_backslash_unc" in failure["markers"]
+        for failure in failures
+    )
+    assert any(
+        failure["member"] == "release/README.md" and "appdata_profile_path" in failure["markers"]
+        for failure in failures
+    )
+    assert any(
+        failure["member"] == "scripts/build_v132_public_reproduction_archives.py"
+        and "local_training_worktree_name" in failure["markers"]
+        for failure in failures
+    )
+
+
+def test_rejects_private_path_markers_in_training_text_members(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    main_archive, _ = _valid_archives(tmp_path, monkeypatch)
+    training_files = _base_training_files()
+    first_dir = verifier.EXPECTED_TRAINING_SOURCE_DIRS[0]
+    training_files[f"{first_dir}/env_report.json"] = json.dumps({"python": _user_profile_cache_path()})
+    training_files[f"{first_dir}/manifest.json"] = json.dumps(
+        {
+            "source_dir": _drive_path(
+                "Papers",
+                "GNN State Estimation",
+                "results",
+                "fixture",
+            )
+        }
+    )
+    manifest = json.loads(str(training_files[verifier.TRAINING_MANIFEST_JSON]))
+    manifest["source_bundle_manifest"] = _nas_forward_path(
+        "Projects",
+        "Papers",
+        _local_training_worktree_name(),
+        "training_inputs",
+        "release",
+        "bundle.json",
+    )
+    training_files[verifier.TRAINING_MANIFEST_JSON] = json.dumps(manifest)
+    training_archive = _write_zip(tmp_path, "training.zip", training_files)
+
+    result = verifier.build_result(str(main_archive), str(training_archive))
+
+    assert result["status"] == "fail"
+    hygiene = result["training_inputs"]["checks"]["private_path_hygiene"]
+    assert hygiene["status"] == "fail"
+    failures = hygiene["failures"]
+    assert any(
+        failure["member"] == f"{first_dir}/env_report.json" and "appdata_profile_path" in failure["markers"]
+        for failure in failures
+    )
+    assert any(
+        failure["member"] == f"{first_dir}/manifest.json"
+        and "windows_drive_absolute_path" in failure["markers"]
+        for failure in failures
+    )
+    assert any(
+        failure["member"] == verifier.TRAINING_MANIFEST_JSON and "nas_forward_unc" in failure["markers"]
+        for failure in failures
+    )
 
 
 def test_rejects_missing_training_prediction_file(

@@ -20,7 +20,7 @@ directory.
 Payload file count: `290`
 Total ZIP file count including these manifest files: `292`
 Source directory count: `29`
-Payload bytes before ZIP compression: `23751421`
+Payload bytes before ZIP compression: `23741532`
 
 ## Source directories
 

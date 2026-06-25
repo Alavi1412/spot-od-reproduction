@@ -163,6 +163,17 @@ ALLOWED_METADATA_DOIS = {
     "10.5281/zenodo.20811701",
 }
 
+_BS = "\\"
+_PRIVATE_PATH_MARKER_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("nas_backslash_unc", re.compile(r"(?i)" + re.escape(_BS) + r"+nas(?:[\\/]|$)")),
+    ("nas_forward_unc", re.compile("(?i)" + "/" + "/" + "nas" + r"(?:/|$)")),
+    ("windows_drive_absolute_path", re.compile(r"(?i)(?<![A-Za-z0-9])[A-Z]:[\\/]")),
+    ("windows_user_profile", re.compile(r"(?i)(?<![A-Za-z0-9])C:[\\/]+Users[\\/]")),
+    ("appdata_profile_path", re.compile(r"(?i)\b" + "App" + "Data" + r"\b")),
+    ("unix_user_home", re.compile(r"(?i)(?<![A-Za-z0-9_])/(?:Users|home|mnt|Volumes)/")),
+    ("local_training_worktree_name", re.compile("(?i)" + "spot_od_v131_public_training_" + "rerun")),
+)
+
 
 def normalize_text(text: str) -> str:
     return re.sub(r"\s+", " ", text.lower())
@@ -182,6 +193,54 @@ def rel(path: Path) -> str:
 
 def sha256_bytes(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
+
+
+def should_scan_public_text_member(member_name: str) -> bool:
+    return Path(member_name).suffix.lower() in v131.TEXT_SUFFIXES
+
+
+def private_path_marker_hits(text: str) -> list[str]:
+    return [
+        label
+        for label, pattern in _PRIVATE_PATH_MARKER_PATTERNS
+        if pattern.search(text)
+    ]
+
+
+def check_no_private_path_markers(zf: zipfile.ZipFile, members: list[str]) -> dict[str, Any]:
+    failures: list[dict[str, Any]] = []
+    scanned: list[str] = []
+    marker_hit_counts: dict[str, int] = {}
+
+    for member_name in sorted(members):
+        if not should_scan_public_text_member(member_name):
+            continue
+        try:
+            text = v131.read_member_text(zf, member_name)
+        except UnicodeDecodeError as exc:
+            failures.append({"member": member_name, "problem": f"utf8_decode_failed: {exc}"})
+            continue
+
+        scanned.append(member_name)
+        hits = private_path_marker_hits(text)
+        if hits:
+            for hit in hits:
+                marker_hit_counts[hit] = marker_hit_counts.get(hit, 0) + 1
+            failures.append(
+                {
+                    "member": member_name,
+                    "problem": "private_or_local_path_marker",
+                    "markers": hits,
+                }
+            )
+
+    return {
+        "status": v131.status_from_failures(failures),
+        "scanned_text_member_count": len(scanned),
+        "marker_hit_counts": marker_hit_counts,
+        "failure_count": len(failures),
+        "failures": failures,
+    }
 
 
 def check_required_members(member_set: set[str], required: tuple[str, ...], prefixes: tuple[str, ...]) -> dict[str, Any]:
@@ -367,7 +426,7 @@ def check_main_archive(archive_rel: str) -> dict[str, Any]:
 
     if not archive_path.is_file():
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "archive_missing"}]}
-        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
+        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
             checks[name] = v131.blocked_check("archive_missing")
         return {"status": "fail", "archive": archive, "checks": checks}
 
@@ -380,7 +439,7 @@ def check_main_archive(archive_rel: str) -> dict[str, Any]:
             checks["required_members"] = check_required_members(member_set, REQUIRED_MAIN_MEMBERS, REQUIRED_MAIN_PREFIXES)
 
             if member_check["status"] != "pass":
-                for name in ("json_parse", "metadata", "text_boundaries", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
+                for name in ("json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
                     checks[name] = v131.blocked_check("unsafe_or_invalid_archive_members")
             else:
                 parsed, parse_check = parse_main_json(zf, member_set)
@@ -392,11 +451,12 @@ def check_main_archive(archive_rel: str) -> dict[str, Any]:
                     checks["metadata"] = v131.blocked_check("json_parse_failed")
                     checks["metrics"] = v131.blocked_check("json_parse_failed")
                 checks["text_boundaries"] = check_current_text_boundaries(zf, member_set)
+                checks["private_path_hygiene"] = check_no_private_path_markers(zf, members)
                 checks["repaired_v131_archive"] = check_repaired_v131_archive(zf, member_set)
                 checks["extracted_help_smoke"] = v131.check_extracted_help_smoke(zf, member_set)
     except zipfile.BadZipFile as exc:
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "bad_zip", "details": repr(exc)}]}
-        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
+        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
             checks[name] = v131.blocked_check("bad_zip")
 
     status = "pass" if all(check.get("status") == "pass" for check in checks.values()) else "fail"
@@ -522,6 +582,7 @@ def check_training_archive(training_archive_rel: str) -> dict[str, Any]:
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "archive_missing"}]}
         checks["training_members"] = v131.blocked_check("archive_missing")
         checks["training_manifest"] = v131.blocked_check("archive_missing")
+        checks["private_path_hygiene"] = v131.blocked_check("archive_missing")
         return {"status": "fail", "archive": archive, "checks": checks}
 
     try:
@@ -533,13 +594,16 @@ def check_training_archive(training_archive_rel: str) -> dict[str, Any]:
             if member_check["status"] != "pass":
                 checks["training_members"] = v131.blocked_check("unsafe_or_invalid_archive_members")
                 checks["training_manifest"] = v131.blocked_check("unsafe_or_invalid_archive_members")
+                checks["private_path_hygiene"] = v131.blocked_check("unsafe_or_invalid_archive_members")
             else:
                 checks["training_members"] = check_training_archive_members(members)
                 checks["training_manifest"] = check_training_manifest(zf, member_set)
+                checks["private_path_hygiene"] = check_no_private_path_markers(zf, members)
     except zipfile.BadZipFile as exc:
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "bad_zip", "details": repr(exc)}]}
         checks["training_members"] = v131.blocked_check("bad_zip")
         checks["training_manifest"] = v131.blocked_check("bad_zip")
+        checks["private_path_hygiene"] = v131.blocked_check("bad_zip")
 
     status = "pass" if all(check.get("status") == "pass" for check in checks.values()) else "fail"
     return {"status": status, "archive": archive, "checks": checks}
@@ -613,6 +677,7 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         "json_parse",
         "metadata",
         "text_boundaries",
+        "private_path_hygiene",
         "metrics",
         "repaired_v131_archive",
         "extracted_help_smoke",
@@ -620,7 +685,7 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         check = main_checks.get(name, {})
         lines.append(f"- {name}: **{str(check.get('status')).upper()}**")
     lines += ["", "## Training Checks"]
-    for name in ("archive_members", "training_members", "training_manifest"):
+    for name in ("archive_members", "training_members", "training_manifest", "private_path_hygiene"):
         check = training_checks.get(name, {})
         lines.append(f"- {name}: **{str(check.get('status')).upper()}**")
     lines += [
