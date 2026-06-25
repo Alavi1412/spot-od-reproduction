@@ -1,7 +1,7 @@
 {
   "build_provenance": "Built from an explicit local training-input root supplied via --training-input-root; local absolute build paths are intentionally omitted from this public manifest.",
   "checkpoints_omitted": true,
-  "created_utc": "2026-06-25T12:59:17.697727+00:00",
+  "created_utc": "2026-06-25T13:18:06.431687+00:00",
   "excluded_files_note": "*.pt, *.pth, *.ckpt files and checkpoint directories are omitted because scripts/run_trajectory_candidate_graph_selector_poc.py consumes adaptive_candidate_fusion_predictions.npz from each source/scenario directory.",
   "main_package_asset": "spot_od_v1_3_2_public_reproduction_package.zip",
   "payload_bytes": 23741532,

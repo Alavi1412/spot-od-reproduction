@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import re
 import zipfile
@@ -138,9 +139,25 @@ def sanitize_member_text(text: str, member: str) -> str:
     return sanitize_public_text(text)
 
 
-def public_member_payload(path: Path, member: str) -> bytes | None:
+def ensure_binary_payload_is_public(member: str, payload: bytes) -> None:
+    hits = verifier.private_path_marker_byte_hits(payload)
+    if hits:
+        raise ValueError(f"Private/local path marker byte(s) in binary archive member {member!r}: {hits}")
+    if verifier.is_zip_payload(member, payload):
+        with zipfile.ZipFile(io.BytesIO(payload), "r") as nested:
+            hygiene = verifier.check_no_private_path_markers(nested, [])
+        if hygiene["status"] != "pass":
+            raise ValueError(
+                "Private/local path marker(s) or unsafe members in nested ZIP "
+                f"archive member {member!r}: {hygiene['failures']}"
+            )
+
+
+def public_member_payload(path: Path, member: str) -> bytes:
     if not verifier.should_scan_public_text_member(member):
-        return None
+        payload = path.read_bytes()
+        ensure_binary_payload_is_public(member, payload)
+        return payload
     text = path.read_text(encoding="utf-8")
     sanitized = sanitize_member_text(text, member)
     hits = verifier.private_path_marker_hits(sanitized)
@@ -150,8 +167,7 @@ def public_member_payload(path: Path, member: str) -> bytes | None:
 
 
 def public_member_size(path: Path, member: str) -> int:
-    payload = public_member_payload(path, member)
-    return path.stat().st_size if payload is None else len(payload)
+    return len(public_member_payload(path, member))
 
 
 def iter_files_under(root: Path, rel_dir: str, *, exclude_checkpoints: bool = False) -> Iterable[tuple[Path, str]]:
@@ -180,10 +196,7 @@ def write_zip(zip_path: Path, file_members: Iterable[tuple[Path, str]]) -> dict[
                 raise ValueError(f"Duplicate archive member: {member}")
             seen.add(member)
             payload = public_member_payload(path, member)
-            if payload is None:
-                zf.write(path, member)
-            else:
-                zf.writestr(member, payload)
+            zf.writestr(member, payload)
     return {
         "path": norm(zip_path.relative_to(ROOT)),
         "bytes": zip_path.stat().st_size,
@@ -286,14 +299,15 @@ def collect_main_members() -> list[tuple[Path, str]]:
             continue
         members[member] = path
 
-    for rel_dir in (
-        "src/gnn_state_estimation",
-        verifier.v131.GRAPH_DIR,
-        verifier.v131.LOCAL_DIR,
-        verifier.v131.MEAN_DIR,
-        verifier.v131.TAIL_DIR,
-    ):
-        for path, member in iter_files_under(ROOT, rel_dir):
+    main_dirs = (
+        ("src/gnn_state_estimation", False),
+        (verifier.v131.GRAPH_DIR, True),
+        (verifier.v131.LOCAL_DIR, True),
+        (verifier.v131.MEAN_DIR, True),
+        (verifier.v131.TAIL_DIR, True),
+    )
+    for rel_dir, exclude_checkpoints in main_dirs:
+        for path, member in iter_files_under(ROOT, rel_dir, exclude_checkpoints=exclude_checkpoints):
             members[member] = path
 
     return [(path, member) for member, path in sorted(members.items())]

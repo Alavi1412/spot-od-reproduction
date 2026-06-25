@@ -37,8 +37,11 @@ Previous v1.3.1 release: `v1.3.1-validation-selected-residual-refine`,
 <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>,
 Zenodo record <https://zenodo.org/records/20844596>, version DOI
 `10.5281/zenodo.20844596`. The repaired v1.3.1 archive SHA-256 retained in this
-repository is
-`4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4`.
+repository for external prior-release traceability is
+`4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4`; that
+legacy ZIP is not embedded in the v1.3.2 main release asset. The v1.3.2 main
+asset also excludes checkpoint/model-weight files and supports saved metric
+readback plus import/help smoke checks, not checkpoint reload.
 
 ## Historical v1.2.3 Package Notes
 

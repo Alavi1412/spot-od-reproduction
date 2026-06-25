@@ -17,7 +17,15 @@ Release tag: `v1.3.2-public-reproduction-package`.
   import.
 - Adds a separate checkpoint-free training-input ZIP built from the retained
   candidate input bundle used by the provenance command.
-- Adds a v1.3.2 verifier covering the main ZIP and the training-input ZIP.
+- Excludes checkpoint/model-weight files from the v1.3.2 main ZIP. The public
+  package supports saved metric replay, training-input inspection, and
+  import/help smoke checks, not checkpoint reload.
+- Does not embed the legacy v1.3.1 ZIP. The selected v1.3.1 docs/results are
+  included as sanitized members, and the prior GitHub/Zenodo release remains
+  the reference for the old archive asset.
+- Adds a v1.3.2 verifier covering the main ZIP and the training-input ZIP,
+  including recursive private-path scans over text, nested ZIPs, and non-text
+  payload bytes.
 
 ## Scientific readback
 
@@ -57,7 +65,8 @@ run:
 
 The command is a training provenance route. The release verifier does not run
 training; it only performs integrity, metadata, metric-readback, and extracted
-`--help` smoke checks.
+`--help` smoke checks. Checkpoint/model-weight reload is outside the v1.3.2
+public package boundary because checkpoints are intentionally excluded.
 
 ## Verification
 
@@ -76,7 +85,9 @@ The v1.3.2 verifier checks:
   --help`;
 - unchanged validation-selected metric readback from packaged result JSON files;
 - training-input manifests, source directories, scenario prediction arrays, and
-  checkpoint omission.
+  checkpoint omission;
+- recursive private/local path marker hygiene for text members, nested ZIP
+  members, and non-text payload bytes.
 
 ## DOI status
 
@@ -91,6 +102,7 @@ release. This package does not claim a v1.3.2 DOI before that import.
 
 This release is retained-candidate compact-simulator evidence only. It is not
 independent-machine reproduction, not public precise-reference validation, not a
-full raw/training/all-filter rerun, not standalone learned recursive filtering,
-not broad learned orbit-determination validation, not operational precise orbit
-determination, and not operational learned orbit determination.
+full raw/training/all-filter rerun, not checkpoint reload, not standalone
+learned recursive filtering, not broad learned orbit-determination validation,
+not operational precise orbit determination, and not operational learned orbit
+determination.

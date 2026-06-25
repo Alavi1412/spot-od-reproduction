@@ -28,8 +28,6 @@ attention residual-refinement evidence remains:
   in this package.
 - Previous Zenodo version DOI: `10.5281/zenodo.20844596`
 - Zenodo concept DOI: `10.5281/zenodo.20768672`
-- Repaired v1.3.1 archive SHA-256:
-  `4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4`
 
 Archive byte sizes and SHA-256 digests are reported after construction rather
 than embedded inside this packaged README.
@@ -38,13 +36,15 @@ than embedded inside this packaged README.
 
 - v1.3.2 GitHub/Zenodo metadata, release notes, package README, manifest,
   citation metadata, and license notice.
-- v1.3.1 repaired release documentation and the repaired v1.3.1 release archive
-  for traceability.
+- v1.3.1 repaired release documentation and sanitized selected result files for
+  traceability. The legacy v1.3.1 ZIP is not embedded; use the external
+  v1.3.1 GitHub/Zenodo release for that prior asset.
 - Manuscript source/PDF, validation-selected table, and validation-selected
   figure needed to inspect the selected proof of concept.
-- Final rows, summaries, comparison intervals, local-control diagnostic rows,
-  and selected run checkpoints for the attention, mean-graph, and local/no-message
-  residual-refinement runs.
+- Final rows, summaries, comparison intervals, and local-control diagnostic
+  rows for the attention, mean-graph, and local/no-message residual-refinement
+  runs. Checkpoint/model-weight files are excluded from the public v1.3.2 main
+  package.
 - Scripts and tests for the retained-candidate graph selector, comparison
   intervals, tail diagnostic, figure regeneration, and package verification.
 - Runtime import support for extracted-package execution: `src/`,
@@ -74,13 +74,14 @@ python scripts\verify_v132_public_reproduction_package.py --archive release\spot
 The verifier checks ZIP member safety, required runtime import members, metadata
 coherence, unchanged metric readback from packaged JSON files, the extracted
 `--help` smoke for `scripts/run_trajectory_candidate_graph_selector_poc.py`, and
-training-input directory/manifests.
+training-input directory/manifests. It also recursively scans text members,
+nested ZIP members, and non-text payload bytes for private/local path markers.
 
 ## Boundary
 
 This is retained-candidate compact-simulator evidence only. It is not a new
 scientific-metrics release, not public precise-reference validation, not
 independent-machine reproduction, not a full raw/training/all-filter rerun, not
-standalone learned recursive filtering, not broad learned orbit-determination
-validation, not operational precise orbit determination, and not operational
-learned orbit determination.
+checkpoint reload, not standalone learned recursive filtering, not broad learned
+orbit-determination validation, not operational precise orbit determination, and
+not operational learned orbit determination.

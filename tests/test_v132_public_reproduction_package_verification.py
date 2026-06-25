@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import hashlib
+import io
 import json
 import zipfile
 from pathlib import Path
@@ -134,13 +134,11 @@ def _metadata_text() -> str:
     )
 
 
-def _base_main_files(repaired_payload: bytes) -> dict[str, str | bytes]:
+def _base_main_files() -> dict[str, str | bytes]:
     files: dict[str, str | bytes] = {}
     for member in verifier.REQUIRED_MAIN_MEMBERS:
         suffix = Path(member).suffix.lower()
-        if member == verifier.REPAIRED_V131_ARCHIVE_MEMBER:
-            files[member] = repaired_payload
-        elif suffix in {".pdf", ".png", ".zip", ".pt"}:
+        if suffix in {".pdf", ".png", ".zip", ".pt"}:
             files[member] = b"fixture-binary"
         elif suffix == ".csv":
             files[member] = "field\nvalue\n"
@@ -264,14 +262,17 @@ def _write_zip(tmp_path: Path, name: str, files: dict[str, str | bytes]) -> Path
     return archive
 
 
+def _zip_payload(files: dict[str, str | bytes]) -> bytes:
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for member, payload in sorted(files.items()):
+            zf.writestr(member, payload)
+    return buffer.getvalue()
+
+
 def _valid_archives(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, Path]:
-    repaired_payload = b"repaired-v131-archive"
-    monkeypatch.setattr(
-        verifier,
-        "REPAIRED_V131_ARCHIVE_SHA256",
-        hashlib.sha256(repaired_payload).hexdigest(),
-    )
-    main_archive = _write_zip(tmp_path, "main.zip", _base_main_files(repaired_payload))
+    del monkeypatch
+    main_archive = _write_zip(tmp_path, "main.zip", _base_main_files())
     training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
     return main_archive, training_archive
 
@@ -288,6 +289,7 @@ def test_minimal_valid_v132_fixture_passes_and_writes_reports(
     assert result["main_package"]["checks"]["extracted_help_smoke"]["status"] == "pass"
     assert result["main_package"]["checks"]["metadata"]["status"] == "pass"
     assert result["main_package"]["checks"]["private_path_hygiene"]["status"] == "pass"
+    assert result["main_package"]["checks"]["payload_boundaries"]["status"] == "pass"
     assert result["training_inputs"]["checks"]["training_members"]["status"] == "pass"
     assert result["training_inputs"]["checks"]["private_path_hygiene"]["status"] == "pass"
 
@@ -311,13 +313,8 @@ def test_rejects_missing_runtime_import_members(
     missing_member: str,
     expected_problem: str,
 ) -> None:
-    repaired_payload = b"repaired-v131-archive"
-    monkeypatch.setattr(
-        verifier,
-        "REPAIRED_V131_ARCHIVE_SHA256",
-        hashlib.sha256(repaired_payload).hexdigest(),
-    )
-    main_files = _base_main_files(repaired_payload)
+    del monkeypatch
+    main_files = _base_main_files()
     main_files.pop(missing_member)
     main_archive = _write_zip(tmp_path, "main.zip", main_files)
     training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
@@ -332,13 +329,8 @@ def test_rejects_missing_runtime_import_members(
 
 
 def test_rejects_invented_v132_doi(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    repaired_payload = b"repaired-v131-archive"
-    monkeypatch.setattr(
-        verifier,
-        "REPAIRED_V131_ARCHIVE_SHA256",
-        hashlib.sha256(repaired_payload).hexdigest(),
-    )
-    main_files = _base_main_files(repaired_payload)
+    del monkeypatch
+    main_files = _base_main_files()
     metadata = json.loads(str(main_files["release/ZENODO_METADATA.json"]))
     metadata["record"]["doi"] = "10.5281/zenodo.99999999"
     main_files["release/ZENODO_METADATA.json"] = json.dumps(metadata)
@@ -358,13 +350,8 @@ def test_rejects_private_path_markers_in_main_text_members(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    repaired_payload = b"repaired-v131-archive"
-    monkeypatch.setattr(
-        verifier,
-        "REPAIRED_V131_ARCHIVE_SHA256",
-        hashlib.sha256(repaired_payload).hexdigest(),
-    )
-    main_files = _base_main_files(repaired_payload)
+    del monkeypatch
+    main_files = _base_main_files()
     graph_summary = _graph_summary()
     graph_summary["source_dir"] = _nas_backslash_path(
         "Projects",
@@ -401,6 +388,101 @@ def test_rejects_private_path_markers_in_main_text_members(
         failure["member"] == "scripts/build_v132_public_reproduction_archives.py"
         and "local_training_worktree_name" in failure["markers"]
         for failure in failures
+    )
+
+
+def test_rejects_private_path_markers_inside_nested_zip_members(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    del monkeypatch
+    main_files = _base_main_files()
+    nested_member = "release/supplemental_nested.zip"
+    main_files[nested_member] = _zip_payload(
+        {"release/README.md": "cache path `" + _user_profile_cache_path() + "`\n"}
+    )
+    main_archive = _write_zip(tmp_path, "main.zip", main_files)
+    training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
+
+    result = verifier.build_result(str(main_archive), str(training_archive))
+
+    assert result["status"] == "fail"
+    hygiene = result["main_package"]["checks"]["private_path_hygiene"]
+    assert hygiene["status"] == "fail"
+    assert hygiene["nested_zip_member_count"] == 1
+    assert any(
+        failure["member"] == f"{nested_member}!release/README.md"
+        and "appdata_profile_path" in failure["markers"]
+        for failure in hygiene["failures"]
+    )
+
+
+def test_rejects_private_path_markers_in_binary_payload_bytes(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    del monkeypatch
+    main_files = _base_main_files()
+    binary_member = "results/private_path_payload.bin"
+    main_files[binary_member] = b"payload:" + ("/" + "/" + "nas" + "/Projects").encode("ascii")
+    main_archive = _write_zip(tmp_path, "main.zip", main_files)
+    training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
+
+    result = verifier.build_result(str(main_archive), str(training_archive))
+
+    assert result["status"] == "fail"
+    hygiene = result["main_package"]["checks"]["private_path_hygiene"]
+    assert hygiene["status"] == "fail"
+    assert any(
+        failure["member"] == binary_member
+        and failure["problem"] == "private_or_local_path_marker_in_binary_payload"
+        and "nas_forward_unc" in failure["markers"]
+        for failure in hygiene["failures"]
+    )
+
+
+def test_rejects_legacy_v131_zip_in_main_package(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    del monkeypatch
+    main_files = _base_main_files()
+    main_files[verifier.LEGACY_V131_ARCHIVE_MEMBER] = _zip_payload({"README.md": "clean nested archive\n"})
+    main_archive = _write_zip(tmp_path, "main.zip", main_files)
+    training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
+
+    result = verifier.build_result(str(main_archive), str(training_archive))
+
+    assert result["status"] == "fail"
+    boundaries = result["main_package"]["checks"]["payload_boundaries"]
+    assert boundaries["status"] == "fail"
+    assert any(
+        failure["member"] == verifier.LEGACY_V131_ARCHIVE_MEMBER
+        and failure["problem"] == "legacy_v131_zip_must_not_be_embedded"
+        for failure in boundaries["failures"]
+    )
+
+
+def test_rejects_main_checkpoint_members(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    del monkeypatch
+    main_files = _base_main_files()
+    checkpoint_member = f"{verifier.v131.GRAPH_DIR}/checkpoints/member_seed2111/best_selector.pt"
+    main_files[checkpoint_member] = b"checkpoint"
+    main_archive = _write_zip(tmp_path, "main.zip", main_files)
+    training_archive = _write_zip(tmp_path, "training.zip", _base_training_files())
+
+    result = verifier.build_result(str(main_archive), str(training_archive))
+
+    assert result["status"] == "fail"
+    boundaries = result["main_package"]["checks"]["payload_boundaries"]
+    assert boundaries["status"] == "fail"
+    assert any(
+        failure["member"] == checkpoint_member
+        and failure["problem"] == "checkpoint_or_model_weight_member"
+        for failure in boundaries["failures"]
     )
 
 

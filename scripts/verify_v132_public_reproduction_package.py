@@ -14,7 +14,7 @@ third-party/operational validation.
 from __future__ import annotations
 
 import argparse
-import hashlib
+import io
 import json
 import re
 import zipfile
@@ -36,8 +36,6 @@ PRIOR_VERSION_DOI = "10.5281/zenodo.20844596"
 CONCEPT_DOI = "10.5281/zenodo.20768672"
 HISTORICAL_CITED_DOI = "10.5281/zenodo.20840386"
 HISTORICAL_V130_DOI = "10.5281/zenodo.20842573"
-REPAIRED_V131_ARCHIVE_SHA256 = "4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4"
-
 DEFAULT_ARCHIVE_REL = "release/spot_od_v1_3_2_public_reproduction_package.zip"
 DEFAULT_TRAINING_ARCHIVE_REL = "release/spot_od_v1_3_2_public_reproduction_training_inputs.zip"
 DEFAULT_JSON_OUT = "results/validation/v132_public_reproduction_package_verification.json"
@@ -48,16 +46,18 @@ SCOPE_BOUNDARY = (
     "opens the packaged v1.3.2 main ZIP and training-input ZIP, checks member "
     "safety, required runtime import members, v1.3.2 metadata, absence of a "
     "claimed pre-import v1.3.2 DOI, unchanged selected metric readback, a fast "
-    "extracted-package --help smoke for the graph-selector entry point, and "
-    "checkpoint-free retained-candidate training-input directories. It is not "
-    "training, not full raw/training/all-filter reproduction, not public "
-    "precise-reference validation, not independent third-party reproduction, "
-    "and not operational validation."
+    "extracted-package --help smoke for the graph-selector entry point, "
+    "recursive private-path hygiene over text, nested ZIPs, and binary bytes, "
+    "and checkpoint-free retained-candidate training-input directories. It is "
+    "not checkpoint reload, not training, not full raw/training/all-filter "
+    "reproduction, not public precise-reference validation, not independent "
+    "third-party reproduction, and not operational validation."
 )
 
 MAIN_ASSET = "spot_od_v1_3_2_public_reproduction_package.zip"
 TRAINING_ASSET = "spot_od_v1_3_2_public_reproduction_training_inputs.zip"
-REPAIRED_V131_ARCHIVE_MEMBER = "release/spot_od_v1_3_1_validation_selected_residual_refine.zip"
+LEGACY_V131_ARCHIVE_MEMBER = "release/spot_od_v1_3_1_validation_selected_residual_refine.zip"
+MAX_NESTED_ZIP_SCAN_DEPTH = 5
 
 V132_RELEASE_DOCS: tuple[str, ...] = (
     "release/README_v1.3.2-public-reproduction-package.md",
@@ -68,7 +68,6 @@ V131_REPAIR_TRACEABILITY_MEMBERS: tuple[str, ...] = (
     "release/README_v1.3.1-validation-selected-residual-refine.md",
     "release/RELEASE_NOTES_v1.3.1-validation-selected-residual-refine.md",
     "release/MANIFEST_v1.3.1-validation-selected-residual-refine.md",
-    REPAIRED_V131_ARCHIVE_MEMBER,
     "scripts/verify_v131_release_package.py",
     "tests/test_v131_release_package_verification.py",
 )
@@ -173,6 +172,19 @@ _PRIVATE_PATH_MARKER_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("unix_user_home", re.compile(r"(?i)(?<![A-Za-z0-9_])/(?:Users|home|mnt|Volumes)/")),
     ("local_training_worktree_name", re.compile("(?i)" + "spot_od_v131_public_training_" + "rerun")),
 )
+_PRIVATE_PATH_MARKER_BYTE_PATTERN_TEXTS: tuple[tuple[str, str], ...] = (
+    ("nas_backslash_unc", r"(?i)" + re.escape(_BS) + r"+nas(?:[\\/]|$)"),
+    ("nas_forward_unc", "(?i)" + "/" + "/" + "nas" + r"(?:/|$)"),
+    ("windows_z_drive_absolute_path", r"(?i)(?<![A-Za-z0-9])Z:[\\/][A-Za-z0-9_. $-]"),
+    ("windows_user_profile", r"(?i)(?<![A-Za-z0-9])C:[\\/]+Users[\\/]"),
+    ("appdata_profile_path", r"(?i)\b" + "App" + "Data" + r"\b"),
+    ("unix_user_home", r"(?i)(?<![A-Za-z0-9_])/(?:Users|home|mnt|Volumes)/"),
+    ("local_training_worktree_name", "(?i)" + "spot_od_v131_public_training_" + "rerun"),
+)
+_PRIVATE_PATH_MARKER_BYTE_PATTERNS: tuple[tuple[str, re.Pattern[bytes]], ...] = tuple(
+    (label, re.compile(pattern_text.encode("ascii"), re.IGNORECASE))
+    for label, pattern_text in _PRIVATE_PATH_MARKER_BYTE_PATTERN_TEXTS
+)
 
 
 def normalize_text(text: str) -> str:
@@ -191,10 +203,6 @@ def rel(path: Path) -> str:
         return v131.norm(path)
 
 
-def sha256_bytes(payload: bytes) -> str:
-    return hashlib.sha256(payload).hexdigest()
-
-
 def should_scan_public_text_member(member_name: str) -> bool:
     return Path(member_name).suffix.lower() in v131.TEXT_SUFFIXES
 
@@ -207,39 +215,170 @@ def private_path_marker_hits(text: str) -> list[str]:
     ]
 
 
-def check_no_private_path_markers(zf: zipfile.ZipFile, members: list[str]) -> dict[str, Any]:
+def private_path_marker_byte_hits(payload: bytes) -> list[str]:
+    return [
+        label
+        for label, pattern in _PRIVATE_PATH_MARKER_BYTE_PATTERNS
+        if pattern.search(payload)
+    ]
+
+
+def is_checkpoint_or_model_member(member_name: str) -> bool:
+    parts = member_name.split("/")
+    return "checkpoints" in parts or Path(member_name).suffix.lower() in {".pt", ".pth", ".ckpt"}
+
+
+def is_zip_payload(member_name: str, payload: bytes) -> bool:
+    if Path(member_name).suffix.lower() == ".zip":
+        return True
+    return payload.startswith(b"PK\x03\x04")
+
+
+def _scan_archive_payload(
+    payload: bytes,
+    *,
+    archive_label: str,
+    depth: int,
+) -> dict[str, Any]:
+    if depth >= MAX_NESTED_ZIP_SCAN_DEPTH:
+        return {
+            "text_members": [],
+            "binary_members": [],
+            "nested_archives": [],
+            "failures": [
+                {
+                    "member": archive_label,
+                    "problem": "nested_zip_depth_limit_exceeded",
+                    "max_depth": MAX_NESTED_ZIP_SCAN_DEPTH,
+                }
+            ],
+        }
+
+    try:
+        with zipfile.ZipFile(io.BytesIO(payload), "r") as nested:
+            return _scan_zip_for_private_path_markers(nested, archive_label=archive_label, depth=depth + 1)
+    except zipfile.BadZipFile as exc:
+        return {
+            "text_members": [],
+            "binary_members": [],
+            "nested_archives": [],
+            "failures": [
+                {
+                    "member": archive_label,
+                    "problem": "bad_nested_zip",
+                    "details": repr(exc),
+                }
+            ],
+        }
+
+
+def _scan_zip_for_private_path_markers(
+    zf: zipfile.ZipFile,
+    *,
+    archive_label: str | None,
+    depth: int,
+) -> dict[str, Any]:
     failures: list[dict[str, Any]] = []
-    scanned: list[str] = []
-    marker_hit_counts: dict[str, int] = {}
+    scanned_text: list[str] = []
+    scanned_binary: list[str] = []
+    nested_archives: list[str] = []
 
-    for member_name in sorted(members):
-        if not should_scan_public_text_member(member_name):
-            continue
-        try:
-            text = v131.read_member_text(zf, member_name)
-        except UnicodeDecodeError as exc:
-            failures.append({"member": member_name, "problem": f"utf8_decode_failed: {exc}"})
-            continue
+    crc_failure = zf.testzip()
+    if crc_failure is not None:
+        display_name = f"{archive_label}!{crc_failure}" if archive_label else crc_failure
+        failures.append({"member": display_name, "problem": "crc_failure"})
 
-        scanned.append(member_name)
-        hits = private_path_marker_hits(text)
-        if hits:
-            for hit in hits:
-                marker_hit_counts[hit] = marker_hit_counts.get(hit, 0) + 1
+    for info in sorted(zf.infolist(), key=lambda item: item.filename):
+        member_name, name_problems = v131.member_name_problems(info.filename)
+        if info.is_dir():
+            continue
+        display_name = f"{archive_label}!{member_name}" if archive_label else member_name
+
+        if name_problems:
             failures.append(
                 {
-                    "member": member_name,
-                    "problem": "private_or_local_path_marker",
-                    "markers": hits,
+                    "member": display_name,
+                    "problem": "unsafe_archive_member_name",
+                    "problems": name_problems,
                 }
             )
 
+        name_hits = private_path_marker_hits(member_name)
+        if name_hits:
+            failures.append(
+                {
+                    "member": display_name,
+                    "problem": "private_or_local_path_marker_in_member_name",
+                    "markers": name_hits,
+                }
+            )
+
+        try:
+            payload = zf.read(info.filename)
+        except (RuntimeError, zipfile.BadZipFile, KeyError) as exc:
+            failures.append({"member": display_name, "problem": "member_read_failed", "details": repr(exc)})
+            continue
+
+        if should_scan_public_text_member(member_name):
+            scanned_text.append(display_name)
+            try:
+                text = payload.decode("utf-8")
+            except UnicodeDecodeError as exc:
+                failures.append({"member": display_name, "problem": f"utf8_decode_failed: {exc}"})
+            else:
+                hits = private_path_marker_hits(text)
+                if hits:
+                    failures.append(
+                        {
+                            "member": display_name,
+                            "problem": "private_or_local_path_marker",
+                            "markers": hits,
+                        }
+                    )
+        else:
+            scanned_binary.append(display_name)
+            hits = private_path_marker_byte_hits(payload)
+            if hits:
+                failures.append(
+                    {
+                        "member": display_name,
+                        "problem": "private_or_local_path_marker_in_binary_payload",
+                        "markers": hits,
+                    }
+                )
+
+        if is_zip_payload(member_name, payload):
+            nested_archives.append(display_name)
+            nested_result = _scan_archive_payload(payload, archive_label=display_name, depth=depth)
+            scanned_text.extend(nested_result["text_members"])
+            scanned_binary.extend(nested_result["binary_members"])
+            nested_archives.extend(nested_result["nested_archives"])
+            failures.extend(nested_result["failures"])
+
     return {
-        "status": v131.status_from_failures(failures),
-        "scanned_text_member_count": len(scanned),
-        "marker_hit_counts": marker_hit_counts,
-        "failure_count": len(failures),
+        "text_members": scanned_text,
+        "binary_members": scanned_binary,
+        "nested_archives": nested_archives,
         "failures": failures,
+    }
+
+
+def check_no_private_path_markers(zf: zipfile.ZipFile, members: list[str]) -> dict[str, Any]:
+    del members
+    scan = _scan_zip_for_private_path_markers(zf, archive_label=None, depth=0)
+    marker_hit_counts: dict[str, int] = {}
+    for failure in scan["failures"]:
+        for hit in failure.get("markers", []):
+            marker_hit_counts[hit] = marker_hit_counts.get(hit, 0) + 1
+
+    return {
+        "status": v131.status_from_failures(scan["failures"]),
+        "scanned_text_member_count": len(scan["text_members"]),
+        "scanned_binary_member_count": len(scan["binary_members"]),
+        "nested_zip_member_count": len(scan["nested_archives"]),
+        "marker_hit_counts": marker_hit_counts,
+        "failure_count": len(scan["failures"]),
+        "failures": scan["failures"],
     }
 
 
@@ -367,29 +506,23 @@ def check_main_metadata(parsed: dict[str, Any], zf: zipfile.ZipFile, member_set:
     }
 
 
-def check_repaired_v131_archive(zf: zipfile.ZipFile, member_set: set[str]) -> dict[str, Any]:
-    if REPAIRED_V131_ARCHIVE_MEMBER not in member_set:
-        return {
-            "status": "fail",
-            "member": REPAIRED_V131_ARCHIVE_MEMBER,
-            "expected_sha256": REPAIRED_V131_ARCHIVE_SHA256,
-            "failures": [{"problem": "missing_repaired_v131_archive"}],
-        }
-    actual = sha256_bytes(zf.read(REPAIRED_V131_ARCHIVE_MEMBER))
+def check_main_payload_boundaries(member_set: set[str]) -> dict[str, Any]:
     failures: list[dict[str, Any]] = []
-    if actual != REPAIRED_V131_ARCHIVE_SHA256:
+    if LEGACY_V131_ARCHIVE_MEMBER in member_set:
         failures.append(
             {
-                "problem": "sha256_mismatch",
-                "expected_sha256": REPAIRED_V131_ARCHIVE_SHA256,
-                "actual_sha256": actual,
+                "member": LEGACY_V131_ARCHIVE_MEMBER,
+                "problem": "legacy_v131_zip_must_not_be_embedded",
             }
         )
+    for member_name in sorted(member_set):
+        if is_checkpoint_or_model_member(member_name):
+            failures.append({"member": member_name, "problem": "checkpoint_or_model_weight_member"})
     return {
         "status": v131.status_from_failures(failures),
-        "member": REPAIRED_V131_ARCHIVE_MEMBER,
-        "expected_sha256": REPAIRED_V131_ARCHIVE_SHA256,
-        "actual_sha256": actual,
+        "legacy_v131_archive_member": LEGACY_V131_ARCHIVE_MEMBER,
+        "checkpoint_policy": "main package is checkpoint-free; saved metric replay and training-input inspection only",
+        "failure_count": len(failures),
         "failures": failures,
     }
 
@@ -426,7 +559,7 @@ def check_main_archive(archive_rel: str) -> dict[str, Any]:
 
     if not archive_path.is_file():
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "archive_missing"}]}
-        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
+        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "payload_boundaries", "extracted_help_smoke"):
             checks[name] = v131.blocked_check("archive_missing")
         return {"status": "fail", "archive": archive, "checks": checks}
 
@@ -437,9 +570,10 @@ def check_main_archive(archive_rel: str) -> dict[str, Any]:
             members = member_check["members"]
             member_set = set(members)
             checks["required_members"] = check_required_members(member_set, REQUIRED_MAIN_MEMBERS, REQUIRED_MAIN_PREFIXES)
+            checks["payload_boundaries"] = check_main_payload_boundaries(member_set)
 
             if member_check["status"] != "pass":
-                for name in ("json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
+                for name in ("json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "extracted_help_smoke"):
                     checks[name] = v131.blocked_check("unsafe_or_invalid_archive_members")
             else:
                 parsed, parse_check = parse_main_json(zf, member_set)
@@ -452,11 +586,10 @@ def check_main_archive(archive_rel: str) -> dict[str, Any]:
                     checks["metrics"] = v131.blocked_check("json_parse_failed")
                 checks["text_boundaries"] = check_current_text_boundaries(zf, member_set)
                 checks["private_path_hygiene"] = check_no_private_path_markers(zf, members)
-                checks["repaired_v131_archive"] = check_repaired_v131_archive(zf, member_set)
                 checks["extracted_help_smoke"] = v131.check_extracted_help_smoke(zf, member_set)
     except zipfile.BadZipFile as exc:
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "bad_zip", "details": repr(exc)}]}
-        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "repaired_v131_archive", "extracted_help_smoke"):
+        for name in ("required_members", "json_parse", "metadata", "text_boundaries", "private_path_hygiene", "metrics", "payload_boundaries", "extracted_help_smoke"):
             checks[name] = v131.blocked_check("bad_zip")
 
     status = "pass" if all(check.get("status") == "pass" for check in checks.values()) else "fail"
@@ -679,7 +812,7 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         "text_boundaries",
         "private_path_hygiene",
         "metrics",
-        "repaired_v131_archive",
+        "payload_boundaries",
         "extracted_help_smoke",
     ):
         check = main_checks.get(name, {})

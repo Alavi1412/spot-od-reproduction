@@ -10,8 +10,6 @@ Zenodo v1.3.2 version DOI: assigned after GitHub release import; not claimed in
 this package.
 Previous version DOI: `10.5281/zenodo.20844596`
 Concept DOI: `10.5281/zenodo.20768672`
-Repaired v1.3.1 archive SHA-256:
-`4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4`
 
 Archive byte sizes and SHA-256 digests are reported after construction rather
 than embedded inside this packaged manifest.
@@ -29,7 +27,6 @@ than embedded inside this packaged manifest.
 - `release/MANIFEST_v1.3.2-public-reproduction-package.md`
 - `release/CITATION.cff`
 - `release/LICENSE_CC_BY_4_0.txt`
-- `release/spot_od_v1_3_1_validation_selected_residual_refine.zip`
 - `paper/main.tex`
 - `paper/main.pdf`
 - `paper/tables/main_findings_summary.tex`
@@ -45,6 +42,11 @@ than embedded inside this packaged manifest.
 - `release/MANIFEST_v1.3.1-validation-selected-residual-refine.md`
 - `scripts/verify_v131_release_package.py`
 - `tests/test_v131_release_package_verification.py`
+
+The legacy `spot_od_v1_3_1_validation_selected_residual_refine.zip` asset is
+not embedded in the v1.3.2 main ZIP. Use the external v1.3.1 GitHub/Zenodo
+release for that prior archive; v1.3.2 carries sanitized selected docs/results
+needed for metric readback and traceability.
 
 ## Scripts and tests
 
@@ -79,6 +81,10 @@ checks this with `python scripts/run_trajectory_candidate_graph_selector_poc.py
 - `results/trajectory_candidate_mean_nodeomit_residual_refine_val53_ensemble3_2111_2117_2129_newfresh151157163167_20260625/`
 - `results/trajectory_candidate_edge_only_local_tail_diagnostic_val53_20260625/`
 
+Checkpoint/model-weight files under these result directories are intentionally
+excluded. The v1.3.2 main package supports saved metric replay and import/help
+smoke checks, not checkpoint reload.
+
 ## Training-input ZIP
 
 The separate training-input ZIP contains the checkpoint-free upstream retained
@@ -98,4 +104,5 @@ upstream checkpoints.
 The included outputs support the bounded retained-candidate compact-simulator
 claim reported in the manuscript. They do not constitute new scientific metrics.
 This package is not public precise-reference validation, not
-independent-machine reproduction, and not a full raw/training/all-filter rerun.
+independent-machine reproduction, not checkpoint reload, and not a full
+raw/training/all-filter rerun.
