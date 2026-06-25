@@ -44,6 +44,7 @@ DEFAULT_BASELINE_CANDIDATE_METHODS = DEFAULT_CANDIDATE_METHODS
 SUPPORTED_CANDIDATE_METHODS = ("EKF", "UKF", "AUKF", "BatchWLS", "RFIS", "VA_RFIS")
 SUPPORTED_GRAPH_LAYER_TYPES = ("mean", "attention")
 SUPPORTED_PREDICTION_MODES = ("selector", "residual_refine")
+SUPPORTED_NODE_DISAGREEMENT_FEATURES = ("include", "omit")
 RESIDUAL_POSITION_DIM = 3
 RESIDUAL_OFFSET_APPLICATION = "per_candidate_constant_position_offset"
 TIER_NAMES = (
@@ -55,6 +56,16 @@ TIER_NAMES = (
 )
 SEED_SPLIT_RE = re.compile(r"seed(?P<seed>\d+)_split(?P<split>\d+)")
 DISTANCE_LOG_SCALE = 20.0
+NODE_DISAGREEMENT_FEATURE_NAMES = (
+    "observed_disagreement_mean_log",
+    "observed_disagreement_std_log",
+    "observed_disagreement_p50_log",
+    "observed_disagreement_p90_log",
+    "all_eval_disagreement_mean_log",
+    "all_eval_disagreement_std_log",
+    "all_eval_disagreement_p50_log",
+    "all_eval_disagreement_p90_log",
+)
 
 
 @dataclass(frozen=True)
@@ -124,6 +135,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--graph-layers", type=int, default=2)
     parser.add_argument("--graph-layer-type", choices=SUPPORTED_GRAPH_LAYER_TYPES, default="mean")
     parser.add_argument("--prediction-mode", choices=SUPPORTED_PREDICTION_MODES, default="selector")
+    parser.add_argument(
+        "--node-disagreement-features",
+        choices=SUPPORTED_NODE_DISAGREEMENT_FEATURES,
+        default="include",
+    )
     parser.add_argument("--residual-loss-weight", type=float, default=1.0)
     parser.add_argument("--learning-rate", type=float, default=0.002)
     parser.add_argument("--weight-decay", type=float, default=0.002)
@@ -146,6 +162,13 @@ def validate_prediction_mode(prediction_mode: str) -> str:
     if mode not in SUPPORTED_PREDICTION_MODES:
         raise ValueError(f"prediction_mode must be one of {SUPPORTED_PREDICTION_MODES}.")
     return mode
+
+
+def validate_node_disagreement_features(value: str) -> str:
+    setting = str(value)
+    if setting not in SUPPORTED_NODE_DISAGREEMENT_FEATURES:
+        raise ValueError(f"node_disagreement_features must be one of {SUPPORTED_NODE_DISAGREEMENT_FEATURES}.")
+    return setting
 
 
 def validate_residual_loss_weight(value: float) -> float:
@@ -371,8 +394,13 @@ def _visibility_stats(visibility: np.ndarray, eval_mask: np.ndarray, observed_ma
     ]
 
 
-def build_feature_names(scenarios: list[str], candidate_methods: list[str]) -> list[str]:
-    return [
+def build_feature_names(
+    scenarios: list[str],
+    candidate_methods: list[str],
+    *,
+    node_disagreement_features: str = "include",
+) -> list[str]:
+    names = [
         "finite_step_fraction_eval",
         "finite_value_fraction_eval",
         "observed_step_delta_mean_log",
@@ -381,23 +409,22 @@ def build_feature_names(scenarios: list[str], candidate_methods: list[str]) -> l
         "all_eval_step_delta_mean_log",
         "all_eval_step_delta_std_log",
         "all_eval_step_delta_p90_log",
-        "observed_disagreement_mean_log",
-        "observed_disagreement_std_log",
-        "observed_disagreement_p50_log",
-        "observed_disagreement_p90_log",
-        "all_eval_disagreement_mean_log",
-        "all_eval_disagreement_std_log",
-        "all_eval_disagreement_p50_log",
-        "all_eval_disagreement_p90_log",
-        *[f"scenario_{scenario}" for scenario in scenarios],
-        "visible_step_fraction",
-        "visible_station_fraction",
-        "observed_eval_fraction",
-        "mean_visible_station_count_norm",
-        "std_visible_station_count_norm",
-        "eval_step_fraction",
-        *[f"method_{method}" for method in candidate_methods],
     ]
+    if validate_node_disagreement_features(node_disagreement_features) == "include":
+        names.extend(NODE_DISAGREEMENT_FEATURE_NAMES)
+    names.extend(
+        [
+            *[f"scenario_{scenario}" for scenario in scenarios],
+            "visible_step_fraction",
+            "visible_station_fraction",
+            "observed_eval_fraction",
+            "mean_visible_station_count_norm",
+            "std_visible_station_count_norm",
+            "eval_step_fraction",
+            *[f"method_{method}" for method in candidate_methods],
+        ]
+    )
+    return names
 
 
 def build_edge_feature_names() -> list[str]:
@@ -424,12 +451,14 @@ def build_candidate_graph_features(
     scenario: str,
     scenarios: list[str],
     candidate_methods: list[str],
+    node_disagreement_features: str = "include",
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     bank = np.asarray(candidate_bank, dtype=np.float64)
     eval_arr = np.asarray(eval_mask, dtype=bool)
     obs_arr = np.asarray(observed_mask, dtype=bool)
     if bank.ndim != 3:
         raise ValueError("candidate_bank must have shape [T, C, state_dim].")
+    include_node_disagreement = validate_node_disagreement_features(node_disagreement_features) == "include"
     candidate_count = int(bank.shape[1])
     scenario_one_hot = [1.0 if scenario == name else 0.0 for name in scenarios]
     vis_stats = _visibility_stats(visibility, eval_arr, obs_arr)
@@ -443,19 +472,17 @@ def build_candidate_graph_features(
         finite_values = np.isfinite(candidate)
         candidate_mask[candidate_index] = bool(np.any(finite_steps & obs_arr))
         method_one_hot = [1.0 if idx == candidate_index else 0.0 for idx in range(candidate_count)]
-        node_features.append(
-            [
-                float(np.sum(finite_steps & eval_arr)) / float(eval_denom),
-                float(np.sum(finite_values[eval_arr])) / float(value_eval_denom),
-                *_step_delta_stats(candidate, obs_arr),
-                *_step_delta_stats(candidate, eval_arr),
-                *_candidate_disagreement_stats(bank, candidate_index, obs_arr),
-                *_candidate_disagreement_stats(bank, candidate_index, eval_arr),
-                *scenario_one_hot,
-                *vis_stats,
-                *method_one_hot,
-            ]
-        )
+        feature_row = [
+            float(np.sum(finite_steps & eval_arr)) / float(eval_denom),
+            float(np.sum(finite_values[eval_arr])) / float(value_eval_denom),
+            *_step_delta_stats(candidate, obs_arr),
+            *_step_delta_stats(candidate, eval_arr),
+        ]
+        if include_node_disagreement:
+            feature_row.extend(_candidate_disagreement_stats(bank, candidate_index, obs_arr))
+            feature_row.extend(_candidate_disagreement_stats(bank, candidate_index, eval_arr))
+        feature_row.extend([*scenario_one_hot, *vis_stats, *method_one_hot])
+        node_features.append(feature_row)
 
     edge_names = build_edge_feature_names()
     edge_features = np.zeros((candidate_count, candidate_count, len(edge_names)), dtype=np.float32)
@@ -700,6 +727,7 @@ def load_source_scenario_samples(
     scenarios: list[str],
     candidate_methods: list[str],
     baseline_candidate_methods: list[str],
+    node_disagreement_features: str = "include",
 ) -> list[TrajectorySample]:
     pred_path = source.path / scenario / PREDICTION_FILENAME
     if not pred_path.exists():
@@ -766,6 +794,7 @@ def load_source_scenario_samples(
             scenario=scenario,
             scenarios=scenarios,
             candidate_methods=candidate_methods,
+            node_disagreement_features=node_disagreement_features,
         )
         if not np.any(candidate_mask):
             continue
@@ -806,6 +835,7 @@ def load_samples(
     scenarios: list[str],
     candidate_methods: list[str],
     baseline_candidate_methods: list[str],
+    node_disagreement_features: str = "include",
 ) -> list[TrajectorySample]:
     samples: list[TrajectorySample] = []
     for source in source_runs:
@@ -817,6 +847,7 @@ def load_samples(
                     scenarios=scenarios,
                     candidate_methods=candidate_methods,
                     baseline_candidate_methods=baseline_candidate_methods,
+                    node_disagreement_features=node_disagreement_features,
                 )
             )
     return samples
@@ -1086,6 +1117,7 @@ def _save_checkpoint(
             "graph_layers": int(model_kwargs.get("graph_layers", 0)),
             "graph_layer_type": str(model_kwargs.get("graph_layer_type", "mean")),
             "prediction_mode": str(model_kwargs.get("prediction_mode", "selector")),
+            "node_disagreement_features": str(config.get("node_disagreement_features", "include")),
             "residual_offset_dim": int(model_kwargs.get("residual_offset_dim", RESIDUAL_POSITION_DIM)),
             "residual_offset_application": str(
                 config.get("residual_offset_application", RESIDUAL_OFFSET_APPLICATION)
@@ -1742,17 +1774,25 @@ def _format_metric(value: Any) -> str:
 def write_summary_md(summary: dict[str, Any], path: Path) -> None:
     aggregates = summary["aggregate_tiers"]
     prediction_mode = str(summary.get("prediction_mode", "selector"))
+    node_disagreement_features = str(summary.get("node_disagreement_features", "include"))
     method_label = "Selector RMSE m" if prediction_mode == "selector" else "Refined RMSE m"
+    if node_disagreement_features == "omit":
+        node_disagreement_note = (
+            "Retained candidate-disagreement node features were omitted; pairwise edge distance/overlap "
+            "features remain in the graph inputs."
+        )
+    else:
+        node_disagreement_note = "Retained candidate-disagreement node features were included."
     if prediction_mode == "residual_refine":
         decision_note = (
             "Residual refinement uses retained truth-free candidate, visibility, eval-mask, scenario, "
-            "and candidate-disagreement features, then applies learned probability-weighted constant "
+            "and configured node features, then applies learned probability-weighted constant "
             "3D candidate offsets. Eval truth is used for scoring rows and baselines, not for decisions."
         )
     else:
         decision_note = (
             "Selection uses retained truth-free candidate, visibility, eval-mask, scenario, "
-            "and candidate-disagreement features only. Eval truth is used for scoring rows and baselines, "
+            "and configured node features only. Eval truth is used for scoring rows and baselines, "
             "not for selector decisions."
         )
     lines = [
@@ -1765,12 +1805,15 @@ def write_summary_md(summary: dict[str, Any], path: Path) -> None:
         f"Graph layer type: {summary.get('graph_layer_type', 'mean')}",
         f"Graph layers: {summary.get('graph_layers', 0)}",
         f"Prediction mode: {prediction_mode}",
+        f"Node disagreement features: {node_disagreement_features}",
         f"Residual loss weight: {_format_metric(summary.get('residual_loss_weight', 1.0))}",
         f"Residual offset application: {summary.get('residual_offset_application', RESIDUAL_OFFSET_APPLICATION)}",
         f"Development samples: {summary.get('development_sample_count', summary.get('train_sample_count', 0))}",
         f"Fit/training samples: {summary.get('fit_sample_count', summary.get('train_sample_count', 0))}",
         f"Validation samples: {summary.get('validation_sample_count', 0)}",
         f"Checkpoint selection metric: {summary.get('checkpoint_selection_metric', 'train_loss')}",
+        "",
+        node_disagreement_note,
         "",
         decision_note,
         "",
@@ -1822,6 +1865,7 @@ def validate_args(args: argparse.Namespace) -> None:
         raise SystemExit("--dropout must be in [0, 1).")
     try:
         validate_prediction_mode(args.prediction_mode)
+        validate_node_disagreement_features(args.node_disagreement_features)
         validate_residual_loss_weight(args.residual_loss_weight)
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
@@ -1861,6 +1905,7 @@ def main() -> None:
         option_name="--baseline-candidate-methods",
         min_count=1,
     )
+    node_disagreement_features = validate_node_disagreement_features(args.node_disagreement_features)
     if not scenarios:
         raise SystemExit("--scenarios must contain at least one scenario.")
     output_dir = Path(args.output_dir)
@@ -1871,6 +1916,7 @@ def main() -> None:
         scenarios=scenarios,
         candidate_methods=candidate_methods,
         baseline_candidate_methods=baseline_candidate_methods,
+        node_disagreement_features=node_disagreement_features,
     )
     validation_seed_min = (
         None if args.development_validation_seed_min is None else int(args.development_validation_seed_min)
@@ -1885,7 +1931,11 @@ def main() -> None:
     validation_samples = development_split.validation_samples
     node_feature_dim = int(train_samples[0].node_features.shape[-1])
     edge_feature_dim = int(train_samples[0].edge_features.shape[-1])
-    feature_names = build_feature_names(scenarios, candidate_methods)
+    feature_names = build_feature_names(
+        scenarios,
+        candidate_methods,
+        node_disagreement_features=node_disagreement_features,
+    )
     edge_feature_names = build_edge_feature_names()
     graph_layers = int(args.graph_layers)
     graph_layer_type = str(args.graph_layer_type)
@@ -1928,6 +1978,7 @@ def main() -> None:
         "graph_layers": graph_layers,
         "graph_layer_type": graph_layer_type,
         "prediction_mode": prediction_mode,
+        "node_disagreement_features": node_disagreement_features,
         "residual_loss_weight": residual_loss_weight,
         "residual_offset_dim": RESIDUAL_POSITION_DIM,
         "residual_offset_application": RESIDUAL_OFFSET_APPLICATION,

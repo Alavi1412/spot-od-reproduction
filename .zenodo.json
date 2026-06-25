@@ -1,7 +1,7 @@
 {
-  "title": "SPOT-OD v1.2.9 post-import DOI synchronization",
+  "title": "SPOT-OD v1.3.0 edge-only residual-refinement ablation",
   "upload_type": "software",
-  "description": "Post-import DOI synchronization release for SPOT-OD v1.2.9-post-import-doi-sync. This release syncs the manuscript and reproducibility text after v1.2.8 was published and Zenodo assigned DOI 10.5281/zenodo.20840386 to the clean v1.2.8 record. It records the v1.2.8 GitHub release, Zenodo record, DOI, concept DOI, target commit, asset name, asset size, and SHA-256 in the manuscript/table text, and treats DOI 10.5281/zenodo.20839901 only as the superseded metadata-inconsistent v1.2.7 import. The manuscript does not rely on any v1.2.9 DOI, release commit, asset hash, or asset size; this release exists only to synchronize post-v1.2.8 DOI text. The evidence scope remains bounded: the v1.2.8 clarification adds no new scientific validation and is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not isolated message-passing evidence, and not broad learned-OD validation.",
+  "description": "SPOT-OD v1.3.0-edge-only-residual-refine adds the edge-only retained-candidate residual-refinement ablation. The new --node-disagreement-features omit setting removes eight node disagreement aggregate fields, reducing node feature dimension from 30 to 22 while keeping edge feature dimension at 10. In the edge-only attention residual-refine configuration, all non-development runs reach 373.728 m versus the best retained candidate at 459.591 m, an 18.682% gain, and versus the matched edge-only local/no-message control at 562.030 m, a 33.504% advantage. Fresh seeds 151/157/163/167 reach 364.229 m versus the best retained candidate at 445.943 m, an 18.324% gain, and versus the matched local control at 814.283 m, a 55.270% advantage. The edge-only mean graph remains a closer but weaker mixed result at 386.224 m across all non-development runs and 380.065 m on fresh seeds. Evidence scope remains limited to retained-candidate compact-simulator evidence; graph-path isolation is only against the matched edge-only no-message local control. This release is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD.",
   "creators": [
     {
       "name": "Leo Alavi"
@@ -13,11 +13,14 @@
     "satellite state estimation",
     "sparse visibility",
     "retained-candidate residual refinement",
+    "edge-only ablation",
+    "residual-refinement",
+    "graph neural networks",
     "reproducibility",
-    "Zenodo DOI synchronization",
+    "compact simulator",
     "negative results"
   ],
-  "version": "v1.2.9-post-import-doi-sync",
+  "version": "v1.3.0-edge-only-residual-refine",
   "language": "eng",
   "access_right": "open",
   "license": "cc-by-4.0",
@@ -28,12 +31,12 @@
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.9-post-import-doi-sync",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
       "relation": "isSupplementedBy",
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.9-post-import-doi-sync",
       "relation": "cites",
       "scheme": "url"
     },
@@ -53,5 +56,5 @@
       "scheme": "doi"
     }
   ],
-  "notes": "This v1.2.9 follow-up syncs manuscript/reproducibility wording after v1.2.8 was published at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix and Zenodo assigned DOI 10.5281/zenodo.20840386. The concept DOI is 10.5281/zenodo.20768672. The earlier DOI 10.5281/zenodo.20839901 is cited only as the superseded metadata-inconsistent v1.2.7 import, where visible metadata retained stale v1.2.5 title/version text while the file was v1.2.7. The manuscript does not rely on any v1.2.9 DOI, release commit, asset hash, or asset size; this release exists only to synchronize post-v1.2.8 DOI text. This is manuscript/release-metadata synchronization only and adds no new scientific validation."
+  "notes": "This v1.3.0 release is not metadata-only. It adds the edge-only retained-candidate residual-refinement ablation for tag v1.3.0-edge-only-residual-refine. The --node-disagreement-features omit setting removes eight node disagreement aggregate fields, reducing node dimension from 30 to 22 while retaining edge dimension 10. Edge-only attention residual-refine reaches 373.728 m across all non-development runs versus the best retained candidate at 459.591 m (18.682% gain) and versus the matched edge-only local/no-message control at 562.030 m (33.504% advantage). Fresh seeds 151/157/163/167 reach 364.229 m versus the best retained candidate at 445.943 m (18.324% gain) and versus the matched local control at 814.283 m (55.270% advantage). The edge-only mean graph is closer but weaker mixed evidence at 386.224 m all non-development and 380.065 m fresh. The concept DOI remains 10.5281/zenodo.20768672. No DOI is asserted for v1.3.0 in this metadata. DOI 10.5281/zenodo.20840386 is cited as the prior clean Zenodo version, and DOI 10.5281/zenodo.20839901 is retained only as the earlier superseded metadata-inconsistent import. Scope limits: retained-candidate compact-simulator evidence only; graph-path isolation only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD."
 }
