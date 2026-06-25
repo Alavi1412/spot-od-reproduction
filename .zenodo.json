@@ -1,56 +1,57 @@
 {
-    "title":  "SPOT-OD v1.3.1 validation-selected edge-only residual-refinement ablation",
-    "upload_type":  "software",
-    "description":  "SPOT-OD v1.3.1-validation-selected-residual-refine adds a validation-selected edge-only retained-candidate residual-refinement ablation. The --node-disagreement-features omit setting removes eight node disagreement aggregate fields, reducing node feature dimension from 30 to 22 while keeping edge feature dimension at 10. The model uses development validation seed minimum 53, 82 fit/training samples, 37 validation samples, and validation_loss checkpoint selection. In the edge-only attention residual-refine configuration, all non-development rows reach 390.317 m versus the best retained candidate at 459.591 m, a 15.073% gain; fresh source-generation seeds 151/157/163/167 reach 386.373 m versus 445.943 m, a 13.358% gain. Versus the matched edge-only local/no-message control, attention has 24.835% all-non-development and 45.329% fresh advantages. Versus the edge-only mean graph, attention has smaller 3.983% all-non-development and 5.548% fresh advantages. Evidence scope remains limited to retained-candidate compact-simulator evidence; graph-path isolation is only against the matched edge-only no-message local control. This release is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD.",
-    "creators":  [
-                     {
-                         "name":  "Leo Alavi"
-                     }
-                 ],
-    "keywords":  [
-                     "SPOT-OD",
-                     "orbit determination",
-                     "satellite state estimation",
-                     "sparse visibility",
-                     "retained-candidate residual refinement",
-                     "edge-only ablation",
-                     "validation-selected model selection",
-                     "residual-refinement",
-                     "graph neural networks",
-                     "reproducibility",
-                     "compact simulator",
-                     "negative results"
-                 ],
-    "version":  "v1.3.1-validation-selected-residual-refine",
-    "language":  "eng",
-    "access_right":  "open",
-    "license":  "cc-by-4.0",
-    "related_identifiers":  [
-                                {
-                                    "scheme":  "url",
-                                    "relation":  "isSupplementedBy",
-                                    "identifier":  "https://github.com/Alavi1412/spot-od-reproduction"
-                                },
-                                {
-                                    "scheme":  "url",
-                                    "relation":  "isSupplementedBy",
-                                    "identifier":  "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine"
-                                },
-                                {
-                                    "scheme":  "doi",
-                                    "relation":  "isNewVersionOf",
-                                    "identifier":  "10.5281/zenodo.20842573"
-                                },
-                                {
-                                    "scheme":  "doi",
-                                    "relation":  "isVersionOf",
-                                    "identifier":  "10.5281/zenodo.20768672"
-                                },
-                                {
-                                    "scheme":  "doi",
-                                    "relation":  "cites",
-                                    "identifier":  "10.5281/zenodo.20840386"
-                                }
-                            ],
-    "notes":  "This v1.3.1 release is not metadata-only. It adds the validation-selected edge-only retained-candidate residual-refinement ablation for tag v1.3.1-validation-selected-residual-refine at commit c4882f1b367426c0966e906b9332f64d44d2279f. The GitHub release is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine with asset spot_od_v1_3_1_validation_selected_residual_refine.zip. Because this metadata file is included inside that asset, the corrective replacement asset byte size and SHA-256 are reported externally after archive construction rather than embedded here. The Zenodo record is https://zenodo.org/records/20844596, version DOI 10.5281/zenodo.20844596, concept DOI 10.5281/zenodo.20768672, with archived source file Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip (212,947,668 bytes; MD5 863e5077d4d29a827c6fcfd1181dce34). The --node-disagreement-features omit setting removes eight node disagreement aggregate fields, reducing node dimension from 30 to 22 while retaining edge dimension 10. Development model selection uses validation seed minimum 53, 82 fit/training samples, 37 validation samples, and validation_loss checkpoint selection. Edge-only attention residual-refine reaches 390.317 m across all non-development rows versus the best retained candidate at 459.591 m (15.073% gain) and versus the matched edge-only local/no-message control at 519.282 m (24.835% advantage). Fresh seeds 151/157/163/167 reach 386.373 m versus the best retained candidate at 445.943 m (13.358% gain) and versus the matched local control at 706.730 m (45.329% advantage). The edge-only mean graph is closer, with attention-vs-mean advantages of 3.983% all non-development and 5.548% fresh; the future-only attention-vs-mean check remains weak/mixed. DOI 10.5281/zenodo.20842573 is cited as the prior v1.3.0 version. Scope limits: retained-candidate compact-simulator evidence only; graph-path isolation only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD."
+  "title": "SPOT-OD v1.3.2 public reproduction package repair",
+  "upload_type": "software",
+  "description": "SPOT-OD v1.3.2-public-reproduction-package repairs the public reproduction packaging for the v1.3.1 validation-selected edge-only retained-candidate residual-refinement evidence. It does not add new scientific metrics: the selected attention residual-refine readback remains 390.317 m versus 459.591 m for the best retained candidate across all non-development rows (15.073% gain), 386.373 m versus 445.943 m on fresh source-generation seeds 151/157/163/167 (13.358% gain), 24.835% and 45.329% advantages versus the matched edge-only local/no-message control, and 3.983% and 5.548% advantages versus the edge-only mean graph. This version makes the release package coherent for GitHub/Zenodo public reproduction by carrying the repaired runtime import members, v1.3.2 documentation and metadata, focused package verifiers, and a separate checkpoint-free retained-candidate training-input bundle. Evidence scope remains retained-candidate compact-simulator evidence only; graph-path isolation is only against the matched edge-only no-message local control. This release is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD.",
+  "creators": [
+    {
+      "name": "Leo Alavi"
+    }
+  ],
+  "keywords": [
+    "SPOT-OD",
+    "orbit determination",
+    "satellite state estimation",
+    "sparse visibility",
+    "retained-candidate residual refinement",
+    "edge-only ablation",
+    "validation-selected model selection",
+    "residual-refinement",
+    "graph neural networks",
+    "reproducibility",
+    "public reproduction package",
+    "compact simulator",
+    "negative results"
+  ],
+  "version": "v1.3.2-public-reproduction-package",
+  "language": "eng",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "related_identifiers": [
+    {
+      "scheme": "url",
+      "relation": "isSupplementedBy",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction"
+    },
+    {
+      "scheme": "url",
+      "relation": "isSupplementedBy",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.2-public-reproduction-package"
+    },
+    {
+      "scheme": "doi",
+      "relation": "isNewVersionOf",
+      "identifier": "10.5281/zenodo.20844596"
+    },
+    {
+      "scheme": "doi",
+      "relation": "isVersionOf",
+      "identifier": "10.5281/zenodo.20768672"
+    },
+    {
+      "scheme": "doi",
+      "relation": "cites",
+      "identifier": "10.5281/zenodo.20840386"
+    }
+  ],
+  "notes": "This v1.3.2 release is a public reproduction package repair for the v1.3.1 validation-selected edge-only retained-candidate residual-refinement evidence, not a new scientific-metrics release. The GitHub release tag is v1.3.2-public-reproduction-package and the intended release URL is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.2-public-reproduction-package. Zenodo should mint the v1.3.2 version DOI after importing the GitHub release; no v1.3.2 DOI is claimed in this metadata. The previous Zenodo version DOI is 10.5281/zenodo.20844596 and the concept DOI is 10.5281/zenodo.20768672. The repaired v1.3.1 package archive retained in this repository has SHA-256 4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4. The v1.3.2 GitHub release is expected to carry spot_od_v1_3_2_public_reproduction_package.zip and spot_od_v1_3_2_public_reproduction_training_inputs.zip; their byte sizes and SHA-256 digests are reported after archive construction rather than embedded inside this metadata file. Scope limits: retained-candidate compact-simulator evidence only; graph-path isolation only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD."
 }

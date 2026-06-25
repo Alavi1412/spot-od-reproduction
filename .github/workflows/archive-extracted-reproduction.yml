@@ -41,9 +41,18 @@ jobs:
           mkdir -p results/validation
           python scripts/verify_v131_release_package.py --archive release/spot_od_v1_3_1_validation_selected_residual_refine.zip --json-out results/validation/v131_release_package_verification.json --md-out results/validation/v131_release_package_verification.md
 
+      - name: Run v1.3.2 public reproduction package verifier
+        run: |
+          mkdir -p results/validation
+          python scripts/verify_v132_public_reproduction_package.py --archive release/spot_od_v1_3_2_public_reproduction_package.zip --training-archive release/spot_od_v1_3_2_public_reproduction_training_inputs.zip --json-out results/validation/v132_public_reproduction_package_verification.json --md-out results/validation/v132_public_reproduction_package_verification.md
+
       - name: Run focused v1.3.1 release tests
         run: |
           python -m pytest tests/test_v131_release_package_verification.py tests/test_build_trajectory_residual_refine_comparison_intervals.py tests/test_build_trajectory_residual_refine_tail_diagnostic.py tests/test_build_trajectory_residual_refine_figure.py tests/test_trajectory_candidate_graph_architecture_ensemble.py -q
+
+      - name: Run focused v1.3.2 release tests
+        run: |
+          python -m pytest tests/test_v132_public_reproduction_package_verification.py -q
 
       - name: Upload verifier outputs
         if: always()
@@ -56,3 +65,5 @@ jobs:
             results/validation/github_actions_archive_extracted_reproduction.md
             results/validation/v131_release_package_verification.json
             results/validation/v131_release_package_verification.md
+            results/validation/v132_public_reproduction_package_verification.json
+            results/validation/v132_public_reproduction_package_verification.md

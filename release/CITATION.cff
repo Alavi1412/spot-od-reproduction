@@ -1,27 +1,30 @@
 cff-version: 1.2.0
-message: "If you use this SPOT-OD validation-selected residual-refinement evidence package, cite the v1.3.1 GitHub release and Zenodo version DOI 10.5281/zenodo.20844596."
-title: "SPOT-OD v1.3.1 validation-selected edge-only residual-refinement ablation"
-doi: "10.5281/zenodo.20844596"
+message: "If you use this SPOT-OD v1.3.2 public reproduction package before Zenodo import has assigned its version DOI, cite the GitHub release. After Zenodo import, cite the minted v1.3.2 version DOI. The scientific metrics remain the v1.3.1 validation-selected residual-refinement readback."
+title: "SPOT-OD v1.3.2 public reproduction package repair"
 abstract: >-
-  Bounded reproduction-support evidence package for a validation-selected edge-only
-  retained-candidate attention graph residual-refinement proof of concept in a
-  compact sparse-visibility orbit-determination simulator. The package reports
-  15.073% all-non-development and 13.358% fresh-seed gains versus the best retained
-  candidate, with graph-path isolation only against the matched edge-only
-  no-message local control. The package is not operational POD validation, not
-  public precise-reference validation, not independent-machine reproduction, and
-  not a full raw/training/all-filter rerun.
+  Public reproduction package repair for the v1.3.1 validation-selected
+  edge-only retained-candidate attention graph residual-refinement proof of
+  concept in a compact sparse-visibility orbit-determination simulator.
+  Scientific metrics are unchanged from v1.3.1; this version improves release
+  packaging, metadata, runtime import completeness, verifier coverage, and
+  checkpoint-free training-input availability. The package is not operational
+  POD validation, not public precise-reference validation, not
+  independent-machine reproduction, and not a full raw/training/all-filter
+  rerun.
 type: software
 authors:
   - name: "Leo Alavi"
-version: "v1.3.1-validation-selected-residual-refine"
+version: "v1.3.2-public-reproduction-package"
 date-released: "2026-06-25"
-url: "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine"
+url: "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.2-public-reproduction-package"
 repository-code: "https://github.com/Alavi1412/spot-od-reproduction"
 identifiers:
+  - type: url
+    value: "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.2-public-reproduction-package"
+    description: "GitHub release URL for v1.3.2 public reproduction package"
   - type: doi
     value: "10.5281/zenodo.20844596"
-    description: "Zenodo version DOI"
+    description: "Previous Zenodo version DOI for v1.3.1"
   - type: doi
     value: "10.5281/zenodo.20768672"
     description: "Zenodo concept DOI"
@@ -32,5 +35,6 @@ keywords:
   - graph neural networks
   - residual refinement
   - reproducibility
+  - public reproduction package
   - compact simulator
   - retained candidates

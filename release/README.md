@@ -1,32 +1,44 @@
-# SPOT-OD v1.3.1 Validation-Selected Residual-Refinement Release
+# SPOT-OD v1.3.2 Public Reproduction Package Release
 
-Current release: `v1.3.1-validation-selected-residual-refine`.
+Current release: `v1.3.2-public-reproduction-package`.
 The GitHub release URL is
-<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>.
-The tag commit is `c4882f1b367426c0966e906b9332f64d44d2279f`.
-The GitHub release asset is
-`spot_od_v1_3_1_validation_selected_residual_refine.zip`. Corrective
-replacement asset byte size and SHA-256 are reported externally after archive
-construction, not embedded in this packaged README.
-The Zenodo record is <https://zenodo.org/records/20844596>, with version DOI
-`10.5281/zenodo.20844596` and concept DOI `10.5281/zenodo.20768672`.
-The Zenodo archived source file is
-`Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip`,
-212,947,668 bytes, MD5 `863e5077d4d29a827c6fcfd1181dce34`.
+<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.2-public-reproduction-package>.
+The main GitHub release asset is
+`spot_od_v1_3_2_public_reproduction_package.zip`.
+The separate training-input release asset is
+`spot_od_v1_3_2_public_reproduction_training_inputs.zip`.
+Asset byte sizes and SHA-256 digests are reported after archive construction,
+not embedded in this packaged README.
 
-The corrective package includes `src/`, `scripts/_bootstrap.py`,
-`scripts/__init__.py`, `pyproject.toml`, `requirements.txt`, and the repository
-`README.md` so released scripts can resolve import-time dependencies from an
-extracted archive root. The verifier checks this with
-`python scripts/run_trajectory_candidate_graph_selector_poc.py --help`; this is
-an import/help smoke, not model training.
+Zenodo should mint the v1.3.2 version DOI after GitHub release import. This
+package does not claim a v1.3.2 DOI before that import. The previous Zenodo
+version DOI is `10.5281/zenodo.20844596` and the concept DOI is
+`10.5281/zenodo.20768672`.
+
+This is a public reproduction package repair for the v1.3.1
+validation-selected edge-only retained-candidate residual-refinement evidence,
+not a new scientific-metrics release. It carries the repaired runtime import
+members (`src/`, `scripts/_bootstrap.py`, `scripts/__init__.py`,
+`pyproject.toml`, `requirements.txt`, and the repository `README.md`), v1.3.2
+metadata/docs, a verifier for the main and training-input packages, and a
+checkpoint-free retained-candidate training-input ZIP.
 
 Current evidence boundary: validation-selected edge-only attention residual
 refinement reports 15.073% all-non-development and 13.358% fresh gains versus
 the best retained candidate; 24.835% all-non-development and 45.329% fresh
 advantages versus the matched edge-only local/no-message control; and 3.983%
 all-non-development and 5.548% fresh advantages versus the edge-only mean
-graph. The future-only attention-vs-mean check remains weak/mixed.
+graph. The future-only attention-vs-mean check remains weak/mixed. This remains
+retained-candidate compact-simulator evidence only; it is not public
+precise-reference validation, independent-machine reproduction, or a full
+raw/training/all-filter rerun.
+
+Previous v1.3.1 release: `v1.3.1-validation-selected-residual-refine`,
+<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-validation-selected-residual-refine>,
+Zenodo record <https://zenodo.org/records/20844596>, version DOI
+`10.5281/zenodo.20844596`. The repaired v1.3.1 archive SHA-256 retained in this
+repository is
+`4d575f7f8d3326823dc50f71f5f542dab1f924780082f8b6f00195cbf22619a4`.
 
 ## Historical v1.2.3 Package Notes
 
