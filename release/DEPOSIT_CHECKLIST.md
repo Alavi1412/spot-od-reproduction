@@ -2,31 +2,34 @@
 
 This file is internal release-ledger bookkeeping; it is not paper-facing and is
 not referenced from the manuscript. It records release-facing metadata for the
-current v1.3.0 edge-only residual-refinement release target, the retained
+current v1.3.1 edge-only residual-refinement sync release target, the retained
 v1.2.x public archive history, and the remaining scope boundaries.
 
 ## Status
 
-- Public archival deposition: v1.3.0 GitHub release target prepared; Zenodo
+- Public archival deposition: v1.3.1 GitHub release target prepared; Zenodo
   DOI/record pending GitHub release creation and Zenodo import.
-- Short title: SPOT-OD v1.3.0 edge-only residual-refinement ablation
+- Short title: SPOT-OD v1.3.1 edge-only residual-refinement release sync
 - Zenodo record: pending GitHub release creation and Zenodo import
 - DOI: pending GitHub release creation and Zenodo import
 - DOI URL: pending GitHub release creation and Zenodo import
 - Zenodo concept DOI: 10.5281/zenodo.20768672
-- Prior clean Zenodo version DOI: 10.5281/zenodo.20840386
+- Prior clean Zenodo version DOI: 10.5281/zenodo.20842573
 - Zenodo status: pending_github_release_zenodo_import
-- Version: v1.3.0-edge-only-residual-refine
+- Version: v1.3.1-edge-only-residual-refine-sync
 - Resource type: Software
 - License: CC-BY-4.0
 - GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
-- GitHub release: https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine
-- Release tag: v1.3.0-edge-only-residual-refine
+- GitHub release: https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync
+- Release tag: v1.3.1-edge-only-residual-refine-sync
 - Release commit: pending final GitHub tag target at release creation
-- Supersession note: v1.3.0 adds the edge-only retained-candidate
-  residual-refinement ablation. It does not assert a v1.3.0 Zenodo DOI/record
+- Supersession note: v1.3.1 is a forward sync/correction release that preserves
+  the v1.3.0 train-loss edge-only retained-candidate residual-refinement
+  result. It does not assert a v1.3.1 Zenodo DOI/record
   before GitHub release creation and Zenodo import. Scientific metrics are as
   recorded, not upgraded to operational validation.
+- Historical v1.3.0 DOI: 10.5281/zenodo.20842573
+- Historical v1.3.0 record: https://zenodo.org/records/20842573
 - Historical v1.2.8 DOI: 10.5281/zenodo.20840386
 - Historical v1.2.8 record: https://zenodo.org/records/20840386
 - Historical v1.2.3 DOI: 10.5281/zenodo.20825138
@@ -34,12 +37,12 @@ v1.2.x public archive history, and the remaining scope boundaries.
 
 ## Public Archive Integrity
 
-- v1.3.0 Zenodo file: pending GitHub release creation and Zenodo import
-- v1.3.0 Zenodo archived file bytes: pending
-- v1.3.0 Zenodo archived file MD5: pending
-- v1.3.0 GitHub release asset: pending
-- v1.3.0 GitHub release asset bytes: pending
-- v1.3.0 GitHub release asset SHA-256: pending
+- v1.3.1 Zenodo file: pending GitHub release creation and Zenodo import
+- v1.3.1 Zenodo archived file bytes: pending
+- v1.3.1 Zenodo archived file MD5: pending
+- v1.3.1 GitHub release asset: pending
+- v1.3.1 GitHub release asset bytes: pending
+- v1.3.1 GitHub release asset SHA-256: pending
 
 Historical v1.2.3 public archive integrity:
 
@@ -77,8 +80,8 @@ Prior v1.2.1 public archive integrity:
 
 ## Release-Triggered Verification
 
-- v1.3.0 branch verifier: pending or not recorded
-- v1.3.0 tag verifier: pending or not recorded
+- v1.3.1 branch verifier: pending or not recorded
+- v1.3.1 tag verifier: pending or not recorded
 
 - Historical v1.2.3 branch verifier:
   https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565
@@ -126,14 +129,14 @@ validation.
 10. Official ILRS precise-reference availability probe output under
     `results/validation/`, documenting whether pending LAGEOS prospective SP3
     products are valid gzip/SP3 files before any scoring run.
-11. Zenodo metadata (`release/ZENODO_METADATA.json`) updated to the v1.3.0
+11. Zenodo metadata (`release/ZENODO_METADATA.json`) updated to the v1.3.1
     release target with DOI/record pending GitHub release creation and Zenodo
-    import; citation metadata must not assert a v1.3.0 DOI before import.
+    import; citation metadata must not assert a v1.3.1 DOI before import.
 12. Edge-only residual-refinement artifacts and release note:
-    `release/RELEASE_NOTES_v1.3.0-edge-only-residual-refine.md`,
+    `release/RELEASE_NOTES_v1.3.1-edge-only-residual-refine-sync.md`,
     `paper/tables/main_row_weighted_dls_poc.tex`, the residual-refinement
     comparison scripts, and the manifest-indexed result directories listed in
-    the v1.3.0 release notes.
+    the v1.3.1 release notes.
 13. Historical AdaptiveCandidateFusion audit artifacts:
     `paper/tables/adaptive_candidate_fusion_full_training_poc.tex`,
     `results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/`,
@@ -144,9 +147,9 @@ validation.
 
 ## Scope Boundary
 
-The v1.3.0 GitHub release target is bounded reproduction-support evidence for
+The v1.3.1 GitHub release target is bounded reproduction-support evidence for
 the edge-only retained-candidate residual-refinement ablation and supporting
-comparison artifacts only. It does not yet have a minted v1.3.0 Zenodo DOI or
+comparison artifacts only. It does not yet have a minted v1.3.1 Zenodo DOI or
 record, and it does not claim full raw/training/all-filter reproduction, live
 public-data retrieval, operational POD validation, independent-machine
 confirmation, third-party independent validation, full scientific reproduction,

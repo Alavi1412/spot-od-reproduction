@@ -9,19 +9,19 @@ of the supplied archive; it is not part of the manuscript text.
 Release-facing metadata is prepared for the bounded reproduction-support
 package:
 
-- Short title: `SPOT-OD v1.3.0 edge-only residual-refinement ablation`
+- Short title: `SPOT-OD v1.3.1 edge-only residual-refinement release sync`
 - Zenodo record: pending GitHub release creation and Zenodo import
 - DOI: pending GitHub release creation and Zenodo import
 - DOI URL: pending GitHub release creation and Zenodo import
 - Zenodo concept DOI: `10.5281/zenodo.20768672`
-- Prior clean Zenodo version DOI: `10.5281/zenodo.20840386`
+- Prior clean Zenodo version DOI: `10.5281/zenodo.20842573`
 - Zenodo status: `pending_github_release_zenodo_import`
 - Zenodo resource type: `Software`
-- Version: `v1.3.0-edge-only-residual-refine`
+- Version: `v1.3.1-edge-only-residual-refine-sync`
 - License: `CC-BY-4.0`
 - GitHub release:
-  <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>
-- Release tag: `v1.3.0-edge-only-residual-refine`
+  <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync>
+- Release tag: `v1.3.1-edge-only-residual-refine-sync`
 - Release commit: pending final GitHub tag target at release creation
 - Zenodo archived file: pending GitHub release creation and Zenodo import
 - Zenodo archived file bytes: pending
@@ -29,10 +29,22 @@ package:
 - GitHub release asset: pending
 - GitHub release asset bytes: pending
 - GitHub release asset SHA-256: pending
-- GitHub Actions verifier branch run: pending or not recorded for v1.3.0
-- GitHub Actions verifier tag run: pending or not recorded for v1.3.0
+- GitHub Actions verifier branch run: pending or not recorded for v1.3.1
+- GitHub Actions verifier tag run: pending or not recorded for v1.3.1
 
-No v1.3.0 Zenodo DOI or Zenodo record is asserted before import.
+No v1.3.1 Zenodo DOI or Zenodo record is asserted before import.
+
+Prior public v1.3.0 release history:
+
+- Short title: `SPOT-OD v1.3.0 edge-only residual-refinement ablation`
+- Zenodo record: <https://zenodo.org/records/20842573>
+- DOI: `10.5281/zenodo.20842573`
+- DOI URL: <https://doi.org/10.5281/zenodo.20842573>
+- Version: `v1.3.0-edge-only-residual-refine`
+- GitHub release:
+  <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>
+- Release tag: `v1.3.0-edge-only-residual-refine`
+- Release commit: `9faa5b3`
 
 Historical v1.2.3 release history:
 
@@ -105,16 +117,16 @@ Prior public v1.2.1 release history:
   current workspace/submission packet once included; it is not part of the
   published v1.2.1 Zenodo/GitHub release unless a later release includes it.
 
-Version 1.3.0 supersedes the v1.2.8 archive/metadata clarification as the
-current release target by adding the edge-only retained-candidate
-residual-refinement ablation. Version 1.2.3 remains historical ACF audit package
+Version 1.3.1 supersedes the published v1.3.0 package as a forward
+synchronization/correction release while preserving the train-loss edge-only
+retained-candidate residual-refinement result. Version 1.2.3 remains historical ACF audit package
 history; version 1.2.2 remains earlier ACF audit history; and version 1.2.1
 remains historical GraphAnchorPairGate package history. Scientific metrics are
 as recorded, not upgraded to operational validation.
 
-This v1.3.0 release target is bounded reproduction-support evidence for the
+This v1.3.1 release target is bounded reproduction-support evidence for the
 edge-only retained-candidate residual-refinement ablation and its supporting
-comparison artifacts. It does not yet have a minted v1.3.0 Zenodo DOI/record,
+comparison artifacts. It does not yet have a minted v1.3.1 Zenodo DOI/record,
 and it is not full raw/training/all-filter reproduction, live public-data
 retrieval, operational POD validation, independent-machine confirmation,
 third-party independent validation, or full scientific reproduction.
@@ -214,7 +226,7 @@ the published v1.2.1 Zenodo/GitHub release unless a later release includes it.
 For a no-retraining integrity check, inspect these release records:
 
 1. `SUPPLEMENTARY_MANIFEST.json`
-2. `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
+2. `pending_v1.3.1_github_release_asset_and_zenodo_import`
 3. `results/validation/minimum_tier_reproduction_check.json`
 4. `results/validation/minimum_tier_reproduction_check.md`
 
@@ -253,7 +265,8 @@ artifacts.
 
 For an archive-extracted tier, inspect
 `results/validation/archive_extracted_reproduction.json` and `.md`. That check
-extracts `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, verifies extracted
+extracts the route-paired review archive supplied through
+`pending_v1.3.1_github_release_asset_and_zenodo_import`, verifies extracted
 manifest-indexed artifact digests, resolves claim-map and regeneration-tier
 records, runs the active table-regeneration check from the extracted tree, and
 reruns the bounded public LAGEOS CRD/SP3 OD slice from the extracted archive.
@@ -394,7 +407,7 @@ tiers that can be used for deeper regeneration.
 | Archive-extracted reproduction tier | `claim_to_artifact_map.archive_extracted_reproduction_tier` | `results/validation/archive_extracted_reproduction.json`; `results/validation/archive_extracted_reproduction.md`; `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.json`; `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.md`; `scripts/verify_archive_extracted_reproduction.py`; `scripts/regenerate_active_manuscript.py`; `scripts/run_real_slr_sp3_od_validation.py`; `scripts/build_paper_assets.py` | Confirm status `pass`, extracted artifact SHA-256 checks pass, claim/tier records resolve, and the archive-extracted OD rerun reports 10 completed arcs, DBAR 6/10, zero public-claim mismatches, and table-text match. Its nested active-regeneration count is a public v1.2.1 release-boundary record. Historical v1.2.3 included the ACF audit artifacts and development/holdout split summaries as its release-facing audit/table tier, but the older v1.2.1 archive-extracted report remains an older release-boundary record unless a historical v1.2.3 archive tier is regenerated. |
 | Codex-agent clean archive attestation | `claim_to_artifact_map.codex_clean_archive_attestation` | `results/validation/codex_clean_archive_attestation_20260614.json`; `results/validation/codex_clean_archive_attestation_20260614.md` | Confirm the boundary: same-workspace separate-agent clean extracted archive attestation only, not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, and not independent external reproduction. |
 | Containerized minimum-tier attestation | `claim_to_artifact_map.containerized_minimum_tier_attestation` | `results/validation/containerized_minimum_tier_attestation_20260614.json`; `results/validation/containerized_minimum_tier_attestation_20260614.md` | Confirm status `pass`, command template uses `<local-stage>`, and the boundary: local Docker Desktop clean-container staged minimum-tier integrity attestation only, same-host and staged from the current workspace/review archive, not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, not independent external reproduction, and not a full scientific rerun. |
-| Independent-machine reproduction request/template | `claim_to_artifact_map.independent_machine_reproduction_request` | `release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md` | Confirm the document gives exact clean-machine steps using `release/SUPPLEMENTARY_MANIFEST.json`, `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, `scripts/verify_minimum_tier_reproduction.py`, and `scripts/verify_archive_extracted_reproduction.py`, plus a report template. It is not a completed independent reproduction. |
+| Independent-machine reproduction request/template | `claim_to_artifact_map.independent_machine_reproduction_request` | `release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md` | Confirm the document gives exact clean-machine steps using `release/SUPPLEMENTARY_MANIFEST.json`, `pending_v1.3.1_github_release_asset_and_zenodo_import`, `scripts/verify_minimum_tier_reproduction.py`, and `scripts/verify_archive_extracted_reproduction.py`, plus a report template. It is not a completed independent reproduction. |
 | Endpoint-choice sensitivity audit | `claim_to_artifact_map.endpoint_choice_sensitivity_audit` | `results/endpoint_selection_sensitivity/endpoint_selection_sensitivity.json`; `paper/tables/endpoint_selection_sensitivity.tex`; `scripts/build_endpoint_selection_sensitivity.py` | Confirm the K=8 and K=32 records are present, the strict-extension record is excluded, observed-step intervals are stored-record intervals, and all-step intervals are labelled sensitivity recomputations. |
 | PUKF tuning-comparability sensitivity | `claim_to_artifact_map.pukf_tuning_comparability_sensitivity` | `results/pukf_tuning_sensitivity/pukf_hifi_grid_sensitivity.json`; `paper/tables/pukf_tuning_sensitivity.tex`; `scripts/run_pukf_hifi_tuning_sensitivity.py`; retained higher-fidelity CSV/JSON records | Confirm source CSV and reference JSON hashes, deterministic row-order alignment, nonzero finite paired denominators, and the negative held-out comparison with AUKF. |
 | Classical guardrails and offline OD reference | `claim_to_artifact_map.classical_guardrails_and_offline_od_reference` | `results/metrics_summary.json`; `results/batch_wls_baseline/batch_wls_summary.csv`; `paper/tables/main_results.tex`; `paper/tables/batch_wls_baseline.tex`; `results/batch_wls_force_mismatch/batch_wls_summary.csv`; `results/batch_wls_force_mismatch/batch_wls_summary.json`; `results/batch_wls_force_mismatch/force_model_mismatch_test/batch_wls_summary.json` | Confirm the force-mismatch WLS summaries are indexed with nonempty SHA-256 values and that Table `batch_wls_baseline.tex` includes the force-mismatch row. Interpret WLS as strong on nominal/stress/public full-arc rows but failing observed-step under controlled force mismatch while slightly improving all-step. |

@@ -12,21 +12,22 @@ status, deviations, and output hashes.
 
 ## Public Release Reference
 
-- Short title: SPOT-OD v1.3.0 edge-only residual-refinement ablation
+- Short title: SPOT-OD v1.3.1 edge-only residual-refinement release sync
 - Zenodo record: pending GitHub release creation and Zenodo import
 - DOI: pending GitHub release creation and Zenodo import
 - DOI URL: pending GitHub release creation and Zenodo import
 - Zenodo concept DOI: 10.5281/zenodo.20768672
-- Prior clean Zenodo version DOI: 10.5281/zenodo.20840386
+- Prior clean Zenodo version DOI: 10.5281/zenodo.20842573
 - Zenodo status: pending_github_release_zenodo_import
 - Resource type: Software
 - GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
 - GitHub release:
-  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine
-- Release tag: v1.3.0-edge-only-residual-refine
+  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync
+- Release tag: v1.3.1-edge-only-residual-refine-sync
 - Release commit: pending final GitHub tag target at release creation
-- Supersession note: v1.3.0 adds the edge-only retained-candidate
-  residual-refinement ablation. It does not assert a v1.3.0 Zenodo DOI/record
+- Supersession note: v1.3.1 is a forward sync/correction release that preserves
+  the v1.3.0 train-loss edge-only retained-candidate residual-refinement
+  result. It does not assert a v1.3.1 Zenodo DOI/record
   before GitHub release creation and Zenodo import. Scientific metrics are as
   recorded, not upgraded to operational validation.
 - Zenodo archived file: pending GitHub release creation and Zenodo import
@@ -35,6 +36,17 @@ status, deviations, and output hashes.
 - GitHub release asset: pending
 - GitHub release asset bytes: pending
 - GitHub release asset SHA-256: pending
+
+Historical v1.3.0 edge-only residual-refinement package reference:
+
+- Zenodo record: https://zenodo.org/records/20842573
+- DOI: 10.5281/zenodo.20842573
+- DOI URL: https://doi.org/10.5281/zenodo.20842573
+- Zenodo status: published
+- GitHub release:
+  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine
+- Release tag: v1.3.0-edge-only-residual-refine
+- Release commit: 9faa5b3
 
 Historical v1.2.3 ACF holdout audit package reference:
 
@@ -119,9 +131,11 @@ Choose exactly one verification route and keep every input from that same
 route. Historical published release assets and historical local packets must
 not be swapped across version boundaries.
 
-- Current v1.3.0 release route: wait for the GitHub release asset and Zenodo
-  import before running a public archive route. Do not invent or substitute a
-  v1.3.0 DOI/record before import.
+- Current v1.3.1 release route: the archive/source asset is pending GitHub
+  release creation and Zenodo import. Wait for the route-paired v1.3.1 asset
+  before running a public archive route. Do not invent or substitute a v1.3.1
+  DOI/record before import, and do not use a historical v1.2.3 archive as a
+  current v1.3.1 input.
 - Historical immutable published v1.2.3 GitHub/Zenodo release route: use the files,
   manifest, verifier scripts, dependency files, and review archive from the
   exact `v1.2.3-acf-holdout-audit` release/tag/asset set together. The
@@ -147,35 +161,35 @@ from that same selected route:
 
 - `release/SUPPLEMENTARY_MANIFEST.json`
 - the paired review archive:
-  `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
+  `release/<route-paired-review-archive.zip>`
 - `scripts/verify_minimum_tier_reproduction.py`
 - `scripts/verify_archive_extracted_reproduction.py`
 - `requirements.txt` and `pyproject.toml` from the same archive, tag checkout,
   or local packet
 
-For the v1.3.0 route, use the v1.3.0 archive name once the GitHub release
-asset and Zenodo import exist. Until then, the v1.3.0 DOI/record and paired
-archive fields are pending.
+For the v1.3.1 route, the archive/source asset is pending GitHub release
+creation and Zenodo import. Replace the placeholder with the v1.3.1 archive
+name only after the GitHub release asset and Zenodo import exist. Until then,
+the v1.3.1 DOI/record and paired archive fields are pending.
 
 ## Clean-Machine Procedure
 
 1. Create a new empty working directory on a machine not used to produce the
    submitted artifacts.
 2. Copy the route-paired `release/SUPPLEMENTARY_MANIFEST.json` and
-   `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip` into a
-   `release/` subdirectory. Do not mix the immutable published GitHub asset with
-   the current DOI-synced branch manifest, or the regenerated local archive with
-   the older release/tag manifest.
+   `release/<route-paired-review-archive.zip>` into a `release/` subdirectory.
+   Do not mix the immutable published GitHub asset with a later manifest, or a
+   regenerated local archive with an older release/tag manifest.
 3. Extract the archive into the working directory:
 
 ```powershell
-python -m zipfile -e release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip .
+python -m zipfile -e release/<route-paired-review-archive.zip> .
 ```
 
 4. Confirm the paired manifest and archive hashes against the selected route:
 
 ```powershell
-python -c "import hashlib, pathlib; paths=['release/SUPPLEMENTARY_MANIFEST.json','release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip']; [print(p, hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()) for p in paths]"
+python -c "import hashlib, pathlib; paths=['release/SUPPLEMENTARY_MANIFEST.json','release/<route-paired-review-archive.zip>']; [print(p, hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()) for p in paths]"
 ```
 
 5. Create and activate a local Python environment, then install dependencies:
@@ -195,7 +209,7 @@ python -m venv .venv
 7. Run the archive-extracted verifier:
 
 ```powershell
-.\.venv\Scripts\python -I scripts/verify_archive_extracted_reproduction.py --archive release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip --json-out results/validation/independent_archive_extracted_reproduction.json --md-out results/validation/independent_archive_extracted_reproduction.md
+.\.venv\Scripts\python -I scripts/verify_archive_extracted_reproduction.py --archive release/<route-paired-review-archive.zip> --json-out results/validation/independent_archive_extracted_reproduction.json --md-out results/validation/independent_archive_extracted_reproduction.md
 ```
 
 8. Hash the generated reports:

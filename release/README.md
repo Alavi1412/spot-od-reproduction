@@ -1,17 +1,18 @@
 # SPOT-OD Supplementary Evidence Package
 
-Current release target: `v1.3.0-edge-only-residual-refine`
-(`SPOT-OD v1.3.0 edge-only residual-refinement ablation`), with the final
+Current release target: `v1.3.1-edge-only-residual-refine-sync`
+(`SPOT-OD v1.3.1 edge-only residual-refinement release sync`), with the final
 GitHub tag target pending release creation. The GitHub release URL is
-<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>.
-Zenodo DOI and record assignment for v1.3.0 are pending GitHub release creation
-and Zenodo import; no v1.3.0 DOI or Zenodo record is asserted in this packet.
+<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync>.
+Zenodo DOI and record assignment for v1.3.1 are pending GitHub release creation
+and Zenodo import; no v1.3.1 DOI or Zenodo record is asserted in this packet.
 The Zenodo concept DOI remains `10.5281/zenodo.20768672`. The prior clean
-Zenodo version DOI is `10.5281/zenodo.20840386`.
+Zenodo version is v1.3.0, DOI `10.5281/zenodo.20842573`, record
+<https://zenodo.org/records/20842573>.
 
 Historical note: older v1.2.3 ACF holdout audit entries in this directory
 describe a previous package and are retained only as release history, not as
-the current active package for v1.3.0.
+the current active package for v1.3.1.
 
 This versioned package accompanies the simulator-bound SPOT-OD self-audit
 record submission and supports inspection of the displayed evidence. It is provided so
@@ -292,19 +293,19 @@ is generated from retained full-rerun outputs and does not rerun models.
 
 Release-facing metadata for the Zenodo/GitHub archival release:
 
-- Short title: `SPOT-OD v1.3.0 edge-only residual-refinement ablation`
+- Short title: `SPOT-OD v1.3.1 edge-only residual-refinement release sync`
 - Zenodo record: pending GitHub release creation and Zenodo import
 - DOI: pending GitHub release creation and Zenodo import
 - DOI URL: pending GitHub release creation and Zenodo import
 - Zenodo concept DOI: `10.5281/zenodo.20768672`
-- Prior clean Zenodo version DOI: `10.5281/zenodo.20840386`
+- Prior clean Zenodo version DOI: `10.5281/zenodo.20842573`
 - Zenodo status: `pending_github_release_zenodo_import`
-- Version: `v1.3.0-edge-only-residual-refine`
+- Version: `v1.3.1-edge-only-residual-refine-sync`
 - Resource type: Software
 - License: `CC-BY-4.0`
 - GitHub repository: <https://github.com/Alavi1412/spot-od-reproduction>
-- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>
-- Release tag: `v1.3.0-edge-only-residual-refine`
+- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync>
+- Release tag: `v1.3.1-edge-only-residual-refine-sync`
 - Release commit: pending final GitHub tag target at release creation
 - Zenodo archived file: pending GitHub release creation and Zenodo import
 - Zenodo archived file bytes: pending
@@ -313,9 +314,18 @@ Release-facing metadata for the Zenodo/GitHub archival release:
 - GitHub release asset bytes: pending
 - GitHub release asset SHA-256: pending
 
-No v1.3.0 DOI or Zenodo record is asserted before import.
+No v1.3.1 DOI or Zenodo record is asserted before import.
 
 Prior public release history is retained:
+
+- v1.3.0 Zenodo record: <https://zenodo.org/records/20842573>
+- v1.3.0 DOI: `10.5281/zenodo.20842573`
+- v1.3.0 DOI URL: <https://doi.org/10.5281/zenodo.20842573>
+- v1.3.0 version: `v1.3.0-edge-only-residual-refine`
+- v1.3.0 GitHub release:
+  <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>
+- v1.3.0 release tag: `v1.3.0-edge-only-residual-refine`
+- v1.3.0 release commit: `9faa5b3`
 
 - v1.2.3 Zenodo record: <https://zenodo.org/records/20825138>
 - v1.2.3 DOI: `10.5281/zenodo.20825138`
@@ -409,7 +419,7 @@ archive extraction, manifest hashes, active manuscript artifact regeneration,
 one archived-input public OD slice rerun, public packaging of the
 GraphAnchorPairGate PoC, and public packaging of the ACF audit/table tier
 including the development/holdout split summaries. It is not the current
-v1.3.0 package and is not full raw/training/all-filter reproduction, live
+v1.3.1 package and is not full raw/training/all-filter reproduction, live
 public-data retrieval, operational POD validation, independent-machine
 confirmation, third-party independent validation, full scientific reproduction,
 or confirmatory learned superiority.
@@ -444,13 +454,15 @@ claim.
 
 - `CITATION.cff` - local citation metadata for the package.
 - `ZENODO_METADATA.json` - Zenodo deposit metadata for the current
-  `v1.3.0-edge-only-residual-refine` release target. The v1.3.0 DOI/record is
+  `v1.3.1-edge-only-residual-refine-sync` release target. The v1.3.1 DOI/record is
   pending GitHub release creation and Zenodo import; the concept DOI and prior
-  clean DOI are retained as historical/prior references.
+  v1.3.0 DOI are retained as concept/prior-version references.
 - `REVIEWER_START_HERE.md` - reviewer-facing map from headline claims to
   manifest entries and regeneration tiers.
-- `RELEASE_NOTES_v1.3.0-edge-only-residual-refine.md` - concise release note
-  for the current v1.3.0 edge-only residual-refinement ablation release target.
+- `RELEASE_NOTES_v1.3.1-edge-only-residual-refine-sync.md` - concise release
+  note for the current v1.3.1 forward synchronization/correction release.
+- `RELEASE_NOTES_v1.3.0-edge-only-residual-refine.md` - historical release note
+  for the prior published v1.3.0 edge-only residual-refinement ablation release.
 - `RELEASE_NOTES_v1.2.3-acf-holdout-audit.md` - concise release note for the
   historical v1.2.3 ACF holdout audit release and minted Zenodo fields.
 - `RELEASE_NOTES_v1.2.2-acf-audit.md` - historical release note for the v1.2.2
@@ -536,10 +548,11 @@ claim.
   and `paper/tables/public_sp3_multi_target_breadth_probe.tex` - public
   multi-target SP3/CRD breadth probe records, including fixed-start and
   target-week clustered finite-probe sensitivity summaries.
-- `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip` - reviewer-access transport
-  archive generated from the indexed artifacts. Its SHA-256 digest is
-  recorded separately in `SUPPLEMENTARY_MANIFEST.json`; the archive itself is
-  not counted as an indexed artifact.
+- `pending_v1.3.1_github_release_asset_and_zenodo_import` - pending
+  reviewer-access transport/source route for the v1.3.1 route-paired review
+  archive generated from the indexed artifacts. Its SHA-256 digest is recorded
+  separately in `SUPPLEMENTARY_MANIFEST.json`; the archive itself is not
+  counted as an indexed artifact.
 
 ## Claim-To-Artifact Map
 
@@ -574,10 +587,10 @@ manifest keys and regeneration tiers.
 | Pending prospective 260620 public-week full-correction readout | Manifest entry `pending_public_real_measurement_temporal_od_prospective_260620`; primary records are `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.sha256.txt`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots`, `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_availability_20260613.json`, `results/validation/public_precise_reference_status_20260617.json`, `results/validation/public_precise_reference_status_20260617.md`, `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.json`, and `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260620_timestamp_attestation.md`; created 2026-06-12 for test dates 2026-06-15..2026-06-19 and pending/not scored as of 2026-06-17; the OTS material is a Bitcoin-block-header-attested OpenTimestamps proof with Merkle roots cross-checked against the Blockstream API, but local Bitcoin-node verification was not performed and it is not scored validation, not DOI/public archive, not independent reproduction, and not operational POD; the retained 2026-06-13 availability audit is superseded for current availability by the 2026-06-17 status, which records parent listings with no 260613/260620 directories and direct 260613/260620 NSGF URLs returning HTTP 200 text/html; charset=utf-8 responses of length 825, not valid .sp3.gz products; cannot be used yet as validation and must not be represented as scored validation. |
 | Pending prospective 260627 public-week full-correction readiness record | Manifest entry `pending_public_real_measurement_temporal_od_prospective_260627`; primary records are `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.sha256.txt`, `release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260627_20260617.json.ots`, `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.json`, and `results/validation/real_slr_sp3_temporal_corrected_od_prospective_260627_predeclaration_status_20260617.md`; created 2026-06-17 before test dates 2026-06-22..2026-06-26 with validation week 260620 and test week 260627; pending/not scored, with no campaign run; the status record cites `results/validation/public_precise_reference_status_20260617.json` and `.md` as the current availability basis; the OTS proof is calendar-pending and not Bitcoin-block-header-attested, not scored validation, not DOI/public archive, not independent reproduction, and not operational POD; 260627 cannot be used as validation until validation/test public SP3 products become valid gzip/SP3 products and the frozen rule is scored once. |
 | Official ILRS precise-reference availability gate | Manifest entry `official_ilrs_precise_reference_availability_probe`; primary records are `scripts/probe_ilrs_precise_reference_availability.py`, `tests/test_probe_ilrs_precise_reference_availability.py`, `results/validation/ilrs_precise_reference_availability_20260617.json`, and `results/validation/ilrs_precise_reference_availability_20260617.md`; this is an availability probe only, not scored validation. Cached `.sp3.gz` files that are 825-byte HTML placeholders remain unavailable/non-usable and must not be relabelled as valid SP3. |
-| Reproducibility and review-stage archive integrity | `REVIEWER_START_HERE.md`, `SUPPLEMENTARY_MANIFEST.json`, `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, `results/validation/minimum_tier_reproduction_check.json`, `results/validation/submission_validation.json`, `results/release_packet.json` |
+| Reproducibility and review-stage archive integrity | `REVIEWER_START_HERE.md`, `SUPPLEMENTARY_MANIFEST.json`, `pending_v1.3.1_github_release_asset_and_zenodo_import`, `results/validation/minimum_tier_reproduction_check.json`, `results/validation/submission_validation.json`, `results/release_packet.json` |
 | Independent-machine reproduction request/template | Manifest entry `independent_machine_reproduction_request`; primary record is `release/INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md`; this gives an external operator exact clean-machine verification steps and a report template but is not a completed independent reproduction and is not an already completed independent reproduction record. |
 | Active main-manuscript table regeneration | `results/validation/active_manuscript_regeneration.json`, `results/validation/active_manuscript_regeneration.md`, `results/validation/command_manifest.json`, active `paper/tables/*.tex` files included by `paper/main.tex`; current workspace parses 11 table inputs plus 2 figure includes, 13/13 passing |
-| Archive-extracted reproduction tier | `results/validation/archive_extracted_reproduction.json`, `results/validation/archive_extracted_reproduction.md`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.json`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.md`, `scripts/verify_archive_extracted_reproduction.py`, `scripts/regenerate_active_manuscript.py`, `scripts/run_real_slr_sp3_od_validation.py`, `scripts/build_paper_assets.py`, `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, `SUPPLEMENTARY_MANIFEST.json` |
+| Archive-extracted reproduction tier | `results/validation/archive_extracted_reproduction.json`, `results/validation/archive_extracted_reproduction.md`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.json`, `results/validation/archive_extracted_real_slr_sp3_od_slice_rerun.md`, `scripts/verify_archive_extracted_reproduction.py`, `scripts/regenerate_active_manuscript.py`, `scripts/run_real_slr_sp3_od_validation.py`, `scripts/build_paper_assets.py`, `pending_v1.3.1_github_release_asset_and_zenodo_import`, `SUPPLEMENTARY_MANIFEST.json` |
 | Codex-agent clean archive attestation | Manifest entry `codex_clean_archive_attestation`; primary records are `results/validation/codex_clean_archive_attestation_20260614.json` and `results/validation/codex_clean_archive_attestation_20260614.md`; boundary: same-workspace separate-agent clean extracted archive attestation only, not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, and not independent external reproduction. |
 | Containerized minimum-tier attestation | Manifest entry `containerized_minimum_tier_attestation`; primary records are `results/validation/containerized_minimum_tier_attestation_20260614.json` and `results/validation/containerized_minimum_tier_attestation_20260614.md`; boundary: local Docker Desktop clean-container staged minimum-tier integrity attestation only, same-host and staged from the current workspace/review archive, not independent-machine validation, not third-party reproduction, not DOI/public archive, not full scientific reproduction, not operational POD, not independent external reproduction, and not a full scientific rerun. |
 | Targeted retraining replay | Manifest entry `targeted_retraining_replay`; primary records include the validation report, replay script, regression test, and indexed replay artifacts. |

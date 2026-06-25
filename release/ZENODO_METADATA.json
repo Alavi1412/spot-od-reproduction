@@ -1,118 +1,134 @@
 {
-  "metadata": {
-    "title": "SPOT-OD v1.3.0 edge-only residual-refinement ablation",
-    "upload_type": "software",
-    "description": "Release-facing metadata for SPOT-OD v1.3.0-edge-only-residual-refine, a bounded reproduction-support evidence package for the edge-only retained-candidate residual-refinement ablation. The new --node-disagreement-features omit setting removes eight node disagreement aggregate fields, reducing node feature dimension from 30 to 22 while keeping edge feature dimension at 10. In the edge-only attention residual-refine configuration, all non-development runs reach 373.728 m versus the best retained candidate at 459.591 m, an 18.682% gain, and versus the matched edge-only local/no-message control at 562.030 m, a 33.504% advantage. Fresh seeds 151/157/163/167 reach 364.229 m versus the best retained candidate at 445.943 m, an 18.324% gain, and versus the matched local control at 814.283 m, a 55.270% advantage. The edge-only mean graph remains a closer but weaker mixed result at 386.224 m across all non-development runs and 380.065 m on fresh seeds. Evidence scope remains limited to retained-candidate compact-simulator evidence; graph-path isolation is only against the matched edge-only no-message local control. This release is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD. Zenodo DOI and record assignment for v1.3.0 are pending GitHub release creation and Zenodo import; no v1.3.0 DOI or Zenodo record is asserted here. The concept DOI remains 10.5281/zenodo.20768672. DOI 10.5281/zenodo.20840386 is the prior clean Zenodo version. The earlier v1.2.3 ACF holdout audit release is historical package history, not the current package.",
-    "creators": [
-      {
-        "name": "Leo Alavi"
-      }
-    ],
-    "keywords": [
-      "SPOT-OD",
-      "orbit determination",
-      "satellite state estimation",
-      "sparse visibility",
-      "retained-candidate residual refinement",
-      "edge-only ablation",
-      "residual-refinement",
-      "graph neural networks",
-      "reproducibility",
-      "compact simulator",
-      "negative results"
-    ],
-    "version": "v1.3.0-edge-only-residual-refine",
-    "language": "eng",
-    "access_right": "open",
-    "license": "cc-by-4.0",
-    "related_identifiers": [
-      {
-        "identifier": "https://github.com/Alavi1412/spot-od-reproduction",
-        "relation": "isSupplementedBy",
-        "scheme": "url"
-      },
-      {
-        "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
-        "relation": "isSupplementedBy",
-        "scheme": "url"
-      },
-      {
-        "identifier": "10.5281/zenodo.20840386",
-        "relation": "isNewVersionOf",
-        "scheme": "doi"
-      },
-      {
-        "identifier": "10.5281/zenodo.20768672",
-        "relation": "isVersionOf",
-        "scheme": "doi"
-      },
-      {
-        "identifier": "10.5281/zenodo.20839901",
-        "relation": "cites",
-        "scheme": "doi"
-      }
-    ],
-    "notes": "This v1.3.0 release is not metadata-only. It adds the edge-only retained-candidate residual-refinement ablation for tag v1.3.0-edge-only-residual-refine; the final GitHub tag target is pending release creation. The --node-disagreement-features omit setting removes eight node disagreement aggregate fields, reducing node dimension from 30 to 22 while retaining edge dimension 10. Edge-only attention residual-refine reaches 373.728 m across all non-development runs versus the best retained candidate at 459.591 m (18.682% gain) and versus the matched edge-only local/no-message control at 562.030 m (33.504% advantage). Fresh seeds 151/157/163/167 reach 364.229 m versus the best retained candidate at 445.943 m (18.324% gain) and versus the matched local control at 814.283 m (55.270% advantage). The edge-only mean graph is closer but weaker mixed evidence at 386.224 m all non-development and 380.065 m fresh. The concept DOI remains 10.5281/zenodo.20768672. Zenodo DOI and record assignment for v1.3.0 are pending GitHub release creation and Zenodo import; no v1.3.0 DOI or Zenodo record is asserted in this metadata. DOI 10.5281/zenodo.20840386 is cited as the prior clean Zenodo version, and DOI 10.5281/zenodo.20839901 is retained only as the earlier superseded metadata-inconsistent import. The v1.2.3 ACF holdout audit release is historical package history, not current. Scope limits: retained-candidate compact-simulator evidence only; graph-path isolation only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD."
-  },
-  "record": {
-    "url": null,
-    "doi": null,
-    "doi_url": null,
-    "concept_doi": "10.5281/zenodo.20768672",
-    "concept_doi_url": "https://doi.org/10.5281/zenodo.20768672",
-    "status": "pending_github_release_zenodo_import",
-    "resource_type": "Software",
-    "pending_note": "Zenodo record and version DOI for v1.3.0 will be assigned only after the GitHub release is created and imported by Zenodo."
-  },
-  "github_release": {
-    "url": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
-    "tag": "v1.3.0-edge-only-residual-refine",
-    "commit": "pending_final_github_tag_target_at_release_creation",
-    "status": "pending_publication_or_import"
-  },
-  "github_actions": {
-    "status": "pending_or_not_recorded_for_v1.3.0"
-  },
-  "prior_clean_version": {
-    "version": "v1.2.8-residual-refine-figure-archive-fix",
-    "zenodo_record": "https://zenodo.org/records/20840386",
-    "doi": "10.5281/zenodo.20840386",
-    "doi_url": "https://doi.org/10.5281/zenodo.20840386",
-    "github_release": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix",
-    "release_commit": "6ca71ff41f4270e6ce6022e1c5fd94b8fe44ebcf",
-    "status": "prior_clean_zenodo_version"
-  },
-  "historical_versions": [
-    {
-      "version": "v1.2.8-residual-refine-figure-archive-fix",
-      "zenodo_record": "https://zenodo.org/records/20840386",
-      "doi": "10.5281/zenodo.20840386",
-      "doi_url": "https://doi.org/10.5281/zenodo.20840386",
-      "status": "prior_clean_zenodo_version"
-    },
-    {
-      "version": "v1.2.7-residual-refine-poc",
-      "doi": "10.5281/zenodo.20839901",
-      "doi_url": "https://doi.org/10.5281/zenodo.20839901",
-      "status": "superseded_metadata_inconsistent_import"
-    },
-    {
-      "version": "1.2.3-acf-holdout-audit",
-      "zenodo_record": "https://zenodo.org/records/20825138",
-      "doi": "10.5281/zenodo.20825138",
-      "doi_url": "https://doi.org/10.5281/zenodo.20825138",
-      "status": "historical_acf_holdout_audit_package_not_current"
-    }
-  ],
-  "files": [],
-  "pending_files": [
-    {
-      "key": "GitHub/Zenodo source archive for tag v1.3.0-edge-only-residual-refine",
-      "source": "github_release_and_zenodo_import",
-      "status": "pending_github_release_zenodo_import",
-      "size_bytes": null,
-      "md5": null,
-      "sha256": null
-    }
-  ]
+    "metadata":  {
+                     "title":  "SPOT-OD v1.3.1 edge-only residual-refinement release sync",
+                     "upload_type":  "software",
+                     "description":  "Release-facing metadata for SPOT-OD v1.3.1-edge-only-residual-refine-sync, a forward synchronization/correction release for the v1.3.0 edge-only retained-candidate residual-refinement package. SPOT-OD v1.3.1-edge-only-residual-refine-sync is a forward synchronization/correction release for the v1.3.0 edge-only retained-candidate residual-refinement package. It preserves the train-loss-selected edge-only attention residual-refine result from v1.3.0: all non-development runs reach 373.728 m versus the best retained candidate at 459.591 m, an 18.682% gain, and versus the matched edge-only local/no-message control at 562.030 m, a 33.504% advantage; fresh seeds 151/157/163/167 reach 364.229 m versus the best retained candidate at 445.943 m, an 18.324% gain, and versus the matched local control at 814.283 m, a 55.270% advantage. The edge-only mean graph remains a closer but weaker mixed result at 386.224 m across all non-development runs and 380.065 m on fresh seeds. This release fixes and supersedes v1.3.0 packaging/synchronization issues by carrying synchronized release metadata, manifest, rebuilt PDFs, reviewer/independent-machine documentation, and manifest coverage for paper/tables/main_row_weighted_dls_poc.tex. It does not promote the validation-selected val53 branch and includes no val53 artifacts. Evidence scope remains limited to retained-candidate compact-simulator evidence; graph-path isolation is only against the matched edge-only no-message local control. This release is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD.",
+                     "creators":  [
+                                      {
+                                          "name":  "Leo Alavi"
+                                      }
+                                  ],
+                     "keywords":  [
+                                      "SPOT-OD",
+                                      "orbit determination",
+                                      "satellite state estimation",
+                                      "sparse visibility",
+                                      "retained-candidate residual refinement",
+                                      "edge-only ablation",
+                                      "residual-refinement",
+                                      "graph neural networks",
+                                      "reproducibility",
+                                      "compact simulator",
+                                      "negative results"
+                                  ],
+                     "version":  "v1.3.1-edge-only-residual-refine-sync",
+                     "language":  "eng",
+                     "access_right":  "open",
+                     "license":  "cc-by-4.0",
+                     "related_identifiers":  [
+                                                 {
+                                                     "identifier":  "https://github.com/Alavi1412/spot-od-reproduction",
+                                                     "relation":  "isSupplementedBy",
+                                                     "scheme":  "url"
+                                                 },
+                                                 {
+                                                     "identifier":  "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync",
+                                                     "relation":  "isSupplementedBy",
+                                                     "scheme":  "url"
+                                                 },
+                                                 {
+                                                     "identifier":  "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
+                                                     "relation":  "cites",
+                                                     "scheme":  "url"
+                                                 },
+                                                 {
+                                                     "identifier":  "10.5281/zenodo.20842573",
+                                                     "relation":  "isNewVersionOf",
+                                                     "scheme":  "doi"
+                                                 },
+                                                 {
+                                                     "identifier":  "10.5281/zenodo.20768672",
+                                                     "relation":  "isVersionOf",
+                                                     "scheme":  "doi"
+                                                 },
+                                                 {
+                                                     "identifier":  "10.5281/zenodo.20840386",
+                                                     "relation":  "cites",
+                                                     "scheme":  "doi"
+                                                 }
+                                             ],
+                     "notes":  "This v1.3.1 release is a forward sync/correction release, not a new learned-method science claim. It preserves the v1.3.0 train-loss-selected edge-only retained-candidate residual-refinement result for tag v1.3.1-edge-only-residual-refine-sync. Edge-only attention residual-refine reaches 373.728 m across all non-development runs versus the best retained candidate at 459.591 m (18.682% gain) and versus the matched edge-only local/no-message control at 562.030 m (33.504% advantage). Fresh seeds 151/157/163/167 reach 364.229 m versus the best retained candidate at 445.943 m (18.324% gain) and versus the matched local control at 814.283 m (55.270% advantage). The edge-only mean graph is closer but weaker mixed evidence at 386.224 m all non-development and 380.065 m fresh. The concept DOI remains 10.5281/zenodo.20768672. Zenodo DOI and record assignment for v1.3.1 are pending GitHub release creation and Zenodo import; no v1.3.1 DOI or record is asserted in this metadata. DOI 10.5281/zenodo.20842573 is cited as the prior v1.3.0 version. Scope limits: retained-candidate compact-simulator evidence only; graph-path isolation only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD."
+                 },
+    "record":  {
+                   "url":  null,
+                   "doi":  null,
+                   "doi_url":  null,
+                   "concept_doi":  "10.5281/zenodo.20768672",
+                   "concept_doi_url":  "https://doi.org/10.5281/zenodo.20768672",
+                   "status":  "pending_github_release_zenodo_import",
+                   "resource_type":  "Software",
+                   "pending_note":  "Zenodo record and version DOI for v1.3.1 will be assigned only after the GitHub release is created and imported by Zenodo."
+               },
+    "github_release":  {
+                           "url":  "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync",
+                           "tag":  "v1.3.1-edge-only-residual-refine-sync",
+                           "commit":  "pending_final_github_tag_target_at_release_creation",
+                           "status":  "pending_publication_or_import"
+                       },
+    "github_actions":  {
+                           "status":  "pending_or_not_recorded_for_v1.3.1"
+                       },
+    "prior_clean_version":  {
+                                "version":  "v1.3.0-edge-only-residual-refine",
+                                "zenodo_record":  "https://zenodo.org/records/20842573",
+                                "doi":  "10.5281/zenodo.20842573",
+                                "doi_url":  "https://doi.org/10.5281/zenodo.20842573",
+                                "github_release":  "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
+                                "release_commit":  "9faa5b3",
+                                "status":  "prior_clean_zenodo_version"
+                            },
+    "historical_versions":  [
+                                {
+                                    "version":  "v1.3.0-edge-only-residual-refine",
+                                    "zenodo_record":  "https://zenodo.org/records/20842573",
+                                    "doi":  "10.5281/zenodo.20842573",
+                                    "doi_url":  "https://doi.org/10.5281/zenodo.20842573",
+                                    "github_release":  "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
+                                    "release_commit":  "9faa5b3",
+                                    "status":  "prior_clean_zenodo_version"
+                                },
+                                {
+                                    "version":  "v1.2.8-residual-refine-figure-archive-fix",
+                                    "zenodo_record":  "https://zenodo.org/records/20840386",
+                                    "doi":  "10.5281/zenodo.20840386",
+                                    "doi_url":  "https://doi.org/10.5281/zenodo.20840386",
+                                    "status":  "historical_prior_version"
+                                },
+                                {
+                                    "version":  "v1.2.7-residual-refine-poc",
+                                    "doi":  "10.5281/zenodo.20839901",
+                                    "doi_url":  "https://doi.org/10.5281/zenodo.20839901",
+                                    "status":  "superseded_metadata_inconsistent_import"
+                                },
+                                {
+                                    "version":  "1.2.3-acf-holdout-audit",
+                                    "zenodo_record":  "https://zenodo.org/records/20825138",
+                                    "doi":  "10.5281/zenodo.20825138",
+                                    "doi_url":  "https://doi.org/10.5281/zenodo.20825138",
+                                    "status":  "historical_acf_holdout_audit_package_not_current"
+                                }
+                            ],
+    "files":  [
+
+              ],
+    "pending_files":  [
+                          {
+                              "key":  "GitHub/Zenodo source archive for tag v1.3.1-edge-only-residual-refine-sync",
+                              "source":  "github_release_and_zenodo_import",
+                              "status":  "pending_github_release_zenodo_import",
+                              "size_bytes":  null,
+                              "md5":  null,
+                              "sha256":  null
+                          }
+                      ]
 }

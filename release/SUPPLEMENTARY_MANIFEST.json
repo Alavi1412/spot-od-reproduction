@@ -1,8 +1,8 @@
 {
   "package": "SPOT-OD supplementary evidence package",
-  "title": "SPOT-OD v1.3.0 edge-only residual-refinement ablation",
-  "version": "v1.3.0-edge-only-residual-refine",
-  "description": "Version-pinned supplementary evidence package for SPOT-OD v1.3.0-edge-only-residual-refine, a bounded retained-candidate compact-simulator evidence release for the edge-only residual-refinement ablation. The current GitHub release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine, with the final GitHub tag target pending release creation. Zenodo DOI and record assignment for v1.3.0 are pending GitHub release creation and Zenodo import; no v1.3.0 DOI or record is asserted in this manifest. The Zenodo concept DOI remains 10.5281/zenodo.20768672. The prior clean Zenodo version DOI is 10.5281/zenodo.20840386. Earlier v1.2.3 ACF holdout audit metadata and archive entries are historical package references, not the current release identity. Evidence scope remains retained-candidate compact-simulator evidence only; graph-path isolation is only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD.",
+  "title": "SPOT-OD v1.3.1 edge-only residual-refinement release sync",
+  "version": "v1.3.1-edge-only-residual-refine-sync",
+  "description": "Version-pinned supplementary evidence package for SPOT-OD v1.3.1-edge-only-residual-refine-sync, a forward synchronization/correction release that preserves the v1.3.0 train-loss edge-only retained-candidate residual-refinement result while fixing/superseding package synchronization issues. The current GitHub release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync, with the final GitHub tag target pending release creation. Zenodo DOI and record assignment for v1.3.1 are pending GitHub release creation and Zenodo import; no v1.3.1 DOI or record is asserted in this manifest. The Zenodo concept DOI remains 10.5281/zenodo.20768672. The prior clean Zenodo version is v1.3.0, DOI 10.5281/zenodo.20842573. Earlier v1.2.3 ACF holdout audit metadata and archive entries are historical package references, not the current release identity. Evidence scope remains retained-candidate compact-simulator evidence only; graph-path isolation is only against the matched edge-only no-message local control; not operational POD, not public precise-reference validation, not independent-machine reproduction, not full raw/training/all-filter rerun, not standalone learned recursive filtering, not broad learned-OD validation, and not operational learned OD.",
   "generated_utc": "2026-06-25T08:48:44.0756434Z",
   "manuscript_title": "SPOT-OD: A Compact Orbit-Determination Mechanism Audit for Adaptive Filtering under Sparse Visibility",
   "canonical_seed_cohort": [
@@ -38,16 +38,16 @@
     "pyproject_toml_sha256": "c118bb2da111ab57531b20fab63a8c1d9c8019777da46814b2c0d15777165da8",
     "note": "Version-pinned dependency provenance. The package is reproducible offline from these pinned inputs and the recorded artifact checksums; no external network access is required."
   },
-  "public_identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
+  "public_identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync",
   "public_identifier_type": "GitHub release URL; Zenodo version DOI pending; Zenodo concept DOI URL",
-  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; current release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine, with the final GitHub tag target pending release creation. Zenodo DOI and record assignment for v1.3.0 are pending GitHub release creation and Zenodo import; no v1.3.0 DOI or record is asserted. The concept DOI remains 10.5281/zenodo.20768672. The prior clean Zenodo version DOI is 10.5281/zenodo.20840386. The v1.2.3 ACF holdout audit DOI 10.5281/zenodo.20825138 is historical package history, not the current identifier.",
-  "public_archive_commitment": "Release metadata records GitHub tag v1.3.0-edge-only-residual-refine at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine, the commit targeted by that tag at release creation, and pending Zenodo DOI/record assignment after GitHub release creation and Zenodo import. The concept DOI 10.5281/zenodo.20768672 and prior clean Zenodo DOI 10.5281/zenodo.20840386 remain historical/prior references.",
-  "post_acceptance_public_archive_commitment": "Public citation of v1.3.0 should wait for the GitHub release and Zenodo import to mint the version DOI/record. Until then, cite the GitHub tag v1.3.0-edge-only-residual-refine only as a pending release target, with the final tag target set at release creation. Do not cite a v1.3.0 Zenodo DOI or record before import. The concept DOI 10.5281/zenodo.20768672 and prior clean DOI 10.5281/zenodo.20840386 remain historical/prior references.",
+  "public_identifier_note": "GitHub repository is https://github.com/Alavi1412/spot-od-reproduction; current release target is https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync, with the final GitHub tag target pending release creation. Zenodo DOI and record assignment for v1.3.1 are pending GitHub release creation and Zenodo import; no v1.3.1 DOI or record is asserted. The concept DOI remains 10.5281/zenodo.20768672. The prior clean Zenodo version is v1.3.0, DOI 10.5281/zenodo.20842573. The v1.2.3 ACF holdout audit DOI 10.5281/zenodo.20825138 is historical package history, not the current identifier.",
+  "public_archive_commitment": "Release metadata records GitHub tag v1.3.1-edge-only-residual-refine-sync at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync, the commit targeted by that tag at release creation, and pending Zenodo DOI/record assignment after GitHub release creation and Zenodo import. The concept DOI 10.5281/zenodo.20768672 and prior clean v1.3.0 DOI 10.5281/zenodo.20842573 remain concept/prior-version references.",
+  "post_acceptance_public_archive_commitment": "Public citation of v1.3.1 should wait for the GitHub release and Zenodo import to mint the version DOI/record. Until then, cite the GitHub tag v1.3.1-edge-only-residual-refine-sync only as a pending release target, with the final tag target set at release creation. Do not cite a v1.3.1 Zenodo DOI or record before import. The concept DOI 10.5281/zenodo.20768672 and prior clean v1.3.0 DOI 10.5281/zenodo.20842573 remain concept/prior-version references.",
   "public_archive_release": {
-    "title": "SPOT-OD v1.3.0 edge-only residual-refinement ablation",
+    "title": "SPOT-OD v1.3.1 edge-only residual-refinement release sync",
     "github_repository": "https://github.com/Alavi1412/spot-od-reproduction",
-    "github_release_target": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
-    "release_tag": "v1.3.0-edge-only-residual-refine",
+    "github_release_target": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.1-edge-only-residual-refine-sync",
+    "release_tag": "v1.3.1-edge-only-residual-refine-sync",
     "github_release_commit": "pending_final_github_tag_target_at_release_creation",
     "github_release_commit_note": "Pending final GitHub tag target at release creation",
     "doi_status": "pending_github_release_zenodo_import",
@@ -57,7 +57,7 @@
     "concept_doi": "10.5281/zenodo.20768672",
     "concept_doi_url": "https://doi.org/10.5281/zenodo.20768672",
     "zenodo_resource_type": "Software",
-    "publication_status_note": "The v1.3.0 GitHub release and Zenodo software record are pending; do not assert a v1.3.0 DOI or Zenodo record until GitHub release creation and Zenodo import complete.",
+    "publication_status_note": "The v1.3.1 GitHub release and Zenodo software record are pending; do not assert a v1.3.1 DOI or Zenodo record until GitHub release creation and Zenodo import complete.",
     "pending_fields": [
       "zenodo_record",
       "doi",
@@ -80,29 +80,40 @@
       "status": "pending_publication"
     },
     "github_actions": {
-      "status": "pending_or_not_recorded_for_v1.3.0"
+      "status": "pending_or_not_recorded_for_v1.3.1"
     },
     "prior_release": {
-      "version": "v1.2.8-residual-refine-figure-archive-fix",
-      "doi": "10.5281/zenodo.20840386",
-      "doi_url": "https://doi.org/10.5281/zenodo.20840386",
-      "zenodo_record": "https://zenodo.org/records/20840386",
-      "github_release": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix",
-      "release_tag": "v1.2.8-residual-refine-figure-archive-fix",
+      "version": "v1.3.0-edge-only-residual-refine",
+      "doi": "10.5281/zenodo.20842573",
+      "doi_url": "https://doi.org/10.5281/zenodo.20842573",
+      "zenodo_record": "https://zenodo.org/records/20842573",
+      "github_release": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
+      "release_tag": "v1.3.0-edge-only-residual-refine",
+      "release_commit": "9faa5b3",
       "zenodo_archived_file": {
-        "key": "Alavi1412/spot-od-reproduction-v1.2.8-residual-refine-figure-archive-fix.zip",
+        "key": null,
         "size_bytes": null,
         "md5": null
       },
       "github_release_asset": {
-        "key": "spot_od_v1_2_8_residual_refine_figure_archive_fix.zip",
-        "size_bytes": 5230470,
-        "sha256": "3FE91FAA780E446728B430972146FEEC4A12F115182C048FFF1377B71F4D6ACB"
+        "key": null,
+        "size_bytes": null,
+        "sha256": null
       },
       "status": "prior_clean_zenodo_version",
       "not_current_release_identifier": true
     },
     "historical_releases": {
+      "v1.3.0_edge_only_residual_refine": {
+        "version": "v1.3.0-edge-only-residual-refine",
+        "doi": "10.5281/zenodo.20842573",
+        "doi_url": "https://doi.org/10.5281/zenodo.20842573",
+        "zenodo_record": "https://zenodo.org/records/20842573",
+        "github_release": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine",
+        "release_tag": "v1.3.0-edge-only-residual-refine",
+        "release_commit": "9faa5b3",
+        "status": "prior_clean_zenodo_version"
+      },
       "v1.2.8_residual_refine_figure_archive_fix": {
         "version": "v1.2.8-residual-refine-figure-archive-fix",
         "doi": "10.5281/zenodo.20840386",
@@ -1116,7 +1127,7 @@
     ],
     "review_stage_archive_integrity": [
       "release/SUPPLEMENTARY_MANIFEST.json",
-      "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
+      "pending_v1.3.1_github_release_asset_and_zenodo_import",
       "release/REVIEWER_START_HERE.md",
       "results/validation/minimum_tier_reproduction_check.json",
       "results/validation/minimum_tier_reproduction_check.md",
@@ -1146,6 +1157,8 @@
       "paper/tables/main_dbar_withdrawal.tex",
       "paper/tables/graph_anchor_pair_gate_poc.tex",
       "paper/tables/adaptive_candidate_fusion_full_training_poc.tex",
+      "paper/tables/main_trajectory_graph_selector_ensemble_poc.tex",
+      "paper/tables/main_row_weighted_dls_poc.tex",
       "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
       "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_summary.md",
       "results/adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623/adaptive_candidate_fusion_fixed_soft_training_campaign_rows.csv",
@@ -1155,11 +1168,12 @@
       "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.json",
       "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.md",
       "results/adaptive_candidate_fusion_global_scenario_portfolio_dev10_holdout5_20260624/summary.csv",
-      "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png"
+      "paper/figures/graph_anchor_pair_gate_seed_sweep_aggregate.png",
+      "paper/figures/trajectory_residual_refine_gain_distribution.png"
     ],
     "archive_extracted_reproduction_tier": [
       "release/SUPPLEMENTARY_MANIFEST.json",
-      "release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
+      "pending_v1.3.1_github_release_asset_and_zenodo_import",
       "results/validation/archive_extracted_reproduction.json",
       "results/validation/archive_extracted_reproduction.md",
       "results/real_slr_sp3_od/real_slr_sp3_od_validation.json",
@@ -1474,6 +1488,18 @@
         "sha256": "92f7d4383d8387e38c08e1d54bea45e3a69327724dc552dc7c7692c56c166a83"
       },
       {
+        "path": "paper\\tables\\main_trajectory_graph_selector_ensemble_poc.tex",
+        "exists": true,
+        "bytes": 8525,
+        "sha256": "74154df49cf7900604fc04345d52b63b48c19d0874858b6123e0ec3988d7653b"
+      },
+      {
+        "path": "paper\\tables\\main_row_weighted_dls_poc.tex",
+        "exists": true,
+        "bytes": 2500,
+        "sha256": "f2bfd392feca3c2c8b2235d0746d3dd8be83b06eb85c10ab92acf3fcc9085891"
+      },
+      {
         "path": "results\\adaptive_candidate_fusion_fixed_soft_training_campaigns_20260623\\adaptive_candidate_fusion_fixed_soft_training_campaign_summary.json",
         "exists": true,
         "bytes": 86688,
@@ -1550,50 +1576,63 @@
         "exists": true,
         "bytes": 58393,
         "sha256": "86c1afb7a31e1dab0c95c6bbfb8dbf6faab2d83a9982cd764b76e7dca46b7ffb"
+      },
+      {
+        "path": "paper\\figures\\trajectory_residual_refine_gain_distribution.png",
+        "exists": true,
+        "bytes": 161637,
+        "sha256": "764c8976c58bc06375366c679ee3d0a34fb16c221d0301f23c3dc4383269c07b"
       }
     ],
     "reviewer_access_documentation": [
       {
         "path": "release\\README.md",
         "exists": true,
-        "bytes": 65077,
-        "sha256": "93cae2636c8ef5a8c58f470c408da9565d0970bbe7fc607eae632a1539367721",
+        "bytes": 65763,
+        "sha256": "78964610d23e73c9eae33b1dafbeb5b56d8d133374eca574c9c6a650bc06b884",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 65077,
-        "source_sha256": "93cae2636c8ef5a8c58f470c408da9565d0970bbe7fc607eae632a1539367721"
+        "source_bytes": 65763,
+        "source_sha256": "78964610d23e73c9eae33b1dafbeb5b56d8d133374eca574c9c6a650bc06b884"
       },
       {
         "path": "release\\REVIEWER_START_HERE.md",
         "exists": true,
-        "bytes": 58537,
-        "sha256": "55d961f35a89918ea5b8663a25e2496f332773d2bddc6c25ef07064a951d5f15",
+        "bytes": 59070,
+        "sha256": "c07d2894f37040b346c7a41ebe892e272c792f53faa351d9cf6c32d9ea628cf9",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 58537,
-        "source_sha256": "55d961f35a89918ea5b8663a25e2496f332773d2bddc6c25ef07064a951d5f15"
+        "source_bytes": 59070,
+        "source_sha256": "c07d2894f37040b346c7a41ebe892e272c792f53faa351d9cf6c32d9ea628cf9"
       },
       {
         "path": "release\\DEPOSIT_CHECKLIST.md",
         "exists": true,
-        "bytes": 7958,
-        "sha256": "357f9a8e3ca8fd9a10a174d1d6e4e40a6590d1e43fb0410337576629288b969e"
+        "bytes": 8165,
+        "sha256": "09d6e406f9591a23232f296828d2584021ea9012485939e356a4eea6d91b82ca"
       },
       {
         "path": "release\\ZENODO_METADATA.json",
         "exists": true,
-        "bytes": 7413,
-        "sha256": "646d3790e89722f33431432a5de9ca8b454cf6f54f7fa90c565691d87698c476",
+        "bytes": 7579,
+        "sha256": "99eeaacba44c11229bba6570ea512be3bd15cd53b0928e362440affee6dd057d",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 7413,
-        "source_sha256": "646d3790e89722f33431432a5de9ca8b454cf6f54f7fa90c565691d87698c476"
+        "source_bytes": 7579,
+        "source_sha256": "99eeaacba44c11229bba6570ea512be3bd15cd53b0928e362440affee6dd057d"
+      },
+      {
+        "path": "release\\RELEASE_NOTES_v1.3.1-edge-only-residual-refine-sync.md",
+        "exists": true,
+        "bytes": 3780,
+        "sha256": "217eccf479b769895db9c0de741fb610d1736a7698a899911dc4c74f018ebd7a"
       },
       {
         "path": "release\\RELEASE_NOTES_v1.3.0-edge-only-residual-refine.md",
         "exists": true,
         "bytes": 5027,
-        "sha256": "ff176aee219a9406fa2834455578a83548e908e763d2bb9f3e1721e4bc45b91b"
+        "sha256": "ff176aee219a9406fa2834455578a83548e908e763d2bb9f3e1721e4bc45b91b",
+        "status": "historical_prior_release_note"
       }
     ],
     "kalmannet_spot_od_external_audit_case": [
@@ -3300,12 +3339,12 @@
       {
         "path": "release\\INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md",
         "exists": true,
-        "bytes": 11459,
-        "sha256": "b22cc685e73ef986e80074754992114cb389ae6e23f8ad70a59a7751431a68d5",
+        "bytes": 11959,
+        "sha256": "7b322b520f80e04714d86e5e707d86b34badcce9cfaad4b64fef330c2964c930",
         "review_content_redacted": true,
         "content_scope": "review_archive_member",
-        "source_bytes": 11459,
-        "source_sha256": "b22cc685e73ef986e80074754992114cb389ae6e23f8ad70a59a7751431a68d5"
+        "source_bytes": 11959,
+        "source_sha256": "7b322b520f80e04714d86e5e707d86b34badcce9cfaad4b64fef330c2964c930"
       },
       {
         "path": ".github\\workflows\\archive-extracted-reproduction.yml",
@@ -8157,29 +8196,23 @@
       }
     ]
   },
-  "artifact_count": 1027,
-  "artifacts_present": 1027,
+  "artifact_count": 1031,
+  "artifacts_present": 1031,
   "checksum_algorithm": "sha256",
   "review_archive": {
-    "path": "release\\spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
-    "exists": true,
-    "bytes": 59142123,
-    "sha256": "11451c2032243c972534f7de9eb40ba04c44ff69b6c45db179f2053f97ad9b7e",
+    "path": null,
+    "exists": false,
+    "bytes": null,
+    "sha256": null,
     "format": "zip",
-    "immutable_review_artifact": true,
-    "derived_from_indexed_artifacts": true,
-    "artifact_digest_coverage_count": 1027,
-    "artifacts_included": 1027,
-    "member_timestamp_utc": "2026-05-19T00:00:00+00:00",
-    "note": "Review-stage transport archive generated from the indexed supplementary evidence artifacts. The archive itself is not included in artifact_count, and the paired release manifest is kept outside the ZIP to avoid a self-referential/stale manifest member.",
-    "github_release_asset": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
-    "published_github_release_asset": {
-      "key": "spot_od_v1_2_3_acf_holdout_audit_review_archive.zip",
-      "size_bytes": 59140917,
-      "sha256": "11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f",
-      "source": "public_github_release_asset",
-      "status": "published"
-    },
-    "matches_published_github_release_asset": false
+    "status": "pending_github_release_zenodo_import",
+    "immutable_review_artifact": false,
+    "derived_from_indexed_artifacts": false,
+    "artifact_digest_coverage_count": null,
+    "artifacts_included": null,
+    "github_release_asset": null,
+    "published_github_release_asset": null,
+    "matches_published_github_release_asset": null,
+    "note": "Current v1.3.1 review archive is pending GitHub release asset creation and Zenodo import. The old v1.2.3 ACF holdout audit review archive is historical only and is not a current v1.3.1 artifact."
   }
 }
