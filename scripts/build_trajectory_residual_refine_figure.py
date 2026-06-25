@@ -20,12 +20,17 @@ import numpy as np
 
 GRAPH_DIR = Path(
     "results/"
-    "trajectory_candidate_graph_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_graph_attention_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
+    "newfresh151157163167_20260625"
+)
+MEAN_DIR = Path(
+    "results/"
+    "trajectory_candidate_mean_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
 LOCAL_DIR = Path(
     "results/"
-    "trajectory_candidate_local_residual_refine_ensemble3_2111_2117_2129_"
+    "trajectory_candidate_local_nodeomit_residual_refine_ensemble3_2111_2117_2129_"
     "newfresh151157163167_20260625"
 )
 OUTPUT_PATH = Path("paper/figures/trajectory_residual_refine_gain_distribution.png")
@@ -37,8 +42,9 @@ TIERS = (
 
 METHODS = (
     ("best", "Best retained", "#6C757D"),
-    ("local", "Local residual", "#2A9D8F"),
-    ("attention", "Attention residual", "#E76F51"),
+    ("local", "Edge-only local", "#2A9D8F"),
+    ("mean", "Edge-only mean", "#457B9D"),
+    ("attention", "Edge-only attention", "#E76F51"),
 )
 
 
@@ -48,6 +54,7 @@ class TierAggregate:
     observed_steps: int
     best_rmse_m: float
     local_rmse_m: float | None = None
+    mean_rmse_m: float | None = None
     attention_rmse_m: float | None = None
     gain_vs_best_percent: float | None = None
     row_gains_percent: tuple[float, ...] = ()
@@ -130,22 +137,34 @@ def _load_variant(dir_path: Path) -> tuple[dict[str, TierAggregate], dict]:
     return aggregates, summary
 
 
-def _combined_aggregates(graph_dir: Path, local_dir: Path) -> tuple[dict[str, TierAggregate], dict]:
+def _combined_aggregates(
+    graph_dir: Path,
+    local_dir: Path,
+    mean_dir: Path,
+) -> tuple[dict[str, TierAggregate], dict]:
     graph_aggs, graph_summary = _load_variant(graph_dir)
     local_aggs, local_summary = _load_variant(local_dir)
+    mean_aggs, mean_summary = _load_variant(mean_dir)
     combined: dict[str, TierAggregate] = {}
     for tier, _ in TIERS:
         graph = graph_aggs[tier]
         local = local_aggs[tier]
-        if graph.rows != local.rows or graph.observed_steps != local.observed_steps:
-            raise ValueError(f"{tier} graph/local aggregate size mismatch")
-        if abs(graph.best_rmse_m - local.best_rmse_m) > 5.0e-4:
-            raise ValueError(f"{tier} graph/local best-retained RMSE mismatch")
+        mean = mean_aggs[tier]
+        if (
+            graph.rows != local.rows
+            or graph.rows != mean.rows
+            or graph.observed_steps != local.observed_steps
+            or graph.observed_steps != mean.observed_steps
+        ):
+            raise ValueError(f"{tier} graph/local/mean aggregate size mismatch")
+        if abs(graph.best_rmse_m - local.best_rmse_m) > 5.0e-4 or abs(graph.best_rmse_m - mean.best_rmse_m) > 5.0e-4:
+            raise ValueError(f"{tier} graph/local/mean best-retained RMSE mismatch")
         combined[tier] = TierAggregate(
             rows=graph.rows,
             observed_steps=graph.observed_steps,
             best_rmse_m=graph.best_rmse_m,
             local_rmse_m=local.attention_rmse_m,
+            mean_rmse_m=mean.attention_rmse_m,
             attention_rmse_m=graph.attention_rmse_m,
             gain_vs_best_percent=graph.gain_vs_best_percent,
             row_gains_percent=graph.row_gains_percent,
@@ -157,6 +176,9 @@ def _combined_aggregates(graph_dir: Path, local_dir: Path) -> tuple[dict[str, Ti
         "graph_message_passing_enabled": graph_summary.get("message_passing_enabled"),
         "local_graph_layers": local_summary.get("graph_layers"),
         "local_message_passing_enabled": local_summary.get("message_passing_enabled"),
+        "mean_graph_layers": mean_summary.get("graph_layers"),
+        "mean_graph_layer_type": mean_summary.get("graph_layer_type"),
+        "mean_message_passing_enabled": mean_summary.get("message_passing_enabled"),
     }
     return combined, metadata
 
@@ -167,8 +189,9 @@ def _format_rmse(value: float) -> str:
 
 def _plot_bars(ax: plt.Axes, aggregates: dict[str, TierAggregate]) -> None:
     x = np.arange(len(TIERS), dtype=float)
-    width = 0.22
-    offsets = {"best": -width, "local": 0.0, "attention": width}
+    width = 0.18
+    offsets = {"best": -1.5 * width, "local": -0.5 * width, "mean": 0.5 * width, "attention": 1.5 * width}
+    all_values: list[float] = []
     for method, label, color in METHODS:
         values = []
         for tier, _ in TIERS:
@@ -177,9 +200,11 @@ def _plot_bars(ax: plt.Axes, aggregates: dict[str, TierAggregate]) -> None:
                 {
                     "best": agg.best_rmse_m,
                     "local": agg.local_rmse_m,
+                    "mean": agg.mean_rmse_m,
                     "attention": agg.attention_rmse_m,
                 }[method]
             )
+        all_values.extend(float(value) for value in values)
         bars = ax.bar(
             x + offsets[method],
             values,
@@ -201,38 +226,57 @@ def _plot_bars(ax: plt.Axes, aggregates: dict[str, TierAggregate]) -> None:
     ax.set_xticks(x)
     ax.set_xticklabels([label for _, label in TIERS])
     ax.set_ylabel("Observed-step RMSE [m]\n(lower is better)")
-    ax.set_ylim(0, 600)
+    ymax = max(all_values)
+    ax.set_ylim(0, math.ceil((ymax + 80.0) / 50.0) * 50.0)
     ax.grid(axis="y", linewidth=0.35, alpha=0.45)
-    ax.legend(loc="upper right", frameon=False, ncol=3, fontsize=8)
-    ax.set_title("Aggregate retained-candidate residual-refinement RMSE", fontsize=10.5)
+    ax.legend(loc="upper left", frameon=False, ncol=2, fontsize=7.6)
+    ax.set_title("Edge-only residual-refinement ablation RMSE", fontsize=10.5)
 
 
-def _plot_gain_distribution(ax: plt.Axes, graph_dir: Path, local_dir: Path) -> None:
+def _row_key(row: dict[str, str]) -> tuple[str, ...]:
+    fields = ("source_name", "seed", "split", "scenario", "trajectory_row", "trajectory_index")
+    return tuple(str(row[field]) for field in fields)
+
+
+def _paired_attention_advantages(attention_dir: Path, reference_dir: Path, tier: str) -> np.ndarray:
+    attention_rows = [row for row in _read_rows(attention_dir / "rows.csv") if _has_tier(row, tier)]
+    reference_by_key = {_row_key(row): row for row in _read_rows(reference_dir / "rows.csv")}
+    advantages = []
+    for row in attention_rows:
+        reference = reference_by_key[_row_key(row)]
+        attention_rmse = float(row["selected_observed_step_rmse_m"])
+        reference_rmse = float(reference["selected_observed_step_rmse_m"])
+        advantages.append(100.0 * (reference_rmse - attention_rmse) / reference_rmse)
+    return np.asarray(advantages, dtype=float)
+
+
+def _plot_advantage_distribution(
+    ax: plt.Axes,
+    graph_dir: Path,
+    local_dir: Path,
+    mean_dir: Path,
+) -> None:
     rng = np.random.default_rng(20260625)
     variants = [
-        ("All non-dev local", "all_eval_non_development", local_dir, "#2A9D8F", 3.05),
-        ("All non-dev attention", "all_eval_non_development", graph_dir, "#E76F51", 2.65),
-        ("Fresh local", "fresh_extra", local_dir, "#2A9D8F", 1.25),
-        ("Fresh attention", "fresh_extra", graph_dir, "#E76F51", 0.85),
+        ("All non-dev vs local", "all_eval_non_development", local_dir, "#2A9D8F", 3.05),
+        ("All non-dev vs mean", "all_eval_non_development", mean_dir, "#457B9D", 2.65),
+        ("Fresh vs local", "fresh_extra", local_dir, "#2A9D8F", 1.25),
+        ("Fresh vs mean", "fresh_extra", mean_dir, "#457B9D", 0.85),
     ]
     box_data = []
     positions = []
     colors = []
     labels = []
-    for label, tier, dir_path, color, position in variants:
-        rows = _read_rows(dir_path / "rows.csv")
-        gains = np.array(
-            [float(row["gain_vs_best_single_trajectory_percent"]) for row in rows if _has_tier(row, tier)],
-            dtype=float,
-        )
-        box_data.append(gains)
+    for label, tier, reference_dir, color, position in variants:
+        advantages = _paired_attention_advantages(graph_dir, reference_dir, tier)
+        box_data.append(advantages)
         positions.append(position)
         colors.append(color)
-        labels.append(f"{label}\n(n={len(gains)})")
-        jitter = rng.normal(0.0, 0.035, size=len(gains))
+        labels.append(f"{label}\n(n={len(advantages)})")
+        jitter = rng.normal(0.0, 0.035, size=len(advantages))
         ax.scatter(
-            gains,
-            np.full_like(gains, position) + jitter,
+            advantages,
+            np.full_like(advantages, position) + jitter,
             s=9,
             color=color,
             alpha=0.28,
@@ -256,14 +300,14 @@ def _plot_gain_distribution(ax: plt.Axes, graph_dir: Path, local_dir: Path) -> N
     ax.axvline(0.0, color="#333333", linewidth=0.9)
     ax.set_yticks(positions)
     ax.set_yticklabels(labels, fontsize=7.5)
-    ax.set_xlabel("Trajectory-row gain vs best retained [%]")
-    ax.set_xlim(-45, 55)
+    ax.set_xlabel("Trajectory-row advantage of edge-only attention over reference [%]")
+    ax.set_xlim(-170, 100)
     ax.grid(axis="x", linewidth=0.35, alpha=0.45)
-    ax.set_title("Row-level gains are broad; graph-over-local is small", fontsize=10.5)
+    ax.set_title("Attention clearly separates from local; attention-vs-mean is weaker", fontsize=10.5)
 
 
-def build_figure(graph_dir: Path, local_dir: Path, output_path: Path) -> dict:
-    aggregates, metadata = _combined_aggregates(graph_dir, local_dir)
+def build_figure(graph_dir: Path, local_dir: Path, mean_dir: Path, output_path: Path) -> dict:
+    aggregates, metadata = _combined_aggregates(graph_dir, local_dir, mean_dir)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     plt.rcParams.update(
@@ -286,7 +330,7 @@ def build_figure(graph_dir: Path, local_dir: Path, output_path: Path) -> dict:
         constrained_layout=False,
     )
     _plot_bars(axes[0], aggregates)
-    _plot_gain_distribution(axes[1], graph_dir, local_dir)
+    _plot_advantage_distribution(axes[1], graph_dir, local_dir, mean_dir)
 
     all_non_dev = aggregates["all_eval_non_development"]
     fresh = aggregates["fresh_extra"]
@@ -298,8 +342,16 @@ def build_figure(graph_dir: Path, local_dir: Path, output_path: Path) -> dict:
     fresh_attention_vs_local = (
         100.0 * (float(fresh.local_rmse_m) - float(fresh.attention_rmse_m)) / float(fresh.local_rmse_m)
     )
+    all_attention_vs_mean = (
+        100.0
+        * (float(all_non_dev.mean_rmse_m) - float(all_non_dev.attention_rmse_m))
+        / float(all_non_dev.mean_rmse_m)
+    )
+    fresh_attention_vs_mean = (
+        100.0 * (float(fresh.mean_rmse_m) - float(fresh.attention_rmse_m)) / float(fresh.mean_rmse_m)
+    )
     fig.suptitle(
-        "v1.2.7 retained-candidate residual-refinement PoC",
+        "Edge-only retained-candidate residual-refinement ablation",
         fontsize=11.5,
         fontweight="bold",
         y=0.985,
@@ -308,9 +360,10 @@ def build_figure(graph_dir: Path, local_dir: Path, output_path: Path) -> dict:
         0.01,
         0.012,
         (
-            "Attention residual-refine point margins over local: "
-            f"{all_attention_vs_local:.2f}% all non-dev, {fresh_attention_vs_local:.2f}% fresh; "
-            "intervals cross zero, so graph/message-passing interpretation remains caveated."
+            "Attention over no-message local: "
+            f"{all_attention_vs_local:.2f}% all non-dev, {fresh_attention_vs_local:.2f}% fresh. "
+            "Attention over mean graph is weaker/mixed: "
+            f"{all_attention_vs_mean:.2f}% all non-dev, {fresh_attention_vs_mean:.2f}% fresh."
         ),
         fontsize=7.2,
     )
@@ -324,14 +377,17 @@ def build_figure(graph_dir: Path, local_dir: Path, output_path: Path) -> dict:
             str(graph_dir / "summary.json"),
             str(local_dir / "rows.csv"),
             str(local_dir / "summary.json"),
+            str(mean_dir / "rows.csv"),
+            str(mean_dir / "summary.json"),
         ],
         "tiers": {
             tier: {
                 "rows": aggregates[tier].rows,
                 "observed_steps": aggregates[tier].observed_steps,
                 "best_retained_rmse_m": aggregates[tier].best_rmse_m,
-                "local_residual_rmse_m": aggregates[tier].local_rmse_m,
-                "attention_residual_rmse_m": aggregates[tier].attention_rmse_m,
+                "edge_only_local_residual_rmse_m": aggregates[tier].local_rmse_m,
+                "edge_only_mean_residual_rmse_m": aggregates[tier].mean_rmse_m,
+                "edge_only_attention_residual_rmse_m": aggregates[tier].attention_rmse_m,
             }
             for tier, _ in TIERS
         },
@@ -343,9 +399,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--graph-dir", type=Path, default=GRAPH_DIR)
     parser.add_argument("--local-dir", type=Path, default=LOCAL_DIR)
+    parser.add_argument("--mean-dir", type=Path, default=MEAN_DIR)
     parser.add_argument("--output", type=Path, default=OUTPUT_PATH)
     args = parser.parse_args()
-    report = build_figure(args.graph_dir, args.local_dir, args.output)
+    report = build_figure(args.graph_dir, args.local_dir, args.mean_dir, args.output)
     print(json.dumps(report, indent=2))
 
 

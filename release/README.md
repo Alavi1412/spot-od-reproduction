@@ -1,14 +1,17 @@
 # SPOT-OD Supplementary Evidence Package
 
-Version: `1.2.3-acf-holdout-audit` (`SPOT-OD v1.2.3 ACF holdout audit release`).
-The GitHub release URL is
-<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>.
-The v1.2.3 Zenodo DOI is `10.5281/zenodo.20825138`, record
-<https://zenodo.org/records/20825138>. The prior public v1.2.2 DOI
-`10.5281/zenodo.20822968` remains the historical ACF audit package reference
-before this public-boundary repair. The prior public v1.2.1 DOI
-`10.5281/zenodo.20811701` remains the historical GraphAnchorPairGate package
-reference.
+Current release target: `v1.3.0-edge-only-residual-refine`
+(`SPOT-OD v1.3.0 edge-only residual-refinement ablation`), with the final
+GitHub tag target pending release creation. The GitHub release URL is
+<https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>.
+Zenodo DOI and record assignment for v1.3.0 are pending GitHub release creation
+and Zenodo import; no v1.3.0 DOI or Zenodo record is asserted in this packet.
+The Zenodo concept DOI remains `10.5281/zenodo.20768672`. The prior clean
+Zenodo version DOI is `10.5281/zenodo.20840386`.
+
+Historical note: older v1.2.3 ACF holdout audit entries in this directory
+describe a previous package and are retained only as release history, not as
+the current active package for v1.3.0.
 
 This versioned package accompanies the simulator-bound SPOT-OD self-audit
 record submission and supports inspection of the displayed evidence. It is provided so
@@ -35,10 +38,10 @@ materialized artifacts, and selectively replayed at the documented tiers.
 6. Table regeneration tier: regenerate active main-manuscript generated tables
    from the recorded outputs and compare byte hashes with the submitted table
    files. The current report is in
-   `results/validation/active_manuscript_regeneration.json` and `.md`; it
-   parses the current workspace `paper/main.tex` as 11 table inputs plus 2
-   figure includes, with 13/13 active artifacts passing. The public v1.2.1
-   archive-extracted report remains an older release-boundary record.
+   `results/validation/active_manuscript_regeneration.json` and `.md`; the
+   current source parse of `paper/main.tex` has 12 table inputs plus 2 figure
+   includes, including `paper/tables/main_row_weighted_dls_poc.tex`. The public
+   v1.2.1 archive-extracted report remains an older release-boundary record.
 7. Public precise-reference OD slice rerun: inspect
    `results/validation/real_slr_sp3_od_slice_rerun.json` and `.md`. This
    reruns one LAGEOS CRD/SP3 slice from archived public inputs through
@@ -232,10 +235,10 @@ recomputation from archived public inputs only; this does not rerun full
 raw-data generation, model retraining, all recursive filters or tables, live
 public-data retrieval, operational POD validation, or independent
 machine reproduction. Its nested active-regeneration count is tied to the
-public v1.2.1 extracted archive. Version 1.2.3 includes the ACF audit artifacts
-and development/holdout split summaries as the release-facing audit/table tier,
+public v1.2.1 extracted archive. Historically, version 1.2.3 included the ACF
+audit artifacts and development/holdout split summaries as its audit/table tier,
 but the older v1.2.1 archive-extracted report remains an older release-boundary
-record unless a v1.2.3 archive tier is regenerated.
+record unless a historical v1.2.3 archive tier is regenerated.
 
 ### Public Precise-Reference OD Slice Rerun
 
@@ -289,29 +292,47 @@ is generated from retained full-rerun outputs and does not rerun models.
 
 Release-facing metadata for the Zenodo/GitHub archival release:
 
-- Short title: `SPOT-OD v1.2.3 ACF holdout audit release`
-- Zenodo record: <https://zenodo.org/records/20825138>
-- DOI: `10.5281/zenodo.20825138`
-- DOI URL: <https://doi.org/10.5281/zenodo.20825138>
+- Short title: `SPOT-OD v1.3.0 edge-only residual-refinement ablation`
+- Zenodo record: pending GitHub release creation and Zenodo import
+- DOI: pending GitHub release creation and Zenodo import
+- DOI URL: pending GitHub release creation and Zenodo import
 - Zenodo concept DOI: `10.5281/zenodo.20768672`
-- Zenodo status: `published`
-- Version: `1.2.3-acf-holdout-audit`
+- Prior clean Zenodo version DOI: `10.5281/zenodo.20840386`
+- Zenodo status: `pending_github_release_zenodo_import`
+- Version: `v1.3.0-edge-only-residual-refine`
 - Resource type: Software
 - License: `CC-BY-4.0`
 - GitHub repository: <https://github.com/Alavi1412/spot-od-reproduction>
-- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>
-- Release tag: `v1.2.3-acf-holdout-audit`
-- Release commit: `39e879d8665e489266bbf75f69634cab0e797fe8`
-- Zenodo archived file:
-  `Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip`
-- Zenodo archived file bytes: `187,254,529`
-- Zenodo archived file MD5: `7eb8b43a9af90a4783482a7a3a086f92`
-- GitHub release asset: `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
-- GitHub release asset bytes: `59,140,917`
-- GitHub release asset SHA-256:
-  `11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`
+- GitHub release: <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine>
+- Release tag: `v1.3.0-edge-only-residual-refine`
+- Release commit: pending final GitHub tag target at release creation
+- Zenodo archived file: pending GitHub release creation and Zenodo import
+- Zenodo archived file bytes: pending
+- Zenodo archived file MD5: pending
+- GitHub release asset: pending
+- GitHub release asset bytes: pending
+- GitHub release asset SHA-256: pending
+
+No v1.3.0 DOI or Zenodo record is asserted before import.
 
 Prior public release history is retained:
+
+- v1.2.3 Zenodo record: <https://zenodo.org/records/20825138>
+- v1.2.3 DOI: `10.5281/zenodo.20825138`
+- v1.2.3 DOI URL: <https://doi.org/10.5281/zenodo.20825138>
+- v1.2.3 version: `1.2.3-acf-holdout-audit`
+- v1.2.3 GitHub release:
+  <https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit>
+- v1.2.3 release tag: `v1.2.3-acf-holdout-audit`
+- v1.2.3 release commit: `39e879d8665e489266bbf75f69634cab0e797fe8`
+- v1.2.3 Zenodo archived file:
+  `Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip`
+- v1.2.3 Zenodo archived file bytes: `187,254,529`
+- v1.2.3 Zenodo archived file MD5: `7eb8b43a9af90a4783482a7a3a086f92`
+- v1.2.3 GitHub release asset: `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`
+- v1.2.3 GitHub release asset bytes: `59,140,917`
+- v1.2.3 GitHub release asset SHA-256:
+  `11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`
 
 - v1.2.2 Zenodo record: <https://zenodo.org/records/20822968>
 - v1.2.2 DOI: `10.5281/zenodo.20822968`
@@ -376,21 +397,22 @@ is available in the current workspace/submission packet once included; it is
 not part of the published v1.2.1 Zenodo/GitHub release unless a later release
 includes it.
 
-Version 1.2.3 supersedes v1.2.2 only by repairing the public release boundary
-for the ACF audit/table tier and packaging the development/holdout split
-summaries in the new release. Version 1.2.2 remains historical ACF audit package
-history, and version 1.2.1 remains historical GraphAnchorPairGate package
-history. Scientific metrics are as recorded, not upgraded to operational
-validation.
+Historical v1.2.3 superseded v1.2.2 only by repairing the public release
+boundary for the ACF audit/table tier and packaging the development/holdout
+split summaries in that older release. Version 1.2.2 remains historical ACF
+audit package history, and version 1.2.1 remains historical GraphAnchorPairGate
+package history. Scientific metrics are as recorded, not upgraded to
+operational validation.
 
-The v1.2.3 release is bounded reproduction-support evidence for archive
-extraction, manifest hashes, active manuscript artifact regeneration, one
-archived-input public OD slice rerun, public packaging of the GraphAnchorPairGate
-PoC, and public packaging of the ACF audit/table tier including the
-development/holdout split summaries. It is not full raw/training/all-filter
-reproduction, live public-data retrieval, operational POD validation,
-independent-machine confirmation, third-party independent validation, full
-scientific reproduction, or confirmatory learned superiority.
+The historical v1.2.3 release is bounded reproduction-support evidence for
+archive extraction, manifest hashes, active manuscript artifact regeneration,
+one archived-input public OD slice rerun, public packaging of the
+GraphAnchorPairGate PoC, and public packaging of the ACF audit/table tier
+including the development/holdout split summaries. It is not the current
+v1.3.0 package and is not full raw/training/all-filter reproduction, live
+public-data retrieval, operational POD validation, independent-machine
+confirmation, third-party independent validation, full scientific reproduction,
+or confirmatory learned superiority.
 
 The public `1.2.1-graph-anchor-gate-poc` package includes the
 post-manuscript GraphAnchorPairGate proof-of-concept artifact under
@@ -421,13 +443,16 @@ claim.
 ## Contents
 
 - `CITATION.cff` - local citation metadata for the package.
-- `ZENODO_METADATA.json` - Zenodo deposit metadata for v1.2.3, with the
-  minted v1.2.3 DOI/record and the v1.2.2/v1.2.1 DOIs retained as historical
-  release references.
+- `ZENODO_METADATA.json` - Zenodo deposit metadata for the current
+  `v1.3.0-edge-only-residual-refine` release target. The v1.3.0 DOI/record is
+  pending GitHub release creation and Zenodo import; the concept DOI and prior
+  clean DOI are retained as historical/prior references.
 - `REVIEWER_START_HERE.md` - reviewer-facing map from headline claims to
   manifest entries and regeneration tiers.
+- `RELEASE_NOTES_v1.3.0-edge-only-residual-refine.md` - concise release note
+  for the current v1.3.0 edge-only residual-refinement ablation release target.
 - `RELEASE_NOTES_v1.2.3-acf-holdout-audit.md` - concise release note for the
-  v1.2.3 ACF holdout audit release and minted Zenodo fields.
+  historical v1.2.3 ACF holdout audit release and minted Zenodo fields.
 - `RELEASE_NOTES_v1.2.2-acf-audit.md` - historical release note for the v1.2.2
   ACF audit release.
 - `INDEPENDENT_MACHINE_REPRODUCTION_REQUEST.md` - clean-machine operator
@@ -659,10 +684,10 @@ Current inspection shortcuts:
   `results/validation/active_manuscript_regeneration.md`,
   `results/validation/command_manifest.json`, and the active generated
   `paper/tables/*.tex` files included by `paper/main.tex`. Confirm the current
-  parse has 11 active table inputs and 2 external figure includes, including
-  `paper/tables/main_findings_summary.tex` and
-  `paper/tables/adaptive_candidate_fusion_full_training_poc.tex`, with 13/13
-  active artifacts passing.
+  source parse has 12 active table inputs and 2 external figure includes,
+  including `paper/tables/main_findings_summary.tex`,
+  `paper/tables/adaptive_candidate_fusion_full_training_poc.tex`, and
+  `paper/tables/main_row_weighted_dls_poc.tex`.
 - Archive-extracted reproduction tier: use manifest entry
   `claim_to_artifact_map.archive_extracted_reproduction_tier`.
   Primary artifacts are `results/validation/archive_extracted_reproduction.json`,

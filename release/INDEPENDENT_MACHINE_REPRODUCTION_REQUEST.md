@@ -12,22 +12,40 @@ status, deviations, and output hashes.
 
 ## Public Release Reference
 
-- Short title: SPOT-OD v1.2.3 ACF holdout audit release
+- Short title: SPOT-OD v1.3.0 edge-only residual-refinement ablation
+- Zenodo record: pending GitHub release creation and Zenodo import
+- DOI: pending GitHub release creation and Zenodo import
+- DOI URL: pending GitHub release creation and Zenodo import
+- Zenodo concept DOI: 10.5281/zenodo.20768672
+- Prior clean Zenodo version DOI: 10.5281/zenodo.20840386
+- Zenodo status: pending_github_release_zenodo_import
+- Resource type: Software
+- GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
+- GitHub release:
+  https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.3.0-edge-only-residual-refine
+- Release tag: v1.3.0-edge-only-residual-refine
+- Release commit: pending final GitHub tag target at release creation
+- Supersession note: v1.3.0 adds the edge-only retained-candidate
+  residual-refinement ablation. It does not assert a v1.3.0 Zenodo DOI/record
+  before GitHub release creation and Zenodo import. Scientific metrics are as
+  recorded, not upgraded to operational validation.
+- Zenodo archived file: pending GitHub release creation and Zenodo import
+- Zenodo archived file bytes: pending
+- Zenodo archived file MD5: pending
+- GitHub release asset: pending
+- GitHub release asset bytes: pending
+- GitHub release asset SHA-256: pending
+
+Historical v1.2.3 ACF holdout audit package reference:
+
 - Zenodo record: https://zenodo.org/records/20825138
 - DOI: 10.5281/zenodo.20825138
 - DOI URL: https://doi.org/10.5281/zenodo.20825138
-- Zenodo concept DOI: 10.5281/zenodo.20768672
 - Zenodo status: published
-- Resource type: Software
-- GitHub repository: https://github.com/Alavi1412/spot-od-reproduction
 - GitHub release:
   https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.3-acf-holdout-audit
 - Release tag: v1.2.3-acf-holdout-audit
 - Release commit: 39e879d8665e489266bbf75f69634cab0e797fe8
-- Supersession note: v1.2.3 repairs the public release boundary for the ACF
-  audit/table tier by packaging the development/holdout split summaries in the
-  new release. Scientific metrics are as recorded, not upgraded to operational
-  validation.
 - Zenodo archived file: Alavi1412/spot-od-reproduction-v1.2.3-acf-holdout-audit.zip
 - Zenodo archived file bytes: 187,254,529
 - Zenodo archived file MD5: 7eb8b43a9af90a4783482a7a3a086f92
@@ -74,7 +92,7 @@ Prior v1.2.1 public archive reference:
 - GitHub release asset SHA-256:
   3cc285f132b690695a5d2a453f7c21128b46333d183fcfca265c52d50184c69c
 
-Current v1.2.3 GitHub Actions verifier runs are recorded at:
+Historical v1.2.3 GitHub Actions verifier runs are recorded at:
 
 - Branch run:
   https://github.com/Alavi1412/spot-od-reproduction/actions/runs/28082253565
@@ -98,25 +116,27 @@ release verifier tiers; they are not third-party independent validation.
 ## Artifact Pairing Rule
 
 Choose exactly one verification route and keep every input from that same
-route. The immutable published release asset and the current DOI-synced
-working-branch packet must not be swapped or combined after the DOI metadata
-sync.
+route. Historical published release assets and historical local packets must
+not be swapped across version boundaries.
 
-- Immutable published v1.2.3 GitHub/Zenodo release route: use the files,
+- Current v1.3.0 release route: wait for the GitHub release asset and Zenodo
+  import before running a public archive route. Do not invent or substitute a
+  v1.3.0 DOI/record before import.
+- Historical immutable published v1.2.3 GitHub/Zenodo release route: use the files,
   manifest, verifier scripts, dependency files, and review archive from the
   exact `v1.2.3-acf-holdout-audit` release/tag/asset set together. The
   published GitHub release asset is
   `spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, 59,140,917 bytes,
   SHA-256
   `11909866b2ae1a375cdebe1472305d6d1fbd0b9f97453084fc7da16b78dcf70f`.
-  Do not pair this immutable asset with post-import DOI-synced manifests from
-  the current working branch.
-- Current DOI-synced working-branch/local-packet route: use the current
+  Do not pair this immutable asset with later manifests.
+- Historical v1.2.3 DOI-synced working-branch/local-packet route: use the
+  historical
   `release/SUPPLEMENTARY_MANIFEST.json` with the regenerated local archive at
   `release/spot_od_v1_2_3_acf_holdout_audit_review_archive.zip`, 59,142,123
   bytes, SHA-256
   `11451c2032243c972534f7de9eb40ba04c44ff69b6c45db179f2053f97ad9b7e`.
-  The current manifest records
+  That manifest recorded
   `review_archive.matches_published_github_release_asset: false`; do not
   substitute the published GitHub release asset for this route.
 
@@ -132,6 +152,10 @@ from that same selected route:
 - `scripts/verify_archive_extracted_reproduction.py`
 - `requirements.txt` and `pyproject.toml` from the same archive, tag checkout,
   or local packet
+
+For the v1.3.0 route, use the v1.3.0 archive name once the GitHub release
+asset and Zenodo import exist. Until then, the v1.3.0 DOI/record and paired
+archive fields are pending.
 
 ## Clean-Machine Procedure
 

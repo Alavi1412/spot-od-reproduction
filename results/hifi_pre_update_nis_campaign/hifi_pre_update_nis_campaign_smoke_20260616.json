@@ -1,0 +1,1105 @@
+{
+  "schema_version": "hifi_pre_update_nis_campaign_v1",
+  "created_utc": "2026-06-16T21:44:02.269760+00:00",
+  "claim_boundary": "Internal sampled high-fidelity synthetic campaign only; not operational POD; not external validation; no learned model training or checkpoint inference.",
+  "classical_only": true,
+  "filters_evaluated": [
+    "EKF",
+    "UKF_instrumented",
+    "AUKF_instrumented"
+  ],
+  "learned_models": "not trained or evaluated",
+  "excluded_methods": [
+    "PUKF",
+    "DSA-EKF",
+    "DMC-EKF",
+    "GNN",
+    "hybrid"
+  ],
+  "config_path": "configs\\experiment.yaml",
+  "output_prefix": "results\\hifi_pre_update_nis_campaign\\hifi_pre_update_nis_campaign_smoke_20260616",
+  "provenance": {
+    "invoked_command": "\"\\\\nas\\Projects\\Papers\\GNN State Estimation\\.venv\\Scripts\\python.exe\" scripts\\run_hifi_pre_update_nis_campaign.py --config configs\\experiment.yaml --cells default-smoke --realizations-per-cell 1 --trajectories-per-realization 2 --base-seed 2026061601 --output-prefix results\\hifi_pre_update_nis_campaign\\hifi_pre_update_nis_campaign_smoke_20260616",
+    "argv": [
+      "--config",
+      "configs\\experiment.yaml",
+      "--cells",
+      "default-smoke",
+      "--realizations-per-cell",
+      "1",
+      "--trajectories-per-realization",
+      "2",
+      "--base-seed",
+      "2026061601",
+      "--output-prefix",
+      "results\\hifi_pre_update_nis_campaign\\hifi_pre_update_nis_campaign_smoke_20260616"
+    ],
+    "script_path": "\\\\nas\\Projects\\Papers\\GNN State Estimation\\scripts\\run_hifi_pre_update_nis_campaign.py",
+    "script_sha256": "47e0f4120d72abe7e0554be30ed857e8bc24c60dac627075b844972bb98fcdab",
+    "helper_script_hashes": {
+      "scripts/run_hifi_force_mismatch.py": {
+        "resolved": "\\\\nas\\Projects\\Papers\\GNN State Estimation\\scripts\\run_hifi_force_mismatch.py",
+        "sha256": "5f7e2aa85928668322cd3b6aff740173ffd417f6b6b5f2fa333ac251224f9597"
+      },
+      "scripts/run_hifi_force_mismatch_extended.py": {
+        "resolved": "\\\\nas\\Projects\\Papers\\GNN State Estimation\\scripts\\run_hifi_force_mismatch_extended.py",
+        "sha256": "fe870bc4cd97d32e29e11b01f4446222425e782b5fe625a9681f28cd3b884a11"
+      },
+      "scripts\\run_aukf_nis_sampled_campaign.py": {
+        "resolved": "\\\\nas\\Projects\\Papers\\GNN State Estimation\\scripts\\run_aukf_nis_sampled_campaign.py",
+        "sha256": "4ea8138ffd15ba160014e8cb6179f67cd7bf014500964bdfcdad1c41390bad81"
+      }
+    },
+    "rule_hashes": {},
+    "config_path_resolved": "\\\\nas\\Projects\\Papers\\GNN State Estimation\\configs\\experiment.yaml",
+    "config_sha256": "e772a670d03bfb83ce9f6f37dd5b397096210f98f895d328099f962c4700f8d5",
+    "python": {
+      "version": "3.11.9",
+      "full_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "executable": "\\\\nas\\Projects\\Papers\\GNN State Estimation\\.venv\\Scripts\\python.exe"
+    },
+    "numpy_version": "2.4.6",
+    "git": {
+      "head": "206a93f31ee9360ed094ee0064b0e0060c6e6e37",
+      "head_error": null,
+      "status_short_line_count": 1491,
+      "status_short_sha256": "91064eae707f5b73b83baf366da7a6d42c03fa30fb190c934a44892af5103cf6",
+      "status_short_first_200_lines": [
+        "M paper/RELEASE_PACKET.md",
+        " M paper/figures/hybrid_vs_ukf_improvement_hist.png",
+        " M paper/figures/per_step_rmse.png",
+        " M paper/figures/position_error_boxplot.png",
+        " M paper/figures/position_error_ecdf.png",
+        " M paper/figures/robustness_aukf_heatmap.png",
+        " M paper/figures/robustness_ekf_heatmap.png",
+        " M paper/figures/robustness_hybrid_heatmap.png",
+        " M paper/figures/robustness_profile.png",
+        " M paper/figures/station_outage_sensitivity.png",
+        " M paper/figures/training_curves.png",
+        " M paper/figures/uncertainty_calibration.png",
+        " M paper/figures/visibility_bucket_relative_gain.png",
+        " M paper/figures/visibility_bucket_rmse.png",
+        " M paper/main.pdf",
+        " M paper/main.tex",
+        " M paper/supplement.pdf",
+        " M paper/supplement.tex",
+        " M paper/tables/ablation.tex",
+        " M paper/tables/batch_wls_baseline.tex",
+        " M paper/tables/benchmark_suite.tex",
+        " M paper/tables/calibration.tex",
+        " M paper/tables/engineering_failure.tex",
+        " M paper/tables/main_drag_scale_cascade.tex",
+        " M paper/tables/main_framework_portability.tex",
+        " M paper/tables/main_results.tex",
+        " M paper/tables/measurement_informed_results.tex",
+        " M paper/tables/method_activity.tex",
+        " M paper/tables/multiplicity_adjusted.tex",
+        " M paper/tables/pukf_tuning_sensitivity.tex",
+        " M paper/tables/pure_gnn_training_sanity.tex",
+        " M paper/tables/robustness.tex",
+        " M paper/tables/significance.tex",
+        " M paper/tables/station_outage.tex",
+        " M paper/tables/trajectory_improvement.tex",
+        " M paper/tables/ukf_gain_estimands.tex",
+        " M paper/tables/visibility_buckets.tex",
+        " M release/README.md",
+        " M release/REVIEWER_START_HERE.md",
+        " M release/SUPPLEMENTARY_MANIFEST.json",
+        " M release/spot_od_v1_1_0_supplement_review_archive.zip",
+        " M results/release_packet.json",
+        " M results/task227_citation_validation.json",
+        " M results/task227_final_release_evidence_index.json",
+        " M results/task227_final_submission_validation_result_payload.json",
+        " M results/task227_final_submission_validation_stakeholder_artifact.md",
+        " M results/validation/active_manuscript_regeneration.json",
+        " M results/validation/active_manuscript_regeneration.md",
+        " M results/validation/adversarial_review.json",
+        " M results/validation/archive_extracted_reproduction.json",
+        " M results/validation/archive_extracted_reproduction.md",
+        " M results/validation/command_manifest.json",
+        " M results/validation/minimum_tier_reproduction_check.json",
+        " M results/validation/owner_demo.md",
+        " M results/validation/release_evidence_index.json",
+        " M results/validation/submission_validation.json",
+        " M results/validation/submission_validation.md",
+        " M results/validation/submission_validation_command.log",
+        " M results/validation/supplement_layout_warnings.json",
+        " M results/validation/supplement_layout_warnings.md",
+        " M results/validation/task227_final_validation.json",
+        " M scripts/build_paper_assets.py",
+        " M scripts/build_supplementary_manifest.py",
+        " M scripts/run_robustness_sweep.py",
+        " M scripts/run_station_outage_sweep.py",
+        " M src/gnn_state_estimation/filters/__init__.py",
+        " M src/gnn_state_estimation/filters/ukf.py",
+        " M tests/test_aukf_adaptation_diagnostic.py",
+        " M tests/test_paper_asset_caption_disclosures.py",
+        "?? .codex_coder_result.txt",
+        "?? .codex_reviewer_result.txt",
+        "?? .venv/",
+        "?? REASSESSMENT_NEXT_MOVE_2026-05-07.md",
+        "?? _bpa.log",
+        "?? abstract_trim_report.txt",
+        "?? count_abstract.txt",
+        "?? debug_validator.py",
+        "?? docs/",
+        "?? ensure_repro_language.py",
+        "?? external/",
+        "?? find_lines.py",
+        "?? fix_provenance_repro_update.py",
+        "?? literature_review_gnn_state_estimation.md",
+        "?? logs/",
+        "?? main.aux",
+        "?? main.fdb_latexmk",
+        "?? main.fls",
+        "?? main.log",
+        "?? main.out",
+        "?? paper/ACADEMIC_DEMO_FINAL_QA_VERIFIED_2026-05-07.md",
+        "?? paper/ACCEPTANCE_HARDENING_2026-04-20.md",
+        "?? paper/CHANGELOG_REVIEW_REPAIR.md",
+        "?? paper/CLAUDE_CODE_REVIEW_2026-04-21.md",
+        "?? paper/CORE_SECTION_RELATED_WORK_POSITIONING_DRAFT_2026-05-06.md",
+        "?? paper/CORE_SECTION_RELATED_WORK_POSITIONING_DRAFT_2026-05-07.md",
+        "?? paper/CORE_SECTION_RELATED_WORK_POSITIONING_DRAFT_GNN_STATE_ESTIMATION_2026-05-07.md",
+        "?? paper/CORE_SECTION_RELATED_WORK_POSITIONING_DRAFT_REVISION_2026-05-07.md",
+        "?? paper/DEEP_REVIEW_2026-04-16.md",
+        "?? paper/EXPERIMENT_REPRODUCTION_RESULT_2026-05-07.md",
+        "?? paper/FORMAL_PEER_REVIEW_2026-04-11.md",
+        "?? paper/GUARDED_OBSERVABILITY_SELECTOR_REVIEW_2026-04-29.md",
+        "?? paper/INDEPENDENT_REVIEW_2026-04-20.md",
+        "?? paper/ISSUE_TRACKER.md",
+        "?? paper/LITERATURE_REVIEW_SPOT_OD_2026-05-06.md",
+        "?? paper/LITERATURE_REVIEW_SPOT_OD_2026-05-07_NOTION_EXPORT.md",
+        "?? paper/LITERATURE_REVIEW_SPOT_OD_NOTION_READY_2026-05-06.md",
+        "?? paper/LITERATURE_REVIEW_SPOT_OD_NOTION_READY_2026-05-07.md",
+        "?? paper/LITERATURE_REVIEW_SPOT_OD_NOTION_READY_DRAFT_2026-05-06.md",
+        "?? paper/METHOD_REPRODUCTION_APPROACH_DRAFT.md",
+        "?? paper/NOTION_PAPER_DRAFT_BLOCKED_2026-05-07.md",
+        "?? paper/NOTION_PAPER_DRAFT_SPOT_OD_2026-05-07.md",
+        "?? paper/NOVELTY_REVIEW_ROUNDS_2026-04-29.md",
+        "?? paper/OBSERVABILITY_CONTEXT_TRAINING_REVIEW_2026-04-29.md",
+        "?? paper/PEER_REVIEW_DOSSIER.md",
+        "?? paper/REVIEW_50_PASS_MATRIX.md",
+        "?? paper/REVISION_PLAN_2026-04-11.md",
+        "?? paper/TECHNICAL_REVIEW_2026-04-20.md",
+        "?? paper/_main_compile_loop163.log",
+        "?? paper/_review_main.txt",
+        "?? paper/_review_supp.txt",
+        "?? paper/_rv_p15-15.png",
+        "?? paper/_rv_p2-02.png",
+        "?? paper/_supp_compile_loop163.log",
+        "?? paper/academic_demo_draft.md",
+        "?? paper/academic_demo_notion_ready_draft.md",
+        "?? paper/appendix_statistical_public_replay_clarifications.tex",
+        "?? paper/author_contributions.txt",
+        "?? paper/build/",
+        "?? paper/core_section_draft.md",
+        "?? paper/cover_letter_acta.md",
+        "?? paper/cursor_review_loops/",
+        "?? paper/declaration_of_interest.txt",
+        "?? paper/editor_memo_acta.md",
+        "?? paper/evidence_plan.tex",
+        "?? paper/final_review_report.md",
+        "?? paper/graphical_abstract.pdf",
+        "?? paper/graphical_abstract.png",
+        "?? paper/graphical_abstract.svg",
+        "?? paper/graphical_abstract_readme.md",
+        "?? paper/highlights.txt",
+        "?? paper/main.aux",
+        "?? paper/main.bbl",
+        "?? paper/main.blg",
+        "?? paper/main.fdb_latexmk",
+        "?? paper/main.fls",
+        "?? paper/main.log",
+        "?? paper/main.out",
+        "?? paper/main.spl",
+        "?? paper/main_text.txt",
+        "?? paper/main_text_check.txt",
+        "?? paper/main_text_tmp.txt",
+        "?? paper/results/",
+        "?? paper/review_revision_draft.md",
+        "?? paper/review_rounds.md",
+        "?? paper/submission_upload_checklist_acta.md",
+        "?? paper/supplement.aux",
+        "?? paper/supplement.bbl",
+        "?? paper/supplement.blg",
+        "?? paper/supplement.fdb_latexmk",
+        "?? paper/supplement.fls",
+        "?? paper/supplement.log",
+        "?? paper/supplement.out",
+        "?? paper/supplement_text.txt",
+        "?? paper/tables/key_numbers.txt",
+        "?? paper/texput.log",
+        "?? paper/thesis_acceptance_criteria.md",
+        "?? paper/title_page_unblinded_template.txt",
+        "?? paper/verified_figures_section_draft.md",
+        "?? patch_all.py",
+        "?? patch_current_pdf_sha_2026_05_14.py",
+        "?? patch_current_validation_hash.py",
+        "?? patch_evidence_surfaces_2026_05_14.py",
+        "?? patch_paper.py",
+        "?? patch_release_packet.py",
+        "?? patch_repo.py",
+        "?? patch_repro_artifact_record_main.py",
+        "?? patch_repro_plan.py",
+        "?? patch_task218.py",
+        "?? patch_task_repro_artifact_record_language.py",
+        "?? patch_task_repro_artifact_record_verifier.py",
+        "?? project_reassessment_next_move.md",
+        "?? record_provenance_update.py",
+        "?? release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260606_20260616.json",
+        "?? release/predeclarations/real_slr_sp3_temporal_corrected_od_prospective_260620_20260612.json.ots",
+        "?? reports/",
+        "?? result.md",
+        "?? results/_bpa_loop28.log",
+        "?? results/_bpa_loop28_pre.log",
+        "?? results/_bpa_loop30.log",
+        "?? results/_bpa_loop31.log",
+        "?? results/_bpa_loop32.log",
+        "?? results/_bsm_loop26.log",
+        "?? results/_bsm_loop27.log",
+        "?? results/_bsm_loop28.log",
+        "?? results/_bsm_loop30.log",
+        "?? results/_bsm_loop31.log",
+        "?? results/_bsm_loop32.log",
+        "?? results/_build_assets_loop26.log",
+        "?? results/_build_assets_loop27.log",
+        "?? results/_compile_loop26.log"
+      ],
+      "status_short_truncated": true,
+      "status_error": null
+    }
+  },
+  "primary_metric": "observed_step_position_rmse_m",
+  "diagnostic_metric": "pre_update_r_only_nis",
+  "diagnostic_definition": "For each visible station update, compute z - h(x_pre) inside the UKF/AUKF recursion immediately before that station's update, wrap the azimuth residual, whiten by the nominal measurement-noise standard deviations only, and sum squared components. This excludes post-update filtered histories, excludes cross-filter posterior NIS, and excludes the predicted-state covariance term in S.",
+  "row_checkpointing": {
+    "rows_jsonl_path": "results\\hifi_pre_update_nis_campaign\\hifi_pre_update_nis_campaign_smoke_20260616.rows.jsonl",
+    "flush_policy": "append, flush, and fsync after each completed realization",
+    "resume_supported": false
+  },
+  "seed_plan": {
+    "base_seed": 2026061601,
+    "cell_seed_stride": 100000,
+    "realization_seed_stride": 101,
+    "initialization_seed_offset": 17,
+    "filter_seed_offset": 37,
+    "selected_cells": [
+      "hifi_base",
+      "hifi_extended"
+    ]
+  },
+  "campaign_design": {
+    "realizations_per_cell": 1,
+    "trajectories_per_realization": 2,
+    "divergence_rmse_threshold_m": 100000000.0,
+    "thresholds": [
+      1.1,
+      1.25,
+      1.5
+    ],
+    "long_arc_cell_optional": true,
+    "larger_campaign_command": "python scripts/run_hifi_pre_update_nis_campaign.py --config configs/experiment.yaml --cells default-full --realizations-per-cell 8 --trajectories-per-realization 12 --base-seed 20260616 --output-prefix results/hifi_pre_update_nis_campaign/k8_n12"
+  },
+  "sampling_frame": {
+    "frame_type": "named high-fidelity synthetic truth cells",
+    "default_smoke_cells": [
+      "hifi_base",
+      "hifi_extended"
+    ],
+    "default_full_cells": [
+      "hifi_base",
+      "hifi_extended",
+      "hifi_long_arc"
+    ],
+    "long_arc_default_selected": false,
+    "scenario_order_is_fixed": true,
+    "estimator_sim_config_sha256": "f569fd3abb17f17f11494499c54adbfdb37ad34009478e48f9400c0c4cb6a7d3",
+    "estimator_sim_config": {
+      "orbit_sampling": {
+        "altitude_min_km": 450.0,
+        "altitude_max_km": 950.0,
+        "eccentricity_min": 0.0,
+        "eccentricity_max": 0.02,
+        "inclination_min_deg": 20.0,
+        "inclination_max_deg": 98.0
+      },
+      "dynamics": {
+        "dt_s": 20.0,
+        "steps": 120,
+        "ballistic_coeff_m2_per_kg": 0.018,
+        "process_noise_std": 0.0,
+        "drag_rho_ref": 4e-11,
+        "drag_h_ref_m": 400000.0,
+        "drag_scale_height_m": 60000.0,
+        "enable_third_body": true,
+        "enable_srp": true,
+        "srp_area_to_mass_m2_per_kg": 0.02,
+        "srp_cr": 1.35,
+        "sun_initial_phase_rad": 0.3,
+        "moon_initial_phase_rad": 1.1
+      },
+      "measurement_noise": {
+        "range_std_m": 30.0,
+        "az_std_deg": 0.02,
+        "el_std_deg": 0.02,
+        "range_rate_std_mps": 0.08,
+        "outlier_prob": 0.01,
+        "outlier_scale": 6.0,
+        "range_bias_std_m": 8.0,
+        "az_bias_std_deg": 0.004,
+        "el_bias_std_deg": 0.004,
+        "range_rate_bias_std_mps": 0.02,
+        "clock_bias_std_s": 0.03,
+        "clock_jitter_std_s": 0.015,
+        "random_dropout_prob": 0.02
+      },
+      "stations": [
+        {
+          "name": "Alaska",
+          "lat_deg": 64.84,
+          "lon_deg": -147.72,
+          "alt_m": 140.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Hawaii",
+          "lat_deg": 19.7,
+          "lon_deg": -155.08,
+          "alt_m": 10.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "California",
+          "lat_deg": 34.74,
+          "lon_deg": -120.57,
+          "alt_m": 120.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Spain",
+          "lat_deg": 40.43,
+          "lon_deg": -4.25,
+          "alt_m": 700.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Australia",
+          "lat_deg": -31.8,
+          "lon_deg": 115.89,
+          "alt_m": 40.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "Chile",
+          "lat_deg": -33.15,
+          "lon_deg": -70.67,
+          "alt_m": 570.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "SouthAfrica",
+          "lat_deg": -25.89,
+          "lon_deg": 27.7,
+          "alt_m": 1500.0,
+          "min_elevation_deg": 8.0
+        },
+        {
+          "name": "India",
+          "lat_deg": 13.06,
+          "lon_deg": 80.27,
+          "alt_m": 30.0,
+          "min_elevation_deg": 8.0
+        }
+      ]
+    },
+    "selected_cells": [
+      {
+        "name": "hifi_base",
+        "label": "Base high-fidelity",
+        "truth_family": "J2..J4 plus third-body truth",
+        "truth_acceleration": "accel_hifi(r, epoch_unix) (two-body + J2..J4 + luni-solar) + exponential-atmosphere drag",
+        "estimator_acceleration": "configured compact recursive-filter dynamics from configs/experiment.yaml",
+        "steps": 120,
+        "dt_s": 20.0,
+        "eval_start_step": 11,
+        "epoch_unix": 1736640000.0,
+        "helper_scripts": [
+          "scripts/run_hifi_force_mismatch.py"
+        ],
+        "rule_paths": [],
+        "parameters": {
+          "ballistic_coeff_m2_per_kg": 0.018,
+          "drag_rho_ref": 4e-11,
+          "drag_h_ref_m": 400000.0,
+          "drag_scale_height_m": 60000.0
+        },
+        "resolved_cell_parameters_sha256": "2a4957a01cdfcb5a8e8d38ea2039be7205db371522063b66b9949f9e1caf1f72"
+      },
+      {
+        "name": "hifi_extended",
+        "label": "Extended high-fidelity",
+        "truth_family": "J2..J6 plus third-body and diurnal density truth",
+        "truth_acceleration": "accel_hifi_extended(r, epoch_unix) (two-body + J2..J6 + luni-solar) + exponential drag with one-sided diurnal density bulge",
+        "estimator_acceleration": "configured compact recursive-filter dynamics from configs/experiment.yaml",
+        "steps": 120,
+        "dt_s": 20.0,
+        "eval_start_step": 11,
+        "epoch_unix": 1736640000.0,
+        "helper_scripts": [
+          "scripts/run_hifi_force_mismatch.py",
+          "scripts/run_hifi_force_mismatch_extended.py"
+        ],
+        "rule_paths": [],
+        "parameters": {
+          "ballistic_coeff_m2_per_kg": 0.018,
+          "drag_rho_ref": 4e-11,
+          "drag_h_ref_m": 400000.0,
+          "drag_scale_height_m": 60000.0,
+          "diurnal_alpha": 0.3
+        },
+        "resolved_cell_parameters_sha256": "e0304fcbaf02989f314383904f899fbf9cde1ac5da2fbe5520c3b3041607e4e8"
+      }
+    ]
+  },
+  "summary": {
+    "rows": 2,
+    "finite_rows": 2,
+    "finite_nondivergent_rows": 2,
+    "nonfinite_rows": 0,
+    "divergent_rows": 0,
+    "total_trajectories": 4,
+    "total_observed_steps": 81,
+    "aukf_worse_than_ukf_rows": 2,
+    "aukf_worse_than_best_nonadaptive_rows": 2
+  },
+  "cell_summary": {
+    "hifi_base": {
+      "label": "Base high-fidelity",
+      "truth_family": "J2..J4 plus third-body truth",
+      "rows": 1,
+      "finite_rows": 1,
+      "finite_nondivergent_rows": 1,
+      "divergent_rows": 0,
+      "total_trajectories": 2,
+      "total_observed_steps": 52,
+      "median_rho_pre_update_r_only_nis": 0.9054128304415509,
+      "median_ukf_pos_rmse_m": 399.7402244805106,
+      "median_aukf_pos_rmse_m": 423.12683664273015,
+      "aukf_worse_than_ukf_rows": 1,
+      "aukf_worse_than_best_nonadaptive_rows": 1
+    },
+    "hifi_extended": {
+      "label": "Extended high-fidelity",
+      "truth_family": "J2..J6 plus third-body and diurnal density truth",
+      "rows": 1,
+      "finite_rows": 1,
+      "finite_nondivergent_rows": 1,
+      "divergent_rows": 0,
+      "total_trajectories": 2,
+      "total_observed_steps": 29,
+      "median_rho_pre_update_r_only_nis": 0.9786275355575684,
+      "median_ukf_pos_rmse_m": 279.6804489562965,
+      "median_aukf_pos_rmse_m": 285.7499353727953,
+      "aukf_worse_than_ukf_rows": 1,
+      "aukf_worse_than_best_nonadaptive_rows": 1
+    }
+  },
+  "threshold_operating_characteristics": {
+    "aukf_worse_than_ukf": {
+      "all_finite_rows": {
+        "outcome": "aukf_worse_than_ukf",
+        "scope": "all_finite_rows",
+        "eligible_rows": 2,
+        "excluded": {
+          "total_rows": 2,
+          "excluded_nonfinite": 0,
+          "excluded_divergent": 0
+        },
+        "thresholds": {
+          "1.1": {
+            "threshold": 1.1,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.25": {
+            "threshold": 1.25,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.5": {
+            "threshold": 1.5,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          }
+        }
+      },
+      "finite_nondivergent_rows": {
+        "outcome": "aukf_worse_than_ukf",
+        "scope": "finite_nondivergent_rows",
+        "eligible_rows": 2,
+        "excluded": {
+          "total_rows": 2,
+          "excluded_nonfinite": 0,
+          "excluded_divergent": 0
+        },
+        "thresholds": {
+          "1.1": {
+            "threshold": 1.1,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.25": {
+            "threshold": 1.25,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.5": {
+            "threshold": 1.5,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          }
+        }
+      }
+    },
+    "aukf_worse_than_best_nonadaptive": {
+      "all_finite_rows": {
+        "outcome": "aukf_worse_than_best_nonadaptive",
+        "scope": "all_finite_rows",
+        "eligible_rows": 2,
+        "excluded": {
+          "total_rows": 2,
+          "excluded_nonfinite": 0,
+          "excluded_divergent": 0
+        },
+        "thresholds": {
+          "1.1": {
+            "threshold": 1.1,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.25": {
+            "threshold": 1.25,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.5": {
+            "threshold": 1.5,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          }
+        }
+      },
+      "finite_nondivergent_rows": {
+        "outcome": "aukf_worse_than_best_nonadaptive",
+        "scope": "finite_nondivergent_rows",
+        "eligible_rows": 2,
+        "excluded": {
+          "total_rows": 2,
+          "excluded_nonfinite": 0,
+          "excluded_divergent": 0
+        },
+        "thresholds": {
+          "1.1": {
+            "threshold": 1.1,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.25": {
+            "threshold": 1.25,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          },
+          "1.5": {
+            "threshold": 1.5,
+            "n": 2,
+            "tp": 0,
+            "fp": 0,
+            "tn": 0,
+            "fn": 2,
+            "predicted_positive": 0,
+            "actual_positive": 2,
+            "precision": null,
+            "precision_wilson95": null,
+            "sensitivity": 0.0,
+            "sensitivity_wilson95": [
+              0.0,
+              0.6576197724933469
+            ],
+            "specificity": null,
+            "specificity_wilson95": null,
+            "accuracy": 0.0,
+            "accuracy_wilson95": [
+              0.0,
+              0.6576197724933469
+            ]
+          }
+        }
+      }
+    }
+  },
+  "sensitivity_excluding_divergent_or_nonfinite_rows": {
+    "aukf_worse_than_ukf": {
+      "outcome": "aukf_worse_than_ukf",
+      "scope": "finite_nondivergent_rows",
+      "eligible_rows": 2,
+      "excluded": {
+        "total_rows": 2,
+        "excluded_nonfinite": 0,
+        "excluded_divergent": 0
+      },
+      "thresholds": {
+        "1.1": {
+          "threshold": 1.1,
+          "n": 2,
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "predicted_positive": 0,
+          "actual_positive": 2,
+          "precision": null,
+          "precision_wilson95": null,
+          "sensitivity": 0.0,
+          "sensitivity_wilson95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "specificity": null,
+          "specificity_wilson95": null,
+          "accuracy": 0.0,
+          "accuracy_wilson95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "1.25": {
+          "threshold": 1.25,
+          "n": 2,
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "predicted_positive": 0,
+          "actual_positive": 2,
+          "precision": null,
+          "precision_wilson95": null,
+          "sensitivity": 0.0,
+          "sensitivity_wilson95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "specificity": null,
+          "specificity_wilson95": null,
+          "accuracy": 0.0,
+          "accuracy_wilson95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "1.5": {
+          "threshold": 1.5,
+          "n": 2,
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "predicted_positive": 0,
+          "actual_positive": 2,
+          "precision": null,
+          "precision_wilson95": null,
+          "sensitivity": 0.0,
+          "sensitivity_wilson95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "specificity": null,
+          "specificity_wilson95": null,
+          "accuracy": 0.0,
+          "accuracy_wilson95": [
+            0.0,
+            0.6576197724933469
+          ]
+        }
+      }
+    },
+    "aukf_worse_than_best_nonadaptive": {
+      "outcome": "aukf_worse_than_best_nonadaptive",
+      "scope": "finite_nondivergent_rows",
+      "eligible_rows": 2,
+      "excluded": {
+        "total_rows": 2,
+        "excluded_nonfinite": 0,
+        "excluded_divergent": 0
+      },
+      "thresholds": {
+        "1.1": {
+          "threshold": 1.1,
+          "n": 2,
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "predicted_positive": 0,
+          "actual_positive": 2,
+          "precision": null,
+          "precision_wilson95": null,
+          "sensitivity": 0.0,
+          "sensitivity_wilson95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "specificity": null,
+          "specificity_wilson95": null,
+          "accuracy": 0.0,
+          "accuracy_wilson95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "1.25": {
+          "threshold": 1.25,
+          "n": 2,
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "predicted_positive": 0,
+          "actual_positive": 2,
+          "precision": null,
+          "precision_wilson95": null,
+          "sensitivity": 0.0,
+          "sensitivity_wilson95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "specificity": null,
+          "specificity_wilson95": null,
+          "accuracy": 0.0,
+          "accuracy_wilson95": [
+            0.0,
+            0.6576197724933469
+          ]
+        },
+        "1.5": {
+          "threshold": 1.5,
+          "n": 2,
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "predicted_positive": 0,
+          "actual_positive": 2,
+          "precision": null,
+          "precision_wilson95": null,
+          "sensitivity": 0.0,
+          "sensitivity_wilson95": [
+            0.0,
+            0.6576197724933469
+          ],
+          "specificity": null,
+          "specificity_wilson95": null,
+          "accuracy": 0.0,
+          "accuracy_wilson95": [
+            0.0,
+            0.6576197724933469
+          ]
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "cell": "hifi_base",
+      "cell_index": 0,
+      "scenario": "hifi_base",
+      "scenario_index": 0,
+      "realization_index": 0,
+      "data_seed": 2026061601,
+      "initialization_seed": 2026061618,
+      "filter_seed": 2026061638,
+      "trajectories": 2,
+      "time_steps": 120,
+      "dt_s": 20.0,
+      "eval_start_step": 11,
+      "epoch_unix": 1736640000.0,
+      "observed_step_count": 52,
+      "zero_visible_step_count": 166,
+      "visible_update_count": 52,
+      "ekf_pos_rmse_m": 464.31571020382415,
+      "ukf_pos_rmse_m": 399.7402244805106,
+      "aukf_pos_rmse_m": 423.12683664273015,
+      "best_nonadaptive_method": "UKF",
+      "best_nonadaptive_pos_rmse_m": 399.7402244805106,
+      "aukf_minus_ukf_m": 23.386612162219535,
+      "aukf_vs_ukf_percent": 5.850452551431874,
+      "aukf_minus_best_nonadaptive_m": 23.386612162219535,
+      "aukf_vs_best_nonadaptive_percent": 5.850452551431874,
+      "median_pre_update_r_only_nis_ukf": 6.617496521811155,
+      "median_pre_update_r_only_nis_aukf": 5.991566256250156,
+      "rho_pre_update_r_only_nis_aukf_vs_ukf": 0.9054128304415509,
+      "ukf_pre_update_r_only_nis_finite_count": 52,
+      "aukf_pre_update_r_only_nis_finite_count": 52,
+      "ukf_pre_update_r_only_nis_nonfinite_count": 0,
+      "aukf_pre_update_r_only_nis_nonfinite_count": 0,
+      "aukf_worse_than_ukf": true,
+      "aukf_worse_than_best_nonadaptive": true,
+      "truth_generation_seconds": 46.10040039999876,
+      "filter_seconds": 6.055699899996398,
+      "finite_for_thresholds": true,
+      "divergent": false,
+      "exclusion_reason": ""
+    },
+    {
+      "cell": "hifi_extended",
+      "cell_index": 1,
+      "scenario": "hifi_extended",
+      "scenario_index": 1,
+      "realization_index": 0,
+      "data_seed": 2026161601,
+      "initialization_seed": 2026161618,
+      "filter_seed": 2026161638,
+      "trajectories": 2,
+      "time_steps": 120,
+      "dt_s": 20.0,
+      "eval_start_step": 11,
+      "epoch_unix": 1736640000.0,
+      "observed_step_count": 29,
+      "zero_visible_step_count": 189,
+      "visible_update_count": 29,
+      "ekf_pos_rmse_m": 211.66582386578963,
+      "ukf_pos_rmse_m": 279.6804489562965,
+      "aukf_pos_rmse_m": 285.7499353727953,
+      "best_nonadaptive_method": "EKF",
+      "best_nonadaptive_pos_rmse_m": 211.66582386578963,
+      "aukf_minus_ukf_m": 6.069486416498762,
+      "aukf_vs_ukf_percent": 2.170150412425573,
+      "aukf_minus_best_nonadaptive_m": 74.08411150700564,
+      "aukf_vs_best_nonadaptive_percent": 35.000507003898726,
+      "median_pre_update_r_only_nis_ukf": 5.27681551362014,
+      "median_pre_update_r_only_nis_aukf": 5.164036961686023,
+      "rho_pre_update_r_only_nis_aukf_vs_ukf": 0.9786275355575684,
+      "ukf_pre_update_r_only_nis_finite_count": 29,
+      "aukf_pre_update_r_only_nis_finite_count": 29,
+      "ukf_pre_update_r_only_nis_nonfinite_count": 0,
+      "aukf_pre_update_r_only_nis_nonfinite_count": 0,
+      "aukf_worse_than_ukf": true,
+      "aukf_worse_than_best_nonadaptive": true,
+      "truth_generation_seconds": 0.4025907999894116,
+      "filter_seconds": 5.567267199978232,
+      "finite_for_thresholds": true,
+      "divergent": false,
+      "exclusion_reason": ""
+    }
+  ],
+  "runtime_seconds": 60.40594769999734
+}

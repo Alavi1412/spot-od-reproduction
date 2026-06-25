@@ -1,0 +1,1528 @@
+{
+  "schema_version": "trajectory_candidate_edge_only_local_tail_diagnostic.v1",
+  "boundary": "Saved-row compact-simulator diagnostic only; not independent reproduction, not public precise-reference validation, not operational POD, not a full raw/training/all-filter rerun, and not standalone learned recursive filtering.",
+  "diagnostic_scope": "edge-only local/no-message residual-refinement tail failures from saved rows",
+  "generated_from_saved_rows_only": true,
+  "alignment_key_fields": [
+    "source_name",
+    "scenario",
+    "trajectory_row"
+  ],
+  "source_rows": {
+    "attention": "results\\trajectory_candidate_graph_attention_nodeomit_residual_refine_ensemble3_2111_2117_2129_newfresh151157163167_20260625\\rows.csv",
+    "local": "results\\trajectory_candidate_local_nodeomit_residual_refine_ensemble3_2111_2117_2129_newfresh151157163167_20260625\\rows.csv",
+    "mean": "results\\trajectory_candidate_mean_nodeomit_residual_refine_ensemble3_2111_2117_2129_newfresh151157163167_20260625\\rows.csv"
+  },
+  "tiers": {
+    "all_eval_non_development": {
+      "rows": 230,
+      "observed_steps": 6831,
+      "pooled_rmse_m": {
+        "edge_only_attention": 373.72779005860104,
+        "edge_only_local_no_message": 562.0295846556005,
+        "edge_only_mean_graph": 386.2237217635966,
+        "best_single_retained": 459.5907664568725
+      },
+      "gain_vs_best_single_percent": {
+        "edge_only_attention": 18.682485085637314,
+        "edge_only_local_no_message": -22.289137570900433,
+        "edge_only_mean_graph": 15.96355933320531
+      },
+      "local_advantage_percent": {
+        "attention_over_local": 33.503893698476155,
+        "mean_over_local": 31.280535347571416
+      },
+      "row_wtl_local_vs_attention": {
+        "wins": 71,
+        "ties": 0,
+        "losses": 159
+      },
+      "row_wtl_local_vs_mean": {
+        "wins": 90,
+        "ties": 0,
+        "losses": 140
+      },
+      "local_minus_attention_row_rmse_delta_quantiles_m": {
+        "p00": -575.3616841342999,
+        "p05": -74.1632717387995,
+        "p25": -16.042854924368214,
+        "p50": 33.84825679442838,
+        "p75": 90.41438699296492,
+        "p90": 160.93198653752125,
+        "p95": 254.66293384052176,
+        "p99": 4053.1643228585663,
+        "p100": 4053.1643228585663
+      },
+      "local_minus_mean_row_rmse_delta_quantiles_m": {
+        "p00": -240.7575130209517,
+        "p05": -83.31302990163606,
+        "p25": -26.226486140895986,
+        "p50": 19.429059618952323,
+        "p75": 74.84013603087601,
+        "p90": 150.66823699163194,
+        "p95": 265.99164265746674,
+        "p99": 4055.625748088868,
+        "p100": 4055.6257480888685
+      },
+      "selected_method_counts": {
+        "attention": {
+          "BatchWLS": 47,
+          "EKF": 50,
+          "RFIS": 107,
+          "UKF": 26
+        },
+        "local": {
+          "BatchWLS": 53,
+          "EKF": 48,
+          "RFIS": 106,
+          "UKF": 23
+        },
+        "mean": {
+          "BatchWLS": 57,
+          "EKF": 48,
+          "RFIS": 95,
+          "UKF": 30
+        }
+      },
+      "top_local_tail_rows_by_local_rmse": [
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "21",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 244.6461700261555,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed157_split157_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "21",
+          "seed": "157",
+          "split": "157",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "21",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed127_split127_20260623",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "3",
+          "trajectory_index": "21",
+          "seed": "127",
+          "split": "127",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed97_split97_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "6",
+          "trajectory_index": "2",
+          "seed": "97",
+          "split": "97",
+          "observed_steps": 6,
+          "attention_selected_observed_step_rmse_m": 1096.8803984639346,
+          "local_selected_observed_step_rmse_m": 1262.2195945112398,
+          "mean_selected_observed_step_rmse_m": 1153.5475853404234,
+          "best_single_trajectory_observed_step_rmse_m": 1203.7728641013914,
+          "local_minus_attention_rmse_m": 165.33919604730522,
+          "local_minus_mean_rmse_m": 108.67200917081641,
+          "attention": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9993600845336914
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.6263654828071594
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9993318915367126
+          },
+          "best_single": {
+            "best_single_candidate_method": "EKF",
+            "best_single_candidate_index": "0"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed103_split103_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "4",
+          "trajectory_index": "3",
+          "seed": "103",
+          "split": "103",
+          "observed_steps": 4,
+          "attention_selected_observed_step_rmse_m": 560.3405699774871,
+          "local_selected_observed_step_rmse_m": 815.0035038180089,
+          "mean_selected_observed_step_rmse_m": 539.9564974968647,
+          "best_single_trajectory_observed_step_rmse_m": 1860.0500122646524,
+          "local_minus_attention_rmse_m": 254.66293384052176,
+          "local_minus_mean_rmse_m": 275.0470063211442,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9988048672676086
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5843007564544678
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9944808483123779
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed109_split109_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "3",
+          "seed": "109",
+          "split": "109",
+          "observed_steps": 4,
+          "attention_selected_observed_step_rmse_m": 560.3405699774871,
+          "local_selected_observed_step_rmse_m": 815.0035038180089,
+          "mean_selected_observed_step_rmse_m": 539.9564974968647,
+          "best_single_trajectory_observed_step_rmse_m": 1860.0500122646524,
+          "local_minus_attention_rmse_m": 254.66293384052176,
+          "local_minus_mean_rmse_m": 275.0470063211442,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9988048672676086
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5843007564544678
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9944808483123779
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed131_split131_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "1",
+          "seed": "131",
+          "split": "131",
+          "observed_steps": 44,
+          "attention_selected_observed_step_rmse_m": 548.9102727717202,
+          "local_selected_observed_step_rmse_m": 814.7323417473073,
+          "mean_selected_observed_step_rmse_m": 548.7406990898405,
+          "best_single_trajectory_observed_step_rmse_m": 686.309920654321,
+          "local_minus_attention_rmse_m": 265.82206897558706,
+          "local_minus_mean_rmse_m": 265.99164265746674,
+          "attention": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.660191535949707
+          },
+          "local": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.40654540061950684
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9109525680541992
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed71_split71_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "1",
+          "seed": "71",
+          "split": "71",
+          "observed_steps": 44,
+          "attention_selected_observed_step_rmse_m": 548.9102727717202,
+          "local_selected_observed_step_rmse_m": 814.7323417473073,
+          "mean_selected_observed_step_rmse_m": 548.7406990898405,
+          "best_single_trajectory_observed_step_rmse_m": 686.309920654321,
+          "local_minus_attention_rmse_m": 265.82206897558706,
+          "local_minus_mean_rmse_m": 265.99164265746674,
+          "attention": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.660191535949707
+          },
+          "local": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.40654540061950684
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9109525680541992
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed83_split83_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "1",
+          "seed": "83",
+          "split": "83",
+          "observed_steps": 44,
+          "attention_selected_observed_step_rmse_m": 548.9102727717202,
+          "local_selected_observed_step_rmse_m": 814.7323417473073,
+          "mean_selected_observed_step_rmse_m": 548.7406990898405,
+          "best_single_trajectory_observed_step_rmse_m": 686.309920654321,
+          "local_minus_attention_rmse_m": 265.82206897558706,
+          "local_minus_mean_rmse_m": 265.99164265746674,
+          "attention": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.660191535949707
+          },
+          "local": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.40654540061950684
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9109525680541992
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        }
+      ],
+      "top_local_tail_rows_by_local_minus_attention_delta": [
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "21",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 244.6461700261555,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed157_split157_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "21",
+          "seed": "157",
+          "split": "157",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "21",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed127_split127_20260623",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "3",
+          "trajectory_index": "21",
+          "seed": "127",
+          "split": "127",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed97_split97_20260623",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "32",
+          "seed": "97",
+          "split": "97",
+          "observed_steps": 49,
+          "attention_selected_observed_step_rmse_m": 144.75438603853618,
+          "local_selected_observed_step_rmse_m": 435.21230368472527,
+          "mean_selected_observed_step_rmse_m": 132.64123449651808,
+          "best_single_trajectory_observed_step_rmse_m": 501.2093060036463,
+          "local_minus_attention_rmse_m": 290.4579176461891,
+          "local_minus_mean_rmse_m": 302.57106918820716,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999101161956787
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.4183274209499359
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9978806376457214
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed101_split101_20260623",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "32",
+          "seed": "101",
+          "split": "101",
+          "observed_steps": 49,
+          "attention_selected_observed_step_rmse_m": 144.7543878725619,
+          "local_selected_observed_step_rmse_m": 435.21230368472527,
+          "mean_selected_observed_step_rmse_m": 132.6412358098666,
+          "best_single_trajectory_observed_step_rmse_m": 501.2093060036463,
+          "local_minus_attention_rmse_m": 290.4579158121634,
+          "local_minus_mean_rmse_m": 302.57106787485867,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999101161956787
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.4183274209499359
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9978806376457214
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed67_split67_20260623",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "32",
+          "seed": "67",
+          "split": "67",
+          "observed_steps": 49,
+          "attention_selected_observed_step_rmse_m": 144.7543878725619,
+          "local_selected_observed_step_rmse_m": 435.21230368472527,
+          "mean_selected_observed_step_rmse_m": 132.6412358098666,
+          "best_single_trajectory_observed_step_rmse_m": 501.2093060036463,
+          "local_minus_attention_rmse_m": 290.4579158121634,
+          "local_minus_mean_rmse_m": 302.57106787485867,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999101161956787
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.4183274209499359
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9978806376457214
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed73_split73_20260623",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "32",
+          "seed": "73",
+          "split": "73",
+          "observed_steps": 49,
+          "attention_selected_observed_step_rmse_m": 144.7543878725619,
+          "local_selected_observed_step_rmse_m": 435.21230368472527,
+          "mean_selected_observed_step_rmse_m": 132.6412358098666,
+          "best_single_trajectory_observed_step_rmse_m": 501.2093060036463,
+          "local_minus_attention_rmse_m": 290.4579158121634,
+          "local_minus_mean_rmse_m": 302.57106787485867,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999101161956787
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.4183274209499359
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9978806376457214
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed131_split131_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "1",
+          "seed": "131",
+          "split": "131",
+          "observed_steps": 44,
+          "attention_selected_observed_step_rmse_m": 548.9102727717202,
+          "local_selected_observed_step_rmse_m": 814.7323417473073,
+          "mean_selected_observed_step_rmse_m": 548.7406990898405,
+          "best_single_trajectory_observed_step_rmse_m": 686.309920654321,
+          "local_minus_attention_rmse_m": 265.82206897558706,
+          "local_minus_mean_rmse_m": 265.99164265746674,
+          "attention": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.660191535949707
+          },
+          "local": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.40654540061950684
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9109525680541992
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_seed71_split71_20260623",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "1",
+          "seed": "71",
+          "split": "71",
+          "observed_steps": 44,
+          "attention_selected_observed_step_rmse_m": 548.9102727717202,
+          "local_selected_observed_step_rmse_m": 814.7323417473073,
+          "mean_selected_observed_step_rmse_m": 548.7406990898405,
+          "best_single_trajectory_observed_step_rmse_m": 686.309920654321,
+          "local_minus_attention_rmse_m": 265.82206897558706,
+          "local_minus_mean_rmse_m": 265.99164265746674,
+          "attention": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.660191535949707
+          },
+          "local": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.40654540061950684
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9109525680541992
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        }
+      ]
+    },
+    "fresh_extra": {
+      "rows": 47,
+      "observed_steps": 1426,
+      "pooled_rmse_m": {
+        "edge_only_attention": 364.2287946528882,
+        "edge_only_local_no_message": 814.2829976423683,
+        "edge_only_mean_graph": 380.065044446289,
+        "best_single_retained": 445.9433073832293
+      },
+      "gain_vs_best_single_percent": {
+        "edge_only_attention": 18.323968849277577,
+        "edge_only_local_no_message": -82.59787380161303,
+        "edge_only_mean_graph": 14.772788793156312
+      },
+      "local_advantage_percent": {
+        "attention_over_local": 55.26999879557146,
+        "mean_over_local": 53.325189701036486
+      },
+      "row_wtl_local_vs_attention": {
+        "wins": 14,
+        "ties": 0,
+        "losses": 33
+      },
+      "row_wtl_local_vs_mean": {
+        "wins": 17,
+        "ties": 0,
+        "losses": 30
+      },
+      "local_minus_attention_row_rmse_delta_quantiles_m": {
+        "p00": -92.9596746685319,
+        "p05": -54.28296881655612,
+        "p25": -13.304006465685418,
+        "p50": 34.52464039697759,
+        "p75": 85.84886450068592,
+        "p90": 155.9289986440163,
+        "p95": 2888.4626132312846,
+        "p99": 4053.1643228585663,
+        "p100": 4053.1643228585663
+      },
+      "local_minus_mean_row_rmse_delta_quantiles_m": {
+        "p00": -240.7575125199728,
+        "p05": -50.32548620656154,
+        "p25": -11.453365478852575,
+        "p50": 31.164970417534533,
+        "p75": 82.26787310118098,
+        "p90": 160.33068455445414,
+        "p95": 2893.6912245445064,
+        "p99": 4055.6257480888685,
+        "p100": 4055.6257480888685
+      },
+      "selected_method_counts": {
+        "attention": {
+          "BatchWLS": 7,
+          "EKF": 8,
+          "RFIS": 28,
+          "UKF": 4
+        },
+        "local": {
+          "BatchWLS": 10,
+          "EKF": 13,
+          "RFIS": 20,
+          "UKF": 4
+        },
+        "mean": {
+          "BatchWLS": 7,
+          "EKF": 8,
+          "RFIS": 26,
+          "UKF": 6
+        }
+      },
+      "top_local_tail_rows_by_local_rmse": [
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "21",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 244.6461700261555,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed157_split157_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "21",
+          "seed": "157",
+          "split": "157",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "21",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "3",
+          "trajectory_index": "27",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 55,
+          "attention_selected_observed_step_rmse_m": 480.19370227264665,
+          "local_selected_observed_step_rmse_m": 651.0189930403294,
+          "mean_selected_observed_step_rmse_m": 500.35075604869746,
+          "best_single_trajectory_observed_step_rmse_m": 510.6903462058243,
+          "local_minus_attention_rmse_m": 170.82529076768276,
+          "local_minus_mean_rmse_m": 150.66823699163194,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9987625479698181
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.49572911858558655
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9666597843170166
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "47",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 41,
+          "attention_selected_observed_step_rmse_m": 634.4783536692275,
+          "local_selected_observed_step_rmse_m": 640.2372569839216,
+          "mean_selected_observed_step_rmse_m": 615.3262193647781,
+          "best_single_trajectory_observed_step_rmse_m": 1147.0339718827415,
+          "local_minus_attention_rmse_m": 5.7589033146940665,
+          "local_minus_mean_rmse_m": 24.911037619143485,
+          "attention": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9999746680259705
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.7078084945678711
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.975167453289032
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "29",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 43,
+          "attention_selected_observed_step_rmse_m": 548.1431297122514,
+          "local_selected_observed_step_rmse_m": 588.853117183607,
+          "mean_selected_observed_step_rmse_m": 829.6106297035798,
+          "best_single_trajectory_observed_step_rmse_m": 542.7834064031757,
+          "local_minus_attention_rmse_m": 40.70998747135559,
+          "local_minus_mean_rmse_m": -240.7575125199728,
+          "attention": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.599102795124054
+          },
+          "local": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.37137702107429504
+          },
+          "mean": {
+            "selected_candidate_method": "UKF",
+            "selected_candidate_index": "1",
+            "selected_probability": 0.9993271827697754
+          },
+          "best_single": {
+            "best_single_candidate_method": "EKF",
+            "best_single_candidate_index": "0"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "9",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 24,
+          "attention_selected_observed_step_rmse_m": 394.9424865468676,
+          "local_selected_observed_step_rmse_m": 555.8744729188459,
+          "mean_selected_observed_step_rmse_m": 410.2957508619443,
+          "best_single_trajectory_observed_step_rmse_m": 795.123634833758,
+          "local_minus_attention_rmse_m": 160.93198637197827,
+          "local_minus_mean_rmse_m": 145.57872205690154,
+          "attention": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9995794892311096
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.4022951126098633
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9956623911857605
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "37",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 33,
+          "attention_selected_observed_step_rmse_m": 406.70341696700547,
+          "local_selected_observed_step_rmse_m": 552.4840896194273,
+          "mean_selected_observed_step_rmse_m": 369.9734200117099,
+          "best_single_trajectory_observed_step_rmse_m": 566.165587262151,
+          "local_minus_attention_rmse_m": 145.78067265242186,
+          "local_minus_mean_rmse_m": 182.51066960771743,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999983906745911
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.49888166785240173
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.999999463558197
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "4",
+          "trajectory_index": "21",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 23,
+          "attention_selected_observed_step_rmse_m": 454.74197808096204,
+          "local_selected_observed_step_rmse_m": 547.000923639834,
+          "mean_selected_observed_step_rmse_m": 457.30531346834806,
+          "best_single_trajectory_observed_step_rmse_m": 457.6636401964973,
+          "local_minus_attention_rmse_m": 92.25894555887197,
+          "local_minus_mean_rmse_m": 89.69561017148595,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9996623992919922
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.47128069400787354
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9998781681060791
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "6",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 33,
+          "attention_selected_observed_step_rmse_m": 393.980097857121,
+          "local_selected_observed_step_rmse_m": 503.25229576279946,
+          "mean_selected_observed_step_rmse_m": 398.81082458192606,
+          "best_single_trajectory_observed_step_rmse_m": 397.99862888233463,
+          "local_minus_attention_rmse_m": 109.27219790567847,
+          "local_minus_mean_rmse_m": 104.4414711808734,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9997732639312744
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.4364166259765625
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992768168449402
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        }
+      ],
+      "top_local_tail_rows_by_local_minus_attention_delta": [
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "21",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 244.6461700261555,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed157_split157_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "0",
+          "trajectory_index": "21",
+          "seed": "157",
+          "split": "157",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "21",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 13,
+          "attention_selected_observed_step_rmse_m": 230.03883183093518,
+          "local_selected_observed_step_rmse_m": 4283.203154689501,
+          "mean_selected_observed_step_rmse_m": 227.5774066006328,
+          "best_single_trajectory_observed_step_rmse_m": 196.85152518003525,
+          "local_minus_attention_rmse_m": 4053.1643228585663,
+          "local_minus_mean_rmse_m": 4055.6257480888685,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.8227241039276123
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.5339837670326233
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992472529411316
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "3",
+          "trajectory_index": "27",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 55,
+          "attention_selected_observed_step_rmse_m": 480.19370227264665,
+          "local_selected_observed_step_rmse_m": 651.0189930403294,
+          "mean_selected_observed_step_rmse_m": 500.35075604869746,
+          "best_single_trajectory_observed_step_rmse_m": 510.6903462058243,
+          "local_minus_attention_rmse_m": 170.82529076768276,
+          "local_minus_mean_rmse_m": 150.66823699163194,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9987625479698181
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.49572911858558655
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9666597843170166
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "2",
+          "trajectory_index": "9",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 24,
+          "attention_selected_observed_step_rmse_m": 394.9424865468676,
+          "local_selected_observed_step_rmse_m": 555.8744729188459,
+          "mean_selected_observed_step_rmse_m": 410.2957508619443,
+          "best_single_trajectory_observed_step_rmse_m": 795.123634833758,
+          "local_minus_attention_rmse_m": 160.93198637197827,
+          "local_minus_mean_rmse_m": 145.57872205690154,
+          "attention": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9995794892311096
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.4022951126098633
+          },
+          "mean": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.9956623911857605
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "3",
+          "trajectory_index": "19",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 18,
+          "attention_selected_observed_step_rmse_m": 338.55541502814225,
+          "local_selected_observed_step_rmse_m": 491.14908852018397,
+          "mean_selected_observed_step_rmse_m": 316.3247326214964,
+          "best_single_trajectory_observed_step_rmse_m": 345.2816395485804,
+          "local_minus_attention_rmse_m": 152.59367349204172,
+          "local_minus_mean_rmse_m": 174.82435589868754,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.6674869656562805
+          },
+          "local": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.3716789186000824
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.94516921043396
+          },
+          "best_single": {
+            "best_single_candidate_method": "EKF",
+            "best_single_candidate_index": "0"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "37",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 33,
+          "attention_selected_observed_step_rmse_m": 406.70341696700547,
+          "local_selected_observed_step_rmse_m": 552.4840896194273,
+          "mean_selected_observed_step_rmse_m": 369.9734200117099,
+          "best_single_trajectory_observed_step_rmse_m": 566.165587262151,
+          "local_minus_attention_rmse_m": 145.78067265242186,
+          "local_minus_mean_rmse_m": 182.51066960771743,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999983906745911
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.49888166785240173
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.999999463558197
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625",
+          "scenario": "process_noise_shift_test",
+          "trajectory_row": "6",
+          "trajectory_index": "4",
+          "seed": "163",
+          "split": "163",
+          "observed_steps": 25,
+          "attention_selected_observed_step_rmse_m": 127.80283138456934,
+          "local_selected_observed_step_rmse_m": 262.61226706555726,
+          "mean_selected_observed_step_rmse_m": 143.43925709788402,
+          "best_single_trajectory_observed_step_rmse_m": 309.8756681050308,
+          "local_minus_attention_rmse_m": 134.80943568098792,
+          "local_minus_mean_rmse_m": 119.17300996767324,
+          "attention": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.9999907612800598
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.38301852345466614
+          },
+          "mean": {
+            "selected_candidate_method": "BatchWLS",
+            "selected_candidate_index": "3",
+            "selected_probability": 0.999531090259552
+          },
+          "best_single": {
+            "best_single_candidate_method": "UKF",
+            "best_single_candidate_index": "1"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed167_split167_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "1",
+          "trajectory_index": "35",
+          "seed": "167",
+          "split": "167",
+          "observed_steps": 25,
+          "attention_selected_observed_step_rmse_m": 365.5710664286968,
+          "local_selected_observed_step_rmse_m": 499.5611832893638,
+          "mean_selected_observed_step_rmse_m": 367.90620867976173,
+          "best_single_trajectory_observed_step_rmse_m": 383.5537513617804,
+          "local_minus_attention_rmse_m": 133.990116860667,
+          "local_minus_mean_rmse_m": 131.65497460960205,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9983468651771545
+          },
+          "local": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.38763317465782166
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9999678134918213
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        },
+        {
+          "source_name": "adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625",
+          "scenario": "maneuver_shift_test",
+          "trajectory_row": "5",
+          "trajectory_index": "6",
+          "seed": "151",
+          "split": "151",
+          "observed_steps": 33,
+          "attention_selected_observed_step_rmse_m": 393.980097857121,
+          "local_selected_observed_step_rmse_m": 503.25229576279946,
+          "mean_selected_observed_step_rmse_m": 398.81082458192606,
+          "best_single_trajectory_observed_step_rmse_m": 397.99862888233463,
+          "local_minus_attention_rmse_m": 109.27219790567847,
+          "local_minus_mean_rmse_m": 104.4414711808734,
+          "attention": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9997732639312744
+          },
+          "local": {
+            "selected_candidate_method": "EKF",
+            "selected_candidate_index": "0",
+            "selected_probability": 0.4364166259765625
+          },
+          "mean": {
+            "selected_candidate_method": "RFIS",
+            "selected_candidate_index": "4",
+            "selected_probability": 0.9992768168449402
+          },
+          "best_single": {
+            "best_single_candidate_method": "RFIS",
+            "best_single_candidate_index": "4"
+          }
+        }
+      ]
+    }
+  }
+}

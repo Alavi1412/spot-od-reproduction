@@ -208,8 +208,67 @@ def test_graph_layer_type_defaults_to_mean_in_parser() -> None:
 
     assert args.graph_layer_type == "mean"
     assert args.prediction_mode == "selector"
+    assert args.node_disagreement_features == "include"
     assert args.residual_loss_weight == pytest.approx(1.0)
     assert args.development_validation_seed_min is None
+    assert selector.build_feature_names(["scenario"], ["EKF", "UKF"]) == selector.build_feature_names(
+        ["scenario"],
+        ["EKF", "UKF"],
+        node_disagreement_features="include",
+    )
+
+
+def test_omit_node_disagreement_features_only_reduces_node_dimension() -> None:
+    scenarios = ["process_noise_shift_test"]
+    candidate_methods = ["EKF", "UKF"]
+    candidate_bank = np.zeros((3, 2, 6), dtype=np.float64)
+    candidate_bank[:, 1, 0] = np.asarray([1.0, 2.0, 3.0])
+    visibility = np.ones((3, 1), dtype=np.float64)
+    eval_mask = np.asarray([True, True, True], dtype=bool)
+    observed_mask = np.asarray([True, True, False], dtype=bool)
+
+    include_names = selector.build_feature_names(
+        scenarios,
+        candidate_methods,
+        node_disagreement_features="include",
+    )
+    omit_names = selector.build_feature_names(
+        scenarios,
+        candidate_methods,
+        node_disagreement_features="omit",
+    )
+    include_nodes, include_edges, include_mask = selector.build_candidate_graph_features(
+        candidate_bank=candidate_bank,
+        visibility=visibility,
+        eval_mask=eval_mask,
+        observed_mask=observed_mask,
+        scenario=scenarios[0],
+        scenarios=scenarios,
+        candidate_methods=candidate_methods,
+        node_disagreement_features="include",
+    )
+    omit_nodes, omit_edges, omit_mask = selector.build_candidate_graph_features(
+        candidate_bank=candidate_bank,
+        visibility=visibility,
+        eval_mask=eval_mask,
+        observed_mask=observed_mask,
+        scenario=scenarios[0],
+        scenarios=scenarios,
+        candidate_methods=candidate_methods,
+        node_disagreement_features="omit",
+    )
+    edge_names = selector.build_edge_feature_names()
+
+    assert set(selector.NODE_DISAGREEMENT_FEATURE_NAMES).issubset(include_names)
+    assert not set(selector.NODE_DISAGREEMENT_FEATURE_NAMES).intersection(omit_names)
+    assert len(include_names) - len(omit_names) == 8
+    assert include_nodes.shape == (2, len(include_names))
+    assert omit_nodes.shape == (2, len(omit_names))
+    assert include_nodes.shape[-1] - omit_nodes.shape[-1] == 8
+    assert include_edges.shape == (2, 2, len(edge_names))
+    assert omit_edges.shape == include_edges.shape
+    np.testing.assert_allclose(omit_edges, include_edges)
+    np.testing.assert_array_equal(omit_mask, include_mask)
 
 
 def test_graph_layer_type_rejects_invalid_cli_value() -> None:
@@ -773,6 +832,8 @@ def test_smoke_cli_writes_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
         "4",
         "--graph-layers",
         "0",
+        "--node-disagreement-features",
+        "omit",
         "--device",
         "cpu",
         "--allow-cpu-smoke",
@@ -783,6 +844,9 @@ def test_smoke_cli_writes_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
     assert (output_dir / "summary.md").exists()
     assert (output_dir / "rows.csv").exists()
     assert (output_dir / "checkpoints" / "best_selector.pt").exists()
+    summary_md = (output_dir / "summary.md").read_text(encoding="utf-8")
+    assert "Node disagreement features: omit" in summary_md
+    assert "Retained candidate-disagreement node features were omitted" in summary_md
     summary_text = (output_dir / "summary.json").read_text(encoding="utf-8")
     assert "NaN" not in summary_text
     assert "Infinity" not in summary_text
@@ -803,6 +867,8 @@ def test_smoke_cli_writes_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
     assert summary["graph_layers"] == 0
     assert summary["graph_layer_type"] == "mean"
     assert summary["prediction_mode"] == "selector"
+    assert summary["node_disagreement_features"] == "omit"
+    assert not set(selector.NODE_DISAGREEMENT_FEATURE_NAMES).intersection(summary["feature_names"])
     assert summary["residual_loss_weight"] == pytest.approx(1.0)
     assert summary["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
     assert summary["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
@@ -819,6 +885,7 @@ def test_smoke_cli_writes_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
     assert checkpoint["graph_layers"] == 0
     assert checkpoint["graph_layer_type"] == "mean"
     assert checkpoint["prediction_mode"] == "selector"
+    assert checkpoint["node_disagreement_features"] == "omit"
     assert checkpoint["residual_loss_weight"] == pytest.approx(1.0)
     assert checkpoint["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
     assert checkpoint["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
@@ -826,6 +893,7 @@ def test_smoke_cli_writes_artifacts_with_cpu_opt_in(tmp_path: Path) -> None:
     assert checkpoint["config"]["graph_layers"] == 0
     assert checkpoint["config"]["graph_layer_type"] == "mean"
     assert checkpoint["config"]["prediction_mode"] == "selector"
+    assert checkpoint["config"]["node_disagreement_features"] == "omit"
     assert checkpoint["config"]["residual_loss_weight"] == pytest.approx(1.0)
     assert checkpoint["config"]["residual_offset_dim"] == selector.RESIDUAL_POSITION_DIM
     assert checkpoint["config"]["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
@@ -882,6 +950,7 @@ def test_smoke_cli_writes_ensemble_member_artifacts_with_cpu_opt_in(tmp_path: Pa
     assert summary["graph_layers"] == 2
     assert summary["graph_layer_type"] == "mean"
     assert summary["prediction_mode"] == "selector"
+    assert summary["node_disagreement_features"] == "include"
     assert summary["residual_loss_weight"] == pytest.approx(1.0)
     assert summary["residual_offset_application"] == selector.RESIDUAL_OFFSET_APPLICATION
     assert summary["message_passing_enabled"] is True
