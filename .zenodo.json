@@ -1,7 +1,7 @@
 {
-  "title": "SPOT-OD v1.2.8 residual-refine figure/archive metadata fix",
+  "title": "SPOT-OD v1.2.9 post-import DOI synchronization",
   "upload_type": "software",
-  "description": "Archive and metadata repair release for SPOT-OD v1.2.8-residual-refine-figure-archive-fix. This release supersedes the metadata-inconsistent v1.2.7 Zenodo import, where the latest DOI 10.5281/zenodo.20839901 visibly retained stale v1.2.5 title/version metadata while the archived file was v1.2.7. The release preserves the bounded evidence scope: v1.2.7 residual-refinement is a retained-candidate learned-output proof of concept with a main-text figure and package clarification, not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not isolated message-passing evidence, and not broad learned-OD validation.",
+  "description": "Post-import DOI synchronization release for SPOT-OD v1.2.9-post-import-doi-sync. This release syncs the manuscript and reproducibility text after v1.2.8 was published and Zenodo assigned DOI 10.5281/zenodo.20840386 to the clean v1.2.8 record. It records the v1.2.8 GitHub release, Zenodo record, DOI, concept DOI, target commit, asset name, asset size, and SHA-256 in the manuscript/table text, and treats DOI 10.5281/zenodo.20839901 only as the superseded metadata-inconsistent v1.2.7 import. The manuscript does not rely on any v1.2.9 DOI, release commit, asset hash, or asset size; this release exists only to synchronize post-v1.2.8 DOI text. The evidence scope remains bounded: the v1.2.8 clarification adds no new scientific validation and is not operational POD, not public precise-reference validation, not independent-machine reproduction, not a full raw/training/all-filter rerun, not standalone learned recursive filtering, not isolated message-passing evidence, and not broad learned-OD validation.",
   "creators": [
     {
       "name": "Leo Alavi"
@@ -14,10 +14,10 @@
     "sparse visibility",
     "retained-candidate residual refinement",
     "reproducibility",
-    "Zenodo metadata repair",
+    "Zenodo DOI synchronization",
     "negative results"
   ],
-  "version": "v1.2.8-residual-refine-figure-archive-fix",
+  "version": "v1.2.9-post-import-doi-sync",
   "language": "eng",
   "access_right": "open",
   "license": "cc-by-4.0",
@@ -28,14 +28,19 @@
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.9-post-import-doi-sync",
       "relation": "isSupplementedBy",
       "scheme": "url"
     },
     {
-      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.7-residual-refine-poc",
+      "identifier": "https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix",
       "relation": "cites",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.20840386",
+      "relation": "isNewVersionOf",
+      "scheme": "doi"
     },
     {
       "identifier": "10.5281/zenodo.20768672",
@@ -44,9 +49,9 @@
     },
     {
       "identifier": "10.5281/zenodo.20839901",
-      "relation": "isNewVersionOf",
+      "relation": "cites",
       "scheme": "doi"
     }
   ],
-  "notes": "This planned v1.2.8 metadata repair treats DOI 10.5281/zenodo.20839901 as the metadata-inconsistent record being superseded/repaired: visible metadata reports stale v1.2.5 text while the file is v1.2.7. The coherent public GitHub evidence release for the residual-refinement PoC remains v1.2.7-residual-refine-poc until v1.2.8 is published. No v1.2.8 DOI, release commit, archived-file hash, or asset hash is asserted by this metadata file before the release exists. The evidence remains a compact-simulator retained-candidate residual-refinement PoC only, with no upgrade to operational POD, public precise-reference validation, independent-machine reproduction, full raw/training/all-filter rerun, standalone learned recursive filtering, isolated message-passing evidence, or broad learned-OD validation."
+  "notes": "This v1.2.9 follow-up syncs manuscript/reproducibility wording after v1.2.8 was published at https://github.com/Alavi1412/spot-od-reproduction/releases/tag/v1.2.8-residual-refine-figure-archive-fix and Zenodo assigned DOI 10.5281/zenodo.20840386. The concept DOI is 10.5281/zenodo.20768672. The earlier DOI 10.5281/zenodo.20839901 is cited only as the superseded metadata-inconsistent v1.2.7 import, where visible metadata retained stale v1.2.5 title/version text while the file was v1.2.7. The manuscript does not rely on any v1.2.9 DOI, release commit, asset hash, or asset size; this release exists only to synchronize post-v1.2.8 DOI text. This is manuscript/release-metadata synchronization only and adds no new scientific validation."
 }
