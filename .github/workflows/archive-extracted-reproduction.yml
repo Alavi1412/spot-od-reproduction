@@ -43,7 +43,7 @@ jobs:
 
       - name: Run focused v1.3.1 release tests
         run: |
-          python -m pytest tests/test_build_trajectory_residual_refine_comparison_intervals.py tests/test_build_trajectory_residual_refine_tail_diagnostic.py tests/test_build_trajectory_residual_refine_figure.py tests/test_trajectory_candidate_graph_architecture_ensemble.py -q
+          python -m pytest tests/test_v131_release_package_verification.py tests/test_build_trajectory_residual_refine_comparison_intervals.py tests/test_build_trajectory_residual_refine_tail_diagnostic.py tests/test_build_trajectory_residual_refine_figure.py tests/test_trajectory_candidate_graph_architecture_ensemble.py -q
 
       - name: Upload verifier outputs
         if: always()

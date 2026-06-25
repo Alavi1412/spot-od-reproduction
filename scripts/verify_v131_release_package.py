@@ -16,7 +16,11 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import re
+import subprocess
+import sys
+import tempfile
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -35,11 +39,16 @@ CONCEPT_DOI = "10.5281/zenodo.20768672"
 SCOPE_BOUNDARY = (
     "GitHub-hosted package integrity and metric readback only: this verifier "
     "opens the packaged v1.3.1 release ZIP, checks member safety, required "
-    "files, current DOI/tag metadata, current text hygiene, and selected saved "
-    "metric JSON values. It is not retraining, not full raw/training/all-filter "
+    "files, current DOI/tag metadata, current text hygiene, selected saved "
+    "metric JSON values, and a fast extracted-package --help smoke for the "
+    "released graph-selector entry point. It is not retraining, not full raw/training/all-filter "
     "reproduction, not public precise-reference validation, not independent "
     "third-party reproduction, and not operational validation."
 )
+
+HELP_SMOKE_SCRIPT = "scripts/run_trajectory_candidate_graph_selector_poc.py"
+HELP_SMOKE_ARGS = (HELP_SMOKE_SCRIPT, "--help")
+HELP_SMOKE_TIMEOUT_SECONDS = 30
 
 GRAPH_DIR = (
     "results/"
@@ -71,6 +80,9 @@ TAIL_ROWS = f"{TAIL_DIR}/rows.csv"
 
 REQUIRED_MEMBERS: tuple[str, ...] = (
     ".zenodo.json",
+    "README.md",
+    "pyproject.toml",
+    "requirements.txt",
     "paper/main.tex",
     "paper/main.pdf",
     "paper/tables/main_findings_summary.tex",
@@ -84,10 +96,14 @@ REQUIRED_MEMBERS: tuple[str, ...] = (
     "release/CITATION.cff",
     "release/LICENSE_CC_BY_4_0.txt",
     "release/ZENODO_METADATA.json",
+    "scripts/__init__.py",
+    "scripts/_bootstrap.py",
     "scripts/analyze_trajectory_candidate_graph_architecture_ensemble.py",
     "scripts/build_trajectory_residual_refine_comparison_intervals.py",
     "scripts/build_trajectory_residual_refine_tail_diagnostic.py",
     "scripts/build_trajectory_residual_refine_figure.py",
+    HELP_SMOKE_SCRIPT,
+    "src/gnn_state_estimation/__init__.py",
     "tests/test_build_trajectory_residual_refine_comparison_intervals.py",
     "tests/test_build_trajectory_residual_refine_tail_diagnostic.py",
     "tests/test_build_trajectory_residual_refine_figure.py",
@@ -102,6 +118,10 @@ REQUIRED_MEMBERS: tuple[str, ...] = (
     MEAN_ROWS,
     TAIL_SUMMARY,
     TAIL_ROWS,
+)
+
+REQUIRED_MEMBER_PREFIXES: tuple[str, ...] = (
+    "src/gnn_state_estimation/",
 )
 
 TEXT_SUFFIXES = {
@@ -282,12 +302,109 @@ def check_archive_members(zf: zipfile.ZipFile) -> dict[str, Any]:
 
 def check_required_members(member_set: set[str]) -> dict[str, Any]:
     missing = [member for member in REQUIRED_MEMBERS if member not in member_set]
+    prefix_file_counts = {
+        prefix: sum(1 for member in member_set if member.startswith(prefix) and not member.endswith("/"))
+        for prefix in REQUIRED_MEMBER_PREFIXES
+    }
+    missing_prefixes = [
+        prefix
+        for prefix, count in prefix_file_counts.items()
+        if count == 0
+    ]
     return {
-        "status": "pass" if not missing else "fail",
+        "status": "pass" if not missing and not missing_prefixes else "fail",
         "required_count": len(REQUIRED_MEMBERS),
         "missing_count": len(missing),
         "missing": missing,
+        "required_prefixes": list(REQUIRED_MEMBER_PREFIXES),
+        "prefix_file_counts": prefix_file_counts,
+        "missing_prefixes": missing_prefixes,
     }
+
+
+def text_tail(value: str | bytes | None, *, limit: int = 4000) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bytes):
+        text = value.decode("utf-8", "replace")
+    else:
+        text = value
+    if len(text) <= limit:
+        return text
+    return text[-limit:]
+
+
+def check_extracted_help_smoke(zf: zipfile.ZipFile, member_set: set[str]) -> dict[str, Any]:
+    if HELP_SMOKE_SCRIPT not in member_set:
+        return {
+            "status": "fail",
+            "command": ["python", *HELP_SMOKE_ARGS],
+            "failure": {
+                "problem": "entrypoint_missing",
+                "member": HELP_SMOKE_SCRIPT,
+            },
+        }
+
+    with tempfile.TemporaryDirectory(prefix="spot_od_v131_release_help_") as tmp:
+        extract_root = Path(tmp)
+        zf.extractall(extract_root)
+        entrypoint = extract_root / HELP_SMOKE_SCRIPT
+        if not entrypoint.is_file():
+            return {
+                "status": "fail",
+                "command": ["python", *HELP_SMOKE_ARGS],
+                "failure": {
+                    "problem": "entrypoint_not_extracted",
+                    "member": HELP_SMOKE_SCRIPT,
+                },
+            }
+
+        env = os.environ.copy()
+        env.setdefault("MPLBACKEND", "Agg")
+        env["PYTHONDONTWRITEBYTECODE"] = "1"
+        try:
+            completed = subprocess.run(
+                [sys.executable, *HELP_SMOKE_ARGS],
+                cwd=extract_root,
+                env=env,
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=HELP_SMOKE_TIMEOUT_SECONDS,
+            )
+        except subprocess.TimeoutExpired as exc:
+            return {
+                "status": "fail",
+                "command": ["python", *HELP_SMOKE_ARGS],
+                "timeout_seconds": HELP_SMOKE_TIMEOUT_SECONDS,
+                "failure": {
+                    "problem": "timeout",
+                    "stdout_tail": text_tail(exc.stdout),
+                    "stderr_tail": text_tail(exc.stderr),
+                },
+            }
+
+    stdout_tail = text_tail(completed.stdout)
+    stderr_tail = text_tail(completed.stderr)
+    combined_output = f"{completed.stdout}\n{completed.stderr}".lower()
+    failure: dict[str, Any] | None = None
+    if completed.returncode != 0:
+        failure = {"problem": "nonzero_exit"}
+    elif "usage:" not in combined_output:
+        failure = {"problem": "help_usage_missing"}
+
+    result: dict[str, Any] = {
+        "status": "pass" if failure is None else "fail",
+        "command": ["python", *HELP_SMOKE_ARGS],
+        "python_executable": sys.executable,
+        "timeout_seconds": HELP_SMOKE_TIMEOUT_SECONDS,
+        "returncode": completed.returncode,
+        "stdout_tail": stdout_tail,
+        "stderr_tail": stderr_tail,
+    }
+    if failure is not None:
+        result["failure"] = failure
+    return result
 
 
 def parse_required_json(zf: zipfile.ZipFile, member_set: set[str]) -> tuple[dict[str, Any], dict[str, Any]]:
@@ -561,6 +678,7 @@ def build_result(archive_rel: str = DEFAULT_ARCHIVE_REL) -> dict[str, Any]:
         checks["metadata"] = blocked_check("archive_missing")
         checks["text_hygiene"] = blocked_check("archive_missing")
         checks["metrics"] = blocked_check("archive_missing")
+        checks["extracted_help_smoke"] = blocked_check("archive_missing")
         return {
             "schema_version": "v131_release_package_verification.v1",
             "status": "fail",
@@ -583,12 +701,14 @@ def build_result(archive_rel: str = DEFAULT_ARCHIVE_REL) -> dict[str, Any]:
                 checks["metadata"] = blocked_check("unsafe_or_invalid_archive_members")
                 checks["text_hygiene"] = blocked_check("unsafe_or_invalid_archive_members")
                 checks["metrics"] = blocked_check("unsafe_or_invalid_archive_members")
+                checks["extracted_help_smoke"] = blocked_check("unsafe_or_invalid_archive_members")
             else:
                 parsed, parse_check = parse_required_json(zf, member_set)
                 checks["json_parse"] = parse_check
                 checks["metadata"] = check_metadata(parsed) if parse_check["status"] == "pass" else blocked_check("json_parse_failed")
                 checks["text_hygiene"] = check_text_hygiene(zf, members)
                 checks["metrics"] = check_metrics(parsed) if parse_check["status"] == "pass" else blocked_check("json_parse_failed")
+                checks["extracted_help_smoke"] = check_extracted_help_smoke(zf, member_set)
     except zipfile.BadZipFile as exc:
         checks["archive_members"] = {"status": "fail", "failures": [{"problem": "bad_zip", "details": repr(exc)}]}
         checks["required_members"] = blocked_check("bad_zip")
@@ -596,6 +716,7 @@ def build_result(archive_rel: str = DEFAULT_ARCHIVE_REL) -> dict[str, Any]:
         checks["metadata"] = blocked_check("bad_zip")
         checks["text_hygiene"] = blocked_check("bad_zip")
         checks["metrics"] = blocked_check("bad_zip")
+        checks["extracted_help_smoke"] = blocked_check("bad_zip")
 
     status = "pass" if all(check.get("status") == "pass" for check in checks.values()) else "fail"
     return {
@@ -625,6 +746,7 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
     graph_fresh = metrics.get("graph_fresh", {})
     comparison_all = metrics.get("comparison_all_non_development", {})
     comparison_fresh = metrics.get("comparison_fresh", {})
+    smoke = checks.get("extracted_help_smoke", {})
 
     lines = [
         "# v1.3.1 Release Package Verification",
@@ -647,7 +769,15 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         "",
         "## Checks",
     ]
-    for name in ("archive_members", "required_members", "json_parse", "metadata", "text_hygiene", "metrics"):
+    for name in (
+        "archive_members",
+        "required_members",
+        "json_parse",
+        "metadata",
+        "text_hygiene",
+        "metrics",
+        "extracted_help_smoke",
+    ):
         check = checks.get(name, {})
         lines.append(f"- {name}: **{str(check.get('status')).upper()}**")
     lines += [
@@ -683,6 +813,11 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         "## Outputs",
         f"- JSON: `{rel(json_out)}`",
         f"- Markdown: `{rel(md_out)}`",
+        "",
+        "## Extracted Help Smoke",
+        f"- Command: `python {' '.join(HELP_SMOKE_ARGS)}`",
+        f"- Status: **{str(smoke.get('status')).upper()}**",
+        f"- Return code: `{smoke.get('returncode')}`",
     ]
 
     failing_checks = {
@@ -694,11 +829,14 @@ def write_reports(result: dict[str, Any], json_out: Path, md_out: Path) -> None:
         lines += ["", "## Failures"]
         for name, check in failing_checks.items():
             failures = check.get("failures")
+            failure = check.get("failure")
             reason = check.get("reason")
             if reason:
                 lines.append(f"- {name}: {reason}")
             elif failures:
                 lines.append(f"- {name}: {len(failures)} failure(s); see JSON report for details.")
+            elif failure:
+                lines.append(f"- {name}: {failure.get('problem')}; see JSON report for details.")
 
     md_out.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

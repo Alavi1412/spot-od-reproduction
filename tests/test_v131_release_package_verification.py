@@ -148,6 +148,34 @@ def _base_files() -> dict[str, str | bytes]:
             },
         }
     )
+    files["scripts/_bootstrap.py"] = (
+        "from __future__ import annotations\n"
+        "import sys\n"
+        "from pathlib import Path\n"
+        "def ensure_src_on_path() -> None:\n"
+        "    src_path = Path(__file__).resolve().parents[1] / 'src'\n"
+        "    src_text = str(src_path)\n"
+        "    if src_text not in sys.path:\n"
+        "        sys.path.insert(0, src_text)\n"
+    )
+    files["scripts/__init__.py"] = '"""Fixture scripts package."""\n'
+    files["src/gnn_state_estimation/__init__.py"] = '"""Fixture source package."""\n'
+    files[verifier.HELP_SMOKE_SCRIPT] = (
+        "from __future__ import annotations\n"
+        "try:\n"
+        "    from _bootstrap import ensure_src_on_path\n"
+        "except ModuleNotFoundError:\n"
+        "    from scripts._bootstrap import ensure_src_on_path\n"
+        "ensure_src_on_path()\n"
+        "import argparse\n"
+        "import gnn_state_estimation\n"
+        "def build_parser() -> argparse.ArgumentParser:\n"
+        "    parser = argparse.ArgumentParser()\n"
+        "    parser.add_argument('--source-glob', default='fixture')\n"
+        "    return parser\n"
+        "if __name__ == '__main__':\n"
+        "    build_parser().parse_args()\n"
+    )
     return files
 
 
@@ -166,6 +194,8 @@ def test_minimal_valid_release_fixture_passes_and_writes_reports(tmp_path: Path)
     assert result["status"] == "pass"
     assert result["checks"]["archive_members"]["status"] == "pass"
     assert result["checks"]["required_members"]["missing_count"] == 0
+    assert result["checks"]["required_members"]["missing_prefixes"] == []
+    assert result["checks"]["extracted_help_smoke"]["status"] == "pass"
 
     json_out = tmp_path / "report.json"
     md_out = tmp_path / "report.md"
@@ -232,3 +262,29 @@ def test_rejects_key_metric_mismatch(tmp_path: Path) -> None:
     assert metric_check["status"] == "fail"
     failed_fields = {failure["field"] for failure in metric_check["failures"]}
     assert f"{verifier.GRAPH_SUMMARY}.aggregate_tiers.fresh_extra.row_wins" in failed_fields
+
+
+@pytest.mark.parametrize(
+    "missing_member, expected_problem",
+    [
+        ("scripts/_bootstrap.py", "_bootstrap"),
+        ("src/gnn_state_estimation/__init__.py", "gnn_state_estimation"),
+    ],
+)
+def test_extracted_help_smoke_rejects_missing_import_time_dependencies(
+    tmp_path: Path,
+    missing_member: str,
+    expected_problem: str,
+) -> None:
+    files = _base_files()
+    files.pop(missing_member)
+    archive = _write_zip(tmp_path, files)
+
+    result = verifier.build_result(str(archive))
+
+    assert result["status"] == "fail"
+    assert result["checks"]["required_members"]["status"] == "fail"
+    smoke = result["checks"]["extracted_help_smoke"]
+    assert smoke["status"] == "fail"
+    assert smoke["returncode"] != 0
+    assert expected_problem in smoke["stderr_tail"]

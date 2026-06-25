@@ -15,6 +15,9 @@ Zenodo archived source file MD5: `863e5077d4d29a827c6fcfd1181dce34`
 ## Core files
 
 - `.zenodo.json`
+- `README.md`
+- `pyproject.toml`
+- `requirements.txt`
 - `release/ZENODO_METADATA.json`
 - `release/RELEASE_NOTES_v1.3.1-validation-selected-residual-refine.md`
 - `release/README.md`
@@ -32,6 +35,8 @@ Zenodo archived source file MD5: `863e5077d4d29a827c6fcfd1181dce34`
 
 ## Scripts and tests
 
+- `scripts/__init__.py`
+- `scripts/_bootstrap.py`
 - `scripts/run_trajectory_candidate_graph_selector_poc.py`
 - `scripts/analyze_trajectory_candidate_graph_architecture_ensemble.py`
 - `scripts/build_trajectory_residual_refine_comparison_intervals.py`
@@ -41,6 +46,12 @@ Zenodo archived source file MD5: `863e5077d4d29a827c6fcfd1181dce34`
 - `tests/test_build_trajectory_residual_refine_comparison_intervals.py`
 - `tests/test_build_trajectory_residual_refine_tail_diagnostic.py`
 - `tests/test_build_trajectory_residual_refine_figure.py`
+
+## Runtime source package
+
+- `src/gnn_state_estimation/`
+
+The source package and bootstrap helper are included so released scripts can resolve imports when run directly from the extracted archive root. The verifier checks this with `python scripts/run_trajectory_candidate_graph_selector_poc.py --help`; this is an import/help smoke, not model training.
 
 ## Result directories
 

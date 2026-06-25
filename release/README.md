@@ -14,6 +14,13 @@ The Zenodo archived source file is
 `Alavi1412/spot-od-reproduction-v1.3.1-validation-selected-residual-refine.zip`,
 212,947,668 bytes, MD5 `863e5077d4d29a827c6fcfd1181dce34`.
 
+The corrective package includes `src/`, `scripts/_bootstrap.py`,
+`scripts/__init__.py`, `pyproject.toml`, `requirements.txt`, and the repository
+`README.md` so released scripts can resolve import-time dependencies from an
+extracted archive root. The verifier checks this with
+`python scripts/run_trajectory_candidate_graph_selector_poc.py --help`; this is
+an import/help smoke, not model training.
+
 Current evidence boundary: validation-selected edge-only attention residual
 refinement reports 15.073% all-non-development and 13.358% fresh gains versus
 the best retained candidate; 24.835% all-non-development and 45.329% fresh

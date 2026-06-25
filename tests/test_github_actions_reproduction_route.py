@@ -56,6 +56,7 @@ V131_VERIFIER_COMMAND = (
 )
 FOCUSED_V131_PYTEST_COMMAND = (
     "python -m pytest "
+    "tests/test_v131_release_package_verification.py "
     "tests/test_build_trajectory_residual_refine_comparison_intervals.py "
     "tests/test_build_trajectory_residual_refine_tail_diagnostic.py "
     "tests/test_build_trajectory_residual_refine_figure.py "

@@ -32,7 +32,15 @@ The result is a retained-candidate compact-simulator proof of concept. It is not
 
 ## Package scope
 
-This zip is an inspection/downstream-replay package for the selected PoC outputs. It includes final result rows, summaries, checkpoints, comparison intervals, the validation-selected figure/table, metadata, release documentation, and focused tests. It does not include the upstream retained-candidate input directories named `results/adaptive_candidate_fusion_observed_fixed_soft_*` that are required to rerun training from scratch.
+This zip is an inspection/downstream-replay package for the selected PoC outputs. It includes final result rows, summaries, checkpoints, comparison intervals, the validation-selected figure/table, metadata, release documentation, focused tests, `src/`, `scripts/_bootstrap.py`, `scripts/__init__.py`, `pyproject.toml`, `requirements.txt`, and the repository `README.md` so the released scripts can resolve import-time dependencies from an extracted package root. It does not include the upstream retained-candidate input directories named `results/adaptive_candidate_fusion_observed_fixed_soft_*` that are required to rerun training from scratch.
+
+The package verifier performs a fast extracted-package smoke by running:
+
+```powershell
+python scripts\run_trajectory_candidate_graph_selector_poc.py --help
+```
+
+This command checks import-time package wiring without starting model training.
 
 ## Provenance and downstream replay commands
 
