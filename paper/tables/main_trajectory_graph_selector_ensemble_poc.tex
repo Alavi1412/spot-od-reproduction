@@ -1,0 +1,30 @@
+\begin{table*}[t]
+\centering
+\caption{Post-freeze trajectory candidate selector ensemble proof of concept. The learned selector routes among retained candidate trajectories, not a standalone recursive filter: it chooses among \texttt{EKF}, \texttt{UKF}, \texttt{AUKF}, \texttt{BatchWLS}, \texttt{RFIS}, and \texttt{VA\_RFIS} using retained truth-free candidate, visibility, eval-mask, scenario, and candidate-disagreement features. The attention graph, mean graph, and local/no-message variants use the same retained candidates, source directories, member seeds 2001/2005/2009, arithmetic-mean probability aggregation, and best-single denominator. The two-layer attention graph variant is the strongest retained-candidate selector variant so far, while the fresh attention/local margin is only 0.226\%, so the result remains retained-output compact-simulator evidence.}
+\label{tab:main_trajectory_graph_selector_ensemble_poc}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{2.6cm} p{2.1cm} r r r r r c p{5.0cm}}
+\toprule
+Slice & Variant & Rows & Obs. steps & Selector RMSE (m) & Reference RMSE (m) & Gain/adv. (\%) & W/T/L & Interpretation \\
+\midrule
+All non-development & Attention graph vs best-single & 230 & 6831 & 396.670 & 459.591 & 13.691 & 125/101/4 & Strongest retained-candidate selector aggregate so far versus the same six-candidate denominator. \\
+All non-development & Mean graph vs best-single & 230 & 6831 & 403.771 & 459.591 & 12.146 & 117/99/14 & Same retained candidates and graph selector ensemble without the attention edge-message variant. \\
+All non-development & Local/no-message vs best-single & 230 & 6831 & 401.728 & 459.591 & 12.590 & 110/104/16 & Capacity control without graph messages; still materially positive versus best-single. \\
+All non-development & Attention graph vs local/no-message & 230 & 6831 & 396.670 & 401.728 & 1.259 & 26/202/2 & Attention/local margin is positive but modest and mostly tied row-wise. \\
+\addlinespace
+Fresh extra seeds 151/157/163/167 & Attention graph vs best-single & 47 & 1426 & 387.159 & 445.943 & 13.182 & 25/22/0 & Fresh source-generation rows preserve the attention selector gain without row losses. \\
+Fresh extra seeds 151/157/163/167 & Mean graph vs best-single & 47 & 1426 & 403.648 & 445.943 & 9.484 & 21/23/3 & Mean graph comparator remains positive but trails attention and local/no-message. \\
+Fresh extra seeds 151/157/163/167 & Local/no-message vs best-single & 47 & 1426 & 388.037 & 445.943 & 12.985 & 24/22/1 & Local/no-message is nearly matched by attention on this extended fresh aggregate. \\
+Fresh extra seeds 151/157/163/167 & Attention graph vs local/no-message & 47 & 1426 & 387.159 & 388.037 & 0.226 & 2/45/0 & Fresh attention/local margin is small; independent/full rerun and public precise-reference validation remain required before causal/operational interpretation. \\
+\addlinespace
+Holdout seed $\geq67$ & Attention graph vs best-single & 183 & 5405 & 399.141 & 463.124 & 13.816 & 100/79/4 & Positive retained-candidate selector gain on the holdout tier. \\
+Holdout seed $\geq67$ & Attention graph vs local/no-message & 183 & 5405 & 399.141 & 405.263 & 1.511 & 24/157/2 & Positive but modest attention/local margin. \\
+Future seed $\geq109$ & Attention graph vs best-single & 60 & 1800 & 423.451 & 477.693 & 11.355 & 37/20/3 & Positive retained-candidate selector gain on the future tier. \\
+Future seed $\geq109$ & Attention graph vs local/no-message & 60 & 1800 & 423.451 & 428.925 & 1.276 & 9/50/1 & Positive but modest attention/local margin. \\
+\bottomrule
+\end{tabular}%
+}
+\par\smallskip
+\scriptsize Sources: attention graph records at \nolinkurl{results/trajectory_candidate_graph_attention_ensemble3_newfresh151157163167_20260625/summary.json}, \nolinkurl{results/trajectory_candidate_graph_attention_ensemble3_newfresh151157163167_20260625/summary.md}, and \nolinkurl{results/trajectory_candidate_graph_attention_ensemble3_newfresh151157163167_20260625/rows.csv}; mean graph records at \nolinkurl{results/trajectory_candidate_graph_selector_ensemble3_newfresh151157163167_20260625/summary.json}, \nolinkurl{results/trajectory_candidate_graph_selector_ensemble3_newfresh151157163167_20260625/summary.md}, and \nolinkurl{results/trajectory_candidate_graph_selector_ensemble3_newfresh151157163167_20260625/rows.csv}; local/no-message records at \nolinkurl{results/trajectory_candidate_local_selector_ensemble3_newfresh151157163167_20260625/summary.json}, \nolinkurl{results/trajectory_candidate_local_selector_ensemble3_newfresh151157163167_20260625/summary.md}, and \nolinkurl{results/trajectory_candidate_local_selector_ensemble3_newfresh151157163167_20260625/rows.csv}; fresh source-generation directories \nolinkurl{results/adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed151_split151_20260625/}, \nolinkurl{results/adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed157_split157_20260625/}, \nolinkurl{results/adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed163_split163_20260625/}, and \nolinkurl{results/adaptive_candidate_fusion_observed_fixed_soft_obsckpt_seed167_split167_20260625/}. Eval truth scores rows and baselines only; it is not an input to selector decisions. This is retained-output compact-simulator evidence only, not independent-machine reproduction, not operational POD validation, not public precise-reference validation, not a full raw/training/all-filter rerun, not message-passing evidence, and not broad learned-OD evidence.
+\end{table*}

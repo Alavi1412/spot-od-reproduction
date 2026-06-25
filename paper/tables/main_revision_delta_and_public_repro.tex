@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\caption{Reviewer-facing revision delta and public reproducibility boundary. The table lists what changed in this clarification pass and, more importantly, what each item does not upgrade.}
+\label{tab:main_revision_delta_and_public_repro}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{p{3.1cm} p{4.6cm} p{4.0cm} p{5.3cm}}
+\toprule
+Change & Evidence artifact / public path & What it upgrades & What it does not upgrade \\
+\midrule
+Trajectory candidate selector ensemble PoC added & Table~\ref{tab:main_trajectory_graph_selector_ensemble_poc}; retained attention graph records at \nolinkurl{results/trajectory_candidate_graph_attention_ensemble3_newfresh151157163167_20260625/summary.json}, \nolinkurl{results/trajectory_candidate_graph_attention_ensemble3_newfresh151157163167_20260625/summary.md}, and \nolinkurl{results/trajectory_candidate_graph_attention_ensemble3_newfresh151157163167_20260625/rows.csv}; mean graph comparator records at \nolinkurl{results/trajectory_candidate_graph_selector_ensemble3_newfresh151157163167_20260625/summary.json}, \nolinkurl{results/trajectory_candidate_graph_selector_ensemble3_newfresh151157163167_20260625/summary.md}, and \nolinkurl{results/trajectory_candidate_graph_selector_ensemble3_newfresh151157163167_20260625/rows.csv}; local/no-message records at \nolinkurl{results/trajectory_candidate_local_selector_ensemble3_newfresh151157163167_20260625/summary.json}, \nolinkurl{results/trajectory_candidate_local_selector_ensemble3_newfresh151157163167_20260625/summary.md}, and \nolinkurl{results/trajectory_candidate_local_selector_ensemble3_newfresh151157163167_20260625/rows.csv}. & Records the first material learned-method PoC in the current package: a retained-candidate selector ensemble. The two-layer attention graph variant gains 13.691\% on all non-development rows and 13.182\% on fresh seeds 151/157/163/167, beating the mean graph and local/no-message comparators on both aggregates; its attention/local margin is 1.259\% all non-development and 0.226\% fresh. & Does not change the original learned-negative endpoint for the residual/GNN/KalmanNet-style family; not a standalone learned recursive filter, public precise-reference validation, independent-machine reproduction, full raw/training/all-filter rerun, operational POD, message-passing evidence, or broad learned-OD validation. \\
+\addlinespace
+Row-WDLS PoC added as a side branch & Table~\ref{tab:main_row_weighted_dls_poc}; retained result-summary JSON paths are listed in the supplement and review/workspace evidence. & Records a post-freeze compact-simulator DLS-weighting diagnostic: graph row-WDLS and no-message control both beat fixed DLS on 5/5 \texttt{credible\_dense\_od\_test} split seeds. & Does not clear the 3\% practical floor; graph beats no-message on only 3/5 seeds with about 0.0027~m mean advantage; not public precise-reference validation, operational POD, confirmatory learned-superiority evidence, or an isolated message-passing contribution. \\
+\addlinespace
+\texttt{v1.2.5} metadata repair & Public Zenodo DOI \nolinkurl{10.5281/zenodo.20837485}; GitHub tag \texttt{v1.2.5-zenodo-metadata-repair}. & Repairs the stale/mismatched \texttt{v1.2.4} Zenodo metadata record and gives reviewers a clean public archive identifier. & Contributes zero scientific validation: no new experiment, no new result, no independent-machine reproduction, no public precise-reference validation, and no operational validation. \\
+\addlinespace
+Precise-reference availability updated & Public LAGEOS CRD/SP3 availability/readout text in Sections~\ref{sec:precise-ref-integration} and~\ref{sec:data-reproducibility}. & Clarifies the current support-only status: EDC has usable 260613 SP3 products, while 260620/260627 remain unavailable or placeholder products and CDDIS remains login/HTML rather than parseable SP3. & Does not validate the compact simulator conclusion, establish real-data learned-estimator skill, or close the operational POD gap; the 260606 learned-minus-best-classical readout remains indeterminate. \\
+\addlinespace
+Public reproducibility tier clarified & Public repository/release family in Data availability; confidential journal-review package remains separate. & Separates public inspection/archive-extraction/manifest checks and one archived-input public OD slice rerun from confidential retained records and full-rerun tiers. & Does not provide full raw/training/all-filter public reproduction, live public-data retrieval, full seed-suite regeneration, independent-machine confirmation, confidential digest/evaluation-record inspection, or operational precise-reference reproduction. \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
